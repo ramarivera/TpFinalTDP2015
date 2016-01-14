@@ -9,6 +9,7 @@ namespace TpFinalTDP2015.Persistence
     public class Campaña
     {
         public string Nombre { get; set; }
+  
         public string Descripcion { get; set; }
     }
 }

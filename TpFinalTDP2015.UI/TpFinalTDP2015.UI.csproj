@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarModificarCampaña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarModificarCampaña.Designer.cs">
+      <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarModificarIntervalo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarModificarIntervalo.Designer.cs">
+      <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AgregarModificarCampaña.resx">
+      <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarModificarIntervalo.resx">
+      <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
