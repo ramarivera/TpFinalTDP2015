@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence
 {
-    public class Class1
+    public class Campaña
     {
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
     }
 }
