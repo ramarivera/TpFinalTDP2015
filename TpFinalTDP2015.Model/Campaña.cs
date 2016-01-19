@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Persistence
+namespace TpFinalTDP2015.Model
 {
     public class Campaña
     {

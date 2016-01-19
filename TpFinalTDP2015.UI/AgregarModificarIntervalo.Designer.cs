@@ -36,37 +36,36 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.chkLunes = new System.Windows.Forms.CheckBox();
             this.lblLunes = new System.Windows.Forms.Label();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblMartes = new System.Windows.Forms.Label();
+            this.chkMartes = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkMiercoles = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblJueves = new System.Windows.Forms.Label();
+            this.chkJueves = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblViernes = new System.Windows.Forms.Label();
+            this.chkViernes = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblSabado = new System.Windows.Forms.Label();
+            this.chkSabado = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblDomingo = new System.Windows.Forms.Label();
+            this.chkDomingo = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblTodos = new System.Windows.Forms.Label();
+            this.chkTodos = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lblFechaIni = new System.Windows.Forms.Label();
             this.lblFechaFin = new System.Windows.Forms.Label();
             this.lblHoraIni = new System.Windows.Forms.Label();
             this.lblHoraFin = new System.Windows.Forms.Label();
-            this.lblMartes = new System.Windows.Forms.Label();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.chkMartes = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkMiercoles = new System.Windows.Forms.CheckBox();
-            this.lblJueves = new System.Windows.Forms.Label();
-            this.chkJueves = new System.Windows.Forms.CheckBox();
-            this.lblViernes = new System.Windows.Forms.Label();
-            this.chkViernes = new System.Windows.Forms.CheckBox();
-            this.lblSabado = new System.Windows.Forms.Label();
-            this.chkSabado = new System.Windows.Forms.CheckBox();
-            this.lblDomingo = new System.Windows.Forms.Label();
-            this.chkDomingo = new System.Windows.Forms.CheckBox();
-            this.lblTodos = new System.Windows.Forms.Label();
-            this.chkTodos = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -74,6 +73,7 @@
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -112,8 +112,8 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 31);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -184,7 +184,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(92, 26);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
@@ -213,6 +213,322 @@
             this.lblLunes.TabIndex = 1;
             this.lblLunes.Text = "Lunes";
             this.lblLunes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.AutoSize = true;
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.Controls.Add(this.lblMartes, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.chkMartes, 1, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(101, 3);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(92, 26);
+            this.tableLayoutPanel6.TabIndex = 1;
+            // 
+            // lblMartes
+            // 
+            this.lblMartes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMartes.AutoSize = true;
+            this.lblMartes.Location = new System.Drawing.Point(3, 0);
+            this.lblMartes.Name = "lblMartes";
+            this.lblMartes.Size = new System.Drawing.Size(67, 26);
+            this.lblMartes.TabIndex = 1;
+            this.lblMartes.Text = "Martes";
+            this.lblMartes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkMartes
+            // 
+            this.chkMartes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkMartes.AutoSize = true;
+            this.chkMartes.Location = new System.Drawing.Point(76, 3);
+            this.chkMartes.Name = "chkMartes";
+            this.chkMartes.Size = new System.Drawing.Size(13, 20);
+            this.chkMartes.TabIndex = 2;
+            this.chkMartes.Text = "checkBox1";
+            this.chkMartes.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel7.AutoSize = true;
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.chkMiercoles, 1, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(199, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(92, 26);
+            this.tableLayoutPanel7.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Miércoles";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkMiercoles
+            // 
+            this.chkMiercoles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkMiercoles.AutoSize = true;
+            this.chkMiercoles.Location = new System.Drawing.Point(76, 3);
+            this.chkMiercoles.Name = "chkMiercoles";
+            this.chkMiercoles.Size = new System.Drawing.Size(13, 20);
+            this.chkMiercoles.TabIndex = 1;
+            this.chkMiercoles.Text = "checkBox1";
+            this.chkMiercoles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkMiercoles.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel8.AutoSize = true;
+            this.tableLayoutPanel8.ColumnCount = 2;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel8.Controls.Add(this.lblJueves, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.chkJueves, 1, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(297, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(92, 26);
+            this.tableLayoutPanel8.TabIndex = 3;
+            // 
+            // lblJueves
+            // 
+            this.lblJueves.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblJueves.AutoSize = true;
+            this.lblJueves.Location = new System.Drawing.Point(3, 0);
+            this.lblJueves.Name = "lblJueves";
+            this.lblJueves.Size = new System.Drawing.Size(67, 26);
+            this.lblJueves.TabIndex = 0;
+            this.lblJueves.Text = "Jueves";
+            this.lblJueves.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkJueves
+            // 
+            this.chkJueves.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkJueves.AutoSize = true;
+            this.chkJueves.Location = new System.Drawing.Point(76, 3);
+            this.chkJueves.Name = "chkJueves";
+            this.chkJueves.Size = new System.Drawing.Size(13, 20);
+            this.chkJueves.TabIndex = 1;
+            this.chkJueves.Text = "checkBox1";
+            this.chkJueves.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel9.AutoSize = true;
+            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel9.Controls.Add(this.lblViernes, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.chkViernes, 1, 0);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 35);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(92, 26);
+            this.tableLayoutPanel9.TabIndex = 4;
+            // 
+            // lblViernes
+            // 
+            this.lblViernes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblViernes.AutoSize = true;
+            this.lblViernes.Location = new System.Drawing.Point(3, 0);
+            this.lblViernes.Name = "lblViernes";
+            this.lblViernes.Size = new System.Drawing.Size(67, 26);
+            this.lblViernes.TabIndex = 0;
+            this.lblViernes.Text = "Viernes";
+            this.lblViernes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkViernes
+            // 
+            this.chkViernes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkViernes.AutoSize = true;
+            this.chkViernes.Location = new System.Drawing.Point(76, 3);
+            this.chkViernes.Name = "chkViernes";
+            this.chkViernes.Size = new System.Drawing.Size(13, 20);
+            this.chkViernes.TabIndex = 1;
+            this.chkViernes.Text = "checkBox1";
+            this.chkViernes.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel10.AutoSize = true;
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel10.Controls.Add(this.lblSabado, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.chkSabado, 1, 0);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(101, 35);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(92, 26);
+            this.tableLayoutPanel10.TabIndex = 5;
+            // 
+            // lblSabado
+            // 
+            this.lblSabado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSabado.AutoSize = true;
+            this.lblSabado.Location = new System.Drawing.Point(3, 0);
+            this.lblSabado.Name = "lblSabado";
+            this.lblSabado.Size = new System.Drawing.Size(67, 26);
+            this.lblSabado.TabIndex = 0;
+            this.lblSabado.Text = "Sábado";
+            this.lblSabado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkSabado
+            // 
+            this.chkSabado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkSabado.AutoSize = true;
+            this.chkSabado.Location = new System.Drawing.Point(76, 3);
+            this.chkSabado.Name = "chkSabado";
+            this.chkSabado.Size = new System.Drawing.Size(13, 20);
+            this.chkSabado.TabIndex = 1;
+            this.chkSabado.Text = "checkBox1";
+            this.chkSabado.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel11.AutoSize = true;
+            this.tableLayoutPanel11.ColumnCount = 2;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel11.Controls.Add(this.lblDomingo, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.chkDomingo, 1, 0);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(199, 35);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(92, 26);
+            this.tableLayoutPanel11.TabIndex = 6;
+            // 
+            // lblDomingo
+            // 
+            this.lblDomingo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDomingo.AutoSize = true;
+            this.lblDomingo.Location = new System.Drawing.Point(3, 0);
+            this.lblDomingo.Name = "lblDomingo";
+            this.lblDomingo.Size = new System.Drawing.Size(67, 26);
+            this.lblDomingo.TabIndex = 0;
+            this.lblDomingo.Text = "Domingo";
+            this.lblDomingo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkDomingo
+            // 
+            this.chkDomingo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkDomingo.AutoSize = true;
+            this.chkDomingo.Location = new System.Drawing.Point(76, 3);
+            this.chkDomingo.Name = "chkDomingo";
+            this.chkDomingo.Size = new System.Drawing.Size(13, 20);
+            this.chkDomingo.TabIndex = 1;
+            this.chkDomingo.Text = "checkBox1";
+            this.chkDomingo.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel12.AutoSize = true;
+            this.tableLayoutPanel12.ColumnCount = 2;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel12.Controls.Add(this.lblTodos, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.chkTodos, 1, 0);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(297, 35);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 1;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(92, 26);
+            this.tableLayoutPanel12.TabIndex = 7;
+            // 
+            // lblTodos
+            // 
+            this.lblTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTodos.AutoSize = true;
+            this.lblTodos.Location = new System.Drawing.Point(3, 0);
+            this.lblTodos.Name = "lblTodos";
+            this.lblTodos.Size = new System.Drawing.Size(67, 26);
+            this.lblTodos.TabIndex = 0;
+            this.lblTodos.Text = "Todos";
+            this.lblTodos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chkTodos
+            // 
+            this.chkTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkTodos.AutoSize = true;
+            this.chkTodos.Location = new System.Drawing.Point(76, 3);
+            this.chkTodos.Name = "chkTodos";
+            this.chkTodos.Size = new System.Drawing.Size(13, 20);
+            this.chkTodos.TabIndex = 1;
+            this.chkTodos.Text = "checkBox1";
+            this.chkTodos.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
@@ -289,322 +605,6 @@
             this.lblHoraFin.Text = "Hora de Fin";
             this.lblHoraFin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblMartes
-            // 
-            this.lblMartes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMartes.AutoSize = true;
-            this.lblMartes.Location = new System.Drawing.Point(3, 0);
-            this.lblMartes.Name = "lblMartes";
-            this.lblMartes.Size = new System.Drawing.Size(67, 26);
-            this.lblMartes.TabIndex = 1;
-            this.lblMartes.Text = "Martes";
-            this.lblMartes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.AutoSize = true;
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.Controls.Add(this.lblMartes, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.chkMartes, 1, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(101, 3);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(92, 26);
-            this.tableLayoutPanel6.TabIndex = 1;
-            // 
-            // chkMartes
-            // 
-            this.chkMartes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkMartes.AutoSize = true;
-            this.chkMartes.Location = new System.Drawing.Point(76, 3);
-            this.chkMartes.Name = "chkMartes";
-            this.chkMartes.Size = new System.Drawing.Size(13, 20);
-            this.chkMartes.TabIndex = 2;
-            this.chkMartes.Text = "checkBox1";
-            this.chkMartes.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel7.AutoSize = true;
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.chkMiercoles, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(199, 3);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(92, 26);
-            this.tableLayoutPanel7.TabIndex = 2;
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel8.AutoSize = true;
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel8.Controls.Add(this.lblJueves, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.chkJueves, 1, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(297, 3);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(92, 26);
-            this.tableLayoutPanel8.TabIndex = 3;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel9.AutoSize = true;
-            this.tableLayoutPanel9.ColumnCount = 2;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel9.Controls.Add(this.lblViernes, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.chkViernes, 1, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 35);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 1;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(92, 26);
-            this.tableLayoutPanel9.TabIndex = 4;
-            // 
-            // tableLayoutPanel10
-            // 
-            this.tableLayoutPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel10.AutoSize = true;
-            this.tableLayoutPanel10.ColumnCount = 2;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel10.Controls.Add(this.lblSabado, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.chkSabado, 1, 0);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(101, 35);
-            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 1;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(92, 26);
-            this.tableLayoutPanel10.TabIndex = 5;
-            // 
-            // tableLayoutPanel11
-            // 
-            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel11.AutoSize = true;
-            this.tableLayoutPanel11.ColumnCount = 2;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel11.Controls.Add(this.lblDomingo, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.chkDomingo, 1, 0);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(199, 35);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 1;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(92, 26);
-            this.tableLayoutPanel11.TabIndex = 6;
-            // 
-            // tableLayoutPanel12
-            // 
-            this.tableLayoutPanel12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel12.AutoSize = true;
-            this.tableLayoutPanel12.ColumnCount = 2;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel12.Controls.Add(this.lblTodos, 0, 0);
-            this.tableLayoutPanel12.Controls.Add(this.chkTodos, 1, 0);
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(297, 35);
-            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 1;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(92, 26);
-            this.tableLayoutPanel12.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Miércoles";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chkMiercoles
-            // 
-            this.chkMiercoles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkMiercoles.AutoSize = true;
-            this.chkMiercoles.Location = new System.Drawing.Point(76, 3);
-            this.chkMiercoles.Name = "chkMiercoles";
-            this.chkMiercoles.Size = new System.Drawing.Size(13, 20);
-            this.chkMiercoles.TabIndex = 1;
-            this.chkMiercoles.Text = "checkBox1";
-            this.chkMiercoles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkMiercoles.UseVisualStyleBackColor = true;
-            // 
-            // lblJueves
-            // 
-            this.lblJueves.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblJueves.AutoSize = true;
-            this.lblJueves.Location = new System.Drawing.Point(3, 0);
-            this.lblJueves.Name = "lblJueves";
-            this.lblJueves.Size = new System.Drawing.Size(67, 26);
-            this.lblJueves.TabIndex = 0;
-            this.lblJueves.Text = "Jueves";
-            this.lblJueves.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chkJueves
-            // 
-            this.chkJueves.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkJueves.AutoSize = true;
-            this.chkJueves.Location = new System.Drawing.Point(76, 3);
-            this.chkJueves.Name = "chkJueves";
-            this.chkJueves.Size = new System.Drawing.Size(13, 20);
-            this.chkJueves.TabIndex = 1;
-            this.chkJueves.Text = "checkBox1";
-            this.chkJueves.UseVisualStyleBackColor = true;
-            // 
-            // lblViernes
-            // 
-            this.lblViernes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblViernes.AutoSize = true;
-            this.lblViernes.Location = new System.Drawing.Point(3, 0);
-            this.lblViernes.Name = "lblViernes";
-            this.lblViernes.Size = new System.Drawing.Size(67, 26);
-            this.lblViernes.TabIndex = 0;
-            this.lblViernes.Text = "Viernes";
-            this.lblViernes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chkViernes
-            // 
-            this.chkViernes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkViernes.AutoSize = true;
-            this.chkViernes.Location = new System.Drawing.Point(76, 3);
-            this.chkViernes.Name = "chkViernes";
-            this.chkViernes.Size = new System.Drawing.Size(13, 20);
-            this.chkViernes.TabIndex = 1;
-            this.chkViernes.Text = "checkBox1";
-            this.chkViernes.UseVisualStyleBackColor = true;
-            // 
-            // lblSabado
-            // 
-            this.lblSabado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSabado.AutoSize = true;
-            this.lblSabado.Location = new System.Drawing.Point(3, 0);
-            this.lblSabado.Name = "lblSabado";
-            this.lblSabado.Size = new System.Drawing.Size(67, 26);
-            this.lblSabado.TabIndex = 0;
-            this.lblSabado.Text = "Sábado";
-            this.lblSabado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chkSabado
-            // 
-            this.chkSabado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkSabado.AutoSize = true;
-            this.chkSabado.Location = new System.Drawing.Point(76, 3);
-            this.chkSabado.Name = "chkSabado";
-            this.chkSabado.Size = new System.Drawing.Size(13, 20);
-            this.chkSabado.TabIndex = 1;
-            this.chkSabado.Text = "checkBox1";
-            this.chkSabado.UseVisualStyleBackColor = true;
-            // 
-            // lblDomingo
-            // 
-            this.lblDomingo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDomingo.AutoSize = true;
-            this.lblDomingo.Location = new System.Drawing.Point(3, 0);
-            this.lblDomingo.Name = "lblDomingo";
-            this.lblDomingo.Size = new System.Drawing.Size(67, 26);
-            this.lblDomingo.TabIndex = 0;
-            this.lblDomingo.Text = "Domingo";
-            this.lblDomingo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chkDomingo
-            // 
-            this.chkDomingo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkDomingo.AutoSize = true;
-            this.chkDomingo.Location = new System.Drawing.Point(76, 3);
-            this.chkDomingo.Name = "chkDomingo";
-            this.chkDomingo.Size = new System.Drawing.Size(13, 20);
-            this.chkDomingo.TabIndex = 1;
-            this.chkDomingo.Text = "checkBox1";
-            this.chkDomingo.UseVisualStyleBackColor = true;
-            // 
-            // lblTodos
-            // 
-            this.lblTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTodos.AutoSize = true;
-            this.lblTodos.Location = new System.Drawing.Point(3, 0);
-            this.lblTodos.Name = "lblTodos";
-            this.lblTodos.Size = new System.Drawing.Size(67, 26);
-            this.lblTodos.TabIndex = 0;
-            this.lblTodos.Text = "Todos";
-            this.lblTodos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chkTodos
-            // 
-            this.chkTodos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkTodos.AutoSize = true;
-            this.chkTodos.Location = new System.Drawing.Point(76, 3);
-            this.chkTodos.Name = "chkTodos";
-            this.chkTodos.Size = new System.Drawing.Size(13, 20);
-            this.chkTodos.TabIndex = 1;
-            this.chkTodos.Text = "checkBox1";
-            this.chkTodos.UseVisualStyleBackColor = true;
-            // 
             // AgregarModificarIntervalo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,8 +621,6 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -637,6 +635,8 @@
             this.tableLayoutPanel11.PerformLayout();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

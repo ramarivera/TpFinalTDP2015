@@ -58,6 +58,18 @@
     <Compile Include="AgregarModificarIntervalo.Designer.cs">
       <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarModificarTextoFijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarModificarTextoFijo.Designer.cs">
+      <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarCampaña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EliminarCampaña.Designer.cs">
+      <DependentUpon>EliminarCampaña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +83,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarIntervalo.resx">
       <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarModificarTextoFijo.resx">
+      <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCampaña.resx">
+      <DependentUpon>EliminarCampaña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
