@@ -8,8 +8,10 @@ namespace TpFinalTDP2015.Model
 {
     public class Campaña
     {
-        public string Nombre { get; set; }
+        public string Titulo { get; set; }
   
         public string Descripcion { get; set; }
+
+        public int Duracion { get; set; }
     }
 }
