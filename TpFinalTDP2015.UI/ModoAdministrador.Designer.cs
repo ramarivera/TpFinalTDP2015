@@ -28,70 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlMainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlLeftPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.trvPageNames = new System.Windows.Forms.TreeView();
+            this.pnlRightPanel = new System.Windows.Forms.TableLayoutPanel();
             this.lblPageName = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.pnlMainPanel.SuspendLayout();
+            this.pnlLeftPanel.SuspendLayout();
+            this.pnlRightPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // pnlMainPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.8189F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.1811F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(730, 428);
-            this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.pnlMainPanel.ColumnCount = 2;
+            this.pnlMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.8189F));
+            this.pnlMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.1811F));
+            this.pnlMainPanel.Controls.Add(this.pnlLeftPanel, 0, 0);
+            this.pnlMainPanel.Controls.Add(this.pnlRightPanel, 1, 0);
+            this.pnlMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMainPanel.Location = new System.Drawing.Point(0, 0);
+            this.pnlMainPanel.Name = "pnlMainPanel";
+            this.pnlMainPanel.RowCount = 1;
+            this.pnlMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnlMainPanel.Size = new System.Drawing.Size(730, 428);
+            this.pnlMainPanel.TabIndex = 0;
+            this.pnlMainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // treeView1
+            // pnlLeftPanel
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(3, 48);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(198, 371);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.pnlLeftPanel.ColumnCount = 1;
+            this.pnlLeftPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlLeftPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnlLeftPanel.Controls.Add(this.trvPageNames, 0, 1);
+            this.pnlLeftPanel.Location = new System.Drawing.Point(3, 3);
+            this.pnlLeftPanel.Name = "pnlLeftPanel";
+            this.pnlLeftPanel.RowCount = 2;
+            this.pnlLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.8871F));
+            this.pnlLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.1129F));
+            this.pnlLeftPanel.Size = new System.Drawing.Size(204, 422);
+            this.pnlLeftPanel.TabIndex = 1;
             // 
-            // tableLayoutPanel2
+            // trvPageNames
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.treeView1, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.8871F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.1129F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(204, 422);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.trvPageNames.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trvPageNames.Location = new System.Drawing.Point(3, 48);
+            this.trvPageNames.Name = "trvPageNames";
+            this.trvPageNames.Size = new System.Drawing.Size(198, 371);
+            this.trvPageNames.TabIndex = 0;
+            this.trvPageNames.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
-            // tableLayoutPanel3
+            // pnlRightPanel
             // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.lblPageName, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(213, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.29032F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.70968F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(514, 422);
-            this.tableLayoutPanel3.TabIndex = 2;
+            this.pnlRightPanel.ColumnCount = 1;
+            this.pnlRightPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.pnlRightPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.pnlRightPanel.Controls.Add(this.lblPageName, 0, 0);
+            this.pnlRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRightPanel.Location = new System.Drawing.Point(213, 3);
+            this.pnlRightPanel.Name = "pnlRightPanel";
+            this.pnlRightPanel.RowCount = 2;
+            this.pnlRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.29032F));
+            this.pnlRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.70968F));
+            this.pnlRightPanel.Size = new System.Drawing.Size(514, 422);
+            this.pnlRightPanel.TabIndex = 2;
             // 
             // lblPageName
             // 
@@ -110,23 +110,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 428);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.pnlMainPanel);
             this.Name = "ModoAdministrador";
             this.Text = "ModoAdministrador";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this.pnlMainPanel.ResumeLayout(false);
+            this.pnlLeftPanel.ResumeLayout(false);
+            this.pnlRightPanel.ResumeLayout(false);
+            this.pnlRightPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel pnlMainPanel;
+        private System.Windows.Forms.TableLayoutPanel pnlLeftPanel;
+        private System.Windows.Forms.TreeView trvPageNames;
+        private System.Windows.Forms.TableLayoutPanel pnlRightPanel;
         private System.Windows.Forms.Label lblPageName;
     }
 }

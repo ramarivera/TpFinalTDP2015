@@ -28,11 +28,11 @@ namespace TpFinalTDP2015.UI
         {
             set
             {
-                if (tableLayoutPanel3.Controls.Count > 1)
+                if (pnlRightPanel.Controls.Count > 1)
                 {
-                    tableLayoutPanel3.Controls.RemoveAt(1);
+                    pnlRightPanel.Controls.RemoveAt(1);
                 }
-                this.tableLayoutPanel3.Controls.Add(value);
+                this.pnlRightPanel.Controls.Add(value);
                 value.Show();
             }
         }
@@ -48,7 +48,7 @@ namespace TpFinalTDP2015.UI
 
             foreach (string name in lList)
             {
-                treeView1.Nodes.Add(name);
+                trvPageNames.Nodes.Add(name);
             }
 
         }
@@ -61,9 +61,9 @@ namespace TpFinalTDP2015.UI
         {
             string lPageName = String.Empty;
 
-            if (treeView1.SelectedNode != null)
+            if (trvPageNames.SelectedNode != null)
             {
-                lPageName = treeView1.SelectedNode.Text;
+                lPageName = trvPageNames.SelectedNode.Text;
                
             }
             AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(lPageName);
