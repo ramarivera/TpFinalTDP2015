@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TpFinalTDP2015.UI
+namespace TpFinalTDP2015.UI.AdminModePages
 {
-    public partial class AgregarModificarIntervalo : BaseForm
+    [AdminModePageInfo(Name = "Null Page")]
+    public partial class NullPage : AdminModePage
     {
-        public AgregarModificarIntervalo()
+        public NullPage()
         {
             InitializeComponent();
         }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class EliminarCampaña : Form
+    public partial class EliminarCampaña : BaseForm
     {
         public EliminarCampaña()
         {

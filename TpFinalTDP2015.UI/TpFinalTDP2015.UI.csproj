@@ -57,6 +57,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminModePages\AdminModePagesFactory.cs" />
+    <Compile Include="AdminModePages\NullPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\NullPage.Designer.cs">
+      <DependentUpon>NullPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarModificarCampaña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,12 @@
     </Compile>
     <Compile Include="AgregarModificarTextoFijo.Designer.cs">
       <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EliminarCampaña.cs">
       <SubType>Form</SubType>
@@ -103,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminModePages\CampaignAdministrator.resx">
       <DependentUpon>CampaignAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminModePages\NullPage.resx">
+      <DependentUpon>NullPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarCampaña.resx">
       <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
-    public class AdminModePage : Form
+    public partial class AdminModePage : BaseForm
     {
         public AdminModePage() : base() { }
         public AdminModePage GetAsPage()

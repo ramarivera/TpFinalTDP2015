@@ -11,7 +11,7 @@ using TpFinalTDP2015.UI.AdminModePages;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class ModoAdministrador : Form
+    public partial class ModoAdministrador : BaseForm
     {
         public ModoAdministrador()
         {
@@ -64,15 +64,16 @@ namespace TpFinalTDP2015.UI
             if (treeView1.SelectedNode != null)
             {
                 lPageName = treeView1.SelectedNode.Text;
-                AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(lPageName);
-                this.SelectedPage = lPage;
-                this.PageName = lPageName;
+               
             }
+            AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(lPageName);
+            this.SelectedPage = lPage;
+            this.PageName = lPageName;
 
-           // AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(lPageName);
-           // TODO: Pagina Nula
+            // AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(lPageName);
+            // TODO: Pagina Nula
 
-            
+
         }
     }
 }

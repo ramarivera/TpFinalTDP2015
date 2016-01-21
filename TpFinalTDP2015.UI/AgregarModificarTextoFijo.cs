@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarTextoFijo : Form
+    public partial class AgregarModificarTextoFijo : BaseForm
     {
         public AgregarModificarTextoFijo()
         {
