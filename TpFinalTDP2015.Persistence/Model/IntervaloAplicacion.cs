@@ -77,7 +77,12 @@ namespace TpFinalTDP2015.Persistence.Model
             }
         }
         public List<Dia> DiasDeLaSemana { get; set; }
-        public string Name { get; set; }
+
+        public string Name
+        {
+            get { return this.iName; }
+            set { this.iName = value; }
+        }
 
         public IntervaloAplicacion()
         {
