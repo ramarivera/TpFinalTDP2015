@@ -58,11 +58,11 @@
     <Compile Include="AgregarModificarIntervalo.Designer.cs">
       <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
     </Compile>
-    <Compile Include="AgregarModificarTextoFijo.cs">
+    <Compile Include="AgregarModificarTextoFijoRSS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarModificarTextoFijo.Designer.cs">
-      <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
+    <Compile Include="AgregarModificarTextoFijoRSS.Designer.cs">
+      <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>
     </Compile>
     <Compile Include="EliminarCampaña.cs">
       <SubType>Form</SubType>
@@ -84,8 +84,8 @@
     <EmbeddedResource Include="AgregarModificarIntervalo.resx">
       <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgregarModificarTextoFijo.resx">
-      <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
+    <EmbeddedResource Include="AgregarModificarTextoFijoRSS.resx">
+      <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EliminarCampaña.resx">
       <DependentUpon>EliminarCampaña.cs</DependentUpon>

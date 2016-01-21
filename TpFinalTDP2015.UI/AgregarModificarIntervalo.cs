@@ -16,5 +16,10 @@ namespace TpFinalTDP2015.UI
         {
             InitializeComponent();
         }
+
+        private void dtpFechaIni_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

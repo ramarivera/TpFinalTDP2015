@@ -69,5 +69,10 @@ namespace TpFinalTDP2015.UI
                     break;
             }
         }
+
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TpFinalTDP2015.UI
 {
-    partial class AgregarModificarTextoFijo
+    partial class AgregarModificarTextoFijoRSS
     {
         /// <summary>
         /// Required designer variable.
