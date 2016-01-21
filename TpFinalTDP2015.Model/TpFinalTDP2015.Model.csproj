@@ -40,14 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Banner.cs" />
-    <Compile Include="Campaña.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="Dia.cs" />
-    <Compile Include="FuenteRSS.cs" />
-    <Compile Include="IntervaloAplicacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextoFijo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

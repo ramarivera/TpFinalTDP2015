@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Banner.cs" />
+    <Compile Include="Model\Campaña.cs" />
+    <Compile Include="Model\Dia.cs" />
+    <Compile Include="Model\FuenteRSS.cs" />
+    <Compile Include="Model\IntervaloAplicacion.cs" />
+    <Compile Include="Model\TextoFijo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
