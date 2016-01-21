@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using TpFinalTDP2015.Persistence.Model;
+using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.Service.AutoMapperProfiles;
 
-namespace TpFinalTDP2015.Model
+namespace TpFinalTDP2015.Service
 {
-    class AutoMapperConfigurations
+    public class AutoMapperConfigurations
     {
-        public void Configure()
+        static public void  Configure()
         {
-           
+            Mapper.Initialize(cfg => {
+                cfg.AddProfile<LapseProfile>();
+            });
         }
     }  
 }
