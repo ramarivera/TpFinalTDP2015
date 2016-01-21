@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TpFinalTDP2015.UI
+namespace TpFinalTDP2015.UI.AdminModePages
 {
-    public partial class Form1 : BaseForm
+    [AdminModePageInfo(Name = "Administrador de Campañas")]
+    public partial class CampaignAdministrator : AdminModePage
     {
-        public Form1()
+        public CampaignAdministrator() : base()
         {
             InitializeComponent();
         }

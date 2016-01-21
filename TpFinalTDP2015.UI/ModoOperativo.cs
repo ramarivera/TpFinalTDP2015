@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class Form1 : BaseForm
+    public partial class ModoOperativo : BaseForm
     {
-        public Form1()
+        public ModoOperativo()
         {
             InitializeComponent();
         }
