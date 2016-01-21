@@ -39,9 +39,9 @@ namespace TpFinalTDP2015.UI
         {
             this.txtTitle.Text = pIntervalo.Name;
             this.dtpFechaIni.Value = pIntervalo.FechaInicio;
-            this.dtpFechaFin.Value = pIntervalo.FechaFin;
-            //this.dtpHoraIni.Value.TimeOfDay = pIntervalo.HoraInicio.;
-            //this.dtpHoraFin.Value = pIntervalo.HoraFin;
+            this.dtpFechaFin.Value =  pIntervalo.FechaFin;
+            this.dtpHoraIni.Value = DateTime.MinValue + pIntervalo.HoraInicio;
+            this.dtpHoraFin.Value = DateTime.MinValue + pIntervalo.HoraFin;
             this.Text = "Modificar Intervalo";
             foreach (Dia dia in pIntervalo.DiasDeLaSemana)
             {
