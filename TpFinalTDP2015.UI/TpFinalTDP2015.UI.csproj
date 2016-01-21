@@ -46,6 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminModePages\AdminModePageInfo.cs" />
+    <Compile Include="AdminModePages\CampaignAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\CampaignAdministrator.Designer.cs">
+      <DependentUpon>CampaignAdministrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModePages\AdminModePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\AdminModePagesFactory.cs" />
     <Compile Include="AgregarModificarCampaña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,8 +87,23 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModoAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModoAdministrador.Designer.cs">
+      <DependentUpon>ModoAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModoOperativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModoOperativo.Designer.cs">
+      <DependentUpon>ModoOperativo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminModePages\CampaignAdministrator.resx">
+      <DependentUpon>CampaignAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarCampaña.resx">
       <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EliminarCampaña.resx">
       <DependentUpon>EliminarCampaña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModoAdministrador.resx">
+      <DependentUpon>ModoAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
