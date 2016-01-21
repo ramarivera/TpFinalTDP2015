@@ -85,5 +85,64 @@ namespace TpFinalTDP2015.UI
             this.chkViernes.Checked = true;
             this.chkSabado.Checked = true;
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            this.iIntervaloOriginal.Name = this.txtTitle.Text;
+            this.iIntervaloOriginal.FechaInicio = this.dtpFechaIni.Value;
+            this.iIntervaloOriginal.FechaFin = this.dtpFechaFin.Value;
+            this.iIntervaloOriginal.HoraInicio = this.dtpHoraIni.Value.TimeOfDay;
+            this.iIntervaloOriginal.HoraFin = this.dtpHoraFin.Value.TimeOfDay;
+            if (this.chkDomingo.Checked)
+            {
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Domingo);
+            }
+            if (this.chkLunes.Checked)
+            {
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Lunes);
+            }
+            if (this.chkMartes.Checked)
+            {
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Martes);
+            }
+            if (this.chkMiercoles.Checked)
+            {
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Miercoles);
+            }
+            if (this.chkJueves.Checked)
+            {
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Jueves);
+            }
+            if (this.chkViernes.Checked)
+            {
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Viernes);
+            }
+            if (this.chkSabado.Checked)
+            {
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Sabado);
+            }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            {
+                DialogResult opcion = MessageBox.Show(
+                                            "¿Desea salir sin guardar los cambios?",
+                                            "Salir",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Question);
+                switch (opcion)
+                {
+                    case DialogResult.Yes:
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                        break;
+                    case DialogResult.No:
+                        break;
+                }
+            }
+        }
     }
 }
