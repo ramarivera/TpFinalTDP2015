@@ -46,6 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminModePages\AdminModePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\AdminModePageInfo.cs" />
+    <Compile Include="AdminModePages\AdminModePagesFactory.cs" />
+    <Compile Include="AdminModePages\CampaignAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\CampaignAdministrator.Designer.cs">
+      <DependentUpon>CampaignAdministrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModePages\NullPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\NullPage.Designer.cs">
+      <DependentUpon>NullPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarModificarCampaña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,18 +81,44 @@
     <Compile Include="AgregarModificarTextoFijoRSS.Designer.cs">
       <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EliminarCampaña.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EliminarCampaña.Designer.cs">
       <DependentUpon>EliminarCampaña.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModoAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModoAdministrador.Designer.cs">
+      <DependentUpon>ModoAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModoOperador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModoOperador.Designer.cs">
+      <DependentUpon>ModoOperador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminModePages\CampaignAdministrator.resx">
+      <DependentUpon>CampaignAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminModePages\NullPage.resx">
+      <DependentUpon>NullPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarCampaña.resx">
       <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +130,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EliminarCampaña.resx">
       <DependentUpon>EliminarCampaña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModoAdministrador.resx">
+      <DependentUpon>ModoAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModoOperador.resx">
+      <DependentUpon>ModoOperador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

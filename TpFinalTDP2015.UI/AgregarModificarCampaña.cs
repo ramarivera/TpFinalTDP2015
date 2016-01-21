@@ -11,7 +11,7 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarCampaña : Form
+    public partial class AgregarModificarCampaña : BaseForm
     {
         private Campaña iCampañaOriginal;
 

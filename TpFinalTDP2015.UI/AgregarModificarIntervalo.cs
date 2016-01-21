@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarIntervalo : Form
+    public partial class AgregarModificarIntervalo : BaseForm
     {
         public AgregarModificarIntervalo()
         {
