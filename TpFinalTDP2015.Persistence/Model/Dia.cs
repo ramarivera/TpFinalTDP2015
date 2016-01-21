@@ -8,12 +8,12 @@ namespace TpFinalTDP2015.Persistence.Model
 {
     public enum Dia
     {
+        Domingo,
         Lunes,
         Martes,
         Miercoles,
         Jueves,
         Viernes,
-        Sabado,
-        Domingo
+        Sabado
     }
 }

@@ -8,6 +8,7 @@ namespace TpFinalTDP2015.Persistence.Model
 {
     public class IntervaloAplicacion
     {
+        private string iName;
         private DateTime iFechaInicio;
         private DateTime iFechaFin;
         private TimeSpan iHoraInicio;
