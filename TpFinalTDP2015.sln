@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.Model", "TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj", "{FAE170FD-3290-450D-906F-B0AE33875CEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.Service", "TpFinalTDP2015.Model\TpFinalTDP2015.Service.csproj", "{FAE170FD-3290-450D-906F-B0AE33875CEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.Persistence", "TpFinalTDP2015.Persistence\TpFinalTDP2015.Persistence.csproj", "{C1966555-9617-43DC-9F3D-918D34778945}"
 EndProject
