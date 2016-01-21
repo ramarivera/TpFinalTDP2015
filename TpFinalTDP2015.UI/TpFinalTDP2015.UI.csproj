@@ -78,7 +78,9 @@
     <Compile Include="AgregarModificarTextoFijoRSS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarModificarTextoFijoRSS.Designer.cs" />
+    <Compile Include="AgregarModificarTextoFijoRSS.Designer.cs">
+      <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,7 +125,6 @@
     <EmbeddedResource Include="AgregarModificarIntervalo.resx">
       <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgregarModificarTextoFijoRSS.resx" />
     <EmbeddedResource Include="EliminarCampaña.resx">
       <DependentUpon>EliminarCampaña.cs</DependentUpon>
     </EmbeddedResource>
