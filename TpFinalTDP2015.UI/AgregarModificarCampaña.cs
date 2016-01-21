@@ -42,7 +42,6 @@ namespace TpFinalTDP2015.UI
             this.iCampañaOriginal = pCampaña;
         }
 
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             this.iCampañaOriginal.Titulo = this.txtTitulo.Text;
