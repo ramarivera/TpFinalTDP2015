@@ -80,6 +80,7 @@
     <Compile Include="Model\RSSSource.cs" />
     <Compile Include="Model\CampaignInterval.cs" />
     <Compile Include="Model\RSSItem.cs" />
+    <Compile Include="Model\Slide.cs" />
     <Compile Include="Model\StaticText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
