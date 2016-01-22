@@ -8,8 +8,14 @@ namespace TpFinalTDP2015.Persistence.Model
 {
     public class FuenteRSS
     {
+        private string iTitle;
+        private string iDescription;
+        private string iURL;
+        private IList<RSSItem> iItems;
+
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public string URL { get; set; }
+
     }
 }
