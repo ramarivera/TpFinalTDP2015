@@ -6,51 +6,16 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    class RSSItem
+    public class RSSItem : BaseEntity
     {
-        private int iId;
-        private DateTime iCreationDate;
-        private DateTime iLastModified;
 
         private string iTitle;
         private string iDescription;
         private string iURL;
         private DateTime? iPublicationDate;
 
-        public RSSItem()
+        public RSSItem() : base()
         {
-            this.iId = 0;
-            this.iCreationDate = DateTime.Now;
-            this.iLastModified = DateTime.Now;
-        }
-
-        public int Id
-        {
-            get { return this.iId; }
-            set
-            {
-                this.iLastModified = DateTime.Now;
-                this.iId = value;
-            }
-        }
-
-        public DateTime CreationDate
-        {
-            get { return this.iCreationDate; }
-            set
-            {
-                this.iLastModified = DateTime.Now;
-                this.iCreationDate = value;
-            }
-        }
-
-        public DateTime LastModified
-        {
-            get { return this.iLastModified; }
-            set
-            {
-                this.iLastModified = value;
-            }
         }
 
         public string Title
@@ -58,7 +23,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iTitle; }
             set
             {
-                this.iLastModified = DateTime.Now;
+                this.LastModified = DateTime.Now;
                 this.iTitle = value;
             }
         }
@@ -68,7 +33,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iDescription; }
             set
             {
-                this.iLastModified = DateTime.Now;
+                this.LastModified = DateTime.Now;
                 this.iDescription = value;
             }
         }
@@ -78,7 +43,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iURL; }
             set
             {
-                this.iLastModified = DateTime.Now;
+                this.LastModified = DateTime.Now;
                 this.iURL = value;
             }
         }
@@ -88,7 +53,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iPublicationDate; }
             set
             {
-                this.iLastModified = DateTime.Now;
+                this.LastModified = DateTime.Now;
                 this.iPublicationDate = value;
             }
         }

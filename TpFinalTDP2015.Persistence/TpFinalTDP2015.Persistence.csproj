@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Banner.cs" />
+    <Compile Include="Model\BaseEntity.cs" />
     <Compile Include="Model\Campaña.cs" />
     <Compile Include="Model\Dia.cs" />
     <Compile Include="Model\FuenteRSS.cs" />
