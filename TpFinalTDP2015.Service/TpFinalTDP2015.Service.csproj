@@ -73,9 +73,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperConfigurations.cs" />
+    <Compile Include="AutoMapperProfiles\BannerProfile.cs" />
     <Compile Include="AutoMapperProfiles\CampaignIntervalProfile.cs" />
+    <Compile Include="AutoMapperProfiles\RSSItemProfile.cs" />
+    <Compile Include="AutoMapperProfiles\StaticTextProfile.cs" />
+    <Compile Include="DTO\BannerDTO.cs" />
     <Compile Include="DTO\CampaignIntervalDTO.cs" />
+    <Compile Include="DTO\RSSItemDTO.cs" />
     <Compile Include="DTO\RSSSourceDTO.cs" />
+    <Compile Include="DTO\StaticTextDTO.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
