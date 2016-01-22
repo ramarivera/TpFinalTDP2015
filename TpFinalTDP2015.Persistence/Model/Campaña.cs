@@ -6,27 +6,33 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public class Campaña
+    public class Campaign : BaseEntity
     {
-        private string iTitle;
+        private string iName;
         private string iDescription;
-        private int iDuration;
-        public string Title
+
+        public string Name
         {
-            get { return this.iTitle; }
-            set { this.iTitle = value; }
+            get { return this.iName; }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iName = value;
+            }
         }
   
         public string Description
         {
             get { return this.iDescription; }
-            set {this.iDescription=value; }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iDescription = value;
+            }
         }
 
-        public int Duration
-        {
-            get { return this.iDuration; }
-            set { this.iDuration = value; }
-        }
+
+
+
     }
 }

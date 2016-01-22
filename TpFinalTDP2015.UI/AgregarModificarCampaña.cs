@@ -13,9 +13,9 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : BaseForm
     {
-        private Campaña iCampañaOriginal;
+        private Campaign iCampañaOriginal;
 
-        public Campaña Campaña
+        public Campaign Campaña
         {
             get { return this.iCampañaOriginal; }
         }
@@ -24,7 +24,7 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarCampaña(Campaña pCampañaNueva)
+        public void AgregarCampaña(Campaign pCampañaNueva)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -33,20 +33,20 @@ namespace TpFinalTDP2015.UI
             this.iCampañaOriginal = pCampañaNueva;
         }
 
-        public void ModificarCampaña(Campaña pCampaña)
+        public void ModificarCampaña(Campaign pCampaña)
         {
-            this.txtTitle.Text = pCampaña.Title;
+            this.txtTitle.Text = pCampaña.Name;
             this.txtDescription.Text = pCampaña.Description;
-            this.txtDuration.Text = pCampaña.Duration.ToString();
+           // this.txtDuration.Text = pCampaña.Duration.ToString();
             this.Text = "Modificar Campaña";
             this.iCampañaOriginal = pCampaña;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iCampañaOriginal.Title = this.txtTitle.Text;
+            this.iCampañaOriginal.Name = this.txtTitle.Text;
             this.iCampañaOriginal.Description = this.txtDescription.Text;
-            this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
+          //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
