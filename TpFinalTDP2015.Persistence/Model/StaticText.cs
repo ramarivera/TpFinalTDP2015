@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public class TextoFijo
+    public class StaticText
     {
         private string iTitle;
         private string iDescription;
