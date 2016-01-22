@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalTDP2015.Persistence.Model;
 
 namespace TpFinalTDP2015.Service.DTO
 {
     class RSSSourceDTO
     {
-        public object Title { get; internal set; }
-        public object Description { get; internal set; }
-        public object URL { get; internal set; }
-        public object Items { get; internal set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string URL { get; set; }
+        public IList<RSSItem> Items { get; set; }
     }
 }

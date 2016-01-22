@@ -8,8 +8,8 @@ namespace TpFinalTDP2015.Service.DTO
 {
     class StaticTextDTO
     {
-        public object Title { get; internal set; }
-        public object Description { get; internal set; }
-        public object Text { get; internal set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Text { get; set; }
     }
 }
