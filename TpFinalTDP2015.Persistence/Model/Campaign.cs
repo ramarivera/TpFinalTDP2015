@@ -10,6 +10,14 @@ namespace TpFinalTDP2015.Persistence.Model
     {
         private string iName;
         private string iDescription;
+        private IList<CampaignInterval> iActiveIntervals;
+        //TODO accesores con modificacion de fecha para CampaginInterval
+
+        public Campaign() : base()
+        {
+            this.iActiveIntervals = new List<CampaignInterval>();
+        }
+
 
         public string Name
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public enum Dia
+    public enum Days
     {
         Domingo,
         Lunes,

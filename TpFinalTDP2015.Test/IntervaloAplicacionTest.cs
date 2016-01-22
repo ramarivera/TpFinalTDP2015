@@ -21,13 +21,13 @@ namespace TpFinalTDP2015.Test
             TimeSpan lStartTime2 = new TimeSpan(21, 00, 00);
             TimeSpan lEndTime1 = new TimeSpan(23, 59, 00);
             TimeSpan lEndTime2 = new TimeSpan(22, 00, 00);
-            List<Dia> lWeekDays1 = new List<Dia>() { Dia.Domingo };
-            List<Dia> lWeekDays2 = new List<Dia>() { Dia.Lunes };
+            List<Days> lWeekDays1 = new List<Days>() { Days.Domingo };
+            List<Days> lWeekDays2 = new List<Days>() { Days.Lunes };
 
             CampaignInterval lLapse1 = new CampaignInterval()
             {
-                StartDate = lStartDate1,
-                EndDate = lEndDate1,
+                ActiveFrom = lStartDate1,
+                ActiveUntil = lEndDate1,
                 StartTime = lStartTime1,
                 EndTime = lEndTime1,
                 DiasDeLaSemana = lWeekDays1
@@ -35,8 +35,8 @@ namespace TpFinalTDP2015.Test
 
             CampaignInterval lLapse2 = new CampaignInterval()
             {
-                StartDate = lStartDate2,
-                EndDate = lEndDate2,
+                ActiveFrom = lStartDate2,
+                ActiveUntil = lEndDate2,
                 StartTime = lStartTime2,
                 EndTime = lEndTime2,
                 DiasDeLaSemana = lWeekDays2
@@ -62,13 +62,13 @@ namespace TpFinalTDP2015.Test
             TimeSpan lStartTime2 = new TimeSpan(21, 00, 00);
             TimeSpan lEndTime1 = new TimeSpan(23, 59, 00);
             TimeSpan lEndTime2 = new TimeSpan(22, 00, 00);
-            List<Dia> lWeekDays1 = new List<Dia>() { Dia.Domingo };
-            List<Dia> lWeekDays2 = new List<Dia>() { Dia.Lunes };
+            List<Days> lWeekDays1 = new List<Days>() { Days.Domingo };
+            List<Days> lWeekDays2 = new List<Days>() { Days.Lunes };
 
             CampaignInterval lLapse1 = new CampaignInterval()
             {
-                StartDate = lStartDate1,
-                EndDate = lEndDate1,
+                ActiveFrom = lStartDate1,
+                ActiveUntil = lEndDate1,
                 StartTime = lStartTime1,
                 EndTime = lEndTime1,
                 DiasDeLaSemana = lWeekDays1
@@ -76,8 +76,8 @@ namespace TpFinalTDP2015.Test
 
             CampaignInterval lLapse2 = new CampaignInterval()
             {
-                StartDate = lStartDate2,
-                EndDate = lEndDate2,
+                ActiveFrom = lStartDate2,
+                ActiveUntil = lEndDate2,
                 StartTime = lStartTime2,
                 EndTime = lEndTime2,
                 DiasDeLaSemana = lWeekDays2

@@ -6,24 +6,35 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public class CampaignInterval
+    public class CampaignInterval : BaseEntity
     {
         private string iName;
-        private DateTime iStartDate;
-        private DateTime iEndDate;
+        private DateTime iActiveFrom;
+        private DateTime iActiveUntil;
         private TimeSpan iStartTime;
         private TimeSpan iEndTime;
+        private IList<Days> iActiveDays;
 
-
-
-        public DateTime StartDate
+        // TODO accesores con fecha de modifcacion para Days
+        public CampaignInterval() : base()
         {
-            get { return this.iStartDate; }
+            this.DiasDeLaSemana = new List<Days>();
+            this.ActiveFrom = new DateTime(1);
+            this.ActiveUntil = new DateTime(2);
+            this.StartTime = new TimeSpan(1);
+            this.EndTime = new TimeSpan(2);
+        }
+
+
+        public DateTime ActiveFrom
+        {
+            get { return this.iActiveFrom; }
             set
             {
-                if (value <= this.iEndDate)
+                if (value <= this.iActiveUntil)
                 {
-                    this.iStartDate = value;
+                    this.UpdateModificationDate();
+                    this.iActiveFrom = value;
                 }
                 else
                 {
@@ -31,14 +42,15 @@ namespace TpFinalTDP2015.Persistence.Model
                 }
             }
         }
-        public DateTime EndDate
+        public DateTime ActiveUntil
         {
-            get { return this.iEndDate; }
+            get { return this.iActiveUntil; }
             set
             {
-                if (value >= this.iStartDate)
+                if (value >= this.iActiveFrom)
                 {
-                    this.iEndDate = value;
+                    this.UpdateModificationDate();
+                    this.iActiveUntil = value;
                 }
                 else
                 {
@@ -53,6 +65,7 @@ namespace TpFinalTDP2015.Persistence.Model
             {
                 if (value < this.iEndTime)
                 {
+                    this.UpdateModificationDate();
                     this.iStartTime = value;
                 }
                 else
@@ -68,6 +81,7 @@ namespace TpFinalTDP2015.Persistence.Model
             {
                 if (value > this.iStartTime)
                 {
+                    this.UpdateModificationDate();
                     this.iEndTime = value;
                 }
                 else
@@ -76,30 +90,25 @@ namespace TpFinalTDP2015.Persistence.Model
                 }
             }
         }
-        public List<Dia> DiasDeLaSemana { get; set; }
+
+        public IList<Days> DiasDeLaSemana { get; set; }
 
         public string Name
         {
             get { return this.iName; }
-            set { this.iName = value; }
-        }
-
-        public CampaignInterval()
-        {
-            this.DiasDeLaSemana = new List<Dia>();
-            this.StartDate = new DateTime(1);
-            this.EndDate = new DateTime(2);
-            this.StartTime = new TimeSpan(1);
-            this.EndTime = new TimeSpan(2);
-
+            set
+            {
+                this.UpdateModificationDate();
+                this.iName = value;
+            }
         }
 
         public bool OverlapsWith(CampaignInterval pLapse)
         {
             bool lResult = false;
 
-            if (this.StartDate > pLapse.EndDate ||
-                this.EndDate < pLapse.StartDate)
+            if (this.ActiveFrom > pLapse.ActiveUntil ||
+                this.ActiveUntil < pLapse.ActiveFrom)
             {
                 lResult = false;
             }
@@ -109,7 +118,7 @@ namespace TpFinalTDP2015.Persistence.Model
 
                 while (!lResult)
                 {
-                    Dia day = this.DiasDeLaSemana[i];
+                    Days day = this.DiasDeLaSemana[i];
 
                     if (pLapse.DiasDeLaSemana.Contains(day))
                     {
