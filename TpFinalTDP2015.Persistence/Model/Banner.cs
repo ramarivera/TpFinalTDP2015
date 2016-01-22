@@ -10,6 +10,15 @@ namespace TpFinalTDP2015.Persistence.Model
     {
         private string iName;
         private string iDescription;
+        private IList<IBannerItem> iContentList;
+
+
+        public Banner() : base()
+        {
+            this.iContentList = new List<IBannerItem>();
+        }
+
+
         public string Name
         {
             get { return this.iName; }
@@ -20,8 +29,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iDescription; }
             set { this.iDescription = value; }
         }
-        //public List<StaticText> TextosFijos { get; set; }
-       // public List<FuenteRSS> FuentesRSS { get; set; }
-        public List<CampaignInterval> CampaignIntervals { get; set; }
+        
+        public List<CampaignInterval> IntervalosAplicacion { get; set; }
     }
 }

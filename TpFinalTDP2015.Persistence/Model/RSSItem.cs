@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public class RSSItem : BaseEntity
+    public class RSSItem : BaseEntity, IBannerItem
     {
 
         private string iTitle;
@@ -58,6 +58,14 @@ namespace TpFinalTDP2015.Persistence.Model
             }
         }
 
+        string IBannerItem.GetText()
+        {
+            return this.Description;
+        }
 
+        string IBannerItem.GetTitle()
+        {
+            return this.Title;
+        }
     }
 }
