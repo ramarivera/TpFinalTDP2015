@@ -22,6 +22,6 @@ namespace TpFinalTDP2015.Persistence.Model
         }
         public List<StaticText> TextosFijos { get; set; }
        // public List<FuenteRSS> FuentesRSS { get; set; }
-        public List<IntervaloAplicacion> IntervalosAplicacion { get; set; }
+        public List<CampaignInterval> IntervalosAplicacion { get; set; }
     }
 }

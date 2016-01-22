@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    class LapseDTO
+    class CampaignIntervalDTO
     {
         public object Days { get; internal set; }
         public object EndDate { get; internal set; }

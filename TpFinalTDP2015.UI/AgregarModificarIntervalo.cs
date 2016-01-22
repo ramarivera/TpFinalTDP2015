@@ -13,9 +13,9 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervalo : BaseForm
     {
-        private IntervaloAplicacion iIntervaloOriginal;
+        private CampaignInterval iIntervaloOriginal;
 
-        public IntervaloAplicacion Intervalo
+        public CampaignInterval Intervalo
         {
             get { return this.iIntervaloOriginal; }
         }
@@ -24,7 +24,7 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarIntervalo(IntervaloAplicacion pIntervaloNuevo)
+        public void AgregarIntervalo(CampaignInterval pIntervaloNuevo)
         {
             this.txtTitle.Text = String.Empty;
             this.dtpStartDate.Value = DateTime.Now;
@@ -35,13 +35,13 @@ namespace TpFinalTDP2015.UI
             this.iIntervaloOriginal = pIntervaloNuevo;
         }
 
-        public void ModificarIntervalo(IntervaloAplicacion pIntervalo)
+        public void ModificarIntervalo(CampaignInterval pIntervalo)
         {
             this.txtTitle.Text = pIntervalo.Name;
-            this.dtpStartDate.Value = pIntervalo.FechaInicio;
-            this.dtpEndDate.Value =  pIntervalo.FechaFin;
-            this.dtpStartTime.Value = DateTime.MinValue + pIntervalo.HoraInicio;
-            this.dtpEndTime.Value = DateTime.MinValue + pIntervalo.HoraFin;
+            this.dtpStartDate.Value = pIntervalo.StartDate;
+            this.dtpEndDate.Value =  pIntervalo.EndDate;
+            this.dtpStartTime.Value = DateTime.MinValue + pIntervalo.StartTime;
+            this.dtpEndTime.Value = DateTime.MinValue + pIntervalo.EndTime;
             this.Text = "Modificar Intervalo";
             foreach (Dia dia in pIntervalo.DiasDeLaSemana)
             {
@@ -89,10 +89,10 @@ namespace TpFinalTDP2015.UI
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             this.iIntervaloOriginal.Name = this.txtTitle.Text;
-            this.iIntervaloOriginal.FechaInicio = this.dtpStartDate.Value;
-            this.iIntervaloOriginal.FechaFin = this.dtpEndDate.Value;
-            this.iIntervaloOriginal.HoraInicio = this.dtpStartTime.Value.TimeOfDay;
-            this.iIntervaloOriginal.HoraFin = this.dtpEndTime.Value.TimeOfDay;
+            this.iIntervaloOriginal.StartDate = this.dtpStartDate.Value;
+            this.iIntervaloOriginal.EndDate = this.dtpEndDate.Value;
+            this.iIntervaloOriginal.StartTime = this.dtpStartTime.Value.TimeOfDay;
+            this.iIntervaloOriginal.EndTime = this.dtpEndTime.Value.TimeOfDay;
             if (this.chkSunday.Checked)
             {
                 this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Domingo);
