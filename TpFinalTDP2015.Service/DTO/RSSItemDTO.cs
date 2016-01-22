@@ -8,10 +8,10 @@ namespace TpFinalTDP2015.Service.DTO
 {
     class RSSItemDTO
     {
-        public object Title { get; internal set; }
-        public object Description { get; internal set; }
-        public object URL { get; internal set; }
-        public object PublicationDate { get; internal set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string URL { get; set; }
+        public DateTime? PublicationDate { get; set; }
 
     }
 }

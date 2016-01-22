@@ -8,9 +8,9 @@ namespace TpFinalTDP2015.Service.DTO
 {
     class BannerDTO
     {
-        public object Name { get; internal set; }
-        public object Description { get; internal set; }
-        public object CampaignIntervals { get; internal set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        //public  CampaignIntervals { get; internal set; }
 
         //falta la lista del contenido del mismo
     }

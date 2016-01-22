@@ -15,8 +15,8 @@ namespace TpFinalTDP2015.Service.AutoMapperProfiles
         {
             Mapper.CreateMap<Banner, BannerDTO>()
               .ForMember(d => d.Name, o => o.MapFrom(c => c.Name))
-              .ForMember(d => d.Description, o => o.MapFrom(c => c.Description))
-              .ForMember(d => d.CampaignIntervals, o => o.MapFrom(c => c.CampaignIntervals));
+              .ForMember(d => d.Description, o => o.MapFrom(c => c.Description));
+              //.ForMember(d => d.CampaignIntervals, o => o.MapFrom(c => c.CampaignIntervals));
         }
 
         //falta la lista del contenido del mismo
