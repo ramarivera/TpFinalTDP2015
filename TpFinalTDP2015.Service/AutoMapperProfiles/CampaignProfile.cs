@@ -4,21 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Persistence.Model;
+using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.Service.AutoMapperProfiles
 {
-    class BannerProfile: Profile
+    class CampaignProfile : Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Banner, BannerDTO>()
+            Mapper.CreateMap<Campaign, CampaignDTO>()
               .ForMember(d => d.Name, o => o.MapFrom(c => c.Name))
               .ForMember(d => d.Description, o => o.MapFrom(c => c.Description))
-              .ForMember(d => d.CampaignIntervals, o => o.MapFrom(c => c.CampaignIntervals));
+           //TODO agragar al dto los campos lista   .ForMember(d => d.ActiveIntervals, o => o.MapFrom(c => c.));
+              .ForMember(d => d.ModificationDate, o => o.MapFrom(c => c.LastModified));
         }
-
-        //TODO falta la lista del contenido del mismo
     }
 }

@@ -39,6 +39,7 @@ namespace TpFinalTDP2015.Persistence.Model
                 this.iDescription = value;
             }
         }
-        
+
+        public object CampaignIntervals { get; set; }
     }
 }

@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using TpFinalTDP2015.Persistence.Model;
-using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Service.AutoMapperProfiles;
 using Common.Logging;
 
@@ -22,6 +20,11 @@ namespace TpFinalTDP2015.Service
         {
             Mapper.Initialize(cfg => {
                 cfg.AddProfile<CampaignIntervalProfile>();
+                cfg.AddProfile<RSSItemProfile>();
+                cfg.AddProfile<RSSSourceProfile>();
+                cfg.AddProfile<BannerProfile>();
+                cfg.AddProfile<StaticTextProfile>();
+                cfg.AddProfile<CampaignProfile>();
             });
         }
     }  
