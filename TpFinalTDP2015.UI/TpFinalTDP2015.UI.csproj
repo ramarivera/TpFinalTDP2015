@@ -193,6 +193,10 @@
       <Project>{c1966555-9617-43dc-9f3d-918d34778945}</Project>
       <Name>TpFinalTDP2015.Persistence</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TpFinalTDP2015.Service\TpFinalTDP2015.Service.csproj">
+      <Project>{fae170fd-3290-450d-906f-b0ae33875cee}</Project>
+      <Name>TpFinalTDP2015.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
