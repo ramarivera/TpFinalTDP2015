@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    class RSSItem
+    public class RSSItem
     {
         private int iId;
         private DateTime iCreationDate;

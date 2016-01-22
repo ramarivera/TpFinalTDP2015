@@ -26,27 +26,27 @@ namespace TpFinalTDP2015.UI
 
         public void AgregarCampaña(Campaña pCampañaNueva)
         {
-            this.txtTitulo.Text = String.Empty;
-            this.txtDescripcion.Text = String.Empty;
-            this.txtDuracion.Text = String.Empty;
+            this.txtTitle.Text = String.Empty;
+            this.txtDescription.Text = String.Empty;
+            this.txtDuration.Text = String.Empty;
             this.Text = "Agregar nueva Campaña";
             this.iCampañaOriginal = pCampañaNueva;
         }
 
         public void ModificarCampaña(Campaña pCampaña)
         {
-            this.txtTitulo.Text = pCampaña.Titulo;
-            this.txtDescripcion.Text = pCampaña.Descripcion;
-            this.txtDuracion.Text = pCampaña.Duracion.ToString();
+            this.txtTitle.Text = pCampaña.Title;
+            this.txtDescription.Text = pCampaña.Description;
+            this.txtDuration.Text = pCampaña.Duration.ToString();
             this.Text = "Modificar Campaña";
             this.iCampañaOriginal = pCampaña;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iCampañaOriginal.Titulo = this.txtTitulo.Text;
-            this.iCampañaOriginal.Descripcion = this.txtDescripcion.Text;
-            this.iCampañaOriginal.Duracion = int.Parse(this.txtDuracion.Text);
+            this.iCampañaOriginal.Title = this.txtTitle.Text;
+            this.iCampañaOriginal.Description = this.txtDescription.Text;
+            this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
