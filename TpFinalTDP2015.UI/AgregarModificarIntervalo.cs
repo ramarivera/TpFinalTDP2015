@@ -38,34 +38,34 @@ namespace TpFinalTDP2015.UI
         public void ModificarIntervalo(CampaignInterval pIntervalo)
         {
             this.txtTitle.Text = pIntervalo.Name;
-            this.dtpStartDate.Value = pIntervalo.StartDate;
-            this.dtpEndDate.Value =  pIntervalo.EndDate;
+            this.dtpStartDate.Value = pIntervalo.ActiveFrom;
+            this.dtpEndDate.Value =  pIntervalo.ActiveUntil;
             this.dtpStartTime.Value = DateTime.MinValue + pIntervalo.StartTime;
             this.dtpEndTime.Value = DateTime.MinValue + pIntervalo.EndTime;
             this.Text = "Modificar Intervalo";
-            foreach (Dia dia in pIntervalo.DiasDeLaSemana)
+            foreach (Days dia in pIntervalo.DiasDeLaSemana)
             {
                 switch (dia)
                 {
-                    case Dia.Domingo:
+                    case Days.Domingo:
                         this.chkSunday.Checked = true;
                         break;
-                    case Dia.Lunes:
+                    case Days.Lunes:
                         this.chkMonday.Checked = true;
                         break;
-                    case Dia.Martes:
+                    case Days.Martes:
                         this.chkTuesday.Checked = true;
                         break;
-                    case Dia.Miercoles:
+                    case Days.Miercoles:
                         this.chkWednesday.Checked = true;
                         break;
-                    case Dia.Jueves:
+                    case Days.Jueves:
                         this.chkThursday.Checked = true;
                         break;
-                    case Dia.Viernes:
+                    case Days.Viernes:
                         this.chkFriday.Checked = true;
                         break;
-                    case Dia.Sabado:
+                    case Days.Sabado:
                         this.chkSaturday.Checked = true;
                         break;
                     default:
@@ -89,37 +89,37 @@ namespace TpFinalTDP2015.UI
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             this.iIntervaloOriginal.Name = this.txtTitle.Text;
-            this.iIntervaloOriginal.StartDate = this.dtpStartDate.Value;
-            this.iIntervaloOriginal.EndDate = this.dtpEndDate.Value;
+            this.iIntervaloOriginal.ActiveFrom = this.dtpStartDate.Value;
+            this.iIntervaloOriginal.ActiveUntil = this.dtpEndDate.Value;
             this.iIntervaloOriginal.StartTime = this.dtpStartTime.Value.TimeOfDay;
             this.iIntervaloOriginal.EndTime = this.dtpEndTime.Value.TimeOfDay;
             if (this.chkSunday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Domingo);
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Domingo);
             }
             if (this.chkMonday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Lunes);
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Lunes);
             }
             if (this.chkTuesday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Martes);
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Martes);
             }
             if (this.chkWednesday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Miercoles);
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Miercoles);
             }
             if (this.chkThursday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Jueves);
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Jueves);
             }
             if (this.chkFriday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Viernes);
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Viernes);
             }
             if (this.chkSaturday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Sabado);
+                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Sabado);
             }
             this.DialogResult = DialogResult.OK;
             this.Close();

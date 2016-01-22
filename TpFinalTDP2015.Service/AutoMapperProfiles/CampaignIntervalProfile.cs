@@ -15,8 +15,8 @@ namespace TpFinalTDP2015.Service.AutoMapperProfiles
         {
             Mapper.CreateMap<CampaignInterval, CampaignIntervalDTO>()
               .ForMember(d => d.Name, o => o.MapFrom(c => c.Name))
-              .ForMember(d => d.StartDate, o => o.MapFrom(c => c.StartDate))
-              .ForMember(d => d.EndDate, o => o.MapFrom(c => c.EndDate))
+              .ForMember(d => d.StartDate, o => o.MapFrom(c => c.ActiveFrom))
+              .ForMember(d => d.EndDate, o => o.MapFrom(c => c.ActiveUntil))
               .ForMember(d => d.StartTime, o => o.MapFrom(c => c.StartTime))
               .ForMember(d => d.EndTime, o => o.MapFrom(c => c.EndTime))
               .ForMember(d => d.Days, o => o.MapFrom(C => C.DiasDeLaSemana));

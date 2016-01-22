@@ -74,8 +74,8 @@
   <ItemGroup>
     <Compile Include="Model\Banner.cs" />
     <Compile Include="Model\BaseEntity.cs" />
-    <Compile Include="Model\Campaña.cs" />
-    <Compile Include="Model\Dia.cs" />
+    <Compile Include="Model\Campaign.cs" />
+    <Compile Include="Model\Days.cs" />
     <Compile Include="Model\IBannerItem.cs" />
     <Compile Include="Model\RSSSource.cs" />
     <Compile Include="Model\CampaignInterval.cs" />

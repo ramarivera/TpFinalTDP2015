@@ -6,28 +6,46 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public class RSSSource
+    public class RSSSource : BaseEntity
     {
         private string iTitle;
         private string iDescription;
         private string iURL;
         private IList<RSSItem> iItems;
 
+        public RSSSource() : base ()
+        {
+            this.Items = new List<RSSItem>();
+        }
+
+
         public string Title
         {
             get { return this.iTitle; }
-            set { this.iTitle = value; }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iTitle = value;
+            }
         }
 
         public string Description
         {
             get {return this.iDescription; }
-            set { this.iDescription = value; }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iDescription = value;
+            }
         }
         public string URL
         {
             get { return this.iURL; }
-            set {this.iURL = value; }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iURL = value;
+            }
         }
 
         public IList<RSSItem> Items
@@ -35,5 +53,6 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iItems; }
             set { this.iItems = value; }
         }
+        //TODO cambiar accesores Items
     }
 }
