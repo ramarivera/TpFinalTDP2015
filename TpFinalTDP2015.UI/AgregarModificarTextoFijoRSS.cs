@@ -33,55 +33,55 @@ namespace TpFinalTDP2015.UI
 
         public void AgregarTextoFijo(TextoFijo pTextoFijoNuevo)
         {
-            this.txtTitulo.Text = String.Empty;
-            this.txtDescripcion.Text = String.Empty;
-            this.txtTexto.Text = String.Empty;
+            this.txtTitle.Text = String.Empty;
+            this.txtDescription.Text = String.Empty;
+            this.txtText.Text = String.Empty;
             this.Text = "Agregar nuevo Texto Fijo";
             this.iTextoFijoOriginal = pTextoFijoNuevo;
         }
 
         public void ModificarTextoFijo(TextoFijo pTextoFijo)
         {
-            this.txtTitulo.Text = pTextoFijo.Titulo;
-            this.txtDescripcion.Text = pTextoFijo.Descripcion;
-            this.txtTexto.Text = pTextoFijo.Texto;
+            this.txtTitle.Text = pTextoFijo.Title;
+            this.txtDescription.Text = pTextoFijo.Description;
+            this.txtText.Text = pTextoFijo.Text;
             this.Text = "Modificar Texto Fijo";
             this.iTextoFijoOriginal = pTextoFijo;
         }
 
         public void AgregarFuenteRSS(FuenteRSS pFuenteRSSNueva)
         {
-            this.txtTitulo.Text = String.Empty;
-            this.txtDescripcion.Text = String.Empty;
-            this.txtTexto.Text = String.Empty;
-            this.lblTexto.Text = "URL";
+            this.txtTitle.Text = String.Empty;
+            this.txtDescription.Text = String.Empty;
+            this.txtText.Text = String.Empty;
+            this.lblText.Text = "URL";
             this.Text = "Agregar nueva FuenteRSS";
             this.iFuenteRSSOriginal = pFuenteRSSNueva;
         }
 
         public void ModificarFuenteRSS(FuenteRSS pFuenteRSS)
         {
-            this.txtTitulo.Text = pFuenteRSS.Titulo;
-            this.txtDescripcion.Text = pFuenteRSS.Descripcion;
-            this.txtTexto.Text = pFuenteRSS.URL;
-            this.lblTexto.Text = "URL";
+            this.txtTitle.Text = pFuenteRSS.Title;
+            this.txtDescription.Text = pFuenteRSS.Description;
+            this.txtText.Text = pFuenteRSS.URL;
+            this.lblText.Text = "URL";
             this.Text = "Modificar FuenteRSS";
             this.iFuenteRSSOriginal = pFuenteRSS;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (this.lblTexto.Text == "Texto")
+            if (this.lblText.Text == "Texto")
             {
-                this.iTextoFijoOriginal.Titulo = this.txtTitulo.Text;
-                this.iTextoFijoOriginal.Descripcion = this.txtDescripcion.Text;
-                this.iTextoFijoOriginal.Texto = this.txtTexto.Text;
+                this.iTextoFijoOriginal.Title = this.txtTitle.Text;
+                this.iTextoFijoOriginal.Description = this.txtDescription.Text;
+                this.iTextoFijoOriginal.Text = this.txtText.Text;
             }
             else
             {
-                this.iFuenteRSSOriginal.Titulo = this.txtTitulo.Text;
-                this.iFuenteRSSOriginal.Descripcion = this.txtDescripcion.Text;
-                this.iFuenteRSSOriginal.URL = this.txtTexto.Text;
+                this.iFuenteRSSOriginal.Title = this.txtTitle.Text;
+                this.iFuenteRSSOriginal.Description = this.txtDescription.Text;
+                this.iFuenteRSSOriginal.URL = this.txtText.Text;
             }
             this.DialogResult = DialogResult.OK;
             this.Close();

@@ -27,10 +27,10 @@ namespace TpFinalTDP2015.UI
         public void AgregarIntervalo(IntervaloAplicacion pIntervaloNuevo)
         {
             this.txtTitle.Text = String.Empty;
-            this.dtpFechaIni.Value = DateTime.Now;
-            this.dtpFechaFin.Value = DateTime.Now;
-            this.dtpHoraIni.Value = DateTime.Now;
-            this.dtpHoraFin.Value = DateTime.Now;
+            this.dtpStartDate.Value = DateTime.Now;
+            this.dtpEndDate.Value = DateTime.Now;
+            this.dtpStartTime.Value = DateTime.Now;
+            this.dtpEndTime.Value = DateTime.Now;
             this.Text = "Agregar nuevo Intervalo";
             this.iIntervaloOriginal = pIntervaloNuevo;
         }
@@ -38,35 +38,35 @@ namespace TpFinalTDP2015.UI
         public void ModificarIntervalo(IntervaloAplicacion pIntervalo)
         {
             this.txtTitle.Text = pIntervalo.Name;
-            this.dtpFechaIni.Value = pIntervalo.FechaInicio;
-            this.dtpFechaFin.Value =  pIntervalo.FechaFin;
-            this.dtpHoraIni.Value = DateTime.MinValue + pIntervalo.HoraInicio;
-            this.dtpHoraFin.Value = DateTime.MinValue + pIntervalo.HoraFin;
+            this.dtpStartDate.Value = pIntervalo.FechaInicio;
+            this.dtpEndDate.Value =  pIntervalo.FechaFin;
+            this.dtpStartTime.Value = DateTime.MinValue + pIntervalo.HoraInicio;
+            this.dtpEndTime.Value = DateTime.MinValue + pIntervalo.HoraFin;
             this.Text = "Modificar Intervalo";
             foreach (Dia dia in pIntervalo.DiasDeLaSemana)
             {
                 switch (dia)
                 {
                     case Dia.Domingo:
-                        this.chkDomingo.Checked = true;
+                        this.chkSunday.Checked = true;
                         break;
                     case Dia.Lunes:
-                        this.chkLunes.Checked = true;
+                        this.chkMonday.Checked = true;
                         break;
                     case Dia.Martes:
-                        this.chkMartes.Checked = true;
+                        this.chkTuesday.Checked = true;
                         break;
                     case Dia.Miercoles:
-                        this.chkMiercoles.Checked = true;
+                        this.chkWednesday.Checked = true;
                         break;
                     case Dia.Jueves:
-                        this.chkJueves.Checked = true;
+                        this.chkThursday.Checked = true;
                         break;
                     case Dia.Viernes:
-                        this.chkViernes.Checked = true;
+                        this.chkFriday.Checked = true;
                         break;
                     case Dia.Sabado:
-                        this.chkSabado.Checked = true;
+                        this.chkSaturday.Checked = true;
                         break;
                     default:
                         break;
@@ -77,47 +77,47 @@ namespace TpFinalTDP2015.UI
 
         private void btnAll_Click(object sender, EventArgs e)
         {
-            this.chkDomingo.Checked = true;
-            this.chkLunes.Checked = true;
-            this.chkMartes.Checked = true;
-            this.chkMiercoles.Checked = true;
-            this.chkJueves.Checked = true;
-            this.chkViernes.Checked = true;
-            this.chkSabado.Checked = true;
+            this.chkSunday.Checked = true;
+            this.chkMonday.Checked = true;
+            this.chkTuesday.Checked = true;
+            this.chkWednesday.Checked = true;
+            this.chkThursday.Checked = true;
+            this.chkFriday.Checked = true;
+            this.chkSaturday.Checked = true;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             this.iIntervaloOriginal.Name = this.txtTitle.Text;
-            this.iIntervaloOriginal.FechaInicio = this.dtpFechaIni.Value;
-            this.iIntervaloOriginal.FechaFin = this.dtpFechaFin.Value;
-            this.iIntervaloOriginal.HoraInicio = this.dtpHoraIni.Value.TimeOfDay;
-            this.iIntervaloOriginal.HoraFin = this.dtpHoraFin.Value.TimeOfDay;
-            if (this.chkDomingo.Checked)
+            this.iIntervaloOriginal.FechaInicio = this.dtpStartDate.Value;
+            this.iIntervaloOriginal.FechaFin = this.dtpEndDate.Value;
+            this.iIntervaloOriginal.HoraInicio = this.dtpStartTime.Value.TimeOfDay;
+            this.iIntervaloOriginal.HoraFin = this.dtpEndTime.Value.TimeOfDay;
+            if (this.chkSunday.Checked)
             {
                 this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Domingo);
             }
-            if (this.chkLunes.Checked)
+            if (this.chkMonday.Checked)
             {
                 this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Lunes);
             }
-            if (this.chkMartes.Checked)
+            if (this.chkTuesday.Checked)
             {
                 this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Martes);
             }
-            if (this.chkMiercoles.Checked)
+            if (this.chkWednesday.Checked)
             {
                 this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Miercoles);
             }
-            if (this.chkJueves.Checked)
+            if (this.chkThursday.Checked)
             {
                 this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Jueves);
             }
-            if (this.chkViernes.Checked)
+            if (this.chkFriday.Checked)
             {
                 this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Viernes);
             }
-            if (this.chkSabado.Checked)
+            if (this.chkSaturday.Checked)
             {
                 this.iIntervaloOriginal.DiasDeLaSemana.Add(Dia.Sabado);
             }
@@ -143,6 +143,11 @@ namespace TpFinalTDP2015.UI
                         break;
                 }
             }
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

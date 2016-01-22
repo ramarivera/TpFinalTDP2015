@@ -13,9 +13,27 @@ namespace TpFinalTDP2015.Persistence.Model
         private string iURL;
         private IList<RSSItem> iItems;
 
-        public string Titulo { get; set; }
-        public string Descripcion { get; set; }
-        public string URL { get; set; }
+        public string Title
+        {
+            get { return this.iTitle; }
+            set { this.iTitle = value; }
+        }
 
+        public string Description
+        {
+            get {return this.iDescription; }
+            set { this.iDescription = value; }
+        }
+        public string URL
+        {
+            get { return this.iURL; }
+            set {this.iURL = value; }
+        }
+
+        public IList<RSSItem> Items
+        {
+            get { return this.iItems; }
+            set { this.iItems = value; }
+        }
     }
 }

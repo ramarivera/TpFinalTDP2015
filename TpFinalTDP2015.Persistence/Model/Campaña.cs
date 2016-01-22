@@ -8,10 +8,25 @@ namespace TpFinalTDP2015.Persistence.Model
 {
     public class Campaña
     {
-        public string Titulo { get; set; }
+        private string iTitle;
+        private string iDescription;
+        private int iDuration;
+        public string Title
+        {
+            get { return this.iTitle; }
+            set { this.iTitle = value; }
+        }
   
-        public string Descripcion { get; set; }
+        public string Description
+        {
+            get { return this.iDescription; }
+            set {this.iDescription=value; }
+        }
 
-        public int Duracion { get; set; }
+        public int Duration
+        {
+            get { return this.iDuration; }
+            set { this.iDuration = value; }
+        }
     }
 }

@@ -31,31 +31,31 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblDuracion = new System.Windows.Forms.Label();
+            this.lblDuration = new System.Windows.Forms.Label();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtDuracion = new System.Windows.Forms.TextBox();
+            this.txtDuration = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblIntervalo = new System.Windows.Forms.Label();
+            this.lblInterval = new System.Windows.Forms.Label();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblSigno = new System.Windows.Forms.Label();
+            this.lblSign = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cboIntervalo = new System.Windows.Forms.ComboBox();
+            this.cboInterval = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnImagen = new System.Windows.Forms.Button();
+            this.btnImage = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -127,7 +127,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.lblTitulo, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.lblTitle, 0, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
@@ -137,18 +137,18 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(156, 33);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // lblTitulo
+            // lblTitle
             // 
-            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Location = new System.Drawing.Point(3, 4);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(150, 23);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Título";
-            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(3, 4);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(150, 23);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Título";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel5
             // 
@@ -158,7 +158,7 @@
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.txtTitulo, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.txtTitle, 0, 1);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(165, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
@@ -168,16 +168,16 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(239, 33);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
-            // txtTitulo
+            // txtTitle
             // 
-            this.txtTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTitulo.Location = new System.Drawing.Point(3, 7);
-            this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(233, 20);
-            this.txtTitulo.TabIndex = 1;
-            this.txtTitulo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTitle.Location = new System.Drawing.Point(3, 7);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(233, 20);
+            this.txtTitle.TabIndex = 1;
+            this.txtTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel6
             // 
@@ -187,7 +187,7 @@
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Controls.Add(this.lblDescripcion, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.lblDescription, 0, 1);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 42);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
@@ -197,18 +197,18 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(156, 33);
             this.tableLayoutPanel6.TabIndex = 3;
             // 
-            // lblDescripcion
+            // lblDescription
             // 
-            this.lblDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(3, 4);
-            this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(150, 23);
-            this.lblDescripcion.TabIndex = 0;
-            this.lblDescripcion.Text = "Descripción";
-            this.lblDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(3, 4);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(150, 23);
+            this.lblDescription.TabIndex = 0;
+            this.lblDescription.Text = "Descripción";
+            this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel7
             // 
@@ -218,7 +218,7 @@
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Controls.Add(this.txtDescripcion, 0, 1);
+            this.tableLayoutPanel7.Controls.Add(this.txtDescription, 0, 1);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(165, 42);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
@@ -228,16 +228,16 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(239, 33);
             this.tableLayoutPanel7.TabIndex = 5;
             // 
-            // txtDescripcion
+            // txtDescription
             // 
-            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescripcion.Location = new System.Drawing.Point(3, 7);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(233, 20);
-            this.txtDescripcion.TabIndex = 4;
-            this.txtDescripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDescription.Location = new System.Drawing.Point(3, 7);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(233, 20);
+            this.txtDescription.TabIndex = 4;
+            this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel8
             // 
@@ -246,7 +246,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Controls.Add(this.lblDuracion, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.lblDuration, 0, 1);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 81);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 3;
@@ -256,18 +256,18 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(156, 33);
             this.tableLayoutPanel8.TabIndex = 6;
             // 
-            // lblDuracion
+            // lblDuration
             // 
-            this.lblDuracion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblDuration.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDuracion.AutoSize = true;
-            this.lblDuracion.Location = new System.Drawing.Point(3, 1);
-            this.lblDuracion.Name = "lblDuracion";
-            this.lblDuracion.Size = new System.Drawing.Size(150, 29);
-            this.lblDuracion.TabIndex = 0;
-            this.lblDuracion.Text = "Duración de diapositiva (en segundos)";
-            this.lblDuracion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDuration.AutoSize = true;
+            this.lblDuration.Location = new System.Drawing.Point(3, 1);
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size(150, 29);
+            this.lblDuration.TabIndex = 0;
+            this.lblDuration.Text = "Duración de diapositiva (en segundos)";
+            this.lblDuration.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel9
             // 
@@ -278,7 +278,7 @@
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Controls.Add(this.txtDuracion, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.txtDuration, 0, 1);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(165, 81);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
@@ -288,15 +288,15 @@
             this.tableLayoutPanel9.Size = new System.Drawing.Size(239, 33);
             this.tableLayoutPanel9.TabIndex = 7;
             // 
-            // txtDuracion
+            // txtDuration
             // 
-            this.txtDuracion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtDuration.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDuracion.Location = new System.Drawing.Point(3, 7);
-            this.txtDuracion.Name = "txtDuracion";
-            this.txtDuracion.Size = new System.Drawing.Size(233, 20);
-            this.txtDuracion.TabIndex = 0;
+            this.txtDuration.Location = new System.Drawing.Point(3, 7);
+            this.txtDuration.Name = "txtDuration";
+            this.txtDuration.Size = new System.Drawing.Size(233, 20);
+            this.txtDuration.TabIndex = 0;
             // 
             // tableLayoutPanel12
             // 
@@ -307,7 +307,7 @@
             this.tableLayoutPanel12.ColumnCount = 1;
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Controls.Add(this.lblIntervalo, 0, 1);
+            this.tableLayoutPanel12.Controls.Add(this.lblInterval, 0, 1);
             this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 120);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 3;
@@ -317,18 +317,18 @@
             this.tableLayoutPanel12.Size = new System.Drawing.Size(156, 34);
             this.tableLayoutPanel12.TabIndex = 9;
             // 
-            // lblIntervalo
+            // lblInterval
             // 
-            this.lblIntervalo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblIntervalo.AutoSize = true;
-            this.lblIntervalo.Location = new System.Drawing.Point(3, 5);
-            this.lblIntervalo.Name = "lblIntervalo";
-            this.lblIntervalo.Size = new System.Drawing.Size(150, 23);
-            this.lblIntervalo.TabIndex = 8;
-            this.lblIntervalo.Text = "Intervalo";
-            this.lblIntervalo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblInterval.AutoSize = true;
+            this.lblInterval.Location = new System.Drawing.Point(3, 5);
+            this.lblInterval.Name = "lblInterval";
+            this.lblInterval.Size = new System.Drawing.Size(150, 23);
+            this.lblInterval.TabIndex = 8;
+            this.lblInterval.Text = "Intervalo";
+            this.lblInterval.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel13
             // 
@@ -339,47 +339,47 @@
             this.tableLayoutPanel13.ColumnCount = 2;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel13.Controls.Add(this.lblSigno, 1, 0);
+            this.tableLayoutPanel13.Controls.Add(this.lblSign, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.flowLayoutPanel3, 0, 0);
             this.tableLayoutPanel13.Location = new System.Drawing.Point(165, 120);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(239, 34);
             this.tableLayoutPanel13.TabIndex = 10;
             // 
-            // lblSigno
+            // lblSign
             // 
-            this.lblSigno.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblSign.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSigno.AutoSize = true;
-            this.lblSigno.Location = new System.Drawing.Point(218, 0);
-            this.lblSigno.Name = "lblSigno";
-            this.lblSigno.Size = new System.Drawing.Size(18, 34);
-            this.lblSigno.TabIndex = 0;
-            this.lblSigno.Text = "?";
-            this.lblSigno.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSign.AutoSize = true;
+            this.lblSign.Location = new System.Drawing.Point(218, 0);
+            this.lblSign.Name = "lblSign";
+            this.lblSign.Size = new System.Drawing.Size(18, 34);
+            this.lblSign.TabIndex = 0;
+            this.lblSign.Text = "?";
+            this.lblSign.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.cboIntervalo);
+            this.flowLayoutPanel3.Controls.Add(this.cboInterval);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(209, 28);
             this.flowLayoutPanel3.TabIndex = 1;
             // 
-            // cboIntervalo
+            // cboInterval
             // 
-            this.cboIntervalo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cboInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboIntervalo.FormattingEnabled = true;
-            this.cboIntervalo.Location = new System.Drawing.Point(3, 3);
-            this.cboIntervalo.Name = "cboIntervalo";
-            this.cboIntervalo.Size = new System.Drawing.Size(206, 21);
-            this.cboIntervalo.TabIndex = 0;
+            this.cboInterval.FormattingEnabled = true;
+            this.cboInterval.Location = new System.Drawing.Point(3, 3);
+            this.cboInterval.Name = "cboInterval";
+            this.cboInterval.Size = new System.Drawing.Size(206, 21);
+            this.cboInterval.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
@@ -395,7 +395,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(172, 35);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
@@ -404,42 +404,42 @@
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.Controls.Add(this.btnAceptar);
+            this.flowLayoutPanel1.Controls.Add(this.btnAccept);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(80, 29);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // btnAceptar
+            // btnAccept
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(3, 3);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 0;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnAccept.Location = new System.Drawing.Point(3, 3);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(75, 23);
+            this.btnAccept.TabIndex = 0;
+            this.btnAccept.Text = "Aceptar";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel2.Controls.Add(this.btnCancelar);
+            this.flowLayoutPanel2.Controls.Add(this.btnCancel);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(89, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(80, 29);
             this.flowLayoutPanel2.TabIndex = 3;
             // 
-            // btnCancelar
+            // btnCancel
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(3, 3);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 1;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancel.Location = new System.Drawing.Point(3, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // tableLayoutPanel10
             // 
@@ -467,7 +467,7 @@
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel11.Controls.Add(this.btnImagen, 1, 1);
+            this.tableLayoutPanel11.Controls.Add(this.btnImage, 1, 1);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 115);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 3;
@@ -477,18 +477,18 @@
             this.tableLayoutPanel11.Size = new System.Drawing.Size(166, 39);
             this.tableLayoutPanel11.TabIndex = 0;
             // 
-            // btnImagen
+            // btnImage
             // 
-            this.btnImagen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImagen.Location = new System.Drawing.Point(27, 6);
-            this.btnImagen.Name = "btnImagen";
-            this.btnImagen.Size = new System.Drawing.Size(110, 25);
-            this.btnImagen.TabIndex = 0;
-            this.btnImagen.Text = "Agregar imagen";
-            this.btnImagen.UseVisualStyleBackColor = true;
-            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
+            this.btnImage.Location = new System.Drawing.Point(27, 6);
+            this.btnImage.Name = "btnImage";
+            this.btnImage.Size = new System.Drawing.Size(110, 25);
+            this.btnImage.TabIndex = 0;
+            this.btnImage.Text = "Agregar imagen";
+            this.btnImage.UseVisualStyleBackColor = true;
+            this.btnImage.Click += new System.EventHandler(this.btnImagen_Click);
             // 
             // AgregarModificarCampaña
             // 
@@ -533,30 +533,30 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox txtTitulo;
+        private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Label lblDescripcion;
-        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Label lblDuracion;
+        private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.Button btnImagen;
+        private System.Windows.Forms.Button btnImage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.TextBox txtDuracion;
-        private System.Windows.Forms.Label lblIntervalo;
+        private System.Windows.Forms.TextBox txtDuration;
+        private System.Windows.Forms.Label lblInterval;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Label lblSigno;
+        private System.Windows.Forms.Label lblSign;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.ComboBox cboIntervalo;
+        private System.Windows.Forms.ComboBox cboInterval;
     }
 }
