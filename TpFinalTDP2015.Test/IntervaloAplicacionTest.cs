@@ -24,21 +24,21 @@ namespace TpFinalTDP2015.Test
             List<Dia> lWeekDays1 = new List<Dia>() { Dia.Domingo };
             List<Dia> lWeekDays2 = new List<Dia>() { Dia.Lunes };
 
-            IntervaloAplicacion lLapse1 = new IntervaloAplicacion()
+            CampaignInterval lLapse1 = new CampaignInterval()
             {
-                FechaInicio = lStartDate1,
-                FechaFin = lEndDate1,
-                HoraInicio = lStartTime1,
-                HoraFin = lEndTime1,
+                StartDate = lStartDate1,
+                EndDate = lEndDate1,
+                StartTime = lStartTime1,
+                EndTime = lEndTime1,
                 DiasDeLaSemana = lWeekDays1
             };
 
-            IntervaloAplicacion lLapse2 = new IntervaloAplicacion()
+            CampaignInterval lLapse2 = new CampaignInterval()
             {
-                FechaInicio = lStartDate2,
-                FechaFin = lEndDate2,
-                HoraInicio = lStartTime2,
-                HoraFin = lEndTime2,
+                StartDate = lStartDate2,
+                EndDate = lEndDate2,
+                StartTime = lStartTime2,
+                EndTime = lEndTime2,
                 DiasDeLaSemana = lWeekDays2
             };
 
@@ -65,21 +65,21 @@ namespace TpFinalTDP2015.Test
             List<Dia> lWeekDays1 = new List<Dia>() { Dia.Domingo };
             List<Dia> lWeekDays2 = new List<Dia>() { Dia.Lunes };
 
-            IntervaloAplicacion lLapse1 = new IntervaloAplicacion()
+            CampaignInterval lLapse1 = new CampaignInterval()
             {
-                FechaInicio = lStartDate1,
-                FechaFin = lEndDate1,
-                HoraInicio = lStartTime1,
-                HoraFin = lEndTime1,
+                StartDate = lStartDate1,
+                EndDate = lEndDate1,
+                StartTime = lStartTime1,
+                EndTime = lEndTime1,
                 DiasDeLaSemana = lWeekDays1
             };
 
-            IntervaloAplicacion lLapse2 = new IntervaloAplicacion()
+            CampaignInterval lLapse2 = new CampaignInterval()
             {
-                FechaInicio = lStartDate2,
-                FechaFin = lEndDate2,
-                HoraInicio = lStartTime2,
-                HoraFin = lEndTime2,
+                StartDate = lStartDate2,
+                EndDate = lEndDate2,
+                StartTime = lStartTime2,
+                EndTime = lEndTime2,
                 DiasDeLaSemana = lWeekDays2
             };
 

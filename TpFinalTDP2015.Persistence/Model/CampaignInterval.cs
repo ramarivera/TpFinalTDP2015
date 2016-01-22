@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public class IntervaloAplicacion
+    public class CampaignInterval
     {
         private string iName;
-        private DateTime iFechaInicio;
-        private DateTime iFechaFin;
-        private TimeSpan iHoraInicio;
-        private TimeSpan iHoraFin;
+        private DateTime iStartDate;
+        private DateTime iEndDate;
+        private TimeSpan iStartTime;
+        private TimeSpan iEndTime;
 
 
 
-        public DateTime FechaInicio
+        public DateTime StartDate
         {
-            get { return this.iFechaInicio; }
+            get { return this.iStartDate; }
             set
             {
-                if (value <= this.FechaFin)
+                if (value <= this.iEndDate)
                 {
-                    this.iFechaInicio = value;
+                    this.iStartDate = value;
                 }
                 else
                 {
@@ -31,14 +31,14 @@ namespace TpFinalTDP2015.Persistence.Model
                 }
             }
         }
-        public DateTime FechaFin
+        public DateTime EndDate
         {
-            get { return this.FechaFin; }
+            get { return this.iEndDate; }
             set
             {
-                if (value >= this.FechaInicio)
+                if (value >= this.iStartDate)
                 {
-                    this.iFechaFin = value;
+                    this.iEndDate = value;
                 }
                 else
                 {
@@ -46,14 +46,14 @@ namespace TpFinalTDP2015.Persistence.Model
                 }
             }
         }
-        public TimeSpan HoraInicio
+        public TimeSpan StartTime
         {
-            get { return this.HoraInicio; }
+            get { return this.iStartTime; }
             set
             {
-                if (value < this.HoraFin)
+                if (value < this.iEndTime)
                 {
-                    this.iHoraInicio = value;
+                    this.iStartTime = value;
                 }
                 else
                 {
@@ -61,14 +61,14 @@ namespace TpFinalTDP2015.Persistence.Model
                 }
             }
         }
-        public TimeSpan HoraFin
+        public TimeSpan EndTime
         {
-            get { return this.HoraFin; }
+            get { return this.iEndTime; }
             set
             {
-                if (value > this.HoraInicio)
+                if (value > this.iStartTime)
                 {
-                    this.iHoraFin = value;
+                    this.iEndTime = value;
                 }
                 else
                 {
@@ -84,22 +84,22 @@ namespace TpFinalTDP2015.Persistence.Model
             set { this.iName = value; }
         }
 
-        public IntervaloAplicacion()
+        public CampaignInterval()
         {
             this.DiasDeLaSemana = new List<Dia>();
-            this.FechaInicio = new DateTime(1);
-            this.FechaFin = new DateTime(2);
-            this.HoraInicio = new TimeSpan(1);
-            this.HoraFin = new TimeSpan(2);
+            this.StartDate = new DateTime(1);
+            this.EndDate = new DateTime(2);
+            this.StartTime = new TimeSpan(1);
+            this.EndTime = new TimeSpan(2);
 
         }
 
-        public bool OverlapsWith(IntervaloAplicacion pLapse)
+        public bool OverlapsWith(CampaignInterval pLapse)
         {
             bool lResult = false;
 
-            if (this.FechaInicio > pLapse.FechaFin ||
-                this.FechaFin < pLapse.FechaInicio)
+            if (this.StartDate > pLapse.EndDate ||
+                this.EndDate < pLapse.StartDate)
             {
                 lResult = false;
             }
@@ -113,8 +113,8 @@ namespace TpFinalTDP2015.Persistence.Model
 
                     if (pLapse.DiasDeLaSemana.Contains(day))
                     {
-                        if (this.HoraInicio > pLapse.HoraFin ||
-                            this.HoraFin < pLapse.HoraInicio)
+                        if (this.StartTime > pLapse.EndTime ||
+                            this.EndTime < pLapse.StartTime)
                         {
                             lResult = false;
                         }

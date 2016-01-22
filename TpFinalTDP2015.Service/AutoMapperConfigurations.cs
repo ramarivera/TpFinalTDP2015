@@ -21,7 +21,7 @@ namespace TpFinalTDP2015.Service
         static public void  Configure()
         {
             Mapper.Initialize(cfg => {
-                cfg.AddProfile<LapseProfile>();
+                cfg.AddProfile<CampaignIntervalProfile>();
             });
         }
     }  

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public class FuenteRSS
+    public class RSSSource
     {
         private string iTitle;
         private string iDescription;

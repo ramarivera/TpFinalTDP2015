@@ -13,16 +13,16 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarTextoFijoRSS : BaseForm
     {
-        private TextoFijo iTextoFijoOriginal;
+        private StaticText iTextoFijoOriginal;
 
-        public TextoFijo TextoFijo
+        public StaticText TextoFijo
         {
             get { return this.iTextoFijoOriginal; }
         }
 
-        private FuenteRSS iFuenteRSSOriginal;
+        private RSSSource iFuenteRSSOriginal;
 
-        public FuenteRSS FuenteRSS
+        public RSSSource RSSSource
         {
             get { return this.iFuenteRSSOriginal; }
         }
@@ -31,7 +31,7 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarTextoFijo(TextoFijo pTextoFijoNuevo)
+        public void AgregarTextoFijo(StaticText pTextoFijoNuevo)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -40,7 +40,7 @@ namespace TpFinalTDP2015.UI
             this.iTextoFijoOriginal = pTextoFijoNuevo;
         }
 
-        public void ModificarTextoFijo(TextoFijo pTextoFijo)
+        public void ModificarTextoFijo(StaticText pTextoFijo)
         {
             this.txtTitle.Text = pTextoFijo.Title;
             this.txtDescription.Text = pTextoFijo.Description;
@@ -49,7 +49,7 @@ namespace TpFinalTDP2015.UI
             this.iTextoFijoOriginal = pTextoFijo;
         }
 
-        public void AgregarFuenteRSS(FuenteRSS pFuenteRSSNueva)
+        public void AgregarFuenteRSS(RSSSource pFuenteRSSNueva)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -59,7 +59,7 @@ namespace TpFinalTDP2015.UI
             this.iFuenteRSSOriginal = pFuenteRSSNueva;
         }
 
-        public void ModificarFuenteRSS(FuenteRSS pFuenteRSS)
+        public void ModificarFuenteRSS(RSSSource pFuenteRSS)
         {
             this.txtTitle.Text = pFuenteRSS.Title;
             this.txtDescription.Text = pFuenteRSS.Description;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Model
 {
-    public class Banner
+    public class Banner: BaseEntity
     {
         private string iName;
         private string iDescription;
@@ -20,8 +20,8 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iDescription; }
             set { this.iDescription = value; }
         }
-        public List<TextoFijo> TextosFijos { get; set; }
-        public List<FuenteRSS> FuentesRSS { get; set; }
-        public List<IntervaloAplicacion> IntervalosAplicacion { get; set; }
+        public List<StaticText> TextosFijos { get; set; }
+       // public List<FuenteRSS> FuentesRSS { get; set; }
+        public List<CampaignInterval> IntervalosAplicacion { get; set; }
     }
 }
