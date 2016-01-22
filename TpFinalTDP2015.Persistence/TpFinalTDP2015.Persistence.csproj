@@ -76,6 +76,7 @@
     <Compile Include="Model\BaseEntity.cs" />
     <Compile Include="Model\Campaña.cs" />
     <Compile Include="Model\Dia.cs" />
+    <Compile Include="Model\Diapositiva.cs" />
     <Compile Include="Model\IBannerItem.cs" />
     <Compile Include="Model\RSSSource.cs" />
     <Compile Include="Model\CampaignInterval.cs" />

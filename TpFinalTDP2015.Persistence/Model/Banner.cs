@@ -30,6 +30,6 @@ namespace TpFinalTDP2015.Persistence.Model
             set { this.iDescription = value; }
         }
         
-        public List<CampaignInterval> IntervalosAplicacion { get; set; }
+        public List<CampaignInterval> CampaignIntervals { get; set; }
     }
 }

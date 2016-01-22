@@ -115,12 +115,6 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EliminarCampaña.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EliminarCampaña.Designer.cs">
-      <DependentUpon>EliminarCampaña.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,9 +149,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarTextoFijoRSS.resx">
       <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EliminarCampaña.resx">
-      <DependentUpon>EliminarCampaña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModoAdministrador.resx">
       <DependentUpon>ModoAdministrador.cs</DependentUpon>
