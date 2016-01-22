@@ -23,7 +23,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iTitle; }
             set
             {
-                this.LastModified = DateTime.Now;
+                this.UpdateModificationDate();
                 this.iTitle = value;
             }
         }
@@ -33,7 +33,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iDescription; }
             set
             {
-                this.LastModified = DateTime.Now;
+                this.UpdateModificationDate();
                 this.iDescription = value;
             }
         }
@@ -43,7 +43,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iURL; }
             set
             {
-                this.LastModified = DateTime.Now;
+                this.UpdateModificationDate();
                 this.iURL = value;
             }
         }
@@ -53,7 +53,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iPublicationDate; }
             set
             {
-                this.LastModified = DateTime.Now;
+                this.UpdateModificationDate();
                 this.iPublicationDate = value;
             }
         }

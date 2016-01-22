@@ -24,7 +24,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iId; }
             set
             {
-                this.iLastModified = DateTime.Now;
+                this.UpdateModificationDate();
                 this.iId = value;
             }
         }
@@ -34,7 +34,7 @@ namespace TpFinalTDP2015.Persistence.Model
             get { return this.iCreationDate; }
             set
             {
-                this.iLastModified = DateTime.Now;
+                this.UpdateModificationDate();
                 this.iCreationDate = value;
             }
         }
@@ -46,6 +46,11 @@ namespace TpFinalTDP2015.Persistence.Model
             {
                 this.iLastModified = value;
             }
+        }
+
+        public void UpdateModificationDate()
+        {
+            this.LastModified = DateTime.Now;
         }
 
         public override bool Equals(object obj)
