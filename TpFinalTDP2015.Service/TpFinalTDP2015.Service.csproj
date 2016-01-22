@@ -75,6 +75,7 @@
     <Compile Include="AutoMapperConfigurations.cs" />
     <Compile Include="AutoMapperProfiles\LapseProfile.cs" />
     <Compile Include="DTO\LapseDTO.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
