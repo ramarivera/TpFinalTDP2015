@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    class CampaignDTO
+    public class CampaignDTO
     {
         public string Name { get; set; }
         public string Description { get; set; }

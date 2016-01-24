@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Persistence.Model;
+using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervalo : BaseForm
     {
-        private CampaignInterval iIntervaloOriginal;
+        private CampaignIntervalDTO iIntervaloOriginal;
 
-        public CampaignInterval Intervalo
+        public CampaignIntervalDTO Intervalo
         {
             get { return this.iIntervaloOriginal; }
         }
@@ -24,7 +25,7 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarIntervalo(CampaignInterval pIntervaloNuevo)
+        public void AgregarIntervalo(CampaignIntervalDTO pIntervaloNuevo)
         {
             this.txtTitle.Text = String.Empty;
             this.dtpStartDate.Value = DateTime.Now;
@@ -35,7 +36,7 @@ namespace TpFinalTDP2015.UI
             this.iIntervaloOriginal = pIntervaloNuevo;
         }
 
-        public void ModificarIntervalo(CampaignInterval pIntervalo)
+        public void ModificarIntervalo(CampaignIntervalDTO pIntervalo)
         {
             this.txtTitle.Text = pIntervalo.Name;
             this.dtpStartDate.Value = pIntervalo.ActiveFrom;
@@ -43,7 +44,7 @@ namespace TpFinalTDP2015.UI
             this.dtpStartTime.Value = DateTime.MinValue + pIntervalo.StartTime;
             this.dtpEndTime.Value = DateTime.MinValue + pIntervalo.EndTime;
             this.Text = "Modificar Intervalo";
-            foreach (Days dia in pIntervalo.DiasDeLaSemana)
+            foreach (Days dia in pIntervalo.Days)
             {
                 switch (dia)
                 {
@@ -95,31 +96,31 @@ namespace TpFinalTDP2015.UI
             this.iIntervaloOriginal.EndTime = this.dtpEndTime.Value.TimeOfDay;
             if (this.chkSunday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Domingo);
+                this.iIntervaloOriginal.Days.Add(Days.Domingo);
             }
             if (this.chkMonday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Lunes);
+                this.iIntervaloOriginal.Days.Add(Days.Lunes);
             }
             if (this.chkTuesday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Martes);
+                this.iIntervaloOriginal.Days.Add(Days.Martes);
             }
             if (this.chkWednesday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Miercoles);
+                this.iIntervaloOriginal.Days.Add(Days.Miercoles);
             }
             if (this.chkThursday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Jueves);
+                this.iIntervaloOriginal.Days.Add(Days.Jueves);
             }
             if (this.chkFriday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Viernes);
+                this.iIntervaloOriginal.Days.Add(Days.Viernes);
             }
             if (this.chkSaturday.Checked)
             {
-                this.iIntervaloOriginal.DiasDeLaSemana.Add(Days.Sabado);
+                this.iIntervaloOriginal.Days.Add(Days.Sabado);
             }
             this.DialogResult = DialogResult.OK;
             this.Close();

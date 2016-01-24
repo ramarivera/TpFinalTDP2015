@@ -7,7 +7,7 @@ using TpFinalTDP2015.Persistence.Model;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    class RSSSourceDTO
+    public class RSSSourceDTO
     {
         public string Title { get; set; }
         public string Description { get; set; }

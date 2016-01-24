@@ -8,21 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Persistence.Model;
+using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarTextoFijoRSS : BaseForm
     {
-        private StaticText iTextoFijoOriginal;
+        private StaticTextDTO iTextoFijoOriginal;
 
-        public StaticText TextoFijo
+        public StaticTextDTO TextoFijo
         {
             get { return this.iTextoFijoOriginal; }
         }
 
-        private RSSSource iFuenteRSSOriginal;
+        private RSSSourceDTO iFuenteRSSOriginal;
 
-        public RSSSource RSSSource
+        public RSSSourceDTO RSSSource
         {
             get { return this.iFuenteRSSOriginal; }
         }
@@ -31,7 +32,7 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarTextoFijo(StaticText pTextoFijoNuevo)
+        public void AgregarTextoFijo(StaticTextDTO pTextoFijoNuevo)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -40,7 +41,7 @@ namespace TpFinalTDP2015.UI
             this.iTextoFijoOriginal = pTextoFijoNuevo;
         }
 
-        public void ModificarTextoFijo(StaticText pTextoFijo)
+        public void ModificarTextoFijo(StaticTextDTO pTextoFijo)
         {
             this.txtTitle.Text = pTextoFijo.Title;
             this.txtDescription.Text = pTextoFijo.Description;
@@ -49,7 +50,7 @@ namespace TpFinalTDP2015.UI
             this.iTextoFijoOriginal = pTextoFijo;
         }
 
-        public void AgregarFuenteRSS(RSSSource pFuenteRSSNueva)
+        public void AgregarFuenteRSS(RSSSourceDTO pFuenteRSSNueva)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -59,7 +60,7 @@ namespace TpFinalTDP2015.UI
             this.iFuenteRSSOriginal = pFuenteRSSNueva;
         }
 
-        public void ModificarFuenteRSS(RSSSource pFuenteRSS)
+        public void ModificarFuenteRSS(RSSSourceDTO pFuenteRSS)
         {
             this.txtTitle.Text = pFuenteRSS.Title;
             this.txtDescription.Text = pFuenteRSS.Description;

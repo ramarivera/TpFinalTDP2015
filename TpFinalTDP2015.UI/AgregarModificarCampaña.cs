@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Persistence.Model;
+using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : BaseForm
     {
-        private Campaign iCampañaOriginal;
+        private CampaignDTO iCampañaOriginal;
 
-        public Campaign Campaña
+        public CampaignDTO Campaña
         {
             get { return this.iCampañaOriginal; }
         }
@@ -24,7 +25,7 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarCampaña(Campaign pCampañaNueva)
+        public void AgregarCampaña(CampaignDTO pCampañaNueva)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -33,7 +34,7 @@ namespace TpFinalTDP2015.UI
             this.iCampañaOriginal = pCampañaNueva;
         }
 
-        public void ModificarCampaña(Campaign pCampaña)
+        public void ModificarCampaña(CampaignDTO pCampaña)
         {
             this.txtTitle.Text = pCampaña.Name;
             this.txtDescription.Text = pCampaña.Description;
