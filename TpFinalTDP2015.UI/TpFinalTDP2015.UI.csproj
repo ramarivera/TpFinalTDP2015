@@ -91,6 +91,12 @@
     <Compile Include="AdminModePages\NullPage.Designer.cs">
       <DependentUpon>NullPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarModificarBanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarModificarBanner.Designer.cs">
+      <DependentUpon>AgregarModificarBanner.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarModificarCampaña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminModePages\NullPage.resx">
       <DependentUpon>NullPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarModificarBanner.resx">
+      <DependentUpon>AgregarModificarBanner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarCampaña.resx">
       <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
