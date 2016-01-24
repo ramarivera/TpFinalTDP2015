@@ -14,18 +14,18 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervalo : BaseForm
     {
-        private CampaignIntervalDTO iIntervaloOriginal;
+        private CampaignIntervalDTO iOriginalInterval;
 
-        public CampaignIntervalDTO Intervalo
+        public CampaignIntervalDTO Interval
         {
-            get { return this.iIntervaloOriginal; }
+            get { return this.iOriginalInterval; }
         }
         public AgregarModificarIntervalo()
         {
             InitializeComponent();
         }
 
-        public void AgregarIntervalo(CampaignIntervalDTO pIntervaloNuevo)
+        public void AgregarIntervalo(CampaignIntervalDTO pNewInterval)
         {
             this.txtTitle.Text = String.Empty;
             this.dtpStartDate.Value = DateTime.Now;
@@ -33,18 +33,18 @@ namespace TpFinalTDP2015.UI
             this.dtpStartTime.Value = DateTime.Now;
             this.dtpEndTime.Value = DateTime.Now;
             this.Text = "Agregar nuevo Intervalo";
-            this.iIntervaloOriginal = pIntervaloNuevo;
+            this.iOriginalInterval = pNewInterval;
         }
 
-        public void ModificarIntervalo(CampaignIntervalDTO pIntervalo)
+        public void ModificarIntervalo(CampaignIntervalDTO pInterval)
         {
-            this.txtTitle.Text = pIntervalo.Name;
-            this.dtpStartDate.Value = pIntervalo.ActiveFrom;
-            this.dtpEndDate.Value =  pIntervalo.ActiveUntil;
-            this.dtpStartTime.Value = DateTime.MinValue + pIntervalo.StartTime;
-            this.dtpEndTime.Value = DateTime.MinValue + pIntervalo.EndTime;
+            this.txtTitle.Text = pInterval.Name;
+            this.dtpStartDate.Value = pInterval.ActiveFrom;
+            this.dtpEndDate.Value =  pInterval.ActiveUntil;
+            this.dtpStartTime.Value = DateTime.MinValue + pInterval.StartTime;
+            this.dtpEndTime.Value = DateTime.MinValue + pInterval.EndTime;
             this.Text = "Modificar Intervalo";
-            foreach (Days dia in pIntervalo.Days)
+            foreach (Days dia in pInterval.Days)
             {
                 switch (dia)
                 {
@@ -73,7 +73,7 @@ namespace TpFinalTDP2015.UI
                         break;
                 }
             }
-            this.iIntervaloOriginal = pIntervalo;
+            this.iOriginalInterval = pInterval;
         }
 
         private void btnAll_Click(object sender, EventArgs e)
@@ -89,38 +89,38 @@ namespace TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iIntervaloOriginal.Name = this.txtTitle.Text;
-            this.iIntervaloOriginal.ActiveFrom = this.dtpStartDate.Value;
-            this.iIntervaloOriginal.ActiveUntil = this.dtpEndDate.Value;
-            this.iIntervaloOriginal.StartTime = this.dtpStartTime.Value.TimeOfDay;
-            this.iIntervaloOriginal.EndTime = this.dtpEndTime.Value.TimeOfDay;
+            this.iOriginalInterval.Name = this.txtTitle.Text;
+            this.iOriginalInterval.ActiveFrom = this.dtpStartDate.Value;
+            this.iOriginalInterval.ActiveUntil = this.dtpEndDate.Value;
+            this.iOriginalInterval.StartTime = this.dtpStartTime.Value.TimeOfDay;
+            this.iOriginalInterval.EndTime = this.dtpEndTime.Value.TimeOfDay;
             if (this.chkSunday.Checked)
             {
-                this.iIntervaloOriginal.Days.Add(Days.Domingo);
+                this.iOriginalInterval.Days.Add(Days.Domingo);
             }
             if (this.chkMonday.Checked)
             {
-                this.iIntervaloOriginal.Days.Add(Days.Lunes);
+                this.iOriginalInterval.Days.Add(Days.Lunes);
             }
             if (this.chkTuesday.Checked)
             {
-                this.iIntervaloOriginal.Days.Add(Days.Martes);
+                this.iOriginalInterval.Days.Add(Days.Martes);
             }
             if (this.chkWednesday.Checked)
             {
-                this.iIntervaloOriginal.Days.Add(Days.Miercoles);
+                this.iOriginalInterval.Days.Add(Days.Miercoles);
             }
             if (this.chkThursday.Checked)
             {
-                this.iIntervaloOriginal.Days.Add(Days.Jueves);
+                this.iOriginalInterval.Days.Add(Days.Jueves);
             }
             if (this.chkFriday.Checked)
             {
-                this.iIntervaloOriginal.Days.Add(Days.Viernes);
+                this.iOriginalInterval.Days.Add(Days.Viernes);
             }
             if (this.chkSaturday.Checked)
             {
-                this.iIntervaloOriginal.Days.Add(Days.Sabado);
+                this.iOriginalInterval.Days.Add(Days.Sabado);
             }
             this.DialogResult = DialogResult.OK;
             this.Close();

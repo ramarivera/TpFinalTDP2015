@@ -14,39 +14,39 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : BaseForm
     {
-        private CampaignDTO iCampañaOriginal;
+        private CampaignDTO iOriginalCampaign;
 
-        public CampaignDTO Campaña
+        public CampaignDTO Campaign
         {
-            get { return this.iCampañaOriginal; }
+            get { return this.iOriginalCampaign; }
         }
         public AgregarModificarCampaña()
         {
             InitializeComponent();
         }
 
-        public void AgregarCampaña(CampaignDTO pCampañaNueva)
+        public void AgregarCampaña(CampaignDTO pNewCampaign)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
             this.txtDuration.Text = String.Empty;
             this.Text = "Agregar nueva Campaña";
-            this.iCampañaOriginal = pCampañaNueva;
+            this.iOriginalCampaign = pNewCampaign;
         }
 
-        public void ModificarCampaña(CampaignDTO pCampaña)
+        public void ModificarCampaña(CampaignDTO pCampaign)
         {
-            this.txtTitle.Text = pCampaña.Name;
-            this.txtDescription.Text = pCampaña.Description;
+            this.txtTitle.Text = pCampaign.Name;
+            this.txtDescription.Text = pCampaign.Description;
            // this.txtDuration.Text = pCampaña.Duration.ToString();
             this.Text = "Modificar Campaña";
-            this.iCampañaOriginal = pCampaña;
+            this.iOriginalCampaign = pCampaign;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iCampañaOriginal.Name = this.txtTitle.Text;
-            this.iCampañaOriginal.Description = this.txtDescription.Text;
+            this.iOriginalCampaign.Name = this.txtTitle.Text;
+            this.iOriginalCampaign.Description = this.txtDescription.Text;
           //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
             this.DialogResult = DialogResult.OK;
             this.Close();
