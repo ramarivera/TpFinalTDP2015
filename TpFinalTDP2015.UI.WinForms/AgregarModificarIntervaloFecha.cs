@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Model;
+using TpFinalTDP2015.Model.Enum;
 using TpFinalTDP2015.Service.DTO;
+
 
 namespace TpFinalTDP2015.UI
 {

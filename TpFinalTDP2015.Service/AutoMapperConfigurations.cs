@@ -20,11 +20,14 @@ namespace TpFinalTDP2015.Service
         {
             Mapper.Initialize(cfg => {
                 cfg.AddProfile<DateIntervalProfile>();
+                cfg.AddProfile<TimeIntervalProfile>();
                 cfg.AddProfile<RSSItemProfile>();
                 cfg.AddProfile<RSSSourceProfile>();
                 cfg.AddProfile<BannerProfile>();
                 cfg.AddProfile<StaticTextProfile>();
                 cfg.AddProfile<CampaignProfile>();
+                cfg.AddProfile<DaysProfile>();
+                cfg.AddProfile<SlideTransitioProfile>();
             });
         }
     }  
