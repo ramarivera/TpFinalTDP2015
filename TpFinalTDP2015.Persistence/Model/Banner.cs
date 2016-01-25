@@ -11,13 +11,13 @@ namespace TpFinalTDP2015.Persistence.Model
         private string iName;
         private string iDescription;
         private IList<IBannerItem> iContentList;
-        private IList<CampaignInterval> iActiveIntervals;
+        private IList<DateInterval> iActiveIntervals;
 
 
         public Banner() : base()
         {
             this.iContentList = new List<IBannerItem>();
-            this.iActiveIntervals = new List<CampaignInterval>();
+            this.iActiveIntervals = new List<DateInterval>();
         }
         //TODO : accesores con actualizacion de la fecha de odificacion para listas de ibanner y campagininterval;
 

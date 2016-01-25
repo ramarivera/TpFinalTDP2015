@@ -103,11 +103,11 @@
     <Compile Include="AgregarModificarCampaña.Designer.cs">
       <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
     </Compile>
-    <Compile Include="AgregarModificarIntervalo.cs">
+    <Compile Include="AgregarModificarIntervaloFecha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarModificarIntervalo.Designer.cs">
-      <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
+    <Compile Include="AgregarModificarIntervaloFecha.Designer.cs">
+      <DependentUpon>AgregarModificarIntervaloFecha.cs</DependentUpon>
     </Compile>
     <Compile Include="AgregarModificarTextoFijoRSS.cs">
       <SubType>Form</SubType>
@@ -153,8 +153,8 @@
     <EmbeddedResource Include="AgregarModificarCampaña.resx">
       <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgregarModificarIntervalo.resx">
-      <DependentUpon>AgregarModificarIntervalo.cs</DependentUpon>
+    <EmbeddedResource Include="AgregarModificarIntervaloFecha.resx">
+      <DependentUpon>AgregarModificarIntervaloFecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarTextoFijoRSS.resx">
       <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>

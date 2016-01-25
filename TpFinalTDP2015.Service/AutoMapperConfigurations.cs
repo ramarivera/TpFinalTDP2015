@@ -19,7 +19,7 @@ namespace TpFinalTDP2015.Service
         static public void  Configure()
         {
             Mapper.Initialize(cfg => {
-                cfg.AddProfile<CampaignIntervalProfile>();
+                cfg.AddProfile<DateIntervalProfile>();
                 cfg.AddProfile<RSSItemProfile>();
                 cfg.AddProfile<RSSSourceProfile>();
                 cfg.AddProfile<BannerProfile>();

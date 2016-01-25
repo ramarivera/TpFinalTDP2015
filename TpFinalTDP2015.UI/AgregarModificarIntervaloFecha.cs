@@ -12,37 +12,35 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarIntervalo : BaseForm
+    public partial class AgregarModificarIntervaloFecha : BaseForm
     {
-        private CampaignIntervalDTO iOriginalInterval;
+        private DateIntervalDTO iOriginalInterval;
 
-        public CampaignIntervalDTO Interval
+        public DateIntervalDTO Interval
         {
             get { return this.iOriginalInterval; }
         }
-        public AgregarModificarIntervalo()
+        public AgregarModificarIntervaloFecha()
         {
             InitializeComponent();
         }
 
-        public void AgregarIntervalo(CampaignIntervalDTO pNewInterval)
+        public void AgregarIntervalo(DateIntervalDTO pNewInterval)
         {
             this.txtTitle.Text = String.Empty;
             this.dtpStartDate.Value = DateTime.Now;
             this.dtpEndDate.Value = DateTime.Now;
-            this.dtpStartTime.Value = DateTime.Now;
-            this.dtpEndTime.Value = DateTime.Now;
             this.Text = "Agregar nuevo Intervalo";
             this.iOriginalInterval = pNewInterval;
         }
 
-        public void ModificarIntervalo(CampaignIntervalDTO pInterval)
+        public void ModificarIntervalo(DateIntervalDTO pInterval)
         {
             this.txtTitle.Text = pInterval.Name;
             this.dtpStartDate.Value = pInterval.ActiveFrom;
             this.dtpEndDate.Value =  pInterval.ActiveUntil;
-            this.dtpStartTime.Value = DateTime.MinValue + pInterval.StartTime;
-            this.dtpEndTime.Value = DateTime.MinValue + pInterval.EndTime;
+            //this.dtpStartTime.Value = DateTime.MinValue + pInterval.StartTime;
+            //this.dtpEndTime.Value = DateTime.MinValue + pInterval.EndTime;
             this.Text = "Modificar Intervalo";
             foreach (Days dia in pInterval.Days)
             {
@@ -92,8 +90,8 @@ namespace TpFinalTDP2015.UI
             this.iOriginalInterval.Name = this.txtTitle.Text;
             this.iOriginalInterval.ActiveFrom = this.dtpStartDate.Value;
             this.iOriginalInterval.ActiveUntil = this.dtpEndDate.Value;
-            this.iOriginalInterval.StartTime = this.dtpStartTime.Value.TimeOfDay;
-            this.iOriginalInterval.EndTime = this.dtpEndTime.Value.TimeOfDay;
+            //this.iOriginalInterval.StartTime = this.dtpStartTime.Value.TimeOfDay;
+            //this.iOriginalInterval.EndTime = this.dtpEndTime.Value.TimeOfDay;
             if (this.chkSunday.Checked)
             {
                 this.iOriginalInterval.Days.Add(Days.Domingo);

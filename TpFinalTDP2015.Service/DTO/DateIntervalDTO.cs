@@ -7,13 +7,13 @@ using TpFinalTDP2015.Persistence.Model;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    public class CampaignIntervalDTO
+    public class DateIntervalDTO
     {
         public IList<Days> Days { get; set; }
         public DateTime ActiveUntil { get; set; }
-        public TimeSpan EndTime { get; set; }
+        //public TimeSpan EndTime { get; set; }
         public string Name { get; set; }
         public DateTime ActiveFrom { get; set; }
-        public TimeSpan StartTime { get; set; }
+        //public TimeSpan StartTime { get; set; }
     }
 }
