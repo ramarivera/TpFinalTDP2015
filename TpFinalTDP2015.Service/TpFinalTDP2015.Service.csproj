@@ -76,7 +76,9 @@
     <Compile Include="AutoMapperProfiles\BannerProfile.cs" />
     <Compile Include="AutoMapperProfiles\DateIntervalProfile.cs" />
     <Compile Include="AutoMapperProfiles\CampaignProfile.cs" />
+    <Compile Include="AutoMapperProfiles\DaysProfile.cs" />
     <Compile Include="AutoMapperProfiles\RSSItemProfile.cs" />
+    <Compile Include="AutoMapperProfiles\SlideTransitioProfile.cs" />
     <Compile Include="AutoMapperProfiles\StaticTextProfile.cs" />
     <Compile Include="AutoMapperProfiles\TimeIntervalProfile.cs" />
     <Compile Include="DTO\BannerDTO.cs" />
@@ -86,6 +88,10 @@
     <Compile Include="DTO\RSSSourceDTO.cs" />
     <Compile Include="DTO\StaticTextDTO.cs" />
     <Compile Include="DTO\TimeIntervalDTO.cs" />
+    <Compile Include="DTO\ValueAndDescription.cs" />
+    <Compile Include="Enum\Days.cs" />
+    <Compile Include="Enum\EnumConversion.cs" />
+    <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

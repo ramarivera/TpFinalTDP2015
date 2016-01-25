@@ -44,8 +44,9 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Campaign.cs" />
     <Compile Include="DateInterval.cs" />
-    <Compile Include="Days.cs" />
-    <Compile Include="IBannerItem.cs" />
+    <Compile Include="Enum\Days.cs" />
+    <Compile Include="Enum\SlideTransition.cs" />
+    <Compile Include="Interface\IBannerItem.cs" />
     <Compile Include="RSSItem.cs" />
     <Compile Include="RSSSource.cs" />
     <Compile Include="Slide.cs" />
