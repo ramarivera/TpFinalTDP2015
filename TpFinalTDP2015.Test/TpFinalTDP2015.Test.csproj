@@ -86,9 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TpFinalTDP2015.Persistence\TpFinalTDP2015.Persistence.csproj">
+    <ProjectReference Include="..\TpFinalTDP2015.Persistence\TpFinalTDP2015.Persistence.EntityFramework.csproj">
       <Project>{c1966555-9617-43dc-9f3d-918d34778945}</Project>
-      <Name>TpFinalTDP2015.Persistence</Name>
+      <Name>TpFinalTDP2015.Persistence.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\TpFinalTDP2015.UI\TpFinalTDP2015.UI.csproj">
       <Project>{92f31c87-f056-4c81-9318-967a88a530d3}</Project>
