@@ -198,10 +198,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">
-      <Project>{633db5be-927e-45af-860f-4cf5b2ef6afd}</Project>
-      <Name>TpFinalTDP2015.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TpFinalTDP2015.Service\TpFinalTDP2015.Service.csproj">
       <Project>{fae170fd-3290-450d-906f-b0ae33875cee}</Project>
       <Name>TpFinalTDP2015.Service</Name>
