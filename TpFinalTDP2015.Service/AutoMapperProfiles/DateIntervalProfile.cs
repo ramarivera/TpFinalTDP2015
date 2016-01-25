@@ -9,16 +9,16 @@ using TpFinalTDP2015.Persistence.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapperProfiles
 {
-    public class CampaignIntervalProfile : Profile
+    public class DateIntervalProfile : Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<CampaignInterval, CampaignIntervalDTO>()
+            Mapper.CreateMap<DateInterval, DateIntervalDTO>()
               .ForMember(d => d.Name, o => o.MapFrom(c => c.Name))
               .ForMember(d => d.ActiveFrom, o => o.MapFrom(c => c.ActiveFrom))
               .ForMember(d => d.ActiveUntil, o => o.MapFrom(c => c.ActiveUntil))
-              .ForMember(d => d.StartTime, o => o.MapFrom(c => c.StartTime))
-              .ForMember(d => d.EndTime, o => o.MapFrom(c => c.EndTime))
+              //.ForMember(d => d.StartTime, o => o.MapFrom(c => c.StartTime))
+              //.ForMember(d => d.EndTime, o => o.MapFrom(c => c.EndTime))
               .ForMember(d => d.Days, o => o.MapFrom(C => C.DiasDeLaSemana));
         }
     }
