@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Model
 {
-    public class Class1
+    public interface IBannerItem
     {
+        string GetText();
+
+        string GetTitle();
+
     }
 }

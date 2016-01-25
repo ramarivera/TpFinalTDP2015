@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using TpFinalTDP2015.Persistence.Model;
+using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Test
 {
@@ -12,7 +12,7 @@ namespace TpFinalTDP2015.Test
         public void OverlapsWith_NoDateOverlaping_FirstLapseBeforeSecondLapse()
         {
             // Arrange
-            bool lResult;
+          //  bool lResult;
             DateTime lStartDate1 = new DateTime(1993, 12, 25);
             DateTime lStartDate2 = new DateTime(1994, 01, 15);
             DateTime lEndDate1 = new DateTime(1993, 12, 31);
@@ -53,7 +53,7 @@ namespace TpFinalTDP2015.Test
         public void OverlapsWith_NoDateOverlaping_FirstLapseAfterSecondLapse()
         {
             // Arrange
-            bool lResult;
+          //  bool lResult;
             DateTime lStartDate1 = new DateTime(2000, 12, 25);
             DateTime lStartDate2 = new DateTime(1994, 01, 15);
             DateTime lEndDate1 = new DateTime(2000, 12, 31);

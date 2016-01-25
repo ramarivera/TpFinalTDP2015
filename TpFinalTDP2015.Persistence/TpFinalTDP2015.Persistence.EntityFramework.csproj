@@ -72,17 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Banner.cs" />
-    <Compile Include="Model\BaseEntity.cs" />
-    <Compile Include="Model\Campaign.cs" />
-    <Compile Include="Model\Days.cs" />
-    <Compile Include="Model\IBannerItem.cs" />
-    <Compile Include="Model\RSSSource.cs" />
-    <Compile Include="Model\DateInterval.cs" />
-    <Compile Include="Model\RSSItem.cs" />
-    <Compile Include="Model\Slide.cs" />
-    <Compile Include="Model\StaticText.cs" />
-    <Compile Include="Model\TimeInterval.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

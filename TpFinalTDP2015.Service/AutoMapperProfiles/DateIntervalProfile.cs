@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Persistence.Model;
+using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapperProfiles
 {

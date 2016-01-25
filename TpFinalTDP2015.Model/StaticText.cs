@@ -4,24 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Persistence.Model
+namespace TpFinalTDP2015.Model
 {
-    public class RSSSource : BaseEntity
+    public class StaticText : BaseEntity, IBannerItem
     {
         private string iTitle;
         private string iDescription;
-        private string iURL;
-        private IList<RSSItem> iItems;
+        private string iText;
 
-        public RSSSource() : base ()
+
+        public StaticText() :  base()
         {
-            this.Items = new List<RSSItem>();
-        }
 
+        }
 
         public string Title
         {
-            get { return this.iTitle; }
+            get {return this.iTitle; }
             set
             {
                 this.UpdateModificationDate();
@@ -38,21 +37,27 @@ namespace TpFinalTDP2015.Persistence.Model
                 this.iDescription = value;
             }
         }
-        public string URL
+
+        public string Text
         {
-            get { return this.iURL; }
+            get {return this.iText; }
             set
             {
                 this.UpdateModificationDate();
-                this.iURL = value;
+                this.iText = value;
             }
         }
 
-        public IList<RSSItem> Items
+        string IBannerItem.GetText()
         {
-            get { return this.iItems; }
-            set { this.iItems = value; }
+            return this.Text;
         }
-        //TODO cambiar accesores Items
+
+        string IBannerItem.GetTitle()
+        {
+            return this.Title;
+        }
+
+
     }
 }
