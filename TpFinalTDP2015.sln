@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.Persistence.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.UI.WinForms", "TpFinalTDP2015.UI.WinForms\TpFinalTDP2015.UI.WinForms.csproj", "{92F31C87-F056-4C81-9318-967A88A530D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.Persistence.NHibernate", "TpFinalTDP2015.Persistence.NHibernate\TpFinalTDP2015.Persistence.NHibernate.csproj", "{771CE6EB-4E57-4CB9-802D-6D12C7D20549}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.UI.WPF", "TpFinalTDP2015.UI.WPF\TpFinalTDP2015.UI.WPF.csproj", "{FAF96A08-52AF-49D0-A0BA-4F00E6EBD76E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{92F31C87-F056-4C81-9318-967A88A530D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92F31C87-F056-4C81-9318-967A88A530D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92F31C87-F056-4C81-9318-967A88A530D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{771CE6EB-4E57-4CB9-802D-6D12C7D20549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771CE6EB-4E57-4CB9-802D-6D12C7D20549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771CE6EB-4E57-4CB9-802D-6D12C7D20549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771CE6EB-4E57-4CB9-802D-6D12C7D20549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAF96A08-52AF-49D0-A0BA-4F00E6EBD76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF96A08-52AF-49D0-A0BA-4F00E6EBD76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF96A08-52AF-49D0-A0BA-4F00E6EBD76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF96A08-52AF-49D0-A0BA-4F00E6EBD76E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
