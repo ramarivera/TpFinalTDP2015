@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    class TimeIntervalDTO
+    public class TimeIntervalDTO
     {
         public string Name { get; set; }
         public TimeSpan StartTime { get; set; }

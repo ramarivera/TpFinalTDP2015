@@ -14,35 +14,33 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervaloFecha : BaseForm
     {
-        private DateIntervalDTO iOriginalInterval;
+        private DateIntervalDTO iOriginalDateInterval;
 
-        public DateIntervalDTO Interval
+        public DateIntervalDTO DateInterval
         {
-            get { return this.iOriginalInterval; }
+            get { return this.iOriginalDateInterval; }
         }
         public AgregarModificarIntervaloFecha()
         {
             InitializeComponent();
         }
 
-        public void AgregarIntervalo(DateIntervalDTO pNewInterval)
+        public void AgregarIntervalo(DateIntervalDTO pNewDateInterval)
         {
             this.txtTitle.Text = String.Empty;
             this.dtpStartDate.Value = DateTime.Now;
             this.dtpEndDate.Value = DateTime.Now;
             this.Text = "Agregar nuevo Intervalo";
-            this.iOriginalInterval = pNewInterval;
+            this.iOriginalDateInterval = pNewDateInterval;
         }
 
-        public void ModificarIntervalo(DateIntervalDTO pInterval)
+        public void ModificarIntervalo(DateIntervalDTO pDateInterval)
         {
-            this.txtTitle.Text = pInterval.Name;
-            this.dtpStartDate.Value = pInterval.ActiveFrom;
-            this.dtpEndDate.Value =  pInterval.ActiveUntil;
-            //this.dtpStartTime.Value = DateTime.MinValue + pInterval.StartTime;
-            //this.dtpEndTime.Value = DateTime.MinValue + pInterval.EndTime;
+            this.txtTitle.Text = pDateInterval.Name;
+            this.dtpStartDate.Value = pDateInterval.ActiveFrom;
+            this.dtpEndDate.Value =  pDateInterval.ActiveUntil;
             this.Text = "Modificar Intervalo";
-            foreach (Days dia in pInterval.Days)
+            foreach (Days dia in pDateInterval.Days)
             {
                 switch (dia)
                 {
@@ -71,7 +69,7 @@ namespace TpFinalTDP2015.UI
                         break;
                 }
             }
-            this.iOriginalInterval = pInterval;
+            this.iOriginalDateInterval = pDateInterval;
         }
 
         private void btnAll_Click(object sender, EventArgs e)
@@ -87,38 +85,36 @@ namespace TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iOriginalInterval.Name = this.txtTitle.Text;
-            this.iOriginalInterval.ActiveFrom = this.dtpStartDate.Value;
-            this.iOriginalInterval.ActiveUntil = this.dtpEndDate.Value;
-            //this.iOriginalInterval.StartTime = this.dtpStartTime.Value.TimeOfDay;
-            //this.iOriginalInterval.EndTime = this.dtpEndTime.Value.TimeOfDay;
+            this.iOriginalDateInterval.Name = this.txtTitle.Text;
+            this.iOriginalDateInterval.ActiveFrom = this.dtpStartDate.Value;
+            this.iOriginalDateInterval.ActiveUntil = this.dtpEndDate.Value;
             if (this.chkSunday.Checked)
             {
-                this.iOriginalInterval.Days.Add(Days.Domingo);
+                this.iOriginalDateInterval.Days.Add(Days.Domingo);
             }
             if (this.chkMonday.Checked)
             {
-                this.iOriginalInterval.Days.Add(Days.Lunes);
+                this.iOriginalDateInterval.Days.Add(Days.Lunes);
             }
             if (this.chkTuesday.Checked)
             {
-                this.iOriginalInterval.Days.Add(Days.Martes);
+                this.iOriginalDateInterval.Days.Add(Days.Martes);
             }
             if (this.chkWednesday.Checked)
             {
-                this.iOriginalInterval.Days.Add(Days.Miercoles);
+                this.iOriginalDateInterval.Days.Add(Days.Miercoles);
             }
             if (this.chkThursday.Checked)
             {
-                this.iOriginalInterval.Days.Add(Days.Jueves);
+                this.iOriginalDateInterval.Days.Add(Days.Jueves);
             }
             if (this.chkFriday.Checked)
             {
-                this.iOriginalInterval.Days.Add(Days.Viernes);
+                this.iOriginalDateInterval.Days.Add(Days.Viernes);
             }
             if (this.chkSaturday.Checked)
             {
-                this.iOriginalInterval.Days.Add(Days.Sabado);
+                this.iOriginalDateInterval.Days.Add(Days.Sabado);
             }
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -142,11 +138,6 @@ namespace TpFinalTDP2015.UI
                         break;
                 }
             }
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
