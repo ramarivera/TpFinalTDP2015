@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.Interfaces
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        IRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
+
+        void Commit();
     }
+
 }
