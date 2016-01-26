@@ -44,6 +44,12 @@
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">
+      <Project>{633db5be-927e-45af-860f-4cf5b2ef6afd}</Project>
+      <Name>TpFinalTDP2015.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

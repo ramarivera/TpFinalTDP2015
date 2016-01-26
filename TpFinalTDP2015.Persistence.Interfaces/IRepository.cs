@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Persistence.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : BaseEntity
     {
-        void Insert(TEntity pEntityToInsert);
+        void Add(TEntity pEntityToAdd);
 
         void Delete(object pId);
 
@@ -18,6 +20,6 @@ namespace TpFinalTDP2015.Persistence.Interfaces
 
         TEntity GetByID(object pId);
 
-        IQueryable<TEntity> GetAll(Func<TEntity, bool> pPredicate = null);
+        IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> pPredicate = null);
     }
 }
