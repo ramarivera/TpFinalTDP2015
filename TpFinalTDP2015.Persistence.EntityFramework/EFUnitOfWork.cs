@@ -22,9 +22,7 @@ namespace TpFinalTDP2015.Persistence
             this.iContext = new DigitalSignageContext();
         }
 
-        /// <summary>
-        /// Finaliza una instancia de la clase <see cref="UnitOfWork"/>.
-        /// </summary>
+        #region IDisposable
         ~EFUnitOfWork()
         {
             // The object went out of scope and finalized is called
@@ -85,6 +83,8 @@ namespace TpFinalTDP2015.Persistence
             // for the Finalizer to do. So lets tell the GC not to call it later.
             GC.SuppressFinalize(this);
         }
+
+        #endregion
 
         void IUnitOfWork.BeginTransaction(IsolationLevel pIsolationLevel)
         {
