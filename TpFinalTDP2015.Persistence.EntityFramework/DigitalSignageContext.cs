@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Persistence.NHibernate
+namespace TpFinalTDP2015.Persistence
 {
-    public class Class1
+    class DigitalSignageContext : DbContext
     {
     }
 }
