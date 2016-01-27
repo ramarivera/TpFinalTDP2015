@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Persistence.NHibernate
 {
-    public static class NHSessionFactorySingleton
+    public static class NHSessionFactory
     {
         private static ISessionFactory sessionFactory = null;
         private static object lockObj = new object();
@@ -20,7 +20,7 @@ namespace TpFinalTDP2015.Persistence.NHibernate
                 {
                     if (sessionFactory == null)
                     {
-                        sessionFactory = NHConfigurationSingleton.Configuration.BuildSessionFactory();
+                        sessionFactory = NHConfiguration.Configuration.BuildSessionFactory();
                     }
                 }
 

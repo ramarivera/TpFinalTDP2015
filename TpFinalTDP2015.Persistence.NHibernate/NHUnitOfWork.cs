@@ -93,7 +93,7 @@ namespace TpFinalTDP2015.Persistence.NHibernate
                 if (this.iSession != null)
                     this.iSession.Dispose();
 
-                this.iSession = NHSessionFactorySingleton.SessionFactory.OpenSession();
+                this.iSession = NHSessionFactory.SessionFactory.OpenSession();
             }
         }
 

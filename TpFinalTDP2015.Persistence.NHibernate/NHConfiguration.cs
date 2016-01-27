@@ -10,7 +10,7 @@ using System.Xml;
 
 namespace TpFinalTDP2015.Persistence.NHibernate
 {
-    public static class NHConfigurationSingleton
+    public static class NHConfiguration
     {
         private static Configuration configuration = null;
         private static object lockObj = new object();

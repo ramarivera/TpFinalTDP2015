@@ -48,10 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NHConfigurationSingleton.cs" />
+    <Compile Include="NHConfiguration.cs" />
     <Compile Include="NHRepository.cs" />
     <Compile Include="NHUnitOfWork.cs" />
-    <Compile Include="NSessionFactorySingleton.cs" />
+    <Compile Include="NHSessionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
