@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Model
 {
-    [Serializable]
     public class BaseEntity
     {
         private int iId;
@@ -20,7 +19,7 @@ namespace TpFinalTDP2015.Model
             this.iLastModified = DateTime.Now;
         }
 
-        public virtual int Id
+        public int Id
         {
             get { return this.iId; }
             set
@@ -30,7 +29,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual DateTime CreationDate
+        public DateTime CreationDate
         {
             get { return this.iCreationDate; }
             set
@@ -40,7 +39,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual DateTime LastModified
+        public DateTime LastModified
         {
             get { return this.iLastModified; }
             set
@@ -49,7 +48,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual void UpdateModificationDate()
+        public void UpdateModificationDate()
         {
             this.LastModified = DateTime.Now;
         }

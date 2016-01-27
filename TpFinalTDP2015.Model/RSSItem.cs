@@ -7,7 +7,6 @@ using TpFinalTDP2015.Model.Interface;
 
 namespace TpFinalTDP2015.Model
 {
-    [Serializable]
     public class RSSItem : BaseEntity, IBannerItem
     {
 
@@ -20,7 +19,7 @@ namespace TpFinalTDP2015.Model
         {
         }
 
-        public virtual string Title
+        public string Title
         {
             get { return this.iTitle; }
             set
@@ -30,7 +29,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual string Description
+        public string Description
         {
             get { return this.iDescription; }
             set
@@ -40,7 +39,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual string URL
+        public string URL
         {
             get { return this.iURL; }
             set
@@ -50,7 +49,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual DateTime? PublicationDate
+        public DateTime? PublicationDate
         {
             get { return this.iPublicationDate; }
             set

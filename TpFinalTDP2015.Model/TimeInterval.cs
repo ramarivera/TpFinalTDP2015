@@ -6,20 +6,13 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Model
 {
-    [Serializable]
     public class TimeInterval: BaseEntity
     {
         private string iName;
         private TimeSpan iStartTime;
         private TimeSpan iEndTime;
 
-        public TimeInterval() : base()
-        {
-            this.Start = new TimeSpan(1);
-            this.End = new TimeSpan(2);
-        }
-
-        public virtual string Name
+        public string Name
         {
             get { return this.iName; }
             set
@@ -29,7 +22,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual TimeSpan Start
+        public TimeSpan StartTime
         {
             get { return this.iStartTime; }
             set
@@ -45,7 +38,7 @@ namespace TpFinalTDP2015.Model
                 }
             }
         }
-        public virtual TimeSpan End
+        public TimeSpan EndTime
         {
             get { return this.iEndTime; }
             set

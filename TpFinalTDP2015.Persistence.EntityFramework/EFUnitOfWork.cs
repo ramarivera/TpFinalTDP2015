@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Persistence.Interfaces;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework
+namespace TpFinalTDP2015.Persistence
 {
     public class EFUnitOfWork : IUnitOfWork
     {
