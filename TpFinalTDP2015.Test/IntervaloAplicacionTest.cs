@@ -6,7 +6,7 @@ using TpFinalTDP2015.Model.Enum;
 
 namespace TpFinalTDP2015.Test
 {
-    [TestClass]
+  /*  [TestClass]
     public class IntervaloAplicacionTest
     {
         [TestMethod]
@@ -100,5 +100,5 @@ namespace TpFinalTDP2015.Test
         public void OverlapsWith_Overlaping()
         {
         }
-    }
+    }*/
 }
