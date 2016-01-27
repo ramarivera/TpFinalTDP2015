@@ -7,6 +7,7 @@ using TpFinalTDP2015.Model.Interface;
 
 namespace TpFinalTDP2015.Model
 {
+    [Serializable]
     public class StaticText : BaseEntity, IBannerItem
     {
         private string iTitle;
@@ -19,7 +20,7 @@ namespace TpFinalTDP2015.Model
 
         }
 
-        public string Title
+        public virtual string Title
         {
             get {return this.iTitle; }
             set
@@ -29,7 +30,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public string Description
+        public virtual string Description
         {
             get {return this.iDescription; }
             set
@@ -39,7 +40,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public string Text
+        public virtual string Text
         {
             get {return this.iText; }
             set

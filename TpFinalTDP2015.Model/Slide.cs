@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Model
 {
-    class Slide : BaseEntity
+    [Serializable]
+    public class Slide : BaseEntity
     {
 
         private int iDuration;
 
+        public Slide() : base()
+        {
+
+        }
 
 
 

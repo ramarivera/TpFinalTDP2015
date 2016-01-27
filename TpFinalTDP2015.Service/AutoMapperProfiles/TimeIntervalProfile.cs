@@ -15,8 +15,8 @@ namespace TpFinalTDP2015.Service.AutoMapperProfiles
         {
             Mapper.CreateMap<TimeInterval, TimeIntervalDTO>()
               .ForMember(d => d.Name, o => o.MapFrom(c => c.Name))
-              .ForMember(d => d.StartTime, o => o.MapFrom(c => c.StartTime))
-              .ForMember(d => d.EndTime, o => o.MapFrom(c => c.EndTime));
+              .ForMember(d => d.StartTime, o => o.MapFrom(c => c.Start))
+              .ForMember(d => d.EndTime, o => o.MapFrom(c => c.End));
         }
     }
 }
