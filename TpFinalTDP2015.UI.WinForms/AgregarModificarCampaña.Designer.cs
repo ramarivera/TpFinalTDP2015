@@ -177,7 +177,6 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(233, 20);
             this.txtTitle.TabIndex = 1;
-            this.txtTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel6
             // 
@@ -237,7 +236,6 @@
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(233, 20);
             this.txtDescription.TabIndex = 4;
-            this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel8
             // 
@@ -372,13 +370,11 @@
             // 
             // cboInterval
             // 
-            this.cboInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboInterval.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboInterval.FormattingEnabled = true;
             this.cboInterval.Location = new System.Drawing.Point(3, 3);
             this.cboInterval.Name = "cboInterval";
-            this.cboInterval.Size = new System.Drawing.Size(206, 21);
+            this.cboInterval.Size = new System.Drawing.Size(204, 21);
             this.cboInterval.TabIndex = 0;
             // 
             // tableLayoutPanel3

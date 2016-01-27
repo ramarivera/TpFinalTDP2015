@@ -9,7 +9,6 @@ namespace TpFinalTDP2015.Model
     [Serializable]
     public class TimeInterval: BaseEntity
     {
-        private string iName;
         private TimeSpan iStartTime;
         private TimeSpan iEndTime;
 
@@ -17,16 +16,6 @@ namespace TpFinalTDP2015.Model
         {
             this.Start = new TimeSpan(1);
             this.End = new TimeSpan(2);
-        }
-
-        public virtual string Name
-        {
-            get { return this.iName; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iName = value;
-            }
         }
 
         public virtual TimeSpan Start

@@ -191,7 +191,7 @@
             this.lblInterval.Name = "lblInterval";
             this.lblInterval.Size = new System.Drawing.Size(87, 45);
             this.lblInterval.TabIndex = 0;
-            this.lblInterval.Text = "Invervalo de aplicación";
+            this.lblInterval.Text = "Intervalo de aplicación";
             this.lblInterval.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel5

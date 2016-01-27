@@ -23,7 +23,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
             Property(ti => ti.CreationDate).IsRequired();
             Property(ti => ti.LastModified).IsRequired();
 
-            Property(di => di.Name).IsRequired();
+            //Property(di => di.Name).IsRequired();
             Property(di => di.Start).IsRequired();
             Property(di => di.End).IsRequired();
 

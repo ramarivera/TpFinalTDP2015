@@ -67,17 +67,41 @@
     </Compile>
     <Compile Include="AdminModePages\AdminModePageInfo.cs" />
     <Compile Include="AdminModePages\AdminModePagesFactory.cs" />
+    <Compile Include="AdminModePages\BannerAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\BannerAdministrator.Designer.cs">
+      <DependentUpon>BannerAdministrator.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminModePages\CampaignAdministrator.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminModePages\CampaignAdministrator.Designer.cs">
       <DependentUpon>CampaignAdministrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminModePages\IntervalAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\IntervalAdministrator.Designer.cs">
+      <DependentUpon>IntervalAdministrator.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminModePages\NullPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminModePages\NullPage.Designer.cs">
       <DependentUpon>NullPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModePages\RSSSourceAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\RSSSourceAdministrator.Designer.cs">
+      <DependentUpon>RSSSourceAdministrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModePages\StaticTextAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\StaticTextAdministrator.Designer.cs">
+      <DependentUpon>StaticTextAdministrator.cs</DependentUpon>
     </Compile>
     <Compile Include="AgregarModificarBanner.cs">
       <SubType>Form</SubType>
@@ -135,11 +159,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AdminModePages\BaseDataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\BaseDataGridView.Designer.cs">
+      <DependentUpon>BaseDataGridView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminModePages\BannerAdministrator.resx">
+      <DependentUpon>BannerAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminModePages\CampaignAdministrator.resx">
       <DependentUpon>CampaignAdministrator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminModePages\IntervalAdministrator.resx">
+      <DependentUpon>IntervalAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminModePages\NullPage.resx">
       <DependentUpon>NullPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminModePages\RSSSourceAdministrator.resx">
+      <DependentUpon>RSSSourceAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminModePages\StaticTextAdministrator.resx">
+      <DependentUpon>StaticTextAdministrator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarBanner.resx">
       <DependentUpon>AgregarModificarBanner.cs</DependentUpon>
@@ -155,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarTextoFijoRSS.resx">
       <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminModePages\BaseDataGridView.resx">
+      <DependentUpon>BaseDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModoAdministrador.resx">
       <DependentUpon>ModoAdministrador.cs</DependentUpon>
