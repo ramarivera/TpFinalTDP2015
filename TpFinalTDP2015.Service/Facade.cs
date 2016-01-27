@@ -7,11 +7,16 @@ using Common.Logging;
 
 namespace TpFinalTDP2015.Service
 {
-    class Facade
+    public class Facade
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<Facade>();
+
+        public Facade()
+        {
+            cLogger.Info("Fachada instanciada");
+        }
     }
 }

@@ -42,6 +42,10 @@
       <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Common.Logging.Log4Net1213, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Log4Net1213.3.3.1\lib\net40\Common.Logging.Log4Net1213.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -76,6 +80,7 @@
     <Compile Include="Configuration\DayConfiguration.cs" />
     <Compile Include="Configuration\RssItemConfiguration.cs" />
     <Compile Include="Configuration\RssSourceConfiguration.cs" />
+    <Compile Include="Configuration\SlideConfiguration.cs" />
     <Compile Include="Configuration\StaticTextConfiguration.cs" />
     <Compile Include="Configuration\TimeIntervalConfiguration.cs" />
     <Compile Include="DigitalSignageContext.cs" />
