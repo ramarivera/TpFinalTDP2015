@@ -7,11 +7,11 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    public class RSSSourceDTO
+    public class RssSourceDTO
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public string URL { get; set; }
-        public IList<RSSItem> Items { get; set; }
+        public IList<RssItem> Items { get; set; }
     }
 }

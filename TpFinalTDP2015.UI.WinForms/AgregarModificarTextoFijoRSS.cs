@@ -20,9 +20,9 @@ namespace TpFinalTDP2015.UI
             get { return this.iOriginalStaticText; }
         }
 
-        private RSSSourceDTO iOriginalRSSSource;
+        private RssSourceDTO iOriginalRSSSource;
 
-        public RSSSourceDTO RSSSource
+        public RssSourceDTO RSSSource
         {
             get { return this.iOriginalRSSSource; }
         }
@@ -49,7 +49,7 @@ namespace TpFinalTDP2015.UI
             this.iOriginalStaticText = pStaticText;
         }
 
-        public void AgregarFuenteRSS(RSSSourceDTO pNewRSSSource)
+        public void AgregarFuenteRSS(RssSourceDTO pNewRSSSource)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -59,7 +59,7 @@ namespace TpFinalTDP2015.UI
             this.iOriginalRSSSource = pNewRSSSource;
         }
 
-        public void ModificarFuenteRSS(RSSSourceDTO pRSSSource)
+        public void ModificarFuenteRSS(RssSourceDTO pRSSSource)
         {
             this.txtTitle.Text = pRSSSource.Title;
             this.txtDescription.Text = pRSSSource.Description;

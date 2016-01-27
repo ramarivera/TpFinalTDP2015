@@ -8,7 +8,7 @@ using TpFinalTDP2015.Model.Interface;
 namespace TpFinalTDP2015.Model
 {
     [Serializable]
-    public class RSSItem : BaseEntity, IBannerItem
+    public class RssItem : BaseEntity, IBannerItem
     {
 
         private string iTitle;
@@ -16,7 +16,7 @@ namespace TpFinalTDP2015.Model
         private string iURL;
         private DateTime? iPublicationDate;
 
-        public RSSItem() : base()
+        public RssItem() : base()
         {
         }
 

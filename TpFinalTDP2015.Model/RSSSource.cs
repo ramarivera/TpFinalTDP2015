@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace TpFinalTDP2015.Model
 {
     [Serializable]
-    public class RSSSource : BaseEntity
+    public class RssSource : BaseEntity
     {
         private string iTitle;
         private string iDescription;
         private string iURL;
-        private IList<RSSItem> iItems;
+        private IList<RssItem> iItems;
 
-        public RSSSource() : base ()
+        public RssSource() : base ()
         {
-            this.Items = new List<RSSItem>();
+            this.Items = new List<RssItem>();
         }
 
 
@@ -49,11 +49,11 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual IList<RSSItem> Items
+        public virtual IList<RssItem> Items
         {
             get
             {
-                return this.iItems.Clone<IList<RSSItem>>();
+                return this.iItems.Clone<IList<RssItem>>();
             }
             set
             {

@@ -17,8 +17,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         public DbSet<Campaign> Campaigns;
         public DbSet<Banner> Banners;
-        public DbSet<RSSItem> RssItems;
-        public DbSet<RSSSource> RssSources;
+        public DbSet<RssItem> RssItems;
+        public DbSet<RssSource> RssSources;
         public DbSet<StaticText> Texts;
         public DbSet<Slide> Slides;
         public DbSet<TimeInterval> TimeIntervals;

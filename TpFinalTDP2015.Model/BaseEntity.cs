@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TpFinalTDP2015.Model
 {
     [Serializable]
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         private int iId;
         private DateTime iCreationDate;

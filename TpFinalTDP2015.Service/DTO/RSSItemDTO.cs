@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    public class RSSItemDTO
+    public class RssItemDTO
     {
         public string Title { get; set; }
         public string Description { get; set; }

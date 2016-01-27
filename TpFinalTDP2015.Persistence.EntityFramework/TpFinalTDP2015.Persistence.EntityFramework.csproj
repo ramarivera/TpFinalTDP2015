@@ -71,7 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\BannerConfiguration.cs" />
     <Compile Include="Configuration\DateIntervalConfiguration.cs" />
+    <Compile Include="Configuration\DayConfiguration.cs" />
+    <Compile Include="Configuration\RssItemConfiguration.cs" />
+    <Compile Include="Configuration\RssSourceConfiguration.cs" />
+    <Compile Include="Configuration\StaticTextConfiguration.cs" />
     <Compile Include="Configuration\TimeIntervalConfiguration.cs" />
     <Compile Include="DigitalSignageContext.cs" />
     <Compile Include="DigitalSignageInitializer.cs" />

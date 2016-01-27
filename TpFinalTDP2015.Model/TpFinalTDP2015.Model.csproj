@@ -53,8 +53,8 @@
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Interface\IBannerItem.cs" />
-    <Compile Include="RSSItem.cs" />
-    <Compile Include="RSSSource.cs" />
+    <Compile Include="RssItem.cs" />
+    <Compile Include="RssSource.cs" />
     <Compile Include="Slide.cs" />
     <Compile Include="StaticText.cs" />
     <Compile Include="TimeInterval.cs" />

@@ -10,20 +10,31 @@ namespace TpFinalTDP2015.Model
     [Serializable]
     public class Day : BaseEntity
     {
-        private Days iNameOfDay;
+        private Days iValue;
+        private string iNameOfDay;
 
         public Day() : base()
         {
-            this.iNameOfDay = default(Days);
+            this.iValue = default(Days);
+            this.iNameOfDay = this.Value.ToString();
         }
 
-        public virtual Days NameOfDay
+        public virtual Days Value
         {
-            get { return this.iNameOfDay; }
+            get { return this.iValue; }
             set
             {
                 this.UpdateModificationDate();
-                this.iNameOfDay = value;
+                this.iValue = value;
+                this.iNameOfDay = this.Value.ToString();
+            }
+        }
+
+        public virtual string NameOfDay
+        {
+            get
+            {
+                return this.iNameOfDay;
             }
         }
 

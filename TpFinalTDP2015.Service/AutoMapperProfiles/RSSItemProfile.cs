@@ -9,11 +9,11 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapperProfiles
 {
-    class RSSItemProfile: Profile
+    class RssItemProfile: Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<RSSItem, RSSItemDTO>()
+            Mapper.CreateMap<RssItem, RssItemDTO>()
               .ForMember(d => d.Title, o => o.MapFrom(c => c.Title))
               .ForMember(d => d.Description, o => o.MapFrom(c => c.Description))
               .ForMember(d => d.URL, o => o.MapFrom(c => c.URL))

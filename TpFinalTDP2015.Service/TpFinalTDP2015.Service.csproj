@@ -78,7 +78,7 @@
     <Compile Include="AutoMapperProfiles\CampaignProfile.cs" />
     <Compile Include="AutoMapperProfiles\DayProfile.cs" />
     <Compile Include="AutoMapperProfiles\DaysProfile.cs" />
-    <Compile Include="AutoMapperProfiles\RSSItemProfile.cs" />
+    <Compile Include="AutoMapperProfiles\RssItemProfile.cs" />
     <Compile Include="AutoMapperProfiles\SlideTransitioProfile.cs" />
     <Compile Include="AutoMapperProfiles\StaticTextProfile.cs" />
     <Compile Include="AutoMapperProfiles\TimeIntervalProfile.cs" />
@@ -86,8 +86,8 @@
     <Compile Include="DTO\CampaignDTO.cs" />
     <Compile Include="DTO\DateIntervalDTO.cs" />
     <Compile Include="DTO\DayDTO.cs" />
-    <Compile Include="DTO\RSSItemDTO.cs" />
-    <Compile Include="DTO\RSSSourceDTO.cs" />
+    <Compile Include="DTO\RssItemDTO.cs" />
+    <Compile Include="DTO\RssSourceDTO.cs" />
     <Compile Include="DTO\StaticTextDTO.cs" />
     <Compile Include="DTO\TimeIntervalDTO.cs" />
     <Compile Include="DTO\ValueAndDescription.cs" />
@@ -98,7 +98,7 @@
     <Compile Include="Facade.cs" />
     <Compile Include="IoCUnityContainerLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AutoMapperProfiles\RSSSourceProfile.cs" />
+    <Compile Include="AutoMapperProfiles\RssSourceProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
