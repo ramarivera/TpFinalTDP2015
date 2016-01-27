@@ -7,8 +7,8 @@
     <ProjectGuid>{C1966555-9617-43DC-9F3D-918D34778945}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TpFinalTDP2015.Persistence</RootNamespace>
-    <AssemblyName>TpFinalTDP2015.Persistence</AssemblyName>
+    <RootNamespace>TpFinalTDP2015.Persistence.EntityFramework</RootNamespace>
+    <AssemblyName>TpFinalTDP2015.Persistence.EntityFramework</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -59,6 +59,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.registration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -70,8 +72,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DigitalSignageContext.cs" />
+    <Compile Include="DigitalSignageInitializer.cs" />
+    <Compile Include="EFConfiguration.cs" />
     <Compile Include="EFRepository.cs" />
     <Compile Include="EFUnitOfWork.cs" />
+    <Compile Include="Configuration\CampaignConfiguration.cs" />
+    <Compile Include="Configuration\ContextConfiguration.cs" />
+    <Compile Include="Configuration\IEntityConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

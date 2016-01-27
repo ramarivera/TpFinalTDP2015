@@ -7,28 +7,37 @@ using TpFinalTDP2015.Model.Enum;
 
 namespace TpFinalTDP2015.Model
 {
+    [Serializable]
     public class DateInterval : BaseEntity
     {
         private string iName;
         private DateTime iActiveFrom;
         private DateTime iActiveUntil;
-        //private TimeSpan iStartTime;
-       // private TimeSpan iEndTime;
         private IList<Days> iActiveDays;
-        private IList<TimeInterval> iTimeIntervals;
+        private IList<TimeInterval> iActiveHours;
 
         // TODO accesores con fecha de modifcacion para Days
         public DateInterval() : base()
         {
-            this.DiasDeLaSemana = new List<Days>();
             this.ActiveFrom = new DateTime(1);
             this.ActiveUntil = new DateTime(2);
+            this.ActiveHours = new List<TimeInterval>();
+            this.DiasDeLaSemana = new List<Days>();
             //this.StartTime = new TimeSpan(1);
             //this.EndTime = new TimeSpan(2);
         }
 
+        public virtual string Name
+        {
+            get { return this.iName; }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iName = value;
+            }
+        }
 
-        public DateTime ActiveFrom
+        public virtual DateTime ActiveFrom
         {
             get { return this.iActiveFrom; }
             set
@@ -44,7 +53,7 @@ namespace TpFinalTDP2015.Model
                 }
             }
         }
-        public DateTime ActiveUntil
+        public virtual DateTime ActiveUntil
         {
             get { return this.iActiveUntil; }
             set
@@ -60,19 +69,34 @@ namespace TpFinalTDP2015.Model
                 }
             }
         }
-        
 
-        public IList<Days> DiasDeLaSemana { get; set; }
 
-        public string Name
+        public virtual IList<Days> DiasDeLaSemana
         {
-            get { return this.iName; }
+            get
+            {
+                return this.iActiveDays.Clone<IList<Days>>();
+            }
             set
             {
                 this.UpdateModificationDate();
-                this.iName = value;
+                this.iActiveDays = value;
             }
         }
+
+        public virtual IList<TimeInterval> ActiveHours
+        {
+            get
+            {
+                return this.iActiveHours.Clone<IList<TimeInterval>>();
+            }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iActiveHours = value;
+            }
+        }
+
 
         /*public bool OverlapsWith(DateInterval pLapse)
         {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Model
 {
+    [Serializable]
     public class RSSSource : BaseEntity
     {
         private string iTitle;
@@ -19,7 +20,7 @@ namespace TpFinalTDP2015.Model
         }
 
 
-        public string Title
+        public virtual string Title
         {
             get { return this.iTitle; }
             set
@@ -29,7 +30,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public string Description
+        public virtual string Description
         {
             get {return this.iDescription; }
             set
@@ -38,7 +39,7 @@ namespace TpFinalTDP2015.Model
                 this.iDescription = value;
             }
         }
-        public string URL
+        public virtual string URL
         {
             get { return this.iURL; }
             set
@@ -48,10 +49,17 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public IList<RSSItem> Items
+        public virtual IList<RSSItem> Items
         {
-            get { return this.iItems; }
-            set { this.iItems = value; }
+            get
+            {
+                return this.iItems.Clone<IList<RSSItem>>();
+            }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iItems = value;
+            }
         }
         //TODO cambiar accesores Items
     }

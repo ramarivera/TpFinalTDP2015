@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Model
 {
+    [Serializable]
     public class Campaign : BaseEntity
     {
         private string iName;
@@ -19,7 +20,7 @@ namespace TpFinalTDP2015.Model
         }
 
 
-        public string Name
+        public virtual string Name
         {
             get { return this.iName; }
             set
@@ -28,8 +29,8 @@ namespace TpFinalTDP2015.Model
                 this.iName = value;
             }
         }
-  
-        public string Description
+
+        public virtual string Description
         {
             get { return this.iDescription; }
             set
@@ -38,6 +39,43 @@ namespace TpFinalTDP2015.Model
                 this.iDescription = value;
             }
         }
+
+        public virtual IList<DateInterval> ActiveIntervals
+        {
+            get
+            {
+                return this.iActiveIntervals.Clone<IList<DateInterval>>();
+            }
+            set
+            {
+                this.UpdateModificationDate();
+                this.iActiveIntervals = value;
+            }
+        }
+
+       /* public Campaign Clone()
+        {
+            Campaign lResult = new Campaign
+            {
+                Id = this.Id,
+                LastModified = this.LastModified,
+                CreationDate = this.CreationDate,
+                Name = this.Name,
+                Description = this.Description
+            };
+
+            IList<DateInterval> lList = new List<DateInterval>();
+
+            foreach (DateInterval interval in this.ActiveIntervals)
+            {
+                lList.Add(interval.Clone());
+            }
+
+            lResult.LastModified = this.LastModified;
+
+            return lResult;
+
+    }*/
 
 
 
