@@ -71,6 +71,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\DateIntervalConfiguration.cs" />
+    <Compile Include="Configuration\TimeIntervalConfiguration.cs" />
     <Compile Include="DigitalSignageContext.cs" />
     <Compile Include="DigitalSignageInitializer.cs" />
     <Compile Include="EFConfiguration.cs" />
