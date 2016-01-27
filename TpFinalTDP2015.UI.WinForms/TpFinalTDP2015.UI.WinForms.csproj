@@ -233,6 +233,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Unity.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -244,6 +245,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y "$(ProjectDir)""$(OutDir)""*.config" "$(SolutionDir)""Release"\
+xcopy /y "$(ProjectDir)""$(OutDir)""*.dll" "$(SolutionDir)""Release"\
+xcopy /y "$(ProjectDir)""$(OutDir)""*.exe" "$(SolutionDir)""Release"\</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

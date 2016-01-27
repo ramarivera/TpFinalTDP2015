@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Logging;
+using TpFinalTDP2015.Persistence.Interfaces;
 
 namespace TpFinalTDP2015.Service
 {
@@ -13,6 +14,9 @@ namespace TpFinalTDP2015.Service
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<Facade>();
+
+        private IUnitOfWork iUoW;
+
 
         public Facade()
         {

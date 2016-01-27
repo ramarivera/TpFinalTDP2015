@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpFinalTDP2015.Service;
 using TpFinalTDP2015.UI.AdminModePages;
 
 namespace TpFinalTDP2015.UI
@@ -16,6 +17,7 @@ namespace TpFinalTDP2015.UI
         public ModoAdministrador()
         {
             InitializeComponent();
+            Facade lFa = new Facade();
             this.Load += ModoAdministrador_Load;
         }
 
