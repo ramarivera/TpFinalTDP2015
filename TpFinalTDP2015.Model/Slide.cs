@@ -10,7 +10,7 @@ namespace TpFinalTDP2015.Model
     public class Slide : BaseEntity
     {
 
-        private int iDuration;
+       // private int iDuration;
 
         public Slide() : base()
         {

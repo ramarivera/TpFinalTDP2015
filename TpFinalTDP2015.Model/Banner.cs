@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Model.Interface;
 
 namespace TpFinalTDP2015.Model
 {
@@ -12,13 +11,13 @@ namespace TpFinalTDP2015.Model
     {
         private string iName;
         private string iDescription;
-        private IList<IBannerItem> iItems;
+        private IList<BaseBannerItem> iItems;
         private IList<DateInterval> iActiveIntervals;
 
 
         public Banner() : base()
         {
-            this.iItems = new List<IBannerItem>();
+            this.iItems = new List<BaseBannerItem>();
             this.iActiveIntervals = new List<DateInterval>();
         }
         //TODO : accesores con actualizacion de la fecha de odificacion para listas de ibanner y campagininterval;
@@ -55,11 +54,11 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual IList<IBannerItem> Items
+        public virtual IList<BaseBannerItem> Items
         {
             get
             {
-                return this.iItems.Clone<IList<IBannerItem>>();
+                return this.iItems.Clone<IList<BaseBannerItem>>();
             }
             set
             {

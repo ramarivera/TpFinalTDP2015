@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Banner.cs" />
+    <Compile Include="BaseBannerItem.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Campaign.cs" />
     <Compile Include="DateInterval.cs" />
@@ -52,7 +53,6 @@
     <Compile Include="Enum\Days.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethod.cs" />
-    <Compile Include="Interface\IBannerItem.cs" />
     <Compile Include="RssItem.cs" />
     <Compile Include="RssSource.cs" />
     <Compile Include="Slide.cs" />

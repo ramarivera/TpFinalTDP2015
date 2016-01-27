@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Model.Interface;
 
 namespace TpFinalTDP2015.Model
 {
     [Serializable]
-    public class RssItem : BaseEntity, IBannerItem
+    public class RssItem : BaseBannerItem
     {
 
         private string iTitle;
@@ -60,14 +59,15 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        string IBannerItem.GetText()
+        public override string GetText()
         {
             return this.Description;
         }
 
-        string IBannerItem.GetTitle()
+        public override string GetTitle()
         {
             return this.Title;
         }
+
     }
 }
