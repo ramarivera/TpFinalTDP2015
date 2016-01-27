@@ -13,7 +13,7 @@ namespace TpFinalTDP2015.Model
         private string iName;
         private DateTime iActiveFrom;
         private DateTime iActiveUntil;
-        private IList<Days> iActiveDays;
+        private IList<Day> iActiveDays;
         private IList<TimeInterval> iActiveHours;
 
         // TODO accesores con fecha de modifcacion para Days
@@ -22,7 +22,7 @@ namespace TpFinalTDP2015.Model
             this.ActiveFrom = new DateTime(1);
             this.ActiveUntil = new DateTime(2);
             this.ActiveHours = new List<TimeInterval>();
-            this.DiasDeLaSemana = new List<Days>();
+            this.ActiveDays = new List<Day>();
             //this.StartTime = new TimeSpan(1);
             //this.EndTime = new TimeSpan(2);
         }
@@ -71,11 +71,11 @@ namespace TpFinalTDP2015.Model
         }
 
 
-        public virtual IList<Days> DiasDeLaSemana
+        public virtual IList<Day> ActiveDays
         {
             get
             {
-                return this.iActiveDays.Clone<IList<Days>>();
+                return this.iActiveDays.Clone<IList<Day>>();
             }
             set
             {

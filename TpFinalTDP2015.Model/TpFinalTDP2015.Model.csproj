@@ -48,6 +48,7 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Campaign.cs" />
     <Compile Include="DateInterval.cs" />
+    <Compile Include="Day.cs" />
     <Compile Include="Enum\Days.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethod.cs" />
