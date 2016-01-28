@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Logging;
 using TpFinalTDP2015.Persistence.Interfaces;
+using Microsoft.Practices.Unity;
 
 namespace TpFinalTDP2015.Service
 {
@@ -21,6 +22,8 @@ namespace TpFinalTDP2015.Service
         public Facade()
         {
             cLogger.Info("Fachada instanciada");
+            this.iUoW = IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
+            cLogger.InfoFormat("Usando {0} como implementacion de {1}", new [] { this.iUoW.GetType().Name, typeof(IUnitOfWork).Name });
         }
     }
 }
