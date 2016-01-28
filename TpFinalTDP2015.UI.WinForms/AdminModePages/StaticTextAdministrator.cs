@@ -23,31 +23,25 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void btnAdd_Click(object sender, EventArgs e)
         {
             staticText = new StaticTextDTO();
-            AgregarModificarTextoFijoRSS ventana = new AgregarModificarTextoFijoRSS();
-            ventana.AgregarTextoFijo(staticText);
-            DialogResult resultado = ventana.ShowDialog();
-            if (resultado == DialogResult.OK)
-            {
-
-            }
+            AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
+            this.dgvStaticText.Agregar(ventana,staticText);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in this.dgvStaticText.SelectedRows)
             {
-                RssSourceDTO rssSource = ((RssSourceDTO)row.DataBoundItem);
-                DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar la fuente RSS " + rssSource.Title + "?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch (resultado)
-                {
-                    case DialogResult.Yes:
-                        //this.iFachada.Delete(persona);
-                        //this.iBinding.Remove(persona);
-                        break;
-                    case DialogResult.No:
-                        break;
-                }
+                staticText = ((StaticTextDTO)row.DataBoundItem);
+                this.dgvStaticText.Eliminar(staticText);
             }
+        }
+
+        private void dgvStaticText_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvStaticText.CurrentRow;
+            this.staticText = (StaticTextDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
+            this.dgvStaticText.Modificar(ventana, staticText);
         }
     }
 }

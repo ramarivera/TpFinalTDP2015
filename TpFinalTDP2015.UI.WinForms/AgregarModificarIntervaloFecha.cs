@@ -12,7 +12,7 @@ using TpFinalTDP2015.Service.Enum;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarIntervaloFecha : BaseForm
+    public partial class AgregarModificarIntervaloFecha : BaseForm, IAddModifyViewForm
     {
         private DateIntervalDTO iOriginalDateInterval;
 
@@ -25,22 +25,23 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarIntervalo(DateIntervalDTO pNewDateInterval)
+        void IAddModifyViewForm.Agregar(IDTO pNewDateInterval)
         {
             this.txtTitle.Text = String.Empty;
             this.dtpStartDate.Value = DateTime.Now;
             this.dtpEndDate.Value = DateTime.Now;
             this.Text = "Agregar nuevo Intervalo";
-            this.iOriginalDateInterval = pNewDateInterval;
+            this.iOriginalDateInterval = (DateIntervalDTO)pNewDateInterval;
         }
 
-        public void ModificarIntervalo(DateIntervalDTO pDateInterval)
+        void IAddModifyViewForm.Modificar(IDTO pDateInterval)
         {
-            this.txtTitle.Text = pDateInterval.Name;
-            this.dtpStartDate.Value = pDateInterval.ActiveFrom;
-            this.dtpEndDate.Value =  pDateInterval.ActiveUntil;
+            this.iOriginalDateInterval = (DateIntervalDTO)pDateInterval;
+            this.txtTitle.Text = iOriginalDateInterval.Name;
+            this.dtpStartDate.Value = iOriginalDateInterval.ActiveFrom;
+            this.dtpEndDate.Value = iOriginalDateInterval.ActiveUntil;
             this.Text = "Modificar Intervalo";
-            foreach (Days dia in pDateInterval.Days)
+            foreach (Days dia in iOriginalDateInterval.Days)
             {
                 switch (dia)
                 {
@@ -69,7 +70,11 @@ namespace TpFinalTDP2015.UI
                         break;
                 }
             }
-            this.iOriginalDateInterval = pDateInterval;
+        }
+
+        DialogResult IAddModifyViewForm.ShowForm()
+        {
+            return this.ShowDialog();
         }
 
         private void btnAll_Click(object sender, EventArgs e)

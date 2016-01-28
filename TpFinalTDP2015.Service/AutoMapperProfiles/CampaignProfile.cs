@@ -9,14 +9,14 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.Service.AutoMapperProfiles
 {
-    class CampaignProfile : Profile
+    public class CampaignProfile : Profile
     {
         protected override void Configure()
         {
             Mapper.CreateMap<Campaign, CampaignDTO>()
               .ForMember(d => d.Name, o => o.MapFrom(c => c.Name))
               .ForMember(d => d.Description, o => o.MapFrom(c => c.Description))
-           //TODO agragar al dto los campos lista   .ForMember(d => d.ActiveIntervals, o => o.MapFrom(c => c.));
+           //TODO agragar al dto los campos lista   .ForMember(d => d.ActiveIntervals, o => o.MapFrom(c => c.ActiveIntervals))
               .ForMember(d => d.ModificationDate, o => o.MapFrom(c => c.LastModified));
         }
     }

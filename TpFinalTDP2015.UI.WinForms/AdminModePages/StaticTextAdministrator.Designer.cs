@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvStaticText = new TpFinalTDP2015.UI.BaseDataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.dgvStaticText = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -42,8 +43,8 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvStaticText, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dgvStaticText, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -53,14 +54,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(461, 354);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // dgvStaticText
-            // 
-            this.dgvStaticText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStaticText.Location = new System.Drawing.Point(3, 38);
-            this.dgvStaticText.Name = "dgvStaticText";
-            this.dgvStaticText.Size = new System.Drawing.Size(455, 277);
-            this.dgvStaticText.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -102,6 +95,16 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // dgvStaticText
+            // 
+            this.dgvStaticText.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStaticText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStaticText.Location = new System.Drawing.Point(3, 38);
+            this.dgvStaticText.Name = "dgvStaticText";
+            this.dgvStaticText.Size = new System.Drawing.Size(455, 277);
+            this.dgvStaticText.TabIndex = 2;
+            this.dgvStaticText.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaticText_CellContentDoubleClick);
+            // 
             // StaticTextAdministrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,6 +115,7 @@
             this.Text = "StaticTextAdministrator";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaticText)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -119,9 +123,9 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private BaseDataGridView dgvStaticText;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
+        private BaseDGV dgvStaticText;
     }
 }

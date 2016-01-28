@@ -11,7 +11,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarBanner: BaseForm
+    public partial class AgregarModificarBanner : BaseForm, IAddModifyViewForm
     {
         private BannerDTO iOriginalBanner;
 
@@ -24,20 +24,25 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarBanner(BannerDTO pNewBanner)
+        void IAddModifyViewForm.Agregar(IDTO pNewBanner)
         {
             this.txtName.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
             this.Text = "Agregar nuevo Banner";
-            this.iOriginalBanner = pNewBanner;
+            this.iOriginalBanner = (BannerDTO)pNewBanner;
         }
 
-        public void ModificarBanner(BannerDTO pBanner)
+        void IAddModifyViewForm.Modificar(IDTO pBanner)
         {
-            this.txtName.Text = pBanner.Name;
-            this.txtDescription.Text = pBanner.Description;
+            this.iOriginalBanner = (BannerDTO)pBanner;
+            this.txtName.Text = iOriginalBanner.Name;
+            this.txtDescription.Text = iOriginalBanner.Description;
             this.Text = "Modificar Banner";
-            this.iOriginalBanner = pBanner;
+        }
+
+        DialogResult IAddModifyViewForm.ShowForm()
+        {
+            return this.ShowDialog();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)

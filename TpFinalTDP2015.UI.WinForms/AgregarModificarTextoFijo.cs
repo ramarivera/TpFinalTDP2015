@@ -11,35 +11,37 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarCampaña : BaseForm, IAddModifyViewForm
+    public partial class AgregarModificarTextoFijo : BaseForm, IAddModifyViewForm
     {
-        private CampaignDTO iOriginalCampaign;
+        private StaticTextDTO iOriginalStaticText;
 
-        public CampaignDTO Campaign
+        public StaticTextDTO StaticText
         {
-            get { return this.iOriginalCampaign; }
+            get { return this.iOriginalStaticText; }
         }
-        public AgregarModificarCampaña()
+
+        
+        public AgregarModificarTextoFijo()
         {
             InitializeComponent();
         }
 
-        void IAddModifyViewForm.Agregar(IDTO pNewCampaign)
+        void IAddModifyViewForm.Agregar(IDTO pNewStaticText)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
-            this.txtDuration.Text = String.Empty;
-            this.Text = "Agregar nueva Campaña";
-            this.iOriginalCampaign = (CampaignDTO)pNewCampaign;
+            this.txtText.Text = String.Empty;
+            this.Text = "Agregar nuevo Texto Fijo";
+            this.iOriginalStaticText = (StaticTextDTO)pNewStaticText;
         }
 
-        void IAddModifyViewForm.Modificar(IDTO pCampaign)
+        void IAddModifyViewForm.Modificar(IDTO pStaticText)
         {
-            this.iOriginalCampaign = (CampaignDTO)pCampaign;
-            this.txtTitle.Text = iOriginalCampaign.Name;
-            this.txtDescription.Text = iOriginalCampaign.Description;
-           // this.txtDuration.Text = pCampaña.Duration.ToString();
-            this.Text = "Modificar Campaña";
+            this.iOriginalStaticText = (StaticTextDTO)pStaticText;
+            this.txtTitle.Text = iOriginalStaticText.Title;
+            this.txtDescription.Text = iOriginalStaticText.Description;
+            this.txtText.Text = iOriginalStaticText.Text;
+            this.Text = "Modificar Texto Fijo";
         }
 
         DialogResult IAddModifyViewForm.ShowForm()
@@ -49,9 +51,9 @@ namespace TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iOriginalCampaign.Name = this.txtTitle.Text;
-            this.iOriginalCampaign.Description = this.txtDescription.Text;
-          //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
+            this.iOriginalStaticText.Title = this.txtTitle.Text;
+            this.iOriginalStaticText.Description = this.txtDescription.Text;
+            this.iOriginalStaticText.Text = this.txtText.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -72,11 +74,6 @@ namespace TpFinalTDP2015.UI
                 case DialogResult.No:
                     break;
             }
-        }
-
-        private void btnImagen_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

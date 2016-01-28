@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    class DayDTO
+    class DayDTO: IDTO
     {
     }
 }

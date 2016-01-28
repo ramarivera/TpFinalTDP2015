@@ -24,30 +24,24 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             campaign = new CampaignDTO();
             AgregarModificarCampaña ventana = new AgregarModificarCampaña();
-            ventana.AgregarCampaña(campaign);
-            DialogResult resultado = ventana.ShowDialog();
-            if (resultado == DialogResult.OK)
-            {
-                
-            }
+            this.dgvCampaign.Agregar(ventana,campaign);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in this.dgvCampaign.SelectedRows)
             {
-                CampaignDTO campaign = ((CampaignDTO)row.DataBoundItem);
-                DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar la campaña " + campaign.Name + "?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch (resultado)
-                {
-                    case DialogResult.Yes:
-                        //this.iFachada.Delete(persona);
-                        //this.iBinding.Remove(persona);
-                        break;
-                    case DialogResult.No:
-                        break;
-                }
+                campaign = ((CampaignDTO)row.DataBoundItem);
+                this.dgvCampaign.Eliminar(campaign);
             }
+        }
+
+        private void dgvCampaign_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvCampaign.CurrentRow;
+            this.campaign = (CampaignDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            AgregarModificarCampaña ventana = new AgregarModificarCampaña();
+            this.dgvCampaign.Modificar(ventana, campaign);
         }
     }
 }
