@@ -7,7 +7,7 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    public class RssSourceDTO
+    public class RssSourceDTO: IDTO
     {
         public string Title { get; set; }
         public string Description { get; set; }

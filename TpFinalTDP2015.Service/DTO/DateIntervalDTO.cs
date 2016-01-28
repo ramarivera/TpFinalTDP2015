@@ -7,7 +7,7 @@ using TpFinalTDP2015.Service.Enum;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    public class DateIntervalDTO
+    public class DateIntervalDTO: IDTO
     {
         public IList<Days> Days { get; set; }
         public DateTime ActiveUntil { get; set; }

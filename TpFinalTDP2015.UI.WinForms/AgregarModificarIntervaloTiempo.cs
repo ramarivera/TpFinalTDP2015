@@ -11,7 +11,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarIntervaloTiempo : Form
+    public partial class AgregarModificarIntervaloTiempo : BaseForm, IAddModifyViewForm
     {
         private TimeIntervalDTO iOriginalTimeInterval;
 
@@ -24,20 +24,26 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        public void AgregarIntervalo(TimeIntervalDTO pNewTimeInterval)
+        void IAddModifyViewForm.Agregar(IDTO pNewTimeInterval)
         {
             this.dtpStartTime.Value = DateTime.Now;
             this.dtpEndTime.Value = DateTime.Now;
             this.Text = "Agregar nuevo Intervalo";
-            this.iOriginalTimeInterval = pNewTimeInterval;
+            this.iOriginalTimeInterval = (TimeIntervalDTO)pNewTimeInterval;
         }
 
-        public void ModificarIntervalo(TimeIntervalDTO pTimeInterval)
+        void IAddModifyViewForm.Modificar(IDTO pTimeInterval)
         {
-            this.dtpStartTime.Value = DateTime.MinValue + pTimeInterval.StartTime;
-            this.dtpEndTime.Value = DateTime.MinValue + pTimeInterval.EndTime;
+            this.iOriginalTimeInterval = (TimeIntervalDTO)pTimeInterval;
+            this.dtpStartTime.Value = DateTime.MinValue + iOriginalTimeInterval.StartTime;
+            this.dtpEndTime.Value = DateTime.MinValue + iOriginalTimeInterval.EndTime;
             this.Text = "Modificar Intervalo";
-            this.iOriginalTimeInterval = pTimeInterval;
+            
+        }
+
+        DialogResult IAddModifyViewForm.ShowForm()
+        {
+            return this.ShowDialog();
         }
 
         private void btnAccept_Click(object sender, EventArgs e)

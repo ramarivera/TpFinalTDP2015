@@ -20,34 +20,29 @@ namespace TpFinalTDP2015.UI.AdminModePages
             InitializeComponent();
         }
 
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            banner = new BannerDTO();
+            this.banner = new BannerDTO();
             AgregarModificarBanner ventana = new AgregarModificarBanner();
-            ventana.AgregarBanner(banner);
-            DialogResult resultado = ventana.ShowDialog();
-            if (resultado == DialogResult.OK)
-            {
-
-            }
+            this.dgvBanner.Agregar(ventana, banner); 
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in this.dgvBanner.SelectedRows)
             {
-                BannerDTO banner = ((BannerDTO)row.DataBoundItem);
-                DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar el banner " + banner.Name + "?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch (resultado)
-                {
-                    case DialogResult.Yes:
-                        //this.iFachada.Delete(persona);
-                        //this.iBinding.Remove(persona);
-                        break;
-                    case DialogResult.No:
-                        break;
-                }
+                banner = ((BannerDTO)row.DataBoundItem);
+                this.dgvBanner.Eliminar(banner);
             }
+        }
+       
+        private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvBanner.CurrentRow;
+            this.banner = (BannerDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            AgregarModificarBanner ventana = new AgregarModificarBanner();
+            this.dgvBanner.Modificar(ventana, banner);
         }
     }
 }

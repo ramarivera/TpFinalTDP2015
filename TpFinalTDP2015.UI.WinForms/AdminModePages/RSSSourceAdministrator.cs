@@ -23,13 +23,8 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void btnAdd_Click(object sender, EventArgs e)
         {
             rssSource = new RssSourceDTO();
-            AgregarModificarTextoFijoRSS ventana = new AgregarModificarTextoFijoRSS();
-            ventana.AgregarFuenteRSS(rssSource);
-            DialogResult resultado = ventana.ShowDialog();
-            if (resultado == DialogResult.OK)
-            {
-
-            }
+            AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
+            this.dgvRSSSource.Agregar(ventana,rssSource);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -37,17 +32,16 @@ namespace TpFinalTDP2015.UI.AdminModePages
             foreach (DataGridViewRow row in this.dgvRSSSource.SelectedRows)
             {
                 RssSourceDTO rssSource = ((RssSourceDTO)row.DataBoundItem);
-                DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar la fuente RSS " + rssSource.Title + "?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch (resultado)
-                {
-                    case DialogResult.Yes:
-                        //this.iFachada.Delete(persona);
-                        //this.iBinding.Remove(persona);
-                        break;
-                    case DialogResult.No:
-                        break;
-                }
+                this.dgvRSSSource.Eliminar(rssSource);
             }
+        }
+
+        private void dgvRSSSource_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvRSSSource.CurrentRow;
+            this.rssSource = (RssSourceDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
+            this.dgvRSSSource.Modificar(ventana, rssSource);
         }
     }
 }

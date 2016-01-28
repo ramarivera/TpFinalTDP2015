@@ -26,12 +26,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             dateInterval = new DateIntervalDTO();
             AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
-            ventana.AgregarIntervalo(dateInterval);
-            DialogResult resultado = ventana.ShowDialog();
-            if (resultado == DialogResult.OK)
-            {
-
-            }
+            this.dgvDateInterval.Agregar(ventana,dateInterval);
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -39,16 +34,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
             {
                 DateIntervalDTO interval = ((DateIntervalDTO)row.DataBoundItem);
-                DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar el intervalo " + interval.Name + "?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch (resultado)
-                {
-                    case DialogResult.Yes:
-                        //this.iFachada.Delete(persona);
-                        //this.iBinding.Remove(persona);
-                        break;
-                    case DialogResult.No:
-                        break;
-                }
+                this.dgvDateInterval.Eliminar(interval);
             }
         }
 
@@ -56,12 +42,15 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             timeInterval = new TimeIntervalDTO();
             AgregarModificarIntervaloTiempo ventana = new AgregarModificarIntervaloTiempo();
-            ventana.AgregarIntervalo(timeInterval);
-            DialogResult resultado = ventana.ShowDialog();
-            if (resultado == DialogResult.OK)
-            {
-                //agregar a los intervalos de tiempo del intervalo de fecha
-            }
+            //this.dgvDateInterval.Agregar() falta
+        }
+
+        private void dgvDateInterval_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvDateInterval.CurrentRow;
+            this.dateInterval = (DateIntervalDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
+            this.dgvDateInterval.Modificar(ventana, dateInterval);
         }
     }
 }

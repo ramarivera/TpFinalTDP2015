@@ -77,6 +77,12 @@
     <Compile Include="AdminModePages\BannerAdministrator.Designer.cs">
       <DependentUpon>BannerAdministrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminModePages\BaseDGV.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AdminModePages\BaseDGV.Designer.cs">
+      <DependentUpon>BaseDGV.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminModePages\CampaignAdministrator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,12 @@
     <Compile Include="AgregarModificarCampaña.Designer.cs">
       <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarModificarFuenteRSS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarModificarFuenteRSS.Designer.cs">
+      <DependentUpon>AgregarModificarFuenteRSS.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarModificarIntervaloFecha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,11 +143,11 @@
     <Compile Include="AgregarModificarIntervaloTiempo.Designer.cs">
       <DependentUpon>AgregarModificarIntervaloTiempo.cs</DependentUpon>
     </Compile>
-    <Compile Include="AgregarModificarTextoFijoRSS.cs">
+    <Compile Include="AgregarModificarTextoFijo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarModificarTextoFijoRSS.Designer.cs">
-      <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>
+    <Compile Include="AgregarModificarTextoFijo.Designer.cs">
+      <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +161,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IAddModifyViewForm.cs" />
     <Compile Include="ModoAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +185,9 @@
     <EmbeddedResource Include="AdminModePages\BannerAdministrator.resx">
       <DependentUpon>BannerAdministrator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminModePages\BaseDGV.resx">
+      <DependentUpon>BaseDGV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminModePages\CampaignAdministrator.resx">
       <DependentUpon>CampaignAdministrator.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,14 +209,17 @@
     <EmbeddedResource Include="AgregarModificarCampaña.resx">
       <DependentUpon>AgregarModificarCampaña.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarModificarFuenteRSS.resx">
+      <DependentUpon>AgregarModificarFuenteRSS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarIntervaloFecha.resx">
       <DependentUpon>AgregarModificarIntervaloFecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarIntervaloTiempo.resx">
       <DependentUpon>AgregarModificarIntervaloTiempo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgregarModificarTextoFijoRSS.resx">
-      <DependentUpon>AgregarModificarTextoFijoRSS.cs</DependentUpon>
+    <EmbeddedResource Include="AgregarModificarTextoFijo.resx">
+      <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminModePages\BaseDataGridView.resx">
       <DependentUpon>BaseDataGridView.cs</DependentUpon>

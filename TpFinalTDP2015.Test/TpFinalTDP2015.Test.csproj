@@ -79,6 +79,7 @@
     <Compile Include="IntervaloAplicacionTest.cs" />
     <Compile Include="Persistence.EF\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AutoMapperTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    public class BannerDTO
+    public class BannerDTO: IDTO
     {
         public string Name { get; set; }
         public string Description { get; set; }

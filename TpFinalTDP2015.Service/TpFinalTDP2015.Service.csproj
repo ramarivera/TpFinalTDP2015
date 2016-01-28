@@ -90,6 +90,7 @@
     <Compile Include="DTO\CampaignDTO.cs" />
     <Compile Include="DTO\DateIntervalDTO.cs" />
     <Compile Include="DTO\DayDTO.cs" />
+    <Compile Include="DTO\IDTO.cs" />
     <Compile Include="DTO\RssItemDTO.cs" />
     <Compile Include="DTO\RssSourceDTO.cs" />
     <Compile Include="DTO\StaticTextDTO.cs" />
