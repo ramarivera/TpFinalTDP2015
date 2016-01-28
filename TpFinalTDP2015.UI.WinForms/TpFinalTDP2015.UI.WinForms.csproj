@@ -220,9 +220,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -233,10 +230,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Unity.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TpFinalTDP2015.Service\TpFinalTDP2015.Service.csproj">
@@ -246,9 +239,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y "$(ProjectDir)""$(OutDir)""*.config" "$(SolutionDir)""Release"\
-xcopy /y "$(ProjectDir)""$(OutDir)""*.dll" "$(SolutionDir)""Release"\
-xcopy /y "$(ProjectDir)""$(OutDir)""*.exe" "$(SolutionDir)""Release"\</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)PostBuild.bat" "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

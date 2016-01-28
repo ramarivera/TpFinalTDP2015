@@ -106,7 +106,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
+    <None Include="Unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">
@@ -120,8 +126,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y "$(ProjectDir)""$(OutDir)""*.config" "$(SolutionDir)""Release"\
-xcopy /y "$(ProjectDir)""$(OutDir)""*.dll" "$(SolutionDir)""Release"\</PostBuildEvent>
+    <PostBuildEvent>"$(SolutionDir)PostBuild.bat" "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
