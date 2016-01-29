@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="TpFinalTDP2015.Persistence.NHibernate"
+                   namespace="TpFinalTDP2015.Persistence.NHibernate">
+
+  <class name="Day">
+    <id name="Id">
+      <generator class="int" />
+    </id>
+    <property name="CreationDate" />
+    <property name="LastModified" />
+    <property name="NameOfDay" />
+    <property name="Value" />
+  </class>
+
+</hibernate-mapping>
