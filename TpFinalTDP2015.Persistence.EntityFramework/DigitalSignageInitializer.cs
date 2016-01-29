@@ -21,7 +21,6 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             SeedDays(pContext);
             SeedTimeIntervals(pContext);
             SeedDateIntervals(pContext);
-            pContext.SaveChanges();
         }
 
         private void SeedTimeIntervals(DigitalSignageContext pContext)
@@ -32,19 +31,103 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             {
                 TimeInterval lTimeInterval = new TimeInterval()
                 {
-                    Start = new TimeSpan(i, 0, 0),
-                    End = new TimeSpan(i + 1, 0, 0)
+                    End = new TimeSpan(i + 1, 0, 0),
+                    Start = new TimeSpan(i, 0, 0)
+                };
+
+                lList.Add(lTimeInterval);
+            }
+
+            for (int i = 1; i < 23; i += 2)
+            {
+                TimeInterval lTimeInterval = new TimeInterval()
+                {
+                    End = new TimeSpan(i + 1, 0, 0),
+                    Start = new TimeSpan(i, 0, 0)
                 };
 
                 lList.Add(lTimeInterval);
             }
 
             pContext.Set<TimeInterval>().AddRange(lList);
+            pContext.SaveChanges();
         }
 
         private void SeedDateIntervals(DigitalSignageContext pContext)
         {
-            //throw new NotImplementedException();
+            IList<Day> lDayList = pContext.Set<Day>().ToList<Day>();
+
+            DateInterval lDateInterval1 = new DateInterval()
+            {
+                Name = "Lunes a Viernes, 08am a 12am",
+                ActiveUntil = new DateTime(2016, 03, 01),
+                ActiveFrom = new DateTime(2016,02,01),
+                ActiveDays = new List<Day>()
+                {
+                    lDayList[1],
+                    lDayList[2],
+                    lDayList[3],
+                    lDayList[4],
+                    lDayList[5],
+                },
+                ActiveHours = new List<TimeInterval>()
+                {
+                    new TimeInterval()
+                    {
+                        End = new TimeSpan(12, 0, 0),
+                        Start = new TimeSpan(08, 0, 0)
+                    },
+                },
+            };
+
+
+            DateInterval lDateInterval2 = new DateInterval()
+            {
+                Name = "Sabados y Domingos, 21-23",
+                ActiveUntil = new DateTime(2016, 03, 01),
+                ActiveFrom = new DateTime(2016, 02, 01),
+                ActiveDays = new List<Day>()
+                {
+                    lDayList[0],
+                    lDayList[6],
+                },
+                ActiveHours = new List<TimeInterval>()
+                {
+                    new TimeInterval()
+                    {
+                        End = new TimeSpan(23, 0, 0),
+                        Start = new TimeSpan(21, 0, 0)
+                    },
+                },
+            };
+
+
+            DateInterval lDateInterval3 = new DateInterval()
+            {
+                Name = "Miercoles, 12-13 y 15-16",
+                ActiveUntil = new DateTime(2016, 03, 01),
+                ActiveFrom = new DateTime(2016, 02, 01),
+                ActiveDays = new List<Day>()
+                {
+                    lDayList[3],
+                },
+                ActiveHours = new List<TimeInterval>()
+                {
+                    new TimeInterval()
+                    {
+                        End = new TimeSpan(13, 0, 0),
+                        Start = new TimeSpan(12, 0, 0)
+                    },
+                    new TimeInterval()
+                    {
+                        End = new TimeSpan(16, 0, 0),
+                        Start = new TimeSpan(15, 0, 0)
+                    },
+                },
+            };
+
+            pContext.Set<DateInterval>().AddRange(new[] { lDateInterval1, lDateInterval1, lDateInterval1 });
+            pContext.SaveChanges();
         }
 
         private void SeedDays(DigitalSignageContext pContext)
@@ -69,6 +152,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 };
 
             pContext.Set<Day>().AddRange(lList);
+            pContext.SaveChanges();
         }
+
     }
 }
