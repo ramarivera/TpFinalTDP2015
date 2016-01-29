@@ -111,3 +111,6 @@
 01.2016.-18.09.17   "C:\Users\Mart¡n Arr£a\Desktop\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIàN\Mart¡n\TpFinalTDP2015\TpFinalTDP2015.Persistence.NHibernate\bin\Debug\TpFinalTDP2015.Persistence.NHibernate.dll" 
 01.2016.-18.09.17   "C:\Users\Mart¡n Arr£a\Desktop\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIàN\Mart¡n\TpFinalTDP2015\TpFinalTDP2015.Service\bin\Debug\TpFinalTDP2015.Service.dll" 
 01.2016.-18.09.22   "C:\Users\Mart¡n Arr£a\Desktop\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIàN\Mart¡n\TpFinalTDP2015\TpFinalTDP2015.UI.WinForms\bin\Debug\TpFinalTDP2015.UI.exe" 
+29.01.2016-18.43.23   "D:\Dropbox\UTN\FRCU\TALLER DE PROGRAMACIÃ“N\Trabajo PrÃ¡ctico Final\TpFinalTDP2015\TpFinalTDP2015.Service\bin\Debug\TpFinalTDP2015.Service.dll" 
+29.01.2016-18.43.23   "D:\Dropbox\UTN\FRCU\TALLER DE PROGRAMACIÃ“N\Trabajo PrÃ¡ctico Final\TpFinalTDP2015\TpFinalTDP2015.Persistence.EntityFramework\bin\Debug\TpFinalTDP2015.Persistence.EntityFramework.dll" 
+29.01.2016-18.43.26   "D:\Dropbox\UTN\FRCU\TALLER DE PROGRAMACIÃ“N\Trabajo PrÃ¡ctico Final\TpFinalTDP2015\TpFinalTDP2015.UI.WinForms\bin\Debug\TpFinalTDP2015.UI.exe" 
