@@ -33,8 +33,8 @@ For %%A in (%DLL_NAME%) do (
 rem "$(SolutionDir)PostBuild.bat" "$(TargetPath)"
 
 echo on
-xcopy /y %DLL_NAME% %DEBUG_PATH%
-xcopy /y %DLL_NAME% %RELEASE_PATH%
+rem xcopy /y %DLL_NAME% %DEBUG_PATH%
+rem xcopy /y %DLL_NAME% %RELEASE_PATH%
 
 xcopy /y "%Folder%*.dll" %DEBUG_PATH%
 xcopy /y "%Folder%*.exe" %DEBUG_PATH%

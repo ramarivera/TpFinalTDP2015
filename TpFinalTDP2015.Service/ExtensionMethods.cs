@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service
 {
-    public static class ExtensionMethods
+ /*   public static class ExtensionMethods
     {
         public static object CloneObject(this object objSource)
         {
@@ -46,5 +46,5 @@ namespace TpFinalTDP2015.Service
             }
             return objTarget;
         }
-    }
+    }*/
 }
