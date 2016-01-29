@@ -16,7 +16,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public BaseDGV()
         {
             InitializeComponent();
-            this.dgv.DataSource = iSource;
         }
 
         public BaseDGV(IContainer container)
@@ -32,8 +31,9 @@ namespace TpFinalTDP2015.UI.AdminModePages
             if (resultado == DialogResult.OK)
             {
                 this.iSource.Add(pDTO);
-                //this.dgv.Rows[this.dgv.RowCount].Tag = pDTO;
-                this.dgv.DataSource = iSource;
+                this.DataSource = iSource;
+                this.Rows[this.RowCount-2].Tag = pDTO;
+                //falta guardarlo en la base de datos
             }
         }
 
@@ -54,7 +54,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             {
                 case DialogResult.Yes:
                     //this.iFachada.Delete(persona);
-                    //this.iBinding.Remove(persona);
+                    this.iSource.Remove(pDTO);
                     break;
                 case DialogResult.No:
                     break;

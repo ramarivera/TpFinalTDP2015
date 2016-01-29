@@ -84,7 +84,6 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // btnDelete
             // 
@@ -97,7 +96,6 @@
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // dgvBanner
             // 
