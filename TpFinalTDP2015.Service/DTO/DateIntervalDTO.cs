@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Service.Enum;
+using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.DTO
 {
     public class DateIntervalDTO: IDTO
     {
-        public IList<Days> Days { get; set; }
-        public DateTime ActiveUntil { get; set; }
-        //public TimeSpan EndTime { get; set; }
         public string Name { get; set; }
+        public DateTime ActiveUntil { get; set; }
         public DateTime ActiveFrom { get; set; }
-        //public TimeSpan StartTime { get; set; }
+        public IList<Days> Days { get; set; }
+        public IList<TimeInterval> ActiveHours { get; set; }
     }
 }

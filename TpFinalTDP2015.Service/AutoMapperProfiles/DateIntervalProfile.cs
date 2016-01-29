@@ -17,9 +17,8 @@ namespace TpFinalTDP2015.Service.AutoMapperProfiles
               .ForMember(d => d.Name, o => o.MapFrom(c => c.Name))
               .ForMember(d => d.ActiveFrom, o => o.MapFrom(c => c.ActiveFrom))
               .ForMember(d => d.ActiveUntil, o => o.MapFrom(c => c.ActiveUntil))
-              //.ForMember(d => d.StartTime, o => o.MapFrom(c => c.StartTime))
-              //.ForMember(d => d.EndTime, o => o.MapFrom(c => c.EndTime))
-              .ForMember(d => d.Days, o => o.MapFrom(C => C.ActiveDays));
+              .ForMember(d => d.Days, o => o.MapFrom(C => C.ActiveDays))
+              .ForMember(d => d.ActiveHours, o => o.MapFrom(C => C.ActiveHours));
         }
     }
 }//TODO terminar profile y actualizar DTO
