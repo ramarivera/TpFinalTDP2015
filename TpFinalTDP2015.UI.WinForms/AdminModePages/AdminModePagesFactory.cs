@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,54 +17,30 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private AdminModePagesFactory()
         {
-            try
+            iAdminModePages = new Dictionary<string, AdminModePage>();
+
+            iNameList = new List<String>();
+
+            var types = AppDomain
+                    .CurrentDomain
+                    .GetAssemblies()
+                    .SelectMany(s => s.GetTypes());
+
+            foreach (Type t in types)
             {
-                iAdminModePages = new Dictionary<string, AdminModePage>();
+                System.Attribute[] attrs = System.Attribute.GetCustomAttributes(t);
 
-                iNameList = new List<String>();
-
-                var types = AppDomain
-                        .CurrentDomain
-                        .GetAssemblies()
-                        .SelectMany(s => s.GetTypes());
-
-                foreach (Type t in types)
+                foreach (System.Attribute attr in attrs)
                 {
-                    System.Attribute[] attrs = System.Attribute.GetCustomAttributes(t);
-
-                    foreach (System.Attribute attr in attrs)
+                    if (attr is AdminModePageInfo)
                     {
-                        if (attr is AdminModePageInfo)
-                        {
-                            string lName = ((AdminModePageInfo)attr).Name;
-                            iNameList.Add(lName);
-                            AdminModePage lPage = (AdminModePage)Activator.CreateInstance(t);
-                            iAdminModePages.Add(lName, lPage.GetAsPage());
-                        }
+                        string lName = ((AdminModePageInfo)attr).Name;
+                        iNameList.Add(lName);
+                        AdminModePage lPage = (AdminModePage) Activator.CreateInstance(t);
+                        iAdminModePages.Add(lName, lPage.GetAsPage());
                     }
                 }
             }
-            catch (ReflectionTypeLoadException ex)
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (Exception exSub in ex.LoaderExceptions)
-                {
-                    sb.AppendLine(exSub.Message);
-                    FileNotFoundException exFileNotFound = exSub as FileNotFoundException;
-                    if (exFileNotFound != null)
-                    {
-                        if (!string.IsNullOrEmpty(exFileNotFound.FusionLog))
-                        {
-                            sb.AppendLine("Fusion Log:");
-                            sb.AppendLine(exFileNotFound.FusionLog);
-                        }
-                    }
-                    sb.AppendLine();
-                }
-                string errorMessage = sb.ToString();
-                //Display or log the error based on your application.
-            }
-            
         }
 
         public static AdminModePagesFactory Instance

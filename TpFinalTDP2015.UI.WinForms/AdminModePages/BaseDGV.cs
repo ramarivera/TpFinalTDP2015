@@ -22,6 +22,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public BaseDGV(IContainer container)
         {
             container.Add(this);
+
             InitializeComponent();
         }
 

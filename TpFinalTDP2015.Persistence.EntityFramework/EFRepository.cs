@@ -23,7 +23,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         void IRepository<TEntity>.Add(TEntity pEntityToAdd)
         {
-            this.iDbSet.Add(pEntityToAdd);
+            this.iContext.Set<TEntity>().Add(pEntityToAdd);
         }
 
         void IRepository<TEntity>.Delete(object pId)

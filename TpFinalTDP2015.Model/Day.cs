@@ -36,7 +36,6 @@ namespace TpFinalTDP2015.Model
             {
                 return this.iNameOfDay;
             }
-            set {}
         }
 
 

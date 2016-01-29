@@ -35,21 +35,12 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             cLogger.Info("Conexion establecida: ConnectionString" + this.Database.Connection.ConnectionString);
         }
 
-        public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
-        {
-            Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
-
-            // cLogger.InfoFormat("Deberia estarme conectando usando \"{0}\"", pConnectionString);
-            // cLogger.InfoFormat("Conexion establecida: {0}", this.Database.Connection.ConnectionString);
-            cLogger.InfoFormat("Conexion establecida a: {0}", pConnectionString);
-        }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
             EFConfiguration.Configure(modelBuilder);
 
-         //   base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
 
