@@ -47,6 +47,11 @@
             // 
             // BaseDGV
             // 
+            this.AllowUserToAddRows = false;
+            this.AllowUserToOrderColumns = true;
+            this.AllowUserToResizeRows = false;
+            this.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

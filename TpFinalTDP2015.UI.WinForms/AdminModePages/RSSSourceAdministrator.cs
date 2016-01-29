@@ -18,6 +18,8 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public RSSSourceAdministrator(): base()
         {
             InitializeComponent();
+            //TODO obtener lo que está en la base de datos como una lista mediante fachada y guardar en iSource
+            this.dgvRSSSource.DataSource = this.dgvRSSSource.iSource;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -25,21 +27,24 @@ namespace TpFinalTDP2015.UI.AdminModePages
             rssSource = new RssSourceDTO();
             AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
             this.dgvRSSSource.Agregar(ventana,rssSource);
+            // TODO guardar en base de datos
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            //TODO verificar lista no vacia
+            List<IDTO> fuentesAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvRSSSource.SelectedRows)
             {
-                RssSourceDTO rssSource = ((RssSourceDTO)row.DataBoundItem);
-                this.dgvRSSSource.Eliminar(rssSource);
+                fuentesAEliminar.Add((RssSourceDTO)row.DataBoundItem);
             }
+            this.dgvRSSSource.Eliminar(fuentesAEliminar);
         }
 
         private void dgvRSSSource_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvRSSSource.CurrentRow;
-            this.rssSource = (RssSourceDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            this.rssSource = (RssSourceDTO)row.Tag;
             AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
             this.dgvRSSSource.Modificar(ventana, rssSource);
         }

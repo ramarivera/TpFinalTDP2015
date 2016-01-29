@@ -31,9 +31,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             if (resultado == DialogResult.OK)
             {
                 this.iSource.Add(pDTO);
-                this.DataSource = iSource;
-                this.Rows[this.RowCount-2].Tag = pDTO;
-                //falta guardarlo en la base de datos
+                this.Rows[this.RowCount-1].Tag = pDTO;
             }
         }
 
@@ -43,18 +41,26 @@ namespace TpFinalTDP2015.UI.AdminModePages
             DialogResult resultado = pForm.ShowForm();
             if(resultado == DialogResult.OK)
             {
-                //fachada
+                //TODO fachada en cada administrador
             }
         }
 
-        public void Eliminar(IDTO pDTO)
+        public void Eliminar(List<IDTO> pDTOs)
         {
-            DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar este elemento?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            string cadena = "este elemento";
+            if (pDTOs.Count > 1)
+            {
+                cadena = "estos elementos";
+            }
+            DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar "+cadena+"?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             switch (resultado)
             {
                 case DialogResult.Yes:
-                    //this.iFachada.Delete(persona);
-                    this.iSource.Remove(pDTO);
+                    //TODO elimnar de la db en fachada
+                    foreach (IDTO pDTO in pDTOs)
+                    {
+                        this.iSource.Remove(pDTO);
+                    }
                     break;
                 case DialogResult.No:
                     break;
