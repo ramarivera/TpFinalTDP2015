@@ -10,22 +10,44 @@ using TpFinalTDP2015.Model.Enum;
 
 namespace TpFinalTDP2015.Persistence.EntityFramework
 {
-    class DigitalSignageInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<DigitalSignageContext>
+    class DigitalSignageInitializer : System.Data.Entity.DropCreateDatabaseAlways<DigitalSignageContext>
     {
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
 
-        DigitalSignageContext iContext;
 
         protected override void Seed(DigitalSignageContext pContext)
         {
-            this.iContext = pContext;
             cLogger.Debug("Corriendo metodo Seed, super clase: " + this.GetType().BaseType.Name);
-            SeedDays();
-
+            SeedDays(pContext);
+            SeedTimeIntervals(pContext);
+            SeedDateIntervals(pContext);
             pContext.SaveChanges();
         }
 
-        private void SeedDays()
+        private void SeedTimeIntervals(DigitalSignageContext pContext)
+        {
+            IList<TimeInterval> lList = new List<TimeInterval>();
+
+            for (int i = 0; i < 20; i+=2)
+            {
+                TimeInterval lTimeInterval = new TimeInterval()
+                {
+                    Start = new TimeSpan(i, 0, 0),
+                    End = new TimeSpan(i + 1, 0, 0)
+                };
+
+                lList.Add(lTimeInterval);
+            }
+
+            pContext.Set<TimeInterval>().AddRange(lList);
+        }
+
+        private void SeedDateIntervals(DigitalSignageContext pContext)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void SeedDays(DigitalSignageContext pContext)
         {
             Day lDay1 = new Day() { Id = 01, Value = Model.Enum.Days.Domingo };
             Day lDay2 = new Day() { Id = 02, Value = Model.Enum.Days.Lunes };
@@ -46,7 +68,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                     lDay7
                 };
 
-            this.iContext.Set<Day>().AddRange(lList);
+            pContext.Set<Day>().AddRange(lList);
         }
     }
 }
