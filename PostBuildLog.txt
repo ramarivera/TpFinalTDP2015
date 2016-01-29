@@ -76,3 +76,5 @@
 01.2016.-16.36.21   "C:\Users\Mart¡n Arr£a\Desktop\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIàN\Mart¡n\TpFinalTDP2015\TpFinalTDP2015.UI.WinForms\bin\Debug\TpFinalTDP2015.UI.exe" 
 01.2016.-16.45.30   "C:\Users\Mart¡n Arr£a\Desktop\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIàN\Mart¡n\TpFinalTDP2015\TpFinalTDP2015.Service\bin\Debug\TpFinalTDP2015.Service.dll" 
 01.2016.-16.45.34   "C:\Users\Mart¡n Arr£a\Desktop\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIàN\Mart¡n\TpFinalTDP2015\TpFinalTDP2015.UI.WinForms\bin\Debug\TpFinalTDP2015.UI.exe" 
+29.01.2016-18.23.54   "D:\Dropbox\UTN\FRCU\TALLER DE PROGRAMACIÃ“N\Trabajo PrÃ¡ctico Final\TpFinalTDP2015\TpFinalTDP2015.Persistence.EntityFramework\bin\Debug\TpFinalTDP2015.Persistence.EntityFramework.dll" 
+29.01.2016-18.23.54   "D:\Dropbox\UTN\FRCU\TALLER DE PROGRAMACIÃ“N\Trabajo PrÃ¡ctico Final\TpFinalTDP2015\TpFinalTDP2015.Service\bin\Debug\TpFinalTDP2015.Service.dll" 

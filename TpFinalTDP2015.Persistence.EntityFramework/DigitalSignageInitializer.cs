@@ -55,7 +55,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedDateIntervals(DigitalSignageContext pContext)
         {
-            IList<Day> lDayList = pContext.Set<Day>().ToList<Day>();
+            IList<Day> lDayList = pContext.Set<Day>().AsNoTracking().ToList<Day>();
 
             DateInterval lDateInterval1 = new DateInterval()
             {
