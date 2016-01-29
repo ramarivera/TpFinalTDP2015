@@ -10,17 +10,17 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service
 {
-    public class Facade
+    public class Controller //: IController
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<Facade>();
+        private static readonly ILog cLogger = LogManager.GetLogger<Controller>();
 
         private IUnitOfWork iUoW;
 
 
-        public Facade()
+        public Controller()
         {
             cLogger.Info("Fachada instanciada");
 

@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    public class RssItemDTO: IDTO
+    public class RssItemDTO: IBannerItemDTO
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public string URL { get; set; }
         public DateTime? PublicationDate { get; set; }
 
+        string IBannerItemDTO.GetText()
+        {
+            throw new NotImplementedException();
+        }
+
+        string IBannerItemDTO.GetTitle()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
