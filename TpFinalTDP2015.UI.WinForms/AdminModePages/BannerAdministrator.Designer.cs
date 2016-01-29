@@ -36,7 +36,7 @@
             this.dgvBanner = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-//            ((System.ComponentModel.ISupportInitialize)(this.dgvBanner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBanner)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -84,6 +84,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // btnDelete
             // 
@@ -96,6 +97,7 @@
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // dgvBanner
             // 
@@ -103,6 +105,7 @@
             this.dgvBanner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBanner.Location = new System.Drawing.Point(3, 38);
             this.dgvBanner.Name = "dgvBanner";
+            this.dgvBanner.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBanner.Size = new System.Drawing.Size(435, 279);
             this.dgvBanner.TabIndex = 2;
             this.dgvBanner.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBanner_CellContentDoubleClick);

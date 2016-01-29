@@ -15,9 +15,12 @@ namespace TpFinalTDP2015.UI.AdminModePages
     public partial class BannerAdministrator : AdminModePage
     {
         BannerDTO banner;
+
         public BannerAdministrator(): base()
         {
             InitializeComponent();
+            this.banner = new BannerDTO { Name = "Mañana", Description = "banner de la mañana" };
+            this.dgvBanner.iSource.Add(this.banner);
         }
 
 
@@ -43,6 +46,18 @@ namespace TpFinalTDP2015.UI.AdminModePages
             this.banner = (BannerDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Modificar(ventana, banner);
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+            this.banner = new BannerDTO();
+            AgregarModificarBanner ventana = new AgregarModificarBanner();
+            this.dgvBanner.Agregar(ventana, banner);
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -176,12 +176,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AdminModePages\BaseDataGridView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AdminModePages\BaseDataGridView.Designer.cs">
-      <DependentUpon>BaseDataGridView.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AdminModePages\BannerAdministrator.resx">
       <DependentUpon>BannerAdministrator.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,9 +214,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarTextoFijo.resx">
       <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminModePages\BaseDataGridView.resx">
-      <DependentUpon>BaseDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModoAdministrador.resx">
       <DependentUpon>ModoAdministrador.cs</DependentUpon>

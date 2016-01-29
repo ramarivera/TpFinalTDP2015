@@ -12,7 +12,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
 {
     public partial class BaseDGV : DataGridView
     {
-        BindingSource iSource = new BindingSource();
+        public BindingSource iSource = new BindingSource();
         public BaseDGV()
         {
             InitializeComponent();
@@ -32,7 +32,9 @@ namespace TpFinalTDP2015.UI.AdminModePages
             DialogResult resultado = pForm.ShowForm();
             if (resultado == DialogResult.OK)
             {
-                //turno de la fachada
+                this.iSource.Add(pDTO);
+                //this.dgv.Rows[this.dgv.RowCount].Tag = pDTO;
+                this.dgv.DataSource = iSource;
             }
         }
 
