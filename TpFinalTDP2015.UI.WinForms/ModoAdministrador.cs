@@ -17,7 +17,7 @@ namespace TpFinalTDP2015.UI
         public ModoAdministrador()
         {
             InitializeComponent();
-            Controller lFa = new Controller();
+            Facade lFa = new Facade();
             this.Load += ModoAdministrador_Load;
         }
 

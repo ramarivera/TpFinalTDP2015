@@ -90,7 +90,6 @@
     <Compile Include="DTO\CampaignDTO.cs" />
     <Compile Include="DTO\DateIntervalDTO.cs" />
     <Compile Include="DTO\DayDTO.cs" />
-    <Compile Include="DTO\IBannerItemDTO.cs" />
     <Compile Include="DTO\IDTO.cs" />
     <Compile Include="DTO\RssItemDTO.cs" />
     <Compile Include="DTO\RssSourceDTO.cs" />
@@ -101,8 +100,7 @@
     <Compile Include="Enum\EnumConversion.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Controller.cs" />
-    <Compile Include="IController.cs" />
+    <Compile Include="Facade.cs" />
     <Compile Include="IoCUnityContainerLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AutoMapperProfiles\RssSourceProfile.cs" />

@@ -19,25 +19,29 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public BannerAdministrator(): base()
         {
             InitializeComponent();
+            //TODO obtener lo que está en la base de datos como una lista mediante fachada
             this.banner = new BannerDTO { Name = "Mañana", Description = "banner de la mañana" };
             this.dgvBanner.iSource.Add(this.banner);
+            this.dgvBanner.DataSource = this.dgvBanner.iSource;
+            this.dgvBanner.Rows[this.dgvBanner.RowCount-2].Tag = this.banner;
+            this.btnAdd.Click += BtnAdd_Click;
+            this.btnDelete.Click += BtnDelete_Click;
         }
 
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            this.banner = new BannerDTO();
-            AgregarModificarBanner ventana = new AgregarModificarBanner();
-            this.dgvBanner.Agregar(ventana, banner); 
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in this.dgvBanner.SelectedRows)
             {
                 banner = ((BannerDTO)row.DataBoundItem);
                 this.dgvBanner.Eliminar(banner);
             }
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            this.banner = new BannerDTO();
+            AgregarModificarBanner ventana = new AgregarModificarBanner();
+            this.dgvBanner.Agregar(ventana, banner);
         }
        
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -48,16 +52,5 @@ namespace TpFinalTDP2015.UI.AdminModePages
             this.dgvBanner.Modificar(ventana, banner);
         }
 
-        private void btnAdd_Click_1(object sender, EventArgs e)
-        {
-            this.banner = new BannerDTO();
-            AgregarModificarBanner ventana = new AgregarModificarBanner();
-            this.dgvBanner.Agregar(ventana, banner);
-        }
-
-        private void btnDelete_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

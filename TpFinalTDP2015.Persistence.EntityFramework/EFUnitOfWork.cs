@@ -119,7 +119,6 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             }
             catch
             {
-                (this as IUnitOfWork).Rollback();
                 //TODO convertir excepcion de EF a excepcion general de persistencia y arrojarla
                 throw;
             }
