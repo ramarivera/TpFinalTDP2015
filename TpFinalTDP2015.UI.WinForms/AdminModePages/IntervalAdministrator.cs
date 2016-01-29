@@ -20,6 +20,8 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public IntervalAdministrator(): base()
         {
             InitializeComponent();
+            //TODO obtener lo que está en la base de datos como una lista mediante fachada y guardar en iSource
+            this.dgvDateInterval.DataSource = this.dgvDateInterval.iSource;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -27,15 +29,18 @@ namespace TpFinalTDP2015.UI.AdminModePages
             dateInterval = new DateIntervalDTO();
             AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
             this.dgvDateInterval.Agregar(ventana,dateInterval);
+            // TODO guardar en base de datos
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            //TODO verificar lista no vacia
+            List<IDTO> intervalosAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
             {
-                DateIntervalDTO interval = ((DateIntervalDTO)row.DataBoundItem);
-                this.dgvDateInterval.Eliminar(interval);
+                intervalosAEliminar.Add((DateIntervalDTO)row.DataBoundItem);
             }
+            this.dgvDateInterval.Eliminar(intervalosAEliminar);
         }
 
         private void btnAddTimeInterval_Click(object sender, EventArgs e)
@@ -43,12 +48,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
             timeInterval = new TimeIntervalDTO();
             AgregarModificarIntervaloTiempo ventana = new AgregarModificarIntervaloTiempo();
             //this.dgvDateInterval.Agregar() falta
+            //TODO revisar esto
         }
 
         private void dgvDateInterval_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = (DateIntervalDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            this.dateInterval = (DateIntervalDTO)row.Tag;
             AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
             this.dgvDateInterval.Modificar(ventana, dateInterval);
         }

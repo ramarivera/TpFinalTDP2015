@@ -23,18 +23,20 @@ namespace TpFinalTDP2015.UI.AdminModePages
             this.banner = new BannerDTO { Name = "Mañana", Description = "banner de la mañana" };
             this.dgvBanner.iSource.Add(this.banner);
             this.dgvBanner.DataSource = this.dgvBanner.iSource;
-            this.dgvBanner.Rows[this.dgvBanner.RowCount-2].Tag = this.banner;
+            this.dgvBanner.Rows[this.dgvBanner.RowCount-1].Tag = this.banner;
             this.btnAdd.Click += BtnAdd_Click;
             this.btnDelete.Click += BtnDelete_Click;
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
+            //TODO verificar lista no vacia
+            List<IDTO> bannersAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvBanner.SelectedRows)
             {
-                banner = ((BannerDTO)row.DataBoundItem);
-                this.dgvBanner.Eliminar(banner);
+                bannersAEliminar.Add((BannerDTO)row.DataBoundItem);
             }
+            this.dgvBanner.Eliminar(bannersAEliminar);
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -42,12 +44,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
             this.banner = new BannerDTO();
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Agregar(ventana, banner);
+            //TODO falta guardarlo en la base de datos
         }
-       
+
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvBanner.CurrentRow;
-            this.banner = (BannerDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            this.banner = (BannerDTO)row.Tag;
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Modificar(ventana, banner);
         }
