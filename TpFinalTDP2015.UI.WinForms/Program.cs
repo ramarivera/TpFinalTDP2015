@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,8 @@ namespace TpFinalTDP2015.UI
         [STAThread]
         static void Main()
         {
+           
+            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"App.config");
             AutoMapperConfigurations.Configure();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

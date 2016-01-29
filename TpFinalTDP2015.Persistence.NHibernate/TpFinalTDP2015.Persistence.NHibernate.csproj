@@ -84,6 +84,9 @@
       <Name>TpFinalTDP2015.Persistence.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Day.hbm.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)PostBuild.bat" "$(TargetPath)"</PostBuildEvent>

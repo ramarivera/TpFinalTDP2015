@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -19,7 +20,15 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         public EFUnitOfWork()
         {
-            this.iContext = new DigitalSignageContext();
+           /* string s1 = "name = \"DigitalSignageContext\"";
+            string s2 = "connectionString = \"Server=(localdb)\\v11.0;Integrated Security=true;AttachDbFileName=DigitalSignage.mdf\"";
+            string s3 = "providerName = \"System.Data.SqlClient\"";
+            string lCon = s1 + s2 + s3;*/
+            ConnectionStringSettings con = ConfigurationManager.ConnectionStrings["DigitalSignageContextSQLEXPRESS"];
+            string lCon = con.ConnectionString;
+            this.iContext = new DigitalSignageContext(lCon);
+            this.iRepositories = new Dictionary<Type, Object>();
+            //TODO levantar el dato de un archivo de configuracion
         }
 
         #region IDisposable
@@ -40,12 +49,16 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 {
                     //someone want the deterministic release of all resources
                     //Let us release all the managed resources
-                    foreach (var key in this.iRepositories.Keys.ToList<Type>())
+                    if (this.iRepositories != null)
                     {
-                        this.iRepositories[key] = null;
+                        foreach (var key in this.iRepositories.Keys.ToList<Type>())
+                        {
+                            this.iRepositories[key] = null;
+                        }
+                        this.iRepositories.Clear();
+                        this.iRepositories = null;
                     }
-                    this.iRepositories.Clear();
-                    this.iRepositories = null;
+
                 }
                 else
                 {
