@@ -45,9 +45,15 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void btnAddTimeInterval_Click(object sender, EventArgs e)
         {
-            timeInterval = new TimeIntervalDTO();
+            DataGridViewRow row = dgvDateInterval.CurrentRow;
+            this.dateInterval = (DateIntervalDTO)row.Tag;
+            this.timeInterval = new TimeIntervalDTO();
             AgregarModificarIntervaloTiempo ventana = new AgregarModificarIntervaloTiempo();
-            //this.dgvDateInterval.Agregar() falta
+            DialogResult resultado =ventana.ShowDialog();
+            if(resultado == DialogResult.OK)
+            {
+                //this.dateInterval.ActiveHours.Add
+            }
             //TODO revisar esto
         }
 
