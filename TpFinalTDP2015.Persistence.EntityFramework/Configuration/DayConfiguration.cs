@@ -17,7 +17,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
             ToTable("Day");
 
             HasKey(d => d.Id);
-            Property(d => d.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            Property(d => d.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(d => d.Id).IsRequired();
             Property(d => d.CreationDate).IsRequired();

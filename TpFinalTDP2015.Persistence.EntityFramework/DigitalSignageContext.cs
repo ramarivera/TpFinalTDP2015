@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -17,15 +18,15 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
     {
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
 
-        public DbSet<Campaign> Campaigns;
-        public DbSet<Banner> Banners;
-        public DbSet<RssItem> RssItems;
-        public DbSet<RssSource> RssSources;
-        public DbSet<StaticText> Texts;
-        public DbSet<Slide> Slides;
-        public DbSet<TimeInterval> TimeIntervals;
-        public DbSet<DateInterval> DateIntervals;
-        public DbSet<Day> Days;
+        public virtual DbSet<Campaign> Campaigns { get; set; }
+        public virtual DbSet<Banner> Banners { get; set; }
+        public virtual DbSet<RssItem> RssItems { get; set; }
+        public virtual DbSet<RssSource> RssSources { get; set; }
+        public virtual DbSet<StaticText> Texts { get; set; }
+        public virtual DbSet<Slide> Slides { get; set; }
+        public virtual DbSet<TimeInterval> TimeIntervals { get; set; }
+        public virtual DbSet<DateInterval> DateIntervals { get; set; }
+        public virtual DbSet<Day> Days { get; set; }
 
 
         public DigitalSignageContext() : base()
@@ -49,7 +50,25 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             EFConfiguration.Configure(modelBuilder);
 
-         //   base.OnModelCreating(modelBuilder);
+            //   base.OnModelCreating(modelBuilder);
+        }
+
+        public override int SaveChanges()
+        {
+            var lDayEntityEntries = ChangeTracker.Entries<Day>();
+
+            bool lDontSaveDays = (lDayEntityEntries != null) &&            //Si no hay dias cargados en el contexto actual
+                                    (Days.Count() == 7);                   //Y  no existe ningun dia en la DB
+
+            if (lDontSaveDays)
+            {
+                foreach (var entry in lDayEntityEntries)
+                {
+                    entry.State = EntityState.Unchanged;
+                    //entry.Entity.ModifiedDate = DateProvider.GetCurrentDate();
+                }
+            }
+            return base.SaveChanges();
         }
 
 
