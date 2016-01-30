@@ -75,7 +75,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveDays.Clone<IList<Day>>();
+                return this.iActiveDays;// TODO revisar los metodos add o delete ?     ;// TODO revisar los metodos add o delete ?     .Clone<IList<Day>>();
             }
             set
             {
@@ -88,7 +88,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveHours.Clone<IList<TimeInterval>>();
+                return this.iActiveHours;// TODO revisar los metodos add o delete ?     Clone<IList<TimeInterval>>();
             }
             set
             {

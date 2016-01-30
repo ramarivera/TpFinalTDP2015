@@ -53,7 +53,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iItems.Clone<IList<RssItem>>();
+                return this.iItems;// TODO revisar los metodos add o delete ?     .Clone<IList<RssItem>>();
             }
             set
             {

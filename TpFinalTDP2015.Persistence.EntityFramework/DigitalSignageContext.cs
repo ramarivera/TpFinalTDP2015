@@ -55,19 +55,24 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         public override int SaveChanges()
         {
-            var lDayEntityEntries = ChangeTracker.Entries<Day>();
+          /*  var lDayEntityEntries = ChangeTracker.Entries<Day>();
 
-            bool lDontSaveDays = (lDayEntityEntries != null) &&            //Si no hay dias cargados en el contexto actual
-                                    (Days.Count() == 7);                   //Y  no existe ningun dia en la DB
+            bool lSaveDays = (lDayEntityEntries != null) &&         //Si no hay dias cargados en el contexto actual
+                             (Days.Count() == 0);                   //Y ya hay 7 dias en la DB
 
-            if (lDontSaveDays)
+            if (!lSaveDays)
             {
                 foreach (var entry in lDayEntityEntries)
                 {
-                    entry.State = EntityState.Unchanged;
+                    entry.State = EntityState.Detached;
                     //entry.Entity.ModifiedDate = DateProvider.GetCurrentDate();
                 }
             }
+
+            var added = this.ChangeTracker.Entries().Where(e => e.State == EntityState.Added);
+            */
+
+
             return base.SaveChanges();
         }
 

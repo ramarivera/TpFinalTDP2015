@@ -29,10 +29,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
 
             Property(di => di.ActiveFrom).HasColumnType("DateTime");
             Property(di => di.ActiveUntil).HasColumnType("DateTime");
-
-
+            
+            
+            
             HasMany(di => di.ActiveDays)
-                .WithMany() 
+                .WithMany()
                 .Map(m =>
                 {
                     m.MapLeftKey("DateIntervalId");

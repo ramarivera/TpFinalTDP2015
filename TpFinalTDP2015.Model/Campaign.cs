@@ -44,7 +44,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveIntervals.Clone<IList<DateInterval>>();
+                return this.iActiveIntervals;// TODO revisar los metodos add o delete ?     .Clone<IList<DateInterval>>();
             }
             set
             {

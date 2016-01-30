@@ -49,37 +49,40 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 lList.Add(lTimeInterval);
             }
 
+            TimeInterval lTinterval = new TimeInterval()
+            {
+                End = new TimeSpan(12, 0, 0),
+                Start = new TimeSpan(08, 0, 0)
+            };
+
             pContext.Set<TimeInterval>().AddRange(lList);
+            pContext.Set<TimeInterval>().Add(lTinterval);
             pContext.SaveChanges();
         }
 
         private void SeedDateIntervals(DigitalSignageContext pContext)
         {
-            IList<Day> lDayList = pContext.Set<Day>().AsNoTracking().ToList<Day>();
+            IList<Day> lDayList = pContext.Set<Day>().ToList<Day>();
+            IList<TimeInterval> lTimeIntervalList = pContext.Set<TimeInterval>().ToList<TimeInterval>();
 
             DateInterval lDateInterval1 = new DateInterval()
             {
                 Name = "Lunes a Viernes, 08am a 12am",
                 ActiveUntil = new DateTime(2016, 03, 01),
                 ActiveFrom = new DateTime(2016,02,01),
-                ActiveDays = new List<Day>()
-                {
-                    lDayList[1],
-                    lDayList[2],
-                    lDayList[3],
-                    lDayList[4],
-                    lDayList[5],
-                },
-                ActiveHours = new List<TimeInterval>()
-                {
-                    new TimeInterval()
-                    {
-                        End = new TimeSpan(12, 0, 0),
-                        Start = new TimeSpan(08, 0, 0)
-                    },
-                },
             };
 
+
+            lDateInterval1.ActiveDays.Add(lDayList[1]);
+            lDateInterval1.ActiveDays.Add(lDayList[2]);
+            lDateInterval1.ActiveDays.Add(lDayList[3]);
+            lDateInterval1.ActiveDays.Add(lDayList[4]);
+            lDateInterval1.ActiveDays.Add(lDayList[5]);
+
+            lDateInterval1.ActiveHours.Add
+                (
+                    lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8,0,0) && i.End  == new TimeSpan(12,0,0))
+                );
 
             DateInterval lDateInterval2 = new DateInterval()
             {
@@ -126,19 +129,21 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 },
             };
 
-            pContext.Set<DateInterval>().AddRange(new[] { lDateInterval1, lDateInterval1, lDateInterval1 });
+            //pContext.Set<DateInterval>().AddRange(new[] { lDateInterval1, lDateInterval1, lDateInterval1 });
+            pContext.Set<DateInterval>().Add(lDateInterval1);
+            
             pContext.SaveChanges();
         }
 
         private void SeedDays(DigitalSignageContext pContext)
         {
-            Day lDay1 = new Day() { Id = 01, Value = Model.Enum.Days.Domingo };
-            Day lDay2 = new Day() { Id = 02, Value = Model.Enum.Days.Lunes };
-            Day lDay3 = new Day() { Id = 03, Value = Model.Enum.Days.Martes };
-            Day lDay4 = new Day() { Id = 04, Value = Model.Enum.Days.Miercoles };
-            Day lDay5 = new Day() { Id = 05, Value = Model.Enum.Days.Jueves };
-            Day lDay6 = new Day() { Id = 06, Value = Model.Enum.Days.Viernes };
-            Day lDay7 = new Day() { Id = 07, Value = Model.Enum.Days.Sabado };
+            Day lDay1 = new Day() {Value = Model.Enum.Days.Domingo };
+            Day lDay2 = new Day() {Value = Model.Enum.Days.Lunes };
+            Day lDay3 = new Day() {Value = Model.Enum.Days.Martes };
+            Day lDay4 = new Day() {Value = Model.Enum.Days.Miercoles };
+            Day lDay5 = new Day() {Value = Model.Enum.Days.Jueves };
+            Day lDay6 = new Day() {Value = Model.Enum.Days.Viernes };
+            Day lDay7 = new Day() {Value = Model.Enum.Days.Sabado };
 
             IList<Day> lList = new List<Day>()
                 {
