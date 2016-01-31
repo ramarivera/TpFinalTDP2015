@@ -23,6 +23,11 @@ namespace TpFinalTDP2015.Persistence.NHibernate
                 {
                     if (configuration == null)
                     {
+                            
+
+
+
+
                         string[] resourceNames;
                         string nHResource = string.Empty;
                         Assembly[] asmArray = AppDomain.CurrentDomain.GetAssemblies();

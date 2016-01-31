@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\DateIntervalMap.cs" />
     <Compile Include="NHConfiguration.cs" />
     <Compile Include="NHRepository.cs" />
     <Compile Include="NHUnitOfWork.cs" />

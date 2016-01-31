@@ -22,7 +22,32 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             SeedTimeIntervals(pContext);
             SeedDateIntervals(pContext);
             SeedCampaigns(pContext);
+            SeedRssSources(pContext);
+            SeedBanners(pContext);
+            SeedSlides(pContext);
+            SeedStaticTexts(pContext);
 
+
+        }
+
+        private void SeedStaticTexts(DigitalSignageContext pContext)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SeedSlides(DigitalSignageContext pContext)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SeedBanners(DigitalSignageContext pContext)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SeedRssSources(DigitalSignageContext pContext)
+        {
+            throw new NotImplementedException();
         }
 
         //      Name = "Campaña"
