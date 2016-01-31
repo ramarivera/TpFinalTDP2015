@@ -28,6 +28,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
             Property(r => r.URL).IsRequired();
             Property(r => r.PublicationDate).IsOptional();
 
+            Property(r => r.PublicationDate).HasColumnType("DateTime2");
+
         }
 
     }

@@ -19,6 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.Persistence.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.UI.WPF", "TpFinalTDP2015.UI.WPF\TpFinalTDP2015.UI.WPF.csproj", "{FAF96A08-52AF-49D0-A0BA-4F00E6EBD76E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA3490C9-D728-4189-8648-E96DF4057821}"
+	ProjectSection(SolutionItems) = preProject
+		Consulta.sql = Consulta.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

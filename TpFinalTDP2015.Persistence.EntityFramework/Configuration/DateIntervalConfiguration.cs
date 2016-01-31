@@ -27,8 +27,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
             Property(di => di.ActiveFrom).IsRequired();
             Property(di => di.ActiveUntil).IsRequired();
 
-            Property(di => di.ActiveFrom).HasColumnType("DateTime");
-            Property(di => di.ActiveUntil).HasColumnType("DateTime");
+            Property(di => di.ActiveFrom).HasColumnType("DateTime2");
+            Property(di => di.ActiveUntil).HasColumnType("DateTime2");
             
             
             

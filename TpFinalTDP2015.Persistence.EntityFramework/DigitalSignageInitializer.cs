@@ -21,6 +21,54 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             SeedDays(pContext);
             SeedTimeIntervals(pContext);
             SeedDateIntervals(pContext);
+            SeedCampaigns(pContext);
+
+        }
+
+        //      Name = "Campaña"
+
+        private void SeedCampaigns(DigitalSignageContext pContext)
+        {
+            IList<DateInterval> lDateIntervalList = pContext.DateIntervals.ToList();
+
+            Campaign lCampaign1 = new Campaign()
+            {
+                Name = "Publicidad Samsung S7 (ver 47283289)",
+                Description = "Una mas de las muchas campa;as de lagsung"
+            };
+
+            var query = from interval in lDateIntervalList
+                        where interval.ActiveDays.Count() >= 4
+                        select interval;
+
+            foreach (var interval in query)
+            {
+                lCampaign1.ActiveIntervals.Add(interval);
+            };
+
+
+            Campaign lCampaign2 = new Campaign()
+            {
+                Name = "Publicidad Apple iPhone 5se",
+                Description = "Primera publicidad de Apple en Argentina,"
+                               + " para el nuevo celular que no va a dar resultados"
+            };
+
+            query = from interval in lDateIntervalList
+                        where interval.ActiveFrom <= new DateTime(2016, 02, 01)
+                        select interval;
+
+            foreach (var interval in query)
+            {
+                lCampaign2.ActiveIntervals.Add(interval);
+            };
+
+
+            pContext.Campaigns.Add(lCampaign1);
+            pContext.Campaigns.Add(lCampaign2);
+
+            pContext.SaveChanges();
+
         }
 
         private void SeedTimeIntervals(DigitalSignageContext pContext)
@@ -62,76 +110,68 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedDateIntervals(DigitalSignageContext pContext)
         {
-            IList<Day> lDayList = pContext.Set<Day>().ToList<Day>();
-            IList<TimeInterval> lTimeIntervalList = pContext.Set<TimeInterval>().ToList<TimeInterval>();
+            IList<Day> lDayList = pContext.Days.ToList();
+            IList<TimeInterval> lTimeIntervalList = pContext.TimeIntervals.ToList();
 
             DateInterval lDateInterval1 = new DateInterval()
             {
                 Name = "Lunes a Viernes, 08am a 12am",
-                ActiveUntil = new DateTime(2016, 03, 01),
-                ActiveFrom = new DateTime(2016,02,01),
+                ActiveUntil = new DateTime(2016, 06, 01),
+                ActiveFrom = new DateTime(2016,05,01),
             };
 
-
             lDateInterval1.ActiveDays.Add(lDayList[1]);
+            //lDateInterval1.ActiveDays.Add(lDayList[1]);
             lDateInterval1.ActiveDays.Add(lDayList[2]);
             lDateInterval1.ActiveDays.Add(lDayList[3]);
             lDateInterval1.ActiveDays.Add(lDayList[4]);
             lDateInterval1.ActiveDays.Add(lDayList[5]);
 
             lDateInterval1.ActiveHours.Add
-                (
-                    lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8,0,0) && i.End  == new TimeSpan(12,0,0))
-                );
+            (
+                lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(12, 0, 0))
+            );
 
             DateInterval lDateInterval2 = new DateInterval()
             {
-                Name = "Sabados y Domingos, 21-23",
+                Name = "Sabados y Domingos, empiezan antes de las 12",
                 ActiveUntil = new DateTime(2016, 03, 01),
                 ActiveFrom = new DateTime(2016, 02, 01),
-                ActiveDays = new List<Day>()
-                {
-                    lDayList[0],
-                    lDayList[6],
-                },
                 ActiveHours = new List<TimeInterval>()
-                {
-                    new TimeInterval()
-                    {
-                        End = new TimeSpan(23, 0, 0),
-                        Start = new TimeSpan(21, 0, 0)
-                    },
-                },
             };
 
+            var query = from interval in lTimeIntervalList
+                        where interval.Start < new TimeSpan(12, 0, 0)
+                        select interval;
+
+            foreach (var interval in query)
+            {
+                lDateInterval2.ActiveHours.Add(interval);
+            }
+
+            lDateInterval2.ActiveDays.Add(lDayList[0]);
+            lDateInterval2.ActiveDays.Add(lDayList[6]);
 
             DateInterval lDateInterval3 = new DateInterval()
             {
-                Name = "Miercoles, 12-13 y 15-16",
-                ActiveUntil = new DateTime(2016, 03, 01),
-                ActiveFrom = new DateTime(2016, 02, 01),
-                ActiveDays = new List<Day>()
-                {
-                    lDayList[3],
-                },
-                ActiveHours = new List<TimeInterval>()
-                {
-                    new TimeInterval()
-                    {
-                        End = new TimeSpan(13, 0, 0),
-                        Start = new TimeSpan(12, 0, 0)
-                    },
-                    new TimeInterval()
-                    {
-                        End = new TimeSpan(16, 0, 0),
-                        Start = new TimeSpan(15, 0, 0)
-                    },
-                },
+                Name = "Miercoles, terminan despues de las 15",
+                ActiveUntil = new DateTime(2016, 11, 01),
+                ActiveFrom = new DateTime(2016, 10, 01),
             };
 
-            //pContext.Set<DateInterval>().AddRange(new[] { lDateInterval1, lDateInterval1, lDateInterval1 });
-            pContext.Set<DateInterval>().Add(lDateInterval1);
-            
+            query = from interval in lTimeIntervalList
+                        where interval.End > new TimeSpan(15, 0, 0)
+                        select interval;
+
+            foreach (var interval in query)
+            {
+                lDateInterval3.ActiveHours.Add(interval);
+            }
+
+            lDateInterval3.ActiveDays.Add(lDayList[3]);
+
+            pContext.Set<DateInterval>().AddRange(new[] { lDateInterval1, lDateInterval2, lDateInterval3 });
+            //pContext.Set<DateInterval>().Add(lDateInterval1);
             pContext.SaveChanges();
         }
 
