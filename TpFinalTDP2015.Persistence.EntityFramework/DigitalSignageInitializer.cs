@@ -22,9 +22,9 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             SeedTimeIntervals(pContext);
             SeedDateIntervals(pContext);
             SeedCampaigns(pContext);
-            SeedRssSources(pContext);
-            SeedBanners(pContext);
-            SeedSlides(pContext);
+           // SeedRssSources(pContext);
+          //  SeedBanners(pContext);
+          //  SeedSlides(pContext);
             SeedStaticTexts(pContext);
 
 
@@ -32,7 +32,21 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedStaticTexts(DigitalSignageContext pContext)
         {
-            throw new NotImplementedException();
+            IList<StaticText> lStaticTextList = new List<StaticText>();
+            
+            for (int i = 0; i < 10; i++)
+            {
+                StaticText lStaticText = new StaticText()
+                {
+                    Title = String.Format("Texto {0}", i),
+                    Description = String.Format("Texto del {0}", DateTime.Now),
+                    Text = String.Format("Texto {0} del {1}", i,DateTime.Now)
+                };
+                lStaticTextList.Add(lStaticText);
+            }
+
+            pContext.Texts.AddRange(lStaticTextList);
+            pContext.SaveChanges();
         }
 
         private void SeedSlides(DigitalSignageContext pContext)
