@@ -35,15 +35,57 @@ namespace TpFinalTDP2015.Service
             }
         }
 
+        public void CreateCampaign(Campaign pCampaign)
+        {
+            using (this.iUoW)
+            {
+                iUoW.BeginTransaction();
+                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                lRepo.Add(pCampaign);
+                iUoW.Commit();
+            }
+        }
+
+        public void UpdateCampaign(Campaign pCampaign)
+        {
+            using (this.iUoW)
+            {
+                iUoW.BeginTransaction();
+                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                lRepo.Update(pCampaign);
+                iUoW.Commit();
+            }
+        }
+
         private IUnitOfWork GetUnitOfWork()
         {
             return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
         }
 
+        public void DeleteCampaign(Campaign pCampaign)
+        {
+            using (this.iUoW)
+            {
+                iUoW.BeginTransaction();
+                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                Campaign mCampaign = lRepo.GetByID(pCampaign.Id);
+                lRepo.Delete(mCampaign);
+                iUoW.Commit();
+        }
 
+        
 
+        /*public List<Campaign> GetAllCampaigns()
+        {
+            List<Campaign> lResultado = new List<Campaign>();
+            using (this.iUoW)
+            {
+                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                var query = lRepo.Queryable. Include(p => p.);
+                lResultado = query.ToList<Persona>();
+            }
+            return lResultado;*/
 
-
+        }
         //public 
     }
-}
