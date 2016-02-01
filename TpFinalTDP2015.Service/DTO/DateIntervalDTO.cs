@@ -10,6 +10,9 @@ namespace TpFinalTDP2015.Service.DTO
 {
     public class DateIntervalDTO: IDTO
     {
+        public int Id { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime ModificationDate { get; set; }
         public string Name { get; set; }
         public DateTime ActiveUntil { get; set; }
         public DateTime ActiveFrom { get; set; }

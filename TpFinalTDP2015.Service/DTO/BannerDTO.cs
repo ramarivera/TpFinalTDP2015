@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.DTO
 {
     public class BannerDTO: IDTO
     {
+        public int Id { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime ModificationDate { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        //public  CampaignIntervals { get; internal set; }
-
-        //falta la lista del contenido del mismo
+        public IList<DateIntervalDTO> ActiveIntervals { get; set; }
+        public IList<BaseBannerItem> Items { get; set; }
     }
 }
