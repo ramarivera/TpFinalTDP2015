@@ -7,7 +7,6 @@ using Common.Logging;
 using TpFinalTDP2015.Persistence.Interfaces;
 using Microsoft.Practices.Unity;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Persistence.EntityFramework;
 
 namespace TpFinalTDP2015.Service
 {
@@ -25,11 +24,11 @@ namespace TpFinalTDP2015.Service
         {
             cLogger.Info("Fachada instanciada");
 
-            using (this.iUoW = IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>())
+            using (iUoW = GetUnitOfWork())
             {
                 iUoW.BeginTransaction();
 
-                cLogger.InfoFormat("Usando {0} como implementacion de {1}", new[] { this.iUoW.GetType().Name, typeof(IUnitOfWork).Name });
+                cLogger.InfoFormat("Usando {0} como implementacion de {1}", new[] { iUoW.GetType().Name, typeof(IUnitOfWork).Name });
 
 
                 iUoW.Commit();
@@ -58,6 +57,11 @@ namespace TpFinalTDP2015.Service
             }
         }
 
+        private IUnitOfWork GetUnitOfWork()
+        {
+            return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
+        }
+
         public void DeleteCampaign(Campaign pCampaign)
         {
             using (this.iUoW)
@@ -69,19 +73,20 @@ namespace TpFinalTDP2015.Service
                 iUoW.Commit();
             }
 
-        }
 
-        /*public List<Campaign> GetAllCampaigns()
-        {
-            List<Campaign> lResultado = new List<Campaign>();
-            using (this.iUoW)
+
+            /*public List<Campaign> GetAllCampaigns()
             {
-                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                var query = lRepo.Queryable. Include(p => p.);
-                lResultado = query.ToList<Persona>();
-            }
-            return lResultado;*/
+                List<Campaign> lResultado = new List<Campaign>();
+                using (this.iUoW)
+                {
+                    IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                    var query = lRepo.Queryable. Include(p => p.);
+                    lResultado = query.ToList<Persona>();
+                }
+                return lResultado;*/
 
         }
         //public 
     }
+}
