@@ -45,9 +45,9 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveIntervals;// TODO revisar los metodos add o delete ?     .Clone<IList<DateInterval>>();
+                return this.iActiveIntervals.Clone<IList<DateInterval>>();
             }
-            set
+            private set
             {
                 this.UpdateModificationDate();
                 this.iActiveIntervals = value;
@@ -58,13 +58,38 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iItems;// TODO revisar los metodos add o delete ?     .Clone<IList<BaseBannerItem>>();
+                return this.iItems.Clone<IList<BaseBannerItem>>();
             }
-            set
+            private set
             {
                 this.UpdateModificationDate();
                 this.iItems = value;
             }
+        }
+
+        public virtual void AddDateInterval(DateInterval pInterval)
+        {
+            //TODO agregar la verificacion de que no se choquen y bla bla bla
+            this.UpdateModificationDate();
+            this.iActiveIntervals.Add(pInterval);
+        }
+
+        public virtual void RemoveDateInterval(DateInterval pInterval)
+        {
+            this.UpdateModificationDate();
+            this.iActiveIntervals.Remove(pInterval);
+        }
+
+        public virtual void AddBannerItem(BaseBannerItem pItem)
+        {
+            this.UpdateModificationDate();
+            this.iItems.Add(pItem);
+        }
+
+        public virtual void RemoveBannerItem(BaseBannerItem pItem)
+        {
+            this.UpdateModificationDate();
+            this.iItems.Remove(pItem);
         }
     }
 }
