@@ -21,8 +21,10 @@ namespace TpFinalTDP2015.UI.AdminModePages
             InitializeComponent();
             //TODO obtener lo que está en la base de datos como una lista mediante fachada
             this.banner = new BannerDTO { Name = "Mañana", Description = "banner de la mañana" };
-            this.dgvBanner.iSource.Add(this.banner);
-            this.dgvBanner.DataSource = this.dgvBanner.iSource;
+            List<IDTO> elements = new List<IDTO>() { this.banner};
+            this.dgvBanner.AddToSource(elements);
+            //this.dgvBanner.iSource.Add(this.banner);
+            //this.dgvBanner.DataSource = this.dgvBanner.iSource;
             this.dgvBanner.Rows[this.dgvBanner.RowCount-1].Tag = this.banner;
             this.btnAdd.Click += BtnAdd_Click;
             this.btnDelete.Click += BtnDelete_Click;

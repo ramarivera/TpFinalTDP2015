@@ -67,5 +67,23 @@ namespace TpFinalTDP2015.UI.AdminModePages
             }
         }
 
+        public void AddToSource(List<IDTO> pDTOs)
+        {
+            foreach (IDTO pDTO in pDTOs)
+            {
+                this.iSource.Add(pDTO);
+            }
+            this.DataSource = this.iSource;
+        }
+
+        public IList<IDTO> GetAll()
+        {
+            List<IDTO> lList = new List<IDTO>();
+            foreach (IDTO element in this.iSource)
+            {
+                lList.Add(element);
+            }
+            return lList;
+        }
     }
 }
