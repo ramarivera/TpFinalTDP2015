@@ -132,6 +132,10 @@
       <Project>{5aebb1c3-d751-4d7e-8c65-6025bd98ee27}</Project>
       <Name>TpFinalTDP2015.Persistence.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TpFinalTDP2015.Persistence.NHibernate\TpFinalTDP2015.Persistence.NHibernate.csproj">
+      <Project>{771ce6eb-4e57-4cb9-802d-6d12c7d20549}</Project>
+      <Name>TpFinalTDP2015.Persistence.NHibernate</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

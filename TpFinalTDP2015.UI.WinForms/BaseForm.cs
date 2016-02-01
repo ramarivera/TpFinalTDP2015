@@ -15,6 +15,7 @@ namespace TpFinalTDP2015.UI
         public BaseForm()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
     }
 }
