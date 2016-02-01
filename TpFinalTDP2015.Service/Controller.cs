@@ -7,6 +7,8 @@ using Common.Logging;
 using TpFinalTDP2015.Persistence.Interfaces;
 using Microsoft.Practices.Unity;
 using TpFinalTDP2015.Model;
+using TpFinalTDP2015.Service.DTO;
+using AutoMapper;
 
 namespace TpFinalTDP2015.Service
 {
@@ -33,6 +35,26 @@ namespace TpFinalTDP2015.Service
 
                 iUoW.Commit();
             }
+        }
+
+        public IList<CampaignDTO> GetCampaigns()
+        {
+            IList<CampaignDTO> lResult = new List<CampaignDTO>();
+
+            using (iUoW = GetUnitOfWork())
+            {
+                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                IList<Campaign> lTemp = lRepo.GetAll().ToList();
+
+                foreach (var campaign in lTemp)
+                {
+                    CampaignDTO lDto = Mapper.Map<Campaign, CampaignDTO>(campaign);
+                    lResult.Add(lDto);
+                }
+
+            }
+
+            return lResult;
         }
 
         public void CreateCampaign(Campaign pCampaign)

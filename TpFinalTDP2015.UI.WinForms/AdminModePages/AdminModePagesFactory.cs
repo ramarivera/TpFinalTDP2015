@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpFinalTDP2015.Service;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
@@ -41,14 +42,17 @@ namespace TpFinalTDP2015.UI.AdminModePages
                             string lName = ((AdminModePageInfo)attr).Name;
                             iNameList.Add(lName);
                             AdminModePage lPage = (AdminModePage)Activator.CreateInstance(t);
+                            lPage.Controller = new Controller(); //TODO Ajustar esto, no deberia ser publica?
+                            //TODO Ajustar y usar lazy Init
+                            //TODO revisar tema excepcion de reflection
                             iAdminModePages.Add(lName, lPage.GetAsPage());
                         }
                     }
                 }
             }
-            catch (ReflectionTypeLoadException ex)
+            catch (Exception ex)
             {
-                StringBuilder sb = new StringBuilder();
+               /* StringBuilder sb = new StringBuilder();
                 foreach (Exception exSub in ex.LoaderExceptions)
                 {
                     sb.AppendLine(exSub.Message);
@@ -63,7 +67,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
                     }
                     sb.AppendLine();
                 }
-                string errorMessage = sb.ToString();
+                string errorMessage = sb.ToString();*/
                 //Display or log the error based on your application.
             }
             

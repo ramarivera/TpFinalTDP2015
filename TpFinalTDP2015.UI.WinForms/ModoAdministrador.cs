@@ -69,8 +69,9 @@ namespace TpFinalTDP2015.UI
                
             }
             AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(lPageName);
-            this.SelectedPage = lPage;
             this.PageName = lPageName;
+            this.SelectedPage = lPage;
+            
 
             // AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(lPageName);
             // TODO: Pagina Nula

@@ -18,7 +18,9 @@ namespace TpFinalTDP2015.Persistence.NHibernate
 
         public NHUnitOfWork()
         {
+
             this.OpenSession();
+            this.iRepositories = new Dictionary<Type, Object>();
         }
 
 

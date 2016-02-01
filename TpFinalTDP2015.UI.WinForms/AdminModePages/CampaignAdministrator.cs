@@ -18,7 +18,19 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public CampaignAdministrator() : base()
         {
             InitializeComponent();
+            this.Load += CampaignAdministrator_Load;
             //TODO obtener lo que está en la base de datos como una lista mediante fachada y guardar en iSource
+            
+           // this.dgvCampaign.DataSource = this.dgvCampaign.iSource;
+        }
+
+        private void CampaignAdministrator_Load(object sender, EventArgs e)
+        {
+            IList<CampaignDTO> lList = this.Controller.GetCampaigns();
+            foreach (var dto in lList)
+            {
+                this.dgvCampaign.iSource.Add(dto);
+            }
             this.dgvCampaign.DataSource = this.dgvCampaign.iSource;
         }
 
