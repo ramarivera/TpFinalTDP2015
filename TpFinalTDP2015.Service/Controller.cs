@@ -24,21 +24,21 @@ namespace TpFinalTDP2015.Service
         {
             cLogger.Info("Fachada instanciada");
 
-            using (this.iUoW = IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>())
+            using (iUoW = GetUnitOfWork())
             {
                 iUoW.BeginTransaction();
 
-                cLogger.InfoFormat("Usando {0} como implementacion de {1}", new[] { this.iUoW.GetType().Name, typeof(IUnitOfWork).Name });
+                cLogger.InfoFormat("Usando {0} como implementacion de {1}", new[] { iUoW.GetType().Name, typeof(IUnitOfWork).Name });
 
 
                 iUoW.Commit();
             }
-
-
-
         }
 
-
+        private IUnitOfWork GetUnitOfWork()
+        {
+            return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
+        }
 
 
 

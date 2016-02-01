@@ -44,41 +44,28 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveIntervals;// TODO revisar los metodos add o delete ?     .Clone<IList<DateInterval>>();
+                return this.iActiveIntervals.Clone<IList<DateInterval>>();
             }
-            set
+            private set
             {
                 this.UpdateModificationDate();
                 this.iActiveIntervals = value;
             }
         }
 
-       /* public Campaign Clone()
+        public virtual void AddTimeInterval(DateInterval pInterval)
         {
-            Campaign lResult = new Campaign
-            {
-                Id = this.Id,
-                LastModified = this.LastModified,
-                CreationDate = this.CreationDate,
-                Name = this.Name,
-                Description = this.Description
-            };
 
-            IList<DateInterval> lList = new List<DateInterval>();
+            //TODO agregar la verificacion de que no se choquen y bla bla bla
+            this.UpdateModificationDate();
+            this.iActiveIntervals.Add(pInterval);
+        }
 
-            foreach (DateInterval interval in this.ActiveIntervals)
-            {
-                lList.Add(interval.Clone());
-            }
-
-            lResult.LastModified = this.LastModified;
-
-            return lResult;
-
-    }*/
-
-
-
+        public virtual void RemoveDateInterval(DateInterval pInterval)
+        {
+            this.UpdateModificationDate();
+            this.iActiveIntervals.Remove(pInterval);
+        }
 
     }
 }
