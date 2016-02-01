@@ -82,7 +82,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign1.ActiveIntervals.Add(interval);
+                lCampaign1.AddDateInterval(interval);
             };
 
 
@@ -99,8 +99,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign2.ActiveIntervals.Add(interval);
-            };
+                lCampaign2.AddDateInterval(interval);
+            }
 
 
             pContext.Campaigns.Add(lCampaign1);
@@ -159,14 +159,13 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 ActiveFrom = new DateTime(2016,05,01),
             };
 
-            lDateInterval1.ActiveDays.Add(lDayList[1]);
-            //lDateInterval1.ActiveDays.Add(lDayList[1]);
-            lDateInterval1.ActiveDays.Add(lDayList[2]);
-            lDateInterval1.ActiveDays.Add(lDayList[3]);
-            lDateInterval1.ActiveDays.Add(lDayList[4]);
-            lDateInterval1.ActiveDays.Add(lDayList[5]);
+            lDateInterval1.AddActiveDay(lDayList[1]);
+            lDateInterval1.AddActiveDay(lDayList[2]);
+            lDateInterval1.AddActiveDay(lDayList[3]);
+            lDateInterval1.AddActiveDay(lDayList[4]);
+            lDateInterval1.AddActiveDay(lDayList[5]);
 
-            lDateInterval1.ActiveHours.Add
+            lDateInterval1.AddActiveHours
             (
                 lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(12, 0, 0))
             );
@@ -175,8 +174,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             {
                 Name = "Sabados y Domingos, empiezan antes de las 12",
                 ActiveUntil = new DateTime(2016, 03, 01),
-                ActiveFrom = new DateTime(2016, 02, 01),
-                ActiveHours = new List<TimeInterval>()
+                ActiveFrom = new DateTime(2016, 02, 01)
             };
 
             var query = from interval in lTimeIntervalList
@@ -185,11 +183,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lDateInterval2.ActiveHours.Add(interval);
+                lDateInterval2.AddActiveHours(interval);
             }
 
-            lDateInterval2.ActiveDays.Add(lDayList[0]);
-            lDateInterval2.ActiveDays.Add(lDayList[6]);
+            lDateInterval1.AddActiveDay(lDayList[0]);
+            lDateInterval1.AddActiveDay(lDayList[6]);
 
             DateInterval lDateInterval3 = new DateInterval()
             {
@@ -204,10 +202,10 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lDateInterval3.ActiveHours.Add(interval);
+                lDateInterval3.AddActiveHours(interval);
             }
 
-            lDateInterval3.ActiveDays.Add(lDayList[3]);
+            lDateInterval1.AddActiveDay(lDayList[3]);
 
             pContext.Set<DateInterval>().AddRange(new[] { lDateInterval1, lDateInterval2, lDateInterval3 });
             //pContext.Set<DateInterval>().Add(lDateInterval1);

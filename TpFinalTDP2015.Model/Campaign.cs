@@ -53,7 +53,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual void AddTimeInterval(DateInterval pInterval)
+        public virtual void AddDateInterval(DateInterval pInterval)
         {
 
             //TODO agregar la verificacion de que no se choquen y bla bla bla

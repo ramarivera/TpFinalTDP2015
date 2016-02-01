@@ -75,9 +75,9 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveDays;// TODO revisar los metodos add o delete ?     ;// TODO revisar los metodos add o delete ?     .Clone<IList<Day>>();
+                return this.iActiveDays.Clone<IList<Day>>();
             }
-            set
+            private set
             {
                 this.UpdateModificationDate();
                 this.iActiveDays = value;
@@ -88,16 +88,40 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveHours;// TODO revisar los metodos add o delete ?     Clone<IList<TimeInterval>>();
+                return this.iActiveHours.Clone<IList<TimeInterval>>();
             }
-            set
+            private set
             {
                 this.UpdateModificationDate();
                 this.iActiveHours = value;
             }
         }
 
+        public virtual void AddActiveDay(Day pDay)
+        {
+            //TODO agregar la verificacion de que no se choquen y bla bla bla
+            this.UpdateModificationDate();
+            this.iActiveDays.Add(pDay);
+        }
 
+        public virtual void RemoveActiveDay(Day pDay)
+        {
+            this.UpdateModificationDate();
+            this.iActiveDays.Remove(pDay);
+        }
+
+        public virtual void AddActiveHours(TimeInterval pInterval)
+        {
+            //TODO agregar la verificacion de que no se choquen y bla bla bla
+            this.UpdateModificationDate();
+            this.iActiveHours.Add(pInterval);
+        }
+
+        public virtual void RemoveActiveHours(TimeInterval pInterval)
+        {
+            this.UpdateModificationDate();
+            this.iActiveHours.Remove(pInterval);
+        }
         /*public bool OverlapsWith(DateInterval pLapse)
         {
             bool lResult = false;

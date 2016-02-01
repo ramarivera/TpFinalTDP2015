@@ -53,13 +53,25 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iItems;// TODO revisar los metodos add o delete ?     .Clone<IList<RssItem>>();
+                return this.iItems.Clone<IList<RssItem>>();
             }
-            set
+            private set
             {
                 this.UpdateModificationDate();
                 this.iItems = value;
             }
+        }
+
+        public virtual void AddRssItem(RssItem pItem)
+        {
+            this.UpdateModificationDate();
+            this.iItems.Add(pItem);
+        }
+
+        public virtual void RemoveRssItem(RssItem pItem)
+        {
+            this.UpdateModificationDate();
+            this.iItems.Remove(pItem);
         }
         //TODO cambiar accesores Items
     }
