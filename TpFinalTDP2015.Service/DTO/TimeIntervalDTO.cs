@@ -8,6 +8,9 @@ namespace TpFinalTDP2015.Service.DTO
 {
     public class TimeIntervalDTO: IDTO
     {
+        public int Id { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime ModificationDate { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
     }

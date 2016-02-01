@@ -14,11 +14,13 @@ namespace TpFinalTDP2015.Service.AutoMapperProfiles
         protected override void Configure()
         {
             Mapper.CreateMap<Banner, BannerDTO>()
+              .ForMember(d => d.Id, o => o.MapFrom(c => c.Id))
+              .ForMember(d => d.CreationDate, o => o.MapFrom(c => c.CreationDate))
+              .ForMember(d => d.ModificationDate, o => o.MapFrom(c => c.LastModified))
               .ForMember(d => d.Name, o => o.MapFrom(c => c.Name))
-              .ForMember(d => d.Description, o => o.MapFrom(c => c.Description));
-              //.ForMember(d => d.CampaignIntervals, o => o.MapFrom(c => c.CampaignIntervals));
+              .ForMember(d => d.Description, o => o.MapFrom(c => c.Description))
+              .ForMember(d => d.ActiveIntervals, o => o.MapFrom(c => c.ActiveIntervals))
+              .ForMember(d => d.Items, o => o.MapFrom(c => c.Items));
         }
-
-        //TODO falta la lista del contenido del mismo
     }
 }
