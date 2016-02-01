@@ -44,5 +44,5 @@ xcopy /y "%Folder%*.dll" %RELEASE_PATH%
 xcopy /y "%Folder%*.exe" %RELEASE_PATH%
 xcopy /y "%Folder%*.config" %RELEASE_PATH%
 
-echo %timestampstr%   %DLL_NAME% >> %LOG_PATH%
+rem echo %timestampstr%   %DLL_NAME% >> %LOG_PATH%
 rem echo. >> %LOG_PATH%
