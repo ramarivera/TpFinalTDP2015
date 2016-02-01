@@ -82,6 +82,7 @@
     <Compile Include="AutoMapperProfiles\CampaignDTOProfile.cs" />
     <Compile Include="AutoMapperProfiles\DateIntervalProfile.cs" />
     <Compile Include="AutoMapperProfiles\CampaignProfile.cs" />
+    <Compile Include="AutoMapperProfiles\DayProfile.cs" />
     <Compile Include="AutoMapperProfiles\DaysProfile.cs" />
     <Compile Include="AutoMapperProfiles\RssItemProfile.cs" />
     <Compile Include="AutoMapperProfiles\SlideTransitioProfile.cs" />
