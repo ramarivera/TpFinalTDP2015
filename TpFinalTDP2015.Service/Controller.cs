@@ -71,21 +71,22 @@ namespace TpFinalTDP2015.Service
                 Campaign mCampaign = lRepo.GetByID(pCampaign.Id);
                 lRepo.Delete(mCampaign);
                 iUoW.Commit();
-        }
-
-        
-
-        /*public List<Campaign> GetAllCampaigns()
-        {
-            List<Campaign> lResultado = new List<Campaign>();
-            using (this.iUoW)
-            {
-                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                var query = lRepo.Queryable. Include(p => p.);
-                lResultado = query.ToList<Persona>();
             }
-            return lResultado;*/
+
+
+
+            /*public List<Campaign> GetAllCampaigns()
+            {
+                List<Campaign> lResultado = new List<Campaign>();
+                using (this.iUoW)
+                {
+                    IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                    var query = lRepo.Queryable. Include(p => p.);
+                    lResultado = query.ToList<Persona>();
+                }
+                return lResultado;*/
 
         }
         //public 
     }
+}
