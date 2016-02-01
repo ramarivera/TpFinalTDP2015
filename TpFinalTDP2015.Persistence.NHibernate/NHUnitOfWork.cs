@@ -40,12 +40,15 @@ namespace TpFinalTDP2015.Persistence.NHibernate
                 {
                     //someone want the deterministic release of all resources
                     //Let us release all the managed resources
-                    foreach (var key in this.iRepositories.Keys.ToList<Type>())
+                    if (this.iRepositories != null)
                     {
-                        this.iRepositories[key] = null;
+                        foreach (var key in this.iRepositories.Keys.ToList<Type>())
+                        {
+                            this.iRepositories[key] = null;
+                        }
+                        this.iRepositories.Clear();
+                        this.iRepositories = null;
                     }
-                    this.iRepositories.Clear();
-                    this.iRepositories = null;
                 }
                 else
                 {

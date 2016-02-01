@@ -1,4 +1,7 @@
 ﻿using NHibernate.Cfg;
+using NHibernate.Dialect;
+using NHibernate.Driver;
+using NHibernate.Mapping.ByCode;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,17 +15,44 @@ namespace TpFinalTDP2015.Persistence.NHibernate
 {
     public static class NHConfiguration
     {
-        private static Configuration configuration = null;
-        private static object lockObj = new object();
+        private static Configuration cConfiguration = null;
+        private static object cLock = new object();
 
         public static Configuration Configuration
         {
             get
             {
-                lock (lockObj)
+                lock (cLock)
                 {
-                    if (configuration == null)
+                    if (cConfiguration == null)
                     {
+                        var mapper = new ModelMapper();
+                        cConfiguration = new Configuration();
+
+                        mapper.AddMappings(Assembly.GetExecutingAssembly().GetExportedTypes());
+
+                        cConfiguration.DataBaseIntegration(c =>
+                        {
+                            c.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DigitalSignageContextSQLEXPRESS"].ConnectionString;
+                            c.Driver<Sql2008ClientDriver>();
+                            c.Dialect<MsSql2012Dialect>();
+
+                            c.LogSqlInConsole = true;
+                            c.LogFormattedSql = true;
+                            c.AutoCommentSql = true;
+                        });
+
+                        cConfiguration.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
+                    }
+                }
+
+                return cConfiguration;
+            }
+        }
+    }
+}
+/*
+
                             
 
 
@@ -45,11 +75,4 @@ namespace TpFinalTDP2015.Persistence.NHibernate
                                 }
                             }
                         }
-                    }
-                }
-
-                return configuration;
-            }
-        }
-    }
-}
+*/
