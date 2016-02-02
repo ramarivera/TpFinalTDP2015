@@ -103,8 +103,9 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             }
 
 
-            pContext.Campaigns.Add(lCampaign1);
-            pContext.Campaigns.Add(lCampaign2);
+            pContext.Set<Campaign>().Add(lCampaign1);
+            pContext.Set<Campaign>().Add(lCampaign2);
+            //  pContext.Campaigns.Add(lCampaign2);
 
             pContext.SaveChanges();
 
