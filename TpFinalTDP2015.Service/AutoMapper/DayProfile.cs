@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Service.Enum;
 
-namespace TpFinalTDP2015.Service.AutoMapperProfiles
+namespace TpFinalTDP2015.Service.AutoMapper
 {
-    class SlideTransitioProfile : Profile
+    class DayProfile : Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Model.Enum.SlideTransition, Service.Enum.SlideTransition>()
-                .ConstructUsing(EnumConversion.SlideTransition);
+            Mapper.CreateMap<Day,Days>()
+                .ConvertUsing<DayToServiceDaysConverter>();
         }
+
     }
 }
