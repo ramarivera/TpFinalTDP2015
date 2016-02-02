@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Service.Enum;
 
-
 namespace TpFinalTDP2015.Service.DTO
 {
     public class DateIntervalDTO: IDTO
