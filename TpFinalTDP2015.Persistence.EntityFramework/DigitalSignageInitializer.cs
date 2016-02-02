@@ -22,8 +22,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             SeedTimeIntervals(pContext);
             SeedDateIntervals(pContext);
             SeedCampaigns(pContext);
-           // SeedRssSources(pContext);
-          //  SeedBanners(pContext);
+            SeedRssSources(pContext);
+            SeedBanners(pContext);
           //  SeedSlides(pContext);
             SeedStaticTexts(pContext);
 
@@ -56,15 +56,56 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedBanners(DigitalSignageContext pContext)
         {
-            throw new NotImplementedException();
+            IList<DateInterval> lDateIntervalList = pContext.DateIntervals.ToList();
+            Banner lBanner1 = new Banner()
+            {
+                Name = "Noticias de deporte",
+                Description = "Noticias de la actualidad deportiva, provenientes de distintas fuentes. Tambien contiene otros textos útiles",
+                //falta contenido, pero eso falta tratar los rss
+            };
+            
+            var query = from interval in lDateIntervalList
+                        where interval.ActiveDays.Count() == 4
+                        select interval;
+
+            foreach (var interval in query)
+            {
+                lBanner1.AddDateInterval(interval);
+            };
+            lBanner1.Items.Add(pContext.Texts.ToList()[3]);
+            lBanner1.Items.Add(pContext.Texts.ToList()[4]);
+            pContext.Banners.Add(lBanner1);
         }
 
         private void SeedRssSources(DigitalSignageContext pContext)
         {
-            throw new NotImplementedException();
-        }
+            RssSource lRssSource1 = new RssSource()
+            {
+                Title = "Noticias de política TN",
+                Description = "Noticias de la actualidad política, siendo su fuente Todo Noticias",
+                URL = "http://tn.com.ar/feed/politica"
+            };
 
-        //      Name = "Campaña"
+            RssSource lRssSource2 = new RssSource()
+            {
+                Title = "Noticias de deportes teleSur",
+                Description = "Noticias de la actualidad deportiva, siendo su fuente teleSur",
+                URL = "http://www.telesurtv.net/rss/RssDeporte.html"
+            };
+
+            RssSource lRssSource3 = new RssSource()
+            {
+                Title = "Noticias de deportes El pais",
+                Description = "Noticias de la actualidad deportiva, siendo su fuente el medio internacional El Pais",
+                URL = "http://ep00.epimg.net/rss/deportes/portada.xml"
+            };
+
+            pContext.RssSources.Add(lRssSource1);
+            pContext.RssSources.Add(lRssSource2);
+            pContext.RssSources.Add(lRssSource3);
+            pContext.SaveChanges();
+        }
+        
 
         private void SeedCampaigns(DigitalSignageContext pContext)
         {
