@@ -40,7 +40,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-       public virtual IList<DateInterval> ActiveIntervals
+        public virtual IList<DateInterval> ActiveIntervals
         {
             get
             {
@@ -67,5 +67,29 @@ namespace TpFinalTDP2015.Model
             this.iActiveIntervals.Remove(pInterval);
         }
 
+        public bool Active
+        {
+            get {return this.ActiveForDate(DateTime.Now); }
+        }
+
+        public bool ActiveForDate(DateTime pDate)
+        {
+            bool lResult = false;
+            int i = this.ActiveIntervals.Count - 1;
+            while ((lResult == false) && (i >= 0))
+            {
+                DateInterval pInterval = this.ActiveIntervals[i];
+                if ((pDate >= pInterval.ActiveFrom) && (pDate <= pInterval.ActiveUntil))
+                {
+                    lResult = pInterval.ActiveForDay();
+                    if (lResult)
+                    {
+                        lResult = pInterval.ActiveForTime();
+                    }
+                }
+                i--;
+            }
+            return lResult;
+        }
     }
 }

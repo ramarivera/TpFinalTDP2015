@@ -196,41 +196,81 @@ namespace TpFinalTDP2015.Model
             }
             return lResult;
         }
-            /*public bool OverlapsWith(DateInterval pLapse)
+
+        public bool ActiveForDay()
+        {
+            bool lResult = false;
+            int today = (int)DateTime.Now.DayOfWeek;
+            int i = this.ActiveDays.Count - 1;
+            while ((lResult == false) && (i >= 0))
             {
-                bool lResult = false;
-
-                if (this.ActiveFrom > pLapse.ActiveUntil ||
-                    this.ActiveUntil < pLapse.ActiveFrom)
-                {
-                    lResult = false;
-                }
-                else
-                {
-                    int i = 0;
-
-                    while (!lResult)
-                    {
-                        Days day = this.DiasDeLaSemana[i];
-
-                        if (pLapse.DiasDeLaSemana.Contains(day))
-                        {
-                            if (this.StartTime > pLapse.EndTime ||
-                                this.EndTime < pLapse.StartTime)
-                            {
-                                lResult = false;
-                            }
-                            else
-                            {
-                                lResult = true;
-                            }
-                        }
-
-                    }
-                }
-
-                return lResult;
-            }*/
-            // TODO resivar esto, afecta tests
+                int day = (int)this.ActiveDays[i].Value;
+                lResult = (today == day);
+                i--;
+            }
+            return lResult;
         }
+
+        public bool ActiveForTime()
+        {
+            bool lResult = false;
+            TimeSpan timeNow = DateTime.Now.TimeOfDay;
+            int i = this.ActiveHours.Count - 1;
+            while ((lResult == false) && (i >= 0))
+            {
+                TimeInterval pInterval = this.ActiveHours[i];
+                lResult = ((timeNow > pInterval.Start) && (timeNow < pInterval.End));
+                i--;
+            }
+            return lResult;
+        }
+
+        /*int i = this.ActiveDays.Count-1;
+            while ((lResult == false) && (i>=0))
+            {
+                Day day = this.ActiveDays[i];
+                if (pInterval.ActiveDays.Contains(day))
+                {
+                    lResult = true;
+                }
+                i--;
+            }*/
+
+        /*public bool OverlapsWith(DateInterval pLapse)
+        {
+            bool lResult = false;
+
+            if (this.ActiveFrom > pLapse.ActiveUntil ||
+                this.ActiveUntil < pLapse.ActiveFrom)
+            {
+                lResult = false;
+            }
+            else
+            {
+                int i = 0;
+
+                while (!lResult)
+                {
+                    Days day = this.DiasDeLaSemana[i];
+
+                    if (pLapse.DiasDeLaSemana.Contains(day))
+                    {
+                        if (this.StartTime > pLapse.EndTime ||
+                            this.EndTime < pLapse.StartTime)
+                        {
+                            lResult = false;
+                        }
+                        else
+                        {
+                            lResult = true;
+                        }
+                    }
+
+                }
+            }
+
+            return lResult;
+        }*/
+        // TODO resivar esto, afecta tests
+    }
 }
