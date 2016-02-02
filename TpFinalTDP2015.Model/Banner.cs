@@ -45,7 +45,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveIntervals.Clone<IList<DateInterval>>();
+                return this.iActiveIntervals;// Clone<IList<DateInterval>>();
             }
             private set
             {
@@ -58,7 +58,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iItems.Clone<IList<BaseBannerItem>>();
+                return this.iItems;// Clone<IList<BaseBannerItem>>();
             }
             private set
             {

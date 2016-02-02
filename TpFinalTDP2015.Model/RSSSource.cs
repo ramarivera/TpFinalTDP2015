@@ -53,7 +53,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iItems.Clone<IList<RssItem>>();
+                return this.iItems;// Clone<IList<RssItem>>();
             }
             private set
             {
