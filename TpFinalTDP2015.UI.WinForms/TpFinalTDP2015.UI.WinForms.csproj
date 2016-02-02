@@ -55,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -174,6 +175,16 @@
     <Compile Include="ModoOperador.Designer.cs">
       <DependentUpon>ModoOperador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Novalty\EditorServiceContext.cs" />
+    <Compile Include="Novalty\LocalizableString.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Novalty\LocalizableStringsControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Novalty\LocalizableStringsControl.Designer.cs">
+      <DependentUpon>LocalizableStringsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminModePages\BannerAdministrator.resx">
@@ -206,6 +217,12 @@
     <EmbeddedResource Include="AgregarModificarFuenteRSS.resx">
       <DependentUpon>AgregarModificarFuenteRSS.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarModificarIntervaloFecha.en.resx">
+      <DependentUpon>AgregarModificarIntervaloFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarModificarIntervaloFecha.es-AR.resx">
+      <DependentUpon>AgregarModificarIntervaloFecha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarIntervaloFecha.resx">
       <DependentUpon>AgregarModificarIntervaloFecha.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModoOperador.resx">
       <DependentUpon>ModoOperador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Novalty\LocalizableStringsControl.resx">
+      <DependentUpon>LocalizableStringsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
