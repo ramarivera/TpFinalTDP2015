@@ -12,6 +12,9 @@ namespace TpFinalTDP2015.Model
         private TimeSpan iStartTime;
         private TimeSpan iEndTime;
 
+        private readonly TimeSpan MIN_VALUE = new TimeSpan(0, 0, 0);
+        private readonly TimeSpan MAX_VALUE = new TimeSpan(23, 59, 59);  
+
         public TimeInterval() : base()
         {
             this.Start = new TimeSpan(1);
@@ -23,7 +26,7 @@ namespace TpFinalTDP2015.Model
             get { return this.iStartTime; }
             set
             {
-                if (value < this.iEndTime)
+                if ((value < this.iEndTime) && ((value > MIN_VALUE) && (value < MAX_VALUE)))
                 {
                     this.UpdateModificationDate();
                     this.iStartTime = value;
@@ -39,7 +42,7 @@ namespace TpFinalTDP2015.Model
             get { return this.iEndTime; }
             set
             {
-                if (value > this.iStartTime)
+                if ((value > this.iStartTime) && ((value > MIN_VALUE) && (value < MAX_VALUE)))
                 {
                     this.UpdateModificationDate();
                     this.iEndTime = value;
@@ -49,6 +52,37 @@ namespace TpFinalTDP2015.Model
                     new ArgumentOutOfRangeException();
                 }
             }
+        }
+
+        public bool TimeIntervalIntersection(TimeInterval pInterval)
+        {
+            bool lResult = false;
+            if ((pInterval.iStartTime > this.iStartTime) 
+                && (pInterval.iStartTime < this.iEndTime)) // hora de inicio de pInterval entre intervalo que llama
+            {
+                lResult = true;
+            }
+            else if ((pInterval.iEndTime > this.iStartTime) //hora de fin de pInteval entre intervalo que llama
+                    && (pInterval.iEndTime < this.iEndTime))
+            {
+                lResult = true;
+            }
+            else if ((this.iStartTime > pInterval.iStartTime) //hora de inicio de intervalo que llama entre pInterval
+                    && (this.iStartTime < pInterval.iEndTime))
+            {
+                lResult = true;
+            }
+            else if ((this.iEndTime > pInterval.iStartTime) //hora de fin de intervalo que llama entre pInterval
+                    && (this.iEndTime < pInterval.iEndTime))
+            {
+                lResult = true;
+            }
+            else if ((this.iStartTime == pInterval.iStartTime)//intervalos iguales
+                    &&(this.iEndTime == pInterval.iEndTime))
+            {
+                lResult = true;
+            }
+            return lResult;
         }
     }
 }
