@@ -7,7 +7,7 @@ using TpFinalTDP2015.Service.Enum;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    class DayDTO: IDTO
+    public class DayDTO: IDTO
     {
         public int Id { get; set; }
         public DateTime CreationDate { get; set; }

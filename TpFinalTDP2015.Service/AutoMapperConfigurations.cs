@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using TpFinalTDP2015.Service.AutoMapperProfiles;
+using TpFinalTDP2015.Service.AutoMapper;
 using Common.Logging;
 
 namespace TpFinalTDP2015.Service
@@ -27,6 +27,7 @@ namespace TpFinalTDP2015.Service
                 cfg.AddProfile<StaticTextProfile>();
                 cfg.AddProfile<CampaignProfile>();
                 cfg.AddProfile<DaysProfile>();
+                cfg.AddProfile<DayProfile>();
                 cfg.AddProfile<SlideTransitioProfile>();
             });
         }

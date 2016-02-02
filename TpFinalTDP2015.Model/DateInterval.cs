@@ -75,7 +75,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveDays.Clone<IList<Day>>();
+                return this.iActiveDays;// Clone<IList<Day>>();
             }
             private set
             {
@@ -88,7 +88,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveHours.Clone<IList<TimeInterval>>();
+                return this.iActiveHours;// Clone<IList<TimeInterval>>();
             }
             private set
             {

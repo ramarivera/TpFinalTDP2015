@@ -40,11 +40,11 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual IList<DateInterval> ActiveIntervals
+       public virtual IList<DateInterval> ActiveIntervals
         {
             get
             {
-                return this.iActiveIntervals.Clone<IList<DateInterval>>();
+                return this.iActiveIntervals;// Clone<IList<DateInterval>>();
             }
             private set
             {
