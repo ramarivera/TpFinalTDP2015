@@ -54,7 +54,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public bool TimeIntervalIntersection(TimeInterval pInterval)
+        public bool IntersectionWith(TimeInterval pInterval)
         {
             bool lResult = false;
             if ((pInterval.iStartTime > this.iStartTime) 
