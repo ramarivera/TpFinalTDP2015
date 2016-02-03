@@ -9,20 +9,18 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
-    class BannerDTOProfile : Profile
+    class RssItemDTOProfile: Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<BannerDTO, Banner>()
+            Mapper.CreateMap<RssItemDTO, RssItem>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
               .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
               .ForMember(dest => dest.LastModified, opt => opt.MapFrom(source => source.ModificationDate))
-              .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
+              .ForMember(dest => dest.Title, opt => opt.MapFrom(source => source.Title))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
-              .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.Items, opt => opt.MapFrom(source => source.Items));
+              .ForMember(dest => dest.URL, opt => opt.MapFrom(source => source.URL))
+              .ForMember(dest => dest.PublicationDate, opt => opt.MapFrom(source => source.PublicationDate));
         }
-
-        
     }
 }

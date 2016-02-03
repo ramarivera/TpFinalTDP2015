@@ -13,6 +13,7 @@ namespace TpFinalTDP2015.Model
         private string iDescription;
         private IList<DateInterval> iActiveIntervals;
         //TODO accesores con modificacion de fecha para CampaginInterval
+        //TODO falta lo que sea que contenga los slides
 
         public Campaign() : base()
         {

@@ -9,20 +9,19 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
-    class BannerDTOProfile : Profile
+    class DateIntervalDTOProfile: Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<BannerDTO, Banner>()
+            Mapper.CreateMap<DateIntervalDTO, DateInterval>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
               .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
               .ForMember(dest => dest.LastModified, opt => opt.MapFrom(source => source.ModificationDate))
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
-              .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
-              .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.Items, opt => opt.MapFrom(source => source.Items));
+              .ForMember(dest => dest.ActiveFrom, opt => opt.MapFrom(source => source.ActiveFrom))
+              .ForMember(dest => dest.ActiveUntil, opt => opt.MapFrom(source => source.ActiveUntil))
+              .ForMember(dest => dest.ActiveDays, opt => opt.MapFrom(source => source.Days))
+              .ForMember(dest => dest.ActiveHours, opt => opt.MapFrom(source => source.ActiveHours));
         }
-
-        
     }
 }
