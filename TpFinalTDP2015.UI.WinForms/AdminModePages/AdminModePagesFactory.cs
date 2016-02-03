@@ -52,6 +52,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             }
             catch (Exception ex)
             {
+                throw ex;
                /* StringBuilder sb = new StringBuilder();
                 foreach (Exception exSub in ex.LoaderExceptions)
                 {

@@ -47,7 +47,7 @@
     <language name="English" code="en">
       <property name="CreationDate">
         <text>Creation Date</text>
-        <enable>1</enable>
+        <enable>0</enable>
       </property>
       <property name="Id">
         <text>ID</text>
@@ -62,42 +62,46 @@
         <enable>1</enable>
       </property>
       <property name="Description">
-        <text>Last Modified</text>
+        <text>Description</text>
         <enable>1</enable>
       </property>
       <property name="ActiveIntervals">
         <text>ActiveIntervals</text>
-        <enable>1</enable>
+        <enable>0</enable>
       </property>
       <property name="Items">
         <text>Items</text>
-        <enable>1</enable>
+        <enable>0</enable>
       </property>
     </language>
     <language name="Spanish (Argentina)" code="es-AR">
       <property name="CreationDate">
-        <text>Creation Date</text>
-        <enable>1</enable>
+        <text>Fecha de Creacion</text>
+        <enable>0</enable>
       </property>
       <property name="Id">
-        <text>Last Modified</text>
+        <text>Id</text>
         <enable>1</enable>ID
       </property>
-      <property name="LastModified">
-        <text>Last Modified</text>
+      <property name="ModificationDate">
+        <text>Ultima Modificacion</text>
         <enable>1</enable>
       </property>
       <property name="Name">
-        <text>Last Modified</text>
+        <text>Nombre</text>
         <enable>1</enable>
       </property>
-      <property name="ActiveFrom">
-        <text>Last Modified</text>
+      <property name="Description">
+        <text>Descripcion</text>
         <enable>1</enable>
       </property>
-      <property name="ActiveUntil">
-        <text>Last Modified</text>
-        <enable>1</enable>
+      <property name="ActiveIntervals">
+        <text>Intervalos Activos</text>
+        <enable>0</enable>
+      </property>
+      <property name="Items">
+        <text>Items</text>
+        <enable>0</enable>
       </property>
     </language>
   </entity>

@@ -18,19 +18,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private static readonly ILog cLogger = LogManager.GetLogger<BaseDGV>();
 
         public BindingSource iSource = new BindingSource(); //TODO cambiar public por private
-        private DGVHelper iHelper;
+        private DGVHelper iHelper = new DGVHelper();
+
 
         public Type DTOType { get; set; }
 
         public BaseDGV()
         {
-            InitializeComponent();
-        }
-
-        public BaseDGV(Type pDTOType)
-        {
-            this.DTOType = pDTOType;
-            this.iHelper = new DGVHelper();
             InitializeComponent();
         }
 
@@ -98,7 +92,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
                 this.iSource.Add(pDTO);
             }
             this.DataSource = this.iSource;
-            DataGridViewColumnCollection lcole = this.Columns;
             this.iHelper.Configure(this);
         }
 
@@ -120,77 +113,63 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         IList<PropertyConfigurations> PropertyConfigs { get; set; }
 
+        internal DGVHelper()
+        {
+            this.PropertyConfigs = new List<PropertyConfigurations>();
+        }
+
         public void Configure(BaseDGV pDGV)
         {
+            pDGV.AutoGenerateColumns = false;
+          //  pDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.GetConfigForEntity(pDGV.DTOType);
             this.ConfigureColumns(pDGV);
 
         }
 
+        
         private void ConfigureColumns(BaseDGV pDGV)
         {
             int i = 0;
-            bool lFound = true;
+            bool lError = false;
+            IList<DataGridViewColumn> lColumnsToRemove = new List<DataGridViewColumn>();
             IList<DataGridViewColumn> lColumns = this.CopyColumns(pDGV);
 
-            while (lFound && i < lColumns.Count)
+            while (!lError && i < lColumns.Count)
             {
                 DataGridViewColumn lCol = lColumns[i];
-                lFound = PropertyConfigs.Any(pro => pro.PropertyName == lCol.Name);
-                i++;
-            }
-
-            if (lFound)
-            {
                 PropertyConfigurations lProp = PropertyConfigs
-                                    .Where(pro => pro.PropertyName == lColumns[i].Name)
+                                    .Where(pro => pro.PropertyName == lCol.Name)
                                     .FirstOrDefault();
-                if (lProp != null)
+                if (lProp != null)      // meramente para estar seguro que no falle nada
                 {
                     if (lProp.Enabled)
                     {
-                        lColumns[i].Name = lProp.Value;
+                        lCol.HeaderText = lProp.Value;
                     }
                     else
                     {
-                        lColumns.RemoveAt(i);
+                        lColumnsToRemove.Add(lCol);
                     }
+                    i++;
                 }
                 else//TODO cagamos viteh
                 {
-
+                    lError = true;
                 }
-            }
-
-
-
-            for (int i = lColumns.Count - 1; i >= 0; --i)
-            {
                 
-
-                if (lFound !=  null) 
-                {
-                    if (lFound.Enabled)
-                    {
-                        lColumns[i].Name = lFound.Value;
-                    }
-                    else
-                    {
-                        lColumns.RemoveAt(i);
-                    }
-                }
-                else//TODO cagamos viteh
-                {
-
-                }
             }
 
-            pDGV.Columns.Clear();
-
-            foreach (DataGridViewColumn col in lColumns)
+            if (!lError)
             {
-                pDGV.Columns.Add
+                foreach (DataGridViewColumn col in lColumnsToRemove)
+                {
+                    lColumns.Remove(col);
+                }
+                pDGV.Columns.Clear();
+                pDGV.Columns.AddRange(lColumns.ToArray());
             }
+
         }
 
         private IList<DataGridViewColumn> CopyColumns(BaseDGV pDGV)
@@ -218,7 +197,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
             XElement lXEntity = query.FirstOrDefault();
             //TODO excepcion de lxEntity es null despues del default
-            string lLanCode = "en"; //TODO obtenerlo de otro luga, anda a saber de donde
+            string lLanCode = "es-AR"; //TODO obtenerlo de otro luga, anda a saber de donde
 
 
             query = from language in lXEntity.Elements()
@@ -259,6 +238,11 @@ namespace TpFinalTDP2015.UI.AdminModePages
             internal string PropertyName { get; set; }
             internal string Value { get; set; }
             internal  bool Enabled { get; set; }
+
+            public override string ToString()
+            {
+                return String.Format("{0}:{1} ({2})",this.PropertyName,this.Value,this.Enabled);
+            }
         }
 
 
