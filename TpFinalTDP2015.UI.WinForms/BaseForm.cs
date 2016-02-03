@@ -10,12 +10,22 @@ using System.Windows.Forms;
 
 namespace TpFinalTDP2015.UI
 {
-    public  partial class BaseForm : Form
+    public partial class BaseForm : Form
     {
         public BaseForm()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
         }
     }
 }

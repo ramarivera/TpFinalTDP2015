@@ -40,7 +40,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             if (resultado == DialogResult.OK)
             {
                 this.iSource.Add(pDTO);
-                this.Rows[this.RowCount-1].Tag = pDTO;
+                this.Rows[this.RowCount - 1].Tag = pDTO;
             }
         }
 
@@ -48,7 +48,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             pForm.Modificar(pDTO);
             DialogResult resultado = pForm.ShowForm();
-            if(resultado == DialogResult.OK)
+            if (resultado == DialogResult.OK)
             {
                 //TODO fachada en cada administrador
             }
@@ -61,7 +61,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             {
                 cadena = "estos elementos";
             }
-            DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar "+cadena+"?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult resultado = MessageBox.Show("¿Está seguro que desea eliminar " + cadena + "?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             switch (resultado)
             {
                 case DialogResult.Yes:
@@ -120,13 +120,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public void Configure(BaseDGV pDGV)
         {
             pDGV.AutoGenerateColumns = false;
-          //  pDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //  pDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.GetConfigForEntity(pDGV.DTOType);
             this.ConfigureColumns(pDGV);
 
         }
 
-        
+
         private void ConfigureColumns(BaseDGV pDGV)
         {
             int i = 0;
@@ -157,15 +157,15 @@ namespace TpFinalTDP2015.UI.AdminModePages
                     lError = true;
                 }
 
-                }
+            }
 
             if (!lError)
-                    {
+            {
                 foreach (DataGridViewColumn col in lColumnsToRemove)
                 {
                     lColumns.Remove(col);
-            }
-            pDGV.Columns.Clear();
+                }
+                pDGV.Columns.Clear();
                 pDGV.Columns.AddRange(lColumns.ToArray());
             }
 
@@ -187,7 +187,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             XDocument lXDoc = XDocument.Load("Datagrid.xml");
             IEnumerable<XElement> lXEntityElements = lXDoc.Elements().Elements();
-         
+
             cLogger.Info("Descomponiendo XML");
 
             var query = from entity in lXEntityElements
@@ -220,13 +220,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
 
 
-              /*  cLogger.InfoFormat
-                    (
-                    "Propiedad: {0}, Texto: {1}, Mostrar: {2}",
-                    xl.Attribute("name").Value,
-                    xl.Element("text").Value,
-                    xl.Element("enable").Value
-                    );*/
+            /*  cLogger.InfoFormat
+                  (
+                  "Propiedad: {0}, Texto: {1}, Mostrar: {2}",
+                  xl.Attribute("name").Value,
+                  xl.Element("text").Value,
+                  xl.Element("enable").Value
+                  );*/
 
         }
 
@@ -236,13 +236,14 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             internal string PropertyName { get; set; }
             internal string Value { get; set; }
-            internal  bool Enabled { get; set; }
+            internal bool Enabled { get; set; }
 
             public override string ToString()
             {
-                return String.Format("{0}:{1} ({2})",this.PropertyName,this.Value,this.Enabled);
+                return String.Format("{0}:{1} ({2})", this.PropertyName, this.Value, this.Enabled);
             }
         }
-
+    }
+}
 
 
