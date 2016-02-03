@@ -91,5 +91,23 @@ namespace TpFinalTDP2015.Model
             this.UpdateModificationDate();
             this.iItems.Remove(pItem);
         }
+
+        public bool Active
+        {
+            get { return this.ActiveForDate(DateTime.Now); }
+        }
+
+        public bool ActiveForDate(DateTime pDate)
+        {
+            bool lResult = false;
+            int i = this.ActiveIntervals.Count - 1;
+            while ((lResult == false) && (i >= 0))
+            {
+                DateInterval pInterval = this.ActiveIntervals[i];
+                lResult = pInterval.IsActive(pDate);
+                i--;
+            }
+            return lResult;
+        }
     }
 }

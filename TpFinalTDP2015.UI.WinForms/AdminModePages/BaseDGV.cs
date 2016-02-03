@@ -20,7 +20,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public BindingSource iSource = new BindingSource(); //TODO cambiar public por private
         private DGVHelper iHelper = new DGVHelper();
 
-
         public Type DTOType { get; set; }
 
         public BaseDGV()
@@ -157,16 +156,16 @@ namespace TpFinalTDP2015.UI.AdminModePages
                 {
                     lError = true;
                 }
-                
-            }
+
+                }
 
             if (!lError)
-            {
+                    {
                 foreach (DataGridViewColumn col in lColumnsToRemove)
                 {
                     lColumns.Remove(col);
-                }
-                pDGV.Columns.Clear();
+            }
+            pDGV.Columns.Clear();
                 pDGV.Columns.AddRange(lColumns.ToArray());
             }
 
@@ -247,5 +246,3 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
 
 
-    }
-}
