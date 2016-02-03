@@ -79,14 +79,7 @@ namespace TpFinalTDP2015.Model
             while ((lResult == false) && (i >= 0))
             {
                 DateInterval pInterval = this.ActiveIntervals[i];
-                if ((pDate >= pInterval.ActiveFrom) && (pDate <= pInterval.ActiveUntil))
-                {
-                    lResult = pInterval.ActiveForDay();
-                    if (lResult)
-                    {
-                        lResult = pInterval.ActiveForTime();
-                    }
-                }
+                lResult = pInterval.IsActive(pDate);
                 i--;
             }
             return lResult;

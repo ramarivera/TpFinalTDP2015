@@ -197,6 +197,20 @@ namespace TpFinalTDP2015.Model
             return lResult;
         }
 
+        public bool IsActive(DateTime pDate)
+        {
+            bool lResult = false;
+            if ((pDate >= this.ActiveFrom) && (pDate <= this.ActiveUntil))
+            {
+                lResult = this.ActiveForDay();
+                if (lResult)
+                {
+                    lResult = this.ActiveForTime();
+                }
+            }
+            return lResult;
+        }
+
         public bool ActiveForDay()
         {
             bool lResult = false;
