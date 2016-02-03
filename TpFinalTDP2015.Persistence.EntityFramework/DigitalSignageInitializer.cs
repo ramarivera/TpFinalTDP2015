@@ -23,9 +23,10 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             SeedDateIntervals(pContext);
             SeedCampaigns(pContext);
             SeedRssSources(pContext);
+            SeedStaticTexts(pContext);
             SeedBanners(pContext);
           //  SeedSlides(pContext);
-            SeedStaticTexts(pContext);
+            
 
 
         }
