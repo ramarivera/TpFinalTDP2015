@@ -52,7 +52,8 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvBanner.CurrentRow;
-            this.banner = (BannerDTO)row.Tag;
+            //this.banner = (BannerDTO)row.Tag;
+            this.banner = (BannerDTO)row.DataBoundItem;
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Modificar(ventana, banner);
         }

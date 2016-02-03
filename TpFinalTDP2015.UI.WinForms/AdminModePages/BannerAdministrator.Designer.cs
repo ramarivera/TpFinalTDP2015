@@ -99,8 +99,14 @@
             // 
             // dgvBanner
             // 
+            this.dgvBanner.AllowUserToAddRows = false;
+            this.dgvBanner.AllowUserToOrderColumns = true;
+            this.dgvBanner.AllowUserToResizeRows = false;
+            this.dgvBanner.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBanner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBanner.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBanner.DTOType = null;
+            this.dgvBanner.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvBanner.Location = new System.Drawing.Point(3, 38);
             this.dgvBanner.Name = "dgvBanner";
             this.dgvBanner.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

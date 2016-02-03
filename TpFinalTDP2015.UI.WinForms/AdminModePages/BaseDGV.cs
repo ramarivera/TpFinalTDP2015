@@ -18,7 +18,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private static readonly ILog cLogger = LogManager.GetLogger<BaseDGV>();
 
         public BindingSource iSource = new BindingSource(); //TODO cambiar public por private
-        private DGVHelper iHelper;
+        //private DGVHelper iHelper;
 
         public Type DTOType { get; set; }
 
@@ -30,7 +30,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public BaseDGV(Type pDTOType)
         {
             this.DTOType = pDTOType;
-            this.iHelper = new DGVHelper();
+          //  this.iHelper = new DGVHelper();
             InitializeComponent();
         }
 
@@ -99,7 +99,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             }
             this.DataSource = this.iSource;
             DataGridViewColumnCollection lcole = this.Columns;
-            this.iHelper.Configure(this);
+            //this.iHelper.Configure(this);
         }
 
         public IList<IDTO> GetAll()
@@ -114,7 +114,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
     }
 
 
-    class DGVHelper
+    /*class DGVHelper
     {
         private static readonly ILog cLogger = LogManager.GetLogger<DGVHelper>();
 
@@ -261,7 +261,5 @@ namespace TpFinalTDP2015.UI.AdminModePages
             internal  bool Enabled { get; set; }
         }
 
+    
 
-
-    }
-}
