@@ -16,6 +16,9 @@ namespace TpFinalTDP2015.Model
         private IList<Day> iActiveDays;
         private IList<TimeInterval> iActiveHours;
 
+        private readonly DateTime MIN_VALUE = new DateTime(1980, 1, 1);
+        private readonly DateTime MAX_VALUE = new DateTime(2099, 12, 31);
+
         // TODO accesores con fecha de modifcacion para Days
         public DateInterval() : base()
         {
@@ -23,8 +26,6 @@ namespace TpFinalTDP2015.Model
             this.ActiveUntil = new DateTime(2);
             this.ActiveHours = new List<TimeInterval>();
             this.ActiveDays = new List<Day>();
-            //this.StartTime = new TimeSpan(1);
-            //this.EndTime = new TimeSpan(2);
         }
 
         public virtual string Name
@@ -42,7 +43,7 @@ namespace TpFinalTDP2015.Model
             get { return this.iActiveFrom; }
             set
             {
-                if (value <= this.iActiveUntil)
+                if ((value <= this.iActiveUntil) && ((value > MIN_VALUE) && (value < MAX_VALUE)))
                 {
                     this.UpdateModificationDate();
                     this.iActiveFrom = value;
@@ -58,7 +59,7 @@ namespace TpFinalTDP2015.Model
             get { return this.iActiveUntil; }
             set
             {
-                if (value >= this.iActiveFrom)
+                if ((value >= this.iActiveFrom) && ((value > MIN_VALUE) && (value < MAX_VALUE)))
                 {
                     this.UpdateModificationDate();
                     this.iActiveUntil = value;
@@ -122,6 +123,119 @@ namespace TpFinalTDP2015.Model
             this.UpdateModificationDate();
             this.iActiveHours.Remove(pInterval);
         }
+
+        public bool IntersectionWith(DateInterval pInterval)
+        {
+            bool lResult = false;
+            if ((pInterval.iActiveFrom > this.iActiveFrom)
+                && (pInterval.iActiveFrom < this.iActiveUntil)) // fecha de inicio de pInterval entre intervalo que llama
+            {
+                lResult = true;
+            }
+            else if ((pInterval.iActiveUntil > this.iActiveFrom) //fecha de fin de pInteval entre intervalo que llama
+                    && (pInterval.iActiveUntil < this.iActiveUntil))
+            {
+                lResult = true;
+            }
+            else if ((this.iActiveFrom > pInterval.iActiveFrom) //fecha de inicio de intervalo que llama entre pInterval
+                    && (this.iActiveFrom < pInterval.iActiveUntil))
+            {
+                lResult = true;
+            }
+            else if ((this.iActiveUntil > pInterval.iActiveFrom) //fecha de fin de intervalo que llama entre pInterval
+                    && (this.iActiveUntil < pInterval.iActiveUntil))
+            {
+                lResult = true;
+            }
+            else if ((this.iActiveFrom == pInterval.iActiveFrom)//intervalos iguales
+                    && (this.iActiveUntil == pInterval.iActiveUntil))
+            {
+                lResult = true;
+            }
+            if (lResult)
+            {
+               lResult = this.SameDays(pInterval);
+            }
+            if (lResult)
+            {
+                lResult = this.TimeInteresctionWith(pInterval);
+            }
+            return lResult;
+        }
+
+        public bool SameDays(DateInterval pInterval)
+        {
+            bool lResult = false;
+            int i = this.ActiveDays.Count-1;
+            while ((lResult == false) && (i>=0))
+            {
+                Day day = this.ActiveDays[i];
+                if (pInterval.ActiveDays.Contains(day))
+                {
+                    lResult = true;
+                }
+                i--;
+            }
+            return lResult;
+        }
+
+        public bool TimeInteresctionWith(DateInterval pInterval)
+        {
+            bool lResult = false;
+            int i = this.ActiveHours.Count-1;
+            while ((lResult == false) && (i >= 0))
+            {
+                TimeInterval pTimeInterval = this.ActiveHours[i];
+                int j = pInterval.ActiveHours.Count-1;
+                while ((lResult == false) && (j >= 0))
+                {
+                    lResult = pTimeInterval.IntersectionWith(pInterval.ActiveHours[j]);
+                    j--;
+                }
+                i--;
+            }
+            return lResult;
+        }
+
+        public bool ActiveForDay()
+        {
+            bool lResult = false;
+            int today = (int)DateTime.Now.DayOfWeek;
+            int i = this.ActiveDays.Count - 1;
+            while ((lResult == false) && (i >= 0))
+            {
+                int day = (int)this.ActiveDays[i].Value;
+                lResult = (today == day);
+                i--;
+            }
+            return lResult;
+        }
+
+        public bool ActiveForTime()
+        {
+            bool lResult = false;
+            TimeSpan timeNow = DateTime.Now.TimeOfDay;
+            int i = this.ActiveHours.Count - 1;
+            while ((lResult == false) && (i >= 0))
+            {
+                TimeInterval pInterval = this.ActiveHours[i];
+                lResult = ((timeNow > pInterval.Start) && (timeNow < pInterval.End));
+                i--;
+            }
+            return lResult;
+        }
+
+        /*int i = this.ActiveDays.Count-1;
+            while ((lResult == false) && (i>=0))
+            {
+                Day day = this.ActiveDays[i];
+                if (pInterval.ActiveDays.Contains(day))
+                {
+                    lResult = true;
+                }
+                i--;
+            }*/
+
         /*public bool OverlapsWith(DateInterval pLapse)
         {
             bool lResult = false;

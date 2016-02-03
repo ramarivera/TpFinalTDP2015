@@ -110,5 +110,6 @@ namespace TpFinalTDP2015.Service
 
         }
         //public 
+        // agregar verificaciones de intervalos
     }
 }
