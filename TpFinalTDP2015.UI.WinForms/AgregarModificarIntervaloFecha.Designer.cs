@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AgregarModificarIntervaloFecha));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAccept = new System.Windows.Forms.Button();
@@ -57,14 +58,17 @@
             this.chkSunday = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lblStartDate = new System.Windows.Forms.Label();
-            this.lblEndDate = new System.Windows.Forms.Label();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.lblEndDate = new System.Windows.Forms.Label();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
+            this.localizableStringsControl1 = new Novaly.Windows.Forms.LocalizableStrings.LocalizableStringsControl();
+            this.titulo = new Novaly.Windows.Forms.LocalizableStrings.LocalizableString();
+            this.comentario = new Novaly.Windows.Forms.LocalizableStrings.LocalizableString();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -83,85 +87,37 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel16, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.18182F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.21212F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.42424F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.18182F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 200);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
             this.tableLayoutPanel2.Controls.Add(this.btnAccept, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnCancel, 2, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 165);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(393, 32);
-            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnAccept
             // 
-            this.btnAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccept.Location = new System.Drawing.Point(238, 3);
+            resources.ApplyResources(this.btnAccept, "btnAccept");
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(72, 26);
-            this.btnAccept.TabIndex = 0;
-            this.btnAccept.Text = "Aceptar";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.AutoSize = true;
-            this.btnCancel.Location = new System.Drawing.Point(316, 3);
+            resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(74, 26);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.AutoSize = true;
-            this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
             this.tableLayoutPanel3.Controls.Add(this.btnAll, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel6, 1, 0);
@@ -170,511 +126,225 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel9, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel10, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel11, 2, 1);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 81);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(393, 78);
-            this.tableLayoutPanel3.TabIndex = 1;
             // 
             // btnAll
             // 
-            this.btnAll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAll.AutoSize = true;
-            this.btnAll.Location = new System.Drawing.Point(297, 42);
+            resources.ApplyResources(this.btnAll, "btnAll");
             this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(93, 33);
-            this.btnAll.TabIndex = 7;
-            this.btnAll.Text = "Todos";
             this.btnAll.UseVisualStyleBackColor = true;
             this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel4.AutoSize = true;
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
             this.tableLayoutPanel4.Controls.Add(this.chkMonday, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblMonday, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(92, 33);
-            this.tableLayoutPanel4.TabIndex = 0;
             // 
             // chkMonday
             // 
-            this.chkMonday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkMonday.AutoSize = true;
-            this.chkMonday.Location = new System.Drawing.Point(76, 3);
+            resources.ApplyResources(this.chkMonday, "chkMonday");
             this.chkMonday.Name = "chkMonday";
-            this.chkMonday.Size = new System.Drawing.Size(13, 27);
-            this.chkMonday.TabIndex = 0;
-            this.chkMonday.Text = "checkBox1";
             this.chkMonday.UseVisualStyleBackColor = true;
             // 
             // lblMonday
             // 
-            this.lblMonday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMonday.AutoSize = true;
-            this.lblMonday.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblMonday, "lblMonday");
             this.lblMonday.Name = "lblMonday";
-            this.lblMonday.Size = new System.Drawing.Size(67, 33);
-            this.lblMonday.TabIndex = 1;
-            this.lblMonday.Text = "Lunes";
-            this.lblMonday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.AutoSize = true;
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel6, "tableLayoutPanel6");
             this.tableLayoutPanel6.Controls.Add(this.lblTuesday, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.chkTuesday, 1, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(101, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(92, 33);
-            this.tableLayoutPanel6.TabIndex = 1;
             // 
             // lblTuesday
             // 
-            this.lblTuesday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTuesday.AutoSize = true;
-            this.lblTuesday.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblTuesday, "lblTuesday");
             this.lblTuesday.Name = "lblTuesday";
-            this.lblTuesday.Size = new System.Drawing.Size(67, 33);
-            this.lblTuesday.TabIndex = 1;
-            this.lblTuesday.Text = "Martes";
-            this.lblTuesday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chkTuesday
             // 
-            this.chkTuesday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkTuesday.AutoSize = true;
-            this.chkTuesday.Location = new System.Drawing.Point(76, 3);
+            resources.ApplyResources(this.chkTuesday, "chkTuesday");
             this.chkTuesday.Name = "chkTuesday";
-            this.chkTuesday.Size = new System.Drawing.Size(13, 27);
-            this.chkTuesday.TabIndex = 2;
-            this.chkTuesday.Text = "checkBox1";
             this.chkTuesday.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel7
             // 
-            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel7.AutoSize = true;
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel7, "tableLayoutPanel7");
             this.tableLayoutPanel7.Controls.Add(this.lblWednesday, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.chkWednesday, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(199, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(92, 33);
-            this.tableLayoutPanel7.TabIndex = 2;
             // 
             // lblWednesday
             // 
-            this.lblWednesday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblWednesday.AutoSize = true;
-            this.lblWednesday.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblWednesday, "lblWednesday");
             this.lblWednesday.Name = "lblWednesday";
-            this.lblWednesday.Size = new System.Drawing.Size(67, 33);
-            this.lblWednesday.TabIndex = 0;
-            this.lblWednesday.Text = "Miércoles";
-            this.lblWednesday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chkWednesday
             // 
-            this.chkWednesday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkWednesday.AutoSize = true;
-            this.chkWednesday.Location = new System.Drawing.Point(76, 3);
+            resources.ApplyResources(this.chkWednesday, "chkWednesday");
             this.chkWednesday.Name = "chkWednesday";
-            this.chkWednesday.Size = new System.Drawing.Size(13, 27);
-            this.chkWednesday.TabIndex = 1;
-            this.chkWednesday.Text = "checkBox1";
-            this.chkWednesday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkWednesday.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel8.AutoSize = true;
-            this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel8, "tableLayoutPanel8");
             this.tableLayoutPanel8.Controls.Add(this.lblThursday, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.chkThursday, 1, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(297, 3);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(93, 33);
-            this.tableLayoutPanel8.TabIndex = 3;
             // 
             // lblThursday
             // 
-            this.lblThursday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblThursday.AutoSize = true;
-            this.lblThursday.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblThursday, "lblThursday");
             this.lblThursday.Name = "lblThursday";
-            this.lblThursday.Size = new System.Drawing.Size(68, 33);
-            this.lblThursday.TabIndex = 0;
-            this.lblThursday.Text = "Jueves";
-            this.lblThursday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chkThursday
             // 
-            this.chkThursday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkThursday.AutoSize = true;
-            this.chkThursday.Location = new System.Drawing.Point(77, 3);
+            resources.ApplyResources(this.chkThursday, "chkThursday");
             this.chkThursday.Name = "chkThursday";
-            this.chkThursday.Size = new System.Drawing.Size(13, 27);
-            this.chkThursday.TabIndex = 1;
-            this.chkThursday.Text = "checkBox1";
             this.chkThursday.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel9
             // 
-            this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel9.AutoSize = true;
-            this.tableLayoutPanel9.ColumnCount = 2;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
             this.tableLayoutPanel9.Controls.Add(this.lblFriday, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.chkFriday, 1, 0);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 42);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 1;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(92, 33);
-            this.tableLayoutPanel9.TabIndex = 4;
             // 
             // lblFriday
             // 
-            this.lblFriday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFriday.AutoSize = true;
-            this.lblFriday.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblFriday, "lblFriday");
             this.lblFriday.Name = "lblFriday";
-            this.lblFriday.Size = new System.Drawing.Size(67, 33);
-            this.lblFriday.TabIndex = 0;
-            this.lblFriday.Text = "Viernes";
-            this.lblFriday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chkFriday
             // 
-            this.chkFriday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkFriday.AutoSize = true;
-            this.chkFriday.Location = new System.Drawing.Point(76, 3);
+            resources.ApplyResources(this.chkFriday, "chkFriday");
             this.chkFriday.Name = "chkFriday";
-            this.chkFriday.Size = new System.Drawing.Size(13, 27);
-            this.chkFriday.TabIndex = 1;
-            this.chkFriday.Text = "checkBox1";
             this.chkFriday.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel10
             // 
-            this.tableLayoutPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel10.AutoSize = true;
-            this.tableLayoutPanel10.ColumnCount = 2;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel10, "tableLayoutPanel10");
             this.tableLayoutPanel10.Controls.Add(this.lblSaturday, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.chkSaturday, 1, 0);
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(101, 42);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 1;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(92, 33);
-            this.tableLayoutPanel10.TabIndex = 5;
             // 
             // lblSaturday
             // 
-            this.lblSaturday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSaturday.AutoSize = true;
-            this.lblSaturday.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblSaturday, "lblSaturday");
             this.lblSaturday.Name = "lblSaturday";
-            this.lblSaturday.Size = new System.Drawing.Size(67, 33);
-            this.lblSaturday.TabIndex = 0;
-            this.lblSaturday.Text = "Sábado";
-            this.lblSaturday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chkSaturday
             // 
-            this.chkSaturday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkSaturday.AutoSize = true;
-            this.chkSaturday.Location = new System.Drawing.Point(76, 3);
+            resources.ApplyResources(this.chkSaturday, "chkSaturday");
             this.chkSaturday.Name = "chkSaturday";
-            this.chkSaturday.Size = new System.Drawing.Size(13, 27);
-            this.chkSaturday.TabIndex = 1;
-            this.chkSaturday.Text = "checkBox1";
             this.chkSaturday.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel11
             // 
-            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel11.AutoSize = true;
-            this.tableLayoutPanel11.ColumnCount = 2;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            resources.ApplyResources(this.tableLayoutPanel11, "tableLayoutPanel11");
             this.tableLayoutPanel11.Controls.Add(this.lblSunday, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.chkSunday, 1, 0);
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(199, 42);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 1;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(92, 33);
-            this.tableLayoutPanel11.TabIndex = 6;
             // 
             // lblSunday
             // 
-            this.lblSunday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSunday.AutoSize = true;
-            this.lblSunday.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblSunday, "lblSunday");
             this.lblSunday.Name = "lblSunday";
-            this.lblSunday.Size = new System.Drawing.Size(67, 33);
-            this.lblSunday.TabIndex = 0;
-            this.lblSunday.Text = "Domingo";
-            this.lblSunday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chkSunday
             // 
-            this.chkSunday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkSunday.AutoSize = true;
-            this.chkSunday.Location = new System.Drawing.Point(76, 3);
+            resources.ApplyResources(this.chkSunday, "chkSunday");
             this.chkSunday.Name = "chkSunday";
-            this.chkSunday.Size = new System.Drawing.Size(13, 27);
-            this.chkSunday.TabIndex = 1;
-            this.chkSunday.Text = "checkBox1";
             this.chkSunday.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel5.AutoSize = true;
-            this.tableLayoutPanel5.ColumnCount = 4;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
             this.tableLayoutPanel5.Controls.Add(this.lblStartDate, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel13, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel14, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.lblEndDate, 2, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 39);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 36);
-            this.tableLayoutPanel5.TabIndex = 2;
             // 
             // lblStartDate
             // 
-            this.lblStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.lblStartDate, "lblStartDate");
             this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(92, 36);
-            this.lblStartDate.TabIndex = 0;
-            this.lblStartDate.Text = "Fecha de Inicio";
-            this.lblStartDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblEndDate
-            // 
-            this.lblEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(199, 0);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(92, 36);
-            this.lblEndDate.TabIndex = 1;
-            this.lblEndDate.Text = "Fecha de Fin";
-            this.lblEndDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(3, 6);
-            this.dtpEndDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.dtpEndDate.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(87, 20);
-            this.dtpEndDate.TabIndex = 0;
             // 
             // tableLayoutPanel13
             // 
-            this.tableLayoutPanel13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel13.AutoSize = true;
-            this.tableLayoutPanel13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel13.ColumnCount = 1;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            resources.ApplyResources(this.tableLayoutPanel13, "tableLayoutPanel13");
             this.tableLayoutPanel13.Controls.Add(this.dtpStartDate, 0, 1);
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(101, 3);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 3;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(92, 30);
-            this.tableLayoutPanel13.TabIndex = 10;
             // 
             // dtpStartDate
             // 
-            this.dtpStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.dtpStartDate, "dtpStartDate");
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(3, 6);
             this.dtpStartDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.dtpStartDate.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(86, 20);
-            this.dtpStartDate.TabIndex = 4;
             // 
             // tableLayoutPanel14
             // 
-            this.tableLayoutPanel14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel14.AutoSize = true;
-            this.tableLayoutPanel14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel14.ColumnCount = 1;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            resources.ApplyResources(this.tableLayoutPanel14, "tableLayoutPanel14");
             this.tableLayoutPanel14.Controls.Add(this.dtpEndDate, 0, 1);
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(297, 3);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            this.tableLayoutPanel14.RowCount = 3;
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(93, 30);
-            this.tableLayoutPanel14.TabIndex = 11;
+            // 
+            // dtpEndDate
+            // 
+            resources.ApplyResources(this.dtpEndDate, "dtpEndDate");
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEndDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            // 
+            // lblEndDate
+            // 
+            resources.ApplyResources(this.lblEndDate, "lblEndDate");
+            this.lblEndDate.Name = "lblEndDate";
             // 
             // tableLayoutPanel16
             // 
-            this.tableLayoutPanel16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel16.AutoSize = true;
-            this.tableLayoutPanel16.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel16.ColumnCount = 2;
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            resources.ApplyResources(this.tableLayoutPanel16, "tableLayoutPanel16");
             this.tableLayoutPanel16.Controls.Add(this.lblTitle, 0, 1);
             this.tableLayoutPanel16.Controls.Add(this.txtTitle, 1, 1);
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
-            this.tableLayoutPanel16.RowCount = 3;
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(393, 30);
-            this.tableLayoutPanel16.TabIndex = 3;
             // 
             // lblTitle
             // 
-            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.lblTitle, "lblTitle");
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(92, 24);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Título";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // txtTitle
             // 
-            this.txtTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTitle.Location = new System.Drawing.Point(101, 6);
+            resources.ApplyResources(this.txtTitle, "txtTitle");
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(289, 20);
-            this.txtTitle.TabIndex = 1;
+            // 
+            // localizableStringsControl1
+            // 
+            this.localizableStringsControl1.Strings.Add(this.titulo);
+            this.localizableStringsControl1.Strings.Add(this.comentario);
+            // 
+            // titulo
+            // 
+            resources.ApplyResources(this.titulo, "titulo");
+            // 
+            // comentario
+            // 
+            resources.ApplyResources(this.comentario, "comentario");
             // 
             // AgregarModificarIntervaloFecha
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 205);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AgregarModificarIntervaloFecha";
-            this.Text = "AgregarModificarIntervalo";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -745,5 +415,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtTitle;
+        private Novaly.Windows.Forms.LocalizableStrings.LocalizableStringsControl localizableStringsControl1;
+        private Novaly.Windows.Forms.LocalizableStrings.LocalizableString titulo;
+        private Novaly.Windows.Forms.LocalizableStrings.LocalizableString comentario;
     }
 }

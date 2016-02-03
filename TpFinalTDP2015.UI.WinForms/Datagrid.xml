@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <entity name="DateInterval" fullName="TpFinalTDP2015.Model.DateInterval">
+    <language name="English" code="en">
+      <property name="CreationDate">
+        Creation Date
+      </property>
+      <property name="Id">
+        ID
+      </property>
+      <property name="LastModified">
+        <text>Last Modified</text>
+        <enable>1</enable>
+      </property>
+      <property name="Name">
+        Name
+      </property>
+      <property name="ActiveFrom">
+        Active From
+      </property>
+      <property name="ActiveUntil">
+        Active Until
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="CreationDate">
+        Fecha de Creacion
+      </property>
+      <property name="Id">
+        ID
+      </property>
+      <property name="LastModified">
+        Ultima Modificacion
+      </property>
+      <property name="Name">
+        Nombre
+      </property>
+      <property name="ActiveFrom">
+        Activo Desde
+      </property>
+      <property name="ActiveUntil">
+        Activo Hasta
+      </property>
+    </language>
+  </entity>
+  <entity name="BannerDTO" fullName="TpFinalTDP2015.Service.DTO.BannerDTO">
+    <language name="English" code="en">
+      <property name="CreationDate">
+        <text>Creation Date</text>
+        <enable>1</enable>
+      </property>
+      <property name="Id">
+        <text>ID</text>
+        <enable>1</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>Last Modified</text>
+        <enable>1</enable>
+      </property>
+      <property name="Name">
+        <text>Name</text>
+        <enable>1</enable>
+      </property>
+      <property name="Description">
+        <text>Last Modified</text>
+        <enable>1</enable>
+      </property>
+      <property name="ActiveIntervals">
+        <text>ActiveIntervals</text>
+        <enable>1</enable>
+      </property>
+      <property name="Items">
+        <text>Items</text>
+        <enable>1</enable>
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="CreationDate">
+        <text>Creation Date</text>
+        <enable>1</enable>
+      </property>
+      <property name="Id">
+        <text>Last Modified</text>
+        <enable>1</enable>ID
+      </property>
+      <property name="LastModified">
+        <text>Last Modified</text>
+        <enable>1</enable>
+      </property>
+      <property name="Name">
+        <text>Last Modified</text>
+        <enable>1</enable>
+      </property>
+      <property name="ActiveFrom">
+        <text>Last Modified</text>
+        <enable>1</enable>
+      </property>
+      <property name="ActiveUntil">
+        <text>Last Modified</text>
+        <enable>1</enable>
+      </property>
+    </language>
+  </entity>
+</root>
