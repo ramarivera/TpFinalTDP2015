@@ -12,7 +12,7 @@
                       <xs:complexType mixed="true">
                         <xs:sequence>
                           <xs:element type="xs:string" name="text"/>
-                          <xs:element type="xs:byte" name="enable"/>
+                          <xs:element type="xs:boolean" name="enable"/>
                         </xs:sequence>
                         <xs:attribute type="xs:string" name="name" use="optional"/>
                       </xs:complexType>
