@@ -90,6 +90,8 @@
     <Compile Include="AutoMapper\RssItemDTOProfile.cs" />
     <Compile Include="AutoMapper\RssItemProfile.cs" />
     <Compile Include="AutoMapper\RssSourceDTOProfile.cs" />
+    <Compile Include="AutoMapper\SlideDTOProfile.cs" />
+    <Compile Include="AutoMapper\SlideProfile.cs" />
     <Compile Include="AutoMapper\SlideTransitioProfile.cs" />
     <Compile Include="AutoMapper\StaticTextDTOProfile.cs" />
     <Compile Include="AutoMapper\StaticTextProfile.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="DTO\IDTO.cs" />
     <Compile Include="DTO\RssItemDTO.cs" />
     <Compile Include="DTO\RssSourceDTO.cs" />
+    <Compile Include="DTO\SlideDTO.cs" />
     <Compile Include="DTO\StaticTextDTO.cs" />
     <Compile Include="DTO\TimeIntervalDTO.cs" />
     <Compile Include="DTO\ValueAndDescription.cs" />

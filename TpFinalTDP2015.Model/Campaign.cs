@@ -12,8 +12,8 @@ namespace TpFinalTDP2015.Model
         private string iName;
         private string iDescription;
         private IList<DateInterval> iActiveIntervals;
+        private IList<Slide> iSlides;
         //TODO accesores con modificacion de fecha para CampaginInterval
-        //TODO falta lo que sea que contenga los slides
 
         public Campaign() : base()
         {
@@ -54,6 +54,19 @@ namespace TpFinalTDP2015.Model
             }
         }
 
+        public virtual IList<Slide> Slides
+        {
+            get
+            {
+                return this.iSlides;// Clone<IList<Slides>();
+            }
+            private set
+            {
+                this.UpdateModificationDate();
+                this.iSlides = value;
+            }
+        }
+
         public virtual void AddDateInterval(DateInterval pInterval)
         {
 
@@ -66,6 +79,18 @@ namespace TpFinalTDP2015.Model
         {
             this.UpdateModificationDate();
             this.iActiveIntervals.Remove(pInterval);
+        }
+
+        public virtual void AddSlide(Slide pSlide)
+        {
+            this.UpdateModificationDate();
+            this.iSlides.Add(pSlide);
+        }
+
+        public virtual void RemoveSlide(Slide pSlide)
+        {
+            this.UpdateModificationDate();
+            this.iSlides.Remove(pSlide);
         }
 
         public bool Active

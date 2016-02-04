@@ -144,6 +144,12 @@
     <Compile Include="AgregarModificarIntervaloTiempo.Designer.cs">
       <DependentUpon>AgregarModificarIntervaloTiempo.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarModificarSlide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarModificarSlide.Designer.cs">
+      <DependentUpon>AgregarModificarSlide.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarModificarTextoFijo.cs">
       <SubType>Form</SubType>
     </Compile>

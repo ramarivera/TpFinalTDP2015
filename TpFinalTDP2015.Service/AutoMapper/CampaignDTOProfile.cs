@@ -20,7 +20,8 @@ namespace TpFinalTDP2015.Service.AutoMapper
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
            //TODO agragar al dto los campos lista   .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.LastModified, opt => opt.MapFrom(source => source.ModificationDate));
+              .ForMember(dest => dest.LastModified, opt => opt.MapFrom(source => source.ModificationDate))
+              .ForMember(dest => dest.Slides, opt => opt.MapFrom(source => source.Slides));
         }
     }
 }
