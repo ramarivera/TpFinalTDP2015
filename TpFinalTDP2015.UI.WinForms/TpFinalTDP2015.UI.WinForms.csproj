@@ -235,6 +235,9 @@
     <EmbeddedResource Include="AgregarModificarIntervaloTiempo.resx">
       <DependentUpon>AgregarModificarIntervaloTiempo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarModificarSlide.resx">
+      <DependentUpon>AgregarModificarSlide.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarModificarTextoFijo.resx">
       <DependentUpon>AgregarModificarTextoFijo.cs</DependentUpon>
     </EmbeddedResource>
