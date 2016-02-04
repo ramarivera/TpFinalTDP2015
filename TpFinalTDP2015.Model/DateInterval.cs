@@ -18,8 +18,7 @@ namespace TpFinalTDP2015.Model
 
         private readonly DateTime MIN_VALUE = new DateTime(1980, 1, 1);
         private readonly DateTime MAX_VALUE = new DateTime(2099, 12, 31);
-
-        // TODO accesores con fecha de modifcacion para Days
+        
         public DateInterval() : base()
         {
             this.ActiveFrom = new DateTime(1);
@@ -100,9 +99,15 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddActiveDay(Day pDay)
         {
-            //TODO agregar la verificacion de que no se choquen y bla bla bla
-            this.UpdateModificationDate();
-            this.iActiveDays.Add(pDay);
+            if (this.ActiveDays.Contains(pDay))
+            {
+                //TODO excepcion dia repetido
+            }
+            else
+            {
+                this.UpdateModificationDate();
+                this.iActiveDays.Add(pDay);
+            }
         }
 
         public virtual void RemoveActiveDay(Day pDay)
@@ -113,15 +118,37 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddActiveHours(TimeInterval pInterval)
         {
-            //TODO agregar la verificacion de que no se choquen y bla bla bla
-            this.UpdateModificationDate();
-            this.iActiveHours.Add(pInterval);
+            if (this.ValidInterval(pInterval))
+            {
+                this.UpdateModificationDate();
+                this.iActiveHours.Add(pInterval);
+            }
+            else
+            {
+                //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
+            }
         }
 
         public virtual void RemoveActiveHours(TimeInterval pInterval)
         {
             this.UpdateModificationDate();
             this.iActiveHours.Remove(pInterval);
+        }
+
+        public bool ValidInterval(TimeInterval pInterval)//para ser agregado
+        {
+            bool lResult = true;
+            int i = this.ActiveHours.Count - 1;
+            while ((lResult == true) && (i >= 0))
+            {
+                TimeInterval lInterval = this.ActiveHours[i];
+                if (!pInterval.IntersectionWith(lInterval))
+                {
+                    lResult = false;
+                }
+                i--;
+            }
+            return lResult;
         }
 
         public bool IntersectionWith(DateInterval pInterval)
@@ -202,38 +229,38 @@ namespace TpFinalTDP2015.Model
             bool lResult = false;
             if ((pDate >= this.ActiveFrom) && (pDate <= this.ActiveUntil))
             {
-                lResult = this.ActiveForDay();
+                lResult = this.ActiveForDay(pDate);
                 if (lResult)
                 {
-                    lResult = this.ActiveForTime();
+                    lResult = this.ActiveForTime(pDate);
                 }
             }
             return lResult;
         }
 
-        public bool ActiveForDay()
+        public bool ActiveForDay(DateTime pDate)
         {
             bool lResult = false;
-            int today = (int)DateTime.Now.DayOfWeek;
+            int lDay = (int)pDate.Day;
             int i = this.ActiveDays.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
                 int day = (int)this.ActiveDays[i].Value;
-                lResult = (today == day);
+                lResult = (lDay == day);
                 i--;
             }
             return lResult;
         }
 
-        public bool ActiveForTime()
+        public bool ActiveForTime(DateTime pDate)
         {
             bool lResult = false;
-            TimeSpan timeNow = DateTime.Now.TimeOfDay;
+            TimeSpan lTime = pDate.TimeOfDay;
             int i = this.ActiveHours.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
                 TimeInterval pInterval = this.ActiveHours[i];
-                lResult = ((timeNow > pInterval.Start) && (timeNow < pInterval.End));
+                lResult = ((lTime > pInterval.Start) && (lTime < pInterval.End));
                 i--;
             }
             return lResult;

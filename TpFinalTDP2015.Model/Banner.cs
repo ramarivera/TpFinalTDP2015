@@ -20,8 +20,7 @@ namespace TpFinalTDP2015.Model
             this.iItems = new List<BaseBannerItem>();
             this.iActiveIntervals = new List<DateInterval>();
         }
-        //TODO : accesores con actualizacion de la fecha de odificacion para listas de ibanner y campagininterval;
-
+        
         public virtual string Name
         {
             get { return this.iName; }
@@ -69,9 +68,15 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddDateInterval(DateInterval pInterval)
         {
-            //TODO agregar la verificacion de que no se choquen y bla bla bla
-            this.UpdateModificationDate();
-            this.iActiveIntervals.Add(pInterval);
+            if (this.ValidInterval(pInterval))
+            {
+                this.UpdateModificationDate();
+                this.iActiveIntervals.Add(pInterval);
+            }
+            else
+            {
+                //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
+            }
         }
 
         public virtual void RemoveDateInterval(DateInterval pInterval)
@@ -80,10 +85,27 @@ namespace TpFinalTDP2015.Model
             this.iActiveIntervals.Remove(pInterval);
         }
 
+        public bool ValidInterval(DateInterval pInterval)//para ser agregado
+        {
+            bool lResult = true;
+            int i = this.ActiveIntervals.Count - 1;
+            while ((lResult == true) && (i >= 0))
+            {
+                DateInterval lInterval = this.ActiveIntervals[i];
+                if (!pInterval.IntersectionWith(lInterval))
+                {
+                    lResult = false;
+                }
+                i--;
+            }
+            return lResult;
+        }
+
         public virtual void AddBannerItem(BaseBannerItem pItem)
         {
             this.UpdateModificationDate();
             this.iItems.Add(pItem);
+            //TODO verificar que ya no este?
         }
 
         public virtual void RemoveBannerItem(BaseBannerItem pItem)
