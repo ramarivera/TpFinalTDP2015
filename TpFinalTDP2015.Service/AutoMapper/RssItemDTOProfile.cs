@@ -9,7 +9,7 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
-    class RssItemDTOProfile: Profile
+    public class RssItemDTOProfile: Profile
     {
         protected override void Configure()
         {

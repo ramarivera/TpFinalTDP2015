@@ -38,12 +38,12 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lblInterval = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.cboInterval = new System.Windows.Forms.ComboBox();
             this.lblSign = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -203,8 +203,8 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel5.Controls.Add(this.cboInterval, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.lblSign, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.checkedListBox1, 0, 1);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(96, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
@@ -213,17 +213,6 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(214, 39);
             this.tableLayoutPanel5.TabIndex = 1;
-            // 
-            // cboInterval
-            // 
-            this.cboInterval.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboInterval.FormattingEnabled = true;
-            this.cboInterval.Location = new System.Drawing.Point(3, 6);
-            this.cboInterval.Name = "cboInterval";
-            this.cboInterval.Size = new System.Drawing.Size(186, 21);
-            this.cboInterval.TabIndex = 0;
             // 
             // lblSign
             // 
@@ -302,6 +291,14 @@
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(3, 6);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 19);
+            this.checkedListBox1.TabIndex = 2;
+            // 
             // AgregarModificarBanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,11 +336,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label lblInterval;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.ComboBox cboInterval;
         private System.Windows.Forms.Label lblSign;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAddItem;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }

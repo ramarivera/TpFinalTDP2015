@@ -11,7 +11,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarBanner : BaseForm, IAddModifyViewForm
+    public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
         //TODO ajustar ventana para poder agregar intervalos
         private BannerDTO iOriginalBanner;

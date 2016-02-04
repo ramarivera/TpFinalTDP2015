@@ -9,7 +9,7 @@ namespace TpFinalTDP2015.Service.Enum
 {
     public class EnumConversion
     {
-        internal static Service.Enum.Days Days(ResolutionContext arg)
+        internal static Service.Enum.Days ModelDaysToServiceDays(ResolutionContext arg)
         {
             Model.Enum.Days value = (Model.Enum.Days)arg.SourceValue;
             switch (value)
@@ -30,6 +30,30 @@ namespace TpFinalTDP2015.Service.Enum
                     return Service.Enum.Days.Sabado;
                 default:
                     return Service.Enum.Days.Domingo;
+            }
+        }
+
+        internal static Model.Enum.Days ServiceDaysToModelDays(ResolutionContext arg)
+        {
+            Service.Enum.Days value = (Service.Enum.Days)arg.SourceValue;
+            switch (value)
+            {
+                case Service.Enum.Days.Domingo:
+                    return Model.Enum.Days.Domingo;
+                case Service.Enum.Days.Lunes:
+                    return Model.Enum.Days.Lunes;
+                case Service.Enum.Days.Martes:
+                    return Model.Enum.Days.Martes;
+                case Service.Enum.Days.Miercoles:
+                    return Model.Enum.Days.Miercoles;
+                case Service.Enum.Days.Jueves:
+                    return Model.Enum.Days.Jueves;
+                case Service.Enum.Days.Viernes:
+                    return Model.Enum.Days.Viernes;
+                case Service.Enum.Days.Sabado:
+                    return Model.Enum.Days.Sabado;
+                default:
+                    return Model.Enum.Days.Domingo;
             }
         }
 

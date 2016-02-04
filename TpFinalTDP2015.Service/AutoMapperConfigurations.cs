@@ -18,17 +18,29 @@ namespace TpFinalTDP2015.Service
 
         static public void  Configure()
         {
-            Mapper.Initialize(cfg => {
+            Mapper.Initialize(cfg => {//ida
+                cfg.AddProfile<BannerProfile>();
+                cfg.AddProfile<CampaignProfile>();
                 cfg.AddProfile<DateIntervalProfile>();
-                cfg.AddProfile<TimeIntervalProfile>();
+                cfg.AddProfile<ModelDayProfile>();
                 cfg.AddProfile<RssItemProfile>();
                 cfg.AddProfile<RssSourceProfile>();
-                cfg.AddProfile<BannerProfile>();
+                cfg.AddProfile<ServiceDaysDTOProfile>();
+                cfg.AddProfile<SlideProfile>();
                 cfg.AddProfile<StaticTextProfile>();
-                cfg.AddProfile<CampaignProfile>();
-                cfg.AddProfile<DaysProfile>();
-                cfg.AddProfile<DayProfile>();
+                cfg.AddProfile<TimeIntervalProfile>();
+                //vuelta
+                cfg.AddProfile<BannerDTOProfile>();
+                cfg.AddProfile<CampaignDTOProfile>();
+                cfg.AddProfile<DateIntervalDTOProfile>();
+                cfg.AddProfile<ModelDaysProfile>();
+                cfg.AddProfile<RssItemDTOProfile>();
+                cfg.AddProfile<RssSourceDTOProfile>();
+                cfg.AddProfile<ServiceDaysProfile>();
+                cfg.AddProfile<SlideDTOProfile>();
                 cfg.AddProfile<SlideTransitioProfile>();
+                cfg.AddProfile<StaticTextDTOProfile>();
+                cfg.AddProfile<TimeIntervalDTOProfile>();
             });
         }
     }  

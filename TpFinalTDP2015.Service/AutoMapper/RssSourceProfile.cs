@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.Service
+namespace TpFinalTDP2015.Service.AutoMapper
 {
-    class RssSourceProfile: Profile
+    public class RssSourceProfile: Profile
     {
         protected override void Configure()
         {
