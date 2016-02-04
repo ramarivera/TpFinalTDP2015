@@ -13,7 +13,6 @@ namespace TpFinalTDP2015.Model
         private string iDescription;
         private IList<DateInterval> iActiveIntervals;
         private IList<Slide> iSlides;
-        //TODO accesores con modificacion de fecha para CampaginInterval
 
         public Campaign() : base()
         {
@@ -69,16 +68,37 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddDateInterval(DateInterval pInterval)
         {
-
-            //TODO agregar la verificacion de que no se choquen y bla bla bla
-            this.UpdateModificationDate();
-            this.iActiveIntervals.Add(pInterval);
+            if (this.ValidInterval(pInterval))
+            {
+                this.UpdateModificationDate();
+                this.iActiveIntervals.Add(pInterval);
+            }
+            else
+            {
+                //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
+            }
         }
 
         public virtual void RemoveDateInterval(DateInterval pInterval)
         {
             this.UpdateModificationDate();
             this.iActiveIntervals.Remove(pInterval);
+        }
+
+        public bool ValidInterval(DateInterval pInterval)//para ser agregado
+        {
+            bool lResult = true;
+            int i = this.ActiveIntervals.Count - 1;
+            while ((lResult == true) && (i >= 0))
+            {
+                DateInterval lInterval = this.ActiveIntervals[i];
+                if (!pInterval.IntersectionWith(lInterval))
+                {
+                    lResult = false;
+                }
+                i--;
+            }
+            return lResult;
         }
 
         public virtual void AddSlide(Slide pSlide)
