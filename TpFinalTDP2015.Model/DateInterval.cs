@@ -202,38 +202,38 @@ namespace TpFinalTDP2015.Model
             bool lResult = false;
             if ((pDate >= this.ActiveFrom) && (pDate <= this.ActiveUntil))
             {
-                lResult = this.ActiveForDay();
+                lResult = this.ActiveForDay(pDate);
                 if (lResult)
                 {
-                    lResult = this.ActiveForTime();
+                    lResult = this.ActiveForTime(pDate);
                 }
             }
             return lResult;
         }
 
-        public bool ActiveForDay()
+        public bool ActiveForDay(DateTime pDate)
         {
             bool lResult = false;
-            int today = (int)DateTime.Now.DayOfWeek;
+            int lDay = (int)pDate.Day;
             int i = this.ActiveDays.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
                 int day = (int)this.ActiveDays[i].Value;
-                lResult = (today == day);
+                lResult = (lDay == day);
                 i--;
             }
             return lResult;
         }
 
-        public bool ActiveForTime()
+        public bool ActiveForTime(DateTime pDate)
         {
             bool lResult = false;
-            TimeSpan timeNow = DateTime.Now.TimeOfDay;
+            TimeSpan lTime = pDate.TimeOfDay;
             int i = this.ActiveHours.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
                 TimeInterval pInterval = this.ActiveHours[i];
-                lResult = ((timeNow > pInterval.Start) && (timeNow < pInterval.End));
+                lResult = ((lTime > pInterval.Start) && (lTime < pInterval.End));
                 i--;
             }
             return lResult;

@@ -36,7 +36,7 @@ namespace TpFinalTDP2015.Test
 
             lBanner.AddDateInterval(lInterval);
 
-            DateTime lDate = new DateTime(2016, 2, 3,20,0,0);
+            DateTime lDate = new DateTime(2016, 2, 4,20,0,0);
 
             bool lResult = lBanner.ActiveForDate(lDate);
 
