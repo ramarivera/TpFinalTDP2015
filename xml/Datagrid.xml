@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <entity name="BannerDTO" fullName="TpFinalTDP2falsetrue5.Service.DTO.BannerDTO">
+  <entity name="BannerDTO" fullName="TpFinalTDP2015.Service.DTO.BannerDTO">
     <language name="English" code="en">
       <property name="CreationDate">
         <text>Creation Date</text>
