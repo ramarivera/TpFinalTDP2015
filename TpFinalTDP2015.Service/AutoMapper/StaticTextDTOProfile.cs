@@ -15,7 +15,7 @@ namespace TpFinalTDP2015.Service.AutoMapper
         {
             Mapper.CreateMap<StaticTextDTO, StaticText>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-              .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))//TODO resolver problema de fechas
+              .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
               .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
               .ForMember(dest => dest.Title, opt => opt.MapFrom(source => source.Title))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))

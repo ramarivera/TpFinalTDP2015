@@ -15,8 +15,8 @@ namespace TpFinalTDP2015.Service.AutoMapper
         {
             Mapper.CreateMap<TimeIntervalDTO, TimeInterval>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-              .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
-              .ForMember(dest => dest.LastModified, opt => opt.MapFrom(source => source.ModificationDate))
+              .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
+              .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
               .ForMember(dest => dest.Start, opt => opt.MapFrom(source => source.StartTime))
               .ForMember(dest => dest.End, opt => opt.MapFrom(source => source.EndTime));
         }
