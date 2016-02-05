@@ -69,6 +69,5 @@ namespace TpFinalTDP2015.UI.AdminModePages
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Modificar(ventana, banner);
         }
-
     }
 }

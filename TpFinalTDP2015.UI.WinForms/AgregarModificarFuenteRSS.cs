@@ -11,7 +11,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarFuenteRSS : Form, IAddModifyViewForm
+    public partial class AgregarModificarFuenteRSS : BaseForm, IAddModifyViewForm
     {
         private RssSourceDTO iOriginalRSSSource;
 

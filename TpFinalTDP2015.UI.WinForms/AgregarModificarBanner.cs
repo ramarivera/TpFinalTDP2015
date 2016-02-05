@@ -11,7 +11,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarBanner : Form, IAddModifyViewForm
+    public partial class AgregarModificarBanner : BaseForm, IAddModifyViewForm
     {
         //TODO ajustar ventana para poder agregar intervalos
         private BannerDTO iOriginalBanner;
@@ -23,6 +23,7 @@ namespace TpFinalTDP2015.UI
         public AgregarModificarBanner()
         {
             InitializeComponent();
+            this.chlInterval.Items.Add("hola");
         }
 
         void IAddModifyViewForm.Agregar(IDTO pNewBanner)
