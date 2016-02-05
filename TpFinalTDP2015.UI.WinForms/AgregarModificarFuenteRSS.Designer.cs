@@ -41,9 +41,9 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblText = new System.Windows.Forms.Label();
+            this.lblURL = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtText = new System.Windows.Forms.TextBox();
+            this.txtURL = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -257,7 +257,7 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel5.Controls.Add(this.lblText, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lblURL, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel8, 1, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 166);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -267,18 +267,18 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(307, 92);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
-            // lblText
+            // lblURL
             // 
-            this.lblText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblURL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblText.AutoSize = true;
-            this.lblText.Location = new System.Drawing.Point(3, 0);
-            this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(86, 92);
-            this.lblText.TabIndex = 0;
-            this.lblText.Text = "URL";
-            this.lblText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblURL.AutoSize = true;
+            this.lblURL.Location = new System.Drawing.Point(3, 0);
+            this.lblURL.Name = "lblURL";
+            this.lblURL.Size = new System.Drawing.Size(86, 92);
+            this.lblURL.TabIndex = 0;
+            this.lblURL.Text = "URL";
+            this.lblURL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel8
             // 
@@ -289,7 +289,7 @@
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel8.Controls.Add(this.txtText, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.txtURL, 0, 1);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(95, 3);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 3;
@@ -299,17 +299,17 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(209, 86);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
-            // txtText
+            // txtURL
             // 
-            this.txtText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtURL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtText.Location = new System.Drawing.Point(3, 11);
-            this.txtText.Multiline = true;
-            this.txtText.Name = "txtText";
-            this.txtText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtText.Size = new System.Drawing.Size(203, 62);
-            this.txtText.TabIndex = 1;
+            this.txtURL.Location = new System.Drawing.Point(3, 11);
+            this.txtURL.Multiline = true;
+            this.txtURL.Name = "txtURL";
+            this.txtURL.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtURL.Size = new System.Drawing.Size(203, 62);
+            this.txtURL.TabIndex = 1;
             // 
             // AgregarModificarFuenteRSS
             // 
@@ -355,8 +355,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label lblText;
+        private System.Windows.Forms.Label lblURL;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.TextBox txtText;
+        private System.Windows.Forms.TextBox txtURL;
     }
 }

@@ -91,7 +91,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
                 this.iSource.Add(pDTO);
             }
             this.DataSource = this.iSource;
-            this.iHelper.Configure(this);
+            //this.iHelper.Configure(this);
         }
 
         public IList<IDTO> GetAll()

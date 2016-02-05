@@ -25,19 +25,46 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        void IAddModifyViewForm.Agregar(IDTO pNewCampaign)
+        void IAddModifyViewForm.Agregar(IDTO pNewSlide)
         {
-            
+            this.txtDuration.Text = String.Empty;
+            //transicion
+            this.Text = "Agregar nuevo Slide";
+            this.iOriginalSlide = (SlideDTO)pNewSlide;
         }
 
-        void IAddModifyViewForm.Modificar(IDTO pCampaign)
+        void IAddModifyViewForm.Modificar(IDTO pSlide)
         {
-         
+            if (pSlide == null)
+            {
+                //TODO excepcion argumentexception creo
+            }
+            else
+            {
+                this.iOriginalSlide = (SlideDTO)pSlide;
+                this.txtDuration.Text = iOriginalSlide.Duration.ToString();
+                this.Text = "Modificar Slide";
+            }
         }
 
         DialogResult IAddModifyViewForm.ShowForm()
         {
             return this.ShowDialog();
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImage_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

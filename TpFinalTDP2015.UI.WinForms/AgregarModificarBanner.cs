@@ -13,6 +13,7 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarBanner : BaseForm, IAddModifyViewForm
     {
+        //TODO ajustar ventana para poder agregar intervalos
         private BannerDTO iOriginalBanner;
 
         public BannerDTO Banner
@@ -22,6 +23,7 @@ namespace TpFinalTDP2015.UI
         public AgregarModificarBanner()
         {
             InitializeComponent();
+            this.chlInterval.Items.Add("hola");
         }
 
         void IAddModifyViewForm.Agregar(IDTO pNewBanner)
@@ -34,10 +36,17 @@ namespace TpFinalTDP2015.UI
 
         void IAddModifyViewForm.Modificar(IDTO pBanner)
         {
-            this.iOriginalBanner = (BannerDTO)pBanner;
-            this.txtName.Text = iOriginalBanner.Name;
-            this.txtDescription.Text = iOriginalBanner.Description;
-            this.Text = "Modificar Banner";
+            if (pBanner == null)
+            {
+                //TODO excepcion argumentexception creo
+            }
+            else
+            {
+                this.iOriginalBanner = (BannerDTO)pBanner;
+                this.txtName.Text = iOriginalBanner.Name;
+                this.txtDescription.Text = iOriginalBanner.Description;
+                this.Text = "Modificar Banner";
+            }  
         }
 
         DialogResult IAddModifyViewForm.ShowForm()
@@ -52,11 +61,22 @@ namespace TpFinalTDP2015.UI
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            this.iOriginalBanner.Name = this.txtName.Text;
-            this.iOriginalBanner.Description = this.txtDescription.Text;
-            //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if ((String.IsNullOrWhiteSpace(this.txtName.Text)))
+            {
+                MessageBox.Show("Complete el campo 'Nombre'","Faltan datos",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
+            {
+                MessageBox.Show("Complete el campo 'Descripción'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.iOriginalBanner.Name = this.txtName.Text;
+                this.iOriginalBanner.Description = this.txtDescription.Text;
+                //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

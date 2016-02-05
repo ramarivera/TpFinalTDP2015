@@ -9,14 +9,14 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
-    class StaticTextDTOProfile: Profile
+    public class StaticTextDTOProfile: Profile
     {
         protected override void Configure()
         {
             Mapper.CreateMap<StaticTextDTO, StaticText>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-              .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
-              .ForMember(dest => dest.LastModified, opt => opt.MapFrom(source => source.ModificationDate))
+              .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))//TODO resolver problema de fechas
+              .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
               .ForMember(dest => dest.Title, opt => opt.MapFrom(source => source.Title))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
               .ForMember(dest => dest.Text, opt => opt.MapFrom(source => source.Text));

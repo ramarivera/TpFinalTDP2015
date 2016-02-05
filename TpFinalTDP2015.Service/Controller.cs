@@ -37,11 +37,16 @@ namespace TpFinalTDP2015.Service
             }
         }
 
+        private IUnitOfWork GetUnitOfWork()
+        {
+            return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
+        }
+
         public IList<CampaignDTO> GetCampaigns()
         {
             IList<CampaignDTO> lResult = new List<CampaignDTO>();
 
-            using (iUoW = GetUnitOfWork())
+            using (this.iUoW = GetUnitOfWork())
             {
                 IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
                 IList<Campaign> lTemp = lRepo.GetAll().ToList();
@@ -51,65 +56,252 @@ namespace TpFinalTDP2015.Service
                     CampaignDTO lDto = Mapper.Map<Campaign, CampaignDTO>(campaign);
                     lResult.Add(lDto);
                 }
-
             }
-
             return lResult;
         }
 
-        public void CreateCampaign(Campaign pCampaign)
+        public void SaveCampaign(CampaignDTO pCampaign)
         {
-            using (this.iUoW)
+            using (this.iUoW = GetUnitOfWork())
             {
                 iUoW.BeginTransaction();
                 IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                lRepo.Add(pCampaign);
-                iUoW.Commit();
-            }
-        }
-
-        public void UpdateCampaign(Campaign pCampaign)
-        {
-            using (this.iUoW)
-            {
-                iUoW.BeginTransaction();
-                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                lRepo.Update(pCampaign);
-                iUoW.Commit();
-            }
-        }
-
-        private IUnitOfWork GetUnitOfWork()
-        {
-            return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
-        }
-
-        public void DeleteCampaign(Campaign pCampaign)
-        {
-            using (this.iUoW)
-            {
-                iUoW.BeginTransaction();
-                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                Campaign mCampaign = lRepo.GetByID(pCampaign.Id);
-                lRepo.Delete(mCampaign);
-                iUoW.Commit();
-            }
-
-
-
-            /*public List<Campaign> GetAllCampaigns()
-            {
-                List<Campaign> lResultado = new List<Campaign>();
-                using (this.iUoW)
+                Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
+                if (pCampaign.Id == 0)
                 {
-                    IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                    var query = lRepo.Queryable. Include(p => p.);
-                    lResultado = query.ToList<Persona>();
+                    lRepo.Add(lCampaign);
                 }
-                return lResultado;*/
+                else
+                {
+                    lRepo.Update(lCampaign);
+                }
+                iUoW.Commit();
+            }
+        }
+
+        public void DeleteCampaign(CampaignDTO pCampaign)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
+                lRepo.Delete(lCampaign.Id);
+                iUoW.Commit();
+            }
 
         }
+
+        public IList<BannerDTO> GetBanners()
+        {
+            IList<BannerDTO> lResult = new List<BannerDTO>();
+
+            using (this.iUoW = GetUnitOfWork())
+            {
+                IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
+                IList<Banner> lTemp = lRepo.GetAll().ToList();
+
+                foreach (var banner in lTemp)
+                {
+                    BannerDTO lDto = Mapper.Map<Banner, BannerDTO>(banner);
+                    lResult.Add(lDto);
+                }
+            }
+            return lResult;
+        }
+
+        public void SaveBanner(BannerDTO pBanner)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
+                Banner lBanner = Mapper.Map<BannerDTO, Banner>(pBanner);
+                if (pBanner.Id == 0)
+                {
+                    lRepo.Add(lBanner);
+                }
+                else
+                {
+                    lRepo.Update(lBanner);
+                }
+                iUoW.Commit();
+            }
+        }
+
+        public void DeleteBanner(BannerDTO pBanner)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
+                Banner lBanner = Mapper.Map<BannerDTO, Banner>(pBanner);
+                lRepo.Delete(lBanner.Id);
+                iUoW.Commit();
+            }
+        }
+
+        public IList<DateIntervalDTO> GetDateIntervals()
+        {
+            IList<DateIntervalDTO> lResult = new List<DateIntervalDTO>();
+
+            using (this.iUoW = GetUnitOfWork())
+            {
+                IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+                IList<DateInterval> lTemp = lRepo.GetAll().ToList();
+
+                foreach (var dateInterval in lTemp)
+                {
+                    DateIntervalDTO lDto = Mapper.Map<DateInterval, DateIntervalDTO>(dateInterval);
+                    lResult.Add(lDto);
+                }
+            }
+            return lResult;
+        }
+
+        public void SaveDateInterval(DateIntervalDTO pDateInterval)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+                DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
+                if (pDateInterval.Id == 0)
+                {
+                    lRepo.Add(lDateInterval);
+                }
+                else
+                {
+                    lRepo.Update(lDateInterval);
+                }
+                iUoW.Commit();
+            }
+        }
+
+        public void DeleteDateInterval(DateIntervalDTO pDateInterval)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+                DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
+                lRepo.Delete(lDateInterval.Id);
+                iUoW.Commit();
+            }
+
+        }
+
+        public IList<RssSourceDTO> GetRssSources()
+        {
+            IList<RssSourceDTO> lResult = new List<RssSourceDTO>();
+
+            using (this.iUoW = GetUnitOfWork())
+            {
+                IRepository<RssSource> lRepo = iUoW.GetRepository<RssSource>();
+                IList<RssSource> lTemp = lRepo.GetAll().ToList();
+
+                foreach (var rssSource in lTemp)
+                {
+                    RssSourceDTO lDto = Mapper.Map<RssSource, RssSourceDTO>(rssSource);
+                    lResult.Add(lDto);
+                }
+            }
+            return lResult;
+        }
+
+        public void SaveRssSource(RssSourceDTO pRssSource)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<RssSource> lRepo = iUoW.GetRepository<RssSource>();
+                RssSource lRssSource = Mapper.Map<RssSourceDTO, RssSource>(pRssSource);
+                if (pRssSource.Id == 0)
+                {
+                    lRepo.Add(lRssSource);
+                }
+                else
+                {
+                    lRepo.Update(lRssSource);
+                }
+                iUoW.Commit();
+            }
+        }
+
+        public void DeleteRssSource(RssSourceDTO pRssSource)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<RssSource> lRepo = iUoW.GetRepository<RssSource>();
+                RssSource lRssSource = Mapper.Map<RssSourceDTO, RssSource>(pRssSource);
+                lRepo.Delete(lRssSource.Id);
+                iUoW.Commit();
+            }
+        }
+
+        public IList<StaticTextDTO> GetStaticTexts()
+        {
+            IList<StaticTextDTO> lResult = new List<StaticTextDTO>();
+
+            using (this.iUoW = GetUnitOfWork())
+            {
+                IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
+                IList<StaticText> lTemp = lRepo.GetAll().ToList();
+
+                foreach (var staticText in lTemp)
+                {
+                    StaticTextDTO lDto = Mapper.Map<StaticText, StaticTextDTO>(staticText);
+                    lResult.Add(lDto);
+                }
+            }
+            return lResult;
+        }
+
+        public void SaveStaticText(StaticTextDTO pStaticText)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
+                StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pStaticText);
+                if (pStaticText.Id == 0)
+                {
+                    lRepo.Add(lStaticText);
+                }
+                else
+                {
+                    lRepo.Update(lStaticText);
+                }
+                iUoW.Commit();
+            }
+        }
+
+        public void DeleteStaticText(StaticTextDTO pStaticText)
+        {
+            using (this.iUoW = GetUnitOfWork())
+            {
+                iUoW.BeginTransaction();
+                IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
+                StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pStaticText);
+                lRepo.Delete(lStaticText.Id);
+                iUoW.Commit();
+            }
+        }
+
+        /*public List<Campaign> GetAllCampaigns()
+        {
+            List<Campaign> lResultado = new List<Campaign>();
+            using (this.iUoW)
+            {
+                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+                var query = lRepo.Queryable. Include(p => p.);
+                lResultado = query.ToList<Persona>();
+            }
+            return lResultado;*/
+
+
         //public 
         // agregar verificaciones de intervalos
     }
-}
+    }

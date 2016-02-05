@@ -13,6 +13,7 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : BaseForm, IAddModifyViewForm
     {
+        //TODO ajustar ventana para poder agregar intervalos y slides
         private CampaignDTO iOriginalCampaign;
 
         public CampaignDTO Campaign
@@ -35,11 +36,18 @@ namespace TpFinalTDP2015.UI
 
         void IAddModifyViewForm.Modificar(IDTO pCampaign)
         {
-            this.iOriginalCampaign = (CampaignDTO)pCampaign;
-            this.txtTitle.Text = iOriginalCampaign.Name;
-            this.txtDescription.Text = iOriginalCampaign.Description;
-           // this.txtDuration.Text = pCampaña.Duration.ToString();
-            this.Text = "Modificar Campaña";
+            if (pCampaign == null)
+            {
+                //TODO excepcion argumentexception creo
+            }
+            else
+            {
+                this.iOriginalCampaign = (CampaignDTO)pCampaign;
+                this.txtTitle.Text = iOriginalCampaign.Name;
+                this.txtDescription.Text = iOriginalCampaign.Description;
+                // this.txtDuration.Text = pCampaña.Duration.ToString();
+                this.Text = "Modificar Campaña";
+            }
         }
 
         DialogResult IAddModifyViewForm.ShowForm()
@@ -49,11 +57,23 @@ namespace TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iOriginalCampaign.Name = this.txtTitle.Text;
-            this.iOriginalCampaign.Description = this.txtDescription.Text;
-          //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
+            {
+                MessageBox.Show("Complete el campo 'Título'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
+            {
+                MessageBox.Show("Complete el campo 'Descripción'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.iOriginalCampaign.Name = this.txtTitle.Text;
+                this.iOriginalCampaign.Description = this.txtDescription.Text;
+                //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+                
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.Service;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
     [AdminModePageInfo(Name = "Administrador de Textos Fijos")]
     public partial class StaticTextAdministrator : AdminModePage
     {
+        Controller iController = new Controller();
+
         StaticTextDTO staticText;
         public StaticTextAdministrator(): base()
         {
@@ -24,10 +27,10 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            staticText = new StaticTextDTO();
+            this.staticText = new StaticTextDTO();
             AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
-            this.dgvStaticText.Agregar(ventana,staticText);
-            // TODO guardar en base de datos
+            this.dgvStaticText.Agregar(ventana,this.staticText);
+            iController.SaveStaticText(this.staticText);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -39,14 +42,19 @@ namespace TpFinalTDP2015.UI.AdminModePages
                 textosAEliminar.Add((StaticTextDTO)row.DataBoundItem);
             }
             this.dgvStaticText.Eliminar(textosAEliminar);
+            foreach  (IDTO text in textosAEliminar)
+            {
+                iController.DeleteStaticText((StaticTextDTO)text);
+            }
         }
 
         private void dgvStaticText_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvStaticText.CurrentRow;
-            this.staticText = (StaticTextDTO)row.Tag;//this.iBinding.Single<Persona>(p => p.PersonaId == (int)row.Tag);
+            this.staticText = (StaticTextDTO)row.DataBoundItem;
             AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
-            this.dgvStaticText.Modificar(ventana, staticText);
+            this.dgvStaticText.Modificar(ventana, this.staticText);
+            iController.SaveStaticText(this.staticText);
         }
     }
 }

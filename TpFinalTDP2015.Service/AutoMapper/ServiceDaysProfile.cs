@@ -9,13 +9,12 @@ using TpFinalTDP2015.Service.Enum;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
-    class DayProfile : Profile
+    public class ServiceDaysProfile: Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Day,Days>()
-                .ConvertUsing<DayToServiceDaysConverter>();
+            Mapper.CreateMap<Days, Day>()
+                .ConvertUsing<ServiceDaysToDayConverter>();
         }
-
     }
 }

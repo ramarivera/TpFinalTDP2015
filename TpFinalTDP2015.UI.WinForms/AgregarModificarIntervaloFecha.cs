@@ -14,6 +14,7 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervaloFecha : BaseForm, IAddModifyViewForm
     {
+        //TODO modificar para agregar intervalos de tiempo
         private DateIntervalDTO iOriginalDateInterval;
 
         public DateIntervalDTO DateInterval
@@ -36,38 +37,45 @@ namespace TpFinalTDP2015.UI
 
         void IAddModifyViewForm.Modificar(IDTO pDateInterval)
         {
-            this.iOriginalDateInterval = (DateIntervalDTO)pDateInterval;
-            this.txtTitle.Text = iOriginalDateInterval.Name;
-            this.dtpStartDate.Value = iOriginalDateInterval.ActiveFrom;
-            this.dtpEndDate.Value = iOriginalDateInterval.ActiveUntil;
-            this.Text = "Modificar Intervalo";
-            foreach (Days dia in iOriginalDateInterval.Days)
+            if (pDateInterval == null)
             {
-                switch (dia)
+                //TODO excepcion argumentexception creo
+            }
+            else
+            {
+                this.iOriginalDateInterval = (DateIntervalDTO)pDateInterval;
+                this.txtTitle.Text = iOriginalDateInterval.Name;
+                this.dtpStartDate.Value = iOriginalDateInterval.ActiveFrom;
+                this.dtpEndDate.Value = iOriginalDateInterval.ActiveUntil;
+                this.Text = "Modificar Intervalo";
+                foreach (Days dia in iOriginalDateInterval.Days)
                 {
-                    case Days.Domingo:
-                        this.chkSunday.Checked = true;
-                        break;
-                    case Days.Lunes:
-                        this.chkMonday.Checked = true;
-                        break;
-                    case Days.Martes:
-                        this.chkTuesday.Checked = true;
-                        break;
-                    case Days.Miercoles:
-                        this.chkWednesday.Checked = true;
-                        break;
-                    case Days.Jueves:
-                        this.chkThursday.Checked = true;
-                        break;
-                    case Days.Viernes:
-                        this.chkFriday.Checked = true;
-                        break;
-                    case Days.Sabado:
-                        this.chkSaturday.Checked = true;
-                        break;
-                    default:
-                        break;
+                    switch (dia)
+                    {
+                        case Days.Domingo:
+                            this.chkSunday.Checked = true;
+                            break;
+                        case Days.Lunes:
+                            this.chkMonday.Checked = true;
+                            break;
+                        case Days.Martes:
+                            this.chkTuesday.Checked = true;
+                            break;
+                        case Days.Miercoles:
+                            this.chkWednesday.Checked = true;
+                            break;
+                        case Days.Jueves:
+                            this.chkThursday.Checked = true;
+                            break;
+                        case Days.Viernes:
+                            this.chkFriday.Checked = true;
+                            break;
+                        case Days.Sabado:
+                            this.chkSaturday.Checked = true;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
@@ -90,7 +98,12 @@ namespace TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iOriginalDateInterval.Name = this.txtTitle.Text;
+            if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
+            {
+                MessageBox.Show("Complete el campo 'Título'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                this.iOriginalDateInterval.Name = this.txtTitle.Text;
             this.iOriginalDateInterval.ActiveFrom = this.dtpStartDate.Value;
             this.iOriginalDateInterval.ActiveUntil = this.dtpEndDate.Value;
             if (this.chkSunday.Checked)
