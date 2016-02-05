@@ -104,7 +104,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.95238F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.04762F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 103F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel3.Controls.Add(this.Language, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmbEntity, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.cmbLanguage, 3, 0);
@@ -121,7 +121,7 @@
             // 
             this.Language.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Language.AutoSize = true;
-            this.Language.Location = new System.Drawing.Point(199, 5);
+            this.Language.Location = new System.Drawing.Point(196, 5);
             this.Language.Name = "Language";
             this.Language.Size = new System.Drawing.Size(55, 13);
             this.Language.TabIndex = 2;
@@ -132,9 +132,9 @@
             this.cmbEntity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbEntity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEntity.FormattingEnabled = true;
-            this.cmbEntity.Location = new System.Drawing.Point(61, 3);
+            this.cmbEntity.Location = new System.Drawing.Point(60, 3);
             this.cmbEntity.Name = "cmbEntity";
-            this.cmbEntity.Size = new System.Drawing.Size(125, 21);
+            this.cmbEntity.Size = new System.Drawing.Size(123, 21);
             this.cmbEntity.TabIndex = 3;
             // 
             // cmbLanguage
@@ -142,16 +142,16 @@
             this.cmbLanguage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLanguage.FormattingEnabled = true;
-            this.cmbLanguage.Location = new System.Drawing.Point(267, 3);
+            this.cmbLanguage.Location = new System.Drawing.Point(264, 3);
             this.cmbLanguage.Name = "cmbLanguage";
-            this.cmbLanguage.Size = new System.Drawing.Size(98, 21);
+            this.cmbLanguage.Size = new System.Drawing.Size(101, 21);
             this.cmbLanguage.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 5);
+            this.label1.Location = new System.Drawing.Point(11, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 0;
