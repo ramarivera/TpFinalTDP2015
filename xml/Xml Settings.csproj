@@ -87,6 +87,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TpFinalTDP2015.Service\TpFinalTDP2015.Service.csproj">
+      <Project>{fae170fd-3290-450d-906f-b0ae33875cee}</Project>
+      <Name>TpFinalTDP2015.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TpFinalTDP2015.UI.WinForms\TpFinalTDP2015.UI.WinForms.csproj">
+      <Project>{92f31c87-f056-4c81-9318-967a88a530d3}</Project>
+      <Name>TpFinalTDP2015.UI.WinForms</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

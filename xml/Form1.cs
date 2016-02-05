@@ -4,15 +4,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using TpFinalTDP2015.Service.DTO;
 
 namespace xml
 {
@@ -25,19 +28,55 @@ namespace xml
         FileStream iConfigFile;
         XmlSchemaSet iSchemaSet = new XmlSchemaSet();
         IDictionary<String, String> iTranslations = new Dictionary<String, String>();
+        IList<string> iEntityNames;
+
         string iSelectedEntity;
         string iSelectedLanguage;
-        string bannerDTO = "BannerDTO";
         int iPrevLangIndex = 0;
         int iPrevEntityIndex = 0;
         bool iUnsavedChanges = false;
+
+        string banner = "Banner";
+        string campaign = "Campaña";
+        string slide = "Diapositiva";
+        string staticText = "Texto";
+        string rssItem = "Item RSS";
+        string rssSource = "Fuente RSS";
+        string timeInterval = "Intervalo de Tiempo";
+        string dateInterval = "Intervalo de Fechas";
+        BannerDTO bannnner; //TODO es solo para testear el descrubrimiento de tipos mediante reflection
+
         #endregion
 
         public Form1()
         {
             InitializeComponent();
+
+            this.iEntityNames = new List<string>()
+            {
+                "TpFinalTDP2015.Service.DTO.BannerDTO",
+                "TpFinalTDP2015.Service.DTO.CampaignDTO",
+                "TpFinalTDP2015.Service.DTO.SlideDTO",
+                "TpFinalTDP2015.Service.DTO.TimeIntervalDTO",
+                "TpFinalTDP2015.Service.DTO.DateIntervalDTO",
+                "TpFinalTDP2015.Service.DTO.RssItemDTO",
+                "TpFinalTDP2015.Service.DTO.RssSourceDTO",
+                "TpFinalTDP2015.Service.DTO.StaticTextDTO"
+            };
+
             Load += Form1_Load;
             FormClosed += Form1_FormClosed;
+
+            /*   var type = Type.GetType(typeName);
+               if (type != null) return type;
+               foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
+               {
+                   type = a.GetType(typeName);
+                   if (type != null)
+                       return type;
+               }
+               return null;*/
+
         }
 
         #region Event Handlers
@@ -145,7 +184,6 @@ namespace xml
                 {
                     iUnsavedChanges = false;
                     iPrevLangIndex = cmbLanguage.SelectedIndex;
-
                 }
             }
             if (!iUnsavedChanges)
@@ -179,48 +217,165 @@ namespace xml
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SaveChanges();   
+            SaveChanges();
+
+
+            /*   CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+               foreach (CultureInfo culture in cultures)
+               {
+                   try
+                   {
+                       MessageBox.Show(culture.DisplayName + "___" + culture.EnglishName);
+                   }
+                   catch (CultureNotFoundException exc)
+                   {
+                       Console.WriteLine(culture + " is not available on the machine or is an invalid culture identifier.");
+                   }
+               }*/
+
+
         }
 
 
         #endregion
 
         #region Xml Handling
+
+        private void AddLanguageToEntity()
+        {
+
+        }
+
+        private IList<string> DiscoverPropertiesForEntity(string pEntityName)
+        {
+            IList<String> lResult = new List<String>();
+            PropertyInfo[] propertyInfos;
+            Type lType;
+
+            AssemblyName lAsmName = (from asm in AppDomain.CurrentDomain.GetAssemblies()
+                                     from asmName in asm.GetReferencedAssemblies()
+                                     where asmName.Name.Contains("TpFinalTDP2015.Service")
+                                     select asmName).FirstOrDefault();
+
+            lType = Assembly.Load(lAsmName).GetType(pEntityName);
+
+            if (lType != null)
+            {
+                propertyInfos = lType.GetProperties(BindingFlags.Public |
+                                                      BindingFlags.Instance);
+                foreach (PropertyInfo prop in propertyInfos)
+                {
+                    lResult.Add(prop.Name);
+                }
+            }
+
+            return lResult;
+        }
+
         private void SaveChanges()
         {
             bool lError = this.ValidateConfigFile();
 
             if (lError)
             {
-                MessageBox.Show("Error de Validacion");
+                DialogResult lDialog = MessageBox.Show(
+                    "Error de Validacion, Desea regenerar el archivo?",
+                    "Error",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Error
+                    );
+
+                if (lDialog == DialogResult.Yes)
+                {
+                    RebuildConfigFile();
+                }
             }
             else
             {
                 //iConfigFile.Dispose();
 
                 XElement lXEntityLang = (from entity in iConfigContents.Elements().Elements()
-                                        from lang in entity.Elements()
-                                        where entity.Attribute("name").Value == iSelectedEntity
-                                            && lang.Attribute("name").Value == iSelectedLanguage
-                                        select lang).FirstOrDefault();
+                                         from lang in entity.Elements()
+                                         where entity.Attribute("name").Value == iSelectedEntity
+                                             && lang.Attribute("name").Value == iSelectedLanguage
+                                         select lang).FirstOrDefault();
 
                 if (lXEntityLang != null)
                 {
                     lXEntityLang.RemoveNodes();
                     lXEntityLang.Add(XDocument.Parse(dataSet.GetXml()).Elements().Elements());
-                    iConfigFile.Dispose();
+                    SaveFile();
 
-                  //  using (iConfigFile = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
-                  //  {
-                        iConfigContents.Save(path);
-                  //  }
 
-                    this.OnLoad(new EventArgs());
                 }
 
 
                 MessageBox.Show(dataSet.GetXml());
             }
+        }
+
+        private void SaveFile()
+        {
+            iConfigFile.Dispose();
+
+            //  using (iConfigFile = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
+            //  {
+            iConfigContents.Save(path);
+            //  }
+            this.OnLoad(new EventArgs());
+        }
+
+        private void RebuildConfigFile()
+        {
+            Regex regex = new Regex("DTO.(.*?)DTO");
+
+            iConfigContents.RemoveNodes();
+            iConfigContents.Add(new XElement("root"));
+
+            foreach (string name in iEntityNames)
+            {
+                string lName = regex.Match(name).Groups[1].ToString();
+                XElement lEntity = new XElement("entity", new XAttribute("name", lName), new XAttribute("fullName", name));
+
+                XElement lLang = GetDefaultLanguage();
+
+                foreach (var propName in DiscoverPropertiesForEntity(name))
+                {
+                    XElement lProp = new XElement(
+                        "property",
+                        new XAttribute(
+                            "name",
+                            propName
+                            ),
+                        new XElement(
+                            "text",
+                            propName
+                            ),
+                        new XElement(
+                            "enable",
+                            "true"
+                            )
+                        );
+                    lLang.Add(lProp);
+                }
+
+                lEntity.Add(lLang);
+
+                iConfigContents.Element("root").Add(lEntity);
+            }
+
+            SaveFile();
+        }
+
+
+        private XElement GetDefaultLanguage()
+        {
+            XElement lResult = new XElement(
+                "language",
+                new XAttribute("name", "English"),
+                new XAttribute("code", "en")
+                );
+            return lResult;
         }
 
         private void ConfigureDataGridView()
@@ -235,8 +390,8 @@ namespace xml
               lBoolColumn.HeaderText = "Enabled";
               lBoolColumn.*/
 
-           
-           dgvProperties.AutoGenerateColumns = false;
+
+            dgvProperties.AutoGenerateColumns = false;
 
             if (dgvProperties.Columns["enable"] != null)
             {
@@ -249,12 +404,12 @@ namespace xml
                     FalseValue = "false",
                 };
 
-            //    dgvProperties.AutoGenerateColumns = false;
+                //    dgvProperties.AutoGenerateColumns = false;
 
-            //    dataSet.Tables[0].Columns.Remove(dataSet.Tables[0].Columns["enable"]);
+                //    dataSet.Tables[0].Columns.Remove(dataSet.Tables[0].Columns["enable"]);
                 dgvProperties.Columns.Remove(dgvProperties.Columns["enable"]);
 
-              //  dataSet.Tables[0].Columns.Add(new DataColumn("enabled", typeof(int)));
+                //  dataSet.Tables[0].Columns.Add(new DataColumn("enabled", typeof(int)));
                 dgvProperties.Columns.Add(dgvcol1);
 
                 dgvProperties.Columns["name"].DisplayIndex = 0;
@@ -266,8 +421,8 @@ namespace xml
                 dgvProperties.Columns["name"].ReadOnly = true;
 
             }
-            
-            
+
+
 
         }
 
@@ -296,9 +451,21 @@ namespace xml
                 (o, e) =>
                 {
                     lError = true;
-                    //TODO log error message
+                    MessageBox.Show(e.Message);
+                    //TODO log error message            
                 }
                 );
+
+            var query = iConfigContents.Elements().Elements().ToList();
+
+            int i = 0;
+
+            while (!lError && i < iEntityNames.Count)
+            {
+                string lName = iEntityNames[i];
+                lError = !query.Any(xl => xl.Attribute("fullName").Value == lName);
+                i++;
+            }
 
             return lError;
         }
@@ -315,6 +482,8 @@ namespace xml
             {
                 this.cmbLanguage.Items.Add(lang.Attribute("name").Value);
             }
+
+            cmbLanguage.SelectedIndex = 0;
         }
 
         private void PopulateComboBox()
@@ -341,7 +510,7 @@ namespace xml
                                               BindingFlags.NonPublic |
                                               BindingFlags.Instance);
                 string temp = (string)fieldInfo.GetValue(this).ToString();
-                this.iTranslations.Add(name, temp);
+                this.iTranslations.Add(temp, name);
                 this.cmbEntity.Items.Add(temp);
             }
         }
@@ -355,7 +524,7 @@ namespace xml
         {
             var query = (from entity in this.iConfigContents.Elements().Elements()
                          from lang in entity.Elements()
-                         where entity.Attribute("name").Value == iSelectedEntity
+                         where entity.Attribute("name").Value == iTranslations[iSelectedEntity]
                                  && lang.Attribute("name").Value == iSelectedLanguage
                          select lang).Elements();
 
