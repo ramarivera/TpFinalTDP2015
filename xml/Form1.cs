@@ -66,17 +66,15 @@ namespace xml
 
             Load += Form1_Load;
             FormClosed += Form1_FormClosed;
+        }
 
-            /*   var type = Type.GetType(typeName);
-               if (type != null) return type;
-               foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
-               {
-                   type = a.GetType(typeName);
-                   if (type != null)
-                       return type;
-               }
-               return null;*/
 
+        private IEnumerable<XElement> EntityList
+        {
+            get
+            {
+                return this.iConfigContents.Elements().Elements();
+            }
         }
 
         #region Event Handlers
@@ -96,7 +94,6 @@ namespace xml
             cmbLanguage.SelectedIndexChanged -= cmbLanguage_SelectedIndexChanged;
             cmbLanguage.Enter -= CmbTableLanguage_Enter;
 
-
             LoadConfigFile();
 
             PopulateComboBox();
@@ -115,6 +112,23 @@ namespace xml
 
             cmbLanguage.SelectedIndexChanged += cmbLanguage_SelectedIndexChanged;
             cmbLanguage.Enter += CmbTableLanguage_Enter;
+
+            PopulateLangaugeAdderComboBox();
+
+        }
+
+        private void PopulateLangaugeAdderComboBox()
+        {
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+            IList<CultureInfo> lCultures = new List<CultureInfo>();
+
+            foreach (CultureInfo culture in cultures.Skip(1))
+            {
+                lCultures.Add(culture);
+            }
+
+            cmbLanguageAdder.DisplayMember = "DisplayName";
+            cmbLanguageAdder.DataSource = new BindingList<CultureInfo>(lCultures);
 
         }
 
@@ -218,8 +232,6 @@ namespace xml
         private void button1_Click(object sender, EventArgs e)
         {
             SaveChanges();
-
-
             /*   CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
                foreach (CultureInfo culture in cultures)
                {
@@ -232,19 +244,12 @@ namespace xml
                        Console.WriteLine(culture + " is not available on the machine or is an invalid culture identifier.");
                    }
                }*/
-
-
         }
 
 
         #endregion
 
         #region Xml Handling
-
-        private void AddLanguageToEntity()
-        {
-
-        }
 
         private IList<string> DiscoverPropertiesForEntity(string pEntityName)
         {
@@ -261,8 +266,8 @@ namespace xml
 
             if (lType != null)
             {
-                propertyInfos = lType.GetProperties(BindingFlags.Public |
-                                                      BindingFlags.Instance);
+                propertyInfos = lType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
                 foreach (PropertyInfo prop in propertyInfos)
                 {
                     lResult.Add(prop.Name);
@@ -272,58 +277,7 @@ namespace xml
             return lResult;
         }
 
-        private void SaveChanges()
-        {
-            bool lError = this.ValidateConfigFile();
 
-            if (lError)
-            {
-                DialogResult lDialog = MessageBox.Show(
-                    "Error de Validacion, Desea regenerar el archivo?",
-                    "Error",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Error
-                    );
-
-                if (lDialog == DialogResult.Yes)
-                {
-                    RebuildConfigFile();
-                }
-            }
-            else
-            {
-                //iConfigFile.Dispose();
-
-                XElement lXEntityLang = (from entity in iConfigContents.Elements().Elements()
-                                         from lang in entity.Elements()
-                                         where entity.Attribute("name").Value == iSelectedEntity
-                                             && lang.Attribute("name").Value == iSelectedLanguage
-                                         select lang).FirstOrDefault();
-
-                if (lXEntityLang != null)
-                {
-                    lXEntityLang.RemoveNodes();
-                    lXEntityLang.Add(XDocument.Parse(dataSet.GetXml()).Elements().Elements());
-                    SaveFile();
-
-
-                }
-
-
-                MessageBox.Show(dataSet.GetXml());
-            }
-        }
-
-        private void SaveFile()
-        {
-            iConfigFile.Dispose();
-
-            //  using (iConfigFile = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
-            //  {
-            iConfigContents.Save(path);
-            //  }
-            this.OnLoad(new EventArgs());
-        }
 
         private void RebuildConfigFile()
         {
@@ -337,28 +291,7 @@ namespace xml
                 string lName = regex.Match(name).Groups[1].ToString();
                 XElement lEntity = new XElement("entity", new XAttribute("name", lName), new XAttribute("fullName", name));
 
-                XElement lLang = GetDefaultLanguage();
-
-                foreach (var propName in DiscoverPropertiesForEntity(name))
-                {
-                    XElement lProp = new XElement(
-                        "property",
-                        new XAttribute(
-                            "name",
-                            propName
-                            ),
-                        new XElement(
-                            "text",
-                            propName
-                            ),
-                        new XElement(
-                            "enable",
-                            "true"
-                            )
-                        );
-                    lLang.Add(lProp);
-                }
-
+                XElement lLang = GetNewLanguage(name, null);
                 lEntity.Add(lLang);
 
                 iConfigContents.Element("root").Add(lEntity);
@@ -367,63 +300,48 @@ namespace xml
             SaveFile();
         }
 
-
-        private XElement GetDefaultLanguage()
+        private XElement GetNewLanguage(string pName, CultureInfo pCulture = null)
         {
-            XElement lResult = new XElement(
+            XElement lLang = GetLanguage(pCulture); ;
+
+            foreach (var propName in DiscoverPropertiesForEntity(pName))
+            {
+                XElement lProp = new XElement(
+                    "property",
+                    new XAttribute(
+                        "name",
+                        propName
+                        ),
+                    new XElement(
+                        "text",
+                        propName
+                        ),
+                    new XElement(
+                        "enable",
+                        "true"
+                        )
+                    );
+                lLang.Add(lProp);
+            }
+
+            return lLang;
+        }
+
+        private XElement GetLanguage(CultureInfo pCulture = null)
+        {
+            XElement lLang = new XElement(
                 "language",
                 new XAttribute("name", "English"),
                 new XAttribute("code", "en")
                 );
-            return lResult;
-        }
 
-        private void ConfigureDataGridView()
-        {
-            dgvProperties.CellEndEdit += DgvProperties_CellEndEdit;
-            /*   dgvProperties.Columns["name"].DisplayIndex = -1;
-               dgvProperties.Columns["enabled"].DisplayIndex = -1;
-               dgvProperties.Columns["text"].DisplayIndex = -1;*/
-
-            /*  DataGridBoolColumn lBoolColumn = new DataGridBoolColumn();
-              lBoolColumn.
-              lBoolColumn.HeaderText = "Enabled";
-              lBoolColumn.*/
-
-
-            dgvProperties.AutoGenerateColumns = false;
-
-            if (dgvProperties.Columns["enable"] != null)
+            if (pCulture != null)
             {
-                DataGridViewCheckBoxColumn dgvcol1 = new DataGridViewCheckBoxColumn()
-                {
-                    DataPropertyName = "enable",
-                    Name = "Enabled",
-                    HeaderText = "Enabled?",
-                    TrueValue = "true",
-                    FalseValue = "false",
-                };
-
-                //    dgvProperties.AutoGenerateColumns = false;
-
-                //    dataSet.Tables[0].Columns.Remove(dataSet.Tables[0].Columns["enable"]);
-                dgvProperties.Columns.Remove(dgvProperties.Columns["enable"]);
-
-                //  dataSet.Tables[0].Columns.Add(new DataColumn("enabled", typeof(int)));
-                dgvProperties.Columns.Add(dgvcol1);
-
-                dgvProperties.Columns["name"].DisplayIndex = 0;
-                dgvProperties.Columns["text"].DisplayIndex = 1;
-
-                dgvProperties.Columns["name"].HeaderText = "Property Name";
-                dgvProperties.Columns["text"].HeaderText = "Text";
-
-                dgvProperties.Columns["name"].ReadOnly = true;
-
+                lLang.Attribute("name").SetValue(pCulture.DisplayName);
+                lLang.Attribute("code").SetValue(pCulture.Name);
             }
 
-
-
+            return lLang;
         }
 
         private void LoadConfigFile()
@@ -456,7 +374,7 @@ namespace xml
                 }
                 );
 
-            var query = iConfigContents.Elements().Elements().ToList();
+            var query = EntityList;
 
             int i = 0;
 
@@ -469,10 +387,39 @@ namespace xml
 
             return lError;
         }
+        private void ConfigureDataGridView()
+        {
+            dgvProperties.CellEndEdit += DgvProperties_CellEndEdit;
+            dgvProperties.AutoGenerateColumns = false;
+
+            if (dgvProperties.Columns["enable"] != null)
+            {
+                DataGridViewCheckBoxColumn dgvcol1 = new DataGridViewCheckBoxColumn()
+                {
+                    DataPropertyName = "enable",
+                    Name = "Enabled",
+                    HeaderText = "Enabled?",
+                    TrueValue = "true",
+                    FalseValue = "false",
+                };
+
+                dgvProperties.Columns.Remove(dgvProperties.Columns["enable"]);
+
+                dgvProperties.Columns.Add(dgvcol1);
+
+                dgvProperties.Columns["name"].DisplayIndex = 0;
+                dgvProperties.Columns["text"].DisplayIndex = 1;
+
+                dgvProperties.Columns["name"].HeaderText = "Property Name";
+                dgvProperties.Columns["text"].HeaderText = "Text";
+
+                dgvProperties.Columns["name"].ReadOnly = true;
+            }
+        }
 
         private void ReloadLanguageComboBox()
         {
-            var query = from entity in iConfigContents.Elements().Elements()
+            var query = from entity in EntityList
                         where entity.Attribute("name").Value == this.iTranslations[iSelectedEntity]
                         select entity;
 
@@ -488,9 +435,7 @@ namespace xml
 
         private void PopulateComboBox()
         {
-            IEnumerable<XElement> lXEntityElements = iConfigContents.Elements().Elements();
-
-            var query = from entity in lXEntityElements
+            var query = from entity in EntityList
                         select entity.Attribute("name").Value;
 
             this.cmbEntity.Items.Clear();
@@ -513,16 +458,17 @@ namespace xml
                 this.iTranslations.Add(temp, name);
                 this.cmbEntity.Items.Add(temp);
             }
+
+
+
+
+
+
         }
-
-
-
-
-
 
         private void ReloadPropertyDataSet()
         {
-            var query = (from entity in this.iConfigContents.Elements().Elements()
+            var query = (from entity in EntityList
                          from lang in entity.Elements()
                          where entity.Attribute("name").Value == iTranslations[iSelectedEntity]
                                  && lang.Attribute("name").Value == iSelectedLanguage
@@ -542,6 +488,86 @@ namespace xml
             this.dgvProperties.DataSource = dataSet.Tables[0];
             this.ConfigureDataGridView();
         }
+
+        private void SaveChanges()
+        {
+            bool lError = this.ValidateConfigFile();
+
+            if (lError)
+            {
+                DialogResult lDialog = MessageBox.Show(
+                    "Error de Validacion, Desea regenerar el archivo?",
+                    "Error",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Error
+                    );
+
+                if (lDialog == DialogResult.Yes)
+                {
+                    RebuildConfigFile();
+                }
+            }
+            else
+            {
+                XElement lXEntityLang = (from entity in EntityList
+                                         from lang in entity.Elements()
+                                         where entity.Attribute("name").Value == iSelectedEntity
+                                             && lang.Attribute("name").Value == iSelectedLanguage
+                                         select lang).FirstOrDefault();
+
+                if (lXEntityLang != null)
+                {
+                    lXEntityLang.RemoveNodes();
+                    lXEntityLang.Add(XDocument.Parse(dataSet.GetXml()).Elements().Elements());
+                    SaveFile();
+                }
+
+                MessageBox.Show(dataSet.GetXml());
+            }
+        }
+
+        private void SaveFile()
+        {
+            iConfigFile.Dispose();
+
+            //  using (iConfigFile = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
+            //  {
+            iConfigContents.Save(path);
+            //  }
+            this.OnLoad(new EventArgs());
+        }
         #endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CultureInfo lCulture = (CultureInfo)cmbLanguageAdder.SelectedItem;
+
+
+            string tempName = (from str in iEntityNames
+                               where str.Contains(iTranslations[iSelectedEntity])
+                               select str).FirstOrDefault();
+
+            XElement lLang = GetNewLanguage(tempName, lCulture);
+
+            var query = from entity in EntityList
+                        where entity.Attribute("name").Value == iTranslations[iSelectedEntity] &&
+                              !(entity.Elements().Any(lan => lan.Attribute("name").Value == lLang.Attribute("name").Value))
+                        select entity;
+
+            if (query.FirstOrDefault() != null)
+            {
+                query.FirstOrDefault().Add(lLang);
+                SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Test");
+            }
+            
+
+           
+        }
+
+
     }
 }
