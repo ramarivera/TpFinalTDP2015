@@ -36,6 +36,7 @@
             this.dgvStaticText = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStaticText)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -97,10 +98,16 @@
             // 
             // dgvStaticText
             // 
+            this.dgvStaticText.AllowUserToAddRows = false;
+            this.dgvStaticText.AllowUserToOrderColumns = true;
+            this.dgvStaticText.AllowUserToResizeRows = false;
+            this.dgvStaticText.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStaticText.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStaticText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStaticText.DTOType = null;
             this.dgvStaticText.Location = new System.Drawing.Point(3, 38);
             this.dgvStaticText.Name = "dgvStaticText";
+            this.dgvStaticText.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStaticText.Size = new System.Drawing.Size(455, 277);
             this.dgvStaticText.TabIndex = 2;
             this.dgvStaticText.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaticText_CellContentDoubleClick);
@@ -113,6 +120,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "StaticTextAdministrator";
             this.Text = "StaticTextAdministrator";
+            this.Load += new System.EventHandler(this.StaticTextAdministrator_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaticText)).EndInit();

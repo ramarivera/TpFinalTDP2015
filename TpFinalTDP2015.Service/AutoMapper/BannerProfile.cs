@@ -20,7 +20,8 @@ namespace TpFinalTDP2015.Service.AutoMapper
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.Items, opt => opt.MapFrom(source => source.Items));
+              .ForMember(dest => dest.Items, opt => opt.MapFrom(source => source.Items))
+              .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources)); ;
         }
     }
 }

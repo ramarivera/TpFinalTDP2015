@@ -42,7 +42,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
                             string lName = ((AdminModePageInfo)attr).Name;
                             iNameList.Add(lName);
                             AdminModePage lPage = (AdminModePage)Activator.CreateInstance(t);
-                            lPage.Controller = new Controller(); //TODO Ajustar esto, no deberia ser publica?
+                            //TODO Ajustar esto, no deberia ser publica?
                             //TODO Ajustar y usar lazy Init
                             //TODO revisar tema excepcion de reflection
                             iAdminModePages.Add(lName, lPage.GetAsPage());

@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service;
+using TpFinalTDP2015.Service.Controllers;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
     [AdminModePageInfo(Name = "Administrador de Textos Fijos")]
     public partial class StaticTextAdministrator : AdminModePage
     {
-        Controller iController = new Controller();
+        StaticTextController iController = new StaticTextController();
 
         StaticTextDTO staticText;
         public StaticTextAdministrator(): base()
@@ -55,6 +55,16 @@ namespace TpFinalTDP2015.UI.AdminModePages
             AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
             this.dgvStaticText.Modificar(ventana, this.staticText);
             iController.SaveStaticText(this.staticText);
+        }
+
+        private void StaticTextAdministrator_Load(object sender, EventArgs e)
+        {
+            IList<StaticTextDTO> lList = this.iController.GetStaticTexts();
+            foreach (var dto in lList)
+            {
+                this.dgvStaticText.iSource.Add(dto);
+            }
+            this.dgvStaticText.DataSource = this.dgvStaticText.iSource;
         }
     }
 }

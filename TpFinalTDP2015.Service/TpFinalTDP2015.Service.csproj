@@ -101,7 +101,11 @@
     <Compile Include="AutoMapper\StaticTextProfile.cs" />
     <Compile Include="AutoMapper\TimeIntervalDTOProfile.cs" />
     <Compile Include="AutoMapper\TimeIntervalProfile.cs" />
-    <Compile Include="Controller.cs" />
+    <Compile Include="Controllers\BannerController.cs" />
+    <Compile Include="Controllers\CampaignController.cs" />
+    <Compile Include="Controllers\DateIntervalController.cs" />
+    <Compile Include="Controllers\RssSourcesController.cs" />
+    <Compile Include="Controllers\StaticTextController.cs" />
     <Compile Include="DTO\BannerDTO.cs" />
     <Compile Include="DTO\CampaignDTO.cs" />
     <Compile Include="DTO\DateIntervalDTO.cs" />
@@ -156,6 +160,7 @@
       <Name>TpFinalTDP2015.Persistence.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)PostBuild.bat" "$(TargetPath)"</PostBuildEvent>

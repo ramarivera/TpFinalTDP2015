@@ -12,6 +12,7 @@ namespace TpFinalTDP2015.Model
         private string iName;
         private string iDescription;
         private IList<BaseBannerItem> iItems;
+        private IList<RssSource> iRssSources;
         private IList<DateInterval> iActiveIntervals;
 
 
@@ -66,6 +67,19 @@ namespace TpFinalTDP2015.Model
             }
         }
 
+        public virtual IList<RssSource> RssSources
+        {
+            get
+            {
+                return this.iRssSources;// Clone<IList<BaseBannerItem>>();
+            }
+            private set
+            {
+                this.UpdateModificationDate();
+                this.iRssSources = value;
+            }
+        }
+
         public virtual void AddDateInterval(DateInterval pInterval)
         {
             if (this.ValidInterval(pInterval))
@@ -112,6 +126,19 @@ namespace TpFinalTDP2015.Model
         {
             this.UpdateModificationDate();
             this.iItems.Remove(pItem);
+        }
+
+        public virtual void AddSource(RssSource pSource)
+        {
+            this.UpdateModificationDate();
+            this.iRssSources.Add(pSource);
+            //TODO verificar que ya no este?
+        }
+
+        public virtual void RemoveSource(RssSource pSource)
+        {
+            this.UpdateModificationDate();
+            this.iRssSources.Remove(pSource);
         }
 
         public bool Active

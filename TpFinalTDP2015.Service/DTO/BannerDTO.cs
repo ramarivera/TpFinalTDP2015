@@ -16,5 +16,7 @@ namespace TpFinalTDP2015.Service.DTO
         public string Description { get; set; }
         public IList<DateIntervalDTO> ActiveIntervals { get; set; }
         public IList<BaseBannerItem> Items { get; set; }
+
+        public IList<RssSourceDTO> RssSources { get; set; }
     }
 }

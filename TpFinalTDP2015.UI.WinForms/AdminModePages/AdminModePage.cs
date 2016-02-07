@@ -12,8 +12,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
     {
         public AdminModePage() : base() { }
 
-        public Controller Controller { get; internal set; }
-
         public AdminModePage GetAsPage()
         {
             this.TopLevel = false;

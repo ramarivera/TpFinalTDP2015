@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.Service.Controllers;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
     [AdminModePageInfo(Name = "Administrador de Campañas")]
     public partial class CampaignAdministrator : AdminModePage
     {
+        CampaignController iController = new CampaignController();
+
         CampaignDTO campaign;
         public CampaignAdministrator() : base()
         {
@@ -26,7 +29,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void CampaignAdministrator_Load(object sender, EventArgs e)
         {
-            IList<CampaignDTO> lList = this.Controller.GetCampaigns();
+            IList<CampaignDTO> lList = this.iController.GetCampaigns();
             foreach (var dto in lList)
             {
                 this.dgvCampaign.iSource.Add(dto);

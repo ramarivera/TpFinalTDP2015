@@ -8,12 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.Service.Controllers;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarBanner : BaseForm, IAddModifyViewForm
+    public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
-        //TODO ajustar ventana para poder agregar intervalos
+        DateIntervalController dateIntervalController = new DateIntervalController();
+        StaticTextController staticTextController = new StaticTextController();
+        RssSourcesController rssSourcesController = new RssSourcesController();
+
         private BannerDTO iOriginalBanner;
 
         public BannerDTO Banner
@@ -23,7 +27,6 @@ namespace TpFinalTDP2015.UI
         public AgregarModificarBanner()
         {
             InitializeComponent();
-            this.chlInterval.Items.Add("hola");
         }
 
         void IAddModifyViewForm.Agregar(IDTO pNewBanner)
@@ -94,6 +97,55 @@ namespace TpFinalTDP2015.UI
                     break;
                 case DialogResult.No:
                     break;
+            }
+        }
+
+        private void AgregarModificarBanner_Load(object sender, EventArgs e)
+        {
+            //levanto las listas de la base de datos y las listas del banner, obtengo los nombres de una
+            IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetDateIntervals();
+            IList<StaticTextDTO> lTexts = this.staticTextController.GetStaticTexts();
+            IList<RssSourceDTO> lSources = this.rssSourcesController.GetRssSources();
+            IList<DateIntervalDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
+            //IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Items.t
+            IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
+
+            foreach (DateIntervalDTO lInterval in lIntervals)
+            {
+                int i = 0;
+                this.chlInterval.Items.Add(lInterval.Name);
+                if (lBannerIntervals != null)
+                {
+                    if (lBannerIntervals.Contains(lInterval))
+                    {
+                        this.chlInterval.SetItemChecked(i, true);
+                    }
+                    i++;
+                }
+            }
+            foreach (RssSourceDTO lSource in lSources)
+            {
+                int i = 0;
+                this.chlSources.Items.Add(lSource.Title);
+                if(lBannerSources != null)
+                {
+                    if (lBannerSources.Contains(lSource))
+                    {
+                        this.chlSources.SetItemChecked(i, true);
+                    }
+                    i++;
+                }
+            }
+            foreach (StaticTextDTO lText in lTexts)
+            {
+                int i = 0;
+                this.chlTexts.Items.Add(lText.Title);
+                /*if (lBannerSources.Contains(lSource))
+                {
+                    this.chlSources.SetItemChecked(i, true);
+                }*/
+                //TODO como obtener solos los textos del banner
+                i++;
             }
         }
     }
