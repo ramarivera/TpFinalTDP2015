@@ -101,6 +101,8 @@
     <Compile Include="AutoMapper\StaticTextProfile.cs" />
     <Compile Include="AutoMapper\TimeIntervalDTOProfile.cs" />
     <Compile Include="AutoMapper\TimeIntervalProfile.cs" />
+    <Compile Include="Comparers\DateIntervalDTOComparer.cs" />
+    <Compile Include="Comparers\RssSourceDTOComparer.cs" />
     <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\CampaignController.cs" />
     <Compile Include="Controllers\DateIntervalController.cs" />

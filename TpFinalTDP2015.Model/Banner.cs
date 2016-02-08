@@ -20,6 +20,7 @@ namespace TpFinalTDP2015.Model
         {
             this.iItems = new List<BaseBannerItem>();
             this.iActiveIntervals = new List<DateInterval>();
+            this.iRssSources = new List<RssSource>();
         }
         
         public virtual string Name

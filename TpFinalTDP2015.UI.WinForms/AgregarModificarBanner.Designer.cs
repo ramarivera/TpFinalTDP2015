@@ -173,6 +173,7 @@
             this.chlInterval.Name = "chlInterval";
             this.chlInterval.Size = new System.Drawing.Size(287, 109);
             this.chlInterval.TabIndex = 1;
+            this.chlInterval.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chlInterval_ItemCheck);
             // 
             // btnAccept
             // 
@@ -260,6 +261,7 @@
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Guardar cambios";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tabControl1
             // 

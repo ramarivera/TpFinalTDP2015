@@ -122,6 +122,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "BannerAdministrator";
             this.Text = "BannerAdministrator";
+            this.Load += new System.EventHandler(this.BannerAdministrator_Load_1);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBanner)).EndInit();

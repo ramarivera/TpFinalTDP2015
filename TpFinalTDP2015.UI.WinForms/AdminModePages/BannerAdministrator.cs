@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.Service.Controllers;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
@@ -16,6 +17,8 @@ namespace TpFinalTDP2015.UI.AdminModePages
     public partial class BannerAdministrator : AdminModePage
     {
         BannerDTO banner;
+
+        BannerController iController = new BannerController();
 
         public BannerAdministrator(): base()
         {
@@ -64,10 +67,20 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvBanner.CurrentRow;
-            //this.banner = (BannerDTO)row.Tag;
             this.banner = (BannerDTO)row.DataBoundItem;
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Modificar(ventana, banner);
+            iController.SaveBanner(this.banner);
+        }
+
+        private void BannerAdministrator_Load_1(object sender, EventArgs e)
+        {
+            IList<BannerDTO> lList = this.iController.GetBanners();
+            foreach (var dto in lList)
+            {
+                this.dgvBanner.iSource.Add(dto);
+            }
+            this.dgvBanner.DataSource = this.dgvBanner.iSource;
         }
     }
 }

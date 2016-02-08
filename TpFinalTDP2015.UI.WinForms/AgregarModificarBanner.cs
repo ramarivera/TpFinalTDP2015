@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Service.Controllers;
+using TpFinalTDP2015.Service.Comparers;
 
 namespace TpFinalTDP2015.UI
 {
@@ -102,6 +103,7 @@ namespace TpFinalTDP2015.UI
 
         private void AgregarModificarBanner_Load(object sender, EventArgs e)
         {
+            int i = 0;
             //levanto las listas de la base de datos y las listas del banner, obtengo los nombres de una
             IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetDateIntervals();
             IList<StaticTextDTO> lTexts = this.staticTextController.GetStaticTexts();
@@ -110,35 +112,35 @@ namespace TpFinalTDP2015.UI
             //IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Items.t
             IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
 
+            i = 0;
             foreach (DateIntervalDTO lInterval in lIntervals)
             {
-                int i = 0;
                 this.chlInterval.Items.Add(lInterval.Name);
                 if (lBannerIntervals != null)
                 {
-                    if (lBannerIntervals.Contains(lInterval))
+                    if (lBannerIntervals.Contains(lInterval,new DateIntervalDTOComparer()))
                     {
                         this.chlInterval.SetItemChecked(i, true);
                     }
                     i++;
                 }
             }
+            i = 0;
             foreach (RssSourceDTO lSource in lSources)
             {
-                int i = 0;
                 this.chlSources.Items.Add(lSource.Title);
                 if(lBannerSources != null)
                 {
-                    if (lBannerSources.Contains(lSource))
+                    if (lBannerSources.Contains(lSource, new RssSourceDTOComparer()))       
                     {
                         this.chlSources.SetItemChecked(i, true);
                     }
                     i++;
                 }
             }
+            i = 0;
             foreach (StaticTextDTO lText in lTexts)
             {
-                int i = 0;
                 this.chlTexts.Items.Add(lText.Title);
                 /*if (lBannerSources.Contains(lSource))
                 {
@@ -147,6 +149,32 @@ namespace TpFinalTDP2015.UI
                 //TODO como obtener solos los textos del banner
                 i++;
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.iOriginalBanner.ActiveIntervals.Clear();
+            for (int i = 0; i < this.chlInterval.Items.Count; i++)
+            {
+                if (this.chlInterval.GetItemChecked(i))
+                {
+                    string lName = this.chlInterval.Items[i].ToString();
+                    IEnumerable<DateIntervalDTO> query =
+                        from lInterval in this.dateIntervalController.GetDateIntervals()
+                        where lInterval.Name == lName
+                        select lInterval;
+                    foreach (DateIntervalDTO dto in query)
+                    {
+                        this.iOriginalBanner.ActiveIntervals.Add(dto);
+                    }
+                }
+            }
+            //TODO hacer lo mismo con las otras listas
+        }
+
+        private void chlInterval_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            MessageBox.Show("HOla");
         }
     }
 }

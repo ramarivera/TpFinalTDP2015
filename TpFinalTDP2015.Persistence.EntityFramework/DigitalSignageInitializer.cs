@@ -55,29 +55,6 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             throw new NotImplementedException();
         }
 
-        private void SeedBanners(DigitalSignageContext pContext)
-        {
-            IList<DateInterval> lDateIntervalList = pContext.DateIntervals.ToList();
-            Banner lBanner1 = new Banner()
-            {
-                Name = "Noticias de deporte",
-                Description = "Noticias de la actualidad deportiva, provenientes de distintas fuentes. Tambien contiene otros textos útiles",
-                //falta contenido, pero eso falta tratar los rss
-            };
-            
-            var query = from interval in lDateIntervalList
-                        where interval.ActiveDays.Count() == 4
-                        select interval;
-
-            foreach (var interval in query)
-            {
-                lBanner1.AddDateInterval(interval);
-            };
-            lBanner1.Items.Add(pContext.Texts.ToList()[3]);
-            lBanner1.Items.Add(pContext.Texts.ToList()[4]);
-            pContext.Banners.Add(lBanner1);
-        }
-
         private void SeedRssSources(DigitalSignageContext pContext)
         {
             RssSource lRssSource1 = new RssSource()
@@ -106,7 +83,32 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             pContext.RssSources.Add(lRssSource3);
             pContext.SaveChanges();
         }
-        
+
+        private void SeedBanners(DigitalSignageContext pContext)
+        {
+            IList<DateInterval> lDateIntervalList = pContext.DateIntervals.ToList();
+            Banner lBanner1 = new Banner()
+            {
+                Name = "Noticias de deporte",
+                Description = "Noticias de la actualidad deportiva, provenientes de distintas fuentes. Tambien contiene otros textos útiles",
+                //falta contenido, pero eso falta tratar los rss
+            };
+            
+            var query = from interval in lDateIntervalList
+                        where interval.ActiveDays.Count() == 4
+                        select interval;
+
+            foreach (var interval in query)
+            {
+                lBanner1.AddDateInterval(interval);
+            };
+            lBanner1.Items.Add(pContext.Texts.ToList()[3]);
+            lBanner1.Items.Add(pContext.Texts.ToList()[4]);
+            //IList<RssSource> lista = pContext.RssSources.ToList();
+            lBanner1.RssSources.Add(pContext.RssSources.ToList()[0]);
+            lBanner1.RssSources.Add(pContext.RssSources.ToList()[2]);
+            pContext.Banners.Add(lBanner1);
+        }
 
         private void SeedCampaigns(DigitalSignageContext pContext)
         {
