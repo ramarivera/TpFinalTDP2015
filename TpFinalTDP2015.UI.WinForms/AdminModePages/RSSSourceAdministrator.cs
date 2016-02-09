@@ -55,7 +55,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void dgvRSSSource_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvRSSSource.CurrentRow;
-            this.rssSource = (RssSourceDTO)row.Tag;
+            this.rssSource = (RssSourceDTO)dgvRSSSource.GetItem(row.Index);
             AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
             this.dgvRSSSource.Modificar(ventana, this.rssSource);
             iController.SaveRssSource(this.rssSource);

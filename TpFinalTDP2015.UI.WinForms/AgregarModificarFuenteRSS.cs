@@ -13,7 +13,7 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarFuenteRSS : BaseForm, IAddModifyViewForm
     {
-        private RssSourceDTO iOriginalRSSSource;
+        private RssSourceDTO iOriginalRSSSource = new RssSourceDTO();
 
         public RssSourceDTO RSSSource
         {
@@ -88,7 +88,7 @@ namespace TpFinalTDP2015.UI
             switch (opcion)
             {
                 case DialogResult.Yes:
-                    this.DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.Cancel;
                     this.Close();
                     break;
                 case DialogResult.No:

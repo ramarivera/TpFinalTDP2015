@@ -27,6 +27,11 @@ namespace TpFinalTDP2015.UI.AdminModePages
             InitializeComponent();
         }
 
+        public IDTO GetItem(int pRowIndex)
+        {
+            return (IDTO)this.Rows[pRowIndex].DataBoundItem;
+        }
+
         public BaseDGV(IContainer container)
         {
             container.Add(this);
@@ -91,7 +96,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
                 this.iSource.Add(pDTO);
             }
             this.DataSource = this.iSource;
-            //this.iHelper.Configure(this);
+            this.iHelper.Configure(this);
         }
 
         public IList<IDTO> GetAll()

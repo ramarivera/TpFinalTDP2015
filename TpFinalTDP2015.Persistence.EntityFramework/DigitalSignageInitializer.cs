@@ -95,7 +95,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             };
             
             var query = from interval in lDateIntervalList
-                        where interval.ActiveDays.Count() == 4
+                        where interval.ActiveDays.Count() == 5
                         select interval;
 
             foreach (var interval in query)

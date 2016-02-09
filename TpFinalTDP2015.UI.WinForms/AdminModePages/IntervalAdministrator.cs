@@ -72,7 +72,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void dgvDateInterval_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = (DateIntervalDTO)row.Tag;
+            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
             AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
             this.dgvDateInterval.Modificar(ventana, this.dateInterval);
             iController.SaveDateInterval(this.dateInterval);

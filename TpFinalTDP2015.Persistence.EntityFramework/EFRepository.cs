@@ -58,11 +58,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             if (pPredicate == null)
             {
-                lResult = this.iDbSet.AsQueryable<TEntity>();
+                lResult = this.iDbSet.AsNoTracking<TEntity>().AsQueryable<TEntity>();
             }
             else
             {
-                lResult = this.iDbSet.Where(pPredicate);
+                lResult = this.iDbSet.AsNoTracking<TEntity>().Where(pPredicate);
             }
 
             return lResult;

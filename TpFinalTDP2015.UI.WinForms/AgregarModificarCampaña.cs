@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TpFinalTDP2015.Service.Comparers;
+using TpFinalTDP2015.Service.Controllers;
 using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : Form, IAddModifyViewForm
     {
+        DateIntervalController dateIntervalController = new DateIntervalController();
         //TODO ajustar ventana para poder agregar intervalos y slides
-        private CampaignDTO iOriginalCampaign;
+        private CampaignDTO iOriginalCampaign = new CampaignDTO();
 
         public CampaignDTO Campaign
         {
@@ -23,6 +26,7 @@ namespace TpFinalTDP2015.UI
         public AgregarModificarCampaña()
         {
             InitializeComponent();
+            iOriginalCampaign.ActiveIntervals = new List<DateIntervalDTO>();
         }
 
         void IAddModifyViewForm.Agregar(IDTO pNewCampaign)
@@ -44,7 +48,6 @@ namespace TpFinalTDP2015.UI
                 this.iOriginalCampaign = (CampaignDTO)pCampaign;
                 this.txtTitle.Text = iOriginalCampaign.Name;
                 this.txtDescription.Text = iOriginalCampaign.Description;
-                // this.txtDuration.Text = pCampaña.Duration.ToString();
                 this.Text = "Modificar Campaña";
             }
         }
@@ -68,7 +71,6 @@ namespace TpFinalTDP2015.UI
             {
                 this.iOriginalCampaign.Name = this.txtTitle.Text;
                 this.iOriginalCampaign.Description = this.txtDescription.Text;
-                //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -85,7 +87,7 @@ namespace TpFinalTDP2015.UI
             switch (opcion)
             {
                 case DialogResult.Yes:
-                    this.DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.Cancel;
                     this.Close();
                     break;
                 case DialogResult.No:
@@ -100,7 +102,41 @@ namespace TpFinalTDP2015.UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            iOriginalCampaign.ActiveIntervals = new List<DateIntervalDTO>();
+            for (int i = 0; i < this.chlInterval.Items.Count; i++)
+            {
+                if (this.chlInterval.GetItemChecked(i))
+                {
+                    string lName = this.chlInterval.Items[i].ToString();
+                    IEnumerable<DateIntervalDTO> query =
+                        from lInterval in this.dateIntervalController.GetDateIntervals()
+                        where lInterval.Name == lName
+                        select lInterval;
+                    foreach (DateIntervalDTO dto in query)
+                    {
+                        this.iOriginalCampaign.ActiveIntervals.Add(dto);
+                    }
+                }
+            }
+        }
 
+        private void AgregarModificarCampaña_Load(object sender, EventArgs e)
+        {
+            int i = 0;
+            IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetDateIntervals();
+            IList<DateIntervalDTO> lCampaignIntervals = this.iOriginalCampaign.ActiveIntervals;
+            foreach (DateIntervalDTO lInterval in lIntervals)
+            {
+                this.chlInterval.Items.Add(lInterval.Name);
+                if (lCampaignIntervals != null)
+                {
+                    if (lCampaignIntervals.Contains(lInterval, new DateIntervalDTOComparer()))
+                    {
+                        this.chlInterval.SetItemChecked(i, true);
+                    }
+                    i++;
+                }
+            }
         }
     }
 }
