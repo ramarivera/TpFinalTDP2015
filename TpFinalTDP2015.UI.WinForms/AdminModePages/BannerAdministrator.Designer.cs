@@ -109,6 +109,7 @@
             this.dgvBanner.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvBanner.Location = new System.Drawing.Point(3, 38);
             this.dgvBanner.Name = "dgvBanner";
+            this.dgvBanner.RowHeadersVisible = false;
             this.dgvBanner.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBanner.Size = new System.Drawing.Size(435, 279);
             this.dgvBanner.TabIndex = 2;
@@ -122,7 +123,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "BannerAdministrator";
             this.Text = "BannerAdministrator";
-            this.Load += new System.EventHandler(this.BannerAdministrator_Load_1);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBanner)).EndInit();

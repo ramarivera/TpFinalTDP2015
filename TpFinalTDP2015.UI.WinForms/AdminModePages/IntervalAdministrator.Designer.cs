@@ -37,6 +37,7 @@
             this.dgvDateInterval = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDateInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -112,10 +113,17 @@
             // 
             // dgvDateInterval
             // 
+            this.dgvDateInterval.AllowUserToAddRows = false;
+            this.dgvDateInterval.AllowUserToOrderColumns = true;
+            this.dgvDateInterval.AllowUserToResizeRows = false;
+            this.dgvDateInterval.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDateInterval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDateInterval.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDateInterval.DTOType = null;
             this.dgvDateInterval.Location = new System.Drawing.Point(3, 37);
             this.dgvDateInterval.Name = "dgvDateInterval";
+            this.dgvDateInterval.RowHeadersVisible = false;
+            this.dgvDateInterval.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDateInterval.Size = new System.Drawing.Size(458, 272);
             this.dgvDateInterval.TabIndex = 2;
             this.dgvDateInterval.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDateInterval_CellContentDoubleClick);
@@ -128,6 +136,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "IntervalAdministrator";
             this.Text = "DateIntervalAdministrator";
+            this.Load += new System.EventHandler(this.IntervalAdministrator_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDateInterval)).EndInit();

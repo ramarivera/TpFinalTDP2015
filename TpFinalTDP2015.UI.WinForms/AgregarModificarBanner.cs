@@ -19,7 +19,7 @@ namespace TpFinalTDP2015.UI
         StaticTextController staticTextController = new StaticTextController();
         RssSourcesController rssSourcesController = new RssSourcesController();
 
-        private BannerDTO iOriginalBanner;
+        private BannerDTO iOriginalBanner = new BannerDTO();
 
         public BannerDTO Banner
         {
@@ -28,6 +28,9 @@ namespace TpFinalTDP2015.UI
         public AgregarModificarBanner()
         {
             InitializeComponent();
+            iOriginalBanner.ActiveIntervals = new List<DateIntervalDTO>();
+            //iOriginalBanner.Items = new List<>();
+            iOriginalBanner.RssSources = new List<RssSourceDTO>();
         }
 
         void IAddModifyViewForm.Agregar(IDTO pNewBanner)
@@ -153,7 +156,7 @@ namespace TpFinalTDP2015.UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.iOriginalBanner.ActiveIntervals.Clear();
+            iOriginalBanner.ActiveIntervals = new List<DateIntervalDTO>();
             for (int i = 0; i < this.chlInterval.Items.Count; i++)
             {
                 if (this.chlInterval.GetItemChecked(i))
@@ -170,11 +173,6 @@ namespace TpFinalTDP2015.UI
                 }
             }
             //TODO hacer lo mismo con las otras listas
-        }
-
-        private void chlInterval_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            MessageBox.Show("HOla");
         }
     }
 }

@@ -22,9 +22,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             InitializeComponent();
             this.Load += CampaignAdministrator_Load;
-            //TODO obtener lo que está en la base de datos como una lista mediante fachada y guardar en iSource
-            
-           // this.dgvCampaign.DataSource = this.dgvCampaign.iSource;
         }
 
         private void CampaignAdministrator_Load(object sender, EventArgs e)
@@ -42,18 +39,29 @@ namespace TpFinalTDP2015.UI.AdminModePages
             campaign = new CampaignDTO();
             AgregarModificarCampaña ventana = new AgregarModificarCampaña();
             this.dgvCampaign.Agregar(ventana,campaign);
-            // TODO guardar en base de datos
+            iController.SaveCampaign(this.campaign);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //TODO verificar lista no vacia
             List<IDTO> campañasAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvCampaign.SelectedRows)
             {
                 campañasAEliminar.Add((CampaignDTO)row.DataBoundItem);
             }
-            this.dgvCampaign.Eliminar(campañasAEliminar);
+            if (campañasAEliminar.Count == 0)
+            {
+                MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.dgvCampaign.Eliminar(campañasAEliminar);
+                foreach (IDTO campaign in campañasAEliminar)
+                {
+                    iController.DeleteCampaign((CampaignDTO)campaign);
+                }
+            }
+            
         }
 
         private void dgvCampaign_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -61,7 +69,8 @@ namespace TpFinalTDP2015.UI.AdminModePages
             DataGridViewRow row = dgvCampaign.CurrentRow;
             this.campaign = (CampaignDTO)row.Tag;
             AgregarModificarCampaña ventana = new AgregarModificarCampaña();
-            this.dgvCampaign.Modificar(ventana, campaign);
+            this.dgvCampaign.Modificar(ventana, this.campaign);
+            iController.SaveCampaign(this.campaign);
         }
     }
 }

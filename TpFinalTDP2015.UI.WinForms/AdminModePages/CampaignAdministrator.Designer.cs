@@ -36,6 +36,7 @@
             this.dgvCampaign = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCampaign)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -106,10 +107,17 @@
             // 
             // dgvCampaign
             // 
+            this.dgvCampaign.AllowUserToAddRows = false;
+            this.dgvCampaign.AllowUserToOrderColumns = true;
+            this.dgvCampaign.AllowUserToResizeRows = false;
+            this.dgvCampaign.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCampaign.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCampaign.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCampaign.DTOType = null;
             this.dgvCampaign.Location = new System.Drawing.Point(3, 38);
             this.dgvCampaign.Name = "dgvCampaign";
+            this.dgvCampaign.RowHeadersVisible = false;
+            this.dgvCampaign.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCampaign.Size = new System.Drawing.Size(439, 278);
             this.dgvCampaign.TabIndex = 2;
             this.dgvCampaign.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCampaign_CellContentDoubleClick);

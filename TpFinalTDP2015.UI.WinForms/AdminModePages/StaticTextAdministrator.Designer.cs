@@ -107,6 +107,7 @@
             this.dgvStaticText.DTOType = null;
             this.dgvStaticText.Location = new System.Drawing.Point(3, 38);
             this.dgvStaticText.Name = "dgvStaticText";
+            this.dgvStaticText.RowHeadersVisible = false;
             this.dgvStaticText.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStaticText.Size = new System.Drawing.Size(455, 277);
             this.dgvStaticText.TabIndex = 2;

@@ -36,6 +36,7 @@
             this.dgvRSSSource = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRSSSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -97,10 +98,17 @@
             // 
             // dgvRSSSource
             // 
+            this.dgvRSSSource.AllowUserToAddRows = false;
+            this.dgvRSSSource.AllowUserToOrderColumns = true;
+            this.dgvRSSSource.AllowUserToResizeRows = false;
+            this.dgvRSSSource.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRSSSource.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRSSSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRSSSource.DTOType = null;
             this.dgvRSSSource.Location = new System.Drawing.Point(3, 37);
             this.dgvRSSSource.Name = "dgvRSSSource";
+            this.dgvRSSSource.RowHeadersVisible = false;
+            this.dgvRSSSource.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRSSSource.Size = new System.Drawing.Size(423, 270);
             this.dgvRSSSource.TabIndex = 2;
             this.dgvRSSSource.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRSSSource_CellContentDoubleClick);
@@ -113,6 +121,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RSSSourceAdministrator";
             this.Text = "RSSSourceAdministrator";
+            this.Load += new System.EventHandler(this.RSSSourceAdministrator_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRSSSource)).EndInit();

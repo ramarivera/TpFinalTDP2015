@@ -11,7 +11,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarCampaña : BaseForm, IAddModifyViewForm
+    public partial class AgregarModificarCampaña : Form, IAddModifyViewForm
     {
         //TODO ajustar ventana para poder agregar intervalos y slides
         private CampaignDTO iOriginalCampaign;
@@ -29,7 +29,6 @@ namespace TpFinalTDP2015.UI
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
-            this.txtDuration.Text = String.Empty;
             this.Text = "Agregar nueva Campaña";
             this.iOriginalCampaign = (CampaignDTO)pNewCampaign;
         }
@@ -94,7 +93,12 @@ namespace TpFinalTDP2015.UI
             }
         }
 
-        private void btnImagen_Click(object sender, EventArgs e)
+        private void btnAddSlide_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
         {
 
         }

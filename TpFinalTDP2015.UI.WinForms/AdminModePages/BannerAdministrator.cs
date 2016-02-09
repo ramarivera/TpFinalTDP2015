@@ -28,13 +28,12 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void BannerAdministrator_Load(object sender, EventArgs e)
         {
-            //TODO obtener lo que está en la base de datos como una lista mediante fachada
-            this.banner = new BannerDTO { Name = "Mañana", Description = "banner de la mañana" };
-            List<IDTO> elements = new List<IDTO>() { this.banner };
-            this.dgvBanner.AddToSource(elements);
-            //this.dgvBanner.iSource.Add(this.banner);
-            //this.dgvBanner.DataSource = this.dgvBanner.iSource;
-            this.dgvBanner.Rows[this.dgvBanner.RowCount - 1].Tag = this.banner;
+            IList<BannerDTO> lList = this.iController.GetBanners();
+            foreach (var dto in lList)
+            {
+                this.dgvBanner.iSource.Add(dto);
+            }
+            this.dgvBanner.DataSource = this.dgvBanner.iSource;
             this.btnAdd.Click += BtnAdd_Click;
             this.btnDelete.Click += BtnDelete_Click;
         }
@@ -54,6 +53,23 @@ namespace TpFinalTDP2015.UI.AdminModePages
                 bannersAEliminar.Add((BannerDTO)row.DataBoundItem);
             }
             this.dgvBanner.Eliminar(bannersAEliminar);*/
+            /*List<IDTO> bannersAEliminar = new List<IDTO>();
+            foreach (DataGridViewRow row in this.dgvBanner.SelectedRows)
+            {
+                bannerAEliminar.Add((BannerDTO)row.DataBoundItem);
+            }
+            if (bannerAEliminar.Count == 0)
+            {
+                MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.dgvBanner.Eliminar(bannerAEliminar);
+                foreach (IDTO banner in bannerAEliminar)
+                {
+                    iController.DeleteBanner((BannerDTO)banner);
+                }
+            }*/
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -61,7 +77,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             this.banner = new BannerDTO();
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Agregar(ventana, banner);
-            //TODO falta guardarlo en la base de datos
+            iController.SaveBanner(this.banner);
         }
 
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -71,16 +87,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Modificar(ventana, banner);
             iController.SaveBanner(this.banner);
-        }
-
-        private void BannerAdministrator_Load_1(object sender, EventArgs e)
-        {
-            IList<BannerDTO> lList = this.iController.GetBanners();
-            foreach (var dto in lList)
-            {
-                this.dgvBanner.iSource.Add(dto);
-            }
-            this.dgvBanner.DataSource = this.dgvBanner.iSource;
         }
     }
 }

@@ -21,8 +21,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public StaticTextAdministrator(): base()
         {
             InitializeComponent();
-            //TODO obtener lo que está en la base de datos como una lista mediante fachada y guardar en iSource
-            this.dgvStaticText.DataSource = this.dgvStaticText.iSource;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -35,17 +33,23 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //TODO verificar lista no vaciaa
             List<IDTO> textosAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvStaticText.SelectedRows)
             {
                 textosAEliminar.Add((StaticTextDTO)row.DataBoundItem);
             }
-            this.dgvStaticText.Eliminar(textosAEliminar);
-            foreach  (IDTO text in textosAEliminar)
+            if (textosAEliminar.Count == 0)
             {
-                iController.DeleteStaticText((StaticTextDTO)text);
+                MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                this.dgvStaticText.Eliminar(textosAEliminar);
+                foreach (IDTO text in textosAEliminar)
+                {
+                    iController.DeleteStaticText((StaticTextDTO)text);
+                }
+            }   
         }
 
         private void dgvStaticText_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
