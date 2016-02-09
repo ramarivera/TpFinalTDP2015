@@ -36,7 +36,7 @@ namespace xml
         int iPrevEntityIndex = 0;
         bool iUnsavedChanges = false;
 
-        string banner = "Banner";
+        string adminBanner = "AdminBanner";
         string campaign = "Campaña";
         string slide = "Diapositiva";
         string staticText = "Texto";
@@ -54,7 +54,7 @@ namespace xml
 
             this.iEntityNames = new List<string>()
             {
-                "TpFinalTDP2015.Service.DTO.BannerDTO",
+                "TpFinalTDP2015.Service.DTO.AdminBannerDTO",
                 "TpFinalTDP2015.Service.DTO.CampaignDTO",
                 "TpFinalTDP2015.Service.DTO.SlideDTO",
                 "TpFinalTDP2015.Service.DTO.TimeIntervalDTO",
@@ -88,6 +88,7 @@ namespace xml
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dgvProperties.CellEndEdit -= DgvProperties_CellEndEdit;
             cmbEntity.SelectedIndexChanged -= cmbTable_SelectedIndexChanged;
             cmbEntity.Enter -= CmbTableLanguage_Enter;
 
@@ -114,6 +115,9 @@ namespace xml
             cmbLanguage.Enter += CmbTableLanguage_Enter;
 
             PopulateLangaugeAdderComboBox();
+
+            dgvProperties.CellEndEdit += DgvProperties_CellEndEdit;
+
 
         }
 
@@ -511,15 +515,18 @@ namespace xml
             {
                 XElement lXEntityLang = (from entity in EntityList
                                          from lang in entity.Elements()
-                                         where entity.Attribute("name").Value == iSelectedEntity
+                                         where entity.Attribute("name").Value == iTranslations[iSelectedEntity]
                                              && lang.Attribute("name").Value == iSelectedLanguage
                                          select lang).FirstOrDefault();
 
                 if (lXEntityLang != null)
                 {
+                    iPrevEntityIndex = cmbEntity.SelectedIndex;
+                    iPrevLangIndex = cmbLanguage.SelectedIndex;
                     lXEntityLang.RemoveNodes();
                     lXEntityLang.Add(XDocument.Parse(dataSet.GetXml()).Elements().Elements());
                     SaveFile();
+                    iUnsavedChanges = false;
                 }
 
                 MessageBox.Show(dataSet.GetXml());
@@ -557,6 +564,7 @@ namespace xml
             if (query.FirstOrDefault() != null)
             {
                 query.FirstOrDefault().Add(lLang);
+                cmbLanguage.Items.Add(lCulture.DisplayName);
                 SaveChanges();
             }
             else
