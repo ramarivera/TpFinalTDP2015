@@ -9,7 +9,7 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
-    public class BannerProfile: Profile
+    public class AdminBannerProfile: Profile
     {
         protected override void Configure()
         {
@@ -20,8 +20,36 @@ namespace TpFinalTDP2015.Service.AutoMapper
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.Texts, opt => opt.MapFrom(source => source.Items))
+              .ForMember(dest => dest.Texts, opt => opt.ResolveUsing<BannerItemResolver>().FromMember(source => source.Items))
               .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources)); ;
         }
+
+
+        class BannerItemResolver : ValueResolver<IList<BaseBannerItem>, IList<StaticTextDTO>>
+        {
+            protected override IList<StaticTextDTO> ResolveCore(IList<BaseBannerItem> source)
+            {
+                IList<StaticTextDTO> lResult = new List<StaticTextDTO>();
+
+                foreach (var baseItem in source)
+                {
+                    if (baseItem.GetType() == typeof(StaticText))
+                    {
+                        lResult.Add(
+                            Mapper.Map<StaticText, StaticTextDTO>(
+                                (StaticText)baseItem
+                                )
+                            );
+                    }
+                }
+
+                return lResult;
+            }
+
+        }
+
+
+
     }
+
 }

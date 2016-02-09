@@ -78,8 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperConfigurations.cs" />
-    <Compile Include="AutoMapper\BannerDTOProfile.cs" />
-    <Compile Include="AutoMapper\BannerProfile.cs" />
+    <Compile Include="AutoMapper\AdminBannerDTOProfile.cs" />
+    <Compile Include="AutoMapper\AdminBannerProfile.cs" />
     <Compile Include="AutoMapper\CampaignDTOProfile.cs" />
     <Compile Include="AutoMapper\DateIntervalDTOProfile.cs" />
     <Compile Include="AutoMapper\DateIntervalProfile.cs" />
@@ -109,7 +109,7 @@
     <Compile Include="Controllers\DateIntervalController.cs" />
     <Compile Include="Controllers\RssSourcesController.cs" />
     <Compile Include="Controllers\StaticTextController.cs" />
-    <Compile Include="DTO\BannerDTO.cs" />
+    <Compile Include="DTO\AdminBannerDTO.cs" />
     <Compile Include="DTO\CampaignDTO.cs" />
     <Compile Include="DTO\DateIntervalDTO.cs" />
     <Compile Include="DTO\IDTO.cs" />

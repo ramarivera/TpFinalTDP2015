@@ -8,7 +8,7 @@ using TpFinalTDP2015.Service.Enum;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
-    class ModelDaysProfile : Profile
+    public class ModelDaysProfile : Profile
     {
         protected override void Configure()
         {

@@ -77,7 +77,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="IntervaloAplicacionTest.cs" />
-    <Compile Include="Persistence.EF\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AutoMapperTest.cs" />
     <Compile Include="CampañaTest.cs" />

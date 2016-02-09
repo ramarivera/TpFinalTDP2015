@@ -20,39 +20,31 @@ namespace TpFinalTDP2015.Service.AutoMapper
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.Items, opt => opt.ResolveUsing<BannerItemResolver>().FromMember(source => source.Texts))
+              .ForMember(dest => dest.Items, opt => opt.ResolveUsing<BannerTextDTOResolver>().FromMember(source => source.Texts))
               .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources));
         }
 
 
-        class BannerItemResolver : ValueResolver<IList<BaseBannerItem>,IList<StaticTextDTO>>
+        class BannerTextDTOResolver : ValueResolver<IList<StaticTextDTO>, IList<BaseBannerItem>>
         {
-            protected override IList<StaticTextDTO> ResolveCore(IList<BaseBannerItem> source)
+            protected override IList<BaseBannerItem> ResolveCore(IList<StaticTextDTO> source)
             {
-                IList<StaticTextDTO> lResult = new List<StaticTextDTO>();
+                IList<BaseBannerItem> lResult = new List<BaseBannerItem>();
 
-                foreach (BaseBannerItem baseItem in source)
+                foreach (StaticTextDTO text in source)
                 {
-                    if (baseItem.GetType() == typeof(StaticText))
-                    {
-                        lResult.Add(
-                            Mapper.Map<StaticText, StaticTextDTO>(
-                                (StaticText)baseItem
-                                )
-                            );
-                    }
+                    lResult.Add(
+                         Mapper.Map<StaticTextDTO, StaticText>(
+                            text
+                            )
+                        );
                 }
 
                 return lResult;
             }
 
+
         }
 
-
-
-
     }
-
-
-   
 }

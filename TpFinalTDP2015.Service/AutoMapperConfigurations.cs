@@ -19,13 +19,14 @@ namespace TpFinalTDP2015.Service
         static public void  Configure()
         {
             Mapper.Initialize(cfg => {//ida
-                cfg.AddProfile<BannerProfile>();
+                cfg.AddProfile<AdminBannerProfile>();
+                cfg.AddProfile<OperativeBannerProfile>();
                 cfg.AddProfile<CampaignProfile>();
                 cfg.AddProfile<DateIntervalProfile>();
                 cfg.AddProfile<ModelDayProfile>();
+                cfg.AddProfile<ModelDaysProfile>();
                 cfg.AddProfile<RssItemProfile>();
                 cfg.AddProfile<RssSourceProfile>();
-                cfg.AddProfile<ServiceDaysDTOProfile>();
                 cfg.AddProfile<SlideProfile>();
                 cfg.AddProfile<StaticTextProfile>();
                 cfg.AddProfile<TimeIntervalProfile>();
@@ -33,7 +34,7 @@ namespace TpFinalTDP2015.Service
                 cfg.AddProfile<AdminBannerDTOProfile>();
                 cfg.AddProfile<CampaignDTOProfile>();
                 cfg.AddProfile<DateIntervalDTOProfile>();
-                cfg.AddProfile<ModelDaysProfile>();
+                cfg.AddProfile<ServiceDaysDTOProfile>();
                 cfg.AddProfile<RssItemDTOProfile>();
                 cfg.AddProfile<RssSourceDTOProfile>();
                 cfg.AddProfile<ServiceDaysProfile>();

@@ -10,8 +10,8 @@ namespace TpFinalTDP2015.Service.DTO
     public class OperativeBannerDTO : IDTO
     {
         public int Id { get; set; }
-        public IList<DateIntervalDTO> ActiveIntervals { get; set; }
+        public IList<DateIntervalDTO> ActiveIntervals { get; set; } //TODO sacar esta merdah
         public IList<StaticTextDTO> Texts { get; set; }
-        public IList<RssSourceDTO> RssSources { get; set; }
+        public IList<RssItemDTO> RssItems { get; set; }
     }
 }
