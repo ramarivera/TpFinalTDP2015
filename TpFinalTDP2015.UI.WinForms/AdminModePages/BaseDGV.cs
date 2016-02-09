@@ -25,6 +25,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         public BaseDGV()
         {
             InitializeComponent();
+            this.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
         public IDTO GetItem(int pRowIndex)
@@ -83,6 +84,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         public void AddToSource(IList<IDTO> pDTOs)
         {
+            this.iSource.Clear();
             if (this.DTOType == null)
             {
                 this.DTOType = pDTOs.First().GetType();
@@ -128,6 +130,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             //  pDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.GetConfigForEntity(pDGV.DTOType);
             this.ConfigureColumns(pDGV);
+            pDGV.RowHeadersVisible = false;
 
         }
 
@@ -142,6 +145,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             while (!lError && i < lColumns.Count)
             {
                 DataGridViewColumn lCol = lColumns[i];
+                lCol.ReadOnly = true;
                 PropertyConfigurations lProp = PropertyConfigs
                                     .Where(pro => pro.PropertyName == lCol.Name)
                                     .FirstOrDefault();

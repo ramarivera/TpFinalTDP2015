@@ -13,7 +13,7 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervaloTiempo : BaseForm, IAddModifyViewForm
     {
-        private TimeIntervalDTO iOriginalTimeInterval;
+        private TimeIntervalDTO iOriginalTimeInterval = new TimeIntervalDTO();
 
         public TimeIntervalDTO TimeInterval
         {
