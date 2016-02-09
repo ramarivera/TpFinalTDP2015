@@ -88,6 +88,7 @@
     <Compile Include="AutoMapper\DayToServiceDaysConverter.cs" />
     <Compile Include="AutoMapper\ModelDayProfile.cs" />
     <Compile Include="AutoMapper\ModelDaysProfile.cs" />
+    <Compile Include="AutoMapper\OperativeBannerProfile.cs" />
     <Compile Include="AutoMapper\RssItemDTOProfile.cs" />
     <Compile Include="AutoMapper\RssItemProfile.cs" />
     <Compile Include="AutoMapper\RssSourceDTOProfile.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="DTO\CampaignDTO.cs" />
     <Compile Include="DTO\DateIntervalDTO.cs" />
     <Compile Include="DTO\IDTO.cs" />
+    <Compile Include="DTO\OperativeBannerDTO.cs" />
     <Compile Include="DTO\RssItemDTO.cs" />
     <Compile Include="DTO\RssSourceDTO.cs" />
     <Compile Include="DTO\SlideDTO.cs" />

@@ -53,6 +53,11 @@ namespace TpFinalTDP2015.Service.Controllers
                 foreach (var banner in lTemp)
                 {
                     BannerDTO lDto = Mapper.Map<Banner, BannerDTO>(banner);
+
+                    foreach (var item in banner.Items)
+                    {
+                       cLogger.Info("TiPo : "+item.GetType().ToString());
+                    }
                     lResult.Add(lDto);
                 }
             }
