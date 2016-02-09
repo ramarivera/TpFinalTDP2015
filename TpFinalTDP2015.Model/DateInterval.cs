@@ -49,7 +49,7 @@ namespace TpFinalTDP2015.Model
                 }
                 else
                 {
-                    new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -65,7 +65,7 @@ namespace TpFinalTDP2015.Model
                 }
                 else
                 {
-                    new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -102,6 +102,8 @@ namespace TpFinalTDP2015.Model
             if (this.ActiveDays.Contains(pDay))
             {
                 //TODO excepcion dia repetido
+                throw new ArgumentOutOfRangeException();
+
             }
             else
             {
@@ -125,6 +127,8 @@ namespace TpFinalTDP2015.Model
             }
             else
             {
+                throw new ArgumentOutOfRangeException();
+
                 //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
             }
         }

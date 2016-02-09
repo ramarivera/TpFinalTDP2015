@@ -90,6 +90,8 @@ namespace TpFinalTDP2015.Model
             }
             else
             {
+                throw new ArgumentOutOfRangeException();
+
                 //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
             }
         }

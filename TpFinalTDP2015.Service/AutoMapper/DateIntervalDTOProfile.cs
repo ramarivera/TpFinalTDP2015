@@ -14,14 +14,53 @@ namespace TpFinalTDP2015.Service.AutoMapper
         protected override void Configure()
         {
             Mapper.CreateMap<DateIntervalDTO, DateInterval>()
-              .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-              .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
-              .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
-              .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
-              .ForMember(dest => dest.ActiveFrom, opt => opt.MapFrom(source => source.ActiveFrom))
-              .ForMember(dest => dest.ActiveUntil, opt => opt.MapFrom(source => source.ActiveUntil))
-              .ForMember(dest => dest.ActiveDays, opt => opt.MapFrom(source => source.Days))
-              .ForMember(dest => dest.ActiveHours, opt => opt.MapFrom(source => source.ActiveHours));
+                .ConvertUsing<DateIntervalConverter>();
+        }
+
+        private class DateIntervalConverter : ITypeConverter<DateIntervalDTO, DateInterval>
+        {
+            DateInterval ITypeConverter<DateIntervalDTO, DateInterval>.Convert(ResolutionContext context)
+            {
+                if (context == null || context.IsSourceValueNull)
+                    return null;
+
+
+                DateIntervalDTO lDto = (DateIntervalDTO)context.SourceValue;
+                try
+                {
+                    DateInterval lResult = new DateInterval()
+                    {
+                        Id = lDto.Id,
+                        LastModified = DateTimeResolver.Resolve(lDto.ModificationDate),
+                        CreationDate = DateTimeResolver.Resolve(lDto.CreationDate),
+                        Name = lDto.Name,
+                        ActiveUntil = lDto.ActiveUntil,
+                        ActiveFrom = lDto.ActiveFrom,
+                    };
+
+                    foreach (var item in lDto.ActiveHours)
+                    {
+                        lResult.AddActiveHours(
+                            Mapper.Map<TimeIntervalDTO, TimeInterval>(item)
+                            );
+                    }
+
+                    foreach (var item in lDto.Days)
+                    {
+                        lResult.AddActiveDay(
+                            Mapper.Map<Service.Enum.Days, Day>(item)
+                            );
+                    }
+
+                    return lResult;
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         }
     }
 }
