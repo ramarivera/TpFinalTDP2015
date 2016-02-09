@@ -55,7 +55,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual IList<BaseBannerItem> Texts
+        public virtual IList<BaseBannerItem> Items
         {
             get
             {

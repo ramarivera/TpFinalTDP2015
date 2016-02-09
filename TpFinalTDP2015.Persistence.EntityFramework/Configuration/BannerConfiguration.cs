@@ -34,7 +34,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
                     m.ToTable("BannerInterval");
                 });
 
-            HasMany(b => b.Texts)
+            HasMany(b => b.Items)
                .WithMany() // <- no parameter here because there is no navigation property
                .Map(m =>
                {

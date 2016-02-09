@@ -102,8 +102,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             {
                 lBanner1.AddDateInterval(interval);
             };
-            lBanner1.Texts.Add(pContext.Texts.ToList()[3]);
-            lBanner1.Texts.Add(pContext.Texts.ToList()[4]);
+            lBanner1.Items.Add(pContext.Texts.ToList()[3]);
+            lBanner1.Items.Add(pContext.Texts.ToList()[4]);
             //IList<RssSource> lista = pContext.RssSources.ToList();
             lBanner1.RssSources.Add(pContext.RssSources.ToList()[0]);
             lBanner1.RssSources.Add(pContext.RssSources.ToList()[2]);
