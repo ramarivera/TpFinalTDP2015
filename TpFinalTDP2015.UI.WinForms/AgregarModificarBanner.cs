@@ -29,7 +29,7 @@ namespace TpFinalTDP2015.UI
         {
             InitializeComponent();
             iOriginalBanner.ActiveIntervals = new List<DateIntervalDTO>();
-            //iOriginalBanner.Items = new List<>();
+            iOriginalBanner.Texts = new List<StaticTextDTO>();
             iOriginalBanner.RssSources = new List<RssSourceDTO>();
         }
 
@@ -112,7 +112,7 @@ namespace TpFinalTDP2015.UI
             IList<StaticTextDTO> lTexts = this.staticTextController.GetStaticTexts();
             IList<RssSourceDTO> lSources = this.rssSourcesController.GetRssSources();
             IList<DateIntervalDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
-            //IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Items.t
+            IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
             IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
 
             i = 0;
@@ -145,10 +145,10 @@ namespace TpFinalTDP2015.UI
             foreach (StaticTextDTO lText in lTexts)
             {
                 this.chlTexts.Items.Add(lText.Title);
-                /*if (lBannerSources.Contains(lSource))
+                if (lBannerTexts.Contains(lText))
                 {
                     this.chlSources.SetItemChecked(i, true);
-                }*/
+                }
                 //TODO como obtener solos los textos del banner
                 i++;
             }
