@@ -33,7 +33,7 @@ namespace TpFinalTDP2015.Model
                 }
                 else
                 {
-                    new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace TpFinalTDP2015.Model
                 }
                 else
                 {
-                    new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }

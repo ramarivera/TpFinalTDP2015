@@ -11,6 +11,11 @@ namespace TpFinalTDP2015.Service.AutoMapper
     {
         protected override DateTime ResolveCore(DateTime source)
         {
+            return DateTimeResolver.Resolve(source);
+        }
+
+        public static DateTime Resolve(DateTime source)
+        {
             return source == new DateTime(0) ? DateTime.Now : source;
         }
     }
