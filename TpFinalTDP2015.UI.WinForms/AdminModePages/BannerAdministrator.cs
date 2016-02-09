@@ -29,11 +29,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void BannerAdministrator_Load(object sender, EventArgs e)
         {
             IList<AdminBannerDTO> lList = this.iController.GetBanners();
-            foreach (var dto in lList)
-            {
-                this.dgvBanner.iSource.Add(dto);
-            }
-            this.dgvBanner.DataSource = this.dgvBanner.iSource;
+            this.dgvBanner.AddToSource(lList.ToDTOList());
             this.btnAdd.Click += BtnAdd_Click;
             this.btnDelete.Click += BtnDelete_Click;
         }

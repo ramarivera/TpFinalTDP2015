@@ -64,11 +64,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void StaticTextAdministrator_Load(object sender, EventArgs e)
         {
             IList<StaticTextDTO> lList = this.iController.GetStaticTexts();
-            foreach (var dto in lList)
-            {
-                this.dgvStaticText.iSource.Add(dto);
-            }
-            this.dgvStaticText.DataSource = this.dgvStaticText.iSource;
+            this.dgvStaticText.AddToSource(lList.ToDTOList());
         }
     }
 }

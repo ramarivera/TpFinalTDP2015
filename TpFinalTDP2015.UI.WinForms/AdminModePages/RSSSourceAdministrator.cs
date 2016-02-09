@@ -64,11 +64,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void RSSSourceAdministrator_Load(object sender, EventArgs e)
         {
             IList<RssSourceDTO> lList = this.iController.GetRssSources();
-            foreach (var dto in lList)
-            {
-                this.dgvRSSSource.iSource.Add(dto);
-            }
-            this.dgvRSSSource.DataSource = this.dgvRSSSource.iSource;
+            this.dgvRSSSource.AddToSource(lList.ToDTOList());
         }
     }
 }

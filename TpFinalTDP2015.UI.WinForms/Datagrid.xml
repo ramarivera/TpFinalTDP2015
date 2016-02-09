@@ -259,7 +259,7 @@
         <enable>true</enable>
       </property>
     </language>
-    <language name="Spanish (Latin America)" code="es-419">
+    <language name="Spanish (Argentina)" code="es-AR">
       <property name="Id">
         <text>Id</text>
         <enable>true</enable>

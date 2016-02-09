@@ -11,7 +11,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.UI
 {
-    public partial class AgregarModificarSlide : BaseForm, IAddModifyViewForm
+    public partial class AgregarModificarSlide : Form, IAddModifyViewForm
     {
         private SlideDTO iOriginalSlide;
 

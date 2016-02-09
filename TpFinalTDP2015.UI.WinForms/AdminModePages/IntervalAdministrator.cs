@@ -58,13 +58,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void btnAddTimeInterval_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = (DateIntervalDTO)row.Tag;
+            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
             this.timeInterval = new TimeIntervalDTO();
             AgregarModificarIntervaloTiempo ventana = new AgregarModificarIntervaloTiempo();
             DialogResult resultado =ventana.ShowDialog();
             if(resultado == DialogResult.OK)
             {
-                //this.dateInterval.ActiveHours.Add
+                this.dateInterval.ActiveHours.Add(this.timeInterval);
             }
             //TODO revisar esto
         }
@@ -81,11 +81,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void IntervalAdministrator_Load(object sender, EventArgs e)
         {
             IList<DateIntervalDTO> lList = this.iController.GetDateIntervals();
-            foreach (var dto in lList)
-            {
-                this.dgvDateInterval.iSource.Add(dto);
-            }
-            this.dgvDateInterval.DataSource = this.dgvDateInterval.iSource;
+            this.dgvDateInterval.AddToSource(lList.ToDTOList());
         }
     }
 }

@@ -27,11 +27,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void CampaignAdministrator_Load(object sender, EventArgs e)
         {
             IList<CampaignDTO> lList = this.iController.GetCampaigns();
-            foreach (var dto in lList)
-            {
-                this.dgvCampaign.iSource.Add(dto);
-            }
-            this.dgvCampaign.DataSource = this.dgvCampaign.iSource;
+            this.dgvCampaign.AddToSource(lList.ToDTOList());
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

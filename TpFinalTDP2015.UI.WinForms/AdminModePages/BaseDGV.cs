@@ -81,7 +81,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             }
         }
 
-        public void AddToSource(List<IDTO> pDTOs)
+        public void AddToSource(IList<IDTO> pDTOs)
         {
             if (this.DTOType == null)
             {
@@ -218,7 +218,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
                     {
                         PropertyName = xl.Attribute("name").Value,
                         Value = xl.Element("text").Value,
-                        Enabled = xl.Element("enable").Value == "1"
+                        Enabled = xl.Element("enable").Value == "true"
                     }
                 );
             }
