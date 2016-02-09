@@ -7,7 +7,7 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.DTO
 {
-    public class BannerDTO: IDTO
+    public class AdminBannerDTO: IDTO
     {
         public int Id { get; set; }
         public DateTime CreationDate { get; set; }

@@ -41,9 +41,9 @@ namespace TpFinalTDP2015.Service.Controllers
         {
             return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
         }
-        public IList<BannerDTO> GetBanners()
+        public IList<AdminBannerDTO> GetBanners()
         {
-            IList<BannerDTO> lResult = new List<BannerDTO>();
+            IList<AdminBannerDTO> lResult = new List<AdminBannerDTO>();
 
             using (this.iUoW = GetUnitOfWork())
             {
@@ -52,20 +52,20 @@ namespace TpFinalTDP2015.Service.Controllers
 
                 foreach (var banner in lTemp)
                 {
-                    BannerDTO lDto = Mapper.Map<Banner, BannerDTO>(banner);
+                    AdminBannerDTO lDto = Mapper.Map<Banner, AdminBannerDTO>(banner);
                     lResult.Add(lDto);
                 }
             }
             return lResult;
         }
 
-        public void SaveBanner(BannerDTO pBanner)
+        public void SaveBanner(AdminBannerDTO pBanner)
         {
             using (this.iUoW = GetUnitOfWork())
             {
                 iUoW.BeginTransaction();
                 IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
-                Banner lBanner = Mapper.Map<BannerDTO, Banner>(pBanner);
+                Banner lBanner = Mapper.Map<AdminBannerDTO, Banner>(pBanner);
                 if (pBanner.Id == 0)
                 {
                     lRepo.Add(lBanner);
@@ -78,13 +78,13 @@ namespace TpFinalTDP2015.Service.Controllers
             }
         }
 
-        public void DeleteBanner(BannerDTO pBanner)
+        public void DeleteBanner(AdminBannerDTO pBanner)
         {
             using (this.iUoW = GetUnitOfWork())
             {
                 iUoW.BeginTransaction();
                 IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
-                Banner lBanner = Mapper.Map<BannerDTO, Banner>(pBanner);
+                Banner lBanner = Mapper.Map<AdminBannerDTO, Banner>(pBanner);
                 lRepo.Delete(lBanner.Id);
                 iUoW.Commit();
             }

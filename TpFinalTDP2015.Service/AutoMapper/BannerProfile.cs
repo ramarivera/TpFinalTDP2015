@@ -13,14 +13,14 @@ namespace TpFinalTDP2015.Service.AutoMapper
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Banner, BannerDTO>()
+            Mapper.CreateMap<Banner, AdminBannerDTO>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
               .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
               .ForMember(dest => dest.ModificationDate, opt => opt.MapFrom(source => source.LastModified))
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.Items, opt => opt.MapFrom(source => source.Items))
+              .ForMember(dest => dest.Items, opt => opt.MapFrom(source => source.Texts))
               .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources)); ;
         }
     }

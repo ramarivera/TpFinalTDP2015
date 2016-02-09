@@ -16,7 +16,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Banners")]
     public partial class BannerAdministrator : AdminModePage
     {
-        BannerDTO banner;
+        AdminBannerDTO banner;
 
         BannerController iController = new BannerController();
 
@@ -28,7 +28,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void BannerAdministrator_Load(object sender, EventArgs e)
         {
-            IList<BannerDTO> lList = this.iController.GetBanners();
+            IList<AdminBannerDTO> lList = this.iController.GetBanners();
             foreach (var dto in lList)
             {
                 this.dgvBanner.iSource.Add(dto);
@@ -74,7 +74,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            this.banner = new BannerDTO();
+            this.banner = new AdminBannerDTO();
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Agregar(ventana, banner);
             iController.SaveBanner(this.banner);
@@ -83,7 +83,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvBanner.CurrentRow;
-            this.banner = (BannerDTO)row.DataBoundItem;
+            this.banner = (AdminBannerDTO)row.DataBoundItem;
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Modificar(ventana, banner);
             iController.SaveBanner(this.banner);

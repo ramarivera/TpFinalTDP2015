@@ -19,9 +19,9 @@ namespace TpFinalTDP2015.UI
         StaticTextController staticTextController = new StaticTextController();
         RssSourcesController rssSourcesController = new RssSourcesController();
 
-        private BannerDTO iOriginalBanner = new BannerDTO();
+        private AdminBannerDTO iOriginalBanner = new AdminBannerDTO();
 
-        public BannerDTO Banner
+        public AdminBannerDTO Banner
         {
             get { return this.iOriginalBanner; }
         }
@@ -38,7 +38,7 @@ namespace TpFinalTDP2015.UI
             this.txtName.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
             this.Text = "Agregar nuevo Banner";
-            this.iOriginalBanner = (BannerDTO)pNewBanner;
+            this.iOriginalBanner = (AdminBannerDTO)pNewBanner;
         }
 
         void IAddModifyViewForm.Modificar(IDTO pBanner)
@@ -49,7 +49,7 @@ namespace TpFinalTDP2015.UI
             }
             else
             {
-                this.iOriginalBanner = (BannerDTO)pBanner;
+                this.iOriginalBanner = (AdminBannerDTO)pBanner;
                 this.txtName.Text = iOriginalBanner.Name;
                 this.txtDescription.Text = iOriginalBanner.Description;
                 this.Text = "Modificar Banner";

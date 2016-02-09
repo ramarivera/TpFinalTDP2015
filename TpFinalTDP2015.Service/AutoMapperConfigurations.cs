@@ -30,7 +30,7 @@ namespace TpFinalTDP2015.Service
                 cfg.AddProfile<StaticTextProfile>();
                 cfg.AddProfile<TimeIntervalProfile>();
                 //vuelta
-                cfg.AddProfile<BannerDTOProfile>();
+                cfg.AddProfile<AdminBannerDTOProfile>();
                 cfg.AddProfile<CampaignDTOProfile>();
                 cfg.AddProfile<DateIntervalDTOProfile>();
                 cfg.AddProfile<ModelDaysProfile>();

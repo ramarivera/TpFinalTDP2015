@@ -44,7 +44,7 @@ namespace xml
         string rssSource = "Fuente RSS";
         string timeInterval = "Intervalo de Tiempo";
         string dateInterval = "Intervalo de Fechas";
-        BannerDTO bannnner; //TODO es solo para testear el descrubrimiento de tipos mediante reflection
+        AdminBannerDTO bannnner; //TODO es solo para testear el descrubrimiento de tipos mediante reflection
 
         #endregion
 

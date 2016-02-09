@@ -31,7 +31,7 @@ namespace TpFinalTDP2015.Test
         public void Mappings_ConfigureMappings_Inverse_pass()
         {
             Mapper.Initialize(cfg => {
-                cfg.AddProfile<BannerDTOProfile>();
+                cfg.AddProfile<AdminBannerDTOProfile>();
                 cfg.AddProfile<CampaignDTOProfile>();
                 cfg.AddProfile<DateIntervalDTOProfile>();
                 cfg.AddProfile<RssItemDTOProfile>();

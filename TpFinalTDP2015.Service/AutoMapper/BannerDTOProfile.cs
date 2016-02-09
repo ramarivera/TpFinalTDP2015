@@ -9,21 +9,50 @@ using TpFinalTDP2015.Model;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
-    public class BannerDTOProfile : Profile
+    public class AdminBannerDTOProfile : Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<BannerDTO, Banner>()
+            Mapper.CreateMap<AdminBannerDTO, Banner>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
               .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
               .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.Items, opt => opt.MapFrom(source => source.Items))
+              .ForMember(dest => dest.Texts, opt => opt.ResolveUsing<BannerItemResolver>().FromMember(source => source.Items))
               .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources));
         }
 
-        
+
+        class BannerItemResolver : ValueResolver<IList<BaseBannerItem>,IList<StaticTextDTO>>
+        {
+            protected override IList<StaticTextDTO> ResolveCore(IList<BaseBannerItem> source)
+            {
+                IList<StaticTextDTO> lResult = new List<StaticTextDTO>();
+
+                foreach (BaseBannerItem baseItem in source)
+                {
+                    if (baseItem.GetType() == typeof(StaticText))
+                    {
+                        lResult.Add(
+                            Mapper.Map<StaticText, StaticTextDTO>(
+                                (StaticText)baseItem
+                                )
+                            );
+                    }
+                }
+
+                return lResult;
+            }
+
+        }
+
+
+
+
     }
+
+
+   
 }
