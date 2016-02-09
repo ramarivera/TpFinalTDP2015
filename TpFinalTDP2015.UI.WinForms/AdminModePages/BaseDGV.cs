@@ -27,6 +27,11 @@ namespace TpFinalTDP2015.UI.AdminModePages
             InitializeComponent();
         }
 
+        public IDTO GetItem(int pRowIndex)
+        {
+            return (IDTO)this.Rows[pRowIndex].DataBoundItem;
+        }
+
         public BaseDGV(IContainer container)
         {
             container.Add(this);
@@ -76,7 +81,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             }
         }
 
-        public void AddToSource(List<IDTO> pDTOs)
+        public void AddToSource(IList<IDTO> pDTOs)
         {
             if (this.DTOType == null)
             {
@@ -91,7 +96,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
                 this.iSource.Add(pDTO);
             }
             this.DataSource = this.iSource;
-            //this.iHelper.Configure(this);
+            this.iHelper.Configure(this);
         }
 
         public IList<IDTO> GetAll()
@@ -213,7 +218,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
                     {
                         PropertyName = xl.Attribute("name").Value,
                         Value = xl.Element("text").Value,
-                        Enabled = xl.Element("enable").Value == "1"
+                        Enabled = xl.Element("enable").Value == "true"
                     }
                 );
             }

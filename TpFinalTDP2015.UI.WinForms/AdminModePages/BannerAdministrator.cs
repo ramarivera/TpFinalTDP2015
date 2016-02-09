@@ -29,11 +29,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void BannerAdministrator_Load(object sender, EventArgs e)
         {
             IList<AdminBannerDTO> lList = this.iController.GetBanners();
-            foreach (var dto in lList)
-            {
-                this.dgvBanner.iSource.Add(dto);
-            }
-            this.dgvBanner.DataSource = this.dgvBanner.iSource;
+            this.dgvBanner.AddToSource(lList.ToDTOList());
             this.btnAdd.Click += BtnAdd_Click;
             this.btnDelete.Click += BtnDelete_Click;
         }
@@ -83,9 +79,9 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvBanner.CurrentRow;
-            this.banner = (AdminBannerDTO)row.DataBoundItem;
+            this.banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
             AgregarModificarBanner ventana = new AgregarModificarBanner();
-            this.dgvBanner.Modificar(ventana, banner);
+            this.dgvBanner.Modificar(ventana, this.banner);
             iController.SaveBanner(this.banner);
         }
     }

@@ -55,7 +55,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void dgvStaticText_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvStaticText.CurrentRow;
-            this.staticText = (StaticTextDTO)row.DataBoundItem;
+            this.staticText = (StaticTextDTO)dgvStaticText.GetItem(row.Index);
             AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
             this.dgvStaticText.Modificar(ventana, this.staticText);
             iController.SaveStaticText(this.staticText);
@@ -64,11 +64,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void StaticTextAdministrator_Load(object sender, EventArgs e)
         {
             IList<StaticTextDTO> lList = this.iController.GetStaticTexts();
-            foreach (var dto in lList)
-            {
-                this.dgvStaticText.iSource.Add(dto);
-            }
-            this.dgvStaticText.DataSource = this.dgvStaticText.iSource;
+            this.dgvStaticText.AddToSource(lList.ToDTOList());
         }
     }
 }

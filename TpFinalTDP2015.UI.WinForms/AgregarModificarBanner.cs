@@ -80,7 +80,6 @@ namespace TpFinalTDP2015.UI
             {
                 this.iOriginalBanner.Name = this.txtName.Text;
                 this.iOriginalBanner.Description = this.txtDescription.Text;
-                //  this.iCampañaOriginal.Duration = int.Parse(this.txtDuration.Text);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -96,7 +95,7 @@ namespace TpFinalTDP2015.UI
             switch (opcion)
             {
                 case DialogResult.Yes:
-                    this.DialogResult = DialogResult.No;
+                    this.DialogResult = DialogResult.Cancel;
                     this.Close();
                     break;
                 case DialogResult.No:
@@ -115,7 +114,6 @@ namespace TpFinalTDP2015.UI
             IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
             IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
 
-            i = 0;
             foreach (DateIntervalDTO lInterval in lIntervals)
             {
                 this.chlInterval.Items.Add(lInterval.Name);
@@ -145,12 +143,14 @@ namespace TpFinalTDP2015.UI
             foreach (StaticTextDTO lText in lTexts)
             {
                 this.chlTexts.Items.Add(lText.Title);
-                if (lBannerTexts.Contains(lText))
+                if (lBannerTexts != null)
                 {
-                    this.chlSources.SetItemChecked(i, true);
+                    if (lBannerTexts.Contains(lText, new StaticTextDTOComparer()))
+                    {
+                        this.chlTexts.SetItemChecked(i, true);
+                    }
+                    i++;
                 }
-                //TODO como obtener solos los textos del banner
-                i++;
             }
         }
 

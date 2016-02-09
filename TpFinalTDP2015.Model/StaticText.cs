@@ -16,7 +16,7 @@ namespace TpFinalTDP2015.Model
 
         public StaticText() :  base()
         {
-
+            this.Type = "Text";
         }
 
         public virtual string Title

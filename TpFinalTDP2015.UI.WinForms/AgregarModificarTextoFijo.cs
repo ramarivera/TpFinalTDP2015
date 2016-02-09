@@ -13,7 +13,7 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarTextoFijo : BaseForm, IAddModifyViewForm
     {
-        private StaticTextDTO iOriginalStaticText;
+        private StaticTextDTO iOriginalStaticText = new StaticTextDTO();
 
         public StaticTextDTO StaticText
         {
@@ -37,11 +37,18 @@ namespace TpFinalTDP2015.UI
 
         void IAddModifyViewForm.Modificar(IDTO pStaticText)
         {
-            this.iOriginalStaticText = (StaticTextDTO)pStaticText;
-            this.txtTitle.Text = iOriginalStaticText.Title;
-            this.txtDescription.Text = iOriginalStaticText.Description;
-            this.txtText.Text = iOriginalStaticText.Text;
-            this.Text = "Modificar Texto Fijo";
+            if (pStaticText == null)
+            {
+                //TODO excepcion argumentexception creo
+            }
+            else
+            {
+                this.iOriginalStaticText = (StaticTextDTO)pStaticText;
+                this.txtTitle.Text = iOriginalStaticText.Title;
+                this.txtDescription.Text = iOriginalStaticText.Description;
+                this.txtText.Text = iOriginalStaticText.Text;
+                this.Text = "Modificar Texto Fijo";
+            }    
         }
 
         DialogResult IAddModifyViewForm.ShowForm()
@@ -51,11 +58,26 @@ namespace TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            this.iOriginalStaticText.Title = this.txtTitle.Text;
-            this.iOriginalStaticText.Description = this.txtDescription.Text;
-            this.iOriginalStaticText.Text = this.txtText.Text;
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
+            {
+                MessageBox.Show("Complete el campo 'Título'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
+            {
+                MessageBox.Show("Complete el campo 'Descripción'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if ((String.IsNullOrWhiteSpace(this.txtText.Text)))
+            {
+                MessageBox.Show("Complete el campo 'Texto'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.iOriginalStaticText.Title = this.txtTitle.Text;
+                this.iOriginalStaticText.Description = this.txtDescription.Text;
+                this.iOriginalStaticText.Text = this.txtText.Text;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -68,7 +90,7 @@ namespace TpFinalTDP2015.UI
             switch (opcion)
             {
                 case DialogResult.Yes:
-                    this.DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.Cancel;
                     this.Close();
                     break;
                 case DialogResult.No:

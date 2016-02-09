@@ -34,11 +34,17 @@ namespace TpFinalTDP2015.UI
 
         void IAddModifyViewForm.Modificar(IDTO pTimeInterval)
         {
-            this.iOriginalTimeInterval = (TimeIntervalDTO)pTimeInterval;
-            this.dtpStartTime.Value = DateTime.MinValue + iOriginalTimeInterval.StartTime;
-            this.dtpEndTime.Value = DateTime.MinValue + iOriginalTimeInterval.EndTime;
-            this.Text = "Modificar Intervalo";
-            
+            if (pTimeInterval == null)
+            {
+                //TODO excepcion argumentexception creo
+            }
+            else
+            {
+                this.iOriginalTimeInterval = (TimeIntervalDTO)pTimeInterval;
+                this.dtpStartTime.Value = DateTime.MinValue + iOriginalTimeInterval.StartTime;
+                this.dtpEndTime.Value = DateTime.MinValue + iOriginalTimeInterval.EndTime;
+                this.Text = "Modificar Intervalo";
+            }      
         }
 
         DialogResult IAddModifyViewForm.ShowForm()
@@ -65,7 +71,7 @@ namespace TpFinalTDP2015.UI
                 switch (opcion)
                 {
                     case DialogResult.Yes:
-                        this.DialogResult = DialogResult.OK;
+                        this.DialogResult = DialogResult.Cancel;
                         this.Close();
                         break;
                     case DialogResult.No:

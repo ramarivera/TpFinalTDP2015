@@ -27,11 +27,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void CampaignAdministrator_Load(object sender, EventArgs e)
         {
             IList<CampaignDTO> lList = this.iController.GetCampaigns();
-            foreach (var dto in lList)
-            {
-                this.dgvCampaign.iSource.Add(dto);
-            }
-            this.dgvCampaign.DataSource = this.dgvCampaign.iSource;
+            this.dgvCampaign.AddToSource(lList.ToDTOList());
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -67,7 +63,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void dgvCampaign_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvCampaign.CurrentRow;
-            this.campaign = (CampaignDTO)row.Tag;
+            this.campaign = (CampaignDTO)dgvCampaign.GetItem(row.Index);
             AgregarModificarCampaña ventana = new AgregarModificarCampaña();
             this.dgvCampaign.Modificar(ventana, this.campaign);
             iController.SaveCampaign(this.campaign);

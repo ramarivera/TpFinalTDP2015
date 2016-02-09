@@ -38,7 +38,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
         {
-         //   this.Configuration.ProxyCreationEnabled = false;
+          //  this.Configuration.ProxyCreationEnabled = false;
            // this.Configuration.LazyLoadingEnabled = false;
             Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
 

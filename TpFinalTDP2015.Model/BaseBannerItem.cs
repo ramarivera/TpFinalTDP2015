@@ -8,8 +8,17 @@ namespace TpFinalTDP2015.Model
 {
     public abstract class BaseBannerItem : BaseEntity
     {
+        private string iType;
         public BaseBannerItem() : base() { }
 
+        public string Type
+        {
+            get { return this.iType; }
+            set {
+                this.UpdateModificationDate();
+                this.iType = value;
+                }
+        }
         public abstract string GetText();
 
         public abstract string GetTitle();

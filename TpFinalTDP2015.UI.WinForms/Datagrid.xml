@@ -1,17 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <entity name="BannerDTO" fullName="TpFinalTDP2falsetrue5.Service.DTO.BannerDTO">
+  <entity name="AdminBanner" fullName="TpFinalTDP2015.Service.DTO.AdminBannerDTO">
     <language name="English" code="en">
-      <property name="CreationDate">
-        <text>Creation Date</text>
-        <enable>false</enable>
-      </property>
       <property name="Id">
-        <text>ID</text>
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
         <enable>true</enable>
       </property>
       <property name="ModificationDate">
-        <text>Last Modified</text>
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Name">
+        <text>Name</text>
+        <enable>true</enable>
+      </property>
+      <property name="Description">
+        <text>Description</text>
+        <enable>true</enable>
+      </property>
+      <property name="ActiveIntervals">
+        <text>ActiveIntervals</text>
+        <enable>true</enable>
+      </property>
+      <property name="Texts">
+        <text>Texts</text>
+        <enable>true</enable>
+      </property>
+      <property name="RssSources">
+        <text>RssSources</text>
+        <enable>true</enable>
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
         <enable>true</enable>
       </property>
       <property name="Name">
@@ -26,39 +60,415 @@
         <text>ActiveIntervals</text>
         <enable>false</enable>
       </property>
+      <property name="Texts">
+        <text>Texts</text>
+        <enable>false</enable>
+      </property>
+      <property name="RssSources">
+        <text>RssSources</text>
+        <enable>false</enable>
+      </property>
+    </language>
+  </entity>
+  <entity name="Campaign" fullName="TpFinalTDP2015.Service.DTO.CampaignDTO">
+    <language name="English" code="en">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Name">
+        <text>Name</text>
+        <enable>true</enable>
+      </property>
+      <property name="Description">
+        <text>Description</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ActiveIntervals">
+        <text>ActiveIntervals</text>
+        <enable>true</enable>
+      </property>
+      <property name="Slides">
+        <text>Slides</text>
+        <enable>true</enable>
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Name">
+        <text>Name</text>
+        <enable>true</enable>
+      </property>
+      <property name="Description">
+        <text>Description</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ActiveIntervals">
+        <text>ActiveIntervals</text>
+        <enable>false</enable>
+      </property>
+      <property name="Slides">
+        <text>Slides</text>
+        <enable>false</enable>
+      </property>
+    </language>
+  </entity>
+  <entity name="Slide" fullName="TpFinalTDP2015.Service.DTO.SlideDTO">
+    <language name="English" code="en">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Transition">
+        <text>Transition</text>
+        <enable>true</enable>
+      </property>
+      <property name="Duration">
+        <text>Duration</text>
+        <enable>true</enable>
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Transition">
+        <text>Transition</text>
+        <enable>true</enable>
+      </property>
+      <property name="Duration">
+        <text>Duration</text>
+        <enable>true</enable>
+      </property>
+    </language>
+  </entity>
+  <entity name="TimeInterval" fullName="TpFinalTDP2015.Service.DTO.TimeIntervalDTO">
+    <language name="English" code="en">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="StartTime">
+        <text>StartTime</text>
+        <enable>true</enable>
+      </property>
+      <property name="EndTime">
+        <text>EndTime</text>
+        <enable>true</enable>
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="StartTime">
+        <text>StartTime</text>
+        <enable>true</enable>
+      </property>
+      <property name="EndTime">
+        <text>EndTime</text>
+        <enable>true</enable>
+      </property>
+    </language>
+  </entity>
+  <entity name="DateInterval" fullName="TpFinalTDP2015.Service.DTO.DateIntervalDTO">
+    <language name="English" code="en">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Name">
+        <text>Name</text>
+        <enable>true</enable>
+      </property>
+      <property name="ActiveUntil">
+        <text>ActiveUntil</text>
+        <enable>true</enable>
+      </property>
+      <property name="ActiveFrom">
+        <text>ActiveFrom</text>
+        <enable>true</enable>
+      </property>
+      <property name="Days">
+        <text>Days</text>
+        <enable>true</enable>
+      </property>
+      <property name="ActiveHours">
+        <text>ActiveHours</text>
+        <enable>true</enable>
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Name">
+        <text>Name</text>
+        <enable>true</enable>
+      </property>
+      <property name="ActiveUntil">
+        <text>ActiveUntil</text>
+        <enable>true</enable>
+      </property>
+      <property name="ActiveFrom">
+        <text>ActiveFrom</text>
+        <enable>true</enable>
+      </property>
+      <property name="Days">
+        <text>Days</text>
+        <enable>false</enable>
+      </property>
+      <property name="ActiveHours">
+        <text>ActiveHours</text>
+        <enable>false</enable>
+      </property>
+    </language>
+  </entity>
+  <entity name="RssItem" fullName="TpFinalTDP2015.Service.DTO.RssItemDTO">
+    <language name="English" code="en">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Title">
+        <text>Title</text>
+        <enable>true</enable>
+      </property>
+      <property name="Description">
+        <text>Description</text>
+        <enable>true</enable>
+      </property>
+      <property name="URL">
+        <text>URL</text>
+        <enable>true</enable>
+      </property>
+      <property name="PublicationDate">
+        <text>PublicationDate</text>
+        <enable>true</enable>
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Title">
+        <text>Title</text>
+        <enable>true</enable>
+      </property>
+      <property name="Description">
+        <text>Description</text>
+        <enable>true</enable>
+      </property>
+      <property name="URL">
+        <text>URL</text>
+        <enable>true</enable>
+      </property>
+      <property name="PublicationDate">
+        <text>PublicationDate</text>
+        <enable>true</enable>
+      </property>
+    </language>
+  </entity>
+  <entity name="RssSource" fullName="TpFinalTDP2015.Service.DTO.RssSourceDTO">
+    <language name="English" code="en">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Title">
+        <text>Title</text>
+        <enable>true</enable>
+      </property>
+      <property name="Description">
+        <text>Description</text>
+        <enable>true</enable>
+      </property>
+      <property name="URL">
+        <text>URL</text>
+        <enable>true</enable>
+      </property>
+      <property name="Items">
+        <text>Items</text>
+        <enable>true</enable>
+      </property>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Title">
+        <text>Title</text>
+        <enable>true</enable>
+      </property>
+      <property name="Description">
+        <text>Description</text>
+        <enable>true</enable>
+      </property>
+      <property name="URL">
+        <text>URL</text>
+        <enable>true</enable>
+      </property>
       <property name="Items">
         <text>Items</text>
         <enable>false</enable>
       </property>
     </language>
-    <language name="Spanish (Argentina)" code="es-AR">
-      <property name="CreationDate">
-        <text>Fecha de Creacion</text>
-        <enable>false</enable>
-      </property>
+  </entity>
+  <entity name="StaticText" fullName="TpFinalTDP2015.Service.DTO.StaticTextDTO">
+    <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
-        <enable>true</enable>ID
-      </property>
-      <property name="ModificationDate">
-        <text>Ultima Modificacion</text>
         <enable>true</enable>
       </property>
-      <property name="Name">
-        <text>Nombre</text>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Title">
+        <text>Title</text>
         <enable>true</enable>
       </property>
       <property name="Description">
-        <text>Descripcion</text>
+        <text>Description</text>
         <enable>true</enable>
       </property>
-      <property name="ActiveIntervals">
-        <text>Intervalos Activos</text>
-        <enable>false</enable>
+      <property name="Text">
+        <text>Text</text>
+        <enable>true</enable>
       </property>
-      <property name="Items">
-        <text>Items</text>
-        <enable>false</enable>
+    </language>
+    <language name="Spanish (Argentina)" code="es-AR">
+      <property name="Id">
+        <text>Id</text>
+        <enable>true</enable>
+      </property>
+      <property name="CreationDate">
+        <text>CreationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="ModificationDate">
+        <text>ModificationDate</text>
+        <enable>true</enable>
+      </property>
+      <property name="Title">
+        <text>Title</text>
+        <enable>true</enable>
+      </property>
+      <property name="Description">
+        <text>Description</text>
+        <enable>true</enable>
+      </property>
+      <property name="Text">
+        <text>Text</text>
+        <enable>true</enable>
       </property>
     </language>
   </entity>

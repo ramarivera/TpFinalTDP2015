@@ -149,7 +149,7 @@ namespace TpFinalTDP2015.UI
                 switch (opcion)
                 {
                     case DialogResult.Yes:
-                        this.DialogResult = DialogResult.OK;
+                        this.DialogResult = DialogResult.Cancel;
                         this.Close();
                         break;
                     case DialogResult.No:

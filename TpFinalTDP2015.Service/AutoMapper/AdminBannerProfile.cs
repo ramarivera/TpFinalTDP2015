@@ -33,7 +33,7 @@ namespace TpFinalTDP2015.Service.AutoMapper
 
                 foreach (var baseItem in source)
                 {
-                    if (baseItem.GetType() == typeof(StaticText))
+                    if (baseItem.Type == "Text")
                     {
                         lResult.Add(
                             Mapper.Map<StaticText, StaticTextDTO>(
