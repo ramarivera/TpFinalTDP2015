@@ -35,24 +35,27 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAddTimeInterval = new System.Windows.Forms.Button();
             this.dgvDateInterval = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvTimeInterval = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDateInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTimeInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.dgvDateInterval, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvTimeInterval, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(464, 348);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -124,9 +127,25 @@
             this.dgvDateInterval.Name = "dgvDateInterval";
             this.dgvDateInterval.RowHeadersVisible = false;
             this.dgvDateInterval.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDateInterval.Size = new System.Drawing.Size(458, 272);
+            this.dgvDateInterval.Size = new System.Drawing.Size(458, 133);
             this.dgvDateInterval.TabIndex = 2;
+            this.dgvDateInterval.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDateInterval_CellClick);
             this.dgvDateInterval.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDateInterval_CellContentDoubleClick);
+            // 
+            // dgvTimeInterval
+            // 
+            this.dgvTimeInterval.AllowUserToAddRows = false;
+            this.dgvTimeInterval.AllowUserToOrderColumns = true;
+            this.dgvTimeInterval.AllowUserToResizeRows = false;
+            this.dgvTimeInterval.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTimeInterval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTimeInterval.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTimeInterval.DTOType = null;
+            this.dgvTimeInterval.Location = new System.Drawing.Point(3, 176);
+            this.dgvTimeInterval.Name = "dgvTimeInterval";
+            this.dgvTimeInterval.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTimeInterval.Size = new System.Drawing.Size(458, 133);
+            this.dgvTimeInterval.TabIndex = 3;
             // 
             // IntervalAdministrator
             // 
@@ -140,6 +159,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDateInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTimeInterval)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,5 +172,6 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAddTimeInterval;
         private BaseDGV dgvDateInterval;
+        private BaseDGV dgvTimeInterval;
     }
 }

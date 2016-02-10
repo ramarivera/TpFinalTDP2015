@@ -58,6 +58,16 @@ namespace TpFinalTDP2015.Service.Controllers
             return lResult;
         }
 
+        public IList<TimeIntervalDTO> GetTimeIntervals(DateIntervalDTO pDateInterval)
+        {
+            IList<TimeIntervalDTO> lResult = new List<TimeIntervalDTO>();
+            foreach (TimeIntervalDTO timeInterval in pDateInterval.ActiveHours)
+            {
+                lResult.Add(timeInterval);
+            }
+            return lResult;
+        }
+
         public void SaveDateInterval(DateIntervalDTO pDateInterval)
         {
             using (this.iUoW = GetUnitOfWork())
