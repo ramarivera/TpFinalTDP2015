@@ -20,6 +20,7 @@ namespace TpFinalTDP2015.Service.AutoMapper
 
             Day lResult = new Day();
             lResult.Value = Mapper.Map<Service.Enum.Days, Model.Enum.Days>(lTemp);
+            
 
             return lResult;
         }
