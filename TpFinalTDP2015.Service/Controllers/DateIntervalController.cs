@@ -63,16 +63,48 @@ namespace TpFinalTDP2015.Service.Controllers
             using (this.iUoW = GetUnitOfWork())
             {
                 iUoW.BeginTransaction();
-                IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+                IRepository<TimeInterval> lTimeRepo = iUoW.GetRepository<TimeInterval>();
+                IRepository<DateInterval> lDateRepo = iUoW.GetRepository<DateInterval>();
+                IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
+
                 DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
+
                 if (pDateInterval.Id == 0)
                 {
-                    lRepo.Add(lDateInterval);
+                    lDateRepo.Add(lDateInterval);
                 }
                 else
                 {
-                    lRepo.Update(lDateInterval);
+                    DateInterval lOrigDateInt = (from date in lDateRepo.GetAll()
+                                                 where date.Id == lDateInterval.Id
+                                                 select date).FirstOrDefault();
+
+
+                    foreach (TimeInterval lHours in lDateInterval.ActiveHours)
+                    {
+                        if (lHours.Id == 0)
+                        {
+                            lTimeRepo.Add(lHours);
+                        }
+                        else
+                        {
+                            lTimeRepo.Update(lHours);
+                        }
+                    }
+
+                    lDateRepo.Update(lDateInterval);
+
+                    foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
+                    {
+                        if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
+                        {
+                            lTimeRepo.Delete(lOrigTimeInt.Id);
+                        }
+                    }
+
+
                 }
+
                 iUoW.Commit();
             }
         }

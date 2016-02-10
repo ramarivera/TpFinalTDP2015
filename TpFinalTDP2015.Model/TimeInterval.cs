@@ -12,13 +12,13 @@ namespace TpFinalTDP2015.Model
         private TimeSpan iStartTime;
         private TimeSpan iEndTime;
 
-        private readonly TimeSpan MIN_VALUE = new TimeSpan(0, 0, 0);
-        private readonly TimeSpan MAX_VALUE = new TimeSpan(23, 59, 59);  
+        private static readonly TimeSpan MIN_VALUE = new TimeSpan(0, 0, 0);
+        private static readonly TimeSpan MAX_VALUE = new TimeSpan(23, 59, 59);  
 
         public TimeInterval() : base()
         {
-            this.Start = new TimeSpan(1);
-            this.End = new TimeSpan(2);
+            this.iStartTime = MIN_VALUE;
+            this.iEndTime = MAX_VALUE;
         }
 
         public virtual TimeSpan Start
@@ -26,7 +26,7 @@ namespace TpFinalTDP2015.Model
             get { return this.iStartTime; }
             set
             {
-                if ((value < this.iEndTime) && ((value > MIN_VALUE) && (value < MAX_VALUE)))
+                if ((value < this.iEndTime) && ((value >= MIN_VALUE) && (value <= MAX_VALUE)))
                 {
                     this.UpdateModificationDate();
                     this.iStartTime = value;
@@ -42,7 +42,7 @@ namespace TpFinalTDP2015.Model
             get { return this.iEndTime; }
             set
             {
-                if ((value > this.iStartTime) && ((value > MIN_VALUE) && (value < MAX_VALUE)))
+                if ((value > this.iStartTime) && ((value >= MIN_VALUE) && (value <= MAX_VALUE)))
                 {
                     this.UpdateModificationDate();
                     this.iEndTime = value;

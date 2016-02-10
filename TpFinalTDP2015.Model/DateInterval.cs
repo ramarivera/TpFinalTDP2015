@@ -16,13 +16,13 @@ namespace TpFinalTDP2015.Model
         private IList<Day> iActiveDays;
         private IList<TimeInterval> iActiveHours;
 
-        private readonly DateTime MIN_VALUE = new DateTime(1980, 1, 1);
-        private readonly DateTime MAX_VALUE = new DateTime(2099, 12, 31);
+        private static readonly DateTime MIN_VALUE = new DateTime(1980, 1, 1);
+        private static readonly DateTime MAX_VALUE = new DateTime(2099, 12, 31);
         
         public DateInterval() : base()
         {
-            this.ActiveFrom = new DateTime(1);
-            this.ActiveUntil = new DateTime(2);
+            this.iActiveUntil = MAX_VALUE;
+            this.iActiveFrom = MIN_VALUE;
             this.ActiveHours = new List<TimeInterval>();
             this.ActiveDays = new List<Day>();
         }
@@ -42,7 +42,7 @@ namespace TpFinalTDP2015.Model
             get { return this.iActiveFrom; }
             set
             {
-                if ((value <= this.iActiveUntil) && ((value > MIN_VALUE) && (value < MAX_VALUE)))
+                if ((value <= this.iActiveUntil) && ((value >= MIN_VALUE) && (value <= MAX_VALUE)))
                 {
                     this.UpdateModificationDate();
                     this.iActiveFrom = value;
@@ -58,7 +58,7 @@ namespace TpFinalTDP2015.Model
             get { return this.iActiveUntil; }
             set
             {
-                if ((value >= this.iActiveFrom) && ((value > MIN_VALUE) && (value < MAX_VALUE)))
+                if ((value >= this.iActiveFrom) && ((value >= MIN_VALUE) && (value <= MAX_VALUE)))
                 {
                     this.UpdateModificationDate();
                     this.iActiveUntil = value;
