@@ -28,9 +28,6 @@ namespace TpFinalTDP2015.UI
         public AgregarModificarBanner()
         {
             InitializeComponent();
-            iOriginalBanner.ActiveIntervals = new List<DateIntervalDTO>();
-            iOriginalBanner.Texts = new List<StaticTextDTO>();
-            iOriginalBanner.RssSources = new List<RssSourceDTO>();
         }
 
         void IAddModifyViewForm.Agregar(IDTO pNewBanner)
@@ -106,7 +103,6 @@ namespace TpFinalTDP2015.UI
         private void AgregarModificarBanner_Load(object sender, EventArgs e)
         {
             int i = 0;
-            //levanto las listas de la base de datos y las listas del banner, obtengo los nombres de una
             IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetDateIntervals();
             IList<StaticTextDTO> lTexts = this.staticTextController.GetStaticTexts();
             IList<RssSourceDTO> lSources = this.rssSourcesController.GetRssSources();
@@ -172,7 +168,38 @@ namespace TpFinalTDP2015.UI
                     }
                 }
             }
-            //TODO hacer lo mismo con las otras listas
+            iOriginalBanner.Texts = new List<StaticTextDTO>();
+            for (int i = 0; i < this.chlTexts.Items.Count; i++)
+            {
+                if (this.chlTexts.GetItemChecked(i))
+                {
+                    string lTitle = this.chlTexts.Items[i].ToString();
+                    IEnumerable<StaticTextDTO> query =
+                        from lText in this.staticTextController.GetStaticTexts()
+                        where lText.Title == lTitle
+                        select lText;
+                    foreach (StaticTextDTO dto in query)
+                    {
+                        this.iOriginalBanner.Texts.Add(dto);
+                    }
+                }
+            }
+            iOriginalBanner.RssSources = new List<RssSourceDTO>();
+            for (int i = 0; i < this.chlSources.Items.Count; i++)
+            {
+                if (this.chlSources.GetItemChecked(i))
+                {
+                    string lTitle = this.chlSources.Items[i].ToString();
+                    IEnumerable<RssSourceDTO> query =
+                        from lSource in this.rssSourcesController.GetRssSources()
+                        where lSource.Title == lTitle
+                        select lSource;
+                    foreach (RssSourceDTO dto in query)
+                    {
+                        this.iOriginalBanner.RssSources.Add(dto);
+                    }
+                }
+            }
         }
     }
 }

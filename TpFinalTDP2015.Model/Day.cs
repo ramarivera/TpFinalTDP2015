@@ -26,6 +26,7 @@ namespace TpFinalTDP2015.Model
             {
                 this.UpdateModificationDate();
                 this.iValue = value;
+                this.Id = (int)value;
                 this.iNameOfDay = this.Value.ToString();
             }
         }
