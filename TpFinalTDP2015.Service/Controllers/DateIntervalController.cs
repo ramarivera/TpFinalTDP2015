@@ -75,7 +75,7 @@ namespace TpFinalTDP2015.Service.Controllers
                 iUoW.BeginTransaction();
                 IRepository<TimeInterval> lTimeRepo = iUoW.GetRepository<TimeInterval>();
                 IRepository<DateInterval> lDateRepo = iUoW.GetRepository<DateInterval>();
-                IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
+                //IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
 
                 DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
 
@@ -110,6 +110,30 @@ namespace TpFinalTDP2015.Service.Controllers
                         {
                             lTimeRepo.Delete(lOrigTimeInt.Id);
                         }
+                    }
+
+
+                    foreach (Day  lDay in lDateInterval.ActiveDays.Reverse<Day>())
+                    {
+                        if (lOrigDateInt.ActiveDays.Any(d => d.Id == lDay.Id))
+                        {
+
+                        }
+                        else
+                        {
+                            // el intervalo original no tiene a LDay
+
+                        }
+                    }
+
+
+                    foreach (Day lOrigDay in lOrigDateInt.ActiveDays)
+                    {
+
+
+
+
+
                     }
 
 
