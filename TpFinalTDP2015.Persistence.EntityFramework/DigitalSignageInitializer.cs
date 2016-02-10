@@ -181,14 +181,14 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 lList.Add(lTimeInterval);
             }
 
-            TimeInterval lTinterval = new TimeInterval()
+            /*TimeInterval lTinterval = new TimeInterval()
             {
-                End = new TimeSpan(12, 0, 0),
-                Start = new TimeSpan(08, 0, 0)
-            };
+                End = new TimeSpan(16, 0, 0),
+                Start = new TimeSpan(15, 0, 0)
+            };*/
 
             pContext.Set<TimeInterval>().AddRange(lList);
-            pContext.Set<TimeInterval>().Add(lTinterval);
+            //pContext.Set<TimeInterval>().Add(lTinterval);
             pContext.SaveChanges();
         }
 

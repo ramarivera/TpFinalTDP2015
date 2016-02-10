@@ -146,7 +146,7 @@ namespace TpFinalTDP2015.Model
             while ((lResult == true) && (i >= 0))
             {
                 TimeInterval lInterval = this.ActiveHours[i];
-                if (!pInterval.IntersectionWith(lInterval))
+                if (pInterval.IntersectionWith(lInterval))
                 {
                     lResult = false;
                 }
