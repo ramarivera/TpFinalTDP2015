@@ -43,7 +43,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             List<IDTO> campañasAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvCampaign.SelectedRows)
             {
-                campañasAEliminar.Add((CampaignDTO)row.DataBoundItem);
+                campañasAEliminar.Add((CampaignDTO)dgvCampaign.GetItem(row.Index));
             }
             if (campañasAEliminar.Count == 0)
             {

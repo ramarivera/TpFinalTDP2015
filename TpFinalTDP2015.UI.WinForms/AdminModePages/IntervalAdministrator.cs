@@ -38,7 +38,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             List<IDTO> intervalosAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
             {
-                intervalosAEliminar.Add((DateIntervalDTO)row.DataBoundItem);
+                intervalosAEliminar.Add((DateIntervalDTO)dgvDateInterval.GetItem(row.Index));
             }
             if (intervalosAEliminar.Count == 0)
             {
@@ -55,21 +55,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
             
         }
 
-        private void btnAddTimeInterval_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
-            this.timeInterval = new TimeIntervalDTO();
-            IAddModifyViewForm ventana = new AgregarModificarIntervaloTiempo();
-            ventana.Agregar((IDTO)this.timeInterval);
-            DialogResult resultado = ventana.ShowForm();
-            if(resultado == DialogResult.OK)
-            {
-                this.dateInterval.ActiveHours.Add(this.timeInterval);
-            }
-            //TODO revisar esto
-        }
-
         private void dgvDateInterval_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
@@ -83,6 +68,11 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             IList<DateIntervalDTO> lList = this.iController.GetDateIntervals();
             this.dgvDateInterval.AddToSource(lList.ToDTOList());
+ 
+            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(0);
+            IList<TimeIntervalDTO> lTList = this.iController.GetTimeIntervals(this.dateInterval);
+            this.dgvTimeInterval.AddToSource(lTList.ToDTOList());
+
         }
 
         private void dgvDateInterval_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -91,6 +81,42 @@ namespace TpFinalTDP2015.UI.AdminModePages
             this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
             IList<TimeIntervalDTO> lList = this.iController.GetTimeIntervals(this.dateInterval);
             this.dgvTimeInterval.AddToSource(lList.ToDTOList());
+        }
+
+        private void btnAddTimeInterval_Click_1(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvDateInterval.CurrentRow;
+            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
+            this.timeInterval = new TimeIntervalDTO();
+            IAddModifyViewForm ventana = new AgregarModificarIntervaloTiempo();
+            ventana.Agregar((IDTO)this.timeInterval);
+            DialogResult resultado = ventana.ShowForm();
+            if (resultado == DialogResult.OK)
+            {
+                this.dateInterval.ActiveHours.Add(this.timeInterval);
+            }
+            //TODO revisar esto
+        }
+
+        private void btnDeleteTimeInterval_Click(object sender, EventArgs e)
+        {
+            List<IDTO> intervalosAEliminar = new List<IDTO>();
+            foreach (DataGridViewRow row in this.dgvTimeInterval.SelectedRows)
+            {
+                intervalosAEliminar.Add((TimeIntervalDTO)dgvTimeInterval.GetItem(row.Index));
+            }
+            if (intervalosAEliminar.Count == 0)
+            {
+                MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                this.dgvTimeInterval.Eliminar(intervalosAEliminar);
+                foreach (IDTO interval in intervalosAEliminar)
+                {
+                    //TODO ver esto
+                }
+            }
         }
     }
 }

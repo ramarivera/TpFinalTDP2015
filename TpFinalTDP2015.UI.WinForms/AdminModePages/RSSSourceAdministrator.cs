@@ -36,7 +36,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             List<IDTO> fuentesAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvRSSSource.SelectedRows)
             {
-                fuentesAEliminar.Add((RssSourceDTO)row.DataBoundItem);
+                fuentesAEliminar.Add((RssSourceDTO)dgvRSSSource.GetItem(row.Index));
             }
             if (fuentesAEliminar.Count == 0)
             {

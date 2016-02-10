@@ -36,7 +36,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             List<IDTO> textosAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvStaticText.SelectedRows)
             {
-                textosAEliminar.Add((StaticTextDTO)row.DataBoundItem);
+                textosAEliminar.Add((StaticTextDTO)dgvStaticText.GetItem(row.Index));
             }
             if (textosAEliminar.Count == 0)
             {

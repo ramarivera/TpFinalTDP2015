@@ -52,7 +52,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             /*List<IDTO> bannersAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvBanner.SelectedRows)
             {
-                bannerAEliminar.Add((BannerDTO)row.DataBoundItem);
+                bannerAEliminar.Add((BannerDTO)dgvBanner.GetItem(row.Index));
             }
             if (bannerAEliminar.Count == 0)
             {

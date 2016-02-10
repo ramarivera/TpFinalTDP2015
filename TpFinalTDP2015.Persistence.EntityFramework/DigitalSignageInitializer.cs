@@ -181,11 +181,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 lList.Add(lTimeInterval);
             }
 
-            /*TimeInterval lTinterval = new TimeInterval()
+            TimeInterval lTinterval = new TimeInterval()
             {
-                End = new TimeSpan(16, 0, 0),
-                Start = new TimeSpan(15, 0, 0)
-            };*/
+                End = new TimeSpan(12, 0, 0),
+                Start = new TimeSpan(08, 0, 0)
+            };
 
             pContext.Set<TimeInterval>().AddRange(lList);
             //pContext.Set<TimeInterval>().Add(lTinterval);
@@ -212,7 +212,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             lDateInterval1.AddActiveHours
             (
-                lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(12, 0, 0))
+                //lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(12, 0, 0))
+                lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(9, 0, 0))
             );
 
             DateInterval lDateInterval2 = new DateInterval()
@@ -253,7 +254,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             lDateInterval3.AddActiveDay(lDayList[3]);
 
             pContext.Set<DateInterval>().AddRange(new[] { lDateInterval1, lDateInterval2, lDateInterval3 });
-            //pContext.Set<DateInterval>().Add(lDateInterval1);
+            pContext.Set<DateInterval>().Add(lDateInterval1);
             pContext.SaveChanges();
         }
 
