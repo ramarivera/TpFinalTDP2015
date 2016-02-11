@@ -17,5 +17,11 @@ namespace TpFinalTDP2015.Service.DTO
         public DateTime ActiveFrom { get; set; }
         public IList<Days> Days { get; set; }
         public IList<TimeIntervalDTO> ActiveHours { get; set; }
+
+        public DateIntervalDTO()
+        {
+            this.Days = new List<Days>();
+            this.ActiveHours = new List<TimeIntervalDTO>();
+        }
     }
 }
