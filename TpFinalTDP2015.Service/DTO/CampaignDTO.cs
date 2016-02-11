@@ -15,5 +15,11 @@ namespace TpFinalTDP2015.Service.DTO
         public DateTime ModificationDate { get; set; }
         public IList<DateIntervalDTO> ActiveIntervals { get; set; }
         public IList<SlideDTO> Slides { get; set; }
+
+        public CampaignDTO()
+        {
+            this.ActiveIntervals = new List<DateIntervalDTO>();
+            this.Slides = new List<SlideDTO>();
+        }
     }
 }

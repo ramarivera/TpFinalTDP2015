@@ -31,6 +31,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
             this.dgvDateInterval.Agregar(ventana,this.dateInterval);
             iController.SaveDateInterval(this.dateInterval);
+            this.CargarDateDataGrid();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

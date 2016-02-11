@@ -82,7 +82,9 @@ namespace TpFinalTDP2015.Service.AutoMapper
 
                     foreach (var item in lDto.Texts)
                     {
-                        //TODO se usa resolver?
+                        lResult.AddBannerItem(
+                             Mapper.Map<StaticTextDTO, StaticText>(item)
+                             );
                     }
 
                     foreach (var item in lDto.RssSources)
