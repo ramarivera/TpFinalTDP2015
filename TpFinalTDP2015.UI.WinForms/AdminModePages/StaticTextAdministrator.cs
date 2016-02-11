@@ -29,6 +29,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
             this.dgvStaticText.Agregar(ventana,this.staticText);
             iController.SaveStaticText(this.staticText);
+            this.CargarDataGrid();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -62,6 +63,11 @@ namespace TpFinalTDP2015.UI.AdminModePages
         }
 
         private void StaticTextAdministrator_Load(object sender, EventArgs e)
+        {
+            this.CargarDataGrid();
+        }
+
+        private void CargarDataGrid()
         {
             IList<StaticTextDTO> lList = this.iController.GetStaticTexts();
             this.dgvStaticText.AddToSource(lList.ToDTOList());

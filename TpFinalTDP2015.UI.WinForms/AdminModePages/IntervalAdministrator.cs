@@ -66,13 +66,21 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void IntervalAdministrator_Load(object sender, EventArgs e)
         {
+            this.CargarDateDataGrid();
+            this.CargarTimeDataGrid();
+        }
+
+        private void CargarDateDataGrid()
+        {
             IList<DateIntervalDTO> lList = this.iController.GetDateIntervals();
             this.dgvDateInterval.AddToSource(lList.ToDTOList());
- 
+        }
+
+        private void CargarTimeDataGrid()
+        {
             this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(0);
             IList<TimeIntervalDTO> lTList = this.iController.GetTimeIntervals(this.dateInterval);
             this.dgvTimeInterval.AddToSource(lTList.ToDTOList());
-
         }
 
         private void dgvDateInterval_CellClick(object sender, DataGridViewCellEventArgs e)

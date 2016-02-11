@@ -26,6 +26,11 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void CampaignAdministrator_Load(object sender, EventArgs e)
         {
+            this.CargarDataGrid();
+        }
+
+        private void CargarDataGrid()
+        {
             IList<CampaignDTO> lList = this.iController.GetCampaigns();
             this.dgvCampaign.AddToSource(lList.ToDTOList());
         }
@@ -36,6 +41,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
             AgregarModificarCampaña ventana = new AgregarModificarCampaña();
             this.dgvCampaign.Agregar(ventana,campaign);
             iController.SaveCampaign(this.campaign);
+            this.CargarDataGrid();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
