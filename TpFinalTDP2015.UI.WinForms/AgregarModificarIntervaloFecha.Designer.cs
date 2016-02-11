@@ -33,6 +33,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAll = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,13 +64,6 @@
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.lblSunday = new System.Windows.Forms.Label();
             this.chkSunday = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.lblEndDate = new System.Windows.Forms.Label();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
@@ -71,6 +72,10 @@
             this.comentario = new Novaly.Windows.Forms.LocalizableStrings.LocalizableString();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -79,9 +84,6 @@
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel13.SuspendLayout();
-            this.tableLayoutPanel14.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,8 +91,8 @@
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel16, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
@@ -114,6 +116,60 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // tableLayoutPanel5
+            // 
+            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+            this.tableLayoutPanel5.Controls.Add(this.lblStartDate, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel13, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel14, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lblEndDate, 2, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            // 
+            // lblStartDate
+            // 
+            resources.ApplyResources(this.lblStartDate, "lblStartDate");
+            this.lblStartDate.Name = "lblStartDate";
+            // 
+            // tableLayoutPanel13
+            // 
+            resources.ApplyResources(this.tableLayoutPanel13, "tableLayoutPanel13");
+            this.tableLayoutPanel13.Controls.Add(this.dtpStartDate, 0, 1);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            // 
+            // dtpStartDate
+            // 
+            resources.ApplyResources(this.dtpStartDate, "dtpStartDate");
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpStartDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            // 
+            // tableLayoutPanel14
+            // 
+            resources.ApplyResources(this.tableLayoutPanel14, "tableLayoutPanel14");
+            this.tableLayoutPanel14.Controls.Add(this.dtpEndDate, 0, 1);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            // 
+            // dtpEndDate
+            // 
+            resources.ApplyResources(this.dtpEndDate, "dtpEndDate");
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEndDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            // 
+            // lblEndDate
+            // 
+            resources.ApplyResources(this.lblEndDate, "lblEndDate");
+            this.lblEndDate.Name = "lblEndDate";
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
             // tableLayoutPanel3
             // 
@@ -261,53 +317,6 @@
             this.chkSunday.Name = "chkSunday";
             this.chkSunday.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel5
-            // 
-            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
-            this.tableLayoutPanel5.Controls.Add(this.lblStartDate, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel13, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel14, 3, 0);
-            this.tableLayoutPanel5.Controls.Add(this.lblEndDate, 2, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            // 
-            // lblStartDate
-            // 
-            resources.ApplyResources(this.lblStartDate, "lblStartDate");
-            this.lblStartDate.Name = "lblStartDate";
-            // 
-            // tableLayoutPanel13
-            // 
-            resources.ApplyResources(this.tableLayoutPanel13, "tableLayoutPanel13");
-            this.tableLayoutPanel13.Controls.Add(this.dtpStartDate, 0, 1);
-            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            // 
-            // dtpStartDate
-            // 
-            resources.ApplyResources(this.dtpStartDate, "dtpStartDate");
-            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.dtpStartDate.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
-            this.dtpStartDate.Name = "dtpStartDate";
-            // 
-            // tableLayoutPanel14
-            // 
-            resources.ApplyResources(this.tableLayoutPanel14, "tableLayoutPanel14");
-            this.tableLayoutPanel14.Controls.Add(this.dtpEndDate, 0, 1);
-            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            // 
-            // dtpEndDate
-            // 
-            resources.ApplyResources(this.dtpEndDate, "dtpEndDate");
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
-            this.dtpEndDate.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
-            this.dtpEndDate.Name = "dtpEndDate";
-            // 
-            // lblEndDate
-            // 
-            resources.ApplyResources(this.lblEndDate, "lblEndDate");
-            this.lblEndDate.Name = "lblEndDate";
-            // 
             // tableLayoutPanel16
             // 
             resources.ApplyResources(this.tableLayoutPanel16, "tableLayoutPanel16");
@@ -349,6 +358,12 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -365,10 +380,6 @@
             this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel13.ResumeLayout(false);
-            this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
             this.ResumeLayout(false);
@@ -418,5 +429,6 @@
         private Novaly.Windows.Forms.LocalizableStrings.LocalizableStringsControl localizableStringsControl1;
         private Novaly.Windows.Forms.LocalizableStrings.LocalizableString titulo;
         private Novaly.Windows.Forms.LocalizableStrings.LocalizableString comentario;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
