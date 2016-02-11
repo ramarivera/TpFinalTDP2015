@@ -72,10 +72,11 @@ namespace TpFinalTDP2015.Service.Controllers
         {
             using (this.iUoW = GetUnitOfWork())
             {
+
                 iUoW.BeginTransaction();
                 IRepository<TimeInterval> lTimeRepo = iUoW.GetRepository<TimeInterval>();
                 IRepository<DateInterval> lDateRepo = iUoW.GetRepository<DateInterval>();
-                //IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
+               IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
 
                 DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
 
@@ -104,6 +105,7 @@ namespace TpFinalTDP2015.Service.Controllers
 
                     lDateRepo.Update(lDateInterval);
 
+
                     foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
                     {
                         if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
@@ -113,27 +115,17 @@ namespace TpFinalTDP2015.Service.Controllers
                     }
 
 
-                    foreach (Day  lDay in lDateInterval.ActiveDays.Reverse<Day>())
+                    IList<int> lDayCopy = new List<int>(lDateInterval.ActiveDays.Select(d => d.Id));
+                    // IList<Day> lDayList = lDayRepo.GetAll().ToList();
+
+                    foreach (Day day in lDateInterval.ActiveDays.Reverse())
                     {
-                        if (lOrigDateInt.ActiveDays.Any(d => d.Id == lDay.Id))
-                        {
-
-                        }
-                        else
-                        {
-                            // el intervalo original no tiene a LDay
-
-                        }
+                        lDateInterval.ActiveDays.Remove(day);
                     }
 
-
-                    foreach (Day lOrigDay in lOrigDateInt.ActiveDays)
+                    foreach (int  lDay in lDayCopy)
                     {
-
-
-
-
-
+                        lDateInterval.ActiveDays.Add(lDayRepo.GetByID(lDay));
                     }
 
 

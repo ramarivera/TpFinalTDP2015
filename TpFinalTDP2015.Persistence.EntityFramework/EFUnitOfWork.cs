@@ -117,10 +117,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 this.iContext.SaveChanges();
                 this.iTransaction.Commit();
             }
-            catch
+            catch (Exception e)
             {
                 //TODO convertir excepcion de EF a excepcion general de persistencia y arrojarla
-                throw;
+                this.iTransaction.Rollback();
+                throw e;
             }
         }
 

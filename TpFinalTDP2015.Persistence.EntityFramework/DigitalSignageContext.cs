@@ -52,7 +52,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             EFConfiguration.Configure(modelBuilder);
 
-            //   base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         public override int SaveChanges()

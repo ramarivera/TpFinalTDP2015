@@ -103,39 +103,43 @@ namespace TpFinalTDP2015.UI
                 MessageBox.Show("Complete el campo 'Título'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
+            {
                 this.iOriginalDateInterval.Name = this.txtTitle.Text;
-            this.iOriginalDateInterval.ActiveFrom = this.dtpStartDate.Value;
-            this.iOriginalDateInterval.ActiveUntil = this.dtpEndDate.Value;
-            if (this.chkSunday.Checked)
-            {
-                this.iOriginalDateInterval.Days.Add(Days.Domingo);
+                this.iOriginalDateInterval.ActiveFrom = this.dtpStartDate.Value;
+                this.iOriginalDateInterval.ActiveUntil = this.dtpEndDate.Value;
+                this.iOriginalDateInterval.Days.Clear();
+                if (this.chkSunday.Checked)
+                {
+                    this.iOriginalDateInterval.Days.Add(Days.Domingo);
+                }
+                if (this.chkMonday.Checked)
+                {
+                    this.iOriginalDateInterval.Days.Add(Days.Lunes);
+                }
+                if (this.chkTuesday.Checked)
+                {
+                    this.iOriginalDateInterval.Days.Add(Days.Martes);
+                }
+                if (this.chkWednesday.Checked)
+                {
+                    this.iOriginalDateInterval.Days.Add(Days.Miercoles);
+                }
+                if (this.chkThursday.Checked)
+                {
+                    this.iOriginalDateInterval.Days.Add(Days.Jueves);
+                }
+                if (this.chkFriday.Checked)
+                {
+                    this.iOriginalDateInterval.Days.Add(Days.Viernes);
+                }
+                if (this.chkSaturday.Checked)
+                {
+                    this.iOriginalDateInterval.Days.Add(Days.Sabado);
+                }
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            if (this.chkMonday.Checked)
-            {
-                this.iOriginalDateInterval.Days.Add(Days.Lunes);
-            }
-            if (this.chkTuesday.Checked)
-            {
-                this.iOriginalDateInterval.Days.Add(Days.Martes);
-            }
-            if (this.chkWednesday.Checked)
-            {
-                this.iOriginalDateInterval.Days.Add(Days.Miercoles);
-            }
-            if (this.chkThursday.Checked)
-            {
-                this.iOriginalDateInterval.Days.Add(Days.Jueves);
-            }
-            if (this.chkFriday.Checked)
-            {
-                this.iOriginalDateInterval.Days.Add(Days.Viernes);
-            }
-            if (this.chkSaturday.Checked)
-            {
-                this.iOriginalDateInterval.Days.Add(Days.Sabado);
-            }
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
