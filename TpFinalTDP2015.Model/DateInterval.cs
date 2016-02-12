@@ -77,7 +77,7 @@ namespace TpFinalTDP2015.Model
             {
                 return this.iActiveDays;// Clone<IList<Day>>();
             }
-            private set
+             set
             {
                 this.UpdateModificationDate();
                 this.iActiveDays = value;
@@ -99,7 +99,7 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddActiveDay(Day pDay)
         {
-            if (this.ActiveDays.Contains(pDay))
+            if (this.iActiveDays.Contains(pDay))
             {
                 //TODO excepcion dia repetido
                 throw new ArgumentOutOfRangeException();

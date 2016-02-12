@@ -33,9 +33,12 @@ namespace TpFinalTDP2015.Service.AutoMapper
                         Id = lDto.Id,
                         LastModified = DateTimeResolver.Resolve(lDto.ModificationDate),
                         CreationDate = DateTimeResolver.Resolve(lDto.CreationDate),
-                        Start = lDto.StartTime,
-                        End = lDto.EndTime,
+                       // End = lDto.EndTime,
+                      //  Start = lDto.StartTime,
                     };
+
+                    lResult.End = lDto.EndTime;
+                    lResult.Start = lDto.StartTime;
 
                     return lResult;
 

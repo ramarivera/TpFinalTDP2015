@@ -15,7 +15,7 @@ namespace TpFinalTDP2015.Persistence.Interfaces
         void Commit();
         void Rollback();
 
-        void BeginTransaction(IsolationLevel pIsolationLevel = IsolationLevel.Unspecified);
+        void BeginTransaction(IsolationLevel pIsolationLevel = IsolationLevel.ReadCommitted);
     }
 
 }

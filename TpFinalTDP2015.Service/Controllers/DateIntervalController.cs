@@ -9,6 +9,7 @@ using Microsoft.Practices.Unity;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Service.DTO;
 using AutoMapper;
+using TpFinalTDP2015.Persistence.EntityFramework;
 
 namespace TpFinalTDP2015.Service.Controllers
 {
@@ -86,6 +87,9 @@ namespace TpFinalTDP2015.Service.Controllers
                 }
                 else
                 {
+
+                    lDateRepo.Update(lDateInterval);
+
                     DateInterval lOrigDateInt = (from date in lDateRepo.GetAll()
                                                  where date.Id == lDateInterval.Id
                                                  select date).FirstOrDefault();
@@ -103,7 +107,7 @@ namespace TpFinalTDP2015.Service.Controllers
                         }
                     }
 
-                    lDateRepo.Update(lDateInterval);
+                 //   lDateRepo.Update(lDateInterval);
 
 
                     foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
@@ -114,18 +118,17 @@ namespace TpFinalTDP2015.Service.Controllers
                         }
                     }
 
+                    /*  foreach (Day day in lOrigDateInt.ActiveDays.Reverse())
+                      {
+                          lOrigDateInt.RemoveActiveDay(day);
+                      }*/
 
-                    IList<int> lDayCopy = new List<int>(lDateInterval.ActiveDays.Select(d => d.Id));
-                    // IList<Day> lDayList = lDayRepo.GetAll().ToList();
+                    lOrigDateInt.ActiveDays.Clear();
 
-                    foreach (Day day in lDateInterval.ActiveDays.Reverse())
+                    foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
                     {
-                        lDateInterval.ActiveDays.Remove(day);
-                    }
-
-                    foreach (int  lDay in lDayCopy)
-                    {
-                        lDateInterval.ActiveDays.Add(lDayRepo.GetByID(lDay));
+                        lOrigDateInt.AddActiveDay(lDayRepo.GetByID(item));
+                      //  lDayRepo.Update(item);
                     }
 
 

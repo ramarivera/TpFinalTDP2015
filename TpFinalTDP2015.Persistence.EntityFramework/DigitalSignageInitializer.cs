@@ -25,9 +25,9 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             SeedRssSources(pContext);
             SeedStaticTexts(pContext);
             SeedBanners(pContext);
-          //  SeedSlides(pContext);
-            
+            //  SeedSlides(pContext);
 
+            cLogger.InfoFormat("Metodo Seed terminado \n\n\n\n\n\n");
 
         }
 
