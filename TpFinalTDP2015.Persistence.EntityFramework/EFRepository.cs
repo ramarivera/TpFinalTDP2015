@@ -21,6 +21,14 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             this.iDbSet = this.iContext.Set<TEntity>();
         }
 
+        public IQueryable<TEntity> Queryable
+        {
+            get
+            {
+                return this.iDbSet;
+            }
+        }
+
         void IRepository<TEntity>.Add(TEntity pEntityToAdd)
         {
             this.iDbSet.Add(pEntityToAdd);
@@ -44,28 +52,75 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         void IRepository<TEntity>.Update(TEntity pEntityToUpdate)
         {
-            this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Modified;
-        }
+            /* if (this.iContext.Entry<TEntity>(pEntityToUpdate).State == EntityState.Detached)
+             {
+                 this.iDbSet.Attach(pEntityToUpdate);
+             }*/
+            /* EntityState lState = this.iContext.Entry<TEntity>(pEntityToUpdate).State;
 
-        TEntity IRepository<TEntity>.GetByID(object pId)
-        {
-            return (TEntity) this.iDbSet.Find(pId);
-        }
-
-        IQueryable<TEntity> IRepository<TEntity>.GetAll(Expression<Func<TEntity, bool>> pPredicate)
-        {
-            IQueryable<TEntity> lResult;
-
-            if (pPredicate == null)
+            if (lState == EntityState.Detached)
             {
-                lResult = this.iDbSet.AsNoTracking<TEntity>().AsQueryable<TEntity>();
+                this.iDbSet.Attach(pEntityToUpdate);
+                this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Modified;
             }
             else
             {
-                lResult = this.iDbSet.AsNoTracking<TEntity>().Where(pPredicate);
-            }
+                this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Detached;
+                this.iContext.Entry<TEntity>(pEntityToUpdate).State = lState;*/
 
-            return lResult;
+
+            var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
+            this.iContext.Entry(lOld).CurrentValues.SetValues(pEntityToUpdate);
+
+        //    EntityState lest = this.iContext.Entry(lOld).State;
+
+
+         //  this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Modified;
+         //  this.iDbSet
+       }
+
+       TEntity IRepository<TEntity>.GetByID(object pId)
+       {
+           return (TEntity) this.iDbSet.Find(pId);
+       }
+
+       IQueryable<TEntity> IRepository<TEntity>.GetAll(Expression<Func<TEntity, bool>> pPredicate)
+       {
+           IQueryable<TEntity> lResult;
+
+           if (pPredicate == null)
+           {
+                lResult = this.iDbSet.AsQueryable<TEntity>();
+           }
+           else
+           {
+               lResult = this.iDbSet.Where(pPredicate);
+           }
+
+           return lResult;
+       }
+
+        
+
+
+    /*    */
+    }
+
+    static class EFExtensionMethods
+    {
+        public static IQueryable<TEntity> IncludeAll<TEntity>(this IQueryable<TEntity> queryable)
+        {
+            var type = typeof(TEntity);
+            var properties = type.GetProperties();
+            foreach (var property in properties)
+            {
+                var isVirtual = property.GetGetMethod().IsVirtual;
+                if (isVirtual && properties.FirstOrDefault(c => c.Name == property.Name + "Id") != null)
+                {
+                    queryable = queryable.Include(property.Name);
+                }
+            }
+            return queryable;
         }
     }
 }
