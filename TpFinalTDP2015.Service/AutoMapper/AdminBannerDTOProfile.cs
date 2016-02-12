@@ -11,40 +11,96 @@ namespace TpFinalTDP2015.Service.AutoMapper
 {
     public class AdminBannerDTOProfile : Profile
     {
+        /* protected override void Configure()
+         {
+             Mapper.CreateMap<AdminBannerDTO, Banner>()
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
+               .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
+               .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
+               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
+               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
+               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
+               .ForMember(dest => dest.Items, opt => opt.ResolveUsing<BannerTextDTOResolver>().FromMember(source => source.Texts))
+               .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources));
+         }
+
+    */
+        class BannerTextDTOResolver : ValueResolver<IList<StaticTextDTO>, IList<BaseBannerItem>>
+         {
+             protected override IList<BaseBannerItem> ResolveCore(IList<StaticTextDTO> source)
+             {
+                 IList<BaseBannerItem> lResult = new List<BaseBannerItem>();
+
+                 foreach (StaticTextDTO text in source)
+                 {
+                     lResult.Add(
+                          Mapper.Map<StaticTextDTO, StaticText>(
+                             text
+                             )
+                         );
+                 }
+
+                 return lResult;
+             }
+
+
+         }
+         
+
         protected override void Configure()
         {
             Mapper.CreateMap<AdminBannerDTO, Banner>()
-              .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-              .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
-              .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
-              .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
-              .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
-              .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-              .ForMember(dest => dest.Items, opt => opt.ResolveUsing<BannerTextDTOResolver>().FromMember(source => source.Texts))
-              .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources));
+                .ConvertUsing<BannerConverter>();
         }
 
-
-        class BannerTextDTOResolver : ValueResolver<IList<StaticTextDTO>, IList<BaseBannerItem>>
+        private class BannerConverter : ITypeConverter<AdminBannerDTO, Banner>
         {
-            protected override IList<BaseBannerItem> ResolveCore(IList<StaticTextDTO> source)
+            Banner ITypeConverter<AdminBannerDTO, Banner>.Convert(ResolutionContext context)
             {
-                IList<BaseBannerItem> lResult = new List<BaseBannerItem>();
+                if (context == null || context.IsSourceValueNull)
+                    return null;
 
-                foreach (StaticTextDTO text in source)
+
+                AdminBannerDTO lDto = (AdminBannerDTO)context.SourceValue;
+                try
                 {
-                    lResult.Add(
-                         Mapper.Map<StaticTextDTO, StaticText>(
-                            text
-                            )
-                        );
+                    Banner lResult = new Banner()
+                    {
+                        Id = lDto.Id,
+                        LastModified = DateTimeResolver.Resolve(lDto.ModificationDate),
+                        CreationDate = DateTimeResolver.Resolve(lDto.CreationDate),
+                        Name = lDto.Name,
+                        Description = lDto.Description,
+                    };
+
+                    foreach (var item in lDto.ActiveIntervals)
+                    {
+                        lResult.AddDateInterval(
+                            Mapper.Map<DateIntervalDTO, DateInterval>(item)
+                            );
+                    }
+
+                    foreach (var item in lDto.Texts)
+                    {
+                        //TODO se usa resolver?
+                    }
+
+                    foreach (var item in lDto.RssSources)
+                    {
+                        lResult.AddSource(
+                            Mapper.Map<RssSourceDTO, RssSource>(item)
+                            );
+                    }
+
+                    return lResult;
+
                 }
+                catch (Exception)
+                {
 
-                return lResult;
+                    throw;
+                }
             }
-
-
         }
-
     }
 }

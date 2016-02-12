@@ -123,6 +123,12 @@
   <data name="btnCancel.Text" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="lblStartDate.Text" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="lblEndDate.Text" xml:space="preserve">
+    <value>End Date</value>
+  </data>
   <data name="btnAll.Text" xml:space="preserve">
     <value>Select All</value>
   </data>
@@ -146,12 +152,6 @@
   </data>
   <data name="lblSunday.Text" xml:space="preserve">
     <value>Sunday</value>
-  </data>
-  <data name="lblStartDate.Text" xml:space="preserve">
-    <value>Start Date</value>
-  </data>
-  <data name="lblEndDate.Text" xml:space="preserve">
-    <value>End Date</value>
   </data>
   <data name="lblTitle.Text" xml:space="preserve">
     <value>Title</value>

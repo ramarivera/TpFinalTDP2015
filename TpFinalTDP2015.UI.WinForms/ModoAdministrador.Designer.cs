@@ -28,14 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlMainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.pnlLeftPanel = new System.Windows.Forms.TableLayoutPanel();
             this.trvPageNames = new System.Windows.Forms.TreeView();
             this.pnlRightPanel = new System.Windows.Forms.TableLayoutPanel();
             this.lblPageName = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblHelp = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMainPanel.SuspendLayout();
             this.pnlLeftPanel.SuspendLayout();
             this.pnlRightPanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMainPanel
@@ -83,7 +88,7 @@
             this.pnlRightPanel.ColumnCount = 1;
             this.pnlRightPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnlRightPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.pnlRightPanel.Controls.Add(this.lblPageName, 0, 0);
+            this.pnlRightPanel.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.pnlRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlRightPanel.Location = new System.Drawing.Point(213, 3);
             this.pnlRightPanel.Name = "pnlRightPanel";
@@ -99,11 +104,39 @@
             this.lblPageName.AutoSize = true;
             this.lblPageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPageName.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblPageName.Location = new System.Drawing.Point(3, 11);
+            this.lblPageName.Location = new System.Drawing.Point(3, 8);
             this.lblPageName.Name = "lblPageName";
             this.lblPageName.Size = new System.Drawing.Size(160, 25);
             this.lblPageName.TabIndex = 1;
             this.lblPageName.Text = "NombrePagina:";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Controls.Add(this.lblPageName, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblHelp, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(508, 41);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // lblHelp
+            // 
+            this.lblHelp.AutoSize = true;
+            this.lblHelp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHelp.Location = new System.Drawing.Point(460, 0);
+            this.lblHelp.Name = "lblHelp";
+            this.lblHelp.Size = new System.Drawing.Size(45, 41);
+            this.lblHelp.TabIndex = 2;
+            this.lblHelp.Text = "?";
+            this.lblHelp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.lblHelp, "Para modificar un elemento haga doble click en su fila");
             // 
             // ModoAdministrador
             // 
@@ -116,7 +149,8 @@
             this.pnlMainPanel.ResumeLayout(false);
             this.pnlLeftPanel.ResumeLayout(false);
             this.pnlRightPanel.ResumeLayout(false);
-            this.pnlRightPanel.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -128,5 +162,8 @@
         private System.Windows.Forms.TreeView trvPageNames;
         private System.Windows.Forms.TableLayoutPanel pnlRightPanel;
         private System.Windows.Forms.Label lblPageName;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lblHelp;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
