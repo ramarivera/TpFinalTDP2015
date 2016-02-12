@@ -39,6 +39,7 @@ namespace TpFinalTDP2015.UI
         {
             if (pStaticText == null)
             {
+                throw new ArgumentNullException();
                 //TODO excepcion argumentexception creo
             }
             else

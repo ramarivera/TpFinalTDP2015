@@ -58,13 +58,17 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddDateInterval(DateInterval pInterval)
         {
-            if (this.ValidInterval(pInterval))
+            if (pInterval == null)
             {
-                this.iActiveIntervals.Add(pInterval);
+                throw new ArgumentNullException();
+            }
+            else if (!this.ValidInterval(pInterval))
+            {
+                throw new ArgumentOutOfRangeException();
             }
             else
             {
-                throw new ArgumentOutOfRangeException();
+                this.iActiveIntervals.Add(pInterval);
 
                 //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
             }

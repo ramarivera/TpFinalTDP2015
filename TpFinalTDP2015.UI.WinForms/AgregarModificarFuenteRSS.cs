@@ -37,6 +37,7 @@ namespace TpFinalTDP2015.UI
         {
             if (pRSSSource == null)
             {
+                throw new ArgumentNullException();
                 //TODO excepcion argumentexception creo
             }
             else

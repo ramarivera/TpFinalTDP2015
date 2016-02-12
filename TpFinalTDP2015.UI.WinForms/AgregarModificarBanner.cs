@@ -42,6 +42,7 @@ namespace TpFinalTDP2015.UI
         {
             if (pBanner == null)
             {
+                throw new ArgumentNullException();
                 //TODO excepcion argumentexception creo
             }
             else

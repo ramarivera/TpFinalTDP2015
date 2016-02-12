@@ -36,6 +36,7 @@ namespace TpFinalTDP2015.UI
         {
             if (pTimeInterval == null)
             {
+                throw new ArgumentNullException();
                 //TODO excepcion argumentexception creo
             }
             else

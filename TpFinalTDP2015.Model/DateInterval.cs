@@ -95,7 +95,6 @@ namespace TpFinalTDP2015.Model
             {
                 //TODO excepcion dia repetido
                 throw new ArgumentOutOfRangeException();
-
             }
             else
             {
@@ -110,14 +109,17 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddActiveHours(TimeInterval pInterval)
         {
-            if (this.ValidInterval(pInterval))
+            if(pInterval == null)
             {
-                this.iActiveHours.Add(pInterval);
+                throw new ArgumentNullException();
+            }
+            if (!this.ValidInterval(pInterval))
+            {
+                throw new ArgumentOutOfRangeException();
             }
             else
             {
-                throw new ArgumentOutOfRangeException();
-
+                this.iActiveHours.Add(pInterval);
                 //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
             }
         }
@@ -304,6 +306,5 @@ namespace TpFinalTDP2015.Model
 
             return lResult;
         }*/
-        // TODO resivar esto, afecta tests
     }
 }
