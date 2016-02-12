@@ -41,6 +41,7 @@ namespace TpFinalTDP2015.UI
         {
             if (pCampaign == null)
             {
+                throw new ArgumentNullException();
                 //TODO excepcion argumentexception creo
             }
             else

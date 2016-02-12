@@ -22,41 +22,25 @@ namespace TpFinalTDP2015.Model
         public virtual string Title
         {
             get { return this.iTitle; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iTitle = value;
-            }
+            set { this.iTitle = value; }
         }
 
         public virtual string Description
         {
             get { return this.iDescription; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iDescription = value;
-            }
+            set { this.iDescription = value; }
         }
 
         public virtual string URL
         {
             get { return this.iURL; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iURL = value;
-            }
+            set { this.iURL = value; }
         }
 
         public virtual DateTime? PublicationDate
         {
             get { return this.iPublicationDate; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iPublicationDate = value;
-            }
+            set { this.iPublicationDate = value; }
         }
 
         public override string GetText()

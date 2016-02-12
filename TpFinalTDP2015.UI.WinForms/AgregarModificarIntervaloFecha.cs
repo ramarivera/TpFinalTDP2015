@@ -14,7 +14,6 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervaloFecha : BaseForm, IAddModifyViewForm
     {
-        //TODO modificar para agregar intervalos de tiempo
         private DateIntervalDTO iOriginalDateInterval;
 
         public DateIntervalDTO DateInterval
@@ -39,6 +38,7 @@ namespace TpFinalTDP2015.UI
         {
             if (pDateInterval == null)
             {
+                throw new ArgumentNullException();
                 //TODO excepcion argumentexception creo
             }
             else

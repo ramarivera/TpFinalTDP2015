@@ -16,42 +16,24 @@ namespace TpFinalTDP2015.Model
         public BaseEntity()
         {
             this.iId = 0;
-            this.iCreationDate = DateTime.Now;
-            this.iLastModified = DateTime.Now;
         }
 
         public virtual int Id
         {
             get { return this.iId; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iId = value;
-            }
+            set { this.iId = value; }
         }
 
         public virtual DateTime CreationDate
         {
             get { return this.iCreationDate; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iCreationDate = value;
-            }
+            set { this.iCreationDate = value; }
         }
 
         public virtual DateTime LastModified
         {
             get { return this.iLastModified; }
-            set
-            {
-                this.iLastModified = value;
-            }
-        }
-
-        public virtual void UpdateModificationDate()
-        {
-            this.LastModified = DateTime.Now;
+            set { this.iLastModified = value; }
         }
 
         public override bool Equals(object obj)

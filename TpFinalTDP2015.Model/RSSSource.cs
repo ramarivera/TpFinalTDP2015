@@ -23,30 +23,18 @@ namespace TpFinalTDP2015.Model
         public virtual string Title
         {
             get { return this.iTitle; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iTitle = value;
-            }
+            set{this.iTitle = value;}
         }
 
         public virtual string Description
         {
             get {return this.iDescription; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iDescription = value;
-            }
+            set{this.iDescription = value;}
         }
         public virtual string URL
         {
             get { return this.iURL; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iURL = value;
-            }
+            set{this.iURL = value;}
         }
 
         public virtual IList<RssItem> Items
@@ -57,20 +45,17 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.UpdateModificationDate();
                 this.iItems = value;
             }
         }
 
         public virtual void AddRssItem(RssItem pItem)
         {
-            this.UpdateModificationDate();
             this.iItems.Add(pItem);
         }
 
         public virtual void RemoveRssItem(RssItem pItem)
         {
-            this.UpdateModificationDate();
             this.iItems.Remove(pItem);
         }
         //TODO cambiar accesores Items

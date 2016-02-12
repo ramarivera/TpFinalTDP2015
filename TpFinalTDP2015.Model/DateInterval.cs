@@ -18,7 +18,7 @@ namespace TpFinalTDP2015.Model
 
         private static readonly DateTime MIN_VALUE = new DateTime(1980, 1, 1);
         private static readonly DateTime MAX_VALUE = new DateTime(2099, 12, 31);
-        
+
         public DateInterval() : base()
         {
             this.iActiveUntil = MAX_VALUE;
@@ -30,11 +30,7 @@ namespace TpFinalTDP2015.Model
         public virtual string Name
         {
             get { return this.iName; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iName = value;
-            }
+            set { this.iName = value; }
         }
 
         public virtual DateTime ActiveFrom
@@ -44,7 +40,6 @@ namespace TpFinalTDP2015.Model
             {
                 if ((value <= this.iActiveUntil) && ((value >= MIN_VALUE) && (value <= MAX_VALUE)))
                 {
-                    this.UpdateModificationDate();
                     this.iActiveFrom = value;
                 }
                 else
@@ -60,7 +55,6 @@ namespace TpFinalTDP2015.Model
             {
                 if ((value >= this.iActiveFrom) && ((value >= MIN_VALUE) && (value <= MAX_VALUE)))
                 {
-                    this.UpdateModificationDate();
                     this.iActiveUntil = value;
                 }
                 else
@@ -77,9 +71,8 @@ namespace TpFinalTDP2015.Model
             {
                 return this.iActiveDays;// Clone<IList<Day>>();
             }
-             set
+            set
             {
-                this.UpdateModificationDate();
                 this.iActiveDays = value;
             }
         }
@@ -92,7 +85,6 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.UpdateModificationDate();
                 this.iActiveHours = value;
             }
         }
@@ -103,39 +95,37 @@ namespace TpFinalTDP2015.Model
             {
                 //TODO excepcion dia repetido
                 throw new ArgumentOutOfRangeException();
-
             }
             else
             {
-                this.UpdateModificationDate();
                 this.iActiveDays.Add(pDay);
             }
         }
 
         public virtual void RemoveActiveDay(Day pDay)
         {
-            this.UpdateModificationDate();
             this.iActiveDays.Remove(pDay);
         }
 
         public virtual void AddActiveHours(TimeInterval pInterval)
         {
-            if (this.ValidInterval(pInterval))
+            if(pInterval == null)
             {
-                this.UpdateModificationDate();
-                this.iActiveHours.Add(pInterval);
+                throw new ArgumentNullException();
+            }
+            if (!this.ValidInterval(pInterval))
+            {
+                throw new ArgumentOutOfRangeException();
             }
             else
             {
-                throw new ArgumentOutOfRangeException();
-
+                this.iActiveHours.Add(pInterval);
                 //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
             }
         }
 
         public virtual void RemoveActiveHours(TimeInterval pInterval)
         {
-            this.UpdateModificationDate();
             this.iActiveHours.Remove(pInterval);
         }
 
@@ -185,7 +175,7 @@ namespace TpFinalTDP2015.Model
             }
             if (lResult)
             {
-               lResult = this.SameDays(pInterval);
+                lResult = this.SameDays(pInterval);
             }
             if (lResult)
             {
@@ -197,8 +187,8 @@ namespace TpFinalTDP2015.Model
         public bool SameDays(DateInterval pInterval)
         {
             bool lResult = false;
-            int i = this.ActiveDays.Count-1;
-            while ((lResult == false) && (i>=0))
+            int i = this.ActiveDays.Count - 1;
+            while ((lResult == false) && (i >= 0))
             {
                 Day day = this.ActiveDays[i];
                 if (pInterval.ActiveDays.Contains(day))
@@ -213,11 +203,11 @@ namespace TpFinalTDP2015.Model
         public bool TimeInteresctionWith(DateInterval pInterval)
         {
             bool lResult = false;
-            int i = this.ActiveHours.Count-1;
+            int i = this.ActiveHours.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
                 TimeInterval pTimeInterval = this.ActiveHours[i];
-                int j = pInterval.ActiveHours.Count-1;
+                int j = pInterval.ActiveHours.Count - 1;
                 while ((lResult == false) && (j >= 0))
                 {
                     lResult = pTimeInterval.IntersectionWith(pInterval.ActiveHours[j]);
@@ -316,6 +306,5 @@ namespace TpFinalTDP2015.Model
 
             return lResult;
         }*/
-        // TODO resivar esto, afecta tests
     }
 }
