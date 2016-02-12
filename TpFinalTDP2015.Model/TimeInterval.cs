@@ -28,7 +28,6 @@ namespace TpFinalTDP2015.Model
             {
                 if ((value < this.iEndTime) && ((value >= MIN_VALUE) && (value <= MAX_VALUE)))
                 {
-                    this.UpdateModificationDate();
                     this.iStartTime = value;
                 }
                 else
@@ -44,7 +43,6 @@ namespace TpFinalTDP2015.Model
             {
                 if ((value > this.iStartTime) && ((value >= MIN_VALUE) && (value <= MAX_VALUE)))
                 {
-                    this.UpdateModificationDate();
                     this.iEndTime = value;
                 }
                 else

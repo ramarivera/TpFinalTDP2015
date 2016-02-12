@@ -14,10 +14,7 @@ namespace TpFinalTDP2015.Model
         public string Type
         {
             get { return this.iType; }
-            set {
-                this.UpdateModificationDate();
-                this.iType = value;
-                }
+            set { this.iType = value; }
         }
         public abstract string GetText();
 

@@ -32,21 +32,13 @@ namespace TpFinalTDP2015.Model
         public virtual SlideTransition Transition
         {
             get { return this.iTransition; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iTransition = value;
-            }
+            set { this.iTransition = value; }
         }
 
         public virtual int Duration
         {
             get { return this.iDuration; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iDuration = value;
-            }
+            set { this.iDuration = value; }
         }
 
 

@@ -23,21 +23,13 @@ namespace TpFinalTDP2015.Model
         public virtual string Name
         {
             get { return this.iName; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iName = value;
-            }
+            set { this.iName = value; }
         }
 
         public virtual string Description
         {
             get { return this.iDescription; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iDescription = value;
-            }
+            set { this.iDescription = value; }
         }
 
         public virtual IList<DateInterval> ActiveIntervals
@@ -48,7 +40,6 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.UpdateModificationDate();
                 this.iActiveIntervals = value;
             }
         }
@@ -61,7 +52,6 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.UpdateModificationDate();
                 this.iSlides = value;
             }
         }
@@ -70,7 +60,6 @@ namespace TpFinalTDP2015.Model
         {
             if (this.ValidInterval(pInterval))
             {
-                this.UpdateModificationDate();
                 this.iActiveIntervals.Add(pInterval);
             }
             else
@@ -83,7 +72,6 @@ namespace TpFinalTDP2015.Model
 
         public virtual void RemoveDateInterval(DateInterval pInterval)
         {
-            this.UpdateModificationDate();
             this.iActiveIntervals.Remove(pInterval);
         }
 
@@ -105,19 +93,17 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddSlide(Slide pSlide)
         {
-            this.UpdateModificationDate();
             this.iSlides.Add(pSlide);
         }
 
         public virtual void RemoveSlide(Slide pSlide)
         {
-            this.UpdateModificationDate();
             this.iSlides.Remove(pSlide);
         }
 
         public bool Active
         {
-            get {return this.ActiveForDate(DateTime.Now); }
+            get { return this.ActiveForDate(DateTime.Now); }
         }
 
         public bool ActiveForDate(DateTime pDate)

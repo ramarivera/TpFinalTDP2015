@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TpFinalTDP2015.Model
 {
     [Serializable]
-    public class Banner: BaseEntity
+    public class Banner : BaseEntity
     {
         private string iName;
         private string iDescription;
@@ -22,24 +22,16 @@ namespace TpFinalTDP2015.Model
             this.iActiveIntervals = new List<DateInterval>();
             this.iRssSources = new List<RssSource>();
         }
-        
+
         public virtual string Name
         {
             get { return this.iName; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iName = value;
-            }
+            set { this.iName = value; }
         }
         public virtual string Description
         {
             get { return this.iDescription; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iDescription = value;
-            }
+            set { this.iDescription = value; }
         }
 
         public virtual IList<DateInterval> ActiveIntervals
@@ -50,7 +42,6 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.UpdateModificationDate();
                 this.iActiveIntervals = value;
             }
         }
@@ -63,7 +54,6 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.UpdateModificationDate();
                 this.iItems = value;
             }
         }
@@ -76,7 +66,6 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.UpdateModificationDate();
                 this.iRssSources = value;
             }
         }
@@ -85,7 +74,6 @@ namespace TpFinalTDP2015.Model
         {
             if (this.ValidInterval(pInterval))
             {
-                this.UpdateModificationDate();
                 this.iActiveIntervals.Add(pInterval);
             }
             else
@@ -98,7 +86,6 @@ namespace TpFinalTDP2015.Model
 
         public virtual void RemoveDateInterval(DateInterval pInterval)
         {
-            this.UpdateModificationDate();
             this.iActiveIntervals.Remove(pInterval);
         }
 
@@ -120,27 +107,23 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddBannerItem(BaseBannerItem pItem)
         {
-            this.UpdateModificationDate();
             this.iItems.Add(pItem);
             //TODO verificar que ya no este?
         }
 
         public virtual void RemoveBannerItem(BaseBannerItem pItem)
         {
-            this.UpdateModificationDate();
             this.iItems.Remove(pItem);
         }
 
         public virtual void AddSource(RssSource pSource)
         {
-            this.UpdateModificationDate();
             this.iRssSources.Add(pSource);
             //TODO verificar que ya no este?
         }
 
         public virtual void RemoveSource(RssSource pSource)
         {
-            this.UpdateModificationDate();
             this.iRssSources.Remove(pSource);
         }
 

@@ -14,39 +14,27 @@ namespace TpFinalTDP2015.Model
         private string iText;
 
 
-        public StaticText() :  base()
+        public StaticText() : base()
         {
             this.Type = "Text";
         }
 
         public virtual string Title
         {
-            get {return this.iTitle; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iTitle = value;
-            }
+            get { return this.iTitle; }
+            set { this.iTitle = value; }
         }
 
         public virtual string Description
         {
-            get {return this.iDescription; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iDescription = value;
-            }
+            get { return this.iDescription; }
+            set { this.iDescription = value; }
         }
 
         public virtual string Text
         {
-            get {return this.iText; }
-            set
-            {
-                this.UpdateModificationDate();
-                this.iText = value;
-            }
+            get { return this.iText; }
+            set { this.iText = value; }
         }
 
         public override string GetText()
