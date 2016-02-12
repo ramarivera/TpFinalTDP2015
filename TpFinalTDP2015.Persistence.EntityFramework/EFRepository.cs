@@ -70,14 +70,16 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
 
             var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
-            this.iContext.Entry(lOld).CurrentValues.SetValues(pEntityToUpdate);
+            var st = this.iContext.Entry(pEntityToUpdate).State;
+            var dicc = this.iContext.Entry(lOld).CurrentValues;
+            dicc.SetValues(pEntityToUpdate);
+            
+            //    EntityState lest = this.iContext.Entry(lOld).State;
 
-        //    EntityState lest = this.iContext.Entry(lOld).State;
 
-
-         //  this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Modified;
-         //  this.iDbSet
-       }
+            //  this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Modified;
+            //  this.iDbSet
+        }
 
        TEntity IRepository<TEntity>.GetByID(object pId)
        {

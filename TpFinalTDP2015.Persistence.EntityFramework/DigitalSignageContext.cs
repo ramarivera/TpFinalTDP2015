@@ -33,18 +33,25 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
         {
             Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
 
-            cLogger.Info("Conexion establecida: ConnectionString" + this.Database.Connection.ConnectionString);
+           // cLogger.Info("Conexion establecida: ConnectionString" + this.Database.Connection.ConnectionString);
+
+
+            // ...
         }
 
         public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
         {
-          //  this.Configuration.ProxyCreationEnabled = false;
-           // this.Configuration.LazyLoadingEnabled = false;
+            //  this.Configuration.ProxyCreationEnabled = false;
+            // this.Configuration.LazyLoadingEnabled = false;
+            this.Database.Log = (str => LogManager.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
             Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
 
             // cLogger.InfoFormat("Deberia estarme conectando usando \"{0}\"", pConnectionString);
             // cLogger.InfoFormat("Conexion establecida: {0}", this.Database.Connection.ConnectionString);
             cLogger.InfoFormat("Conexion establecida a: {0}", pConnectionString);
+
+           
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -61,7 +68,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var item in lDayEntityEntries)
             {
-                cLogger.InfoFormat("Entidad: {0}\t Estado: {1}", item.Entity, item.State);
+               // cLogger.InfoFormat("Entidad: {0}\t Estado: {1}", item.Entity, item.State);
             }
 
             //var added = this.ChangeTracker.Entries().Where(e => e.State == EntityState.Added);

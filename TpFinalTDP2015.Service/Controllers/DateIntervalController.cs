@@ -87,36 +87,38 @@ namespace TpFinalTDP2015.Service.Controllers
                 }
                 else
                 {
-
                     lDateRepo.Update(lDateInterval);
 
-                    DateInterval lOrigDateInt = (from date in lDateRepo.GetAll()
-                                                 where date.Id == lDateInterval.Id
-                                                 select date).FirstOrDefault();
+
+                    DateInterval lOrigDateInt = lDateRepo.GetAll(d => d.Id == lDateInterval.Id).Single();
+
+
 
 
                     foreach (TimeInterval lHours in lDateInterval.ActiveHours)
                     {
                         if (lHours.Id == 0)
                         {
-                            lTimeRepo.Add(lHours);
+                            lOrigDateInt.AddActiveHours(lHours);
                         }
                         else
                         {
+                            //lOrigDateInt.AddActiveHours(lHours);
                             lTimeRepo.Update(lHours);
                         }
                     }
 
-                 //   lDateRepo.Update(lDateInterval);
+                    //   lDateRepo.Update(lDateInterval);
 
 
-                    foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
-                    {
-                        if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
-                        {
+                      foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
+                      {
+                          if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
+                          {
+                            lOrigDateInt.RemoveActiveHours(lOrigTimeInt);
                             lTimeRepo.Delete(lOrigTimeInt.Id);
-                        }
-                    }
+                          }
+                      }
 
                     /*  foreach (Day day in lOrigDateInt.ActiveDays.Reverse())
                       {
@@ -130,6 +132,7 @@ namespace TpFinalTDP2015.Service.Controllers
                         lOrigDateInt.AddActiveDay(lDayRepo.GetByID(item));
                       //  lDayRepo.Update(item);
                     }
+                    
 
 
                 }

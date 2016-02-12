@@ -42,13 +42,10 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
                 });
 
             HasMany(di => di.ActiveHours)
-                .WithMany()
-                .Map(m =>
-                {
-                    m.MapLeftKey("DateIntervalId");
-                    m.MapRightKey("TimeIntervalId");
-                    m.ToTable("DateIntervalTimeInterval");
-                });
+                .WithRequired()
+                .Map(m => m.MapKey("DateIntervalId"))
+                .WillCascadeOnDelete(true);
+                
         }
 
     }
