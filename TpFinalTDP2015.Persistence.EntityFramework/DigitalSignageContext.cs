@@ -17,6 +17,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
     public class DigitalSignageContext : DbContext
     {
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
+   //     private static Type _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
 
         public virtual DbSet<Campaign> Campaigns { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
@@ -44,6 +45,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             //  this.Configuration.ProxyCreationEnabled = false;
             // this.Configuration.LazyLoadingEnabled = false;
             this.Database.Log = (str => LogManager.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
+            
             Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
 
             // cLogger.InfoFormat("Deberia estarme conectando usando \"{0}\"", pConnectionString);

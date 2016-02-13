@@ -52,20 +52,25 @@ rem rem echo. >> %LOG_PATH%
 
 set DEBUG_PATH="%~dp0TpFinalTDP2015.UI.WinForms\bin\Debug\"
 set RELEASE_PATH="%~dp0Release"
+set TEST_PATH="%~dp0TpFinalTDP2015.Test\bin\Debug\"
+D:\Dropbox\UTN\FRCU nalTDP2015.Test\bin\Debug
 
 cd "%~dp0"
 call :treeProcess
 goto :eof
 
 :treeProcess
+for %%f in (*.dll) do xcopy /y %%f %TEST_PATH%
+for %%f in (*.config) do xcopy /y %%f %TEST_PATH%
+for %%f in (*.exe) do xcopy /y %%f %TEST_PATH%
 
-for %%f in (*.dll) do xcopy /y %%f %DEBUG_PATH%
-for %%f in (*.config) do xcopy /y %%f %DEBUG_PATH%
-for %%f in (*.exe) do xcopy /y %%f %DEBUG_PATH%
-
-for %%f in (*.dll) do xcopy /y %%f %RELEASE_PATH%
-for %%f in (*.config) do xcopy /y %%f %RELEASE_PATH%
-for %%f in (*.exe) do xcopy /y %%f %RELEASE_PATH%
+rem for %%f in (*.dll) do xcopy /y %%f %DEBUG_PATH%
+rem for %%f in (*.config) do xcopy /y %%f %DEBUG_PATH%
+rem for %%f in (*.exe) do xcopy /y %%f %DEBUG_PATH%
+rem 
+rem for %%f in (*.dll) do xcopy /y %%f %RELEASE_PATH%
+rem for %%f in (*.config) do xcopy /y %%f %RELEASE_PATH%
+rem for %%f in (*.exe) do xcopy /y %%f %RELEASE_PATH%
 
 
 for /D %%d in (*) do (

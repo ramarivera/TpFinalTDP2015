@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Logging;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -67,16 +68,21 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             {
                 this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Detached;
                 this.iContext.Entry<TEntity>(pEntityToUpdate).State = lState;*/
+            /*  var log = LogManager.GetLogger(this.GetType());
 
+              var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
+              var st = this.iContext.Entry(pEntityToUpdate).State;
+              var dicc = this.iContext.Entry(lOld).CurrentValues;
 
-            var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
-            var st = this.iContext.Entry(pEntityToUpdate).State;
-            var dicc = this.iContext.Entry(lOld).CurrentValues;
-            dicc.SetValues(pEntityToUpdate);
-            
+              foreach (var item in dicc.PropertyNames)
+              {
+                  log.DebugFormat("Entidad: {0}, Propiedad: {1}", lOld, item);
+              }
+              dicc.SetValues(pEntityToUpdate);*/
+
             //    EntityState lest = this.iContext.Entry(lOld).State;
-
-
+            var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
+            this.iContext.Entry(lOld).CurrentValues.SetValues(pEntityToUpdate);
             //  this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Modified;
             //  this.iDbSet
         }

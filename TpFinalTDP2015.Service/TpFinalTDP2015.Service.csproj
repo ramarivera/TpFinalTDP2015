@@ -77,7 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoMapperConfigurations.cs" />
+    <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="AutoMapper\AdminBannerDTOProfile.cs" />
     <Compile Include="AutoMapper\AdminBannerProfile.cs" />
     <Compile Include="AutoMapper\CampaignDTOProfile.cs" />
@@ -135,7 +135,7 @@
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
+    <None Include="TpFinalTDP2015.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="log4net.config">

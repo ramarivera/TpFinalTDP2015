@@ -21,8 +21,8 @@ namespace TpFinalTDP2015.UI
         static void Main()
         {
 
-            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"App.config");
-            AutoMapperConfigurations.Configure();
+            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"TpFinalTDP2015.config");
+            AutoMapperConfiguration.Configure();
 
 
             DateIntervalController lController = new DateIntervalController();

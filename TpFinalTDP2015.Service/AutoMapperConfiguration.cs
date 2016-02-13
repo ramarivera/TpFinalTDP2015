@@ -9,12 +9,12 @@ using Common.Logging;
 
 namespace TpFinalTDP2015.Service
 {
-    public class AutoMapperConfigurations
+    public class AutoMapperConfiguration
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<AutoMapperConfigurations>();
+        private static readonly ILog cLogger = LogManager.GetLogger<AutoMapperConfiguration>();
 
         static public void  Configure()
         {

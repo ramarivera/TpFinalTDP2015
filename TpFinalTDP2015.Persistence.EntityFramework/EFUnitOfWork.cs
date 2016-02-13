@@ -24,9 +24,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             string s2 = "connectionString = \"Server=(localdb)\\v11.0;Integrated Security=true;AttachDbFileName=DigitalSignage.mdf\"";
             string s3 = "providerName = \"System.Data.SqlClient\"";
             string lCon = s1 + s2 + s3;*/
-            ConnectionStringSettings con = ConfigurationManager.ConnectionStrings["DigitalSignageContextSQLEXPRESS"];
-            string lCon = con.ConnectionString;
-            this.iContext = new DigitalSignageContext(lCon);
+            ConnectionStringSettings lConSettings = ConfigurationManager.ConnectionStrings["DigitalSignage"];
+            this.iContext = new DigitalSignageContext(lConSettings.ConnectionString);
             this.iRepositories = new Dictionary<Type, Object>();
             //TODO levantar el dato de un archivo de configuracion
         }

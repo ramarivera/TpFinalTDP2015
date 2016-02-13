@@ -20,8 +20,10 @@ set timestampstr=%datestr%-%timestr%
 
 set DEBUG_PATH="%~dp0TpFinalTDP2015.UI.WinForms\bin\Debug\"
 set RELEASE_PATH="%~dp0Release"
+set TEST_PATH="%~dp0TpFinalTDP2015.Test\bin\Debug\"
+
 set DLL_NAME="%~1"
-set LOG_PATH="%~dp0PostBuildLog.txt"
+rem set LOG_PATH="%~dp0PostBuildLog.txt"
 
 
 @echo off
@@ -39,7 +41,11 @@ rem xcopy /y %DLL_NAME% %RELEASE_PATH%
 xcopy /y "%Folder%*.dll" %DEBUG_PATH%
 xcopy /y "%Folder%*.exe" %DEBUG_PATH%
 xcopy /y "%Folder%*.config" %DEBUG_PATH%
-                      
+
+xcopy /y "%Folder%*.dll" %TEST_PATH%
+xcopy /y "%Folder%*.exe" %TEST_PATH%
+xcopy /y "%Folder%*.config" %TEST_PATH%
+
 xcopy /y "%Folder%*.dll" %RELEASE_PATH%
 xcopy /y "%Folder%*.exe" %RELEASE_PATH%
 xcopy /y "%Folder%*.config" %RELEASE_PATH%

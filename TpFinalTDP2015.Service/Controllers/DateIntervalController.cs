@@ -41,6 +41,9 @@ namespace TpFinalTDP2015.Service.Controllers
         {
             return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
         }
+
+
+
         public IList<DateIntervalDTO> GetDateIntervals()
         {
             IList<DateIntervalDTO> lResult = new List<DateIntervalDTO>();
@@ -77,7 +80,7 @@ namespace TpFinalTDP2015.Service.Controllers
                 iUoW.BeginTransaction();
                 IRepository<TimeInterval> lTimeRepo = iUoW.GetRepository<TimeInterval>();
                 IRepository<DateInterval> lDateRepo = iUoW.GetRepository<DateInterval>();
-               IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
+                IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
 
                 DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
 
@@ -90,7 +93,8 @@ namespace TpFinalTDP2015.Service.Controllers
                     lDateRepo.Update(lDateInterval);
 
 
-                    DateInterval lOrigDateInt = lDateRepo.GetAll(d => d.Id == lDateInterval.Id).Single();
+                 //   DateInterval lOrigDateInt = lDateRepo.GetAll(d => d.Id == lDateInterval.Id).Single();
+                    DateInterval lOrigDateInt = lDateRepo.GetByID(lDateInterval.Id);
 
 
 
@@ -111,14 +115,14 @@ namespace TpFinalTDP2015.Service.Controllers
                     //   lDateRepo.Update(lDateInterval);
 
 
-                      foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
-                      {
-                          if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
-                          {
+                    foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
+                    {
+                        if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
+                        {
                             lOrigDateInt.RemoveActiveHours(lOrigTimeInt);
                             lTimeRepo.Delete(lOrigTimeInt.Id);
-                          }
-                      }
+                        }
+                    }
 
                     /*  foreach (Day day in lOrigDateInt.ActiveDays.Reverse())
                       {
@@ -130,9 +134,9 @@ namespace TpFinalTDP2015.Service.Controllers
                     foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
                     {
                         lOrigDateInt.AddActiveDay(lDayRepo.GetByID(item));
-                      //  lDayRepo.Update(item);
+                        //  lDayRepo.Update(item);
                     }
-                    
+
 
 
                 }
