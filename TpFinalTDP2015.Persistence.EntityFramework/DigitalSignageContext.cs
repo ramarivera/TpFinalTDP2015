@@ -64,11 +64,18 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         public override int SaveChanges()
         {
-            var lDayEntityEntries = ChangeTracker.Entries();
+            var lDayEntityEntries = ChangeTracker.Entries<BaseEntity>();
 
             foreach (var item in lDayEntityEntries)
             {
-               // cLogger.InfoFormat("Entidad: {0}\t Estado: {1}", item.Entity, item.State);
+                if (item.State == EntityState.Added)
+                {
+                    item.Entity.CreationDate = DateTime.Now;
+                }
+                if (item.State == EntityState.Added || item.State == EntityState.Modified)
+                {
+                    item.Entity.LastModified = DateTime.Now;
+                }
             }
 
             //var added = this.ChangeTracker.Entries().Where(e => e.State == EntityState.Added);

@@ -44,7 +44,7 @@ namespace TpFinalTDP2015.UI
 
             var tii = lDto.ActiveHours.Where(ti => ti.Id ==22).Single();
            tii.EndTime = new TimeSpan(13, 0, 0);
-            tii.CreationDate = new DateTime(2050, 07, 11, 12, 0, 0);
+           // tii.CreationDate = new DateTime(2050, 07, 11, 12, 0, 0);
             lDto.ActiveHours.Remove(lDto.ActiveHours.Where(ti => ti.Id ==23).Single());
             lDto.ActiveHours.Add(new TimeIntervalDTO()
             {
