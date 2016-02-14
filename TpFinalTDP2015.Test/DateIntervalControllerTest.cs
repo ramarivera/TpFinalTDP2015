@@ -22,7 +22,7 @@ namespace TpFinalTDP2015.Test
         }
 
 
-        [TestMethod]
+      /*  [TestMethod]
         public void Save()
         {
             DateIntervalController lController = new DateIntervalController();
@@ -64,7 +64,7 @@ namespace TpFinalTDP2015.Test
         public void Test2()
         {
             Assert.IsTrue(true);
-        }
+         */
 
     }
 

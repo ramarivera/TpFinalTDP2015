@@ -25,7 +25,7 @@ namespace TpFinalTDP2015.UI
             AutoMapperConfiguration.Configure();
 
 
-            DateIntervalController lController = new DateIntervalController();
+         /*   DateIntervalController lController = new DateIntervalController();
 
             IList<DateIntervalDTO> lList = lController.GetDateIntervals();
 
@@ -54,7 +54,7 @@ namespace TpFinalTDP2015.UI
 
            // lDto.Id = 0;
 
-            lController.SaveDateInterval(lDto);
+            lController.SaveDateInterval(lDto); */
 
 
 
