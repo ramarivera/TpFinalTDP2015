@@ -8,13 +8,13 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.Service.Controllers
 {
-    interface IController<TDTO> : IDisposable where TDTO : IDTO
+    interface IController<TDto> : IDisposable where TDto : IDTO
     {
 
-        IList<TDTO> GetAll();
+        IList<TDto> GetAll();
 
-        void Delete(TDTO pId);
+        void Delete(TDto pId);
 
-        void Save(TDTO pDTO);
+        void Save(TDto pDTO);
     }
 }

@@ -10,7 +10,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.Service.Controllers
 {
-    public abstract class BaseController<TDTO> : IController<TDTO> where TDTO : IDTO
+    public abstract class BaseController<TDto> : IController<TDto> where TDto : IDTO
     {
         protected IUnitOfWork iUoW;
 
@@ -19,11 +19,11 @@ namespace TpFinalTDP2015.Service.Controllers
             this.iUoW = pUoW;
         }
 
-        public abstract void Delete(TDTO pId);
+        public abstract void Delete(TDto pId);
 
-        public abstract IList<TDTO> GetAll();
+        public abstract IList<TDto> GetAll();
 
-        public abstract void Save(TDTO pDTO);
+        public abstract void Save(TDto pDTO);
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
@@ -39,6 +39,15 @@ namespace TpFinalTDP2015.Service.Controllers
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
                 // TODO: set large fields to null.
+
+
+                //TODO necesito probar asi que POR AHORA esto queda aca
+
+                if (this.iUoW != null)
+                {
+                    this.iUoW.Dispose();
+                    this.iUoW = null;
+                }
 
                 disposedValue = true;
             }
@@ -56,7 +65,7 @@ namespace TpFinalTDP2015.Service.Controllers
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
             // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
+             GC.SuppressFinalize(this);
         }
         #endregion
     }

@@ -15,18 +15,31 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : Form, IAddModifyViewForm
     {
-        DateIntervalController dateIntervalController = new DateIntervalController();
+        DateIntervalController dateIntervalController;
         //TODO ajustar ventana para poder agregar intervalos y slides
         private CampaignDTO iOriginalCampaign = new CampaignDTO();
 
         public CampaignDTO Campaign
         {
             get { return this.iOriginalCampaign; }
+            //TODO Para que se usa esta propiedad? o quedo para usarse en algun momento jaja? porque es public?
         }
+
+        
         public AgregarModificarCampaña()
         {
             InitializeComponent();
-            iOriginalCampaign.ActiveIntervals = new List<DateIntervalDTO>();
+        }
+
+        private DateIntervalController DateIntervalController
+        {
+            get
+            {
+                return (DateIntervalController)
+                    ControllerFactory.
+                    Instance.
+                    GetController<DateIntervalDTO>();
+            }
         }
 
         void IAddModifyViewForm.Agregar(IDTO pNewCampaign)
@@ -103,41 +116,67 @@ namespace TpFinalTDP2015.UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            iOriginalCampaign.ActiveIntervals = new List<DateIntervalDTO>();
-            for (int i = 0; i < this.chlInterval.Items.Count; i++)
+            try
             {
-                if (this.chlInterval.GetItemChecked(i))
+                using (this.dateIntervalController = this.DateIntervalController)
                 {
-                    string lName = this.chlInterval.Items[i].ToString();
-                    IEnumerable<DateIntervalDTO> query =
-                        from lInterval in this.dateIntervalController.GetDateIntervals()
-                        where lInterval.Name == lName
-                        select lInterval;
-                    foreach (DateIntervalDTO dto in query)
+                    //TODO ponerle a los campos el prefijo i
+                    iOriginalCampaign.ActiveIntervals = new List<DateIntervalDTO>();
+                    for (int i = 0; i < this.chlInterval.Items.Count; i++)
                     {
-                        this.iOriginalCampaign.ActiveIntervals.Add(dto);
+                        if (this.chlInterval.GetItemChecked(i))
+                        {
+                            string lName = this.chlInterval.Items[i].ToString();
+                            IEnumerable<DateIntervalDTO> query =
+                                from lInterval in this.dateIntervalController.GetAll()
+                                where lInterval.Name == lName
+                                select lInterval;
+                            foreach (DateIntervalDTO dto in query)
+                            {
+                                this.iOriginalCampaign.ActiveIntervals.Add(dto);
+                            }
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
         private void AgregarModificarCampaña_Load(object sender, EventArgs e)
         {
-            int i = 0;
-            IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetDateIntervals();
-            IList<DateIntervalDTO> lCampaignIntervals = this.iOriginalCampaign.ActiveIntervals;
-            foreach (DateIntervalDTO lInterval in lIntervals)
+            try
             {
-                this.chlInterval.Items.Add(lInterval.Name);
-                if (lCampaignIntervals != null)
+                using (this.dateIntervalController = this.DateIntervalController)
                 {
-                    if (lCampaignIntervals.Contains(lInterval, new DateIntervalDTOComparer()))
+                    //TODO ponerle a los campos el prefijo i
+                    int i = 0;
+                    IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetAll();
+                    IList<DateIntervalDTO> lCampaignIntervals = this.iOriginalCampaign.ActiveIntervals;
+                    foreach (DateIntervalDTO lInterval in lIntervals)
                     {
-                        this.chlInterval.SetItemChecked(i, true);
+                        this.chlInterval.Items.Add(lInterval.Name);
+                        if (lCampaignIntervals != null)
+                        {
+                            if (lCampaignIntervals.Contains(lInterval, new DateIntervalDTOComparer()))
+                            {
+                                this.chlInterval.SetItemChecked(i, true);
+                            }
+                            i++;
+                        }
                     }
-                    i++;
                 }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            
         }
     }
 }

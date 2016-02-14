@@ -21,8 +21,6 @@ namespace TpFinalTDP2015.Service.Controllers
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<DateIntervalController>();
 
-
-
         public DateIntervalController(IUnitOfWork iUoW) : base(iUoW)
         {
             cLogger.Info("Fachada instanciada");
@@ -32,16 +30,6 @@ namespace TpFinalTDP2015.Service.Controllers
                 cLogger.InfoFormat("Usando {0} como implementacion de {1}", new[] { iUoW.GetType().Name, typeof(IUnitOfWork).Name });
 
                 iUoW.Commit();
-        }
-
-        public IList<TimeIntervalDTO> GetTimeIntervals(DateIntervalDTO pDateInterval)
-        {
-            IList<TimeIntervalDTO> lResult = new List<TimeIntervalDTO>();
-            foreach (TimeIntervalDTO timeInterval in pDateInterval.ActiveHours)
-            {
-                lResult.Add(timeInterval);
-            }
-            return lResult;
         }
 
         public override void Save(DateIntervalDTO pDateInterval)

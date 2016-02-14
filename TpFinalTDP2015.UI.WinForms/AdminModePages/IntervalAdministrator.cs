@@ -15,54 +15,101 @@ namespace TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Intervalos de Fechas")]
     public partial class IntervalAdministrator : AdminModePage
     {
-        DateIntervalController iController = new DateIntervalController();
+        DateIntervalController iController;
 
         DateIntervalDTO dateInterval;
 
         TimeIntervalDTO timeInterval;
+
         public IntervalAdministrator(): base()
         {
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+
+        private DateIntervalController Controller
         {
-            this.dateInterval = new DateIntervalDTO();
-            AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
-            this.dgvDateInterval.Agregar(ventana,this.dateInterval);
-            iController.SaveDateInterval(this.dateInterval);
-            this.CargarDateDataGrid();
+            get
+            {
+                return (DateIntervalController)
+                    ControllerFactory.
+                    Instance.
+                    GetController<DateIntervalDTO>();
+            }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            List<IDTO> intervalosAEliminar = new List<IDTO>();
-            foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
+            try
             {
-                intervalosAEliminar.Add((DateIntervalDTO)dgvDateInterval.GetItem(row.Index));
-            }
-            if (intervalosAEliminar.Count == 0)
-            {
-                MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                this.dgvDateInterval.Eliminar(intervalosAEliminar);
-                foreach (IDTO interval in intervalosAEliminar)
+                using (iController = this.Controller)
                 {
-                    iController.DeleteDateInterval((DateIntervalDTO)interval);
+                    this.dateInterval = new DateIntervalDTO();
+                    AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
+                    this.dgvDateInterval.Agregar(ventana, this.dateInterval);
+                    iController.Save(this.dateInterval);
+                    this.CargarDateDataGrid();
                 }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
             
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    List<IDTO> intervalosAEliminar = new List<IDTO>();
+                    foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
+                    {
+                        intervalosAEliminar.Add((DateIntervalDTO)dgvDateInterval.GetItem(row.Index));
+                    }
+                    if (intervalosAEliminar.Count == 0)
+                    {
+                        MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        this.dgvDateInterval.Eliminar(intervalosAEliminar);
+                        foreach (IDTO interval in intervalosAEliminar)
+                        {
+                            iController.Delete((DateIntervalDTO)interval);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         private void dgvDateInterval_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
-            AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
-            this.dgvDateInterval.Modificar(ventana, this.dateInterval);
-            iController.SaveDateInterval(this.dateInterval);
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    DataGridViewRow row = dgvDateInterval.CurrentRow;
+                    this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
+                    AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
+                    this.dgvDateInterval.Modificar(ventana, this.dateInterval);
+                    iController.Save(this.dateInterval);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         private void IntervalAdministrator_Load(object sender, EventArgs e)
@@ -73,23 +120,33 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void CargarDateDataGrid()
         {
-            IList<DateIntervalDTO> lList = this.iController.GetDateIntervals();
-            this.dgvDateInterval.AddToSource(lList.ToDTOList());
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    IList<DateIntervalDTO> lList = this.iController.GetAll();
+                    this.dgvDateInterval.AddToSource(lList.ToDTOList());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void CargarTimeDataGrid()
         {
             this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(0);
-            IList<TimeIntervalDTO> lTList = this.iController.GetTimeIntervals(this.dateInterval);
-            this.dgvTimeInterval.AddToSource(lTList.ToDTOList());
+            this.dgvTimeInterval.AddToSource(this.dateInterval.ActiveHours.ToDTOList());
         }
-
+        //TODO estos dos metodos son muy similares. No podes por ej cuando se carga todo setear el dgvDate en index 0 cosa de que se dispare auto el segundo metodo?
         private void dgvDateInterval_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
             this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
-            IList<TimeIntervalDTO> lList = this.iController.GetTimeIntervals(this.dateInterval);
-            this.dgvTimeInterval.AddToSource(lList.ToDTOList());
+            this.dgvTimeInterval.AddToSource(this.dateInterval.ActiveHours.ToDTOList());
+            //TODO Martin: porque es que se usa un campo date interval?, osea, se usa esa misma instancia en varios metodos como para justificarlo?
         }
 
         private void btnAddTimeInterval_Click_1(object sender, EventArgs e)

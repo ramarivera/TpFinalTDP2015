@@ -15,19 +15,32 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
-        DateIntervalController dateIntervalController = new DateIntervalController();
+        DateIntervalController dateIntervalController;
         StaticTextController staticTextController = new StaticTextController();
         RssSourcesController rssSourcesController = new RssSourcesController();
 
         private AdminBannerDTO iOriginalBanner = new AdminBannerDTO();
 
-        public AdminBannerDTO Banner
-        {
-            get { return this.iOriginalBanner; }
-        }
+        
         public AgregarModificarBanner()
         {
             InitializeComponent();
+        }
+
+        private DateIntervalController DateIntervalController
+        {
+            get
+            {
+                return (DateIntervalController)
+                    ControllerFactory.
+                    Instance.
+                    GetController<DateIntervalDTO>();
+            }
+        }
+
+        public AdminBannerDTO Banner
+        {
+            get { return this.iOriginalBanner; }
         }
 
         void IAddModifyViewForm.Agregar(IDTO pNewBanner)
@@ -103,104 +116,128 @@ namespace TpFinalTDP2015.UI
 
         private void AgregarModificarBanner_Load(object sender, EventArgs e)
         {
-            int i = 0;
-            IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetDateIntervals();
-            IList<StaticTextDTO> lTexts = this.staticTextController.GetStaticTexts();
-            IList<RssSourceDTO> lSources = this.rssSourcesController.GetRssSources();
-            IList<DateIntervalDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
-            IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
-            IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
+            try
+            {
+                using (this.dateIntervalController = this.DateIntervalController)
+                {
+                    int i = 0;
+                    IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetAll();
+                    IList<StaticTextDTO> lTexts = this.staticTextController.GetStaticTexts();
+                    IList<RssSourceDTO> lSources = this.rssSourcesController.GetRssSources();
+                    IList<DateIntervalDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
+                    IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
+                    IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
 
-            foreach (DateIntervalDTO lInterval in lIntervals)
-            {
-                this.chlInterval.Items.Add(lInterval.Name);
-                if (lBannerIntervals != null)
-                {
-                    if (lBannerIntervals.Contains(lInterval,new DateIntervalDTOComparer()))
+                    foreach (DateIntervalDTO lInterval in lIntervals)
                     {
-                        this.chlInterval.SetItemChecked(i, true);
+                        this.chlInterval.Items.Add(lInterval.Name);
+                        if (lBannerIntervals != null)
+                        {
+                            if (lBannerIntervals.Contains(lInterval, new DateIntervalDTOComparer()))
+                            {
+                                this.chlInterval.SetItemChecked(i, true);
+                            }
+                            i++;
+                        }
                     }
-                    i++;
+                    i = 0;
+                    foreach (RssSourceDTO lSource in lSources)
+                    {
+                        this.chlSources.Items.Add(lSource.Title);
+                        if (lBannerSources != null)
+                        {
+                            if (lBannerSources.Contains(lSource, new RssSourceDTOComparer()))
+                            {
+                                this.chlSources.SetItemChecked(i, true);
+                            }
+                            i++;
+                        }
+                    }
+                    i = 0;
+                    foreach (StaticTextDTO lText in lTexts)
+                    {
+                        this.chlTexts.Items.Add(lText.Title);
+                        if (lBannerTexts != null)
+                        {
+                            if (lBannerTexts.Contains(lText, new StaticTextDTOComparer()))
+                            {
+                                this.chlTexts.SetItemChecked(i, true);
+                            }
+                            i++;
+                        }
+                    }
                 }
             }
-            i = 0;
-            foreach (RssSourceDTO lSource in lSources)
+            catch (Exception)
             {
-                this.chlSources.Items.Add(lSource.Title);
-                if(lBannerSources != null)
-                {
-                    if (lBannerSources.Contains(lSource, new RssSourceDTOComparer()))       
-                    {
-                        this.chlSources.SetItemChecked(i, true);
-                    }
-                    i++;
-                }
+
+                throw;
             }
-            i = 0;
-            foreach (StaticTextDTO lText in lTexts)
-            {
-                this.chlTexts.Items.Add(lText.Title);
-                if (lBannerTexts != null)
-                {
-                    if (lBannerTexts.Contains(lText, new StaticTextDTOComparer()))
-                    {
-                        this.chlTexts.SetItemChecked(i, true);
-                    }
-                    i++;
-                }
-            }
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            iOriginalBanner.ActiveIntervals = new List<DateIntervalDTO>();
-            for (int i = 0; i < this.chlInterval.Items.Count; i++)
+            try
             {
-                if (this.chlInterval.GetItemChecked(i))
+                using (dateIntervalController = this.DateIntervalController)
                 {
-                    string lName = this.chlInterval.Items[i].ToString();
-                    IEnumerable<DateIntervalDTO> query =
-                        from lInterval in this.dateIntervalController.GetDateIntervals()
-                        where lInterval.Name == lName
-                        select lInterval;
-                    foreach (DateIntervalDTO dto in query)
+                    iOriginalBanner.ActiveIntervals = new List<DateIntervalDTO>();
+                    for (int i = 0; i < this.chlInterval.Items.Count; i++)
                     {
-                        this.iOriginalBanner.ActiveIntervals.Add(dto);
+                        if (this.chlInterval.GetItemChecked(i))
+                        {
+                            string lName = this.chlInterval.Items[i].ToString();
+                            IEnumerable<DateIntervalDTO> query =
+                                from lInterval in this.dateIntervalController.GetAll()
+                                where lInterval.Name == lName
+                                select lInterval;
+                            foreach (DateIntervalDTO dto in query)
+                            {
+                                this.iOriginalBanner.ActiveIntervals.Add(dto);
+                            }
+                        }
+                    }
+                    iOriginalBanner.Texts = new List<StaticTextDTO>();
+                    for (int i = 0; i < this.chlTexts.Items.Count; i++)
+                    {
+                        if (this.chlTexts.GetItemChecked(i))
+                        {
+                            string lTitle = this.chlTexts.Items[i].ToString();
+                            IEnumerable<StaticTextDTO> query =
+                                from lText in this.staticTextController.GetStaticTexts()
+                                where lText.Title == lTitle
+                                select lText;
+                            foreach (StaticTextDTO dto in query)
+                            {
+                                this.iOriginalBanner.Texts.Add(dto);
+                            }
+                        }
+                    }
+                    iOriginalBanner.RssSources = new List<RssSourceDTO>();
+                    for (int i = 0; i < this.chlSources.Items.Count; i++)
+                    {
+                        if (this.chlSources.GetItemChecked(i))
+                        {
+                            string lTitle = this.chlSources.Items[i].ToString();
+                            IEnumerable<RssSourceDTO> query =
+                                from lSource in this.rssSourcesController.GetRssSources()
+                                where lSource.Title == lTitle
+                                select lSource;
+                            foreach (RssSourceDTO dto in query)
+                            {
+                                this.iOriginalBanner.RssSources.Add(dto);
+                            }
+                        }
                     }
                 }
             }
-            iOriginalBanner.Texts = new List<StaticTextDTO>();
-            for (int i = 0; i < this.chlTexts.Items.Count; i++)
+            catch (Exception)
             {
-                if (this.chlTexts.GetItemChecked(i))
-                {
-                    string lTitle = this.chlTexts.Items[i].ToString();
-                    IEnumerable<StaticTextDTO> query =
-                        from lText in this.staticTextController.GetStaticTexts()
-                        where lText.Title == lTitle
-                        select lText;
-                    foreach (StaticTextDTO dto in query)
-                    {
-                        this.iOriginalBanner.Texts.Add(dto);
-                    }
-                }
+
+                throw;
             }
-            iOriginalBanner.RssSources = new List<RssSourceDTO>();
-            for (int i = 0; i < this.chlSources.Items.Count; i++)
-            {
-                if (this.chlSources.GetItemChecked(i))
-                {
-                    string lTitle = this.chlSources.Items[i].ToString();
-                    IEnumerable<RssSourceDTO> query =
-                        from lSource in this.rssSourcesController.GetRssSources()
-                        where lSource.Title == lTitle
-                        select lSource;
-                    foreach (RssSourceDTO dto in query)
-                    {
-                        this.iOriginalBanner.RssSources.Add(dto);
-                    }
-                }
-            }
+            
         }
     }
 }

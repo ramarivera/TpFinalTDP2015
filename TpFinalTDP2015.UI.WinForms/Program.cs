@@ -24,45 +24,9 @@ namespace TpFinalTDP2015.UI
             AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"TpFinalTDP2015.config");
             AutoMapperConfiguration.Configure();
 
-
-         /*   DateIntervalController lController = new DateIntervalController();
-
-            IList<DateIntervalDTO> lList = lController.GetDateIntervals();
-
-            DateIntervalDTO lDto = lList.Where(dto => dto.Id == 3).FirstOrDefault();
-
-            lDto.Days.Clear();
-
-            lDto.Days.Add(Days.Domingo);
-            lDto.Days.Add(Days.Lunes);
-            lDto.Days.Add(Days.Martes);
-            lDto.Days.Add(Days.Miercoles);
-            lDto.Days.Add(Days.Jueves);
-            lDto.Days.Add(Days.Viernes);
-
-            lDto.Name = "xDD";
-
-            var tii = lDto.ActiveHours.Where(ti => ti.Id ==22).Single();
-           tii.EndTime = new TimeSpan(13, 0, 0);
-           // tii.CreationDate = new DateTime(2050, 07, 11, 12, 0, 0);
-            lDto.ActiveHours.Remove(lDto.ActiveHours.Where(ti => ti.Id ==23).Single());
-            lDto.ActiveHours.Add(new TimeIntervalDTO()
-            {
-                EndTime = new TimeSpan(17, 0, 0),
-                StartTime = new TimeSpan(13, 0, 0)
-            });
-
-           // lDto.Id = 0;
-
-            lController.SaveDateInterval(lDto); */
-
-
-
-
-
-           /* Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModoAdministrador());*/
+            Application.Run(new ModoAdministrador());
         }
     }
 }
