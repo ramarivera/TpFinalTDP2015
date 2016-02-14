@@ -9,7 +9,7 @@ using Microsoft.Practices.Unity;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Service.DTO;
 using AutoMapper;
-using TpFinalTDP2015.CrossCutting;
+
 
 namespace TpFinalTDP2015.Service.Controllers
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.CrossCutting.Enum
+namespace TpFinalTDP2015.Service.Enum
 {
     public enum Days
     {

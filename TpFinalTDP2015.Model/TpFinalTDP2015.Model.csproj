@@ -50,6 +50,7 @@
     <Compile Include="Campaign.cs" />
     <Compile Include="DateInterval.cs" />
     <Compile Include="Day.cs" />
+    <Compile Include="Enum\Days.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="RssItem.cs" />
@@ -61,12 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TpFinalTDP2015.CrossCutting\TpFinalTDP2015.CrossCutting.csproj">
-      <Project>{d6467cc0-d7e8-4153-924d-b347b759c8b5}</Project>
-      <Name>TpFinalTDP2015.CrossCutting</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

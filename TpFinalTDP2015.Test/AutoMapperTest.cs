@@ -20,6 +20,7 @@ namespace TpFinalTDP2015.Test
                 cfg.AddProfile<CampaignProfile>();
                 cfg.AddProfile<DateIntervalProfile>();
                 cfg.AddProfile<ModelDayProfile>();
+                cfg.AddProfile<ModelDaysProfile>();
                 cfg.AddProfile<RssItemProfile>();
                 cfg.AddProfile<RssSourceProfile>();
                 cfg.AddProfile<SlideProfile>();
@@ -37,6 +38,7 @@ namespace TpFinalTDP2015.Test
                 cfg.AddProfile<AdminBannerDTOProfile>();
                 cfg.AddProfile<CampaignDTOProfile>();
                 cfg.AddProfile<DateIntervalDTOProfile>();
+                cfg.AddProfile<ServiceDaysDTOProfile>();
                 cfg.AddProfile<RssItemDTOProfile>();
                 cfg.AddProfile<RssSourceDTOProfile>();
                 cfg.AddProfile<ServiceDaysProfile>();

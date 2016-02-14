@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.CrossCutting.Enum;
 
 namespace TpFinalTDP2015.Service.AutoMapper
 {
@@ -49,7 +48,7 @@ namespace TpFinalTDP2015.Service.AutoMapper
                     foreach (var item in lDto.Days)
                     {
                         lResult.AddActiveDay(
-                            Mapper.Map<Days, Day>(item)
+                            Mapper.Map<Service.Enum.Days, Day>(item)
                             );
                     }
 

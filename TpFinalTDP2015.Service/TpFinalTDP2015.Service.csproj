@@ -87,10 +87,12 @@
     <Compile Include="AutoMapper\DateTimeResolver.cs" />
     <Compile Include="AutoMapper\DayToServiceDaysConverter.cs" />
     <Compile Include="AutoMapper\ModelDayProfile.cs" />
+    <Compile Include="AutoMapper\ModelDaysProfile.cs" />
     <Compile Include="AutoMapper\OperativeBannerProfile.cs" />
     <Compile Include="AutoMapper\RssItemDTOProfile.cs" />
     <Compile Include="AutoMapper\RssItemProfile.cs" />
     <Compile Include="AutoMapper\RssSourceDTOProfile.cs" />
+    <Compile Include="AutoMapper\ServiceDaysDTOProfile.cs" />
     <Compile Include="AutoMapper\ServiceDaysProfile.cs" />
     <Compile Include="AutoMapper\ServiceDaysToDayConverter.cs" />
     <Compile Include="AutoMapper\SlideDTOProfile.cs" />
@@ -119,10 +121,12 @@
     <Compile Include="DTO\StaticTextDTO.cs" />
     <Compile Include="DTO\TimeIntervalDTO.cs" />
     <Compile Include="DTO\ValueAndDescription.cs" />
+    <Compile Include="Enum\Days.cs" />
     <Compile Include="Enum\EnumConversion.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="IoCUnityContainerLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AutoMapper\RssSourceProfile.cs" />
     <Compile Include="RSS\IRssReader.cs" />
@@ -131,13 +135,19 @@
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="TpFinalTDP2015.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
+    <None Include="Unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TpFinalTDP2015.CrossCutting\TpFinalTDP2015.CrossCutting.csproj">
-      <Project>{d6467cc0-d7e8-4153-924d-b347b759c8b5}</Project>
-      <Name>TpFinalTDP2015.CrossCutting</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">
       <Project>{633db5be-927e-45af-860f-4cf5b2ef6afd}</Project>
       <Name>TpFinalTDP2015.Model</Name>
