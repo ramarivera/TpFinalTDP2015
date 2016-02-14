@@ -84,6 +84,10 @@
     <Compile Include="DateIntervalControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TpFinalTDP2015.CrossCutting\TpFinalTDP2015.CrossCutting.csproj">
+      <Project>{d6467cc0-d7e8-4153-924d-b347b759c8b5}</Project>
+      <Name>TpFinalTDP2015.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">
       <Project>{633db5be-927e-45af-860f-4cf5b2ef6afd}</Project>
       <Name>TpFinalTDP2015.Model</Name>

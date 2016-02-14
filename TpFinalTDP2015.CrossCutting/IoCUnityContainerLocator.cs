@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Service
+namespace TpFinalTDP2015.CrossCutting
 {
-    class IoCUnityContainerLocator
+    public class IoCUnityContainerLocator
     {
         /// <summary>
         /// Instancia lazy del contenedor de IoC.
@@ -18,7 +18,7 @@ namespace TpFinalTDP2015.Service
             // Se crea la instancia del contenedor, configurando el mismo a través del archivo de configuración de la aplicación.
 
             IUnityContainer mUnityContainer = new UnityContainer();
-            
+
             mUnityContainer.LoadConfiguration();
 
             return mUnityContainer;

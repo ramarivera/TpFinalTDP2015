@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalTDP2015.CrossCutting.Enum;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Service.Enum;
 
@@ -18,7 +19,7 @@ namespace TpFinalTDP2015.Service.AutoMapper
 
             Day lTemp = (Day)pContext.SourceValue;
 
-            Days lResult = Mapper.Map<Model.Enum.Days, Days>(lTemp.Value);
+            Days lResult = lTemp.Value;
 
             return lResult;
         }

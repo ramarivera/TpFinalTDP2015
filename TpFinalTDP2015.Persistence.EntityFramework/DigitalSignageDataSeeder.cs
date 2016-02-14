@@ -5,19 +5,18 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalTDP2015.CrossCutting.Enum;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Model.Enum;
 
 namespace TpFinalTDP2015.Persistence.EntityFramework
 {
-    class DigitalSignageInitializer : System.Data.Entity.DropCreateDatabaseAlways<DigitalSignageContext>
+    class DigitalSignageDataSeeder
     {
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
 
-
-        protected override void Seed(DigitalSignageContext pContext)
+        public static void SeedData(DigitalSignageContext pContext)
         {
-            cLogger.Debug("Corriendo metodo Seed, super clase: " + this.GetType().BaseType.Name);
+            //   cLogger.Debug("Corriendo metodo Seed, super clase: " + this.GetType().BaseType.Name);
             SeedDays(pContext);
             SeedDateIntervals(pContext);
             SeedTimeIntervals(pContext);
@@ -28,20 +27,20 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             //  SeedSlides(pContext);
 
             cLogger.InfoFormat("Metodo Seed terminado \n\n\n\n\n\n");
-
         }
 
-        private void SeedStaticTexts(DigitalSignageContext pContext)
+
+        private static void SeedStaticTexts(DigitalSignageContext pContext)
         {
             IList<StaticText> lStaticTextList = new List<StaticText>();
-            
+
             for (int i = 0; i < 10; i++)
             {
                 StaticText lStaticText = new StaticText()
                 {
                     Title = String.Format("Texto {0}", i),
                     Description = String.Format("Texto del {0}", DateTime.Now),
-                    Text = String.Format("Texto {0} del {1}", i,DateTime.Now)
+                    Text = String.Format("Texto {0} del {1}", i, DateTime.Now)
                 };
                 lStaticTextList.Add(lStaticText);
             }
@@ -50,12 +49,12 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             pContext.SaveChanges();
         }
 
-        private void SeedSlides(DigitalSignageContext pContext)
+        private static void SeedSlides(DigitalSignageContext pContext)
         {
             throw new NotImplementedException();
         }
 
-        private void SeedRssSources(DigitalSignageContext pContext)
+        private static void SeedRssSources(DigitalSignageContext pContext)
         {
             RssSource lRssSource1 = new RssSource()
             {
@@ -84,7 +83,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             pContext.SaveChanges();
         }
 
-        private void SeedBanners(DigitalSignageContext pContext)
+        private static void SeedBanners(DigitalSignageContext pContext)
         {
             IList<DateInterval> lDateIntervalList = pContext.DateIntervals.ToList();
             Banner lBanner1 = new Banner()
@@ -93,7 +92,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 Description = "Noticias de la actualidad deportiva, provenientes de distintas fuentes. Tambien contiene otros textos útiles",
                 //falta contenido, pero eso falta tratar los rss
             };
-            
+
             var query = from interval in lDateIntervalList
                         where interval.ActiveDays.Count() == 5
                         select interval;
@@ -110,7 +109,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             pContext.Banners.Add(lBanner1);
         }
 
-        private void SeedCampaigns(DigitalSignageContext pContext)
+        private static void SeedCampaigns(DigitalSignageContext pContext)
         {
             IList<DateInterval> lDateIntervalList = pContext.DateIntervals.ToList();
 
@@ -138,8 +137,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             };
 
             query = from interval in lDateIntervalList
-                        where interval.ActiveFrom <= new DateTime(2016, 02, 01)
-                        select interval;
+                    where interval.ActiveFrom <= new DateTime(2016, 02, 01)
+                    select interval;
 
             foreach (var interval in query)
             {
@@ -155,11 +154,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         }
 
-        private void SeedTimeIntervals(DigitalSignageContext pContext)
+        private static void SeedTimeIntervals(DigitalSignageContext pContext)
         {
             IList<DateInterval> lDateIntervalList = pContext.Set<DateInterval>().ToList();
 
-            for (int i = 0; i < 20; i+=2)
+            for (int i = 0; i < 20; i += 2)
             {
                 TimeInterval lTimeInterval = new TimeInterval()
                 {
@@ -200,7 +199,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             pContext.SaveChanges();
         }
 
-        private void SeedDateIntervals(DigitalSignageContext pContext)
+        private static void SeedDateIntervals(DigitalSignageContext pContext)
         {
             IList<Day> lDayList = pContext.Days.ToList();
             IList<TimeInterval> lTimeIntervalList = pContext.TimeIntervals.ToList();
@@ -209,7 +208,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             {
                 Name = "Lunes a Viernes, 08am a 12am",
                 ActiveUntil = new DateTime(2016, 06, 01),
-                ActiveFrom = new DateTime(2016,05,01),
+                ActiveFrom = new DateTime(2016, 05, 01),
             };
 
             lDateInterval1.AddActiveDay(lDayList[1]);
@@ -218,11 +217,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             lDateInterval1.AddActiveDay(lDayList[4]);
             lDateInterval1.AddActiveDay(lDayList[5]);
 
-           /* lDateInterval1.AddActiveHours
-            (
-                //lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(12, 0, 0))
-                lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(9, 0, 0))
-            );*/
+            /* lDateInterval1.AddActiveHours
+             (
+                 //lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(12, 0, 0))
+                 lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(9, 0, 0))
+             );*/
 
             DateInterval lDateInterval2 = new DateInterval()
             {
@@ -231,14 +230,14 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 ActiveFrom = new DateTime(2016, 02, 01)
             };
 
-           /* var query = from interval in lTimeIntervalList
-                        where interval.Start < new TimeSpan(12, 0, 0)
-                        select interval;
+            /* var query = from interval in lTimeIntervalList
+                         where interval.Start < new TimeSpan(12, 0, 0)
+                         select interval;
 
-            foreach (var interval in query)
-            {
-                lDateInterval2.AddActiveHours(interval);
-            }*/
+             foreach (var interval in query)
+             {
+                 lDateInterval2.AddActiveHours(interval);
+             }*/
 
             lDateInterval2.AddActiveDay(lDayList[0]);
             lDateInterval2.AddActiveDay(lDayList[6]);
@@ -250,14 +249,14 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 ActiveFrom = new DateTime(2016, 10, 01),
             };
 
-          /*  query = from interval in lTimeIntervalList
-                        where interval.End > new TimeSpan(15, 0, 0)
-                        select interval;
+            /*  query = from interval in lTimeIntervalList
+                          where interval.End > new TimeSpan(15, 0, 0)
+                          select interval;
 
-            foreach (var interval in query)
-            {
-                lDateInterval3.AddActiveHours(interval);
-            }*/
+              foreach (var interval in query)
+              {
+                  lDateInterval3.AddActiveHours(interval);
+              }*/
 
             lDateInterval3.AddActiveDay(lDayList[3]);
 
@@ -266,15 +265,15 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             pContext.SaveChanges();
         }
 
-        private void SeedDays(DigitalSignageContext pContext)
+        private static void SeedDays(DigitalSignageContext pContext)
         {
-            Day lDay1 = new Day() {Value = Model.Enum.Days.Domingo };
-            Day lDay2 = new Day() {Value = Model.Enum.Days.Lunes };
-            Day lDay3 = new Day() {Value = Model.Enum.Days.Martes };
-            Day lDay4 = new Day() {Value = Model.Enum.Days.Miercoles };
-            Day lDay5 = new Day() {Value = Model.Enum.Days.Jueves };
-            Day lDay6 = new Day() {Value = Model.Enum.Days.Viernes };
-            Day lDay7 = new Day() {Value = Model.Enum.Days.Sabado };
+            Day lDay1 = new Day() { Value = Days.Domingo };
+            Day lDay2 = new Day() { Value = Days.Lunes };
+            Day lDay3 = new Day() { Value = Days.Martes };
+            Day lDay4 = new Day() { Value = Days.Miercoles };
+            Day lDay5 = new Day() { Value = Days.Jueves };
+            Day lDay6 = new Day() { Value = Days.Viernes };
+            Day lDay7 = new Day() { Value = Days.Sabado };
 
             IList<Day> lList = new List<Day>()
                 {

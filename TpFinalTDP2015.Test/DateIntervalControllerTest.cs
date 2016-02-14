@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TpFinalTDP2015.CrossCutting.Enum;
 using TpFinalTDP2015.Service;
 using TpFinalTDP2015.Service.Controllers;
 using TpFinalTDP2015.Service.DTO;
@@ -63,6 +64,7 @@ namespace TpFinalTDP2015.Test
         [TestMethod]
         public void Test2()
         {
+            DateIntervalController lController = new DateIntervalController();
             Assert.IsTrue(true);
         }
 

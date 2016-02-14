@@ -9,8 +9,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalTDP2015.CrossCutting;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Persistence.EntityFramework.Configuration;
+using Microsoft.Practices.Unity;
 
 namespace TpFinalTDP2015.Persistence.EntityFramework
 {
@@ -32,7 +34,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         public DigitalSignageContext() : base()
         {
-            Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
+            Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializerAlwaysDrop());
 
            // cLogger.Info("Conexion establecida: ConnectionString" + this.Database.Connection.ConnectionString);
 
@@ -46,14 +48,14 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             // this.Configuration.LazyLoadingEnabled = false;
             this.Database.Log = (str => LogManager.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
             
-            Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
+            Database.SetInitializer<DigitalSignageContext>(
+                IoCUnityContainerLocator.
+                Container.
+                Resolve<IDatabaseInitializer<DigitalSignageContext>>());
 
             // cLogger.InfoFormat("Deberia estarme conectando usando \"{0}\"", pConnectionString);
             // cLogger.InfoFormat("Conexion establecida: {0}", this.Database.Connection.ConnectionString);
             cLogger.InfoFormat("Conexion establecida a: {0}", pConnectionString);
-
-           
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
