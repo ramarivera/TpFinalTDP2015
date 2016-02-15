@@ -23,6 +23,8 @@ namespace TpFinalTDP2015.Service.Controllers
 
         public abstract IList<TDto> GetAll();
 
+        public abstract TDto Get(int pId);
+
         public abstract void Save(TDto pDTO);
 
         #region IDisposable Support
@@ -67,6 +69,7 @@ namespace TpFinalTDP2015.Service.Controllers
             // TODO: uncomment the following line if the finalizer is overridden above.
              GC.SuppressFinalize(this);
         }
+
         #endregion
     }
 }

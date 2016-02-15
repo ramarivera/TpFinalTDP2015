@@ -120,5 +120,17 @@ namespace TpFinalTDP2015.Service.Controllers
             return lResult.ToList<DateIntervalDTO>();
         }
 
+        public override DateIntervalDTO Get(int pId)
+        {
+            DateIntervalDTO lResult = new DateIntervalDTO();
+
+            IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+
+            var lTemp = lRepo.GetByID(pId);
+
+            lResult = Mapper.Map<DateInterval, DateIntervalDTO>(lTemp);
+
+            return lResult;
+        }
     }
 }
