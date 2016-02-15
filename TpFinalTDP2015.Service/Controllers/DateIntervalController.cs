@@ -23,13 +23,7 @@ namespace TpFinalTDP2015.Service.Controllers
 
         public DateIntervalController(IUnitOfWork iUoW) : base(iUoW)
         {
-            cLogger.Info("Fachada instanciada");
-
-                iUoW.BeginTransaction();
-
-                cLogger.InfoFormat("Usando {0} como implementacion de {1}", new[] { iUoW.GetType().Name, typeof(IUnitOfWork).Name });
-
-                iUoW.Commit();
+            
         }
 
         public override void Save(DateIntervalDTO pDateInterval)

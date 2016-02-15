@@ -103,7 +103,9 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             if (this.iTransaction == null)
             {
                 if (this.iTransaction != null)
+                {
                     this.iTransaction.Dispose();
+                }
 
                 this.iTransaction = this.iContext.Database.BeginTransaction(pIsolationLevel);
             }
@@ -114,12 +116,15 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             try
             {
                 this.iContext.SaveChanges();
+
+               // this.iTransaction.Rollback();
+
                 this.iTransaction.Commit();
             }
             catch (Exception e)
             {
                 //TODO convertir excepcion de EF a excepcion general de persistencia y arrojarla
-                this.iTransaction.Rollback();
+                //this.iTransaction.Rollback();
                 throw e;
             }
         }

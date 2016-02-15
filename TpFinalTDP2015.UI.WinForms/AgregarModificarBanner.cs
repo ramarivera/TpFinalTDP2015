@@ -33,7 +33,6 @@ namespace TpFinalTDP2015.UI
             {
                 return (DateIntervalController)
                     ControllerFactory.
-                    Instance.
                     GetController<DateIntervalDTO>();
             }
         }

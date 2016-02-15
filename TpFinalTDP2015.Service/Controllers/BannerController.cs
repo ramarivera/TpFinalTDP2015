@@ -24,17 +24,6 @@ namespace TpFinalTDP2015.Service.Controllers
 
         public BannerController()
         {
-            cLogger.Info("Fachada instanciada");
-
-            using (iUoW = GetUnitOfWork())
-            {
-                iUoW.BeginTransaction();
-
-                cLogger.InfoFormat("Usando {0} como implementacion de {1}", new[] { iUoW.GetType().Name, typeof(IUnitOfWork).Name });
-
-
-                iUoW.Commit();
-            }
         }
 
         private IUnitOfWork GetUnitOfWork()
