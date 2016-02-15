@@ -17,6 +17,6 @@ namespace TpFinalTDP2015.Service.Controllers
 
         void Delete(TDto pDTO);
 
-        void Save(TDto pDTO);
+        int Save(TDto pDTO);
     }
 }

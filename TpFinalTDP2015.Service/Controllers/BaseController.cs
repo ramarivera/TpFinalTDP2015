@@ -25,7 +25,7 @@ namespace TpFinalTDP2015.Service.Controllers
 
         public abstract TDto Get(int pId);
 
-        public abstract void Save(TDto pDTO);
+        public abstract int Save(TDto pDTO);
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
