@@ -12,16 +12,14 @@ namespace TpFinalTDP2015.Test
     [TestClass]
     public class DateIntervalControllerTest
     {
-
-        // Use ClassInitialize to run code before running the first test in the class
         [ClassInitialize()]
         public static void ClassInitialize(TestContext testContext)
         {
-          //  AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
+            //  AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
             AutoMapperConfiguration.Configure();
         }
 
-        private DateIntervalController Controller
+        DateIntervalController Controller
         {
             get
             {
@@ -31,7 +29,7 @@ namespace TpFinalTDP2015.Test
             }
         }
 
-        public void BaseAssertAreEqual(DateIntervalDTO lDto,DateIntervalDTO lResult)
+        void BaseAssertAreEqual(DateIntervalDTO lDto, DateIntervalDTO lResult)
         {
             Assert.AreEqual(lDto.Id, lResult.Id);
             Assert.AreEqual(lDto.Name, lResult.Name);
@@ -48,7 +46,7 @@ namespace TpFinalTDP2015.Test
             }
         }
 
-        public void AssertAreEqualForAdding(DateIntervalDTO lDto,DateIntervalDTO lResult)
+        void AssertAreEqualForAdding(DateIntervalDTO lDto, DateIntervalDTO lResult)
         {
             BaseAssertAreEqual(lDto, lResult);
 
@@ -61,7 +59,7 @@ namespace TpFinalTDP2015.Test
             }
         }
 
-        public void AssertAreEqualForUpdating(DateIntervalDTO lDto, DateIntervalDTO lResult)
+        void AssertAreEqualForUpdating(DateIntervalDTO lDto, DateIntervalDTO lResult)
         {
             BaseAssertAreEqual(lDto, lResult);
 
@@ -80,205 +78,188 @@ namespace TpFinalTDP2015.Test
         [TestMethod]
         public void DateIntervalController_NewInterval()
         {
+            // Arrange
+            string lNewName = "Crece desde el pie";
+            DateTime lNewActiveFrom = new DateTime(2016, 02, 01);
+            DateTime lNewActiveUntil = new DateTime(2016, 02, 29);
+            TimeSpan lNewStartTime = new TimeSpan(08, 0, 0);
+            TimeSpan lNewEndTime = new TimeSpan(10, 0, 0);
+
             DateIntervalController lController = this.Controller;
+            DateIntervalDTO lResult;
+            DateIntervalDTO lDto;
 
-            DateIntervalDTO lDto = new DateIntervalDTO();
 
-            lDto.ActiveFrom = new DateTime(2016, 02, 01);
-            lDto.ActiveUntil = new DateTime(2016, 02, 29);
-
-            lDto.Days.Add(Days.Lunes);
-            lDto.Days.Add(Days.Miercoles);
-            lDto.Days.Add(Days.Viernes);
-
-            lDto.Name = "Crece desde el pie";
-
-            lDto.ActiveHours.Add(new TimeIntervalDTO()
+            // Act
+            lDto = new DateIntervalDTO()
             {
-                EndTime = new TimeSpan(10, 0, 0),
-                StartTime = new TimeSpan(08, 0, 0)
-            });
+                Name = lNewName,
+                ActiveUntil = lNewActiveUntil,
+                ActiveFrom = lNewActiveFrom,
+                Days = new List<Days>()
+                {
+                    Days.Lunes,
+                    Days.Miercoles,
+                    Days.Viernes,
+                },
+                ActiveHours = new List<TimeIntervalDTO>()
+                {
+                    new TimeIntervalDTO()
+                    {
+                        EndTime = lNewEndTime,
+                        StartTime = lNewStartTime
+                    }
+                }
+            };
 
             lDto.Id = lController.Save(lDto);
 
-            DateIntervalDTO lResult = lController.Get(lDto.Id);
-
+            // Assert
+            lResult = lController.Get(lDto.Id);
             AssertAreEqualForAdding(lDto, lResult);
 
-
         }
+
         [TestMethod]
         public void DateIntervalController_DateModify()
         {
+            // Arrange
+            int lId = 1;
+            DateTime lNewActiveFrom = new DateTime(2016, 03, 01);
+
             DateIntervalController lController = this.Controller;
+            DateIntervalDTO lResult;
+            DateIntervalDTO lDto;
 
-            IList<DateIntervalDTO> lList = lController.GetAll();
-
-            DateIntervalDTO lDto = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
-            lDto.ActiveFrom = new DateTime(2016, 03, 01);
-
+            // Act
+            lDto = lController.Get(lId);
+            lDto.ActiveFrom = lNewActiveFrom;
             lController.Save(lDto);
 
-            lList = lController.GetAll();
-            DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
+            // Assert
+            lResult = lController.Get(lId);
             this.AssertAreEqualForUpdating(lDto, lResult);
-            
         }
 
         [TestMethod]
         public void DateIntervalController_DaysModify()
         {
+            // Arrange
+            int lId = 1;
+            DateTime lNewActiveFrom = new DateTime(2016, 03, 01);
+
             DateIntervalController lController = this.Controller;
+            DateIntervalDTO lResult;
+            DateIntervalDTO lDto = lController.Get(lId);
 
-            IList<DateIntervalDTO> lList = lController.GetAll();
+            IList<Days> lDayList = new List<Days>() { Days.Lunes, Days.Martes, Days.Jueves };
 
-            DateIntervalDTO lDto = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
-            lDto.Days.Clear();
-
-            lDto.Days.Add(Days.Lunes);
-            lDto.Days.Add(Days.Martes);
-            lDto.Days.Add(Days.Jueves);
-
+            // Act
+            lDto.Days = lDayList;
             lController.Save(lDto);
 
-            lList = lController.GetAll();
-            DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
+            // Assert
+            lResult = lController.Get(lId);
             this.AssertAreEqualForUpdating(lDto, lResult);
         }
 
         [TestMethod]
         public void DateIntervalController_TimeIntervalAdd()
         {
+            // Arrange
+            int lId = 1;
+            TimeSpan lNewEnd = new TimeSpan(22, 0, 0);
+            TimeSpan lNewStart = new TimeSpan(20, 0, 0);
+
             DateIntervalController lController = this.Controller;
+            DateIntervalDTO lResult;
+            DateIntervalDTO lDto;
+            TimeIntervalDTO lNewTime;
 
-            IList<DateIntervalDTO> lList = lController.GetAll();
+            // Act
+            lDto = lController.Get(lId);
 
-            DateIntervalDTO lDto = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
-            lDto.Name = "Lunes a Viernes, 08am a 12pm y 08pm a 10pm";
-
-            lDto.ActiveHours.Add(new TimeIntervalDTO()
+            lNewTime = new TimeIntervalDTO()
             {
-                EndTime = new TimeSpan(22, 0, 0),
-                StartTime = new TimeSpan(20, 0, 0)
-            });
+                EndTime = lNewEnd,
+                StartTime = lNewStart
+            };
 
+            lDto.ActiveHours.Add(lNewTime);
             lController.Save(lDto);
 
-            lList = lController.GetAll();
-            DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
+            // Assert
+            lResult = lController.Get(lId);
             this.AssertAreEqualForAdding(lDto, lResult);
         }
 
         [TestMethod]
         public void DateIntervalController_TimeIntervalModify()
         {
+            // Arrange
+            int lId = 1;
+            int lTimeId = 19;
+            TimeSpan lNewEnd = new TimeSpan(20, 0, 0);
+
             DateIntervalController lController = this.Controller;
+            DateIntervalDTO lDto;
+            DateIntervalDTO lResult;
+            TimeIntervalDTO lTimeInterval;
 
-            IList<DateIntervalDTO> lList = lController.GetAll();
-
-            DateIntervalDTO lDto = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
-            lDto.Name = "Lunes a Viernes, 08am a 13pm";
-
-            var timeInterval = lDto.ActiveHours.Where(ti => ti.EndTime.Hours == 19).Single();
-            timeInterval.EndTime = new TimeSpan(20, 0, 0);
-
+            // Act
+            lDto = lController.Get(lId);
+            lTimeInterval = lDto.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
+            lTimeInterval.EndTime = lNewEnd;
             lController.Save(lDto);
 
-            lList = lController.GetAll();
-            DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
+            // Assert
+            lResult = lController.Get(lId);
             this.AssertAreEqualForUpdating(lDto, lResult);
         }
 
         [TestMethod]
         public void DateIntervalController_TimeIntervalDelete()
         {
+            // Arrange
+            int lId = 1;
+            int lTimeId = 1;
+
             DateIntervalController lController = this.Controller;
+            DateIntervalDTO lDto;
+            DateIntervalDTO lResult;
+            TimeIntervalDTO lTimeInterval;
+            TimeIntervalDTO lRemoved;
 
-            IList<DateIntervalDTO> lList = lController.GetAll();
-
-            DateIntervalDTO lDto = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
-            lDto.ActiveHours.Remove(lDto.ActiveHours.Where(ti => ti.EndTime.Hours == 1).Single());
-
+            // Act
+            lDto = lController.Get(lId);
+            lTimeInterval = lDto.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
+            lDto.ActiveHours.Remove(lTimeInterval);
             lController.Save(lDto);
 
-            lList = lController.GetAll();
-            DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-            TimeIntervalDTO lRemoved = lResult.ActiveHours.Where(ti => ti.EndTime.Hours == 1).SingleOrDefault();
-
+            // Assert
+            lResult = lController.Get(lId);
+            lRemoved = lResult.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
             Assert.IsNull(lRemoved);
- 
         }
 
         [TestMethod]
         public void DateIntervalController_DeleteInterval()
         {
+            // Arrange
+            int lId = 1;
+
             DateIntervalController lController = this.Controller;
+            DateIntervalDTO lRemoved;
+            DateIntervalDTO lDto;
 
-            IList<DateIntervalDTO> lList = lController.GetAll();
-
-            DateIntervalDTO lDto = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
+            // Act
+            lDto = lController.Get(lId);
             lController.Delete(lDto);
 
-            DateIntervalDTO lRemoved = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-
+            // Assert
+            lRemoved = lController.Get(lId);
             Assert.IsNull(lRemoved);
         }
 
-      /*  [TestMethod]
-        public void Save()
-        {
-            DateIntervalController lController = new DateIntervalController();
-
-            IList<DateIntervalDTO> lList = lController.GetDateIntervals();
-
-            DateIntervalDTO lDto = lList.Where(dto => dto.Id == 3).FirstOrDefault();
-
-            lDto.Days.Clear();
-
-            lDto.Days.Add(Days.Domingo);
-            lDto.Days.Add(Days.Lunes);
-            lDto.Days.Add(Days.Martes);
-            lDto.Days.Add(Days.Miercoles);
-            lDto.Days.Add(Days.Jueves);
-            lDto.Days.Add(Days.Viernes);
-
-            lDto.Name = "xDD";
-
-            var tii = lDto.ActiveHours.Where(ti => ti.Id == 22).Single();
-            tii.EndTime = new TimeSpan(13, 0, 0);
-            // tii.CreationDate = new DateTime(2050, 07, 11, 12, 0, 0);
-            lDto.ActiveHours.Remove(lDto.ActiveHours.Where(ti => ti.Id == 23).Single());
-            lDto.ActiveHours.Add(new TimeIntervalDTO()
-            {
-                EndTime = new TimeSpan(17, 0, 0),
-                StartTime = new TimeSpan(13, 0, 0)
-            });
-
-            // lDto.Id = 0;
-
-            lController.SaveDateInterval(lDto);
-
-            Assert.IsTrue(true);
-
-        }
-
-        [TestMethod]
-        public void Test2()
-        {
-            Assert.IsTrue(true);
-         */
-
     }
-
-
 }
