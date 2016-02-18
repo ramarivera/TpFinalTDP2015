@@ -13,8 +13,10 @@ namespace TpFinalTDP2015.Service.Controllers
 
         IList<TDto> GetAll();
 
-        void Delete(TDto pId);
+        TDto Get(int pId);
 
-        void Save(TDto pDTO);
+        void Delete(TDto pDTO);
+
+        int Save(TDto pDTO);
     }
 }

@@ -34,7 +34,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
             {
                 return (DateIntervalController)
                     ControllerFactory.
-                    Instance.
                     GetController<DateIntervalDTO>();
             }
         }

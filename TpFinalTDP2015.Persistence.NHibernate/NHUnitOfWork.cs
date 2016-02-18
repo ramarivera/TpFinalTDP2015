@@ -49,7 +49,16 @@ namespace TpFinalTDP2015.Persistence.NHibernate
                             this.iRepositories[key] = null;
                         }
                         this.iRepositories.Clear();
-                        this.iRepositories = null;
+                    }
+
+                    if (this.iTransaction != null)
+                    {
+                        this.iTransaction.Dispose();
+                    }
+
+                    if (this.iSession != null)
+                    {
+                        this.iSession.Dispose();
                     }
                 }
                 else
@@ -61,17 +70,11 @@ namespace TpFinalTDP2015.Persistence.NHibernate
 
                 // Release the unmanaged resource in any case as they will not be 
                 // released by GC
-                if (this.iTransaction != null)
-                {
-                    this.iTransaction.Dispose();
-                    this.iTransaction = null;
-                }
 
-                if (this.iSession != null)
-                {
-                    this.iSession.Dispose();
-                    iSession = null;
-                }
+                this.iTransaction = null;
+                this.iSession = null;
+                this.iRepositories = null;
+
 
                 this.iDisposed = true;
             }

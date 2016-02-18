@@ -1,16 +1,16 @@
-﻿using System;
+﻿using AutoMapper;
+using Common.Logging;
+using Microsoft.Practices.Unity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Logging;
-using TpFinalTDP2015.Persistence.Interfaces;
-using Microsoft.Practices.Unity;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Service.DTO;
-using AutoMapper;
 using TpFinalTDP2015.Persistence.EntityFramework;
-using System.Linq.Expressions;
+using TpFinalTDP2015.Persistence.Interfaces;
+using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.Service.Controllers
 {
@@ -23,85 +23,87 @@ namespace TpFinalTDP2015.Service.Controllers
 
         public DateIntervalController(IUnitOfWork iUoW) : base(iUoW)
         {
-           
+
         }
 
-        public override void Save(DateIntervalDTO pDateInterval)
+        public override int Save(DateIntervalDTO pDateInterval)
         {
-                iUoW.BeginTransaction();
-                IRepository<TimeInterval> lTimeRepo = iUoW.GetRepository<TimeInterval>();
-                IRepository<DateInterval> lDateRepo = iUoW.GetRepository<DateInterval>();
-                IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
+            iUoW.BeginTransaction();
+            IRepository<TimeInterval> lTimeRepo = iUoW.GetRepository<TimeInterval>();
+            IRepository<DateInterval> lDateRepo = iUoW.GetRepository<DateInterval>();
+            IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
 
-                DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
+            DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
 
-                if (pDateInterval.Id == 0)
+            if (pDateInterval.Id == 0)
+            {
+                lDateRepo.Add(lDateInterval);
+            }
+            else
+            {
+                lDateRepo.Update(lDateInterval);
+
+
+                //   DateInterval lOrigDateInt = lDateRepo.GetAll(d => d.Id == lDateInterval.Id).Single();
+                DateInterval lOrigDateInt = lDateRepo.GetByID(lDateInterval.Id);
+
+
+
+
+                foreach (TimeInterval lHours in lDateInterval.ActiveHours)
                 {
-                    lDateRepo.Add(lDateInterval);
+                    if (lHours.Id == 0)
+                    {
+                        lOrigDateInt.AddActiveHours(lHours);
+                    }
+                    else
+                    {
+                        //lOrigDateInt.AddActiveHours(lHours);
+                        lTimeRepo.Update(lHours);
+                    }
                 }
-                else
+
+                //   lDateRepo.Update(lDateInterval);
+
+
+                foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
                 {
-                    lDateRepo.Update(lDateInterval);
-
-
-                 //   DateInterval lOrigDateInt = lDateRepo.GetAll(d => d.Id == lDateInterval.Id).Single();
-                    DateInterval lOrigDateInt = lDateRepo.GetByID(lDateInterval.Id);
-
-
-
-
-                    foreach (TimeInterval lHours in lDateInterval.ActiveHours)
+                    if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
                     {
-                        if (lHours.Id == 0)
-                        {
-                            lOrigDateInt.AddActiveHours(lHours);
-                        }
-                        else
-                        {
-                            //lOrigDateInt.AddActiveHours(lHours);
-                            lTimeRepo.Update(lHours);
-                        }
+                        lOrigDateInt.RemoveActiveHours(lOrigTimeInt);
+                        lTimeRepo.Delete(lOrigTimeInt.Id);
                     }
+                }
 
-                    //   lDateRepo.Update(lDateInterval);
+                /*  foreach (Day day in lOrigDateInt.ActiveDays.Reverse())
+                  {
+                      lOrigDateInt.RemoveActiveDay(day);
+                  }*/
 
+                lOrigDateInt.ActiveDays.Clear();
 
-                    foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
-                    {
-                        if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
-                        {
-                            lOrigDateInt.RemoveActiveHours(lOrigTimeInt);
-                            lTimeRepo.Delete(lOrigTimeInt.Id);
-                        }
-                    }
-
-                    /*  foreach (Day day in lOrigDateInt.ActiveDays.Reverse())
-                      {
-                          lOrigDateInt.RemoveActiveDay(day);
-                      }*/
-
-                    lOrigDateInt.ActiveDays.Clear();
-
-                    foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
-                    {
-                        lOrigDateInt.AddActiveDay(lDayRepo.GetByID(item));
-                        //  lDayRepo.Update(item);
-                    }
+                foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
+                {
+                    lOrigDateInt.AddActiveDay(lDayRepo.GetByID(item));
+                    //  lDayRepo.Update(item);
+                }
 
 
 
 
                 iUoW.Commit();
             }
+
+            return lDateInterval.Id;
         }
 
         public override void Delete(DateIntervalDTO pDateInterval)
         {
-                iUoW.BeginTransaction();
-                IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
-                DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
-                lRepo.Delete(lDateInterval.Id);
-                iUoW.Commit();
+            iUoW.BeginTransaction();
+            IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+            DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
+            lRepo.Delete(lDateInterval.Id);
+            iUoW.Commit();
         }
 
         //TODO hacer que entre un Expression<Func<IDTO, bool>> pPredicate = null y se pueda usar en el getall del repo
@@ -109,16 +111,28 @@ namespace TpFinalTDP2015.Service.Controllers
         {
             IList<DateIntervalDTO> lResult = new List<DateIntervalDTO>();
 
-                IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
-                IList<DateInterval> lTemp = lRepo.GetAll().ToList();
+            IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+            IList<DateInterval> lTemp = lRepo.GetAll().ToList();
 
-                foreach (var dateInterval in lTemp)
-                {
-                    DateIntervalDTO lDto = Mapper.Map<DateInterval, DateIntervalDTO>(dateInterval);
-                    lResult.Add(lDto);
-                }
+            foreach (var dateInterval in lTemp)
+            {
+                DateIntervalDTO lDto = Mapper.Map<DateInterval, DateIntervalDTO>(dateInterval);
+                lResult.Add(lDto);
+            }
             return lResult.ToList<DateIntervalDTO>();
         }
 
+        public override DateIntervalDTO Get(int pId)
+        {
+            DateIntervalDTO lResult = new DateIntervalDTO();
+
+            IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+
+            var lTemp = lRepo.GetByID(pId);
+
+            lResult = Mapper.Map<DateInterval, DateIntervalDTO>(lTemp);
+
+            return lResult;
+        }
     }
 }

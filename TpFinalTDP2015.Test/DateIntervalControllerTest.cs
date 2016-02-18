@@ -21,12 +21,25 @@ namespace TpFinalTDP2015.Test
             AutoMapperConfiguration.Configure();
         }
 
+        private DateIntervalController Controller
+        {
+            get
+            {
+                return (DateIntervalController)
+                    ControllerFactory.
+                    GetController<DateIntervalDTO>();
+            }
+        }
+
         public void BaseAssertAreEqual(DateIntervalDTO lDto,DateIntervalDTO lResult)
         {
+            Assert.AreEqual(lDto.Id, lResult.Id);
             Assert.AreEqual(lDto.Name, lResult.Name);
             Assert.AreEqual(lDto.ActiveFrom, lResult.ActiveFrom);
             Assert.AreEqual(lDto.ActiveUntil, lResult.ActiveUntil);
+
             Assert.AreEqual(lDto.Days.Count, lResult.Days.Count);
+
             int i = 0; int j = 0;
             while ((i < lDto.Days.Count) && (j < lResult.Days.Count))
             {
@@ -37,6 +50,8 @@ namespace TpFinalTDP2015.Test
 
         public void AssertAreEqualForAdding(DateIntervalDTO lDto,DateIntervalDTO lResult)
         {
+            BaseAssertAreEqual(lDto, lResult);
+
             int i = 0; int j = 0;
             while ((i < lDto.ActiveHours.Count) && (j < lResult.ActiveHours.Count))
             {
@@ -48,10 +63,13 @@ namespace TpFinalTDP2015.Test
 
         public void AssertAreEqualForUpdating(DateIntervalDTO lDto, DateIntervalDTO lResult)
         {
+            BaseAssertAreEqual(lDto, lResult);
+
+            Assert.AreEqual(lDto.ActiveHours.Count, lResult.ActiveHours.Count);
+
             int i = 0; int j = 0;
             while ((i < lDto.ActiveHours.Count) && (j < lResult.ActiveHours.Count))
             {
-                Assert.AreEqual(lDto.Id, lResult.Id);
                 Assert.AreEqual(lDto.CreationDate, lResult.CreationDate);
                 Assert.AreEqual(lDto.ActiveHours[i].StartTime, lResult.ActiveHours[j].StartTime);
                 Assert.AreEqual(lDto.ActiveHours[i].EndTime, lResult.ActiveHours[j].EndTime);
@@ -62,7 +80,7 @@ namespace TpFinalTDP2015.Test
         [TestMethod]
         public void DateIntervalController_NewInterval()
         {
-            DateIntervalController lController = (DateIntervalController)ControllerFactory.Instance.GetController<DateIntervalDTO>();
+            DateIntervalController lController = this.Controller;
 
             DateIntervalDTO lDto = new DateIntervalDTO();
 
@@ -81,14 +99,18 @@ namespace TpFinalTDP2015.Test
                 StartTime = new TimeSpan(08, 0, 0)
             });
 
-            lController.Save(lDto);
+            lDto.Id = lController.Save(lDto);
+
+            DateIntervalDTO lResult = lController.Get(lDto.Id);
+
+            AssertAreEqualForAdding(lDto, lResult);
 
 
         }
         [TestMethod]
         public void DateIntervalController_DateModify()
         {
-            DateIntervalController lController = (DateIntervalController)ControllerFactory.Instance.GetController<DateIntervalDTO>();
+            DateIntervalController lController = this.Controller;
 
             IList<DateIntervalDTO> lList = lController.GetAll();
 
@@ -101,7 +123,6 @@ namespace TpFinalTDP2015.Test
             lList = lController.GetAll();
             DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
 
-            this.BaseAssertAreEqual(lDto, lResult);
             this.AssertAreEqualForUpdating(lDto, lResult);
             
         }
@@ -109,7 +130,7 @@ namespace TpFinalTDP2015.Test
         [TestMethod]
         public void DateIntervalController_DaysModify()
         {
-            DateIntervalController lController = (DateIntervalController)ControllerFactory.Instance.GetController<DateIntervalDTO>();
+            DateIntervalController lController = this.Controller;
 
             IList<DateIntervalDTO> lList = lController.GetAll();
 
@@ -126,14 +147,13 @@ namespace TpFinalTDP2015.Test
             lList = lController.GetAll();
             DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
 
-            this.BaseAssertAreEqual(lDto, lResult);
             this.AssertAreEqualForUpdating(lDto, lResult);
         }
 
         [TestMethod]
         public void DateIntervalController_TimeIntervalAdd()
         {
-            DateIntervalController lController = (DateIntervalController)ControllerFactory.Instance.GetController<DateIntervalDTO>();
+            DateIntervalController lController = this.Controller;
 
             IList<DateIntervalDTO> lList = lController.GetAll();
 
@@ -152,14 +172,13 @@ namespace TpFinalTDP2015.Test
             lList = lController.GetAll();
             DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
 
-            this.BaseAssertAreEqual(lDto, lResult);
             this.AssertAreEqualForAdding(lDto, lResult);
         }
 
         [TestMethod]
         public void DateIntervalController_TimeIntervalModify()
         {
-            DateIntervalController lController = (DateIntervalController)ControllerFactory.Instance.GetController<DateIntervalDTO>();
+            DateIntervalController lController = this.Controller;
 
             IList<DateIntervalDTO> lList = lController.GetAll();
 
@@ -175,14 +194,13 @@ namespace TpFinalTDP2015.Test
             lList = lController.GetAll();
             DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
 
-            this.BaseAssertAreEqual(lDto, lResult);
             this.AssertAreEqualForUpdating(lDto, lResult);
         }
 
         [TestMethod]
         public void DateIntervalController_TimeIntervalDelete()
         {
-            DateIntervalController lController = (DateIntervalController)ControllerFactory.Instance.GetController<DateIntervalDTO>();
+            DateIntervalController lController = this.Controller;
 
             IList<DateIntervalDTO> lList = lController.GetAll();
 
@@ -194,7 +212,7 @@ namespace TpFinalTDP2015.Test
 
             lList = lController.GetAll();
             DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-            TimeIntervalDTO lRemoved = lResult.ActiveHours.Where(ti => ti.EndTime.Hours == 1).FirstOrDefault();
+            TimeIntervalDTO lRemoved = lResult.ActiveHours.Where(ti => ti.EndTime.Hours == 1).SingleOrDefault();
 
             Assert.IsNull(lRemoved);
  
@@ -203,7 +221,7 @@ namespace TpFinalTDP2015.Test
         [TestMethod]
         public void DateIntervalController_DeleteInterval()
         {
-            DateIntervalController lController = (DateIntervalController)ControllerFactory.Instance.GetController<DateIntervalDTO>();
+            DateIntervalController lController = this.Controller;
 
             IList<DateIntervalDTO> lList = lController.GetAll();
 

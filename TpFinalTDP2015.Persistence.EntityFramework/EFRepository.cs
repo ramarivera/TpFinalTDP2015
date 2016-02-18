@@ -37,7 +37,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         void IRepository<TEntity>.Delete(object pId)
         {
-            IRepository<TEntity> lRepo = (IRepository<TEntity>)this;
+            IRepository<TEntity> lRepo = this;
             TEntity entityToDelete = lRepo.GetByID(pId);
             lRepo.Delete(entityToDelete);
         }
@@ -48,7 +48,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             {
                 this.iDbSet.Attach(pEntityToDelete);
             }
-            this.iContext.Entry<TEntity>(pEntityToDelete).State = EntityState.Deleted;
+            this.iDbSet.Remove(pEntityToDelete);
+            //this.iContext.Entry<TEntity>(pEntityToDelete).State = EntityState.Deleted;
         }
 
         void IRepository<TEntity>.Update(TEntity pEntityToUpdate)
