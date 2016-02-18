@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Service.Controllers;
+using TpFinalTDP2015.UI.View;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
@@ -71,6 +72,14 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             IList<StaticTextDTO> lList = this.iController.GetStaticTexts();
             this.dgvStaticText.AddToSource(lList.ToDTOList());
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvStaticText.CurrentRow;
+            this.staticText = (StaticTextDTO)dgvStaticText.GetItem(row.Index);
+            StaticTextView ventana = new StaticTextView();
+            ventana.View(this.staticText);
         }
     }
 }
