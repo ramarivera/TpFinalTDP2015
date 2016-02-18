@@ -194,9 +194,9 @@ namespace TpFinalTDP2015.Test
 
             lList = lController.GetAll();
             DateIntervalDTO lResult = lList.Where(dto => dto.Id == 1).FirstOrDefault();
-            TimeIntervalDTO lRemoved = lResult.ActiveHours.Where(ti => ti.EndTime.Hours == 1).Single();
+            TimeIntervalDTO lRemoved = lResult.ActiveHours.Where(ti => ti.EndTime.Hours == 1).FirstOrDefault();
 
-            Assert.AreEqual(lRemoved, null);
+            Assert.IsNull(lRemoved);
  
         }
 
@@ -213,7 +213,7 @@ namespace TpFinalTDP2015.Test
 
             DateIntervalDTO lRemoved = lList.Where(dto => dto.Id == 1).FirstOrDefault();
 
-            Assert.AreEqual(lRemoved, null);
+            Assert.IsNull(lRemoved);
         }
 
       /*  [TestMethod]

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Service.Controllers;
+using TpFinalTDP2015.UI.View;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
@@ -26,7 +27,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
         private void btnAdd_Click(object sender, EventArgs e)
         {
             this.rssSource = new RssSourceDTO();
-            AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
+            AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
             this.dgvRSSSource.Agregar(ventana,this.rssSource);
             iController.SaveRssSource(this.rssSource);
         }
@@ -65,6 +66,14 @@ namespace TpFinalTDP2015.UI.AdminModePages
         {
             IList<RssSourceDTO> lList = this.iController.GetRssSources();
             this.dgvRSSSource.AddToSource(lList.ToDTOList());
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvRSSSource.CurrentRow;
+            this.rssSource = (RssSourceDTO)dgvRSSSource.GetItem(row.Index);
+            RssSourceView ventana = new RssSourceView();
+            ventana.View(this.rssSource);
         }
     }
 }

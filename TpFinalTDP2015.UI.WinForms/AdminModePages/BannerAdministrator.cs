@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Service.Controllers;
+using TpFinalTDP2015.UI.View;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
@@ -89,6 +90,14 @@ namespace TpFinalTDP2015.UI.AdminModePages
             AgregarModificarBanner ventana = new AgregarModificarBanner();
             this.dgvBanner.Modificar(ventana, this.banner);
             iController.SaveBanner(this.banner);
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvBanner.CurrentRow;
+            this.banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
+            BannerView ventana = new BannerView();
+            ventana.View(this.banner);
         }
     }
 }

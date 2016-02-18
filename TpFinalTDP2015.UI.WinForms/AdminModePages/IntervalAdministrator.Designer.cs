@@ -42,6 +42,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddTimeInterval = new System.Windows.Forms.Button();
             this.btnDeleteTimeInterval = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.grbDateInterval.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -118,14 +119,17 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnCount = 7;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.Controls.Add(this.btnAddDateInterval, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnDeleteDateInterval, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnView, 5, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 103);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -137,7 +141,7 @@
             // btnAddDateInterval
             // 
             this.btnAddDateInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddDateInterval.Location = new System.Drawing.Point(85, 3);
+            this.btnAddDateInterval.Location = new System.Drawing.Point(44, 3);
             this.btnAddDateInterval.Name = "btnAddDateInterval";
             this.btnAddDateInterval.Size = new System.Drawing.Size(76, 22);
             this.btnAddDateInterval.TabIndex = 0;
@@ -148,7 +152,7 @@
             // btnDeleteDateInterval
             // 
             this.btnDeleteDateInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDeleteDateInterval.Location = new System.Drawing.Point(249, 3);
+            this.btnDeleteDateInterval.Location = new System.Drawing.Point(167, 3);
             this.btnDeleteDateInterval.Name = "btnDeleteDateInterval";
             this.btnDeleteDateInterval.Size = new System.Drawing.Size(76, 22);
             this.btnDeleteDateInterval.TabIndex = 1;
@@ -239,6 +243,17 @@
             this.btnDeleteTimeInterval.UseVisualStyleBackColor = true;
             this.btnDeleteTimeInterval.Click += new System.EventHandler(this.btnDeleteTimeInterval_Click);
             // 
+            // btnView
+            // 
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnView.Location = new System.Drawing.Point(290, 3);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(76, 22);
+            this.btnView.TabIndex = 2;
+            this.btnView.Text = "Ver";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
             // IntervalAdministrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,5 +291,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Button btnAddTimeInterval;
         private System.Windows.Forms.Button btnDeleteTimeInterval;
+        private System.Windows.Forms.Button btnView;
     }
 }

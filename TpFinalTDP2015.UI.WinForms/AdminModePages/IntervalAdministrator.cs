@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TpFinalTDP2015.Service.Controllers;
 using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.UI.View;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
@@ -183,6 +184,14 @@ namespace TpFinalTDP2015.UI.AdminModePages
                     //TODO ver esto
                 }
             }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvDateInterval.CurrentRow;
+            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
+            DateIntervalView ventana = new DateIntervalView();
+            ventana.View(this.dateInterval);
         }
     }
 }
