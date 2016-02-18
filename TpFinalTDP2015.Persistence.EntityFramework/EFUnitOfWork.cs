@@ -55,9 +55,18 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                             this.iRepositories[key] = null;
                         }
                         this.iRepositories.Clear();
-                        this.iRepositories = null;
                     }
 
+                    if (this.iTransaction != null)
+                    {
+                        this.iTransaction.Dispose();
+                    }
+
+                    if (this.iContext != null)
+                    {
+                        this.iContext.Database.Connection.Close();
+                        this.iContext.Dispose();
+                    }
                 }
                 else
                 {
@@ -68,18 +77,10 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
                 // Release the unmanaged resource in any case as they will not be 
                 // released by GC
-                if (this.iTransaction != null)
-                {
-                    this.iTransaction.Dispose();
-                    this.iTransaction = null;
-                }
 
-                if (this.iContext != null)
-                {
-                    this.iContext.Database.Connection.Close();
-                    this.iContext.Dispose();
-                    this.iContext = null;
-                }
+                this.iTransaction = null;
+                this.iContext = null;
+                this.iRepositories = null;
 
                 this.iDisposed = true;
             }

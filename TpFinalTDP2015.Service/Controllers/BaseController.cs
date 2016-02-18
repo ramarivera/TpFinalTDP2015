@@ -37,6 +37,10 @@ namespace TpFinalTDP2015.Service.Controllers
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects).
+                    if (this.iUoW != null)
+                    {
+                        this.iUoW.Dispose();
+                    }
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
@@ -45,20 +49,17 @@ namespace TpFinalTDP2015.Service.Controllers
 
                 //TODO necesito probar asi que POR AHORA esto queda aca
 
-                if (this.iUoW != null)
-                {
-                    this.iUoW.Dispose();
-                    this.iUoW = null;
-                }
+                this.iUoW = null;
 
                 disposedValue = true;
             }
         }
 
         // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        ~BaseController() {
-          // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-          Dispose(false);
+        ~BaseController()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
         }
 
         // This code added to correctly implement the disposable pattern.
@@ -67,7 +68,7 @@ namespace TpFinalTDP2015.Service.Controllers
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
             // TODO: uncomment the following line if the finalizer is overridden above.
-             GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
 
         #endregion
