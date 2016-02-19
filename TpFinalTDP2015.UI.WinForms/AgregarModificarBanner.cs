@@ -17,7 +17,7 @@ namespace TpFinalTDP2015.UI
     {
         DateIntervalController dateIntervalController;
         StaticTextController staticTextController;
-        RssSourcesController rssSourcesController = new RssSourcesController();
+        RssSourceController rssSourcesController;
 
         private AdminBannerDTO iOriginalBanner = new AdminBannerDTO();
 
@@ -122,7 +122,7 @@ namespace TpFinalTDP2015.UI
                     int i = 0;
                     IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetAll();
                     IList<StaticTextDTO> lTexts = this.staticTextController.GetAll();
-                    IList<RssSourceDTO> lSources = this.rssSourcesController.GetRssSources();
+                    IList<RssSourceDTO> lSources = this.rssSourcesController.GetAll();
                     IList<DateIntervalDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
                     IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
                     IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
@@ -220,7 +220,7 @@ namespace TpFinalTDP2015.UI
                         {
                             string lTitle = this.chlSources.Items[i].ToString();
                             IEnumerable<RssSourceDTO> query =
-                                from lSource in this.rssSourcesController.GetRssSources()
+                                from lSource in this.rssSourcesController.GetAll()
                                 where lSource.Title == lTitle
                                 select lSource;
                             foreach (RssSourceDTO dto in query)

@@ -6,9 +6,9 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.Test
 {
-	[TestClass]
-	public class StaticTextControllerTest
-	{
+    [TestClass]
+    public class RssSourceControllerTest
+    {
         [ClassInitialize()]
         public static void ClassInitialize(TestContext testContext)
         {
@@ -16,43 +16,43 @@ namespace TpFinalTDP2015.Test
             AutoMapperConfiguration.Configure();
         }
 
-        StaticTextController Controller
+        RssSourceController Controller
         {
             get
             {
-                return (StaticTextController)
+                return (RssSourceController)
                     ControllerFactory.
-                    GetController<StaticTextDTO>();
+                    GetController<RssSourceDTO>();
             }
         }
 
-        void AssertAreEqual(StaticTextDTO lDto, StaticTextDTO lResult)
+        void AssertAreEqual(RssSourceDTO lDto, RssSourceDTO lResult)
         {
             Assert.AreEqual(lDto.Id, lResult.Id);
             Assert.AreEqual(lDto.Title, lResult.Title);
             Assert.AreEqual(lDto.Description, lResult.Description);
-            Assert.AreEqual(lDto.Text, lResult.Text);
+            Assert.AreEqual(lDto.URL, lResult.URL);
         }
 
         [TestMethod]
-        public void StaticTextController_NewText()
+        public void RssSourceController_NewSource()
         {
             // Arrange
-            string lTitle = "Confidencial";
-            string lDescription = "Información super secreta";
-            string lText = "Siempre que llovió, paró";
+            string lTitle = "Noticias de futbol ESPN";
+            string lDescription = "Noticias del ámbito futbolistico, siendo su fuente ESPN (en inglés)";
+            string lURL = "http://soccernet.espn.go.com/rss/news";
 
-            StaticTextController lController = this.Controller;
-            StaticTextDTO lResult;
-            StaticTextDTO lDto;
+            RssSourceController lController = this.Controller;
+            RssSourceDTO lResult;
+            RssSourceDTO lDto;
 
 
             // Act
-            lDto = new StaticTextDTO()
+            lDto = new RssSourceDTO()
             {
                 Title = lTitle,
                 Description = lDescription,
-                Text = lText
+                URL = lURL
             };
 
             lDto.Id = lController.Save(lDto);
@@ -63,15 +63,15 @@ namespace TpFinalTDP2015.Test
         }
 
         [TestMethod]
-        public void StaticTextController_TitleModify()
+        public void RssSourceController_TitleModify()
         {
             // Arrange
             int lId = 1;
-            string lTitle = "Texto 100";
+            string lTitle = "Muchas noticias";
 
-            StaticTextController lController = this.Controller;
-            StaticTextDTO lResult;
-            StaticTextDTO lDto;
+            RssSourceController lController = this.Controller;
+            RssSourceDTO lResult;
+            RssSourceDTO lDto;
 
             // Act
             lDto = lController.Get(lId);
@@ -84,15 +84,15 @@ namespace TpFinalTDP2015.Test
         }
 
         [TestMethod]
-        public void StaticTextController_DescriptionModify()
+        public void RssSourceController_DescriptionModify()
         {
             // Arrange
             int lId = 1;
-            string lDescription = "vamo a calmarno";
+            string lDescription = "Noticias políticas, fuente Todo Noticias";
 
-            StaticTextController lController = this.Controller;
-            StaticTextDTO lResult;
-            StaticTextDTO lDto;
+            RssSourceController lController = this.Controller;
+            RssSourceDTO lResult;
+            RssSourceDTO lDto;
 
             // Act
             lDto = lController.Get(lId);
@@ -105,19 +105,19 @@ namespace TpFinalTDP2015.Test
         }
 
         [TestMethod]
-        public void StaticTextController_TextModify()
+        public void RssSourceController_URLModify()
         {
             // Arrange
             int lId = 1;
-            string lText = "Aguante todo";
+            string lURL = "http://tn.com.ar/rss.xml";
 
-            StaticTextController lController = this.Controller;
-            StaticTextDTO lResult;
-            StaticTextDTO lDto;
+            RssSourceController lController = this.Controller;
+            RssSourceDTO lResult;
+            RssSourceDTO lDto;
 
             // Act
             lDto = lController.Get(lId);
-            lDto.Text = lText;
+            lDto.URL = lURL;
             lController.Save(lDto);
 
             // Assert
@@ -125,14 +125,14 @@ namespace TpFinalTDP2015.Test
             this.AssertAreEqual(lDto, lResult);
         }
 
-        public void StaticTextController_DeleteText()
+        public void RssSourceController_DeleteSource()
         {
             // Arrange
             int lId = 1;
 
-            StaticTextController lController = this.Controller;
-            StaticTextDTO lRemoved;
-            StaticTextDTO lDto;
+            RssSourceController lController = this.Controller;
+            RssSourceDTO lRemoved;
+            RssSourceDTO lDto;
 
             // Act
             lDto = lController.Get(lId);
