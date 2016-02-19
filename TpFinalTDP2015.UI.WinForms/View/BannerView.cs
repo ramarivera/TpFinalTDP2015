@@ -36,5 +36,29 @@ namespace TpFinalTDP2015.UI.View
                 this.ShowDialog();
             }
         }
+
+        private void dgvIntervals_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvIntervals.CurrentRow;
+            DateIntervalDTO lInterval = (DateIntervalDTO)dgvIntervals.GetItem(row.Index);
+            DateIntervalView ventana = new DateIntervalView();
+            ventana.View(lInterval);
+        }
+
+        private void dgvTexts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvTexts.CurrentRow;
+            StaticTextDTO lText = (StaticTextDTO)dgvTexts.GetItem(row.Index);
+            StaticTextView ventana = new StaticTextView();
+            ventana.View(lText);
+        }
+
+        private void dgvSources_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvSources.CurrentRow;
+            RssSourceDTO lSource = (RssSourceDTO)dgvSources.GetItem(row.Index);
+            RssSourceView ventana = new RssSourceView();
+            ventana.View(lSource);
+        }
     }
 }

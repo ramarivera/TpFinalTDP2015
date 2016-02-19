@@ -204,6 +204,7 @@
             this.dgvIntervals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvIntervals.Size = new System.Drawing.Size(306, 135);
             this.dgvIntervals.TabIndex = 0;
+            this.dgvIntervals.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIntervals_CellContentClick);
             // 
             // grbTextos
             // 
@@ -231,6 +232,7 @@
             this.dgvTexts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTexts.Size = new System.Drawing.Size(305, 135);
             this.dgvTexts.TabIndex = 0;
+            this.dgvTexts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTexts_CellContentClick);
             // 
             // grbFuentes
             // 
@@ -258,6 +260,7 @@
             this.dgvSources.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSources.Size = new System.Drawing.Size(306, 135);
             this.dgvSources.TabIndex = 0;
+            this.dgvSources.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSources_CellContentClick);
             // 
             // BannerView
             // 
