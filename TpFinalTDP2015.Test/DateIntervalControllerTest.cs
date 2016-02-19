@@ -1,11 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TpFinalTDP2015.Persistence.Interfaces;
 using TpFinalTDP2015.Service;
 using TpFinalTDP2015.Service.Controllers;
 using TpFinalTDP2015.Service.DTO;
 using TpFinalTDP2015.Service.Enum;
+using Microsoft.Practices.Unity;
 
 namespace TpFinalTDP2015.Test
 {
@@ -202,6 +205,8 @@ namespace TpFinalTDP2015.Test
             TimeSpan lNewEnd = new TimeSpan(20, 0, 0);
 
             DateIntervalController lController = this.Controller;
+            var mock = new Mock<DateIntervalController>(IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>());
+            
             DateIntervalDTO lDto;
             DateIntervalDTO lResult;
             TimeIntervalDTO lTimeInterval;
@@ -210,11 +215,14 @@ namespace TpFinalTDP2015.Test
             lDto = lController.Get(lId);
             lTimeInterval = lDto.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
             lTimeInterval.EndTime = lNewEnd;
-            lController.Save(lDto);
+            mock.Object.Save(lDto);
+            mock.Verify(foo => foo.Save(It.IsAny<DateIntervalDTO>()), Times.Once());
+            
 
             // Assert
             lResult = lController.Get(lId);
             this.AssertAreEqualForUpdating(lDto, lResult);
+
         }
 
         [TestMethod]

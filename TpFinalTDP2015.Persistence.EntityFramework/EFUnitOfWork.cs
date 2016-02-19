@@ -18,14 +18,9 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
         private bool iDisposed = false;
         private IDictionary<Type, Object> iRepositories;
 
-        public EFUnitOfWork()
+        public EFUnitOfWork(DigitalSignageContext pContext)
         {
-           /* string s1 = "name = \"DigitalSignageContext\"";
-            string s2 = "connectionString = \"Server=(localdb)\\v11.0;Integrated Security=true;AttachDbFileName=DigitalSignage.mdf\"";
-            string s3 = "providerName = \"System.Data.SqlClient\"";
-            string lCon = s1 + s2 + s3;*/
-            ConnectionStringSettings lConSettings = ConfigurationManager.ConnectionStrings["DigitalSignage"];
-            this.iContext = new DigitalSignageContext(lConSettings.ConnectionString);
+            this.iContext = pContext;
             this.iRepositories = new Dictionary<Type, Object>();
             //TODO levantar el dato de un archivo de configuracion
         }
@@ -117,9 +112,6 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             try
             {
                 this.iContext.SaveChanges();
-
-               // this.iTransaction.Rollback();
-
                 this.iTransaction.Commit();
             }
             catch (Exception e)

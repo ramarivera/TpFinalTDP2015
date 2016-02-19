@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace TpFinalTDP2015.Service
 {
-    class IoCUnityContainerLocator
+    //TOOD cambiar a internal
+   public class IoCUnityContainerLocator
     {
         /// <summary>
         /// Instancia lazy del contenedor de IoC.
