@@ -16,8 +16,8 @@ namespace TpFinalTDP2015.UI
     public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
         DateIntervalController dateIntervalController;
-        StaticTextController staticTextController = new StaticTextController();
-        RssSourcesController rssSourcesController = new RssSourcesController();
+        StaticTextController staticTextController;
+        RssSourceController rssSourcesController;
 
         private AdminBannerDTO iOriginalBanner = new AdminBannerDTO();
 
@@ -121,8 +121,8 @@ namespace TpFinalTDP2015.UI
                 {
                     int i = 0;
                     IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetAll();
-                    IList<StaticTextDTO> lTexts = this.staticTextController.GetStaticTexts();
-                    IList<RssSourceDTO> lSources = this.rssSourcesController.GetRssSources();
+                    IList<StaticTextDTO> lTexts = this.staticTextController.GetAll();
+                    IList<RssSourceDTO> lSources = this.rssSourcesController.GetAll();
                     IList<DateIntervalDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
                     IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
                     IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
@@ -204,7 +204,7 @@ namespace TpFinalTDP2015.UI
                         {
                             string lTitle = this.chlTexts.Items[i].ToString();
                             IEnumerable<StaticTextDTO> query =
-                                from lText in this.staticTextController.GetStaticTexts()
+                                from lText in this.staticTextController.GetAll()
                                 where lText.Title == lTitle
                                 select lText;
                             foreach (StaticTextDTO dto in query)
@@ -220,7 +220,7 @@ namespace TpFinalTDP2015.UI
                         {
                             string lTitle = this.chlSources.Items[i].ToString();
                             IEnumerable<RssSourceDTO> query =
-                                from lSource in this.rssSourcesController.GetRssSources()
+                                from lSource in this.rssSourcesController.GetAll()
                                 where lSource.Title == lTitle
                                 select lSource;
                             foreach (RssSourceDTO dto in query)

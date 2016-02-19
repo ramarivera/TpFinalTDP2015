@@ -111,7 +111,7 @@
     <Compile Include="Controllers\ControllerFactory.cs" />
     <Compile Include="Controllers\DateIntervalController.cs" />
     <Compile Include="Controllers\IController.cs" />
-    <Compile Include="Controllers\RssSourcesController.cs" />
+    <Compile Include="Controllers\RssSourceController.cs" />
     <Compile Include="Controllers\StaticTextController.cs" />
     <Compile Include="DTO\AdminBannerDTO.cs" />
     <Compile Include="DTO\CampaignDTO.cs" />

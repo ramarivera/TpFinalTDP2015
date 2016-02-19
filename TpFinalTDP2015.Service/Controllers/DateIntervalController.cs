@@ -86,14 +86,9 @@ namespace TpFinalTDP2015.Service.Controllers
                 {
                     lOrigDateInt.AddActiveDay(lDayRepo.GetByID(item));
                     //  lDayRepo.Update(item);
-                }
-
-
-
-
-                iUoW.Commit();
+                }    
             }
-
+            iUoW.Commit();
             return lDateInterval.Id;
         }
 

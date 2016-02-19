@@ -16,7 +16,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Fuentes RSS")]
     public partial class RSSSourceAdministrator : AdminModePage
     {
-        RssSourcesController iController = new RssSourcesController();
+        RssSourceController iController;
 
         RssSourceDTO rssSource;
         public RSSSourceAdministrator(): base()
@@ -24,48 +24,107 @@ namespace TpFinalTDP2015.UI.AdminModePages
             InitializeComponent();
         }
 
+        private RssSourceController Controller
+        {
+            get
+            {
+                return (RssSourceController)
+                    ControllerFactory.
+                    GetController<RssSourceDTO>();
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            this.rssSource = new RssSourceDTO();
-            AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
-            this.dgvRSSSource.Agregar(ventana,this.rssSource);
-            iController.SaveRssSource(this.rssSource);
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    this.rssSource = new RssSourceDTO();
+                    AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
+                    this.dgvRSSSource.Agregar(ventana, this.rssSource);
+                    iController.Save(this.rssSource);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            List<IDTO> fuentesAEliminar = new List<IDTO>();
-            foreach (DataGridViewRow row in this.dgvRSSSource.SelectedRows)
+            try
             {
-                fuentesAEliminar.Add((RssSourceDTO)dgvRSSSource.GetItem(row.Index));
-            }
-            if (fuentesAEliminar.Count == 0)
-            {
-                MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                this.dgvRSSSource.Eliminar(fuentesAEliminar);
-                foreach (IDTO source in fuentesAEliminar)
+                using (iController = this.Controller)
                 {
-                    iController.DeleteRssSource((RssSourceDTO)source);
+                    List<IDTO> fuentesAEliminar = new List<IDTO>();
+                    foreach (DataGridViewRow row in this.dgvRSSSource.SelectedRows)
+                    {
+                        fuentesAEliminar.Add((RssSourceDTO)dgvRSSSource.GetItem(row.Index));
+                    }
+                    if (fuentesAEliminar.Count == 0)
+                    {
+                        MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        this.dgvRSSSource.Eliminar(fuentesAEliminar);
+                        foreach (IDTO source in fuentesAEliminar)
+                        {
+                            iController.Delete((RssSourceDTO)source);
+                        }
+                    }
                 }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
         private void dgvRSSSource_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dgvRSSSource.CurrentRow;
-            this.rssSource = (RssSourceDTO)dgvRSSSource.GetItem(row.Index);
-            AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
-            this.dgvRSSSource.Modificar(ventana, this.rssSource);
-            iController.SaveRssSource(this.rssSource);
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    DataGridViewRow row = dgvRSSSource.CurrentRow;
+                    this.rssSource = (RssSourceDTO)dgvRSSSource.GetItem(row.Index);
+                    AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
+                    this.dgvRSSSource.Modificar(ventana, this.rssSource);
+                    iController.Save(this.rssSource);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void RSSSourceAdministrator_Load(object sender, EventArgs e)
         {
-            IList<RssSourceDTO> lList = this.iController.GetRssSources();
-            this.dgvRSSSource.AddToSource(lList.ToDTOList());
+            this.CargarDataGrid();
+        }
+
+        private void CargarDataGrid()
+        {
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    IList<RssSourceDTO> lList = this.iController.GetAll();
+                    this.dgvRSSSource.AddToSource(lList.ToDTOList());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnView_Click(object sender, EventArgs e)

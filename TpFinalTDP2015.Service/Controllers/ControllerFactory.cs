@@ -23,6 +23,18 @@ namespace TpFinalTDP2015.Service.Controllers
                     Container.
                     Resolve(typeof(DateIntervalController));
             }
+            else if (typeof(TDto) == typeof(StaticTextDTO))
+            {
+                lResult = IoCUnityContainerLocator.
+                    Container.
+                    Resolve(typeof(StaticTextController));
+            }
+            else if (typeof(TDto) == typeof(RssSourceDTO))
+            {
+                lResult = IoCUnityContainerLocator.
+                    Container.
+                    Resolve(typeof(RssSourceController));
+            }
             else if (typeof(TDto) == typeof(AdminBannerDTO))
             {
                 //lo que sea
