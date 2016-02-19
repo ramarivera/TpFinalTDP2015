@@ -204,7 +204,7 @@ namespace TpFinalTDP2015.Test
             TimeSpan lNewEnd = new TimeSpan(20, 0, 0);
 
             DateIntervalController lController = this.Controller;
-            var mock = new Mock<DateIntervalController>(IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>());
+          //  var mock = new Mock<DateIntervalController>(IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>());
             
             DateIntervalDTO lDto;
             DateIntervalDTO lResult;
@@ -214,8 +214,9 @@ namespace TpFinalTDP2015.Test
             lDto = lController.Get(lId);
             lTimeInterval = lDto.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
             lTimeInterval.EndTime = lNewEnd;
-            mock.Object.Save(lDto);
-            mock.Verify(foo => foo.Save(It.IsAny<DateIntervalDTO>()), Times.Once());
+            lController.Save(lDto);
+           // mock.Object.Save(lDto);
+           // mock.Verify(foo => foo.Save(It.IsAny<DateIntervalDTO>()), Times.Never());
             
 
             // Assert
