@@ -19,12 +19,22 @@ namespace TpFinalTDP2015.UI.AdminModePages
     {
         AdminBannerDTO banner;
 
-        BannerController iController = new BannerController();
+        BannerController iController;
 
         public BannerAdministrator(): base()
         {
             InitializeComponent();
             this.Load += BannerAdministrator_Load;
+        }
+
+        private BannerController Controller
+        {
+            get
+            {
+                return (BannerController)
+                    ControllerFactory.
+                    GetController<AdminBannerDTO>();
+            }
         }
 
         private void BannerAdministrator_Load(object sender, EventArgs e)
@@ -36,8 +46,19 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void CargarDataGrid()
         {
-            IList<AdminBannerDTO> lList = this.iController.GetBanners();
-            this.dgvBanner.AddToSource(lList.ToDTOList());
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    IList<AdminBannerDTO> lList = this.iController.GetAll();
+                    this.dgvBanner.AddToSource(lList.ToDTOList());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -76,20 +97,42 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            this.banner = new AdminBannerDTO();
-            AgregarModificarBanner ventana = new AgregarModificarBanner();
-            this.dgvBanner.Agregar(ventana, banner);
-            iController.SaveBanner(this.banner);
-            this.CargarDataGrid();
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    this.banner = new AdminBannerDTO();
+                    AgregarModificarBanner ventana = new AgregarModificarBanner();
+                    this.dgvBanner.Agregar(ventana, banner);
+                    iController.Save(this.banner);
+                    this.CargarDataGrid();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dgvBanner.CurrentRow;
-            this.banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
-            AgregarModificarBanner ventana = new AgregarModificarBanner();
-            this.dgvBanner.Modificar(ventana, this.banner);
-            iController.SaveBanner(this.banner);
+            try
+            {
+                using (iController = this.Controller)
+                {
+                    DataGridViewRow row = dgvBanner.CurrentRow;
+                    this.banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
+                    AgregarModificarBanner ventana = new AgregarModificarBanner();
+                    this.dgvBanner.Modificar(ventana, this.banner);
+                    iController.Save(this.banner);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnView_Click(object sender, EventArgs e)

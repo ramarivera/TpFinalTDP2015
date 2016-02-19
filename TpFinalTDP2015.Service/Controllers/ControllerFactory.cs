@@ -37,8 +37,9 @@ namespace TpFinalTDP2015.Service.Controllers
             }
             else if (typeof(TDto) == typeof(AdminBannerDTO))
             {
-                //lo que sea
-                lResult = 5; // esto obvio que tira error
+                lResult = IoCUnityContainerLocator.
+                    Container.
+                    Resolve(typeof(BannerController));
             }
             else
             {
