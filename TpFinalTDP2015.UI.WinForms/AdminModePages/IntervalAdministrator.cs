@@ -56,7 +56,6 @@ namespace TpFinalTDP2015.UI.AdminModePages
 
                 throw;
             }
-            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

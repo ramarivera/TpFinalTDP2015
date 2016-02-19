@@ -13,72 +13,71 @@ using AutoMapper;
 
 namespace TpFinalTDP2015.Service.Controllers
 {
-    public class StaticTextController
+    public class StaticTextController : BaseController<StaticTextDTO>
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<StaticTextController>();
 
-        private IUnitOfWork iUoW;
-
-
-        public StaticTextController()
+        public StaticTextController(IUnitOfWork iUoW) : base(iUoW)
         {
         }
 
-        private IUnitOfWork GetUnitOfWork()
+        public override int Save(StaticTextDTO pStaticText)
         {
-            return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
+            iUoW.BeginTransaction();
+            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
+
+            StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pStaticText);
+
+            if (pStaticText.Id == 0)
+            {
+                lRepo.Add(lStaticText);
+            }
+            else
+            {
+                lRepo.Update(lStaticText);
+            }
+            iUoW.Commit();
+            return lStaticText.Id;
         }
 
-        public IList<StaticTextDTO> GetStaticTexts()
+        public override void Delete(StaticTextDTO pStaticText)
+        {
+            iUoW.BeginTransaction();
+            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
+            StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pStaticText);
+            lRepo.Delete(lStaticText.Id);
+            iUoW.Commit();
+        }
+
+        public override IList<StaticTextDTO> GetAll()
         {
             IList<StaticTextDTO> lResult = new List<StaticTextDTO>();
 
-            using (this.iUoW = GetUnitOfWork())
-            {
-                IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-                IList<StaticText> lTemp = lRepo.GetAll().ToList();
+            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
+            IList<StaticText> lTemp = lRepo.GetAll().ToList();
 
-                foreach (var staticText in lTemp)
-                {
-                    StaticTextDTO lDto = Mapper.Map<StaticText, StaticTextDTO>(staticText);
-                    lResult.Add(lDto);
-                }
+            foreach (var staticText in lTemp)
+            {
+                StaticTextDTO lDto = Mapper.Map<StaticText, StaticTextDTO>(staticText);
+                lResult.Add(lDto);
             }
+            return lResult.ToList<StaticTextDTO>();
+        }
+
+        public override StaticTextDTO Get(int pId)
+        {
+            StaticTextDTO lResult = new StaticTextDTO();
+
+            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
+
+            var lTemp = lRepo.GetByID(pId);
+
+            lResult = Mapper.Map<StaticText, StaticTextDTO>(lTemp);
+
             return lResult;
-        }
-
-        public void SaveStaticText(StaticTextDTO pStaticText)
-        {
-            using (this.iUoW = GetUnitOfWork())
-            {
-                iUoW.BeginTransaction();
-                IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-                StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pStaticText);
-                if (pStaticText.Id == 0)
-                {
-                    lRepo.Add(lStaticText);
-                }
-                else
-                {
-                    lRepo.Update(lStaticText);
-                }
-                iUoW.Commit();
-            }
-        }
-
-        public void DeleteStaticText(StaticTextDTO pStaticText)
-        {
-            using (this.iUoW = GetUnitOfWork())
-            {
-                iUoW.BeginTransaction();
-                IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-                StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pStaticText);
-                lRepo.Delete(lStaticText.Id);
-                iUoW.Commit();
-            }
         }
     }
 }

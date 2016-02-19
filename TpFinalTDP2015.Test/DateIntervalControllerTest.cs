@@ -15,7 +15,7 @@ namespace TpFinalTDP2015.Test
         [ClassInitialize()]
         public static void ClassInitialize(TestContext testContext)
         {
-            //  AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
+            // AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
             AutoMapperConfiguration.Configure();
         }
 
@@ -146,8 +146,7 @@ namespace TpFinalTDP2015.Test
         {
             // Arrange
             int lId = 1;
-            DateTime lNewActiveFrom = new DateTime(2016, 03, 01);
-
+ 
             DateIntervalController lController = this.Controller;
             DateIntervalDTO lResult;
             DateIntervalDTO lDto = lController.Get(lId);
