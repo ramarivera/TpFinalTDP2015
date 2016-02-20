@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
@@ -26,6 +27,14 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
         {
             pModel.HasDefaultSchema("MARR");
             AddConfigurations(pModel);
+        }
+
+        public static string ConnectionString
+        {
+            get
+            {
+                return ConfigurationManager.ConnectionStrings["DigitalSignage"].ConnectionString;
+            }
         }
     }
 }

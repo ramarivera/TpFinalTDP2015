@@ -125,6 +125,8 @@ namespace TpFinalTDP2015.Test
             this.AssertAreEqual(lDto, lResult);
         }
 
+
+        [TestMethod]
         public void RssSourceController_DeleteSource()
         {
             // Arrange

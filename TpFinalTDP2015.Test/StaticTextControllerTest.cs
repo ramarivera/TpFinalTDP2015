@@ -125,6 +125,7 @@ namespace TpFinalTDP2015.Test
             this.AssertAreEqual(lDto, lResult);
         }
 
+        [TestMethod]
         public void StaticTextController_DeleteText()
         {
             // Arrange

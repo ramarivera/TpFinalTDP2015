@@ -5,6 +5,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -30,31 +31,18 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
         public virtual DbSet<Day> Days { get; set; }
 
 
-        public DigitalSignageContext() : base()
-        {
-            Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
-
-           // cLogger.Info("Conexion establecida: ConnectionString" + this.Database.Connection.ConnectionString);
-
-
-            // ...
-        }
-
-        public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
+        public DigitalSignageContext() : base(EFConfiguration.ConnectionString)
         {
             //  this.Configuration.ProxyCreationEnabled = false;
             // this.Configuration.LazyLoadingEnabled = false;
-            this.Database.Log = (str => LogManager.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
             
+            this.Database.Log = (str => LogManager.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
+
             Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
 
-            // cLogger.InfoFormat("Deberia estarme conectando usando \"{0}\"", pConnectionString);
-            // cLogger.InfoFormat("Conexion establecida: {0}", this.Database.Connection.ConnectionString);
-            cLogger.InfoFormat("Conexion establecida a: {0}", pConnectionString);
-
-           
-
+            cLogger.InfoFormat("Conexion establecida a: {0}", this.Database.Connection.ConnectionString);
         }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
