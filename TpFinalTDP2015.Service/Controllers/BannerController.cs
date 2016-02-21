@@ -75,7 +75,7 @@ namespace TpFinalTDP2015.Service.Controllers
                         lStaticTextRepo.Update(lText);
                     }
                 }
-
+                //TODO no estoy seguro si los tipos están bien puestos tanto arriba como abajo de esta linea
                 foreach (StaticText lOrigStaticText in lOrigBanner.Items.Reverse<BaseBannerItem>())
                 {
                     if (!lBanner.Items.Any(st => st.Id == lOrigStaticText.Id))
