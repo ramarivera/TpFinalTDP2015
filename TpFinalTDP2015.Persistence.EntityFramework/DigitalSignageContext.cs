@@ -20,15 +20,15 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
     {
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
 
-        public virtual DbSet<Campaign> Campaigns { get; set; }
-        public virtual DbSet<Banner> Banners { get; set; }
-        public virtual DbSet<RssItem> RssItems { get; set; }
-        public virtual DbSet<RssSource> RssSources { get; set; }
-        public virtual DbSet<StaticText> Texts { get; set; }
-        public virtual DbSet<Slide> Slides { get; set; }
-        public virtual DbSet<TimeInterval> TimeIntervals { get; set; }
-        public virtual DbSet<DateInterval> DateIntervals { get; set; }
-        public virtual DbSet<Day> Days { get; set; }
+        public virtual IDbSet<Campaign> Campaigns { get; set; }
+        public virtual IDbSet<Banner> Banners { get; set; }
+        public virtual IDbSet<RssItem> RssItems { get; set; }
+        public virtual IDbSet<RssSource> RssSources { get; set; }
+        public virtual IDbSet<StaticText> Texts { get; set; }
+        public virtual IDbSet<Slide> Slides { get; set; }
+        public virtual IDbSet<TimeInterval> TimeIntervals { get; set; }
+        public virtual IDbSet<DateInterval> DateIntervals { get; set; }
+        public virtual IDbSet<Day> Days { get; set; }
 
 
         public DigitalSignageContext() : base(EFConfiguration.ConnectionString)

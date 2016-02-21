@@ -89,6 +89,7 @@
     <Compile Include="DateIntervalControllerTest.cs" />
     <Compile Include="StaticTextControllerTest.cs" />
     <Compile Include="RssSourceControllerTest.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">
