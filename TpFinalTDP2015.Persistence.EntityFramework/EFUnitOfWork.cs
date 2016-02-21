@@ -13,12 +13,12 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        private DbContext iContext;
+        private IDbContext iContext;
         private DbContextTransaction iTransaction;
         private bool iDisposed = false;
         private IDictionary<Type, Object> iRepositories;
 
-        public EFUnitOfWork(DigitalSignageContext pContext)
+        public EFUnitOfWork(IDbContext pContext)
         {
             this.iContext = pContext;
             this.iRepositories = new Dictionary<Type, Object>();
@@ -103,7 +103,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                     this.iTransaction.Dispose();
                 }
 
-                this.iTransaction = this.iContext.Database.BeginTransaction(pIsolationLevel);
+                this.iTransaction = this.iContext.BeginTransaction(pIsolationLevel);
             }
         }
 

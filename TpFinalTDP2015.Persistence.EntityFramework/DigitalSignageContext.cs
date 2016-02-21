@@ -12,13 +12,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Persistence.EntityFramework.Configuration;
+using System.Data;
 
 namespace TpFinalTDP2015.Persistence.EntityFramework
 {
-    public class DigitalSignageContext : DbContext
+    public class DigitalSignageContext : DbContext, IDbContext
     {
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
-   //     private static Type _ = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
 
         public virtual DbSet<Campaign> Campaigns { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
@@ -46,9 +46,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             EFConfiguration.Configure(modelBuilder);
-
             base.OnModelCreating(modelBuilder);
         }
 
@@ -67,14 +65,37 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                     item.Entity.LastModified = DateTime.Now;
                 }
             }
-
-            //var added = this.ChangeTracker.Entries().Where(e => e.State == EntityState.Added);
-            
-
-
             return base.SaveChanges();
         }
 
+        #region IDbContext
+        DbContextTransaction IDbContext.BeginTransaction(IsolationLevel pIsolationLevel)
+        {
+            return this.Database.BeginTransaction(pIsolationLevel);
+        }
 
+        int IDbContext.SaveChanges()
+        {
+            return this.SaveChanges();
+        }
+
+        IDbSet<TEntity> IDbContext.Set<TEntity>()
+        {
+            return this.Set<TEntity>();
+        }
+
+        DbEntityEntry<TEntity> IDbContext.Entry<TEntity>(TEntity pEntity)
+        {
+            return this.Entry<TEntity>(pEntity);
+        }
+
+        Database IDbContext.Database
+        {
+            get
+            {
+                return this.Database;
+            }
+        }
+        #endregion
     }
 }

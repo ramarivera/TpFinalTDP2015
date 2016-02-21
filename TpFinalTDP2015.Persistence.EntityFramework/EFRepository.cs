@@ -13,13 +13,19 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 {
     public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        internal DbSet<TEntity> iDbSet;
-        internal DbContext iContext;
+        internal IDbSet<TEntity> iDbSet;
+        internal IDbContext iContext;
 
-        public EFRepository(DbContext pContext)
+        public EFRepository(IDbContext pContext)
         {
             this.iContext = pContext;
             this.iDbSet = this.iContext.Set<TEntity>();
+        }
+
+        public EFRepository(IDbContext pContext, IDbSet<TEntity> pDbSet)
+        {
+            this.iContext = pContext;
+            this.iDbSet = pDbSet;
         }
 
         public IQueryable<TEntity> Queryable
@@ -49,43 +55,12 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                 this.iDbSet.Attach(pEntityToDelete);
             }
             this.iDbSet.Remove(pEntityToDelete);
-            //this.iContext.Entry<TEntity>(pEntityToDelete).State = EntityState.Deleted;
         }
 
         void IRepository<TEntity>.Update(TEntity pEntityToUpdate)
         {
-            /* if (this.iContext.Entry<TEntity>(pEntityToUpdate).State == EntityState.Detached)
-             {
-                 this.iDbSet.Attach(pEntityToUpdate);
-             }*/
-            /* EntityState lState = this.iContext.Entry<TEntity>(pEntityToUpdate).State;
-
-            if (lState == EntityState.Detached)
-            {
-                this.iDbSet.Attach(pEntityToUpdate);
-                this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Modified;
-            }
-            else
-            {
-                this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Detached;
-                this.iContext.Entry<TEntity>(pEntityToUpdate).State = lState;*/
-            /*  var log = LogManager.GetLogger(this.GetType());
-
-              var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
-              var st = this.iContext.Entry(pEntityToUpdate).State;
-              var dicc = this.iContext.Entry(lOld).CurrentValues;
-
-              foreach (var item in dicc.PropertyNames)
-              {
-                  log.DebugFormat("Entidad: {0}, Propiedad: {1}", lOld, item);
-              }
-              dicc.SetValues(pEntityToUpdate);*/
-
-            //    EntityState lest = this.iContext.Entry(lOld).State;
             var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
-            this.iContext.Entry(lOld).CurrentValues.SetValues(pEntityToUpdate);
-            //  this.iContext.Entry<TEntity>(pEntityToUpdate).State = EntityState.Modified;
-            //  this.iDbSet
+            this.iContext.Entry<TEntity>(lOld).CurrentValues.SetValues(pEntityToUpdate);
         }
 
        TEntity IRepository<TEntity>.GetByID(object pId)
@@ -108,11 +83,6 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
            return lResult;
        }
-
-        
-
-
-    /*    */
     }
 
     static class EFExtensionMethods

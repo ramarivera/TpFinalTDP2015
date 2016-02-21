@@ -95,6 +95,7 @@
     <Compile Include="Configuration\CampaignConfiguration.cs" />
     <Compile Include="Configuration\ContextConfiguration.cs" />
     <Compile Include="Configuration\IEntityConfiguration.cs" />
+    <Compile Include="IDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
