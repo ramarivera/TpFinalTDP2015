@@ -33,8 +33,6 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedStaticTexts(DigitalSignageContext pContext)
         {
-            IList<StaticText> lStaticTextList = new List<StaticText>();
-            
             for (int i = 0; i < 10; i++)
             {
                 StaticText lStaticText = new StaticText()
@@ -43,10 +41,9 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
                     Description = String.Format("Texto del {0}", DateTime.Now),
                     Text = String.Format("Texto {0} del {1}", i,DateTime.Now)
                 };
-                lStaticTextList.Add(lStaticText);
+                pContext.Texts.Add(lStaticText);
             }
 
-            pContext.Texts.AddRange(lStaticTextList);
             pContext.SaveChanges();
         }
 

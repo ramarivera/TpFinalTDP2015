@@ -40,6 +40,7 @@ namespace TpFinalTDP2015.Test
             Assert.AreEqual(lDto.ActiveUntil, lResult.ActiveUntil);
 
             Assert.AreEqual(lDto.Days.Count, lResult.Days.Count);
+            Assert.AreEqual(lDto.ActiveHours.Count, lResult.ActiveHours.Count);
 
             int i = 0; int j = 0;
             while ((i < lDto.Days.Count) && (j < lResult.Days.Count))
@@ -66,12 +67,11 @@ namespace TpFinalTDP2015.Test
         {
             BaseAssertAreEqual(lDto, lResult);
 
-            Assert.AreEqual(lDto.ActiveHours.Count, lResult.ActiveHours.Count);
+            Assert.AreEqual(lDto.CreationDate, lResult.CreationDate);
 
             int i = 0; int j = 0;
             while ((i < lDto.ActiveHours.Count) && (j < lResult.ActiveHours.Count))
             {
-                Assert.AreEqual(lDto.CreationDate, lResult.CreationDate);
                 Assert.AreEqual(lDto.ActiveHours[i].StartTime, lResult.ActiveHours[j].StartTime);
                 Assert.AreEqual(lDto.ActiveHours[i].EndTime, lResult.ActiveHours[j].EndTime);
                 i++; j++;

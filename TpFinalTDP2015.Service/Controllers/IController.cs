@@ -8,7 +8,7 @@ using TpFinalTDP2015.Service.DTO;
 
 namespace TpFinalTDP2015.Service.Controllers
 {
-    interface IController<TDto> : IDisposable where TDto : IDTO
+   public interface IController<TDto> : IDisposable where TDto : IDTO
     {
 
         IList<TDto> GetAll();

@@ -11,8 +11,6 @@ namespace TpFinalTDP2015.Service.Controllers
 {
     public class ControllerFactory
     {
-        private static ControllerFactory cInstance;
-
         public static BaseController<TDto> GetController<TDto>() where TDto : IDTO
             //TODO revisar ewsto porque NO TODOS los idto tienen un controlador
         {
