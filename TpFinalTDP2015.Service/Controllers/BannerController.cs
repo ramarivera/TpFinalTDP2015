@@ -19,31 +19,64 @@ namespace TpFinalTDP2015.Service.Controllers
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<BannerController>();
 
-        public BannerController(IUnitOfWork iUoW):base(iUoW)
-        {
-        }
+        public BannerController(IUnitOfWork iUoW) : base(iUoW) { }
 
         public override int Save(AdminBannerDTO pBanner)
         {
             iUoW.BeginTransaction();
             IRepository<Banner> lBannerRepo = iUoW.GetRepository<Banner>();
-            IRepository<DateInterval> lIntervalRepo = iUoW.GetRepository<DateInterval>();
-            IRepository<StaticText> lStaticTextRepo = iUoW.GetRepository<StaticText>();
-            IRepository<RssSource> lRssSourceRepo = iUoW.GetRepository<RssSource>();
+            IController<DateIntervalDTO> lIntervalController = ControllerFactory.GetController<DateIntervalDTO>();
+            IController<StaticTextDTO> lStaticTextController = ControllerFactory.GetController<StaticTextDTO>();
+            IController<RssSourceDTO> lRssSourceController = ControllerFactory.GetController<RssSourceDTO>();
 
-            Banner lBanner = Mapper.Map<AdminBannerDTO, Banner>(pBanner);
+            // un banner tiene rss, intervalaos y textos. Todos participan en una muchos a muchos
+            Banner lTempBanner = Mapper.Map<AdminBannerDTO, Banner>(pBanner);
+            Banner lBanner;
 
-            if (pBanner.Id == 0)
+            if (lTempBanner.Id == 0)
             {
-                lBannerRepo.Add(lBanner);
+                lBannerRepo.Add(lTempBanner);
+                lBanner = new Banner();
             }
             else
             {
-                lBannerRepo.Update(lBanner);
+                lBannerRepo.Update(lTempBanner);
+                lBanner = lBannerRepo.GetByID(lTempBanner.Id);
+            }
 
-                Banner lOrigBanner = lBannerRepo.GetByID(lBanner.Id);
+            foreach (DateInterval lInterval in lTempBanner.ActiveIntervals)
+            {
+                if (lInterval.Id == 0)
+                {
+                    lBanner.AddDateInterval(lInterval);
+                }
+                else
+                {
+                    lIntervalController.Save(lInterval);
+                }
+            }
+            //TODO demasiados errores. deberia frenar antes del mapeo
+            // o definir otro mapeo que no toque las colecciones, ya que yo tengo que pasart
+            // dtos a los otros controladores
 
-                foreach (DateInterval lInterval in lBanner.ActiveIntervals)
+
+            foreach (var interval in lTempBanner.ActiveIntervals)
+            {
+
+            }
+
+
+            if (pBanner.Id == 0)
+            {
+                lBannerRepo.Add(lTempBanner);
+            }
+            else
+            {
+                lBannerRepo.Update(lTempBanner);
+
+                Banner lOrigBanner = lBannerRepo.GetByID(lTempBanner.Id);
+
+                foreach (DateInterval lInterval in lTempBanner.ActiveIntervals)
                 {
                     if (lInterval.Id == 0)
                     {
@@ -57,14 +90,14 @@ namespace TpFinalTDP2015.Service.Controllers
                 
                 foreach (DateInterval lOrigDateInterval in lOrigBanner.ActiveIntervals.Reverse<DateInterval>())
                 {
-                    if (!lBanner.ActiveIntervals.Any(di => di.Id == lOrigDateInterval.Id))
+                    if (!lTempBanner.ActiveIntervals.Any(di => di.Id == lOrigDateInterval.Id))
                     {
                         lOrigBanner.RemoveDateInterval(lOrigDateInterval);
                         lIntervalRepo.Delete(lOrigDateInterval.Id);
                     }
                 }
 
-                foreach (StaticText lText in lBanner.Items)
+                foreach (StaticText lText in lTempBanner.Items)
                 {
                     if (lText.Id == 0)
                     {
@@ -78,14 +111,14 @@ namespace TpFinalTDP2015.Service.Controllers
                 //TODO no estoy seguro si los tipos están bien puestos tanto arriba como abajo de esta linea
                 foreach (StaticText lOrigStaticText in lOrigBanner.Items.Reverse<BaseBannerItem>())
                 {
-                    if (!lBanner.Items.Any(st => st.Id == lOrigStaticText.Id))
+                    if (!lTempBanner.Items.Any(st => st.Id == lOrigStaticText.Id))
                     {
                         lOrigBanner.RemoveBannerItem(lOrigStaticText);
                         lStaticTextRepo.Delete(lOrigStaticText.Id);
                     }
                 }
 
-                foreach (RssSource lSource in lBanner.RssSources)
+                foreach (RssSource lSource in lTempBanner.RssSources)
                 {
                     if (lSource.Id == 0)
                     {
@@ -99,7 +132,7 @@ namespace TpFinalTDP2015.Service.Controllers
 
                 foreach (RssSource lOrigRssSource in lOrigBanner.RssSources.Reverse<RssSource>())
                 {
-                    if (!lBanner.RssSources.Any(rs => rs.Id == lOrigRssSource.Id))
+                    if (!lTempBanner.RssSources.Any(rs => rs.Id == lOrigRssSource.Id))
                     {
                         lOrigBanner.RemoveSource(lOrigRssSource);
                         lRssSourceRepo.Delete(lOrigRssSource.Id);
@@ -107,7 +140,7 @@ namespace TpFinalTDP2015.Service.Controllers
                 }
             }
             iUoW.Commit();
-            return lBanner.Id;
+            return lTempBanner.Id;
         }
 
         public override void Delete(AdminBannerDTO pBanner)

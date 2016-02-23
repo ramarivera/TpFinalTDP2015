@@ -137,7 +137,7 @@ namespace TpFinalTDP2015.Test
         }
 
         [TestMethod]
-        public void TestMethod()
+        public void Save_AddingNewBanner_ReturnsBannerId()
         {
             // Arrange
             int lId;
