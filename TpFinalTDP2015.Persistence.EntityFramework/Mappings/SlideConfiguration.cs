@@ -7,14 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
+namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
 {
 
-    public class RssSourceConfiguration : EntityTypeConfiguration<RssSource>
+    public class SlideMapping : EntityTypeConfiguration<Slide>
     {
-        public RssSourceConfiguration()
+        public SlideMapping()
         {
-            ToTable("RssSource");
+      /*      ToTable("Slide");
 
             HasKey(r => r.Id);
             Property(r => r.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -26,15 +26,8 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
             Property(r => r.Title).IsRequired();
             Property(r => r.Description).IsRequired();
             Property(r => r.URL).IsRequired();
+            Property(r => r.PublicationDate).IsOptional();*/
 
-            HasMany(r => r.Items)
-                .WithMany() // <- no parameter here because there is no navigation property
-                .Map(m =>
-                {
-                    m.MapLeftKey("RssSourceId");
-                    m.MapRightKey("RssItemId");
-                    m.ToTable("RssSourceRssItem");
-                });
         }
 
     }

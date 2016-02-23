@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
+namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
 {
 
-    public class CampaignConfiguration : EntityTypeConfiguration<Campaign>
+    public class CampaignMapping : EntityTypeConfiguration<Campaign>
     {
-        public CampaignConfiguration()
+        public CampaignMapping()
         {
             ToTable("Campaign");
 

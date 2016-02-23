@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework.Configuration
+namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
 {
-    public class BannerConfiguration : EntityTypeConfiguration<Banner>
+    public class BannerMapping : EntityTypeConfiguration<Banner>
     {
-        public BannerConfiguration()
+        public BannerMapping()
         {
             ToTable("Banner");
 

@@ -79,22 +79,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\BannerConfiguration.cs" />
-    <Compile Include="Configuration\DateIntervalConfiguration.cs" />
-    <Compile Include="Configuration\DayConfiguration.cs" />
-    <Compile Include="Configuration\RssItemConfiguration.cs" />
-    <Compile Include="Configuration\RssSourceConfiguration.cs" />
-    <Compile Include="Configuration\SlideConfiguration.cs" />
-    <Compile Include="Configuration\StaticTextConfiguration.cs" />
-    <Compile Include="Configuration\TimeIntervalConfiguration.cs" />
+    <Compile Include="Mappings\BannerConfiguration.cs" />
+    <Compile Include="Mappings\DateIntervalConfiguration.cs" />
+    <Compile Include="Mappings\DayConfiguration.cs" />
+    <Compile Include="Mappings\RssItemConfiguration.cs" />
+    <Compile Include="Mappings\RssSourceConfiguration.cs" />
+    <Compile Include="Mappings\SlideConfiguration.cs" />
+    <Compile Include="Mappings\StaticTextConfiguration.cs" />
+    <Compile Include="Mappings\TimeIntervalConfiguration.cs" />
     <Compile Include="DigitalSignageContext.cs" />
     <Compile Include="DigitalSignageInitializer.cs" />
     <Compile Include="EFConfiguration.cs" />
     <Compile Include="EFRepository.cs" />
     <Compile Include="EFUnitOfWork.cs" />
-    <Compile Include="Configuration\CampaignConfiguration.cs" />
-    <Compile Include="Configuration\ContextConfiguration.cs" />
-    <Compile Include="Configuration\IEntityConfiguration.cs" />
+    <Compile Include="Mappings\CampaignConfiguration.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

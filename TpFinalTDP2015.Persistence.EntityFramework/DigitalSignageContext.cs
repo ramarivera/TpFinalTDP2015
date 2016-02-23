@@ -11,7 +11,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Persistence.EntityFramework.Configuration;
 using System.Data;
 
 namespace TpFinalTDP2015.Persistence.EntityFramework

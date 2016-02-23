@@ -60,7 +60,10 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
         void IRepository<TEntity>.Update(TEntity pEntityToUpdate)
         {
             var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
-            this.iContext.Entry<TEntity>(lOld).CurrentValues.SetValues(pEntityToUpdate);
+            var lDbEntry = this.iContext.Entry<TEntity>(lOld);
+            lDbEntry.CurrentValues.SetValues(pEntityToUpdate);
+            lDbEntry.State = EntityState.Modified;
+
         }
 
        TEntity IRepository<TEntity>.GetByID(object pId)

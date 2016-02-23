@@ -6,27 +6,21 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Persistence.EntityFramework.Configuration;
+using TpFinalTDP2015.Persistence.EntityFramework.Mapping;
 
 namespace TpFinalTDP2015.Persistence.EntityFramework
 {
     public static class EFConfiguration
     {
-        private static void AddConfigurations(DbModelBuilder pModel)
+      /*  private static void AddConfigurations(DbModelBuilder pModel)
         {
-            Type lType = typeof(IEntityConfiguration);
-            Assembly lAssembly = AppDomain
-                                .CurrentDomain.GetAssemblies()
-                                .Where(asm => asm.GetTypes().Contains(lType))
-                                .FirstOrDefault();
-
-            pModel.Configurations.AddFromAssembly(lAssembly);
-        }
+            pModel.Configurations.AddFromAssembly(typeof(EFConfiguration).Assembly);
+        }*/
 
         public static void Configure(DbModelBuilder pModel)
         {
             pModel.HasDefaultSchema("MARR");
-            AddConfigurations(pModel);
+            pModel.Configurations.AddFromAssembly(typeof(EFConfiguration).Assembly);
         }
 
         public static string ConnectionString
