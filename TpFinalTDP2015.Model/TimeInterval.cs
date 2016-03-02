@@ -52,31 +52,31 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public bool IntersectionWith(TimeInterval pInterval)
+        public bool IntersectsWith(TimeInterval pInterval)
         {
             bool lResult = false;
-            if ((pInterval.iStartTime > this.iStartTime) 
-                && (pInterval.iStartTime < this.iEndTime)) // hora de inicio de pInterval entre intervalo que llama
+            if ((pInterval.Start > this.iStartTime) 
+                && (pInterval.Start < this.iEndTime)) // hora de inicio de pInterval entre intervalo que llama
             {
                 lResult = true;
             }
-            else if ((pInterval.iEndTime > this.iStartTime) //hora de fin de pInteval entre intervalo que llama
-                    && (pInterval.iEndTime < this.iEndTime))
+            else if ((pInterval.End > this.iStartTime) //hora de fin de pInteval entre intervalo que llama
+                    && (pInterval.End < this.iEndTime))
             {
                 lResult = true;
             }
-            else if ((this.iStartTime > pInterval.iStartTime) //hora de inicio de intervalo que llama entre pInterval
-                    && (this.iStartTime < pInterval.iEndTime))
+            else if ((this.iStartTime > pInterval.Start) //hora de inicio de intervalo que llama entre pInterval
+                    && (this.iStartTime < pInterval.Start))
             {
                 lResult = true;
             }
-            else if ((this.iEndTime > pInterval.iStartTime) //hora de fin de intervalo que llama entre pInterval
-                    && (this.iEndTime < pInterval.iEndTime))
+            else if ((this.iEndTime > pInterval.Start) //hora de fin de intervalo que llama entre pInterval
+                    && (this.iEndTime < pInterval.End))
             {
                 lResult = true;
             }
-            else if ((this.iStartTime == pInterval.iStartTime)//intervalos iguales
-                    &&(this.iEndTime == pInterval.iEndTime))
+            else if ((this.iStartTime == pInterval.Start)//intervalos iguales
+                    &&(this.iEndTime == pInterval.End))
             {
                 lResult = true;
             }

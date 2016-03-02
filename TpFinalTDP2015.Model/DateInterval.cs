@@ -138,7 +138,7 @@ namespace TpFinalTDP2015.Model
             while ((lResult == true) && (i >= 0))
             {
                 TimeInterval lInterval = this.iActiveHours[i];
-                if (pInterval.IntersectionWith(lInterval))
+                if (pInterval.IntersectsWith(lInterval))
                 {
                     lResult = false;
                 }
@@ -212,7 +212,7 @@ namespace TpFinalTDP2015.Model
                 int j = pInterval.ActiveHours.Count - 1;
                 while ((lResult == false) && (j >= 0))
                 {
-                    lResult = pTimeInterval.IntersectionWith(pInterval.ActiveHours.ElementAt(j));
+                    lResult = pTimeInterval.IntersectsWith(pInterval.ActiveHours.ElementAt(j));
                     j--;
                 }
                 i--;

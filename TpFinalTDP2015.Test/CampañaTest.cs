@@ -32,7 +32,7 @@ namespace TpFinalTDP2015.Test
 
             DateTime lDate = new DateTime(2016, 2, 3,19,0,0);
 
-            bool lResult = lCampaign.ActiveForDate(lDate);
+            bool lResult = lCampaign.IsActiveAt(lDate);
 
             Assert.IsTrue(lResult);
         }

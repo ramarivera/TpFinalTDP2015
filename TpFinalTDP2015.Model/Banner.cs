@@ -137,12 +137,12 @@ namespace TpFinalTDP2015.Model
             this.iRssSources.Remove(pSource);
         }
 
-        public bool Active
+        public bool IsActive
         {
-            get { return this.ActiveForDate(DateTime.Now); }
+            get { return this.IsActiveAt(DateTime.Now); }
         }
 
-        public bool ActiveForDate(DateTime pDate)
+        public bool IsActiveAt(DateTime pDate)
         {
             bool lResult = false;
             int i = this.ActiveIntervals.Count - 1;

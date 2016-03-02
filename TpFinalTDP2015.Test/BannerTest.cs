@@ -38,7 +38,7 @@ namespace TpFinalTDP2015.Test
 
             DateTime lDate = new DateTime(2016, 2, 4,20,0,0);
 
-            bool lResult = lBanner.ActiveForDate(lDate);
+            bool lResult = lBanner.IsActiveAt(lDate);
 
             Assert.IsFalse(lResult);
         }
