@@ -62,7 +62,7 @@ namespace TpFinalTDP2015.Model
             {
                 throw new ArgumentNullException();
             }
-            else if (!this.ValidInterval(pInterval))
+            else if (!this.CanBeAdded(pInterval))
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -79,7 +79,7 @@ namespace TpFinalTDP2015.Model
             this.iActiveIntervals.Remove(pInterval);
         }
 
-        public bool ValidInterval(DateInterval pInterval)//para ser agregado
+        private bool CanBeAdded(DateInterval pInterval)
         {
             bool lResult = true;
             int i = this.ActiveIntervals.Count - 1;
