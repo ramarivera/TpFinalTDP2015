@@ -38,7 +38,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveIntervals;// Clone<IList<DateInterval>>();
+                return this.iActiveIntervals;
             }
             private set
             {
@@ -50,7 +50,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iItems;// Clone<IList<BaseBannerItem>>();
+                return this.iItems;
             }
             private set
             {
@@ -62,7 +62,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iRssSources;// Clone<IList<BaseBannerItem>>();
+                return this.iRssSources;
             }
             private set
             {
@@ -76,7 +76,7 @@ namespace TpFinalTDP2015.Model
             {
                 throw new ArgumentNullException();
             }
-            else if (!this.ValidInterval(pInterval))
+            else if (!this.CanBeAdded(pInterval))
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -92,7 +92,7 @@ namespace TpFinalTDP2015.Model
             this.iActiveIntervals.Remove(pInterval);
         }
 
-        public bool ValidInterval(DateInterval pInterval)//para ser agregado
+        private bool CanBeAdded(DateInterval pInterval)
         {
             bool lResult = true;
             int i = this.ActiveIntervals.Count - 1;
