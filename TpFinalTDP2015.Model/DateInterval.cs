@@ -218,21 +218,21 @@ namespace TpFinalTDP2015.Model
             return lResult;
         }
 
-        public bool IsActive(DateTime pDate)
+        public bool IsActiveAt(DateTime pDate)
         {
             bool lResult = false;
             if ((pDate >= this.ActiveFrom) && (pDate <= this.ActiveUntil))
             {
-                lResult = this.ActiveForDay(pDate);
+                lResult = this.IsActiveAtDate(pDate);
                 if (lResult)
                 {
-                    lResult = this.ActiveForTime(pDate);
+                    lResult = this.IsActiveAtTime(pDate.TimeOfDay);
                 }
             }
             return lResult;
         }
 
-        public bool ActiveForDay(DateTime pDate)
+        public bool IsActiveAtDate(DateTime pDate)
         {
             bool lResult = false;
             int lDay = (int)pDate.Day;
@@ -246,15 +246,14 @@ namespace TpFinalTDP2015.Model
             return lResult;
         }
 
-        public bool ActiveForTime(DateTime pDate)
+        public bool IsActiveAtTime(TimeSpan pTime)
         {
             bool lResult = false;
-            TimeSpan lTime = pDate.TimeOfDay;
             int i = this.ActiveHours.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
                 TimeInterval pInterval = this.ActiveHours[i];
-                lResult = ((lTime > pInterval.Start) && (lTime < pInterval.End));
+                lResult = ((pTime > pInterval.Start) && (pTime < pInterval.End));
                 i--;
             }
             return lResult;

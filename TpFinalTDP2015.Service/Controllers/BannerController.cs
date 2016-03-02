@@ -21,6 +21,7 @@ namespace TpFinalTDP2015.Service.Controllers
 
         public BannerController(IUnitOfWork iUoW) : base(iUoW) { }
 
+        /*
         public override int Save(AdminBannerDTO pBanner)
         {
             iUoW.BeginTransaction();
@@ -141,7 +142,7 @@ namespace TpFinalTDP2015.Service.Controllers
             }
             iUoW.Commit();
             return lTempBanner.Id;
-        }
+        }*/
 
         public override void Delete(AdminBannerDTO pBanner)
         {
@@ -181,5 +182,9 @@ namespace TpFinalTDP2015.Service.Controllers
             return lResult;
         }
 
+        public override int Save(AdminBannerDTO pDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
