@@ -54,7 +54,7 @@ namespace TpFinalTDP2015.Service.Controllers
                 {
                     if (lHours.Id == 0)
                     {
-                        lOrigDateInt.AddActiveHours(lHours);
+                        lOrigDateInt.AddTimeInterval(lHours);
                     }
                     else
                     {
@@ -70,7 +70,7 @@ namespace TpFinalTDP2015.Service.Controllers
                 {
                     if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
                     {
-                        lOrigDateInt.RemoveActiveHours(lOrigTimeInt);
+                        lOrigDateInt.RemoveTimeInterval(lOrigTimeInt);
                         lTimeRepo.Delete(lOrigTimeInt.Id);
                     }
                 }
@@ -84,7 +84,7 @@ namespace TpFinalTDP2015.Service.Controllers
 
                 foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
                 {
-                    lOrigDateInt.AddActiveDay(lDayRepo.GetByID(item));
+                    lOrigDateInt.AddDay(lDayRepo.GetByID(item));
                     //  lDayRepo.Update(item);
                 }    
             }

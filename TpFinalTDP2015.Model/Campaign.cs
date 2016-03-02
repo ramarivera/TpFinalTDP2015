@@ -40,7 +40,7 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.iActiveIntervals = value;
+                this.iActiveIntervals = new List<DateInterval>(value);
             }
         }
 
@@ -52,7 +52,7 @@ namespace TpFinalTDP2015.Model
             }
             private set
             {
-                this.iSlides = value;
+                this.iSlides = new List<Slide>(value);
             }
         }
 
@@ -86,7 +86,7 @@ namespace TpFinalTDP2015.Model
             while ((lResult == true) && (i >= 0))
             {
                 DateInterval lInterval = this.ActiveIntervals[i];
-                if (!pInterval.IntersectionWith(lInterval))
+                if (!pInterval.IntersectsWith(lInterval))
                 {
                     lResult = false;
                 }

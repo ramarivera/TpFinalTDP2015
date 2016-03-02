@@ -19,9 +19,9 @@ namespace TpFinalTDP2015.Test
             Day lDay2 = new Day() { Id = 1, Value = Days.Lunes };
             Day lDay3 = new Day() { Id = 2, Value = Days.Martes };
 
-            lInterval1.AddActiveDay(lDay1);
-            lInterval1.AddActiveDay(lDay2);
-            lInterval2.AddActiveDay(lDay3);
+            lInterval1.AddDay(lDay1);
+            lInterval1.AddDay(lDay2);
+            lInterval2.AddDay(lDay3);
 
             TimeSpan time1 = new TimeSpan(8, 0, 0);
             TimeSpan time2 = new TimeSpan(12, 0, 0);
@@ -32,11 +32,11 @@ namespace TpFinalTDP2015.Test
             TimeInterval lTimeInterval2 = new TimeInterval() { End = time3, Start = time2 };//12 a 18
             TimeInterval lTimeInterval3 = new TimeInterval() { End = time4, Start = time3 };//18 a 21
 
-            lInterval1.AddActiveHours(lTimeInterval1);
-            lInterval1.AddActiveHours(lTimeInterval2);
-            lInterval2.AddActiveHours(lTimeInterval3);
+            lInterval1.AddTimeInterval(lTimeInterval1);
+            lInterval1.AddTimeInterval(lTimeInterval2);
+            lInterval2.AddTimeInterval(lTimeInterval3);
 
-            bool lResult = lInterval1.IntersectionWith(lInterval2);
+            bool lResult = lInterval1.IntersectsWith(lInterval2);
 
             Assert.IsFalse(lResult);
         }
@@ -51,9 +51,9 @@ namespace TpFinalTDP2015.Test
             Day lDay2 = new Day() { Id = 1, Value = Days.Lunes };
             Day lDay3 = new Day() { Id = 2, Value = Days.Martes };
 
-            lInterval1.AddActiveDay(lDay1);
-            lInterval1.AddActiveDay(lDay2);
-            lInterval2.AddActiveDay(lDay3);
+            lInterval1.AddDay(lDay1);
+            lInterval1.AddDay(lDay2);
+            lInterval2.AddDay(lDay3);
 
             TimeSpan time1 = new TimeSpan(8, 0, 0);
             TimeSpan time2 = new TimeSpan(12, 0, 0);
@@ -64,11 +64,11 @@ namespace TpFinalTDP2015.Test
             TimeInterval lTimeInterval2 = new TimeInterval() { End = time3, Start = time2 };//12 a 18
             TimeInterval lTimeInterval3 = new TimeInterval() { End = time4, Start = time3 };//18 a 21
 
-            lInterval1.AddActiveHours(lTimeInterval1);
-            lInterval1.AddActiveHours(lTimeInterval2);
-            lInterval2.AddActiveHours(lTimeInterval3);
+            lInterval1.AddTimeInterval(lTimeInterval1);
+            lInterval1.AddTimeInterval(lTimeInterval2);
+            lInterval2.AddTimeInterval(lTimeInterval3);
 
-            bool lResult = lInterval1.IntersectionWith(lInterval2);
+            bool lResult = lInterval1.IntersectsWith(lInterval2);
 
             Assert.IsFalse(lResult);
         }
@@ -82,10 +82,10 @@ namespace TpFinalTDP2015.Test
             Day lDay2 = new Day() { Id = 1, Value = Days.Lunes };
             Day lDay3 = new Day() { Id = 2, Value = Days.Martes };
 
-            lInterval1.AddActiveDay(lDay1);
-            lInterval1.AddActiveDay(lDay2);
-            lInterval2.AddActiveDay(lDay3);
-            lInterval2.AddActiveDay(lDay1);
+            lInterval1.AddDay(lDay1);
+            lInterval1.AddDay(lDay2);
+            lInterval2.AddDay(lDay3);
+            lInterval2.AddDay(lDay1);
 
             TimeSpan time1 = new TimeSpan(8, 0, 0);
             TimeSpan time2 = new TimeSpan(12, 0, 0);
@@ -96,11 +96,11 @@ namespace TpFinalTDP2015.Test
             TimeInterval lTimeInterval2 = new TimeInterval() { End = time3, Start = time2 };//12 a 18
             TimeInterval lTimeInterval3 = new TimeInterval() { End = time4, Start = time3 };//18 a 21
 
-            lInterval1.AddActiveHours(lTimeInterval1);
-            lInterval1.AddActiveHours(lTimeInterval2);
-            lInterval2.AddActiveHours(lTimeInterval3);
+            lInterval1.AddTimeInterval(lTimeInterval1);
+            lInterval1.AddTimeInterval(lTimeInterval2);
+            lInterval2.AddTimeInterval(lTimeInterval3);
 
-            bool lResult = lInterval1.IntersectionWith(lInterval2);
+            bool lResult = lInterval1.IntersectsWith(lInterval2);
 
             Assert.IsFalse(lResult);
         }
@@ -114,10 +114,10 @@ namespace TpFinalTDP2015.Test
             Day lDay2 = new Day() { Id = 1, Value = Days.Lunes };
             Day lDay3 = new Day() { Id = 2, Value = Days.Martes };
 
-            lInterval1.AddActiveDay(lDay1);
-            lInterval1.AddActiveDay(lDay2);
-            lInterval2.AddActiveDay(lDay3);
-            lInterval2.AddActiveDay(lDay1);
+            lInterval1.AddDay(lDay1);
+            lInterval1.AddDay(lDay2);
+            lInterval2.AddDay(lDay3);
+            lInterval2.AddDay(lDay1);
 
             TimeSpan time1 = new TimeSpan(8, 0, 0);
             TimeSpan time2 = new TimeSpan(10, 0, 0);
@@ -128,11 +128,11 @@ namespace TpFinalTDP2015.Test
             TimeInterval lTimeInterval2 = new TimeInterval() { End = time3, Start = time2 };//10 a 12
             TimeInterval lTimeInterval3 = new TimeInterval() { End = time4, Start = time3 };//12 a 14
 
-            lInterval1.AddActiveHours(lTimeInterval1);
-            lInterval1.AddActiveHours(lTimeInterval3);
-            lInterval2.AddActiveHours(lTimeInterval2);
+            lInterval1.AddTimeInterval(lTimeInterval1);
+            lInterval1.AddTimeInterval(lTimeInterval3);
+            lInterval2.AddTimeInterval(lTimeInterval2);
 
-            bool lResult = lInterval1.IntersectionWith(lInterval2);
+            bool lResult = lInterval1.IntersectsWith(lInterval2);
 
             Assert.IsTrue(lResult);
         }

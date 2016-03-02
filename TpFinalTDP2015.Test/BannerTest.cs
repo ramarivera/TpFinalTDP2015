@@ -21,18 +21,18 @@ namespace TpFinalTDP2015.Test
             Day lDay4 = new Day() { Id = 4, Value = Days.Jueves };
             Day lDay5 = new Day() { Id = 5, Value = Days.Viernes };
 
-            lInterval.AddActiveDay(lDay1);
-            lInterval.AddActiveDay(lDay2);
-            lInterval.AddActiveDay(lDay3);
-            lInterval.AddActiveDay(lDay4);
-            lInterval.AddActiveDay(lDay5);
+            lInterval.AddDay(lDay1);
+            lInterval.AddDay(lDay2);
+            lInterval.AddDay(lDay3);
+            lInterval.AddDay(lDay4);
+            lInterval.AddDay(lDay5);
 
             TimeSpan time1 = new TimeSpan(8, 0, 0);
             TimeSpan time2 = new TimeSpan(12, 0, 0);
 
             TimeInterval lTimeInterval = new TimeInterval() { End = time2, Start = time1 };
 
-            lInterval.AddActiveHours(lTimeInterval);
+            lInterval.AddTimeInterval(lTimeInterval);
 
             lBanner.AddDateInterval(lInterval);
 

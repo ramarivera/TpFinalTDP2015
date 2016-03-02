@@ -18,15 +18,15 @@ namespace TpFinalTDP2015.Test
             Day lDay1 = new Day() { Id = 4, Value = Days.Miercoles };
             Day lDay2 = new Day() { Id = 5, Value = Days.Jueves };
 
-            lInterval.AddActiveDay(lDay1);
-            lInterval.AddActiveDay(lDay2);
+            lInterval.AddDay(lDay1);
+            lInterval.AddDay(lDay2);
 
             TimeSpan time1 = new TimeSpan(18, 0, 0);
             TimeSpan time2 = new TimeSpan(21, 0, 0);
 
             TimeInterval lTimeInterval = new TimeInterval() { End = time2, Start = time1 };
 
-            lInterval.AddActiveHours(lTimeInterval);
+            lInterval.AddTimeInterval(lTimeInterval);
 
             lCampaign.AddDateInterval(lInterval);
 

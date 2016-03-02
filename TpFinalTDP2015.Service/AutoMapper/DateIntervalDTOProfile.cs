@@ -40,14 +40,14 @@ namespace TpFinalTDP2015.Service.AutoMapper
 
                     foreach (var item in lDto.ActiveHours)
                     {
-                        lResult.AddActiveHours(
+                        lResult.AddTimeInterval(
                             Mapper.Map<TimeIntervalDTO, TimeInterval>(item)
                             );
                     }
 
                     foreach (var item in lDto.Days)
                     {
-                        lResult.AddActiveDay(
+                        lResult.AddDay(
                             Mapper.Map<Service.Enum.Days, Day>(item)
                             );
                     }

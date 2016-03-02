@@ -99,7 +99,7 @@ namespace TpFinalTDP2015.Model
             while ((lResult == true) && (i >= 0))
             {
                 DateInterval lInterval = this.ActiveIntervals[i];
-                if (!pInterval.IntersectionWith(lInterval))
+                if (!pInterval.IntersectsWith(lInterval))
                 {
                     lResult = false;
                 }

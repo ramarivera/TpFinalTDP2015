@@ -29,9 +29,9 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
 
             Property(di => di.ActiveFrom).HasColumnType("DateTime2");
             Property(di => di.ActiveUntil).HasColumnType("DateTime2");
-            
-            
-            
+
+
+
             HasMany(di => di.ActiveDays)
                 .WithMany()
                 .Map(m =>
