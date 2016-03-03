@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.Model.DomainServices;
 
 namespace TpFinalTDP2015.BusinessLogic.AutoMapper
 {
@@ -32,6 +33,7 @@ namespace TpFinalTDP2015.BusinessLogic.AutoMapper
 
         private class CampaignConverter : ITypeConverter<CampaignDTO, Campaign>
         {
+            private IIntervalValidator iValidator = new IntervalValidator();//TODO ver esto
             Campaign ITypeConverter<CampaignDTO, Campaign>.Convert(ResolutionContext context)
             {
                 if (context == null || context.IsSourceValueNull)
@@ -54,7 +56,7 @@ namespace TpFinalTDP2015.BusinessLogic.AutoMapper
                     {
                         lResult.AddDateInterval(
                             Mapper.Map<DateIntervalDTO, DateInterval>(item)
-                            );
+                            ,iValidator);
                     }
                    /* foreach (var item in lDto.Slides)
                     {

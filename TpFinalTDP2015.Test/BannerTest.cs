@@ -2,12 +2,15 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Model.Enum;
+using TpFinalTDP2015.Model.DomainServices;
 
 namespace TpFinalTDP2015.Test
 {
     [TestClass]
     public class BannerTest
     {
+        private IIntervalValidator iValidator = new IntervalValidator();//TODO ver esto
+        private ISeFijaSiEstaActivo iActivo = new SeFijaSiEstaActivo();//TODO ver esto
         [TestMethod]
         public void ActiveForDate_IsActive()
         {
@@ -34,11 +37,11 @@ namespace TpFinalTDP2015.Test
 
             lInterval.AddTimeInterval(lTimeInterval);
 
-            lBanner.AddDateInterval(lInterval);
+            lBanner.AddDateInterval(lInterval,iValidator);
 
             DateTime lDate = new DateTime(2016, 2, 4,20,0,0);
 
-            bool lResult = lBanner.IsActiveAt(lDate);
+            bool lResult = iActivo.IsActiveAt(lBanner,lDate);
 
             Assert.IsFalse(lResult);
         }

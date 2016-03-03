@@ -7,11 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Model.Enum;
+using TpFinalTDP2015.Model.DomainServices;
 
 namespace TpFinalTDP2015.Persistence.EntityFramework
 {
     class DigitalSignageInitializer : System.Data.Entity.DropCreateDatabaseAlways<DigitalSignageContext>
     {
+        private IIntervalValidator iValidator = new IntervalValidator();//TODO ver esto
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
 
 
@@ -97,7 +99,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lBanner1.AddDateInterval(interval);
+                lBanner1.AddDateInterval(interval,iValidator);
             };
             lBanner1.Items.Add(pContext.Texts.ToList()[3]);
             lBanner1.Items.Add(pContext.Texts.ToList()[4]);
@@ -123,7 +125,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign1.AddDateInterval(interval);
+                lCampaign1.AddDateInterval(interval,iValidator);
             };
 
 
@@ -140,7 +142,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign2.AddDateInterval(interval);
+                lCampaign2.AddDateInterval(interval,iValidator);
             }
 
 

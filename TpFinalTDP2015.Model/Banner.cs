@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TpFinalTDP2015.Model.DomainServices;
 
 namespace TpFinalTDP2015.Model
 {
     [Serializable]
-    public class Banner : BaseEntity
+    public class Banner : BaseEntity, ICosoQueTieneDateInterval
     {
         private string iName;
         private string iDescription;
@@ -70,13 +71,13 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual void AddDateInterval(DateInterval pInterval)
+        public virtual void AddDateInterval(DateInterval pInterval, IIntervalValidator pValitador)
         {
             if (pInterval == null)
             {
                 throw new ArgumentNullException();
             }
-            else if (!this.CanBeAdded(pInterval))
+            else if (!pValitador.CanBeAdded(this,pInterval))
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -92,7 +93,7 @@ namespace TpFinalTDP2015.Model
             this.iActiveIntervals.Remove(pInterval);
         }
 
-        private bool CanBeAdded(DateInterval pInterval)
+       /* private bool CanBeAdded(DateInterval pInterval)
         {
             bool lResult = true;
             int i = this.ActiveIntervals.Count - 1;
@@ -106,7 +107,7 @@ namespace TpFinalTDP2015.Model
                 i--;
             }
             return lResult;
-        }
+        }*/
 
         public virtual void AddBannerItem(BaseBannerItem pItem)
         {
@@ -137,7 +138,7 @@ namespace TpFinalTDP2015.Model
             this.iRssSources.Remove(pSource);
         }
 
-        public bool IsActive
+       /* public bool IsActive
         {
             get { return this.IsActiveAt(DateTime.Now); }
         }
@@ -153,6 +154,6 @@ namespace TpFinalTDP2015.Model
                 i--;
             }
             return lResult;
-        }
+        }*/
     }
 }

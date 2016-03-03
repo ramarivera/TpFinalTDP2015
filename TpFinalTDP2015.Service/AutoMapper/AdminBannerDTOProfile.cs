@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.BusinessLogic.DTO;
 using TpFinalTDP2015.Model;
+using TpFinalTDP2015.Model.DomainServices;
 
 namespace TpFinalTDP2015.BusinessLogic.AutoMapper
 {
@@ -25,9 +26,10 @@ namespace TpFinalTDP2015.BusinessLogic.AutoMapper
          }
 
     */
+        
         class BannerTextDTOResolver : ValueResolver<IList<StaticTextDTO>, IList<BaseBannerItem>>
          {
-             protected override IList<BaseBannerItem> ResolveCore(IList<StaticTextDTO> source)
+            protected override IList<BaseBannerItem> ResolveCore(IList<StaticTextDTO> source)
              {
                  IList<BaseBannerItem> lResult = new List<BaseBannerItem>();
 
@@ -55,6 +57,7 @@ namespace TpFinalTDP2015.BusinessLogic.AutoMapper
 
         private class BannerConverter : ITypeConverter<AdminBannerDTO, Banner>
         {
+            private IIntervalValidator iValidator = new IntervalValidator();//TODO ver esto
             Banner ITypeConverter<AdminBannerDTO, Banner>.Convert(ResolutionContext context)
             {
                 if (context == null || context.IsSourceValueNull)
@@ -77,7 +80,7 @@ namespace TpFinalTDP2015.BusinessLogic.AutoMapper
                     {
                         lResult.AddDateInterval(
                             Mapper.Map<DateIntervalDTO, DateInterval>(item)
-                            );
+                            ,iValidator);
                     }
 
                     foreach (var item in lDto.Texts)

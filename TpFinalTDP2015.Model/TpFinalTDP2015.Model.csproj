@@ -50,9 +50,14 @@
     <Compile Include="Campaign.cs" />
     <Compile Include="DateInterval.cs" />
     <Compile Include="Day.cs" />
+    <Compile Include="DomainServices\ISeFijaSiEstaActivo.cs" />
+    <Compile Include="DomainServices\SeFijaSiEstaActivo.cs" />
     <Compile Include="Enum\Days.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethod.cs" />
+    <Compile Include="DomainServices\ICosoQueTieneDateInterval.cs" />
+    <Compile Include="DomainServices\IIntervalValidator.cs" />
+    <Compile Include="DomainServices\IntervalValidator.cs" />
     <Compile Include="RssItem.cs" />
     <Compile Include="RssSource.cs" />
     <Compile Include="Slide.cs" />
