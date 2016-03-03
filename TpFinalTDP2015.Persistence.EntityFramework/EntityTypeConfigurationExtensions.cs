@@ -20,14 +20,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
             Configuration.Configure(cfg);
         }
 
-    /*    public ManyNavigationPropertyConfiguration<TEntityType, TTargetEntity> HasMany<TTargetEntity>(
-            Expression<Func<TEntityType, ICollection<TTargetEntity>>> navigationPropertyExpression)
-            where TTargetEntity : class;
-
-        */
+   
         public static ManyNavigationPropertyConfiguration<TEntityType, TTargetEntity> HasMany<TEntityType, TTargetEntity>(
             this EntityTypeConfiguration<TEntityType> c,
-            Expression<Func<TEntityType, IEnumerable<TTargetEntity>>> navigationPropertyExpression)  where TTargetEntity : class where TEntityType : class
+            Expression<Func<TEntityType, IEnumerable<TTargetEntity>>> navigationPropertyExpression)
+            where TTargetEntity : class where TEntityType : class
         {
             var body = navigationPropertyExpression.Body;
             var member = (PropertyInfo)((MemberExpression)body).Member;

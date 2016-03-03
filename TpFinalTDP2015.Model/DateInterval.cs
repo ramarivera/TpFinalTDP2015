@@ -103,6 +103,14 @@ namespace TpFinalTDP2015.Model
             this.Days.Remove(pDay);
         }
 
+        public virtual void RemoveAllDays()
+        {
+            foreach (var day in ActiveDays.Reverse())
+            {
+                RemoveDay(day);
+            }
+        }
+
         public virtual void AddTimeInterval(TimeInterval pInterval)
         {
             if (pInterval == null)
@@ -123,6 +131,15 @@ namespace TpFinalTDP2015.Model
         public virtual void RemoveTimeInterval(TimeInterval pInterval)
         {
             this.TimeIntervals.Remove(pInterval);
+        }
+
+
+        public virtual void RemoveAllIntervals()
+        {
+            foreach (var interval in TimeIntervals.Reverse())
+            {
+                RemoveTimeInterval(interval);
+            }
         }
 
         private bool CanBeAdded(TimeInterval pInterval)//para ser agregado

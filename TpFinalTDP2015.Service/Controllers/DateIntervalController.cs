@@ -87,10 +87,7 @@ namespace TpFinalTDP2015.Service.Controllers
 
                 // lOrigDateInt.ActiveDays.Clear();
 
-                foreach (var item in lOrigDateInt.ActiveDays)
-                {
-                    lOrigDateInt.RemoveDay(item);
-                }
+                lOrigDateInt.RemoveAllDays();
 
                 foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
                 {
