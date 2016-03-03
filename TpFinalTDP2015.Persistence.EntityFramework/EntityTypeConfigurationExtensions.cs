@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework
+namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
 {
     public static class EntityTypeConfigurationEx
     {
@@ -20,6 +20,11 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
             Configuration.Configure(cfg);
         }
 
+    /*    public ManyNavigationPropertyConfiguration<TEntityType, TTargetEntity> HasMany<TTargetEntity>(
+            Expression<Func<TEntityType, ICollection<TTargetEntity>>> navigationPropertyExpression)
+            where TTargetEntity : class;
+
+        */
         public static ManyNavigationPropertyConfiguration<TEntityType, TTargetEntity> HasMany<TEntityType, TTargetEntity>(
             this EntityTypeConfiguration<TEntityType> c,
             Expression<Func<TEntityType, IEnumerable<TTargetEntity>>> navigationPropertyExpression)  where TTargetEntity : class where TEntityType : class

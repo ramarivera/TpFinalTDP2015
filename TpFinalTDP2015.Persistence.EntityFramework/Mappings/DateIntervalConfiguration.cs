@@ -32,7 +32,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
 
 
 
-            HasMany(di => di.ActiveDays)
+            this.HasMany(di => di.ActiveDays)
                 .WithMany()
                 .Map(m =>
                 {
@@ -41,7 +41,7 @@ namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
                     m.ToTable("DateIntervalDay");
                 });
 
-            HasMany(di => di.ActiveHours)
+            this.HasMany(di => di.ActiveHours)
                 .WithRequired()
                 .Map(m => m.MapKey("DateIntervalId"))
                 .WillCascadeOnDelete(true);
