@@ -15,7 +15,7 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
-        DateIntervalController dateIntervalController;
+        DateIntervalService dateIntervalController;
         StaticTextService staticTextController;
         RssSourceService rssSourcesController;
 
@@ -27,11 +27,11 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        private DateIntervalController DateIntervalController
+        private DateIntervalService DateIntervalController
         {
             get
             {
-                return (DateIntervalController)
+                return (DateIntervalService)
                     ServiceFactory.
                     GetService<DateIntervalDTO>();
             }

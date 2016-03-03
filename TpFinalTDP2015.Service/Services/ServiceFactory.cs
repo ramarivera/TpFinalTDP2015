@@ -19,7 +19,7 @@ namespace TpFinalTDP2015.BusinessLogic.Services
             {
                 lResult = IoCUnityContainerLocator.
                     Container.
-                    Resolve(typeof(DateIntervalController));
+                    Resolve(typeof(DateIntervalService));
             }
             else if (typeof(TDto) == typeof(StaticTextDTO))
             {

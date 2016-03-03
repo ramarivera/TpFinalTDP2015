@@ -22,11 +22,11 @@ namespace TpFinalTDP2015.Test
             AutoMapperConfiguration.Configure();
         }
 
-        DateIntervalController Controller
+        DateIntervalService Controller
         {
             get
             {
-                return (DateIntervalController)
+                return (DateIntervalService)
                     ServiceFactory.
                     GetService<DateIntervalDTO>();
             }
@@ -88,7 +88,7 @@ namespace TpFinalTDP2015.Test
             TimeSpan lNewStartTime = new TimeSpan(08, 0, 0);
             TimeSpan lNewEndTime = new TimeSpan(10, 0, 0);
 
-            DateIntervalController lController = this.Controller;
+            DateIntervalService lController = this.Controller;
             DateIntervalDTO lResult;
             DateIntervalDTO lDto;
 
@@ -130,7 +130,7 @@ namespace TpFinalTDP2015.Test
             int lId = 1;
             DateTime lNewActiveFrom = new DateTime(2016, 03, 01);
 
-            DateIntervalController lController = this.Controller;
+            DateIntervalService lController = this.Controller;
             DateIntervalDTO lResult;
             DateIntervalDTO lDto;
 
@@ -150,7 +150,7 @@ namespace TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
  
-            DateIntervalController lController = this.Controller;
+            DateIntervalService lController = this.Controller;
             DateIntervalDTO lResult;
             DateIntervalDTO lDto = lController.Get(lId);
 
@@ -173,7 +173,7 @@ namespace TpFinalTDP2015.Test
             TimeSpan lNewEnd = new TimeSpan(22, 0, 0);
             TimeSpan lNewStart = new TimeSpan(20, 0, 0);
 
-            DateIntervalController lController = this.Controller;
+            DateIntervalService lController = this.Controller;
             DateIntervalDTO lResult;
             DateIntervalDTO lDto;
             TimeIntervalDTO lNewTime;
@@ -203,7 +203,7 @@ namespace TpFinalTDP2015.Test
             int lTimeId = 19;
             TimeSpan lNewEnd = new TimeSpan(20, 0, 0);
 
-            DateIntervalController lController = this.Controller;
+            DateIntervalService lController = this.Controller;
           //  var mock = new Mock<DateIntervalController>(IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>());
             
             DateIntervalDTO lDto;
@@ -232,7 +232,7 @@ namespace TpFinalTDP2015.Test
             int lId = 1;
             int lTimeId = 1;
 
-            DateIntervalController lController = this.Controller;
+            DateIntervalService lController = this.Controller;
             DateIntervalDTO lDto;
             DateIntervalDTO lResult;
             TimeIntervalDTO lTimeInterval;
@@ -256,7 +256,7 @@ namespace TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
 
-            DateIntervalController lController = this.Controller;
+            DateIntervalService lController = this.Controller;
             DateIntervalDTO lRemoved;
             DateIntervalDTO lDto;
 

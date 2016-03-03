@@ -14,14 +14,14 @@ using TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace TpFinalTDP2015.BusinessLogic.Services
 {
-    public class DateIntervalController : BaseService<DateIntervalDTO>
+    public class DateIntervalService : BaseService<DateIntervalDTO>
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<DateIntervalController>();
+        private static readonly ILog cLogger = LogManager.GetLogger<DateIntervalService>();
 
-        public DateIntervalController(IUnitOfWork iUoW) : base(iUoW)
+        public DateIntervalService(IUnitOfWork iUoW) : base(iUoW)
         {
 
         }

@@ -15,7 +15,7 @@ namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : Form, IAddModifyViewForm
     {
-        DateIntervalController dateIntervalController;
+        DateIntervalService dateIntervalController;
         //TODO ajustar ventana para poder agregar intervalos y slides
         private CampaignDTO iOriginalCampaign = new CampaignDTO();
 
@@ -31,11 +31,11 @@ namespace TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        private DateIntervalController DateIntervalController
+        private DateIntervalService DateIntervalController
         {
             get
             {
-                return (DateIntervalController)
+                return (DateIntervalService)
                     ServiceFactory.
                     GetService<DateIntervalDTO>();
             }
