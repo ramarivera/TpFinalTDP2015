@@ -9,32 +9,17 @@ namespace TpFinalTDP2015.Model
     [Serializable]
     public abstract class BaseEntity
     {
-        private int iId;
-        private DateTime iCreationDate;
-        private DateTime iLastModified;
 
         public BaseEntity()
         {
-            this.iId = 0;
+            this.Id = 0;
         }
 
-        public virtual int Id
-        {
-            get { return this.iId; }
-            set { this.iId = value; }
-        }
+        public virtual int Id { get; set; }
+        public virtual DateTime CreationDate { get; set; }
+        public virtual DateTime LastModified { get; set; }
 
-        public virtual DateTime CreationDate
-        {
-            get { return this.iCreationDate; }
-            set { this.iCreationDate = value; }
-        }
 
-        public virtual DateTime LastModified
-        {
-            get { return this.iLastModified; }
-            set { this.iLastModified = value; }
-        }
 
         public override bool Equals(object obj)
         {
