@@ -63,31 +63,11 @@ namespace TpFinalTDP2015.Model
         }
 
 
-        protected virtual IList<Day> Days
-        {
-            get
-            {
-                return this.Days;
+     
+        protected virtual IList<TimeInterval> TimeIntervals { get; set; }
+        protected virtual IList<Day> Days  { get; set; }
 
-            }
-            set
-            {
-                this.Days = (value);
-            }
-        }
-
-        protected virtual IList<TimeInterval> TimeIntervals
-        {
-            get
-            {
-                return this.TimeIntervals;
-
-            }
-            set
-            {
-                this.TimeIntervals = (value);
-            }
-        }
+      
 
         public virtual IEnumerable<Day> ActiveDays
         {
