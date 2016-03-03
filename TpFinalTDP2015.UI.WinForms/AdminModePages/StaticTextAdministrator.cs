@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service.Controllers;
+using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.BusinessLogic.Services;
 using TpFinalTDP2015.UI.View;
 
 namespace TpFinalTDP2015.UI.AdminModePages
@@ -16,7 +16,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Textos Fijos")]
     public partial class StaticTextAdministrator : AdminModePage
     {
-        StaticTextController iController;
+        StaticTextService iController;
 
         StaticTextDTO staticText;
         public StaticTextAdministrator(): base()
@@ -24,13 +24,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
             InitializeComponent();
         }
 
-        private StaticTextController Controller
+        private StaticTextService Controller
         {
             get
             {
-                return (StaticTextController)
-                    ControllerFactory.
-                    GetController<StaticTextDTO>();
+                return (StaticTextService)
+                    ServiceFactory.
+                    GetService<StaticTextDTO>();
             }
         }
 

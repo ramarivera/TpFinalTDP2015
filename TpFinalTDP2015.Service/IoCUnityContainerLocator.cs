@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Service
+namespace TpFinalTDP2015.BusinessLogic
 {
     //TOOD cambiar a internal
    public class IoCUnityContainerLocator

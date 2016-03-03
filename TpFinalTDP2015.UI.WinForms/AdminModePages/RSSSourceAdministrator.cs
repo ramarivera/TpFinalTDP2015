@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service.Controllers;
+using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.BusinessLogic.Services;
 using TpFinalTDP2015.UI.View;
 
 namespace TpFinalTDP2015.UI.AdminModePages
@@ -16,7 +16,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Fuentes RSS")]
     public partial class RSSSourceAdministrator : AdminModePage
     {
-        RssSourceController iController;
+        RssSourceService iController;
 
         RssSourceDTO rssSource;
         public RSSSourceAdministrator(): base()
@@ -24,13 +24,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
             InitializeComponent();
         }
 
-        private RssSourceController Controller
+        private RssSourceService Controller
         {
             get
             {
-                return (RssSourceController)
-                    ControllerFactory.
-                    GetController<RssSourceDTO>();
+                return (RssSourceService)
+                    ServiceFactory.
+                    GetService<RssSourceDTO>();
             }
         }
 

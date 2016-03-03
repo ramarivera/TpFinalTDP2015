@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Service.Enum;
+using TpFinalTDP2015.BusinessLogic.Enum;
 
-namespace TpFinalTDP2015.Service.AutoMapper
+namespace TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     class DayToServiceDaysConverter : ITypeConverter<Day, Days>
     {

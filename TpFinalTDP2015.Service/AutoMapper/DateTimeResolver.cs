@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Service.AutoMapper
+namespace TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     public class DateTimeResolver : ValueResolver<DateTime, DateTime>
     {

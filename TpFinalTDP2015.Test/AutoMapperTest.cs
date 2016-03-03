@@ -2,8 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AutoMapper;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Service.AutoMapper;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.AutoMapper;
+using TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace TpFinalTDP2015.Test
 {

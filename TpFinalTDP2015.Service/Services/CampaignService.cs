@@ -7,22 +7,22 @@ using Common.Logging;
 using TpFinalTDP2015.Persistence.Interfaces;
 using Microsoft.Practices.Unity;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.DTO;
 using AutoMapper;
 
-namespace TpFinalTDP2015.Service.Controllers
+namespace TpFinalTDP2015.BusinessLogic.Services
 {
-    public class CampaignController //: IController
-    {
+    public class CampaignService //: BaseService<CampaignDTO>
+    { 
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<CampaignController>();
+    private static readonly ILog cLogger = LogManager.GetLogger<CampaignService>();
 
         private IUnitOfWork iUoW;
 
 
-        public CampaignController()
+        public CampaignService()
         {
         }
 

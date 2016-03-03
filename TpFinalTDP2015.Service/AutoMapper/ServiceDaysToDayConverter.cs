@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Service.Enum;
+using TpFinalTDP2015.BusinessLogic.Enum;
 
-namespace TpFinalTDP2015.Service.AutoMapper
+namespace TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     class ServiceDaysToDayConverter : ITypeConverter<Days, Day>
     {
@@ -20,7 +20,7 @@ namespace TpFinalTDP2015.Service.AutoMapper
 
             Day lResult = new Day();
 
-            var algo = Mapper.Map<Service.Enum.Days, Model.Enum.Days>(lTemp);
+            var algo = Mapper.Map<BusinessLogic.Enum.Days, Model.Enum.Days>(lTemp);
 
             lResult.Value = algo;
             

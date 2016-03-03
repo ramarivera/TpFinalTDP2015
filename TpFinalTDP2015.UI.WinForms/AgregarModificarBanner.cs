@@ -7,17 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service.Controllers;
-using TpFinalTDP2015.Service.Comparers;
+using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.BusinessLogic.Services;
+using TpFinalTDP2015.BusinessLogic.Comparers;
 
 namespace TpFinalTDP2015.UI
 {
     public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
         DateIntervalController dateIntervalController;
-        StaticTextController staticTextController;
-        RssSourceController rssSourcesController;
+        StaticTextService staticTextController;
+        RssSourceService rssSourcesController;
 
         private AdminBannerDTO iOriginalBanner = new AdminBannerDTO();
 
@@ -32,8 +32,8 @@ namespace TpFinalTDP2015.UI
             get
             {
                 return (DateIntervalController)
-                    ControllerFactory.
-                    GetController<DateIntervalDTO>();
+                    ServiceFactory.
+                    GetService<DateIntervalDTO>();
             }
         }
 

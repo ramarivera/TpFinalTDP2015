@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service.Controllers;
+using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.BusinessLogic.Services;
 using TpFinalTDP2015.UI.View;
 
 namespace TpFinalTDP2015.UI.AdminModePages
@@ -19,7 +19,7 @@ namespace TpFinalTDP2015.UI.AdminModePages
     {
         AdminBannerDTO banner;
 
-        BannerController iController;
+        BannerService iController;
 
         public BannerAdministrator(): base()
         {
@@ -27,13 +27,13 @@ namespace TpFinalTDP2015.UI.AdminModePages
             this.Load += BannerAdministrator_Load;
         }
 
-        private BannerController Controller
+        private BannerService Controller
         {
             get
             {
-                return (BannerController)
-                    ControllerFactory.
-                    GetController<AdminBannerDTO>();
+                return (BannerService)
+                    ServiceFactory.
+                    GetService<AdminBannerDTO>();
             }
         }
 

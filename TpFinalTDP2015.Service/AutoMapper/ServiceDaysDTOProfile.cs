@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Service.Enum;
+using TpFinalTDP2015.BusinessLogic.Enum;
 
-namespace TpFinalTDP2015.Service.AutoMapper
+namespace TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     public class ServiceDaysDTOProfile: Profile
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Service.Enum.Days, Model.Enum.Days>()
+            Mapper.CreateMap<BusinessLogic.Enum.Days, Model.Enum.Days>()
                 .ConstructUsing(EnumConversion.ServiceDaysToModelDays);
         }
     }

@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TpFinalTDP2015.Persistence.Interfaces;
-using TpFinalTDP2015.Service;
-using TpFinalTDP2015.Service.Controllers;
-using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service.Enum;
+using TpFinalTDP2015.BusinessLogic;
+using TpFinalTDP2015.BusinessLogic.Services;
+using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.BusinessLogic.Enum;
 using Microsoft.Practices.Unity;
 
 namespace TpFinalTDP2015.Test
@@ -27,8 +27,8 @@ namespace TpFinalTDP2015.Test
             get
             {
                 return (DateIntervalController)
-                    ControllerFactory.
-                    GetController<DateIntervalDTO>();
+                    ServiceFactory.
+                    GetService<DateIntervalDTO>();
             }
         }
 

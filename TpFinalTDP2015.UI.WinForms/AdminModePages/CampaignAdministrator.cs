@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service.Controllers;
+using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.BusinessLogic.Services;
 
 namespace TpFinalTDP2015.UI.AdminModePages
 {
     [AdminModePageInfo(Name = "Administrador de Campañas")]
     public partial class CampaignAdministrator : AdminModePage
     {
-        CampaignController iController = new CampaignController();
+        CampaignService iController = new CampaignService();
 
         CampaignDTO campaign;
         public CampaignAdministrator() : base()

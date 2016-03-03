@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.Service;
+using TpFinalTDP2015.BusinessLogic;
 using TpFinalTDP2015.UI.AdminModePages;
 
 namespace TpFinalTDP2015.UI

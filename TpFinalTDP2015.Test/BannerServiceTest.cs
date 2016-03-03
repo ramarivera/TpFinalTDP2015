@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TpFinalTDP2015.Service.Controllers;
-using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service.Enum;
-using TpFinalTDP2015.Service;
+using TpFinalTDP2015.BusinessLogic.Services;
+using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.BusinessLogic.Enum;
+using TpFinalTDP2015.BusinessLogic;
 using System.Collections.Generic;
 
 namespace TpFinalTDP2015.Test
 {
     [TestClass]
-    public class BannerControllerTest
+    public class BannerServiceTest
     {
 
         [ClassInitialize()]
@@ -19,43 +19,43 @@ namespace TpFinalTDP2015.Test
             AutoMapperConfiguration.Configure();
         }
 
-        IController<AdminBannerDTO> BannerController
+        IService<AdminBannerDTO> BannerController
         {
             get
             {
-                return 
-                    ControllerFactory.
-                    GetController<AdminBannerDTO>();
+                return
+                    ServiceFactory.
+                    GetService<AdminBannerDTO>();
             }
         }
 
-        IController<DateIntervalDTO> DateIntervalController
+        IService<DateIntervalDTO> DateIntervalController
         {
             get
             {
-                return 
-                    ControllerFactory.
-                    GetController<DateIntervalDTO>();
+                return
+                    ServiceFactory.
+                    GetService<DateIntervalDTO>();
             }
         }
 
-        IController<RssSourceDTO> RssSourceController
+        IService<RssSourceDTO> RssSourceController
         {
             get
             {
-                return 
-                    ControllerFactory.
-                    GetController<RssSourceDTO>();
+                return
+                    ServiceFactory.
+                    GetService<RssSourceDTO>();
             }
         }
 
-        IController<StaticTextDTO> StaticTextController
+        IService<StaticTextDTO> StaticTextController
         {
             get
             {
-                return 
-                    ControllerFactory.
-                    GetController<StaticTextDTO>();
+                return
+                    ServiceFactory.
+                    GetService<StaticTextDTO>();
             }
         }
 
@@ -148,10 +148,10 @@ namespace TpFinalTDP2015.Test
             string lBannerDescription = "Distintas informaciones durante la mañana";
 
 
-            IController<AdminBannerDTO> lController = this.BannerController;
-            IController<StaticTextDTO> lStController = this.StaticTextController;
-            IController<RssSourceDTO> lRssController = this.RssSourceController;
-            IController<DateIntervalDTO> lDiController = this.DateIntervalController;
+            IService<AdminBannerDTO> lController = this.BannerController;
+            IService<StaticTextDTO> lStController = this.StaticTextController;
+            IService<DateIntervalDTO> lDiController = this.DateIntervalController;
+            IService<RssSourceDTO> lRssController = this.RssSourceController;
 
 
             AdminBannerDTO lResult;

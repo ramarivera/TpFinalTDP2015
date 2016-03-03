@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Service
+namespace TpFinalTDP2015.BusinessLogic
 {
  /*   public static class ExtensionMethods
     {

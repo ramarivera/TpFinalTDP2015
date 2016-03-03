@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.DTO;
 using Microsoft.Practices.Unity;
 
 
-namespace TpFinalTDP2015.Service.Controllers
+namespace TpFinalTDP2015.BusinessLogic.Services
 {
-    public class ControllerFactory
+    public class ServiceFactory
     {
-        public static BaseController<TDto> GetController<TDto>() where TDto : IDTO
+        public static BaseService<TDto> GetService<TDto>() where TDto : IDTO
             //TODO revisar ewsto porque NO TODOS los idto tienen un controlador
         {
             dynamic lResult;
@@ -25,26 +25,26 @@ namespace TpFinalTDP2015.Service.Controllers
             {
                 lResult = IoCUnityContainerLocator.
                     Container.
-                    Resolve(typeof(StaticTextController));
+                    Resolve(typeof(StaticTextService));
             }
             else if (typeof(TDto) == typeof(RssSourceDTO))
             {
                 lResult = IoCUnityContainerLocator.
                     Container.
-                    Resolve(typeof(RssSourceController));
+                    Resolve(typeof(RssSourceService));
             }
             else if (typeof(TDto) == typeof(AdminBannerDTO))
             {
                 lResult = IoCUnityContainerLocator.
                     Container.
-                    Resolve(typeof(BannerController));
+                    Resolve(typeof(BannerService));
             }
             else
             {
                 throw new ArgumentException();
             }
 
-            return (BaseController<TDto>) lResult;
+            return (BaseService<TDto>) lResult;
         }
 
 }

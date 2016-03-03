@@ -6,15 +6,15 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TpFinalTDP2015.Persistence.Interfaces;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.Service.Controllers
+namespace TpFinalTDP2015.BusinessLogic.Services
 {
-    public abstract class BaseController<TDto> : IController<TDto> where TDto : IDTO
+    public abstract class BaseService<TDto> : IService<TDto> where TDto : IDTO
     {
         protected IUnitOfWork iUoW;
 
-        public BaseController(IUnitOfWork pUoW)
+        public BaseService(IUnitOfWork pUoW)
         {
             this.iUoW = pUoW;
         }
@@ -56,7 +56,7 @@ namespace TpFinalTDP2015.Service.Controllers
         }
 
         // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        ~BaseController()
+        ~BaseService()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(false);

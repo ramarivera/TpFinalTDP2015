@@ -7,19 +7,19 @@ using Common.Logging;
 using TpFinalTDP2015.Persistence.Interfaces;
 using Microsoft.Practices.Unity;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.DTO;
 using AutoMapper;
 
-namespace TpFinalTDP2015.Service.Controllers
+namespace TpFinalTDP2015.BusinessLogic.Services
 {
-    public class BannerController: BaseController<AdminBannerDTO>
+    public class BannerService: BaseService<AdminBannerDTO>
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<BannerController>();
+        private static readonly ILog cLogger = LogManager.GetLogger<BannerService>();
 
-        public BannerController(IUnitOfWork iUoW) : base(iUoW) { }
+        public BannerService(IUnitOfWork iUoW) : base(iUoW) { }
 
         /*
         public override int Save(AdminBannerDTO pBanner)

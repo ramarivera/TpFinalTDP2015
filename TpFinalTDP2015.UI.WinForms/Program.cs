@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using TpFinalTDP2015.Service;
-using TpFinalTDP2015.Service.Controllers;
-using TpFinalTDP2015.Service.DTO;
-using TpFinalTDP2015.Service.Enum;
+using TpFinalTDP2015.BusinessLogic;
+using TpFinalTDP2015.BusinessLogic.Services;
+using TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.BusinessLogic.Enum;
 
 namespace TpFinalTDP2015.UI
 {

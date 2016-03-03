@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TpFinalTDP2015.Service;
-using TpFinalTDP2015.Service.Controllers;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic;
+using TpFinalTDP2015.BusinessLogic.Services;
+using TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace TpFinalTDP2015.Test
 {
     [TestClass]
-    public class RssSourceControllerTest
+    public class RssSourceServiceTest
     {
         [ClassInitialize()]
         public static void ClassInitialize(TestContext testContext)
@@ -16,13 +16,13 @@ namespace TpFinalTDP2015.Test
             AutoMapperConfiguration.Configure();
         }
 
-        RssSourceController Controller
+        RssSourceService Controller
         {
             get
             {
-                return (RssSourceController)
-                    ControllerFactory.
-                    GetController<RssSourceDTO>();
+                return (RssSourceService)
+                    ServiceFactory.
+                    GetService<RssSourceDTO>();
             }
         }
 
@@ -42,7 +42,7 @@ namespace TpFinalTDP2015.Test
             string lDescription = "Noticias del ámbito futbolistico, siendo su fuente ESPN (en inglés)";
             string lURL = "http://soccernet.espn.go.com/rss/news";
 
-            RssSourceController lController = this.Controller;
+            RssSourceService lController = this.Controller;
             RssSourceDTO lResult;
             RssSourceDTO lDto;
 
@@ -69,7 +69,7 @@ namespace TpFinalTDP2015.Test
             int lId = 1;
             string lTitle = "Muchas noticias";
 
-            RssSourceController lController = this.Controller;
+            RssSourceService lController = this.Controller;
             RssSourceDTO lResult;
             RssSourceDTO lDto;
 
@@ -90,7 +90,7 @@ namespace TpFinalTDP2015.Test
             int lId = 1;
             string lDescription = "Noticias políticas, fuente Todo Noticias";
 
-            RssSourceController lController = this.Controller;
+            RssSourceService lController = this.Controller;
             RssSourceDTO lResult;
             RssSourceDTO lDto;
 
@@ -111,7 +111,7 @@ namespace TpFinalTDP2015.Test
             int lId = 1;
             string lURL = "http://tn.com.ar/rss.xml";
 
-            RssSourceController lController = this.Controller;
+            RssSourceService lController = this.Controller;
             RssSourceDTO lResult;
             RssSourceDTO lDto;
 
@@ -132,7 +132,7 @@ namespace TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
 
-            RssSourceController lController = this.Controller;
+            RssSourceService lController = this.Controller;
             RssSourceDTO lRemoved;
             RssSourceDTO lDto;
 

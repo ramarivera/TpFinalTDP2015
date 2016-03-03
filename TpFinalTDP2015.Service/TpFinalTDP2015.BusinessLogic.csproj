@@ -7,8 +7,8 @@
     <ProjectGuid>{FAE170FD-3290-450D-906F-B0AE33875CEE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TpFinalTDP2015.Service</RootNamespace>
-    <AssemblyName>TpFinalTDP2015.Service</AssemblyName>
+    <RootNamespace>TpFinalTDP2015.BusinessLogic</RootNamespace>
+    <AssemblyName>TpFinalTDP2015.BusinessLogic</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -105,14 +105,14 @@
     <Compile Include="Comparers\DateIntervalDTOComparer.cs" />
     <Compile Include="Comparers\RssSourceDTOComparer.cs" />
     <Compile Include="Comparers\StaticTextDTOComparer.cs" />
-    <Compile Include="Controllers\BannerController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CampaignController.cs" />
-    <Compile Include="Controllers\ControllerFactory.cs" />
-    <Compile Include="Controllers\DateIntervalController.cs" />
-    <Compile Include="Controllers\IController.cs" />
-    <Compile Include="Controllers\RssSourceController.cs" />
-    <Compile Include="Controllers\StaticTextController.cs" />
+    <Compile Include="Services\BannerService.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\CampaignService.cs" />
+    <Compile Include="Services\ServiceFactory.cs" />
+    <Compile Include="Services\DateIntervalController.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\RssSourceService.cs" />
+    <Compile Include="Services\StaticTextService.cs" />
     <Compile Include="DTO\AdminBannerDTO.cs" />
     <Compile Include="DTO\CampaignDTO.cs" />
     <Compile Include="DTO\DateIntervalDTO.cs" />

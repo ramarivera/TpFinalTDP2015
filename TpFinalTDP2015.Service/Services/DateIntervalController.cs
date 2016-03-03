@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 using TpFinalTDP2015.Model;
 using TpFinalTDP2015.Persistence.EntityFramework;
 using TpFinalTDP2015.Persistence.Interfaces;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.Service.Controllers
+namespace TpFinalTDP2015.BusinessLogic.Services
 {
-    public class DateIntervalController : BaseController<DateIntervalDTO>
+    public class DateIntervalController : BaseService<DateIntervalDTO>
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.

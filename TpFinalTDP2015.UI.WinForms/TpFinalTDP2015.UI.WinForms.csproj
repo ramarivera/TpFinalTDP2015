@@ -311,9 +311,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TpFinalTDP2015.Service\TpFinalTDP2015.Service.csproj">
+    <ProjectReference Include="..\TpFinalTDP2015.Service\TpFinalTDP2015.BusinessLogic.csproj">
       <Project>{fae170fd-3290-450d-906f-b0ae33875cee}</Project>
-      <Name>TpFinalTDP2015.Service</Name>
+      <Name>TpFinalTDP2015.BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

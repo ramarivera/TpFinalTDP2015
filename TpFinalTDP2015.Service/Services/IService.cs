@@ -4,11 +4,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.Service.Controllers
+namespace TpFinalTDP2015.BusinessLogic.Services
 {
-   public interface IController<TDto> : IDisposable where TDto : IDTO
+   public interface IService<TDto> : IDisposable where TDto : IDTO
     {
 
         IList<TDto> GetAll();

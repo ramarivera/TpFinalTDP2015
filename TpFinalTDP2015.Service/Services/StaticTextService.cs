@@ -7,20 +7,20 @@ using Common.Logging;
 using TpFinalTDP2015.Persistence.Interfaces;
 using Microsoft.Practices.Unity;
 using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.DTO;
 using AutoMapper;
 
 
-namespace TpFinalTDP2015.Service.Controllers
+namespace TpFinalTDP2015.BusinessLogic.Services
 {
-    public class StaticTextController : BaseController<StaticTextDTO>
+    public class StaticTextService : BaseService<StaticTextDTO>
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<StaticTextController>();
+        private static readonly ILog cLogger = LogManager.GetLogger<StaticTextService>();
 
-        public StaticTextController(IUnitOfWork iUoW) : base(iUoW)
+        public StaticTextService(IUnitOfWork iUoW) : base(iUoW)
         {
         }
 

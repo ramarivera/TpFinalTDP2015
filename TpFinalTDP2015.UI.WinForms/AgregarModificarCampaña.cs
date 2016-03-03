@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.Service.Comparers;
-using TpFinalTDP2015.Service.Controllers;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic.Comparers;
+using TpFinalTDP2015.BusinessLogic.Services;
+using TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace TpFinalTDP2015.UI
 {
@@ -36,8 +36,8 @@ namespace TpFinalTDP2015.UI
             get
             {
                 return (DateIntervalController)
-                    ControllerFactory.
-                    GetController<DateIntervalDTO>();
+                    ServiceFactory.
+                    GetService<DateIntervalDTO>();
             }
         }
 

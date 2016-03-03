@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using TpFinalTDP2015.Service.AutoMapper;
+using TpFinalTDP2015.BusinessLogic.AutoMapper;
 using Common.Logging;
 
-namespace TpFinalTDP2015.Service
+namespace TpFinalTDP2015.BusinessLogic
 {
     public class AutoMapperConfiguration
     {

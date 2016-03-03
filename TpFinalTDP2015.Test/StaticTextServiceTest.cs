@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TpFinalTDP2015.Service;
-using TpFinalTDP2015.Service.Controllers;
-using TpFinalTDP2015.Service.DTO;
+using TpFinalTDP2015.BusinessLogic;
+using TpFinalTDP2015.BusinessLogic.Services;
+using TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace TpFinalTDP2015.Test
 {
 	[TestClass]
-	public class StaticTextControllerTest
+	public class StaticTextServiceTest
 	{
 		[ClassInitialize()]
 		public static void ClassInitialize(TestContext testContext)
@@ -16,13 +16,13 @@ namespace TpFinalTDP2015.Test
 			AutoMapperConfiguration.Configure();
 		}
 
-		StaticTextController Controller
+        StaticTextService Controller
 		{
 			get
 			{
-				return (StaticTextController)
-					ControllerFactory.
-					GetController<StaticTextDTO>();
+				return (StaticTextService)
+                    ServiceFactory.
+                    GetService<StaticTextDTO>();
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace TpFinalTDP2015.Test
 			string lDescription = "Información super secreta";
 			string lText = "Siempre que llovió, paró";
 
-			StaticTextController lController = this.Controller;
+            StaticTextService lController = this.Controller;
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -69,7 +69,7 @@ namespace TpFinalTDP2015.Test
 			int lId = 1;
 			string lTitle = "Texto 100";
 
-			StaticTextController lController = this.Controller;
+            StaticTextService lController = this.Controller;
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -90,7 +90,7 @@ namespace TpFinalTDP2015.Test
 			int lId = 1;
 			string lDescription = "vamo a calmarno";
 
-			StaticTextController lController = this.Controller;
+            StaticTextService lController = this.Controller;
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -111,7 +111,7 @@ namespace TpFinalTDP2015.Test
 			int lId = 1;
 			string lText = "Aguante todo";
 
-			StaticTextController lController = this.Controller;
+            StaticTextService lController = this.Controller;
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -131,7 +131,7 @@ namespace TpFinalTDP2015.Test
 			// Arrange
 			int lId = 1;
 
-			StaticTextController lController = this.Controller;
+            StaticTextService lController = this.Controller;
 			StaticTextDTO lRemoved;
 			StaticTextDTO lDto;
 
