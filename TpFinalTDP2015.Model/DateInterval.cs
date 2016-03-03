@@ -13,8 +13,6 @@ namespace TpFinalTDP2015.Model
         private string iName;
         private DateTime iActiveFrom;
         private DateTime iActiveUntil;
-        private IList<Day> iActiveDays;
-        private IList<TimeInterval> iActiveHours;
 
         private static readonly DateTime MIN_VALUE = new DateTime(1980, 1, 1);
         private static readonly DateTime MAX_VALUE = new DateTime(2099, 12, 31);
@@ -23,8 +21,8 @@ namespace TpFinalTDP2015.Model
         {
             this.iActiveUntil = MAX_VALUE;
             this.iActiveFrom = MIN_VALUE;
-            this.ActiveHours = new List<TimeInterval>();
-            this.ActiveDays = new List<Day>();
+            this.TimeIntervals = new List<TimeInterval>();
+            this.Days = new List<Day>();
         }
 
         public virtual string Name
@@ -65,53 +63,57 @@ namespace TpFinalTDP2015.Model
         }
 
 
-        public virtual IList<Day> ActiveDays
+     
+        protected virtual IList<TimeInterval> TimeIntervals { get; set; }
+        protected virtual IList<Day> Days  { get; set; }
+
+      
+
+        public virtual IEnumerable<Day> ActiveDays
         {
             get
             {
-                return this.iActiveDays;
-                
-            }
-            private set
-            {
-                this.iActiveDays = new List<Day>(value);
+                return this.Days;
             }
         }
 
-        public virtual IList<TimeInterval> ActiveHours
+        public virtual IEnumerable<TimeInterval> ActiveHours
         {
             get
             {
-                return this.iActiveHours;
-                
-            }
-            private set
-            {
-                this.iActiveHours = new List<TimeInterval>(value);
+                return this.TimeIntervals;
             }
         }
 
         public virtual void AddDay(Day pDay)
         {
-            if (this.iActiveDays.Contains(pDay))
+            if (this.Days.Contains(pDay))
             {
                 //TODO excepcion dia repetido
                 throw new ArgumentOutOfRangeException();
             }
             else
             {
-                this.iActiveDays.Add(pDay);
+                this.Days.Add(pDay);
             }
         }
 
         public virtual void RemoveDay(Day pDay)
         {
-            this.iActiveDays.Remove(pDay);
+            this.Days.Remove(pDay);
+        }
+
+        public virtual void RemoveAllDays()
+        {
+            foreach (var day in ActiveDays.Reverse())
+            {
+                RemoveDay(day);
+            }
         }
 
         public virtual void AddTimeInterval(TimeInterval pInterval)
         {
-            if(pInterval == null)
+            if (pInterval == null)
             {
                 throw new ArgumentNullException();
             }
@@ -121,23 +123,32 @@ namespace TpFinalTDP2015.Model
             }
             else
             {
-                this.iActiveHours.Add(pInterval);
+                this.TimeIntervals.Add(pInterval);
                 //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
             }
         }
 
         public virtual void RemoveTimeInterval(TimeInterval pInterval)
         {
-            this.iActiveHours.Remove(pInterval);
+            this.TimeIntervals.Remove(pInterval);
+        }
+
+
+        public virtual void RemoveAllIntervals()
+        {
+            foreach (var interval in TimeIntervals.Reverse())
+            {
+                RemoveTimeInterval(interval);
+            }
         }
 
         private bool CanBeAdded(TimeInterval pInterval)//para ser agregado
         {
             bool lResult = true;
-            int i = this.iActiveHours.Count - 1;
+            int i = this.TimeIntervals.Count - 1;
             while ((lResult == true) && (i >= 0))
             {
-                TimeInterval lInterval = this.iActiveHours[i];
+                TimeInterval lInterval = this.TimeIntervals[i];
                 if (pInterval.IntersectsWith(lInterval))
                 {
                     lResult = false;
@@ -189,10 +200,10 @@ namespace TpFinalTDP2015.Model
         private bool HasEqualDays(DateInterval pInterval)
         {
             bool lResult = false;
-            int i = this.iActiveDays.Count - 1;
+            int i = this.Days.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
-                Day day = this.iActiveDays[i];
+                Day day = this.Days[i];
                 if (pInterval.ActiveDays.Contains(day))
                 {
                     lResult = true;
@@ -205,11 +216,11 @@ namespace TpFinalTDP2015.Model
         private bool HasEqualTimeIntervals(DateInterval pInterval)
         {
             bool lResult = false;
-            int i = this.iActiveHours.Count - 1;
+            int i = this.TimeIntervals.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
-                TimeInterval pTimeInterval = this.iActiveHours[i];
-                int j = pInterval.ActiveHours.Count - 1;
+                TimeInterval pTimeInterval = this.TimeIntervals[i];
+                int j = pInterval.ActiveHours.Count() - 1;
                 while ((lResult == false) && (j >= 0))
                 {
                     lResult = pTimeInterval.IntersectsWith(pInterval.ActiveHours.ElementAt(j));
@@ -238,10 +249,10 @@ namespace TpFinalTDP2015.Model
         {
             bool lResult = false;
             int lDay = (int)pDate.Day;
-            int i = this.iActiveDays.Count - 1;
+            int i = this.Days.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
-                int day = (int)this.iActiveDays[i].Value;
+                int day = (int)this.Days[i].Value;
                 lResult = (lDay == day);
                 i--;
             }
@@ -252,16 +263,16 @@ namespace TpFinalTDP2015.Model
         private bool IsActiveAtTime(TimeSpan pTime)
         {
             bool lResult = false;
-            int i = this.iActiveHours.Count - 1;
+            int i = this.TimeIntervals.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
-                TimeInterval pInterval = this.iActiveHours[i];
+                TimeInterval pInterval = this.TimeIntervals[i];
                 lResult = ((pTime > pInterval.Start) && (pTime < pInterval.End));
                 i--;
             }
             return lResult;
         }
 
-       
+
     }
 }

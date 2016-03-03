@@ -26,6 +26,11 @@ namespace TpFinalTDP2015.BusinessLogic.Services
 
         }
 
+        /// <summary>
+        /// CORREGIR EL CLEAR COMENTADO!!!!
+        /// </summary>
+        /// <param name="pDateInterval"></param>
+        /// <returns></returns>
         public override int Save(DateIntervalDTO pDateInterval)
         {
             iUoW.BeginTransaction();
@@ -80,10 +85,13 @@ namespace TpFinalTDP2015.BusinessLogic.Services
                       lOrigDateInt.RemoveActiveDay(day);
                   }*/
 
-                lOrigDateInt.ActiveDays.Clear();
+                // lOrigDateInt.ActiveDays.Clear();
+
+                lOrigDateInt.RemoveAllDays();
 
                 foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
                 {
+
                     lOrigDateInt.AddDay(lDayRepo.GetByID(item));
                     //  lDayRepo.Update(item);
                 }    

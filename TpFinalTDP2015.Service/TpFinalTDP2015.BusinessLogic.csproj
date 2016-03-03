@@ -137,6 +137,7 @@
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="TpFinalTDP2015.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

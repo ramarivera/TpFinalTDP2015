@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace TpFinalTDP2015.Test
 {
-    [TestClass]
+   /* [TestClass]
     public class DateIntervalTest
     {
         [TestMethod]
@@ -45,5 +45,5 @@ namespace TpFinalTDP2015.Test
 
             Assert.AreEqual(lDateInterval1.ActiveDays.Count,7);
         }
-    }
+    }*/
 }
