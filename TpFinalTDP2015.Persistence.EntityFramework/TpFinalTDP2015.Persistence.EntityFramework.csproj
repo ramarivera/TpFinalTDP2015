@@ -87,6 +87,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFrameworkMappingConfiguration.cs" />
+    <Compile Include="EntityTypeConfigurationExtensions.cs" />
     <Compile Include="Mappings\BannerConfiguration.cs" />
     <Compile Include="Mappings\DateIntervalConfiguration.cs" />
     <Compile Include="Mappings\DayConfiguration.cs" />

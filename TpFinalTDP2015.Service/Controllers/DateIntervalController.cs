@@ -85,10 +85,16 @@ namespace TpFinalTDP2015.Service.Controllers
                       lOrigDateInt.RemoveActiveDay(day);
                   }*/
 
-               // lOrigDateInt.ActiveDays.Clear();
+                // lOrigDateInt.ActiveDays.Clear();
+
+                foreach (var item in lOrigDateInt.ActiveDays)
+                {
+                    lOrigDateInt.RemoveDay(item);
+                }
 
                 foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
                 {
+
                     lOrigDateInt.AddDay(lDayRepo.GetByID(item));
                     //  lDayRepo.Update(item);
                 }    

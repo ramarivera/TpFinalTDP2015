@@ -65,29 +65,29 @@ namespace TpFinalTDP2015.Model
         }
 
 
-        public virtual IList<Day> Days
+        protected virtual IList<Day> Days
         {
             get
             {
                 return this.iActiveDays;
-                
+
             }
-            private set
+            set
             {
-                this.iActiveDays = new List<Day>(value);
+                this.iActiveDays = (value);
             }
         }
 
-        public virtual IList<TimeInterval> TimeIntervals
+        protected virtual IList<TimeInterval> TimeIntervals
         {
             get
             {
                 return this.iActiveHours;
-                
+
             }
-            private set
+            set
             {
-                this.iActiveHours = new List<TimeInterval>(value);
+                this.iActiveHours = (value);
             }
         }
 
@@ -95,8 +95,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveDays;
-
+                return this.Days;
             }
         }
 
@@ -104,8 +103,7 @@ namespace TpFinalTDP2015.Model
         {
             get
             {
-                return this.iActiveHours;
-
+                return this.TimeIntervals;
             }
         }
 
@@ -129,7 +127,7 @@ namespace TpFinalTDP2015.Model
 
         public virtual void AddTimeInterval(TimeInterval pInterval)
         {
-            if(pInterval == null)
+            if (pInterval == null)
             {
                 throw new ArgumentNullException();
             }
@@ -280,6 +278,6 @@ namespace TpFinalTDP2015.Model
             return lResult;
         }
 
-       
+
     }
 }
