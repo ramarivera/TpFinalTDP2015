@@ -23,8 +23,8 @@ namespace TpFinalTDP2015.Model
         {
             this.iActiveUntil = MAX_VALUE;
             this.iActiveFrom = MIN_VALUE;
-            this.ActiveHours = new List<TimeInterval>();
-            this.ActiveDays = new List<Day>();
+            this.iActiveHours = new List<TimeInterval>();
+            this.iActiveDays = new List<Day>();
         }
 
         public virtual string Name
@@ -65,7 +65,7 @@ namespace TpFinalTDP2015.Model
         }
 
 
-        public virtual IList<Day> ActiveDays
+        public virtual IList<Day> Days
         {
             get
             {
@@ -78,7 +78,7 @@ namespace TpFinalTDP2015.Model
             }
         }
 
-        public virtual IList<TimeInterval> ActiveHours
+        public virtual IList<TimeInterval> TimeIntervals
         {
             get
             {
@@ -88,6 +88,24 @@ namespace TpFinalTDP2015.Model
             private set
             {
                 this.iActiveHours = new List<TimeInterval>(value);
+            }
+        }
+
+        public virtual IEnumerable<Day> ActiveDays
+        {
+            get
+            {
+                return this.iActiveDays;
+
+            }
+        }
+
+        public virtual IEnumerable<TimeInterval> ActiveHours
+        {
+            get
+            {
+                return this.iActiveHours;
+
             }
         }
 
@@ -209,7 +227,7 @@ namespace TpFinalTDP2015.Model
             while ((lResult == false) && (i >= 0))
             {
                 TimeInterval pTimeInterval = this.iActiveHours[i];
-                int j = pInterval.ActiveHours.Count - 1;
+                int j = pInterval.ActiveHours.Count() - 1;
                 while ((lResult == false) && (j >= 0))
                 {
                     lResult = pTimeInterval.IntersectsWith(pInterval.ActiveHours.ElementAt(j));

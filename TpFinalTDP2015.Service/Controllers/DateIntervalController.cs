@@ -26,6 +26,11 @@ namespace TpFinalTDP2015.Service.Controllers
 
         }
 
+        /// <summary>
+        /// CORREGIR EL CLEAR COMENTADO!!!!
+        /// </summary>
+        /// <param name="pDateInterval"></param>
+        /// <returns></returns>
         public override int Save(DateIntervalDTO pDateInterval)
         {
             iUoW.BeginTransaction();
@@ -80,7 +85,7 @@ namespace TpFinalTDP2015.Service.Controllers
                       lOrigDateInt.RemoveActiveDay(day);
                   }*/
 
-                lOrigDateInt.ActiveDays.Clear();
+               // lOrigDateInt.ActiveDays.Clear();
 
                 foreach (int item in lDateInterval.ActiveDays.Select(d => d.Id))
                 {
