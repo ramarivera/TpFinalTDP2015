@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Xml;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.BusinessLogic.RSS
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.RSS
 {
     /// <summary>
     /// Lector de RSS que procesa directamente el XML en bruto de la fuente.

@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.UI.AdminModePages
+namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     public partial class BaseDGV : DataGridView
     {

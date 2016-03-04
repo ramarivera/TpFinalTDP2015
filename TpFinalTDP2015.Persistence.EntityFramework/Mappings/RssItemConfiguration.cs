@@ -5,9 +5,9 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
+namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework.Mapping
 {
 
     public class RssItemMapping : EntityTypeConfiguration<RssItem>

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.BusinessLogic.DTO;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 
-namespace TpFinalTDP2015.BusinessLogic.AutoMapper
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     public class DateIntervalDTOProfile: Profile
     {
@@ -48,7 +49,7 @@ namespace TpFinalTDP2015.BusinessLogic.AutoMapper
                     foreach (var item in lDto.Days)
                     {
                         lResult.AddDay(
-                            Mapper.Map<BusinessLogic.Enum.Days, Day>(item)
+                            Mapper.Map<Days, Day>(item)
                             );
                     }
 

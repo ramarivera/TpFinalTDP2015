@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.BusinessLogic.DTO;
-using TpFinalTDP2015.BusinessLogic.Enum;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 
-namespace TpFinalTDP2015.UI.View
+namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     public partial class DateIntervalView: Form
     {

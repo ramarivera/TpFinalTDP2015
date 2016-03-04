@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.BusinessLogic.DTO;
-using TpFinalTDP2015.BusinessLogic.Services;
-using TpFinalTDP2015.UI.View;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+using MarrSystems.TpFinalTDP2015.UI.View;
 
-namespace TpFinalTDP2015.UI.AdminModePages
+namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     [AdminModePageInfo(Name = "Administrador de Fuentes RSS")]
     public partial class RSSSourceAdministrator : AdminModePage

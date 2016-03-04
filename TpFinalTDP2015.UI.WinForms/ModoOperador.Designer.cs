@@ -1,4 +1,4 @@
-﻿namespace TpFinalTDP2015.UI
+﻿namespace MarrSystems.TpFinalTDP2015.UI
 {
     partial class ModoOperador
     {

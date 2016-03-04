@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Persistence.NHibernate
+namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate
 {
     public static class NHSessionFactory
     {

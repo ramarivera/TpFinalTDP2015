@@ -1,4 +1,4 @@
-﻿namespace TpFinalTDP2015.UI.View
+﻿namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     partial class DateIntervalView
     {
@@ -42,7 +42,7 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.lblDays = new System.Windows.Forms.Label();
             this.grbTimeInterval = new System.Windows.Forms.GroupBox();
-            this.dgvTimeInterval = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvTimeInterval = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();

@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.BusinessLogic;
-using TpFinalTDP2015.UI.AdminModePages;
+using MarrSystems.TpFinalTDP2015.BusinessLogic;
+using MarrSystems.TpFinalTDP2015.UI.AdminModePages;
 
-namespace TpFinalTDP2015.UI
+namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class ModoAdministrador : BaseForm
     {

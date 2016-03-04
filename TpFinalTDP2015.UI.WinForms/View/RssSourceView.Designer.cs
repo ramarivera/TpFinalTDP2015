@@ -1,4 +1,4 @@
-﻿namespace TpFinalTDP2015.UI.View
+﻿namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     partial class RssSourceView
     {

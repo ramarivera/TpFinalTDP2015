@@ -6,10 +6,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Persistence.Interfaces;
+using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Persistence;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework
+namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
     public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {

@@ -10,9 +10,9 @@ using NHibernate.Dialect;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 using NHibernate.Driver;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.Persistence.NHibernate.Mappings
+namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate.Mappings
 {
     class StaticTextMap : ClassMapping<StaticText>
     {

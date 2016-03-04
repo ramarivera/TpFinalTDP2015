@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TpFinalTDP2015.UI.Properties
+namespace MarrSystems.TpFinalTDP2015.UI.Properties
 {
 
 

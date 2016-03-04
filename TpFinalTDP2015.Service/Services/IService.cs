@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.BusinessLogic.Services
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
    public interface IService<TDto> : IDisposable where TDto : IDTO
     {

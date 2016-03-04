@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace TpFinalTDP2015.Model
+namespace MarrSystems.TpFinalTDP2015.Model
 {
     public static class ExtensionMethod
     {

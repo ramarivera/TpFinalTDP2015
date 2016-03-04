@@ -1,4 +1,4 @@
-﻿namespace TpFinalTDP2015.UI.View
+﻿namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     partial class BannerView
     {
@@ -39,11 +39,11 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.grbIntervalos = new System.Windows.Forms.GroupBox();
-            this.dgvIntervals = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvIntervals = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.grbTextos = new System.Windows.Forms.GroupBox();
-            this.dgvTexts = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvTexts = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.grbFuentes = new System.Windows.Forms.GroupBox();
-            this.dgvSources = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvSources = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.grbDatos.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace TpFinalTDP2015.Persistence.NHibernate
+namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate
 {
     public static class NHConfiguration
     {

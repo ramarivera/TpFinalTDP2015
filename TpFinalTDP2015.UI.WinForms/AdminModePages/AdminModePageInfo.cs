@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.UI.AdminModePages
+namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     [System.AttributeUsage(System.AttributeTargets.Class |
                        System.AttributeTargets.Struct)

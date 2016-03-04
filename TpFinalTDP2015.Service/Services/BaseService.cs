@@ -5,10 +5,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Persistence.Interfaces;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.Persistence;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.BusinessLogic.Services
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
     public abstract class BaseService<TDto> : IService<TDto> where TDto : IDTO
     {

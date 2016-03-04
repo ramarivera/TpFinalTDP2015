@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Model
+namespace MarrSystems.TpFinalTDP2015.Model
 {
     [Serializable]
     public class StaticText : BaseBannerItem

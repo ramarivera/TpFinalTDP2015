@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Model.Enum;
-using TpFinalTDP2015.Model.DomainServices;
+using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model.DomainServices;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 
-namespace TpFinalTDP2015.Test
+namespace MarrSystems.TpFinalTDP2015.Test
 {
     [TestClass]
     public class CampañaTest

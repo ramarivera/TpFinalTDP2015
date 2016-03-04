@@ -1,4 +1,4 @@
-﻿namespace TpFinalTDP2015.UI.AdminModePages
+﻿namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     partial class NullPage
     {

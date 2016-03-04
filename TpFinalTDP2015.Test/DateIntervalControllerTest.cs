@@ -3,14 +3,14 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TpFinalTDP2015.Persistence.Interfaces;
-using TpFinalTDP2015.BusinessLogic;
-using TpFinalTDP2015.BusinessLogic.Services;
-using TpFinalTDP2015.BusinessLogic.DTO;
-using TpFinalTDP2015.BusinessLogic.Enum;
+using MarrSystems.TpFinalTDP2015.Persistence;
+using MarrSystems.TpFinalTDP2015.BusinessLogic;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 using Microsoft.Practices.Unity;
 
-namespace TpFinalTDP2015.Test
+namespace MarrSystems.TpFinalTDP2015.Test
 {
     [TestClass]
     public class DateIntervalControllerTest

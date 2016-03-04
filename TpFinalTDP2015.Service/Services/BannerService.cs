@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Logging;
-using TpFinalTDP2015.Persistence.Interfaces;
 using Microsoft.Practices.Unity;
-using TpFinalTDP2015.Model;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using AutoMapper;
+using MarrSystems.TpFinalTDP2015.Persistence;
 
-namespace TpFinalTDP2015.BusinessLogic.Services
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
     public class BannerService: BaseService<AdminBannerDTO>
     {

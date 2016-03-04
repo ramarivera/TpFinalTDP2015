@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using TpFinalTDP2015.BusinessLogic.AutoMapper;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper;
 using Common.Logging;
 
-namespace TpFinalTDP2015.BusinessLogic
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 {
     public class AutoMapperConfiguration
     {
@@ -23,8 +23,7 @@ namespace TpFinalTDP2015.BusinessLogic
                 cfg.AddProfile<OperativeBannerProfile>();
                 cfg.AddProfile<CampaignProfile>();
                 cfg.AddProfile<DateIntervalProfile>();
-                cfg.AddProfile<ModelDayProfile>();
-                cfg.AddProfile<ModelDaysProfile>();
+                cfg.AddProfile<DayProfile>();
                 cfg.AddProfile<RssItemProfile>();
                 cfg.AddProfile<RssSourceProfile>();
                 cfg.AddProfile<SlideProfile>();
@@ -34,10 +33,9 @@ namespace TpFinalTDP2015.BusinessLogic
                 cfg.AddProfile<AdminBannerDTOProfile>();
                 cfg.AddProfile<CampaignDTOProfile>();
                 cfg.AddProfile<DateIntervalDTOProfile>();
-                cfg.AddProfile<ServiceDaysDTOProfile>();
                 cfg.AddProfile<RssItemDTOProfile>();
                 cfg.AddProfile<RssSourceDTOProfile>();
-                cfg.AddProfile<ServiceDaysProfile>();
+                cfg.AddProfile<DaysEnumProfile>();
                 cfg.AddProfile<SlideDTOProfile>();
                 cfg.AddProfile<SlideTransitioProfile>();
                 cfg.AddProfile<StaticTextDTOProfile>();

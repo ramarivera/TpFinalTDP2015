@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace TpFinalTDP2015.BusinessLogic.DTO
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
 {
     public class OperativeBannerDTO : IDTO
     {

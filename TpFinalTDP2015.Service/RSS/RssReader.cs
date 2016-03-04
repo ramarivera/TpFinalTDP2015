@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.BusinessLogic.RSS
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.RSS
 {
     /// <summary>
     /// Implementación de base del lector de RSS.

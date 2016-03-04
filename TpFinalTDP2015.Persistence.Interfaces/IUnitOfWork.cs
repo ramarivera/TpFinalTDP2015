@@ -4,9 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.Persistence.Interfaces
+namespace MarrSystems.TpFinalTDP2015.Persistence
 {
     public interface IUnitOfWork : IDisposable
     {

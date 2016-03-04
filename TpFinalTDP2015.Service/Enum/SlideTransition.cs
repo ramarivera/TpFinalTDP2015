@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.BusinessLogic.Enum
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Enum
 {
     public enum SlideTransition
     {

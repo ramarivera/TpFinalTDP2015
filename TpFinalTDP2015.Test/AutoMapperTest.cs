@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AutoMapper;
-using TpFinalTDP2015.Model;
-using TpFinalTDP2015.BusinessLogic.AutoMapper;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.Test
+namespace MarrSystems.TpFinalTDP2015.Test
 {
     [TestClass]
     public class AutoMapperTest
@@ -19,8 +19,7 @@ namespace TpFinalTDP2015.Test
                 cfg.AddProfile<OperativeBannerProfile>();
                 cfg.AddProfile<CampaignProfile>();
                 cfg.AddProfile<DateIntervalProfile>();
-                cfg.AddProfile<ModelDayProfile>();
-                cfg.AddProfile<ModelDaysProfile>();
+                cfg.AddProfile<DayProfile>();
                 cfg.AddProfile<RssItemProfile>();
                 cfg.AddProfile<RssSourceProfile>();
                 cfg.AddProfile<SlideProfile>();
@@ -38,10 +37,9 @@ namespace TpFinalTDP2015.Test
                 cfg.AddProfile<AdminBannerDTOProfile>();
                 cfg.AddProfile<CampaignDTOProfile>();
                 cfg.AddProfile<DateIntervalDTOProfile>();
-                cfg.AddProfile<ServiceDaysDTOProfile>();
                 cfg.AddProfile<RssItemDTOProfile>();
                 cfg.AddProfile<RssSourceDTOProfile>();
-                cfg.AddProfile<ServiceDaysProfile>();
+                cfg.AddProfile<DaysEnumProfile>();
                 cfg.AddProfile<SlideDTOProfile>();
                 cfg.AddProfile<SlideTransitioProfile>();
                 cfg.AddProfile<StaticTextDTOProfile>();

@@ -1,4 +1,4 @@
-﻿namespace TpFinalTDP2015.UI.AdminModePages
+﻿namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     partial class RSSSourceAdministrator
     {
@@ -35,7 +35,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.dgvRSSSource = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvRSSSource = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.btnView = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.grbRssSources.SuspendLayout();

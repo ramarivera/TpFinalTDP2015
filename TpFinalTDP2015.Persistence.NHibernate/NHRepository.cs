@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Persistence.Interfaces;
+using MarrSystems.TpFinalTDP2015.Model;
 using System.Linq.Expressions;
 using NHibernate.Linq;
 
-namespace TpFinalTDP2015.Persistence.NHibernate
+namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate
 {
     public class NHRepository<TEntity> : IRepository<TEntity>   where TEntity : BaseEntity
     {

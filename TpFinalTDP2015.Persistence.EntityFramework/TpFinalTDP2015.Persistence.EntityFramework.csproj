@@ -7,8 +7,8 @@
     <ProjectGuid>{C1966555-9617-43DC-9F3D-918D34778945}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TpFinalTDP2015.Persistence.EntityFramework</RootNamespace>
-    <AssemblyName>TpFinalTDP2015.Persistence.EntityFramework</AssemblyName>
+    <RootNamespace>MarrSystems.TpFinalTDP2015.Persistence.EntityFramework</RootNamespace>
+    <AssemblyName>MarrSystems.TpFinalTDP2015.Persistence.EntityFramework</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -113,13 +113,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TpFinalTDP2015.CrossCutting\TpFinalTDP2015.CrossCutting.csproj">
+      <Project>{D6467CC0-D7E8-4153-924D-B347B759C8B5}</Project>
+      <Name>TpFinalTDP2015.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">
       <Project>{633db5be-927e-45af-860f-4cf5b2ef6afd}</Project>
       <Name>TpFinalTDP2015.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TpFinalTDP2015.Persistence.Interfaces\TpFinalTDP2015.Persistence.Interfaces.csproj">
+    <ProjectReference Include="..\TpFinalTDP2015.Persistence.Interfaces\TpFinalTDP2015.Persistence.csproj">
       <Project>{5aebb1c3-d751-4d7e-8c65-6025bd98ee27}</Project>
-      <Name>TpFinalTDP2015.Persistence.Interfaces</Name>
+      <Name>TpFinalTDP2015.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

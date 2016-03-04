@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.BusinessLogic.DTO;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.BusinessLogic.AutoMapper
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     public class TimeIntervalDTOProfile: Profile
     {

@@ -1,4 +1,4 @@
-﻿namespace TpFinalTDP2015.UI.AdminModePages
+﻿namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     partial class IntervalAdministrator
     {
@@ -32,13 +32,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grbDateInterval = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvDateInterval = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvDateInterval = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddDateInterval = new System.Windows.Forms.Button();
             this.btnDeleteDateInterval = new System.Windows.Forms.Button();
             this.grbTimeInterval = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvTimeInterval = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvTimeInterval = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddTimeInterval = new System.Windows.Forms.Button();
             this.btnDeleteTimeInterval = new System.Windows.Forms.Button();

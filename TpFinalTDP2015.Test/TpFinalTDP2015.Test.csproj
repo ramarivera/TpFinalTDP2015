@@ -93,6 +93,10 @@
     <Compile Include="DateIntervalTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TpFinalTDP2015.CrossCutting\TpFinalTDP2015.CrossCutting.csproj">
+      <Project>{d6467cc0-d7e8-4153-924d-b347b759c8b5}</Project>
+      <Name>TpFinalTDP2015.CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TpFinalTDP2015.Model\TpFinalTDP2015.Model.csproj">
       <Project>{633db5be-927e-45af-860f-4cf5b2ef6afd}</Project>
       <Name>TpFinalTDP2015.Model</Name>
@@ -101,9 +105,9 @@
       <Project>{c1966555-9617-43dc-9f3d-918d34778945}</Project>
       <Name>TpFinalTDP2015.Persistence.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TpFinalTDP2015.Persistence.Interfaces\TpFinalTDP2015.Persistence.Interfaces.csproj">
+    <ProjectReference Include="..\TpFinalTDP2015.Persistence.Interfaces\TpFinalTDP2015.Persistence.csproj">
       <Project>{5aebb1c3-d751-4d7e-8c65-6025bd98ee27}</Project>
-      <Name>TpFinalTDP2015.Persistence.Interfaces</Name>
+      <Name>TpFinalTDP2015.Persistence</Name>
     </ProjectReference>
     <ProjectReference Include="..\TpFinalTDP2015.Persistence.NHibernate\TpFinalTDP2015.Persistence.NHibernate.csproj">
       <Project>{771ce6eb-4e57-4cb9-802d-6d12c7d20549}</Project>

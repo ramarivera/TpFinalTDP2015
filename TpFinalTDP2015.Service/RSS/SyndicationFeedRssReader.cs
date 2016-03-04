@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ServiceModel.Syndication;
 using System.Xml;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model;
 
-namespace TpFinalTDP2015.BusinessLogic.RSS
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.RSS
 {
     /// <summary>
     /// Implementación del lector de RSS basada en las clases de <see cref="System.ServiceModel.Syndication"/>.

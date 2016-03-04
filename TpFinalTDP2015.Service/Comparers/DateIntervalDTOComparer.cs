@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.BusinessLogic.Comparers
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Comparers
 {
     public class DateIntervalDTOComparer: IEqualityComparer<DateIntervalDTO>
     {

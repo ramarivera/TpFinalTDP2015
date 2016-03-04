@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework.Mapping
+namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework.Mapping
 {
     public class EntityFrameworkMappingConfiguration : DefaultConfiguration
     {

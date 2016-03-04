@@ -1,4 +1,4 @@
-﻿namespace TpFinalTDP2015.UI.AdminModePages
+﻿namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     partial class BannerAdministrator
     {
@@ -32,7 +32,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grbBanner = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvBanner = new TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvBanner = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();

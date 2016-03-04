@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.BusinessLogic.Enum;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Enum;
 
-namespace TpFinalTDP2015.BusinessLogic.DTO
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
 {
     public class SlideDTO: IDTO
     {

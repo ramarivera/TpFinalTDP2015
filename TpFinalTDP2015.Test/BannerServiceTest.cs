@@ -1,12 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TpFinalTDP2015.BusinessLogic.Services;
-using TpFinalTDP2015.BusinessLogic.DTO;
-using TpFinalTDP2015.BusinessLogic.Enum;
-using TpFinalTDP2015.BusinessLogic;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
+using MarrSystems.TpFinalTDP2015.BusinessLogic;
 using System.Collections.Generic;
 
-namespace TpFinalTDP2015.Test
+namespace MarrSystems.TpFinalTDP2015.Test
 {
     [TestClass]
     public class BannerServiceTest
@@ -140,7 +140,6 @@ namespace TpFinalTDP2015.Test
         public void Save_AddingNewBanner_ReturnsBannerId()
         {
             // Arrange
-            int lId;
             int lDiId = 1;
             int lStid = 1;
             int lRssId = 1;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TpFinalTDP2015.UI
+namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class Form1 : BaseForm
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model;
 using System.Collections.Generic;
 
-namespace TpFinalTDP2015.Test
+namespace MarrSystems.TpFinalTDP2015.Test
 {
    /* [TestClass]
     public class DateIntervalTest

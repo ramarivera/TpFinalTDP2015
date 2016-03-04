@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.BusinessLogic;
+using MarrSystems.TpFinalTDP2015.BusinessLogic;
 
-namespace TpFinalTDP2015.UI.AdminModePages
+namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     public class AdminModePagesFactory
     {

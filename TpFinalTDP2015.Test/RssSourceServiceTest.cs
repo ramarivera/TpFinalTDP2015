@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TpFinalTDP2015.BusinessLogic;
-using TpFinalTDP2015.BusinessLogic.Services;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.Test
+namespace MarrSystems.TpFinalTDP2015.Test
 {
     [TestClass]
     public class RssSourceServiceTest

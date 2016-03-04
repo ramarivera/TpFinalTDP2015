@@ -7,8 +7,8 @@
     <ProjectGuid>{D6467CC0-D7E8-4153-924D-B347B759C8B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TpFinalTDP2015.CrossCutting</RootNamespace>
-    <AssemblyName>TpFinalTDP2015.CrossCutting</AssemblyName>
+    <RootNamespace>MarrSystems.TpFinalTDP2015.CrossCutting</RootNamespace>
+    <AssemblyName>MarrSystems.TpFinalTDP2015.CrossCutting</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

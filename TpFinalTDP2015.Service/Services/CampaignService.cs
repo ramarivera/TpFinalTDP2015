@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Logging;
-using TpFinalTDP2015.Persistence.Interfaces;
+using MarrSystems.TpFinalTDP2015.Persistence;
 using Microsoft.Practices.Unity;
-using TpFinalTDP2015.Model;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using AutoMapper;
 
-namespace TpFinalTDP2015.BusinessLogic.Services
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
     public class CampaignService //: BaseService<CampaignDTO>
     { 
@@ -28,7 +28,7 @@ namespace TpFinalTDP2015.BusinessLogic.Services
 
         private IUnitOfWork GetUnitOfWork()
         {
-            return IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>();
+            throw new NotImplementedException();
         }
 
         public IList<CampaignDTO> GetCampaigns()

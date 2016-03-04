@@ -5,11 +5,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TpFinalTDP2015.Model;
-using TpFinalTDP2015.Model.Enum;
-using TpFinalTDP2015.Model.DomainServices;
+using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Model.DomainServices;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 
-namespace TpFinalTDP2015.Persistence.EntityFramework
+namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
     class DigitalSignageInitializer : System.Data.Entity.DropCreateDatabaseAlways<DigitalSignageContext>
     {
@@ -267,13 +267,13 @@ namespace TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedDays(DigitalSignageContext pContext)
         {
-            Day lDay1 = new Day() {Value = Model.Enum.Days.Domingo };
-            Day lDay2 = new Day() {Value = Model.Enum.Days.Lunes };
-            Day lDay3 = new Day() {Value = Model.Enum.Days.Martes };
-            Day lDay4 = new Day() {Value = Model.Enum.Days.Miercoles };
-            Day lDay5 = new Day() {Value = Model.Enum.Days.Jueves };
-            Day lDay6 = new Day() {Value = Model.Enum.Days.Viernes };
-            Day lDay7 = new Day() {Value = Model.Enum.Days.Sabado };
+            Day lDay1 = new Day() {Value = Days.Domingo };
+            Day lDay2 = new Day() {Value = Days.Lunes };
+            Day lDay3 = new Day() {Value = Days.Martes };
+            Day lDay4 = new Day() {Value = Days.Miercoles };
+            Day lDay5 = new Day() {Value = Days.Jueves };
+            Day lDay6 = new Day() {Value = Days.Viernes };
+            Day lDay7 = new Day() {Value = Days.Sabado };
 
             IList<Day> lList = new List<Day>()
                 {

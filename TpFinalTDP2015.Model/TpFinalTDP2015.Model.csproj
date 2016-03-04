@@ -7,8 +7,8 @@
     <ProjectGuid>{633DB5BE-927E-45AF-860F-4CF5B2EF6AFD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TpFinalTDP2015.Model</RootNamespace>
-    <AssemblyName>TpFinalTDP2015.Model</AssemblyName>
+    <RootNamespace>MarrSystems.TpFinalTDP2015.Model</RootNamespace>
+    <AssemblyName>MarrSystems.TpFinalTDP2015.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,7 +52,6 @@
     <Compile Include="Day.cs" />
     <Compile Include="DomainServices\ISeFijaSiEstaActivo.cs" />
     <Compile Include="DomainServices\SeFijaSiEstaActivo.cs" />
-    <Compile Include="Enum\Days.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="DomainServices\ICosoQueTieneDateInterval.cs" />
@@ -67,6 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TpFinalTDP2015.CrossCutting\TpFinalTDP2015.CrossCutting.csproj">
+      <Project>{d6467cc0-d7e8-4153-924d-b347b759c8b5}</Project>
+      <Name>TpFinalTDP2015.CrossCutting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

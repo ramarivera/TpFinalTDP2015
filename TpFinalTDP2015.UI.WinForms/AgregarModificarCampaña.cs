@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TpFinalTDP2015.BusinessLogic.Comparers;
-using TpFinalTDP2015.BusinessLogic.Services;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Comparers;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
-namespace TpFinalTDP2015.UI
+namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : Form, IAddModifyViewForm
     {

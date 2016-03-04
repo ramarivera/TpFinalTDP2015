@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TpFinalTDP2015.UI.WPF
+namespace MarrSystems.TpFinalTDP2015.UI.WPF
 {
     public class Class1
     {

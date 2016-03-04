@@ -3,11 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TpFinalTDP2015.Persistence.Interfaces;
 
-namespace TpFinalTDP2015.Persistence.NHibernate
+namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate
 {
     public class NHUnitOfWork : IUnitOfWork
     {
