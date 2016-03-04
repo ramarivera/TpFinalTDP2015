@@ -73,18 +73,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\Days.cs" />
-    <Compile Include="IoCUnityContainerLocator.cs" />
+    <Compile Include="DependencyInjection\IoCContainerLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="log4net.config">
+    <None Include="Logging\log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="TpFinalTDP2015.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Unity.config">
+    <None Include="DependencyInjection\Unity.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

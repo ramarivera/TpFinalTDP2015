@@ -25,8 +25,8 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         public virtual IDbSet<RssSource> RssSources { get; set; }
         public virtual IDbSet<StaticText> Texts { get; set; }
         public virtual IDbSet<Slide> Slides { get; set; }
-        public virtual IDbSet<TimeInterval> TimeIntervals { get; set; }
-        public virtual IDbSet<DateInterval> DateIntervals { get; set; }
+        public virtual IDbSet<ScheduleEntry> TimeIntervals { get; set; }
+        public virtual IDbSet<Schedule> DateIntervals { get; set; }
         public virtual IDbSet<Day> Days { get; set; }
 
 

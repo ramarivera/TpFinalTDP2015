@@ -25,16 +25,16 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework.Mapping
             Property(b => b.Name).IsRequired();
             Property(b => b.Description).IsRequired();
 
-            HasMany(b => b.ActiveIntervals)
+            this.HasMany(b => b.Schedules)
                 .WithMany() // <- no parameter here because there is no navigation property
                 .Map(m =>
                 {
                     m.MapLeftKey("BannerId");
-                    m.MapRightKey("DateIntervalId");
-                    m.ToTable("BannerInterval");
+                    m.MapRightKey("ScheduleId");
+                    m.ToTable("BannerSchedule");
                 });
 
-            HasMany(b => b.Items)
+            this.HasMany(b => b.Items)
                .WithMany() // <- no parameter here because there is no navigation property
                .Map(m =>
                {
@@ -42,6 +42,15 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework.Mapping
                    m.MapRightKey("BannerItemId");
                    m.ToTable("BannerBannerItem");
                });
+
+            this.HasMany(b => b.RssSources)
+                .WithMany() // <- no parameter here because there is no navigation property
+                .Map(m =>
+                {
+                    m.MapLeftKey("BannerId");
+                    m.MapRightKey("RssSourceId");
+                    m.ToTable("BannerRssSource");
+                });
         }
     }
 }

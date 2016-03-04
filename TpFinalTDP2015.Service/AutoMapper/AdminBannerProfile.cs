@@ -19,7 +19,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
               .ForMember(dest => dest.ModificationDate, opt => opt.MapFrom(source => source.LastModified))
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
-              .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
+              .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.Schedules))
               .ForMember(dest => dest.Texts, opt => opt.ResolveUsing<BannerItemResolver>().FromMember(source => source.Items))
               .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources)); ;
         }

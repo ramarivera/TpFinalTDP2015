@@ -4,110 +4,85 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
+using MarrSystems.TpFinalTDP2015.Model.Interfaces;
 
 namespace MarrSystems.TpFinalTDP2015.Model
 {
     [Serializable]
-    public class Banner : BaseEntity, ICosoQueTieneDateInterval
+    public class Banner : BaseEntity, IHasSchedules
     {
-        private string iName;
-        private string iDescription;
-        private IList<BaseBannerItem> iItems;
-        private IList<RssSource> iRssSources;
-        private IList<DateInterval> iActiveIntervals;
-
-
         public Banner() : base()
         {
-            this.iItems = new List<BaseBannerItem>();
-            this.iActiveIntervals = new List<DateInterval>();
-            this.iRssSources = new List<RssSource>();
+            this.BannerItems = new List<BaseBannerItem>();
+            this.ActivePeriods = new List<Schedule>();
+            this.RSSSources = new List<RssSource>();
         }
 
-        public virtual string Name
-        {
-            get { return this.iName; }
-            set { this.iName = value; }
-        }
-        public virtual string Description
-        {
-            get { return this.iDescription; }
-            set { this.iDescription = value; }
-        }
+        public virtual string Name { get; set; }
 
-        public virtual IList<DateInterval> ActiveIntervals
-        {
-            get
-            {
-                return this.iActiveIntervals;
-            }
-            private set
-            {
-                this.iActiveIntervals = value;
-            }
-        }
+        public virtual string Description { get; set; }
 
-        public virtual IList<BaseBannerItem> Items
+        protected virtual IList<Schedule> ActivePeriods { get; set; }
+      
+        protected virtual IList<BaseBannerItem> BannerItems { get; set; }
+
+        protected virtual IList<RssSource> RSSSources { get; set; }
+
+
+        public virtual IEnumerable<Schedule> Schedules
         {
             get
             {
-                return this.iItems;
-            }
-            private set
-            {
-                this.iItems = value;
+                return this.ActivePeriods;
             }
         }
 
-        public virtual IList<RssSource> RssSources
+        public virtual IEnumerable<BaseBannerItem> Items
         {
             get
             {
-                return this.iRssSources;
-            }
-            private set
-            {
-                this.iRssSources = value;
+                return this.BannerItems;
             }
         }
 
-        public virtual void AddDateInterval(DateInterval pInterval, IIntervalValidator pValitador)
+        public virtual IEnumerable<RssSource> RssSources
+        {
+            get
+            {
+                return this.RSSSources;
+            }
+        }
+
+        public virtual void AddSchedule(Schedule pInterval, IScheduleChecker pValitador)
         {
             if (pInterval == null)
             {
                 throw new ArgumentNullException();
             }
-            else if (!pValitador.CanBeAdded(this,pInterval))
+            else if (!pValitador.CanAddSchedule(this, pInterval))
             {
                 throw new ArgumentOutOfRangeException();
             }
             else
             {
-                this.iActiveIntervals.Add(pInterval);
-            }
+                this.ActivePeriods.Add(pInterval);
+
                 //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
-        }
-
-        public virtual void RemoveDateInterval(DateInterval pInterval)
-        {
-            this.iActiveIntervals.Remove(pInterval);
-        }
-
-       /* private bool CanBeAdded(DateInterval pInterval)
-        {
-            bool lResult = true;
-            int i = this.ActiveIntervals.Count - 1;
-            while ((lResult == true) && (i >= 0))
-            {
-                DateInterval lInterval = this.ActiveIntervals[i];
-                if (!pInterval.IntersectsWith(lInterval))
-                {
-                    lResult = false;
-                }
-                i--;
             }
-            return lResult;
-        }*/
+        }
+
+        public void RemoveSchedule(Schedule pSchedule)
+        {
+            this.ActivePeriods.Remove(pSchedule);
+        }
+
+        public void RemoveAllSchedules()
+        {
+            foreach (var sche in this.Schedules.Reverse())
+            {
+                RemoveSchedule(sche);
+            }
+        }
 
         public virtual void AddBannerItem(BaseBannerItem pItem)
         {
@@ -117,43 +92,27 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
             else
             {
-                this.iItems.Add(pItem);
+                this.BannerItems.Add(pItem);
             }
             //TODO verificar que ya no este? donde se llame al método
         }
 
         public virtual void RemoveBannerItem(BaseBannerItem pItem)
         {
-            this.iItems.Remove(pItem);
+            this.BannerItems.Remove(pItem);
         }
 
         public virtual void AddSource(RssSource pSource)
         {
-            this.iRssSources.Add(pSource);
+            this.RSSSources.Add(pSource);
             //TODO verificar que ya no este? donde se llame al metodo
         }
 
         public virtual void RemoveSource(RssSource pSource)
         {
-            this.iRssSources.Remove(pSource);
+            this.RSSSources.Remove(pSource);
         }
 
-       /* public bool IsActive
-        {
-            get { return this.IsActiveAt(DateTime.Now); }
-        }
-
-        public bool IsActiveAt(DateTime pDate)
-        {
-            bool lResult = false;
-            int i = this.ActiveIntervals.Count - 1;
-            while ((lResult == false) && (i >= 0))
-            {
-                DateInterval pInterval = this.ActiveIntervals[i];
-                lResult = pInterval.IsActiveAt(pDate);
-                i--;
-            }
-            return lResult;
-        }*/
+      
     }
 }

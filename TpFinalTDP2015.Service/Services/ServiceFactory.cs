@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using Microsoft.Practices.Unity;
-
+using MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
@@ -17,25 +17,25 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             dynamic lResult;
             if (typeof(TDto) == typeof(DateIntervalDTO))
             {
-                lResult = IoCUnityContainerLocator.
+                lResult = IoCContainerLocator.
                     Container.
                     Resolve(typeof(DateIntervalService));
             }
             else if (typeof(TDto) == typeof(StaticTextDTO))
             {
-                lResult = IoCUnityContainerLocator.
+                lResult = IoCContainerLocator.
                     Container.
                     Resolve(typeof(StaticTextService));
             }
             else if (typeof(TDto) == typeof(RssSourceDTO))
             {
-                lResult = IoCUnityContainerLocator.
+                lResult = IoCContainerLocator.
                     Container.
                     Resolve(typeof(RssSourceService));
             }
             else if (typeof(TDto) == typeof(AdminBannerDTO))
             {
-                lResult = IoCUnityContainerLocator.
+                lResult = IoCContainerLocator.
                     Container.
                     Resolve(typeof(BannerService));
             }

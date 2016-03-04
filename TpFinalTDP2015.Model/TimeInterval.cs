@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MarrSystems.TpFinalTDP2015.Model
 {
     [Serializable]
-    public class TimeInterval: BaseEntity
+    public class ScheduleEntry: BaseEntity
     {
         private TimeSpan iStartTime;
         private TimeSpan iEndTime;
@@ -15,7 +15,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
         private static readonly TimeSpan MIN_VALUE = new TimeSpan(0, 0, 0);
         private static readonly TimeSpan MAX_VALUE = new TimeSpan(23, 59, 59);  
 
-        public TimeInterval() : base()
+        public ScheduleEntry() : base()
         {
             this.iStartTime = MIN_VALUE;
             this.iEndTime = MAX_VALUE;
@@ -52,7 +52,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        public bool IntersectsWith(TimeInterval pInterval)
+        public bool IntersectsWith(ScheduleEntry pInterval)
         {
             bool lResult = false;
             if ((pInterval.Start > this.iStartTime) 

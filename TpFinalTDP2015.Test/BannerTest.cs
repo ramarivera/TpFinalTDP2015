@@ -10,14 +10,14 @@ namespace MarrSystems.TpFinalTDP2015.Test
     [TestClass]
     public class BannerTest
     {
-        private IIntervalValidator iValidator = new IntervalValidator();//TODO ver esto
+        private IScheduleChecker iValidator = new ScheduleChecker();//TODO ver esto
         private ISeFijaSiEstaActivo iActivo = new SeFijaSiEstaActivo();//TODO ver esto
         [TestMethod]
         public void ActiveForDate_IsActive()
         {
             Banner lBanner = new Banner() { Name = "Informacion deportiva", Description = "Noticias del ámbito deportivo nacional de distintas fuentes" };
 
-            DateInterval lInterval = new DateInterval() { Name="Mes de febrero, de lunes a viernes por la mañana",ActiveUntil = new DateTime(2016, 2, 29), ActiveFrom = new DateTime(2016, 2, 1) };
+            Schedule lInterval = new Schedule() { Name="Mes de febrero, de lunes a viernes por la mañana",ActiveUntil = new DateTime(2016, 2, 29), ActiveFrom = new DateTime(2016, 2, 1) };
 
             Day lDay1 = new Day() { Id = 1, Value = Days.Lunes };
             Day lDay2 = new Day() { Id = 2, Value = Days.Martes };
@@ -34,11 +34,11 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan time1 = new TimeSpan(8, 0, 0);
             TimeSpan time2 = new TimeSpan(12, 0, 0);
 
-            TimeInterval lTimeInterval = new TimeInterval() { End = time2, Start = time1 };
+            ScheduleEntry lTimeInterval = new ScheduleEntry() { End = time2, Start = time1 };
 
             lInterval.AddTimeInterval(lTimeInterval);
 
-            lBanner.AddDateInterval(lInterval,iValidator);
+            lBanner.AddSchedule(lInterval,iValidator);
 
             DateTime lDate = new DateTime(2016, 2, 4,20,0,0);
 

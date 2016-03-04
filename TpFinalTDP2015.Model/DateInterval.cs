@@ -8,7 +8,7 @@ using MarrSystems.TpFinalTDP2015.Model.Enum;
 namespace MarrSystems.TpFinalTDP2015.Model
 {
     [Serializable]
-    public class DateInterval : BaseEntity
+    public class Schedule : BaseEntity
     {
         private string iName;
         private DateTime iActiveFrom;
@@ -17,11 +17,11 @@ namespace MarrSystems.TpFinalTDP2015.Model
         private static readonly DateTime MIN_VALUE = new DateTime(1980, 1, 1);
         private static readonly DateTime MAX_VALUE = new DateTime(2099, 12, 31);
 
-        public DateInterval() : base()
+        public Schedule() : base()
         {
             this.iActiveUntil = MAX_VALUE;
             this.iActiveFrom = MIN_VALUE;
-            this.TimeIntervals = new List<TimeInterval>();
+            this.TimeIntervals = new List<ScheduleEntry>();
             this.Days = new List<Day>();
         }
 
@@ -64,7 +64,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
 
 
      
-        protected virtual IList<TimeInterval> TimeIntervals { get; set; }
+        protected virtual IList<ScheduleEntry> TimeIntervals { get; set; }
         protected virtual IList<Day> Days  { get; set; }
 
       
@@ -77,7 +77,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        public virtual IEnumerable<TimeInterval> ActiveHours
+        public virtual IEnumerable<ScheduleEntry> ActiveHours
         {
             get
             {
@@ -111,7 +111,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        public virtual void AddTimeInterval(TimeInterval pInterval)
+        public virtual void AddTimeInterval(ScheduleEntry pInterval)
         {
             if (pInterval == null)
             {
@@ -128,7 +128,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        public virtual void RemoveTimeInterval(TimeInterval pInterval)
+        public virtual void RemoveTimeInterval(ScheduleEntry pInterval)
         {
             this.TimeIntervals.Remove(pInterval);
         }
@@ -142,13 +142,13 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        private bool CanBeAdded(TimeInterval pInterval)//para ser agregado
+        private bool CanBeAdded(ScheduleEntry pInterval)//para ser agregado
         {
             bool lResult = true;
             int i = this.TimeIntervals.Count - 1;
             while ((lResult == true) && (i >= 0))
             {
-                TimeInterval lInterval = this.TimeIntervals[i];
+                ScheduleEntry lInterval = this.TimeIntervals[i];
                 if (pInterval.IntersectsWith(lInterval))
                 {
                     lResult = false;
@@ -158,7 +158,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             return lResult;
         }
 
-        public bool IntersectsWith(DateInterval pInterval)
+        public bool IntersectsWith(Schedule pInterval)
         {
             bool lResult = false;
             if ((pInterval.ActiveFrom > this.iActiveFrom)
@@ -197,7 +197,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             return lResult;
         }
 
-        private bool HasEqualDays(DateInterval pInterval)
+        private bool HasEqualDays(Schedule pInterval)
         {
             bool lResult = false;
             int i = this.Days.Count - 1;
@@ -213,13 +213,13 @@ namespace MarrSystems.TpFinalTDP2015.Model
             return lResult;
         }
 
-        private bool HasEqualTimeIntervals(DateInterval pInterval)
+        private bool HasEqualTimeIntervals(Schedule pInterval)
         {
             bool lResult = false;
             int i = this.TimeIntervals.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
-                TimeInterval pTimeInterval = this.TimeIntervals[i];
+                ScheduleEntry pTimeInterval = this.TimeIntervals[i];
                 int j = pInterval.ActiveHours.Count() - 1;
                 while ((lResult == false) && (j >= 0))
                 {
@@ -266,7 +266,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             int i = this.TimeIntervals.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
-                TimeInterval pInterval = this.TimeIntervals[i];
+                ScheduleEntry pInterval = this.TimeIntervals[i];
                 lResult = ((pTime > pInterval.Start) && (pTime < pInterval.End));
                 i--;
             }

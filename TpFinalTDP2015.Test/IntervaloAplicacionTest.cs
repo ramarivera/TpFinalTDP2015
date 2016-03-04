@@ -12,8 +12,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
         [TestMethod]
         public void IntersectionWith_NingunaInterseccion()
         {
-            DateInterval lInterval1 = new DateInterval() { ActiveUntil = new DateTime(2016, 2, 20), ActiveFrom = new DateTime(2016, 2, 2) };
-            DateInterval lInterval2 = new DateInterval() { ActiveUntil = new DateTime(2016, 2, 27), ActiveFrom = new DateTime(2016, 2, 20) };
+            Schedule lInterval1 = new Schedule() { ActiveUntil = new DateTime(2016, 2, 20), ActiveFrom = new DateTime(2016, 2, 2) };
+            Schedule lInterval2 = new Schedule() { ActiveUntil = new DateTime(2016, 2, 27), ActiveFrom = new DateTime(2016, 2, 20) };
 
             Day lDay1 = new Day() { Id = 0, Value = Days.Domingo };
             Day lDay2 = new Day() { Id = 1, Value = Days.Lunes };
@@ -28,9 +28,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan time3 = new TimeSpan(18, 0, 0);
             TimeSpan time4 = new TimeSpan(21, 0, 0);
 
-            TimeInterval lTimeInterval1 = new TimeInterval() { End = time2, Start = time1 }; //8 a 12
-            TimeInterval lTimeInterval2 = new TimeInterval() { End = time3, Start = time2 };//12 a 18
-            TimeInterval lTimeInterval3 = new TimeInterval() { End = time4, Start = time3 };//18 a 21
+            ScheduleEntry lTimeInterval1 = new ScheduleEntry() { End = time2, Start = time1 }; //8 a 12
+            ScheduleEntry lTimeInterval2 = new ScheduleEntry() { End = time3, Start = time2 };//12 a 18
+            ScheduleEntry lTimeInterval3 = new ScheduleEntry() { End = time4, Start = time3 };//18 a 21
 
             lInterval1.AddTimeInterval(lTimeInterval1);
             lInterval1.AddTimeInterval(lTimeInterval2);
@@ -44,8 +44,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
         [TestMethod]
         public void IntersectionWith_InterseccionSoloDeFechas()
         {
-            DateInterval lInterval1 = new DateInterval() { ActiveUntil = new DateTime(2016, 2, 20), ActiveFrom = new DateTime(2016, 2, 2) };
-            DateInterval lInterval2 = new DateInterval() { ActiveUntil = new DateTime(2016, 2, 26), ActiveFrom = new DateTime(2016, 2, 18) };
+            Schedule lInterval1 = new Schedule() { ActiveUntil = new DateTime(2016, 2, 20), ActiveFrom = new DateTime(2016, 2, 2) };
+            Schedule lInterval2 = new Schedule() { ActiveUntil = new DateTime(2016, 2, 26), ActiveFrom = new DateTime(2016, 2, 18) };
 
             Day lDay1 = new Day() { Id = 0, Value = Days.Domingo };
             Day lDay2 = new Day() { Id = 1, Value = Days.Lunes };
@@ -60,9 +60,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan time3 = new TimeSpan(18, 0, 0);
             TimeSpan time4 = new TimeSpan(21, 0, 0);
 
-            TimeInterval lTimeInterval1 = new TimeInterval() { End = time2, Start = time1 }; //8 a 12
-            TimeInterval lTimeInterval2 = new TimeInterval() { End = time3, Start = time2 };//12 a 18
-            TimeInterval lTimeInterval3 = new TimeInterval() { End = time4, Start = time3 };//18 a 21
+            ScheduleEntry lTimeInterval1 = new ScheduleEntry() { End = time2, Start = time1 }; //8 a 12
+            ScheduleEntry lTimeInterval2 = new ScheduleEntry() { End = time3, Start = time2 };//12 a 18
+            ScheduleEntry lTimeInterval3 = new ScheduleEntry() { End = time4, Start = time3 };//18 a 21
 
             lInterval1.AddTimeInterval(lTimeInterval1);
             lInterval1.AddTimeInterval(lTimeInterval2);
@@ -75,8 +75,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
         [TestMethod]
         public void IntersectionWith_InterseccionDeFechasYDias()
         {
-            DateInterval lInterval1 = new DateInterval() { ActiveUntil = new DateTime(2016, 2, 20), ActiveFrom = new DateTime(2016, 2, 2) };
-            DateInterval lInterval2 = new DateInterval() { ActiveUntil = new DateTime(2016, 2, 26), ActiveFrom = new DateTime(2016, 2, 18) };
+            Schedule lInterval1 = new Schedule() { ActiveUntil = new DateTime(2016, 2, 20), ActiveFrom = new DateTime(2016, 2, 2) };
+            Schedule lInterval2 = new Schedule() { ActiveUntil = new DateTime(2016, 2, 26), ActiveFrom = new DateTime(2016, 2, 18) };
 
             Day lDay1 = new Day() { Id = 0, Value = Days.Domingo };
             Day lDay2 = new Day() { Id = 1, Value = Days.Lunes };
@@ -92,9 +92,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan time3 = new TimeSpan(18, 0, 0);
             TimeSpan time4 = new TimeSpan(21, 0, 0);
 
-            TimeInterval lTimeInterval1 = new TimeInterval() { End = time2, Start = time1 }; //8 a 12
-            TimeInterval lTimeInterval2 = new TimeInterval() { End = time3, Start = time2 };//12 a 18
-            TimeInterval lTimeInterval3 = new TimeInterval() { End = time4, Start = time3 };//18 a 21
+            ScheduleEntry lTimeInterval1 = new ScheduleEntry() { End = time2, Start = time1 }; //8 a 12
+            ScheduleEntry lTimeInterval2 = new ScheduleEntry() { End = time3, Start = time2 };//12 a 18
+            ScheduleEntry lTimeInterval3 = new ScheduleEntry() { End = time4, Start = time3 };//18 a 21
 
             lInterval1.AddTimeInterval(lTimeInterval1);
             lInterval1.AddTimeInterval(lTimeInterval2);
@@ -107,8 +107,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
         [TestMethod]
         public void IntersectionWith_InterseccionTotal()
         {
-            DateInterval lInterval1 = new DateInterval() { ActiveUntil = new DateTime(2016, 2, 20), ActiveFrom = new DateTime(2016, 2, 2) };
-            DateInterval lInterval2 = new DateInterval() { ActiveUntil = new DateTime(2016, 2, 26), ActiveFrom = new DateTime(2016, 2, 18) };
+            Schedule lInterval1 = new Schedule() { ActiveUntil = new DateTime(2016, 2, 20), ActiveFrom = new DateTime(2016, 2, 2) };
+            Schedule lInterval2 = new Schedule() { ActiveUntil = new DateTime(2016, 2, 26), ActiveFrom = new DateTime(2016, 2, 18) };
 
             Day lDay1 = new Day() { Id = 0, Value = Days.Domingo };
             Day lDay2 = new Day() { Id = 1, Value = Days.Lunes };
@@ -124,9 +124,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan time3 = new TimeSpan(12, 0, 0);
             TimeSpan time4 = new TimeSpan(14, 0, 0);
 
-            TimeInterval lTimeInterval1 = new TimeInterval() { End = time3, Start = time1 }; //8 a 12
-            TimeInterval lTimeInterval2 = new TimeInterval() { End = time3, Start = time2 };//10 a 12
-            TimeInterval lTimeInterval3 = new TimeInterval() { End = time4, Start = time3 };//12 a 14
+            ScheduleEntry lTimeInterval1 = new ScheduleEntry() { End = time3, Start = time1 }; //8 a 12
+            ScheduleEntry lTimeInterval2 = new ScheduleEntry() { End = time3, Start = time2 };//10 a 12
+            ScheduleEntry lTimeInterval3 = new ScheduleEntry() { End = time4, Start = time3 };//12 a 14
 
             lInterval1.AddTimeInterval(lTimeInterval1);
             lInterval1.AddTimeInterval(lTimeInterval3);

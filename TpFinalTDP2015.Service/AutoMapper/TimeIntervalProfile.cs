@@ -13,7 +13,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<TimeInterval, TimeIntervalDTO>()
+            Mapper.CreateMap<ScheduleEntry, TimeIntervalDTO>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
               .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
               .ForMember(dest => dest.ModificationDate, opt => opt.MapFrom(source => source.LastModified))

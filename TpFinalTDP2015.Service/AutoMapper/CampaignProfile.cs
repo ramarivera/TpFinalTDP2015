@@ -18,7 +18,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
               .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
-              .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
+              .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.Schedules))
            //TODO agragar al dto los campos lista   .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
               .ForMember(dest => dest.ModificationDate, opt => opt.MapFrom(source => source.LastModified))
               .ForMember(dest => dest.Slides, opt => opt.MapFrom(source => source.Slides));

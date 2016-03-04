@@ -13,7 +13,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
     class DigitalSignageInitializer : System.Data.Entity.DropCreateDatabaseAlways<DigitalSignageContext>
     {
-        private IIntervalValidator iValidator = new IntervalValidator();//TODO ver esto
+        private IScheduleChecker iValidator = new ScheduleChecker();//TODO ver esto
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
 
 
@@ -85,7 +85,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedBanners(DigitalSignageContext pContext)
         {
-            IList<DateInterval> lDateIntervalList = pContext.DateIntervals.ToList();
+            IList<Schedule> lDateIntervalList = pContext.DateIntervals.ToList();
             Banner lBanner1 = new Banner()
             {
                 Name = "Noticias de deporte",
@@ -99,19 +99,20 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lBanner1.AddDateInterval(interval,iValidator);
+                lBanner1.AddSchedule(interval,iValidator);
             };
-            lBanner1.Items.Add(pContext.Texts.ToList()[3]);
-            lBanner1.Items.Add(pContext.Texts.ToList()[4]);
+
+            lBanner1.AddBannerItem(pContext.Texts.ToList()[3]);
+            lBanner1.AddBannerItem(pContext.Texts.ToList()[4]);
             //IList<RssSource> lista = pContext.RssSources.ToList();
-            lBanner1.RssSources.Add(pContext.RssSources.ToList()[0]);
-            lBanner1.RssSources.Add(pContext.RssSources.ToList()[2]);
+            lBanner1.AddSource(pContext.RssSources.ToList()[0]);
+            lBanner1.AddSource(pContext.RssSources.ToList()[2]);
             pContext.Banners.Add(lBanner1);
         }
 
         private void SeedCampaigns(DigitalSignageContext pContext)
         {
-            IList<DateInterval> lDateIntervalList = pContext.DateIntervals.ToList();
+            IList<Schedule> lDateIntervalList = pContext.DateIntervals.ToList();
 
             Campaign lCampaign1 = new Campaign()
             {
@@ -125,7 +126,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign1.AddDateInterval(interval,iValidator);
+                lCampaign1.AddSchedule(interval,iValidator);
             };
 
 
@@ -142,7 +143,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign2.AddDateInterval(interval,iValidator);
+                lCampaign2.AddSchedule(interval,iValidator);
             }
 
 
@@ -156,11 +157,11 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedTimeIntervals(DigitalSignageContext pContext)
         {
-            IList<DateInterval> lDateIntervalList = pContext.Set<DateInterval>().ToList();
+            IList<Schedule> lDateIntervalList = pContext.Set<Schedule>().ToList();
 
             for (int i = 0; i < 20; i+=2)
             {
-                TimeInterval lTimeInterval = new TimeInterval()
+                ScheduleEntry lTimeInterval = new ScheduleEntry()
                 {
                     End = new TimeSpan(i + 1, 0, 0),
                     Start = new TimeSpan(i, 0, 0)
@@ -171,7 +172,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             for (int i = 1; i < 23; i += 2)
             {
-                TimeInterval lTimeInterval = new TimeInterval()
+                ScheduleEntry lTimeInterval = new ScheduleEntry()
                 {
                     End = new TimeSpan(i + 1, 0, 0),
                     Start = new TimeSpan(i, 0, 0)
@@ -180,13 +181,13 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                 lDateIntervalList[1].AddTimeInterval(lTimeInterval);
             }
 
-            TimeInterval lTinterval = new TimeInterval()
+            ScheduleEntry lTinterval = new ScheduleEntry()
             {
                 End = new TimeSpan(12, 0, 0),
                 Start = new TimeSpan(08, 0, 0)
             };
 
-            TimeInterval lTinterval2 = new TimeInterval()
+            ScheduleEntry lTinterval2 = new ScheduleEntry()
             {
                 End = new TimeSpan(23, 0, 0),
                 Start = new TimeSpan(20, 0, 0)
@@ -202,9 +203,9 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         private void SeedDateIntervals(DigitalSignageContext pContext)
         {
             IList<Day> lDayList = pContext.Days.ToList();
-            IList<TimeInterval> lTimeIntervalList = pContext.TimeIntervals.ToList();
+            IList<ScheduleEntry> lTimeIntervalList = pContext.TimeIntervals.ToList();
 
-            DateInterval lDateInterval1 = new DateInterval()
+            Schedule lDateInterval1 = new Schedule()
             {
                 Name = "Lunes a Viernes, 08am a 12am",
                 ActiveUntil = new DateTime(2016, 06, 01),
@@ -223,7 +224,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                 lTimeIntervalList.FirstOrDefault(i => i.Start == new TimeSpan(8, 0, 0) && i.End == new TimeSpan(9, 0, 0))
             );*/
 
-            DateInterval lDateInterval2 = new DateInterval()
+            Schedule lDateInterval2 = new Schedule()
             {
                 Name = "Sabados y Domingos, empiezan antes de las 12",
                 ActiveUntil = new DateTime(2016, 03, 01),
@@ -242,7 +243,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             lDateInterval2.AddDay(lDayList[0]);
             lDateInterval2.AddDay(lDayList[6]);
 
-            DateInterval lDateInterval3 = new DateInterval()
+            Schedule lDateInterval3 = new Schedule()
             {
                 Name = "Miercoles, terminan despues de las 15",
                 ActiveUntil = new DateTime(2016, 11, 01),
@@ -260,8 +261,8 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             lDateInterval3.AddDay(lDayList[3]);
 
-            pContext.Set<DateInterval>().AddRange(new[] { lDateInterval1, lDateInterval2, lDateInterval3 });
-            pContext.Set<DateInterval>().Add(lDateInterval1);
+            pContext.Set<Schedule>().AddRange(new[] { lDateInterval1, lDateInterval2, lDateInterval3 });
+            pContext.Set<Schedule>().Add(lDateInterval1);
             pContext.SaveChanges();
         }
 

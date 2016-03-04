@@ -26,7 +26,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 
                 Day lTemp = (Day)pContext.SourceValue;
 
-                Days lResult = Mapper.Map<Day, Days>(lTemp);
+                Days lResult = lTemp.Value;
 
                 return lResult;
             }

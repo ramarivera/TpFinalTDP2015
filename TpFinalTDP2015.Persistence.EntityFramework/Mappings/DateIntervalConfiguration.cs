@@ -10,7 +10,7 @@ using MarrSystems.TpFinalTDP2015.Model;
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework.Mapping
 {
 
-    public class DateIntervalMapping : EntityTypeConfiguration<DateInterval>
+    public class DateIntervalMapping : EntityTypeConfiguration<Schedule>
     {
         public DateIntervalMapping()
         {

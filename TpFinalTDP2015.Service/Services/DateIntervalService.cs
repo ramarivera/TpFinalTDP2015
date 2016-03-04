@@ -34,11 +34,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         public override int Save(DateIntervalDTO pDateInterval)
         {
             iUoW.BeginTransaction();
-            IRepository<TimeInterval> lTimeRepo = iUoW.GetRepository<TimeInterval>();
-            IRepository<DateInterval> lDateRepo = iUoW.GetRepository<DateInterval>();
+            IRepository<ScheduleEntry> lTimeRepo = iUoW.GetRepository<ScheduleEntry>();
+            IRepository<Schedule> lDateRepo = iUoW.GetRepository<Schedule>();
             IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
 
-            DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
+            Schedule lDateInterval = Mapper.Map<DateIntervalDTO, Schedule>(pDateInterval);
 
             if (pDateInterval.Id == 0)
             {
@@ -50,12 +50,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 
 
                 //   DateInterval lOrigDateInt = lDateRepo.GetAll(d => d.Id == lDateInterval.Id).Single();
-                DateInterval lOrigDateInt = lDateRepo.GetByID(lDateInterval.Id);
+                Schedule lOrigDateInt = lDateRepo.GetByID(lDateInterval.Id);
 
 
 
 
-                foreach (TimeInterval lHours in lDateInterval.ActiveHours)
+                foreach (ScheduleEntry lHours in lDateInterval.ActiveHours)
                 {
                     if (lHours.Id == 0)
                     {
@@ -71,7 +71,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
                 //   lDateRepo.Update(lDateInterval);
 
 
-                foreach (TimeInterval lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<TimeInterval>())
+                foreach (ScheduleEntry lOrigTimeInt in lOrigDateInt.ActiveHours.Reverse<ScheduleEntry>())
                 {
                     if (!lDateInterval.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
                     {
@@ -103,8 +103,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         public override void Delete(DateIntervalDTO pDateInterval)
         {
             iUoW.BeginTransaction();
-            IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
-            DateInterval lDateInterval = Mapper.Map<DateIntervalDTO, DateInterval>(pDateInterval);
+            IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
+            Schedule lDateInterval = Mapper.Map<DateIntervalDTO, Schedule>(pDateInterval);
             lRepo.Delete(lDateInterval.Id);
             iUoW.Commit();
         }
@@ -114,12 +114,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         {
             IList<DateIntervalDTO> lResult = new List<DateIntervalDTO>();
 
-            IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
-            IList<DateInterval> lTemp = lRepo.GetAll().ToList();
+            IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
+            IList<Schedule> lTemp = lRepo.GetAll().ToList();
 
             foreach (var dateInterval in lTemp)
             {
-                DateIntervalDTO lDto = Mapper.Map<DateInterval, DateIntervalDTO>(dateInterval);
+                DateIntervalDTO lDto = Mapper.Map<Schedule, DateIntervalDTO>(dateInterval);
                 lResult.Add(lDto);
             }
             return lResult.ToList<DateIntervalDTO>();
@@ -129,11 +129,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         {
             DateIntervalDTO lResult = new DateIntervalDTO();
 
-            IRepository<DateInterval> lRepo = iUoW.GetRepository<DateInterval>();
+            IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
 
             var lTemp = lRepo.GetByID(pId);
 
-            lResult = Mapper.Map<DateInterval, DateIntervalDTO>(lTemp);
+            lResult = Mapper.Map<Schedule, DateIntervalDTO>(lTemp);
 
             return lResult;
         }

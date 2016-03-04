@@ -4,44 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
+using MarrSystems.TpFinalTDP2015.Model.Interfaces;
 
 namespace MarrSystems.TpFinalTDP2015.Model
 {
     [Serializable]
-    public class Campaign : BaseEntity, ICosoQueTieneDateInterval
+    public class Campaign : BaseEntity, IHasSchedules
     {
-        private string iName;
-        private string iDescription;
-        private IList<DateInterval> iActiveIntervals;
         private IList<Slide> iSlides;
 
         public Campaign() : base()
         {
-            this.iActiveIntervals = new List<DateInterval>();
+            this.ActivePeriods = new List<Schedule>();
+            
         }
 
+        public virtual string Name { get; set; }
 
-        public virtual string Name
-        {
-            get { return this.iName; }
-            set { this.iName = value; }
-        }
+        public virtual string Description { get; set; }
 
-        public virtual string Description
-        {
-            get { return this.iDescription; }
-            set { this.iDescription = value; }
-        }
+        protected virtual IList<Schedule> ActivePeriods { get; set; }
 
-        public virtual IList<DateInterval> ActiveIntervals
+        public virtual IEnumerable<Schedule> Schedules
         {
             get
             {
-                return this.iActiveIntervals;// Clone<IList<DateInterval>>();
-            }
-            private set
-            {
-                this.iActiveIntervals = new List<DateInterval>(value);
+                return this.ActivePeriods;
             }
         }
 
@@ -49,7 +37,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
         {
             get
             {
-                return this.iSlides;// Clone<IList<Slides>();
+                return this.iSlides;
             }
             private set
             {
@@ -57,44 +45,36 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        public virtual void AddDateInterval(DateInterval pInterval, IIntervalValidator pValitador)
+        public virtual void AddSchedule(Schedule pInterval, IScheduleChecker pValitador)
         {
             if (pInterval == null)
             {
                 throw new ArgumentNullException();
             }
-            else if (!pValitador.CanBeAdded(this,pInterval))
+            else if (!pValitador.CanAddSchedule(this,pInterval))
             {
                 throw new ArgumentOutOfRangeException();
             }
             else
             {
-                this.iActiveIntervals.Add(pInterval);
+                this.ActivePeriods.Add(pInterval);
 
                 //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
             }
         }
 
-        public virtual void RemoveDateInterval(DateInterval pInterval)
+        public void RemoveSchedule(Schedule pSchedule)
         {
-            this.iActiveIntervals.Remove(pInterval);
+            this.ActivePeriods.Remove(pSchedule);
         }
 
-        /*private bool CanBeAdded(DateInterval pInterval)
+        public void RemoveAllSchedules()
         {
-            bool lResult = true;
-            int i = this.ActiveIntervals.Count - 1;
-            while ((lResult == true) && (i >= 0))
+            foreach (var sche in this.Schedules.Reverse())
             {
-                DateInterval lInterval = this.ActiveIntervals[i];
-                if (!pInterval.IntersectsWith(lInterval))
-                {
-                    lResult = false;
-                }
-                i--;
+                RemoveSchedule(sche);
             }
-            return lResult;
-        }*/
+        }
 
         public virtual void AddSlide(Slide pSlide)
         {
@@ -106,22 +86,6 @@ namespace MarrSystems.TpFinalTDP2015.Model
             this.iSlides.Remove(pSlide);
         }
 
-        /*public bool IsActive
-        {
-            get { return this.IsActiveAt(DateTime.Now); }
-        }
-
-        public bool IsActiveAt(DateTime pDate)
-        {
-            bool lResult = false;
-            int i = this.ActiveIntervals.Count - 1;
-            while ((lResult == false) && (i >= 0))
-            {
-                DateInterval pInterval = this.ActiveIntervals[i];
-                lResult = pInterval.IsActiveAt(pDate);
-                i--;
-            }
-            return lResult;
-        }*/
+        
     }
 }

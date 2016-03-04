@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarrSystems.TpFinalTDP2015.Model.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace MarrSystems.TpFinalTDP2015.Model.DomainServices
 {
     public interface ISeFijaSiEstaActivo
     {
-        bool IsActiveAt(ICosoQueTieneDateInterval pCoso, DateTime pDate);
+        bool IsActiveAt(IHasSchedules pCoso, DateTime pDate);
     }
 }

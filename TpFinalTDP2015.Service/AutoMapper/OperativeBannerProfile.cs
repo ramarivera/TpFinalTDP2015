@@ -34,10 +34,10 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                 };
 
 
-                foreach (var interval in lBanner.ActiveIntervals)
+                foreach (var interval in lBanner.Schedules)
                 {
                     lResult.ActiveIntervals.Add(
-                        Mapper.Map<DateInterval, DateIntervalDTO>(interval)
+                        Mapper.Map<Schedule, DateIntervalDTO>(interval)
                         );
                 }
 

@@ -26,13 +26,13 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework.Mapping
             Property(c => c.Name).IsRequired();
             Property(c => c.Description).IsRequired();
 
-            HasMany(c => c.ActiveIntervals)
+            this.HasMany(c => c.Schedules)
                 .WithMany() // <- no parameter here because there is no navigation property
                 .Map(m =>
                 {
                     m.MapLeftKey("CampaignId");
-                    m.MapRightKey("DateIntervalId");
-                    m.ToTable("CampaignDateInterval");
+                    m.MapRightKey("ScheduleId");
+                    m.ToTable("CampaignSchedule");
                 });
         }
 

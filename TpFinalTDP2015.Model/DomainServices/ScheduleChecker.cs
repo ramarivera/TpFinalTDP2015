@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarrSystems.TpFinalTDP2015.Model.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.Model.DomainServices
 {
-    public class IntervalValidator: IIntervalValidator
+    public class ScheduleChecker: IScheduleChecker
     {
-        public bool CanBeAdded(ICosoQueTieneDateInterval pCoso, DateInterval pInterval)
+        public bool CanAddSchedule(IHasSchedules pCoso, Schedule pInterval)
         {
             bool lResult = true;
-            int i = pCoso.ActiveIntervals.Count - 1;
+            int i = pCoso.Schedules.Count() - 1;
             while ((lResult == true) && (i >= 0))
             {
-                DateInterval lInterval = pCoso.ActiveIntervals[i];
+                Schedule lInterval = pCoso.Schedules.ElementAt(i);
                 if (!pInterval.IntersectsWith(lInterval))
                 {
                     lResult = false;

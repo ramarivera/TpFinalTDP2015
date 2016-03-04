@@ -14,7 +14,7 @@ using NHibernate.Driver;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate.Mappings
 {
-    class DateIntervalMap : ClassMapping<DateInterval>
+    class DateIntervalMap : ClassMapping<Schedule>
     {
         public DateIntervalMap()
         {

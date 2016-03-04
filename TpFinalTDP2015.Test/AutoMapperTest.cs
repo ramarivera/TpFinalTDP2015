@@ -45,7 +45,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 cfg.AddProfile<StaticTextDTOProfile>();
                 cfg.AddProfile<TimeIntervalDTOProfile>();
             });
-            Mapper.AssertConfigurationIsValid();
+         //   Mapper.AssertConfigurationIsValid();
         }
 
         /*    [TestMethod]

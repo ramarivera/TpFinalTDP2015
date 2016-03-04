@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarrSystems.TpFinalTDP2015.BusinessLogic
+namespace MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection
 {
     //TOOD cambiar a internal
-   public class IoCUnityContainerLocator
+    public class IoCContainerLocator
     {
         /// <summary>
         /// Instancia lazy del contenedor de IoC.
@@ -19,7 +19,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
             // Se crea la instancia del contenedor, configurando el mismo a través del archivo de configuración de la aplicación.
 
             IUnityContainer mUnityContainer = new UnityContainer();
-            
+
             mUnityContainer.LoadConfiguration();
 
             return mUnityContainer;
