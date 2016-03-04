@@ -24,8 +24,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
             get
             {
                 return
-                    ServiceFactory.
-                    GetService<AdminBannerDTO>();
+                    BusinessServiceLocator.
+                    Resolve<BannerService>();
             }
         }
 
@@ -34,8 +34,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
             get
             {
                 return
-                    ServiceFactory.
-                    GetService<DateIntervalDTO>();
+                    BusinessServiceLocator.
+                    Resolve<DateIntervalService>();
             }
         }
 
@@ -44,8 +44,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
             get
             {
                 return
-                    ServiceFactory.
-                    GetService<RssSourceDTO>();
+                    BusinessServiceLocator.
+                    Resolve<RssSourceService>();
             }
         }
 
@@ -54,8 +54,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
             get
             {
                 return
-                    ServiceFactory.
-                    GetService<StaticTextDTO>();
+                    BusinessServiceLocator.
+                    Resolve<StaticTextService>();
             }
         }
 

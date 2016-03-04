@@ -28,9 +28,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             get
             {
-                return (StaticTextService)
-                    ServiceFactory.
-                    GetService<StaticTextDTO>();
+                return
+                    BusinessServiceLocator.
+                    Resolve<StaticTextService>();
             }
         }
 

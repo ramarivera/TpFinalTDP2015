@@ -28,9 +28,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             get
             {
-                return (RssSourceService)
-                    ServiceFactory.
-                    GetService<RssSourceDTO>();
+                return 
+                    BusinessServiceLocator.
+                    Resolve<RssSourceService>();
             }
         }
 

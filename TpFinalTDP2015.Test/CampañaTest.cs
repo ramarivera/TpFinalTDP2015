@@ -3,14 +3,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MarrSystems.TpFinalTDP2015.Model;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 
 namespace MarrSystems.TpFinalTDP2015.Test
 {
     [TestClass]
     public class CampañaTest
     {
-        private IScheduleChecker iValidator = new ScheduleChecker();//TODO ver esto
-        private ISeFijaSiEstaActivo iActivo = new SeFijaSiEstaActivo();//TODO ver esto
         [TestMethod]
         public void ActiveForDate_IsActive()
         {
@@ -31,13 +30,31 @@ namespace MarrSystems.TpFinalTDP2015.Test
 
             lInterval.AddTimeInterval(lTimeInterval);
 
-            lCampaign.AddSchedule(iValidator,lInterval);
+            lCampaign.AddSchedule(DomainServiceLocator.Resolve<IScheduleChecker>(), lInterval);
 
             DateTime lDate = new DateTime(2016, 2, 3,19,0,0);
 
-            bool lResult = lCampaign.IsActiveAt(iValidator,lDate);
+            bool lResult = lCampaign.IsActiveAt(DomainServiceLocator.Resolve<IScheduleChecker>(), lDate);
 
-            Assert.IsTrue(lResult);
+            //  Assert.IsTrue(lResult);
+
+
+
+
+
+            var serv1 = DomainServiceLocator.Resolve<IScheduleChecker>();
+            var serv2 = DomainServiceLocator.Resolve<IScheduleChecker>();
+            var serv3 = BusinessServiceLocator.Resolve<DateIntervalService>();
+            var serv4 = BusinessServiceLocator.Resolve<DateIntervalService>();
+
+
+
+            Assert.AreSame(serv1, serv2);
+            Assert.AreNotSame(serv3, serv4);
+
+
+
+
         }
     }
 }

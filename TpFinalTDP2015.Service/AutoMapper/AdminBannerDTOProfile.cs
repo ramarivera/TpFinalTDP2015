@@ -57,7 +57,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 
         private class BannerConverter : ITypeConverter<AdminBannerDTO, Banner>
         {
-            private IScheduleChecker iValidator = new ScheduleChecker();//TODO ver esto
             Banner ITypeConverter<AdminBannerDTO, Banner>.Convert(ResolutionContext context)
             {
                 if (context == null || context.IsSourceValueNull)
@@ -79,7 +78,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                     foreach (var item in lDto.ActiveIntervals)
                     {
                         lResult.AddSchedule(
-                            iValidator,
+                            DomainServiceLocator.Resolve<IScheduleChecker>(),
                             Mapper.Map<DateIntervalDTO, Schedule>(item));
                     }
 

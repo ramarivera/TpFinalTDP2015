@@ -13,9 +13,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
     class DigitalSignageInitializer : System.Data.Entity.DropCreateDatabaseAlways<DigitalSignageContext>
     {
-        private IScheduleChecker iValidator = new ScheduleChecker();//TODO ver esto
         private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
-
 
         protected override void Seed(DigitalSignageContext pContext)
         {
@@ -99,7 +97,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lBanner1.AddSchedule(iValidator,interval);
+                lBanner1.AddSchedule(DomainServiceLocator.Resolve<IScheduleChecker>(),interval);
             };
 
             lBanner1.AddBannerItem(pContext.Texts.ToList()[3]);
@@ -126,7 +124,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign1.AddSchedule(iValidator,interval);
+                lCampaign1.AddSchedule(DomainServiceLocator.Resolve<IScheduleChecker>(), interval);
             };
 
 
@@ -143,7 +141,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign2.AddSchedule(iValidator, interval);
+                lCampaign2.AddSchedule(DomainServiceLocator.Resolve<IScheduleChecker>(), interval);
             }
 
 

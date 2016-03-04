@@ -20,10 +20,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
         [STAThread]
         static void Main()
         {
-
-            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"TpFinalTDP2015.config");
-            AutoMapperConfiguration.Configure();
-
+            BootStrapper.Configure();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ModoAdministrador());

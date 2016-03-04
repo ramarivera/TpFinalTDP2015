@@ -98,13 +98,14 @@
     <Compile Include="AutoMapper\StaticTextProfile.cs" />
     <Compile Include="AutoMapper\TimeIntervalDTOProfile.cs" />
     <Compile Include="AutoMapper\TimeIntervalProfile.cs" />
+    <Compile Include="BootStrapper.cs" />
     <Compile Include="Comparers\DateIntervalDTOComparer.cs" />
     <Compile Include="Comparers\RssSourceDTOComparer.cs" />
     <Compile Include="Comparers\StaticTextDTOComparer.cs" />
     <Compile Include="Services\BannerService.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\CampaignService.cs" />
-    <Compile Include="Services\ServiceFactory.cs" />
+    <Compile Include="Services\BusinessServiceLocator.cs" />
     <Compile Include="Services\DateIntervalService.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\RssSourceService.cs" />
@@ -122,7 +123,6 @@
     <Compile Include="DTO\ValueAndDescription.cs" />
     <Compile Include="Enum\EnumConversion.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
-    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AutoMapper\RssSourceProfile.cs" />
     <Compile Include="RSS\IRssReader.cs" />

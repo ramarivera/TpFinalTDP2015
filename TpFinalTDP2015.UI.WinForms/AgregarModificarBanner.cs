@@ -31,9 +31,9 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             get
             {
-                return (DateIntervalService)
-                    ServiceFactory.
-                    GetService<DateIntervalDTO>();
+                return 
+                    BusinessServiceLocator.
+                    Resolve<DateIntervalService>();
             }
         }
 

@@ -31,9 +31,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             get
             {
-                return (BannerService)
-                    ServiceFactory.
-                    GetService<AdminBannerDTO>();
+                return
+                    BusinessServiceLocator.
+                    Resolve<BannerService>();
             }
         }
 

@@ -15,6 +15,16 @@ namespace MarrSystems.TpFinalTDP2015.Test
     [TestClass]
     public class DateIntervalControllerTest
     {
+        /// <summary>
+        /// SACAR ESTO A LA MIERDA DE ACA!
+        /// </summary>
+        /// <param name="context"></param>
+        [AssemblyInitialize()]
+        public static void AssemblyInit(TestContext context)
+        {
+            BootStrapper.Configure(); //TODO SACAR ESTO DE ACA LPM
+        }
+
         [ClassInitialize()]
         public static void ClassInitialize(TestContext testContext)
         {
@@ -26,9 +36,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
         {
             get
             {
-                return (DateIntervalService)
-                    ServiceFactory.
-                    GetService<DateIntervalDTO>();
+                return 
+                    BusinessServiceLocator.
+                    Resolve<DateIntervalService>();
             }
         }
 

@@ -32,9 +32,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             get
             {
-                return (DateIntervalService)
-                    ServiceFactory.
-                    GetService<DateIntervalDTO>();
+                return 
+                    BusinessServiceLocator.
+                    Resolve<DateIntervalService>();
             }
         }
 

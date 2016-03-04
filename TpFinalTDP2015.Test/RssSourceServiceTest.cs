@@ -20,9 +20,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
         {
             get
             {
-                return (RssSourceService)
-                    ServiceFactory.
-                    GetService<RssSourceDTO>();
+                return
+                    BusinessServiceLocator.
+                    Resolve<RssSourceService>();
             }
         }
 

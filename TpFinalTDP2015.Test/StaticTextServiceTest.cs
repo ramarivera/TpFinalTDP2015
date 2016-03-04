@@ -16,13 +16,13 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			AutoMapperConfiguration.Configure();
 		}
 
-        StaticTextService Controller
+		StaticTextService Controller
 		{
 			get
 			{
-				return (StaticTextService)
-                    ServiceFactory.
-                    GetService<StaticTextDTO>();
+				return 
+					BusinessServiceLocator.
+					Resolve<StaticTextService>();
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			string lDescription = "Información super secreta";
 			string lText = "Siempre que llovió, paró";
 
-            StaticTextService lController = this.Controller;
+			StaticTextService lController = this.Controller;
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -69,7 +69,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lTitle = "Texto 100";
 
-            StaticTextService lController = this.Controller;
+			StaticTextService lController = this.Controller;
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -90,7 +90,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lDescription = "vamo a calmarno";
 
-            StaticTextService lController = this.Controller;
+			StaticTextService lController = this.Controller;
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -111,7 +111,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lText = "Aguante todo";
 
-            StaticTextService lController = this.Controller;
+			StaticTextService lController = this.Controller;
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -131,7 +131,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			// Arrange
 			int lId = 1;
 
-            StaticTextService lController = this.Controller;
+			StaticTextService lController = this.Controller;
 			StaticTextDTO lRemoved;
 			StaticTextDTO lDto;
 

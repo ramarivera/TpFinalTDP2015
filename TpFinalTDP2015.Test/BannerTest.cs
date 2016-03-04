@@ -10,8 +10,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
     [TestClass]
     public class BannerTest
     {
-        private IScheduleChecker iValidator = new ScheduleChecker();//TODO ver esto
-        private ISeFijaSiEstaActivo iActivo = new SeFijaSiEstaActivo();//TODO ver esto
+       
         [TestMethod]
         public void ActiveForDate_IsActive()
         {
@@ -38,11 +37,11 @@ namespace MarrSystems.TpFinalTDP2015.Test
 
             lInterval.AddTimeInterval(lTimeInterval);
 
-            lBanner.AddSchedule(iValidator,lInterval);
+            lBanner.AddSchedule(DomainServiceLocator.Resolve<IScheduleChecker>(), lInterval);
 
             DateTime lDate = new DateTime(2016, 2, 4,20,0,0);
 
-            bool lResult = lBanner.IsActiveAt(iValidator, lDate);
+            bool lResult = lBanner.IsActiveAt(DomainServiceLocator.Resolve<IScheduleChecker>(), lDate);
 
             Assert.IsFalse(lResult);
         }
