@@ -31,11 +31,11 @@ namespace MarrSystems.TpFinalTDP2015.Test
 
             lInterval.AddTimeInterval(lTimeInterval);
 
-            lCampaign.AddSchedule(lInterval,iValidator);
+            lCampaign.AddSchedule(iValidator,lInterval);
 
             DateTime lDate = new DateTime(2016, 2, 3,19,0,0);
 
-            bool lResult = iActivo.IsActiveAt(lCampaign,lDate);
+            bool lResult = lCampaign.IsActiveAt(iValidator,lDate);
 
             Assert.IsTrue(lResult);
         }

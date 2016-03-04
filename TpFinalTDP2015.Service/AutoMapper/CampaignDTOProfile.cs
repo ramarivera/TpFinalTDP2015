@@ -55,8 +55,9 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                     foreach (var item in lDto.ActiveIntervals)
                     {
                         lResult.AddSchedule(
+                            iValidator,
                             Mapper.Map<DateIntervalDTO, Schedule>(item)
-                            ,iValidator);
+                            );
                     }
                    /* foreach (var item in lDto.Slides)
                     {

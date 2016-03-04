@@ -9,6 +9,6 @@ namespace MarrSystems.TpFinalTDP2015.Model.DomainServices
 {
     public interface ISeFijaSiEstaActivo
     {
-        bool IsActiveAt(IHasSchedules pCoso, DateTime pDate);
+        
     }
 }

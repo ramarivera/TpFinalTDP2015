@@ -53,13 +53,13 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        public virtual void AddSchedule(Schedule pInterval, IScheduleChecker pValitador)
+        public virtual void AddSchedule(IScheduleChecker pValidator, Schedule pInterval)
         {
             if (pInterval == null)
             {
                 throw new ArgumentNullException();
             }
-            else if (!pValitador.CanAddSchedule(this, pInterval))
+            else if (!pValidator.CanAddSchedule(this, pInterval))
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -113,6 +113,10 @@ namespace MarrSystems.TpFinalTDP2015.Model
             this.RSSSources.Remove(pSource);
         }
 
-      
+        public bool IsActiveAt(IScheduleChecker pValidator, DateTime pDate)
+        {
+            return pValidator.IsActiveAt(this, pDate);
+        }
+
     }
 }

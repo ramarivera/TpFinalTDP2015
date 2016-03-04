@@ -10,5 +10,7 @@ namespace MarrSystems.TpFinalTDP2015.Model.DomainServices
     public interface IScheduleChecker
     {
         bool CanAddSchedule(IHasSchedules pCoso, Schedule pInterval);
+
+        bool IsActiveAt(IHasSchedules pCoso, DateTime pDate);
     }
 }

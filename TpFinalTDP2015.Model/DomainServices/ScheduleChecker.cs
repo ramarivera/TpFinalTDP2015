@@ -24,5 +24,18 @@ namespace MarrSystems.TpFinalTDP2015.Model.DomainServices
             }
             return lResult;
         }
+
+        public bool IsActiveAt(IHasSchedules pCoso, DateTime pDate)
+        {
+            bool lResult = false;
+            int i = pCoso.Schedules.Count() - 1;
+            while ((lResult == false) && (i >= 0))
+            {
+                Schedule pInterval = pCoso.Schedules.ElementAt(i);
+                lResult = pInterval.IsActiveAt(pDate);
+                i--;
+            }
+            return lResult;
+        }
     }
 }

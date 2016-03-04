@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.Model.Enum;
+using MarrSystems.TpFinalTDP2015.Model.Interfaces;
 
 namespace MarrSystems.TpFinalTDP2015.Model
 {
     [Serializable]
-    public class Schedule : BaseEntity
+    public class Schedule : BaseEntity, ISchedule
     {
         private string iName;
         private DateTime iActiveFrom;

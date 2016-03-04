@@ -99,7 +99,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lBanner1.AddSchedule(interval,iValidator);
+                lBanner1.AddSchedule(iValidator,interval);
             };
 
             lBanner1.AddBannerItem(pContext.Texts.ToList()[3]);
@@ -126,7 +126,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign1.AddSchedule(interval,iValidator);
+                lCampaign1.AddSchedule(iValidator,interval);
             };
 
 
@@ -143,7 +143,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
             foreach (var interval in query)
             {
-                lCampaign2.AddSchedule(interval,iValidator);
+                lCampaign2.AddSchedule(iValidator, interval);
             }
 
 

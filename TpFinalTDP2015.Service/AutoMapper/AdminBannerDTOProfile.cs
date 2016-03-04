@@ -26,28 +26,28 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
          }
 
     */
-        
+
         class BannerTextDTOResolver : ValueResolver<IList<StaticTextDTO>, IList<BaseBannerItem>>
-         {
+        {
             protected override IList<BaseBannerItem> ResolveCore(IList<StaticTextDTO> source)
-             {
-                 IList<BaseBannerItem> lResult = new List<BaseBannerItem>();
+            {
+                IList<BaseBannerItem> lResult = new List<BaseBannerItem>();
 
-                 foreach (StaticTextDTO text in source)
-                 {
-                     lResult.Add(
-                          Mapper.Map<StaticTextDTO, StaticText>(
-                             text
-                             )
-                         );
-                 }
+                foreach (StaticTextDTO text in source)
+                {
+                    lResult.Add(
+                         Mapper.Map<StaticTextDTO, StaticText>(
+                            text
+                            )
+                        );
+                }
 
-                 return lResult;
-             }
+                return lResult;
+            }
 
 
-         }
-         
+        }
+
 
         protected override void Configure()
         {
@@ -79,8 +79,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                     foreach (var item in lDto.ActiveIntervals)
                     {
                         lResult.AddSchedule(
-                            Mapper.Map<DateIntervalDTO, Schedule>(item)
-                            ,iValidator);
+                            iValidator,
+                            Mapper.Map<DateIntervalDTO, Schedule>(item));
                     }
 
                     foreach (var item in lDto.Texts)

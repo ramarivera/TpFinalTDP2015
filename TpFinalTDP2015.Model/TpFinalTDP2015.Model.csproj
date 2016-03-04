@@ -48,7 +48,7 @@
     <Compile Include="BaseBannerItem.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Campaign.cs" />
-    <Compile Include="DateInterval.cs" />
+    <Compile Include="Schedule.cs" />
     <Compile Include="Day.cs" />
     <Compile Include="DomainServices\ISeFijaSiEstaActivo.cs" />
     <Compile Include="DomainServices\SeFijaSiEstaActivo.cs" />
@@ -62,7 +62,7 @@
     <Compile Include="RssSource.cs" />
     <Compile Include="Slide.cs" />
     <Compile Include="StaticText.cs" />
-    <Compile Include="TimeInterval.cs" />
+    <Compile Include="ScheduleEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
