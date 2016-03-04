@@ -105,7 +105,7 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\CampaignService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
-    <Compile Include="Services\DateIntervalController.cs" />
+    <Compile Include="Services\DateIntervalService.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\RssSourceService.cs" />
     <Compile Include="Services\StaticTextService.cs" />

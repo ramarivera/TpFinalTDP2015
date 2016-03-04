@@ -16,7 +16,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Intervalos de Fechas")]
     public partial class IntervalAdministrator : AdminModePage
     {
-        DateIntervalController iController;
+        DateIntervalService iController;
 
         DateIntervalDTO dateInterval;
 
@@ -28,11 +28,11 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         }
 
 
-        private DateIntervalController Controller
+        private DateIntervalService Controller
         {
             get
             {
-                return (DateIntervalController)
+                return (DateIntervalService)
                     ServiceFactory.
                     GetService<DateIntervalDTO>();
             }
