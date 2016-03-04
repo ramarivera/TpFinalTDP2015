@@ -10,46 +10,35 @@ using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.UI.View;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     [AdminModePageInfo(Name = "Administrador de Intervalos de Fechas")]
     public partial class IntervalAdministrator : AdminModePage
     {
-        DateIntervalService iController;
+        ManageScheduleHandler iController = new ManageScheduleHandler();
 
         DateIntervalDTO dateInterval;
 
         TimeIntervalDTO timeInterval;
 
-        public IntervalAdministrator(): base()
+        public IntervalAdministrator() : base()
         {
             InitializeComponent();
         }
 
 
-        private DateIntervalService Controller
-        {
-            get
-            {
-                return 
-                    BusinessServiceLocator.
-                    Resolve<DateIntervalService>();
-            }
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                using (iController = this.Controller)
-                {
-                    this.dateInterval = new DateIntervalDTO();
-                    AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
-                    this.dgvDateInterval.Agregar(ventana, this.dateInterval);
-                    iController.Save(this.dateInterval);
-                    this.CargarDateDataGrid();
-                }
+                this.dateInterval = new DateIntervalDTO();
+                AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
+                this.dgvDateInterval.Agregar(ventana, this.dateInterval);
+                iController.AddSchedule(this.dateInterval);
+                this.CargarDateDataGrid();
             }
             catch (Exception)
             {
@@ -62,24 +51,21 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
+                List<IDTO> intervalosAEliminar = new List<IDTO>();
+                foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
                 {
-                    List<IDTO> intervalosAEliminar = new List<IDTO>();
-                    foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
+                    intervalosAEliminar.Add((DateIntervalDTO)dgvDateInterval.GetItem(row.Index));
+                }
+                if (intervalosAEliminar.Count == 0)
+                {
+                    MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    this.dgvDateInterval.Eliminar(intervalosAEliminar);
+                    foreach (IDTO interval in intervalosAEliminar)
                     {
-                        intervalosAEliminar.Add((DateIntervalDTO)dgvDateInterval.GetItem(row.Index));
-                    }
-                    if (intervalosAEliminar.Count == 0)
-                    {
-                        MessageBox.Show("No hay elementos para eliminar", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        this.dgvDateInterval.Eliminar(intervalosAEliminar);
-                        foreach (IDTO interval in intervalosAEliminar)
-                        {
-                            iController.Delete((DateIntervalDTO)interval);
-                        }
+                        iController.DeleteSchedule((DateIntervalDTO)interval);
                     }
                 }
             }
@@ -94,21 +80,18 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
-                {
-                    DataGridViewRow row = dgvDateInterval.CurrentRow;
-                    this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
-                    AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
-                    this.dgvDateInterval.Modificar(ventana, this.dateInterval);
-                    iController.Save(this.dateInterval);
-                }
+                DataGridViewRow row = dgvDateInterval.CurrentRow;
+                this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
+                AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
+                this.dgvDateInterval.Modificar(ventana, this.dateInterval);
+                iController.UpdateSchedule(this.dateInterval);
             }
             catch (Exception)
             {
 
                 throw;
             }
-            
+
         }
 
         private void IntervalAdministrator_Load(object sender, EventArgs e)
@@ -121,11 +104,8 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
-                {
-                    IList<DateIntervalDTO> lList = this.iController.GetAll();
-                    this.dgvDateInterval.AddToSource(lList.ToDTOList());
-                }
+                IList<DateIntervalDTO> lList = this.iController.ListSchedules();
+                this.dgvDateInterval.AddToSource(lList.ToDTOList());
             }
             catch (Exception)
             {

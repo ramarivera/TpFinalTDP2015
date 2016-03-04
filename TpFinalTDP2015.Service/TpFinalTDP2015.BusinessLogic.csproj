@@ -129,6 +129,8 @@
     <Compile Include="RSS\RawXmlRssReader.cs" />
     <Compile Include="RSS\RssReader.cs" />
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
+    <Compile Include="UseCaseControllers\ManageScheduleHandler.cs" />
+    <Compile Include="UseCaseControllers\ManageTextHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
