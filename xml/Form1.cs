@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
-using TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace xml
 {
