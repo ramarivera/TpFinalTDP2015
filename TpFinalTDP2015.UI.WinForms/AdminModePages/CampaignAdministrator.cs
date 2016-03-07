@@ -15,11 +15,14 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Campañas")]
     public partial class CampaignAdministrator : AdminModePage
     {
-        CampaignService iController = new CampaignService();
+        private CampaignService iController = new CampaignService();
+        private GenericDGV<CampaignDTO> dgvCampaign;
+
 
         CampaignDTO campaign;
         public CampaignAdministrator() : base()
         {
+           
             InitializeComponent();
             this.Load += CampaignAdministrator_Load;
         }
@@ -32,24 +35,24 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void CargarDataGrid()
         {
             IList<CampaignDTO> lList = this.iController.GetCampaigns();
-            this.dgvCampaign.AddToSource(lList.ToDTOList());
+            this.dgvCampaign.AddToSource(lList);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             campaign = new CampaignDTO();
             AgregarModificarCampaña ventana = new AgregarModificarCampaña();
-            this.dgvCampaign.Agregar(ventana,campaign);
+            this.dgvCampaign.Add(ventana,campaign);
             iController.SaveCampaign(this.campaign);
             this.CargarDataGrid();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            List<IDTO> campañasAEliminar = new List<IDTO>();
+            List<CampaignDTO> campañasAEliminar = new List<CampaignDTO>();
             foreach (DataGridViewRow row in this.dgvCampaign.SelectedRows)
             {
-                campañasAEliminar.Add((CampaignDTO)dgvCampaign.GetItem(row.Index));
+                campañasAEliminar.Add(dgvCampaign.GetItem(row.Index));
             }
             if (campañasAEliminar.Count == 0)
             {
@@ -57,10 +60,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
             else
             {
-                this.dgvCampaign.Eliminar(campañasAEliminar);
-                foreach (IDTO campaign in campañasAEliminar)
+                this.dgvCampaign.Delete(campañasAEliminar);
+                foreach (CampaignDTO campaign in campañasAEliminar)
                 {
-                    iController.DeleteCampaign((CampaignDTO)campaign);
+                    iController.DeleteCampaign(campaign);
                 }
             }
             
@@ -71,7 +74,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             DataGridViewRow row = dgvCampaign.CurrentRow;
             this.campaign = (CampaignDTO)dgvCampaign.GetItem(row.Index);
             AgregarModificarCampaña ventana = new AgregarModificarCampaña();
-            this.dgvCampaign.Modificar(ventana, this.campaign);
+            this.dgvCampaign.Modify(ventana, this.campaign);
             iController.SaveCampaign(this.campaign);
         }
     }

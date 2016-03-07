@@ -9,7 +9,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
 {
     public static class ExtensionMethod
     {
-        internal static IList<IDTO> ToDTOList<T>(this IList<T> source) where T : class
+     /*   internal static IList<IDTO> ToDTOList<T>(this IList<T> source) where T : class
         {
 
             //TODO ver que T realmente implemente IDTO
@@ -26,6 +26,6 @@ namespace MarrSystems.TpFinalTDP2015.UI
             return lResult;
 
 
-        }
+        }*/
     }
 }

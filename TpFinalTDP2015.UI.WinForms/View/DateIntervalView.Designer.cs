@@ -42,7 +42,7 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.lblDays = new System.Windows.Forms.Label();
             this.grbTimeInterval = new System.Windows.Forms.GroupBox();
-            this.dgvTimeInterval = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvTimeInterval = new AdminModePages.GenericDGV<BusinessLogic.DTO.TimeIntervalDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -218,7 +218,6 @@
             this.dgvTimeInterval.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTimeInterval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTimeInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTimeInterval.DTOType = null;
             this.dgvTimeInterval.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvTimeInterval.Location = new System.Drawing.Point(3, 16);
             this.dgvTimeInterval.Name = "dgvTimeInterval";
@@ -266,6 +265,5 @@
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.Label lblDays;
         private System.Windows.Forms.GroupBox grbTimeInterval;
-        private AdminModePages.BaseDGV dgvTimeInterval;
     }
 }

@@ -25,7 +25,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        void IAddModifyViewForm.Agregar(IDTO pNewSlide)
+        void IAddModifyViewForm.Add(IDTO pNewSlide)
         {
             this.txtDuration.Text = String.Empty;
             //transicion
@@ -33,7 +33,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             this.iOriginalSlide = (SlideDTO)pNewSlide;
         }
 
-        void IAddModifyViewForm.Modificar(IDTO pSlide)
+        void IAddModifyViewForm.Modify(IDTO pSlide)
         {
             if (pSlide == null)
             {

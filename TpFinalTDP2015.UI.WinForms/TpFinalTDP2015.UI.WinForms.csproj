@@ -78,11 +78,11 @@
     <Compile Include="AdminModePages\BannerAdministrator.Designer.cs">
       <DependentUpon>BannerAdministrator.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminModePages\BaseDGV.cs">
+    <Compile Include="AdminModePages\GenericDGV.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AdminModePages\BaseDGV.Designer.cs">
-      <DependentUpon>BaseDGV.cs</DependentUpon>
+    <Compile Include="AdminModePages\GenericDGV.Designer.cs">
+      <DependentUpon>GenericDGV.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminModePages\CampaignAdministrator.cs">
       <SubType>Form</SubType>
@@ -221,8 +221,8 @@
     <EmbeddedResource Include="AdminModePages\BannerAdministrator.resx">
       <DependentUpon>BannerAdministrator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminModePages\BaseDGV.resx">
-      <DependentUpon>BaseDGV.cs</DependentUpon>
+    <EmbeddedResource Include="AdminModePages\GenericDGV.resx">
+      <DependentUpon>GenericDGV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminModePages\CampaignAdministrator.resx">
       <DependentUpon>CampaignAdministrator.cs</DependentUpon>

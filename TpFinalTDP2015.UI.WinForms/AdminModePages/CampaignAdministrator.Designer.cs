@@ -33,9 +33,9 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.dgvCampaign = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.grbCampaign = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvCampaign = new GenericDGV<BusinessLogic.DTO.CampaignDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCampaign)).BeginInit();
@@ -111,7 +111,6 @@
             this.dgvCampaign.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCampaign.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCampaign.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvCampaign.DTOType = null;
             this.dgvCampaign.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCampaign.Location = new System.Drawing.Point(3, 3);
             this.dgvCampaign.Name = "dgvCampaign";
@@ -172,7 +171,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
-        private BaseDGV dgvCampaign;
         private System.Windows.Forms.GroupBox grbCampaign;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }

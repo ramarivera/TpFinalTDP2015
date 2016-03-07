@@ -26,7 +26,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        void IAddModifyViewForm.Agregar(IDTO pNewStaticText)
+        void IAddModifyViewForm.Add(IDTO pNewStaticText)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -35,7 +35,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             this.iOriginalStaticText = (StaticTextDTO)pNewStaticText;
         }
 
-        void IAddModifyViewForm.Modificar(IDTO pStaticText)
+        void IAddModifyViewForm.Modify(IDTO pStaticText)
         {
             if (pStaticText == null)
             {

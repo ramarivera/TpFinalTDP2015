@@ -1,6 +1,6 @@
 ﻿namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
-    partial class BaseDGV
+    partial class GenericDGV<TDto>
     {
         /// <summary>
         /// Required designer variable.

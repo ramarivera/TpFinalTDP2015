@@ -42,7 +42,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             get { return this.iOriginalBanner; }
         }
 
-        void IAddModifyViewForm.Agregar(IDTO pNewBanner)
+        void IAddModifyViewForm.Add(IDTO pNewBanner)
         {
             this.txtName.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -50,7 +50,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             this.iOriginalBanner = (AdminBannerDTO)pNewBanner;
         }
 
-        void IAddModifyViewForm.Modificar(IDTO pBanner)
+        void IAddModifyViewForm.Modify(IDTO pBanner)
         {
             if (pBanner == null)
             {

@@ -35,8 +35,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.dgvStaticText = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.btnView = new System.Windows.Forms.Button();
+            this.dgvStaticText = new GenericDGV<BusinessLogic.DTO.StaticTextDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.grbStaticText.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -138,7 +138,6 @@
             this.dgvStaticText.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStaticText.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStaticText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvStaticText.DTOType = null;
             this.dgvStaticText.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvStaticText.Location = new System.Drawing.Point(3, 3);
             this.dgvStaticText.Name = "dgvStaticText";
@@ -183,7 +182,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
-        private BaseDGV dgvStaticText;
         private System.Windows.Forms.GroupBox grbStaticText;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnView;

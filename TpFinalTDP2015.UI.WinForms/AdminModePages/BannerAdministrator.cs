@@ -18,8 +18,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     public partial class BannerAdministrator : AdminModePage
     {
         AdminBannerDTO banner;
-
         BannerService iController;
+        private GenericDGV<AdminBannerDTO> dgvBanner;
+                  
 
         public BannerAdministrator(): base()
         {
@@ -50,8 +51,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (iController = this.Controller)
                 {
-                    IList<AdminBannerDTO> lList = this.iController.GetAll();
-                    this.dgvBanner.AddToSource(lList.ToDTOList());
+                    this.dgvBanner.AddToSource(this.iController.GetAll());
                 }
             }
             catch (Exception)
@@ -75,7 +75,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 bannersAEliminar.Add((BannerDTO)row.DataBoundItem);
             }
-            this.dgvBanner.Eliminar(bannersAEliminar);*/
+            this.dgvBanner.Delete(bannersAEliminar);*/
             /*List<IDTO> bannersAEliminar = new List<IDTO>();
             foreach (DataGridViewRow row in this.dgvBanner.SelectedRows)
             {
@@ -87,7 +87,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
             else
             {
-                this.dgvBanner.Eliminar(bannerAEliminar);
+                this.dgvBanner.Delete(bannerAEliminar);
                 foreach (IDTO banner in bannerAEliminar)
                 {
                     iController.DeleteBanner((BannerDTO)banner);
@@ -103,7 +103,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 {
                     this.banner = new AdminBannerDTO();
                     AgregarModificarBanner ventana = new AgregarModificarBanner();
-                    this.dgvBanner.Agregar(ventana, banner);
+                    this.dgvBanner.Add(ventana, banner);
                     iController.Save(this.banner);
                     this.CargarDataGrid();
                 }
@@ -124,7 +124,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     DataGridViewRow row = dgvBanner.CurrentRow;
                     this.banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
                     AgregarModificarBanner ventana = new AgregarModificarBanner();
-                    this.dgvBanner.Modificar(ventana, this.banner);
+                    this.dgvBanner.Modify(ventana, this.banner);
                     iController.Save(this.banner);
                 }
             }

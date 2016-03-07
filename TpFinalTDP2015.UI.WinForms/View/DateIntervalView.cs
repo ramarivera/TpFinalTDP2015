@@ -14,6 +14,8 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     public partial class DateIntervalView: Form
     {
+        private AdminModePages.GenericDGV<TimeIntervalDTO> dgvTimeInterval;
+
         public DateIntervalView()
         {
             InitializeComponent();
@@ -61,7 +63,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
                             break;
                     }
                 }
-                this.dgvTimeInterval.AddToSource(pDateInterval.ActiveHours.ToDTOList());
+                this.dgvTimeInterval.AddToSource(pDateInterval.ActiveHours);
                 this.ShowDialog();
             }
         }

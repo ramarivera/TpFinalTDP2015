@@ -32,11 +32,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grbBanner = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvBanner = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
+            this.dgvBanner = new GenericDGV<BusinessLogic.DTO.AdminBannerDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.grbBanner.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -93,7 +93,6 @@
             this.dgvBanner.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBanner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBanner.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBanner.DTOType = null;
             this.dgvBanner.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvBanner.Location = new System.Drawing.Point(3, 3);
             this.dgvBanner.Name = "dgvBanner";
@@ -181,7 +180,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
-        private BaseDGV dgvBanner;
+        
+
         private System.Windows.Forms.GroupBox grbBanner;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnView;

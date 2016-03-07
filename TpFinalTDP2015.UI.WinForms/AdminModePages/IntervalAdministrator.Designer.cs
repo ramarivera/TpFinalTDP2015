@@ -1,4 +1,6 @@
-﻿namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
+﻿using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+
+namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     partial class IntervalAdministrator
     {
@@ -32,17 +34,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grbDateInterval = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvDateInterval = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddDateInterval = new System.Windows.Forms.Button();
             this.btnDeleteDateInterval = new System.Windows.Forms.Button();
             this.grbTimeInterval = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvTimeInterval = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddTimeInterval = new System.Windows.Forms.Button();
             this.btnDeleteTimeInterval = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
+            this.dgvTimeInterval = new GenericDGV<TimeIntervalDTO>(this.components);
+            this.dgvDateInterval = new GenericDGV<DateIntervalDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.grbDateInterval.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -106,7 +108,6 @@
             this.dgvDateInterval.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDateInterval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDateInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDateInterval.DTOType = null;
             this.dgvDateInterval.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDateInterval.Location = new System.Drawing.Point(3, 3);
             this.dgvDateInterval.Name = "dgvDateInterval";
@@ -195,7 +196,6 @@
             this.dgvTimeInterval.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTimeInterval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTimeInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTimeInterval.DTOType = null;
             this.dgvTimeInterval.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvTimeInterval.Location = new System.Drawing.Point(3, 3);
             this.dgvTimeInterval.Name = "dgvTimeInterval";
@@ -279,8 +279,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private BaseDGV dgvDateInterval;
-        private BaseDGV dgvTimeInterval;
         private System.Windows.Forms.GroupBox grbDateInterval;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

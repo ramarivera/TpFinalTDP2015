@@ -1,4 +1,6 @@
-﻿namespace MarrSystems.TpFinalTDP2015.UI.View
+﻿using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+
+namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     partial class BannerView
     {
@@ -39,11 +41,11 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.grbIntervalos = new System.Windows.Forms.GroupBox();
-            this.dgvIntervals = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.grbTextos = new System.Windows.Forms.GroupBox();
-            this.dgvTexts = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.grbFuentes = new System.Windows.Forms.GroupBox();
-            this.dgvSources = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
+            this.dgvIntervals = new AdminModePages.GenericDGV<DateIntervalDTO>(this.components);
+            this.dgvTexts = new AdminModePages.GenericDGV<StaticTextDTO>(this.components);
+            this.dgvSources = new AdminModePages.GenericDGV<RssSourceDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.grbDatos.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -197,7 +199,6 @@
             this.dgvIntervals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvIntervals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvIntervals.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvIntervals.DTOType = null;
             this.dgvIntervals.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvIntervals.Location = new System.Drawing.Point(3, 16);
             this.dgvIntervals.Name = "dgvIntervals";
@@ -225,7 +226,6 @@
             this.dgvTexts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTexts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTexts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTexts.DTOType = null;
             this.dgvTexts.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvTexts.Location = new System.Drawing.Point(3, 16);
             this.dgvTexts.Name = "dgvTexts";
@@ -253,7 +253,6 @@
             this.dgvSources.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSources.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSources.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSources.DTOType = null;
             this.dgvSources.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSources.Location = new System.Drawing.Point(3, 16);
             this.dgvSources.Name = "dgvSources";
@@ -297,9 +296,7 @@
         private System.Windows.Forms.GroupBox grbIntervalos;
         private System.Windows.Forms.GroupBox grbTextos;
         private System.Windows.Forms.GroupBox grbFuentes;
-        private AdminModePages.BaseDGV dgvIntervals;
-        private AdminModePages.BaseDGV dgvTexts;
-        private AdminModePages.BaseDGV dgvSources;
+        
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label lblName;

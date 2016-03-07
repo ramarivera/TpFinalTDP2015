@@ -25,7 +25,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        void IAddModifyViewForm.Agregar(IDTO pNewDateInterval)
+        void IAddModifyViewForm.Add(IDTO pNewDateInterval)
         {
             this.txtTitle.Text = String.Empty;
             this.dtpStartDate.Value = DateTime.Now;
@@ -34,7 +34,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             this.iOriginalDateInterval = (DateIntervalDTO)pNewDateInterval;
         }
 
-        void IAddModifyViewForm.Modificar(IDTO pDateInterval)
+        void IAddModifyViewForm.Modify(IDTO pDateInterval)
         {
             if (pDateInterval == null)
             {

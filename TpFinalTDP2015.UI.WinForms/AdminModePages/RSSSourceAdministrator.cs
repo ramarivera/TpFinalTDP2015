@@ -17,6 +17,8 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     public partial class RSSSourceAdministrator : AdminModePage
     {
         RssSourceService iController;
+        private GenericDGV<RssSourceDTO> dgvRSSSource;
+
 
         RssSourceDTO rssSource;
         public RSSSourceAdministrator(): base()
@@ -42,7 +44,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 {
                     this.rssSource = new RssSourceDTO();
                     AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
-                    this.dgvRSSSource.Agregar(ventana, this.rssSource);
+                    this.dgvRSSSource.Add(ventana, this.rssSource);
                     iController.Save(this.rssSource);
                 }
             }
@@ -59,10 +61,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (iController = this.Controller)
                 {
-                    List<IDTO> fuentesAEliminar = new List<IDTO>();
+                    IList<RssSourceDTO> fuentesAEliminar = new List<RssSourceDTO>();
                     foreach (DataGridViewRow row in this.dgvRSSSource.SelectedRows)
                     {
-                        fuentesAEliminar.Add((RssSourceDTO)dgvRSSSource.GetItem(row.Index));
+                        fuentesAEliminar.Add(dgvRSSSource.GetItem(row.Index));
                     }
                     if (fuentesAEliminar.Count == 0)
                     {
@@ -70,10 +72,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     }
                     else
                     {
-                        this.dgvRSSSource.Eliminar(fuentesAEliminar);
-                        foreach (IDTO source in fuentesAEliminar)
+                        this.dgvRSSSource.Delete(fuentesAEliminar);
+                        foreach (RssSourceDTO source in fuentesAEliminar)
                         {
-                            iController.Delete((RssSourceDTO)source);
+                            iController.Delete(source);
                         }
                     }
                 }
@@ -92,9 +94,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 using (iController = this.Controller)
                 {
                     DataGridViewRow row = dgvRSSSource.CurrentRow;
-                    this.rssSource = (RssSourceDTO)dgvRSSSource.GetItem(row.Index);
+                    this.rssSource = dgvRSSSource.GetItem(row.Index);
                     AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
-                    this.dgvRSSSource.Modificar(ventana, this.rssSource);
+                    this.dgvRSSSource.Modify(ventana, this.rssSource);
                     iController.Save(this.rssSource);
                 }
             }
@@ -116,8 +118,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (iController = this.Controller)
                 {
-                    IList<RssSourceDTO> lList = this.iController.GetAll();
-                    this.dgvRSSSource.AddToSource(lList.ToDTOList());
+                    this.dgvRSSSource.AddToSource(this.iController.GetAll());
                 }
             }
             catch (Exception)
@@ -130,7 +131,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void btnView_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvRSSSource.CurrentRow;
-            this.rssSource = (RssSourceDTO)dgvRSSSource.GetItem(row.Index);
+            this.rssSource = dgvRSSSource.GetItem(row.Index);
             RssSourceView ventana = new RssSourceView();
             ventana.View(this.rssSource);
         }

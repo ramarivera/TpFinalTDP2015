@@ -13,35 +13,30 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
-    public partial class BaseDGV : DataGridView
+    public partial class GenericDGV<TDto> : DataGridView where TDto: IDTO
     {
-        private static readonly ILog cLogger = LogManager.GetLogger<BaseDGV>();
+        private static readonly ILog cLogger = LogManager.GetLogger<GenericDGV<TDto>>();
 
         public BindingSource iSource = new BindingSource(); //TODO cambiar public por private
-        private DGVHelper iHelper = new DGVHelper();
+        private DGVHelper<TDto> iHelper = new DGVHelper<TDto>();
+        private bool configured = false;
 
-        public Type DTOType { get; set; }
 
-        public BaseDGV()
+        public TDto GetItem(int pRowIndex)
         {
+            return (TDto) this.Rows[pRowIndex].DataBoundItem;
+        }
+
+        public GenericDGV(IContainer container)
+        {
+            container.Add(this);
             InitializeComponent();
             this.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
-        public IDTO GetItem(int pRowIndex)
+        public void Add(IAddModifyViewForm pForm, TDto pDTO)
         {
-            return (IDTO)this.Rows[pRowIndex].DataBoundItem;
-        }
-
-        public BaseDGV(IContainer container)
-        {
-            container.Add(this);
-            InitializeComponent();
-        }
-
-        public void Agregar(IAddModifyViewForm pForm, IDTO pDTO)
-        {
-            pForm.Agregar(pDTO);
+            pForm.Add(pDTO);
             DialogResult resultado = pForm.ShowForm();
             if (resultado == DialogResult.OK)
             {
@@ -50,9 +45,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
         }
 
-        public void Modificar(IAddModifyViewForm pForm, IDTO pDTO)
+        public void Modify(IAddModifyViewForm pForm, TDto pDTO)
         {
-            pForm.Modificar(pDTO);
+            pForm.Modify(pDTO);
             DialogResult resultado = pForm.ShowForm();
             if (resultado == DialogResult.OK)
             {
@@ -60,7 +55,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
         }
 
-        public void Eliminar(List<IDTO> pDTOs)
+        public void Delete(IList<TDto> pDTOs)
         {
             string cadena = "este elemento";
             if (pDTOs.Count > 1)
@@ -72,7 +67,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 case DialogResult.Yes:
                     //TODO elimnar de la db en fachada
-                    foreach (IDTO pDTO in pDTOs)
+                    foreach (TDto pDTO in pDTOs)
                     {
                         this.iSource.Remove(pDTO);
                     }
@@ -82,40 +77,34 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
         }
 
-        public void AddToSource(IList<IDTO> pDTOs)
+        public void AddToSource(IList<TDto> pDTOs)
         {
             this.iSource.Clear();
-            if (this.DTOType == null)
+
+            foreach (TDto pDTO in pDTOs)
             {
-                this.DTOType = pDTOs.First().GetType();
-            }
-            foreach (IDTO pDTO in pDTOs)
-            {
-                if (pDTO.GetType() != this.DTOType)
-                {
-                    //TODO tirar excepcion porque parece que hay un elemento intruso metido aca
-                }
                 this.iSource.Add(pDTO);
             }
+
             this.DataSource = this.iSource;
-            this.iHelper.Configure(this);
+
+            if (!configured)
+            {
+                this.iHelper.Configure(this); //TODO esto se tendria que hacer una vez por cada dgv, no una vez cada vez que se agrega algo :(
+                configured = true;
+            } 
         }
 
-        public IList<IDTO> GetAll()
+        public IList<TDto> GetAll()
         {
-            IList<IDTO> lList = new List<IDTO>();
-            foreach (IDTO element in this.iSource)
-            {
-                lList.Add(element);
-            }
-            return lList;
+          return  iSource.Cast<TDto>().ToList();
         }
     }
 
 
-    class DGVHelper
+    class DGVHelper<TDto> where TDto : IDTO
     {
-        private static readonly ILog cLogger = LogManager.GetLogger<DGVHelper>();
+        private static readonly ILog cLogger = LogManager.GetLogger<DGVHelper<TDto>>();
 
         IList<PropertyConfigurations> PropertyConfigs { get; set; }
 
@@ -124,18 +113,18 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             this.PropertyConfigs = new List<PropertyConfigurations>();
         }
 
-        public void Configure(BaseDGV pDGV)
+        public void Configure(GenericDGV<TDto> pDGV)
         {
             pDGV.AutoGenerateColumns = false;
             //  pDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.GetConfigForEntity(pDGV.DTOType);
+            this.GetConfigForEntity(typeof(TDto));
             this.ConfigureColumns(pDGV);
             pDGV.RowHeadersVisible = false;
 
         }
 
 
-        private void ConfigureColumns(BaseDGV pDGV)
+        private void ConfigureColumns(GenericDGV<TDto> pDGV)
         {
             int i = 0;
             bool lError = false;
@@ -180,7 +169,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         }
 
-        private IList<DataGridViewColumn> CopyColumns(BaseDGV pDGV)
+        private IList<DataGridViewColumn> CopyColumns(GenericDGV<TDto> pDGV)
         {
             IList<DataGridViewColumn> lResult = new List<DataGridViewColumn>();
 
@@ -229,17 +218,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
 
 
-            /*  cLogger.InfoFormat
-                  (
-                  "Propiedad: {0}, Texto: {1}, Mostrar: {2}",
-                  xl.Attribute("name").Value,
-                  xl.Element("text").Value,
-                  xl.Element("enable").Value
-                  );*/
-
         }
-
-
 
         class PropertyConfigurations
         {

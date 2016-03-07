@@ -41,7 +41,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             }
         }
 
-        void IAddModifyViewForm.Agregar(IDTO pNewCampaign)
+        void IAddModifyViewForm.Add(IDTO pNewCampaign)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -49,7 +49,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             this.iOriginalCampaign = (CampaignDTO)pNewCampaign;
         }
 
-        void IAddModifyViewForm.Modificar(IDTO pCampaign)
+        void IAddModifyViewForm.Modify(IDTO pCampaign)
         {
             if (pCampaign == null)
             {

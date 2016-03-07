@@ -19,6 +19,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         StaticTextService iController;
 
         StaticTextDTO staticText;
+
+        private GenericDGV<StaticTextDTO> dgvStaticText;
+
         public StaticTextAdministrator(): base()
         {
             InitializeComponent();
@@ -42,7 +45,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 {
                     this.staticText = new StaticTextDTO();
                     AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
-                    this.dgvStaticText.Agregar(ventana, this.staticText);
+                    this.dgvStaticText.Add(ventana, this.staticText);
                     iController.Save(this.staticText);
                     this.CargarDataGrid();
                 }
@@ -60,10 +63,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (iController = this.Controller)
                 {
-                    List<IDTO> textosAEliminar = new List<IDTO>();
+                    IList<StaticTextDTO> textosAEliminar = new List<StaticTextDTO>();
                     foreach (DataGridViewRow row in this.dgvStaticText.SelectedRows)
                     {
-                        textosAEliminar.Add((StaticTextDTO)dgvStaticText.GetItem(row.Index));
+                        textosAEliminar.Add(dgvStaticText.GetItem(row.Index));
                     }
                     if (textosAEliminar.Count == 0)
                     {
@@ -71,10 +74,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     }
                     else
                     {
-                        this.dgvStaticText.Eliminar(textosAEliminar);
-                        foreach (IDTO text in textosAEliminar)
+                        this.dgvStaticText.Delete(textosAEliminar);
+                        foreach (StaticTextDTO text in textosAEliminar)
                         {
-                            iController.Delete((StaticTextDTO)text);
+                            iController.Delete(text);
                         }
                     }
                 }
@@ -93,9 +96,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 using (iController = this.Controller)
                 {
                     DataGridViewRow row = dgvStaticText.CurrentRow;
-                    this.staticText = (StaticTextDTO)dgvStaticText.GetItem(row.Index);
+                    this.staticText = dgvStaticText.GetItem(row.Index);
                     AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
-                    this.dgvStaticText.Modificar(ventana, this.staticText);
+                    this.dgvStaticText.Modify(ventana, this.staticText);
                     iController.Save(this.staticText);
                 }
             }
@@ -117,8 +120,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (iController = this.Controller)
                 {
-                    IList<StaticTextDTO> lList = this.iController.GetAll();
-                    this.dgvStaticText.AddToSource(lList.ToDTOList());
+                    this.dgvStaticText.AddToSource(this.iController.GetAll());
                 }
             }
             catch (Exception)
@@ -131,7 +133,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void btnView_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvStaticText.CurrentRow;
-            this.staticText = (StaticTextDTO)dgvStaticText.GetItem(row.Index);
+            this.staticText = dgvStaticText.GetItem(row.Index);
             StaticTextView ventana = new StaticTextView();
             ventana.View(this.staticText);
         }

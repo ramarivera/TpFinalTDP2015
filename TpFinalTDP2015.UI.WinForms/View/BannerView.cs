@@ -13,6 +13,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     public partial class BannerView : Form
     {
+        private AdminModePages.GenericDGV<DateIntervalDTO> dgvIntervals;
+        private AdminModePages.GenericDGV<StaticTextDTO> dgvTexts;
+        private AdminModePages.GenericDGV<RssSourceDTO> dgvSources;
+
         public BannerView()
         {
             InitializeComponent();
@@ -30,9 +34,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
                 this.txtName.Text = pBanner.Name;
                 this.txtDescription.Text = pBanner.Description;
                 this.Text = "Banner: " + pBanner.Name;
-                this.dgvIntervals.AddToSource(pBanner.ActiveIntervals.ToDTOList());
-                this.dgvSources.AddToSource(pBanner.RssSources.ToDTOList());
-                this.dgvTexts.AddToSource(pBanner.Texts.ToDTOList());
+                this.dgvIntervals.AddToSource(pBanner.ActiveIntervals);
+                this.dgvSources.AddToSource(pBanner.RssSources);
+                this.dgvTexts.AddToSource(pBanner.Texts);
                 this.ShowDialog();
             }
         }

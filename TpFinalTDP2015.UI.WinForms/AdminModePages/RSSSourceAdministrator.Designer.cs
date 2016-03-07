@@ -35,8 +35,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.dgvRSSSource = new MarrSystems.TpFinalTDP2015.UI.AdminModePages.BaseDGV(this.components);
             this.btnView = new System.Windows.Forms.Button();
+            this.dgvRSSSource = new GenericDGV<BusinessLogic.DTO.RssSourceDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.grbRssSources.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -138,8 +138,6 @@
             this.dgvRSSSource.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRSSSource.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRSSSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvRSSSource.DTOType = null;
-            this.dgvRSSSource.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvRSSSource.Location = new System.Drawing.Point(3, 3);
             this.dgvRSSSource.Name = "dgvRSSSource";
             this.dgvRSSSource.RowHeadersVisible = false;
@@ -183,7 +181,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEliminar;
-        private BaseDGV dgvRSSSource;
         private System.Windows.Forms.GroupBox grbRssSources;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnView;

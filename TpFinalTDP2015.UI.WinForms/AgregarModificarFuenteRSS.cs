@@ -24,7 +24,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        void IAddModifyViewForm.Agregar(IDTO pNewRSSSource)
+        void IAddModifyViewForm.Add(IDTO pNewRSSSource)
         {
             this.txtTitle.Text = String.Empty;
             this.txtDescription.Text = String.Empty;
@@ -33,7 +33,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             this.iOriginalRSSSource = (RssSourceDTO)pNewRSSSource;
         }
 
-        void IAddModifyViewForm.Modificar(IDTO pRSSSource)
+        void IAddModifyViewForm.Modify(IDTO pRSSSource)
         {
             if (pRSSSource == null)
             {

@@ -11,9 +11,9 @@ namespace MarrSystems.TpFinalTDP2015.UI
 {
     public interface IAddModifyViewForm
     {
-        void Agregar(IDTO pDTO);
+        void Add(IDTO pDTO);
 
-        void Modificar(IDTO pDTO);
+        void Modify(IDTO pDTO);
 
         DialogResult ShowForm();
        

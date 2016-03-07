@@ -18,6 +18,8 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     public partial class IntervalAdministrator : AdminModePage
     {
         ManageScheduleHandler iController = new ManageScheduleHandler();
+        private GenericDGV<DateIntervalDTO> dgvDateInterval;
+        private GenericDGV<TimeIntervalDTO> dgvTimeInterval;
 
         DateIntervalDTO dateInterval;
 
@@ -25,6 +27,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         public IntervalAdministrator() : base()
         {
+           
             InitializeComponent();
         }
 
@@ -36,7 +39,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 this.dateInterval = new DateIntervalDTO();
                 AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
-                this.dgvDateInterval.Agregar(ventana, this.dateInterval);
+                this.dgvDateInterval.Add(ventana, this.dateInterval);
                 iController.AddSchedule(this.dateInterval);
                 this.CargarDateDataGrid();
             }
@@ -51,10 +54,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                List<IDTO> intervalosAEliminar = new List<IDTO>();
+                IList<DateIntervalDTO> intervalosAEliminar = new List<DateIntervalDTO>();
                 foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
                 {
-                    intervalosAEliminar.Add((DateIntervalDTO)dgvDateInterval.GetItem(row.Index));
+                    intervalosAEliminar.Add(dgvDateInterval.GetItem(row.Index));
                 }
                 if (intervalosAEliminar.Count == 0)
                 {
@@ -62,10 +65,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 }
                 else
                 {
-                    this.dgvDateInterval.Eliminar(intervalosAEliminar);
-                    foreach (IDTO interval in intervalosAEliminar)
+                    this.dgvDateInterval.Delete(intervalosAEliminar);
+                    foreach (DateIntervalDTO interval in intervalosAEliminar)
                     {
-                        iController.DeleteSchedule((DateIntervalDTO)interval);
+                        iController.DeleteSchedule(interval);
                     }
                 }
             }
@@ -81,9 +84,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             try
             {
                 DataGridViewRow row = dgvDateInterval.CurrentRow;
-                this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
+                this.dateInterval = dgvDateInterval.GetItem(row.Index);
                 AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
-                this.dgvDateInterval.Modificar(ventana, this.dateInterval);
+                this.dgvDateInterval.Modify(ventana, this.dateInterval);
                 iController.UpdateSchedule(this.dateInterval);
             }
             catch (Exception)
@@ -105,7 +108,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             try
             {
                 IList<DateIntervalDTO> lList = this.iController.ListSchedules();
-                this.dgvDateInterval.AddToSource(lList.ToDTOList());
+                this.dgvDateInterval.AddToSource(lList);
             }
             catch (Exception)
             {
@@ -116,25 +119,26 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void CargarTimeDataGrid()
         {
-            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(0);
-            this.dgvTimeInterval.AddToSource(this.dateInterval.ActiveHours.ToDTOList());
+            this.dateInterval = dgvDateInterval.GetItem(0);
+            this.dgvTimeInterval.AddToSource(this.dateInterval.ActiveHours);
         }
+
         //TODO estos dos metodos son muy similares. No podes por ej cuando se carga todo setear el dgvDate en index 0 cosa de que se dispare auto el segundo metodo?
         private void dgvDateInterval_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
-            this.dgvTimeInterval.AddToSource(this.dateInterval.ActiveHours.ToDTOList());
+            this.dateInterval = dgvDateInterval.GetItem(row.Index);
+            this.dgvTimeInterval.AddToSource(this.dateInterval.ActiveHours);
             //TODO Martin: porque es que se usa un campo date interval?, osea, se usa esa misma instancia en varios metodos como para justificarlo?
         }
 
         private void btnAddTimeInterval_Click_1(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
+            this.dateInterval = dgvDateInterval.GetItem(row.Index);
             this.timeInterval = new TimeIntervalDTO();
             IAddModifyViewForm ventana = new AgregarModificarIntervaloTiempo();
-            ventana.Agregar((IDTO)this.timeInterval);
+            ventana.Add((IDTO)this.timeInterval);
             DialogResult resultado = ventana.ShowForm();
             if (resultado == DialogResult.OK)
             {
@@ -145,10 +149,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void btnDeleteTimeInterval_Click(object sender, EventArgs e)
         {
-            List<IDTO> intervalosAEliminar = new List<IDTO>();
+            IList<TimeIntervalDTO> intervalosAEliminar = new List<TimeIntervalDTO>();
             foreach (DataGridViewRow row in this.dgvTimeInterval.SelectedRows)
             {
-                intervalosAEliminar.Add((TimeIntervalDTO)dgvTimeInterval.GetItem(row.Index));
+                intervalosAEliminar.Add(dgvTimeInterval.GetItem(row.Index));
             }
             if (intervalosAEliminar.Count == 0)
             {
@@ -156,8 +160,8 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
             else
             {
-                this.dgvTimeInterval.Eliminar(intervalosAEliminar);
-                foreach (IDTO interval in intervalosAEliminar)
+                this.dgvTimeInterval.Delete(intervalosAEliminar);
+                foreach (TimeIntervalDTO interval in intervalosAEliminar)
                 {
                     //TODO ver esto
                 }
@@ -167,7 +171,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void btnView_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = (DateIntervalDTO)dgvDateInterval.GetItem(row.Index);
+            this.dateInterval = dgvDateInterval.GetItem(row.Index);
             DateIntervalView ventana = new DateIntervalView();
             ventana.View(this.dateInterval);
         }

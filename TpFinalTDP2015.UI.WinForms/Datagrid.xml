@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <entity name="AdminBanner" fullName="TpFinalTDP2015.Service.DTO.AdminBannerDTO">
+  <entity name="AdminBanner" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.AdminBannerDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
@@ -70,7 +70,7 @@
       </property>
     </language>
   </entity>
-  <entity name="Campaign" fullName="TpFinalTDP2015.Service.DTO.CampaignDTO">
+  <entity name="Campaign" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.CampaignDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
@@ -132,7 +132,7 @@
       </property>
     </language>
   </entity>
-  <entity name="Slide" fullName="TpFinalTDP2015.Service.DTO.SlideDTO">
+  <entity name="Slide" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.SlideDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
@@ -178,7 +178,7 @@
       </property>
     </language>
   </entity>
-  <entity name="TimeInterval" fullName="TpFinalTDP2015.Service.DTO.TimeIntervalDTO">
+  <entity name="TimeInterval" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.TimeIntervalDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
@@ -224,7 +224,7 @@
       </property>
     </language>
   </entity>
-  <entity name="DateInterval" fullName="TpFinalTDP2015.Service.DTO.DateIntervalDTO">
+  <entity name="DateInterval" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.DateIntervalDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
@@ -294,7 +294,7 @@
       </property>
     </language>
   </entity>
-  <entity name="RssItem" fullName="TpFinalTDP2015.Service.DTO.RssItemDTO">
+  <entity name="RssItem" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.RssItemDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
@@ -356,7 +356,7 @@
       </property>
     </language>
   </entity>
-  <entity name="RssSource" fullName="TpFinalTDP2015.Service.DTO.RssSourceDTO">
+  <entity name="RssSource" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.RssSourceDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
@@ -418,7 +418,7 @@
       </property>
     </language>
   </entity>
-  <entity name="StaticText" fullName="TpFinalTDP2015.Service.DTO.StaticTextDTO">
+  <entity name="StaticText" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.StaticTextDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>
