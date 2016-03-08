@@ -77,7 +77,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
         }
 
-        public void AddToSource(IList<TDto> pDTOs)
+        public void SetSource(IList<TDto> pDTOs)
         {
             this.iSource.Clear();
 

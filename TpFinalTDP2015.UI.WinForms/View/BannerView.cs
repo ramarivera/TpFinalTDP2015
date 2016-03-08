@@ -34,9 +34,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
                 this.txtName.Text = pBanner.Name;
                 this.txtDescription.Text = pBanner.Description;
                 this.Text = "Banner: " + pBanner.Name;
-                this.dgvIntervals.AddToSource(pBanner.ActiveIntervals);
-                this.dgvSources.AddToSource(pBanner.RssSources);
-                this.dgvTexts.AddToSource(pBanner.Texts);
+                this.dgvIntervals.SetSource(pBanner.ActiveIntervals);
+                this.dgvSources.SetSource(pBanner.RssSources);
+                this.dgvTexts.SetSource(pBanner.Texts);
                 this.ShowDialog();
             }
         }

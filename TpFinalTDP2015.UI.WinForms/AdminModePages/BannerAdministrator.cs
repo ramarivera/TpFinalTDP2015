@@ -51,7 +51,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (iController = this.Controller)
                 {
-                    this.dgvBanner.AddToSource(this.iController.GetAll());
+                    this.dgvBanner.SetSource(this.iController.GetAll());
                 }
             }
             catch (Exception)

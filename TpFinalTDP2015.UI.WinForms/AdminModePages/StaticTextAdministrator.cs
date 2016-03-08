@@ -120,7 +120,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (iController = this.Controller)
                 {
-                    this.dgvStaticText.AddToSource(this.iController.GetAll());
+                    this.dgvStaticText.SetSource(this.iController.GetAll());
                 }
             }
             catch (Exception)

@@ -118,7 +118,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (iController = this.Controller)
                 {
-                    this.dgvRSSSource.AddToSource(this.iController.GetAll());
+                    this.dgvRSSSource.SetSource(this.iController.GetAll());
                 }
             }
             catch (Exception)

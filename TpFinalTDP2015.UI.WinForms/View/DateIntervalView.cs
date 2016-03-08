@@ -63,7 +63,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
                             break;
                     }
                 }
-                this.dgvTimeInterval.AddToSource(pDateInterval.ActiveHours);
+                this.dgvTimeInterval.SetSource(pDateInterval.ActiveHours);
                 this.ShowDialog();
             }
         }

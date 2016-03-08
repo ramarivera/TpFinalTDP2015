@@ -35,7 +35,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void CargarDataGrid()
         {
             IList<CampaignDTO> lList = this.iController.GetCampaigns();
-            this.dgvCampaign.AddToSource(lList);
+            this.dgvCampaign.SetSource(lList);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -108,7 +108,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             try
             {
                 IList<DateIntervalDTO> lList = this.iController.ListSchedules();
-                this.dgvDateInterval.AddToSource(lList);
+                this.dgvDateInterval.SetSource(lList);
             }
             catch (Exception)
             {
@@ -120,7 +120,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void CargarTimeDataGrid()
         {
             this.dateInterval = dgvDateInterval.GetItem(0);
-            this.dgvTimeInterval.AddToSource(this.dateInterval.ActiveHours);
+            this.dgvTimeInterval.SetSource(this.dateInterval.ActiveHours);
         }
 
         //TODO estos dos metodos son muy similares. No podes por ej cuando se carga todo setear el dgvDate en index 0 cosa de que se dispare auto el segundo metodo?
@@ -128,7 +128,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
             this.dateInterval = dgvDateInterval.GetItem(row.Index);
-            this.dgvTimeInterval.AddToSource(this.dateInterval.ActiveHours);
+            this.dgvTimeInterval.SetSource(this.dateInterval.ActiveHours);
             //TODO Martin: porque es que se usa un campo date interval?, osea, se usa esa misma instancia en varios metodos como para justificarlo?
         }
 
