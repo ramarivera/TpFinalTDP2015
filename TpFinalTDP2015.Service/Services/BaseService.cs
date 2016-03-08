@@ -19,13 +19,13 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             this.iUoW = pUoW;
         }
 
-        public abstract void Delete(TEntity pId);
+        public abstract void Delete(int pId);
 
         public abstract IList<TEntity> GetAll();
 
         public abstract TEntity Get(int pId);
 
-        public abstract int Save(TEntity pDTO);
+        public abstract int Save(TEntity pEntity);
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

@@ -13,9 +13,9 @@ namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervaloTiempo : BaseForm, IAddModifyViewForm
     {
-        private TimeIntervalDTO iOriginalTimeInterval = new TimeIntervalDTO();
+        private ScheduleEntryDTO iOriginalTimeInterval = new ScheduleEntryDTO();
 
-        public TimeIntervalDTO TimeInterval
+        public ScheduleEntryDTO TimeInterval
         {
             get { return this.iOriginalTimeInterval; }
         }
@@ -29,7 +29,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             this.dtpStartTime.Value = DateTime.Now;
             this.dtpEndTime.Value = DateTime.Now;
             this.Text = "Agregar nuevo Intervalo";
-            this.iOriginalTimeInterval = (TimeIntervalDTO)pNewTimeInterval;
+            this.iOriginalTimeInterval = (ScheduleEntryDTO)pNewTimeInterval;
         }
 
         void IAddModifyViewForm.Modify(IDTO pTimeInterval)
@@ -41,7 +41,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             }
             else
             {
-                this.iOriginalTimeInterval = (TimeIntervalDTO)pTimeInterval;
+                this.iOriginalTimeInterval = (ScheduleEntryDTO)pTimeInterval;
                 this.dtpStartTime.Value = DateTime.MinValue + iOriginalTimeInterval.StartTime;
                 this.dtpEndTime.Value = DateTime.MinValue + iOriginalTimeInterval.EndTime;
                 this.Text = "Modificar Intervalo";

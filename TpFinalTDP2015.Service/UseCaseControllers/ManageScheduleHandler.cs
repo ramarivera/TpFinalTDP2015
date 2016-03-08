@@ -1,5 +1,7 @@
-﻿using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+﻿using AutoMapper;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+using MarrSystems.TpFinalTDP2015.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,38 +14,44 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
     {
 
 
-        public void AddSchedule(DateIntervalDTO pDto)
+        public void AddSchedule(ScheduleDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<DateIntervalService>())
+            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
-                serv.Save(pDto);
+                Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
+                serv.Save(lSchedule);
             }
         }
 
-        public void UpdateSchedule(DateIntervalDTO pDto)
+        public void ModifySchedule(ScheduleDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<DateIntervalService>())
+            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
-                serv.Save(pDto);
+                Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
+                serv.Save(lSchedule);
             }
         }
 
-        public void DeleteSchedule(DateIntervalDTO pDto)
+        public void DeleteSchedule(int pId)
         {
-            using (var serv = BusinessServiceLocator.Resolve<DateIntervalService>())
+            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
-                serv.Delete(pDto);
+                serv.Delete(pId);
             }
         }
 
 
-        public IList<DateIntervalDTO> ListSchedules()
+        public IList<ScheduleDTO> ListSchedules()
         {
-            IList<DateIntervalDTO> lResult = new List<DateIntervalDTO>();
+            IList<ScheduleDTO> lResult = new List<ScheduleDTO>();
 
-            using (var serv = BusinessServiceLocator.Resolve<DateIntervalService>())
+            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
-                lResult = serv.GetAll();
+                foreach (var sche in serv.GetAll())
+                {
+                    ScheduleDTO lDto = Mapper.Map<Schedule, ScheduleDTO>(sche);
+                    lResult.Add(lDto);
+                }
             }
 
             return lResult;

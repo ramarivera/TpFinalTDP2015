@@ -19,7 +19,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
             BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<BannerService>());
             BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<StaticTextService>());
             BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<CampaignService>());
-            BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<DateIntervalService>());
+            BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<ScheduleService>());
             BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<RssSourceService>());
 
 

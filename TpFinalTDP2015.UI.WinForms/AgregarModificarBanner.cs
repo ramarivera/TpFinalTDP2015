@@ -16,8 +16,8 @@ namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
-        DateIntervalService dateIntervalController;
-        ManageTextHandler staticTextController;
+        ScheduleService dateIntervalController;
+        StaticTextService staticTextController;
         RssSourceService rssSourcesController;
 
         private AdminBannerDTO iOriginalBanner = new AdminBannerDTO();
@@ -28,13 +28,13 @@ namespace MarrSystems.TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        private DateIntervalService DateIntervalController
+        private ScheduleService DateIntervalController
         {
             get
             {
                 return 
                     BusinessServiceLocator.
-                    Resolve<DateIntervalService>();
+                    Resolve<ScheduleService>();
             }
         }
 
@@ -121,14 +121,14 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 using (this.dateIntervalController = this.DateIntervalController)
                 {
                     int i = 0;
-                    IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetAll();
-                    IList<StaticTextDTO> lTexts = this.staticTextController.ListTexts();
+                    IList<ScheduleDTO> lIntervals = this.dateIntervalController.GetAll();
+                    IList<StaticTextDTO> lTexts = this.staticTextController.GetAll();
                     IList<RssSourceDTO> lSources = this.rssSourcesController.GetAll();
-                    IList<DateIntervalDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
+                    IList<ScheduleDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
                     IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
                     IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
 
-                    foreach (DateIntervalDTO lInterval in lIntervals)
+                    foreach (ScheduleDTO lInterval in lIntervals)
                     {
                         this.chlInterval.Items.Add(lInterval.Name);
                         if (lBannerIntervals != null)
@@ -182,17 +182,17 @@ namespace MarrSystems.TpFinalTDP2015.UI
             {
                 using (dateIntervalController = this.DateIntervalController)
                 {
-                    iOriginalBanner.ActiveIntervals = new List<DateIntervalDTO>();
+                    iOriginalBanner.ActiveIntervals = new List<ScheduleDTO>();
                     for (int i = 0; i < this.chlInterval.Items.Count; i++)
                     {
                         if (this.chlInterval.GetItemChecked(i))
                         {
                             string lName = this.chlInterval.Items[i].ToString();
-                            IEnumerable<DateIntervalDTO> query =
+                            IEnumerable<ScheduleDTO> query =
                                 from lInterval in this.dateIntervalController.GetAll()
                                 where lInterval.Name == lName
                                 select lInterval;
-                            foreach (DateIntervalDTO dto in query)
+                            foreach (ScheduleDTO dto in query)
                             {
                                 this.iOriginalBanner.ActiveIntervals.Add(dto);
                             }

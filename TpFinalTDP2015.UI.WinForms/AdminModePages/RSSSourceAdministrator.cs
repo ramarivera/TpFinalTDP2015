@@ -10,43 +10,29 @@ using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.UI.View;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     [AdminModePageInfo(Name = "Administrador de Fuentes RSS")]
     public partial class RSSSourceAdministrator : AdminModePage
     {
-        RssSourceService iController;
+        private ManageSourceHandler iController = new ManageSourceHandler();
         private GenericDGV<RssSourceDTO> dgvRSSSource;
 
-
-        RssSourceDTO rssSource;
         public RSSSourceAdministrator(): base()
         {
             InitializeComponent();
-        }
-
-        private RssSourceService Controller
-        {
-            get
-            {
-                return 
-                    BusinessServiceLocator.
-                    Resolve<RssSourceService>();
-            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                using (iController = this.Controller)
-                {
-                    this.rssSource = new RssSourceDTO();
+                var lRssSource = new RssSourceDTO();
                     AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
-                    this.dgvRSSSource.Add(ventana, this.rssSource);
-                    iController.Save(this.rssSource);
-                }
+                    this.dgvRSSSource.Add(ventana, lRssSource);
+                    iController.AddSource(lRssSource);
             }
             catch (Exception)
             {
@@ -59,8 +45,6 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
-                {
                     IList<RssSourceDTO> fuentesAEliminar = new List<RssSourceDTO>();
                     foreach (DataGridViewRow row in this.dgvRSSSource.SelectedRows)
                     {
@@ -73,12 +57,11 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     else
                     {
                         this.dgvRSSSource.Delete(fuentesAEliminar);
-                        foreach (RssSourceDTO source in fuentesAEliminar)
+                        foreach (int sourceId in fuentesAEliminar.Select(s => s.Id))
                         {
-                            iController.Delete(source);
+                            iController.DeleteSource(sourceId);
                         }
                     }
-                }
             }
             catch (Exception)
             {
@@ -91,14 +74,11 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
-                {
                     DataGridViewRow row = dgvRSSSource.CurrentRow;
-                    this.rssSource = dgvRSSSource.GetItem(row.Index);
+                    var lRssSource = dgvRSSSource.GetItem(row.Index);
                     AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
-                    this.dgvRSSSource.Modify(ventana, this.rssSource);
-                    iController.Save(this.rssSource);
-                }
+                    this.dgvRSSSource.Modify(ventana, lRssSource);
+                    iController.ModifySource(lRssSource);
             }
             catch (Exception)
             {
@@ -116,10 +96,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
-                {
-                    this.dgvRSSSource.SetSource(this.iController.GetAll());
-                }
+                    this.dgvRSSSource.SetSource(this.iController.ListSources());
             }
             catch (Exception)
             {
@@ -131,9 +108,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void btnView_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvRSSSource.CurrentRow;
-            this.rssSource = dgvRSSSource.GetItem(row.Index);
+            var lRssSource = dgvRSSSource.GetItem(row.Index);
             RssSourceView ventana = new RssSourceView();
-            ventana.View(this.rssSource);
+            ventana.View(lRssSource);
         }
     }
 }

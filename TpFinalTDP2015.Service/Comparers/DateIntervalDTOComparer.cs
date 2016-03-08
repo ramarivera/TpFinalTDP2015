@@ -7,9 +7,9 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Comparers
 {
-    public class DateIntervalDTOComparer: IEqualityComparer<DateIntervalDTO>
+    public class DateIntervalDTOComparer: IEqualityComparer<ScheduleDTO>
     {
-        public bool Equals(DateIntervalDTO d1, DateIntervalDTO d2)
+        public bool Equals(ScheduleDTO d1, ScheduleDTO d2)
         {
             if (d2 == null && d1 == null)
                 return true;
@@ -21,7 +21,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Comparers
                 return false;
         }
 
-        public int GetHashCode(DateIntervalDTO pDateInterval)
+        public int GetHashCode(ScheduleDTO pDateInterval)
         {
             int hCode = pDateInterval.Id;
             return hCode.GetHashCode();

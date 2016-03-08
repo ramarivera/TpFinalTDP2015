@@ -14,19 +14,19 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<DateIntervalDTO, Schedule>()
+            Mapper.CreateMap<ScheduleDTO, Schedule>()
                 .ConvertUsing<DateIntervalConverter>();
         }
 
-        private class DateIntervalConverter : ITypeConverter<DateIntervalDTO, Schedule>
+        private class DateIntervalConverter : ITypeConverter<ScheduleDTO, Schedule>
         {
-            Schedule ITypeConverter<DateIntervalDTO, Schedule>.Convert(ResolutionContext context)
+            Schedule ITypeConverter<ScheduleDTO, Schedule>.Convert(ResolutionContext context)
             {
                 if (context == null || context.IsSourceValueNull)
                     return null;
 
 
-                DateIntervalDTO lDto = (DateIntervalDTO)context.SourceValue;
+                ScheduleDTO lDto = (ScheduleDTO)context.SourceValue;
                 try
                 {
                     Schedule lResult = new Schedule()
@@ -42,7 +42,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                     foreach (var item in lDto.ActiveHours)
                     {
                         lResult.AddTimeInterval(
-                            Mapper.Map<TimeIntervalDTO, ScheduleEntry>(item)
+                            Mapper.Map<ScheduleEntryDTO, ScheduleEntry>(item)
                             );
                     }
 
