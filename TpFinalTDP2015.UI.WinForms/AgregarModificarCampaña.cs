@@ -19,27 +19,10 @@ namespace MarrSystems.TpFinalTDP2015.UI
         ManageScheduleHandler dateIntervalController;
         //TODO ajustar ventana para poder agregar intervalos y slides
         private CampaignDTO iOriginalCampaign = new CampaignDTO();
-
-        public CampaignDTO Campaign
-        {
-            get { return this.iOriginalCampaign; }
-            //TODO Para que se usa esta propiedad? o quedo para usarse en algun momento jaja? porque es public?
-        }
-
         
         public AgregarModificarCampaña()
         {
             InitializeComponent();
-        }
-
-        private ScheduleService DateIntervalController
-        {
-            get
-            {
-                return 
-                    BusinessServiceLocator.
-                    Resolve<ScheduleService>();
-            }
         }
 
         void IAddModifyViewForm.Add(IDTO pNewCampaign)
@@ -118,23 +101,20 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             try
             {
-                using (this.dateIntervalController = this.DateIntervalController)
+                //TODO ponerle a los campos el prefijo i
+                iOriginalCampaign.ActiveIntervals = new List<ScheduleDTO>();
+                for (int i = 0; i < this.chlInterval.Items.Count; i++)
                 {
-                    //TODO ponerle a los campos el prefijo i
-                    iOriginalCampaign.ActiveIntervals = new List<ScheduleDTO>();
-                    for (int i = 0; i < this.chlInterval.Items.Count; i++)
+                    if (this.chlInterval.GetItemChecked(i))
                     {
-                        if (this.chlInterval.GetItemChecked(i))
+                        string lName = this.chlInterval.Items[i].ToString();
+                        IEnumerable<ScheduleDTO> query =
+                            from lInterval in this.dateIntervalController.ListSchedules()
+                            where lInterval.Name == lName
+                            select lInterval;
+                        foreach (ScheduleDTO dto in query)
                         {
-                            string lName = this.chlInterval.Items[i].ToString();
-                            IEnumerable<ScheduleDTO> query =
-                                from lInterval in this.dateIntervalController.GetAll()
-                                where lInterval.Name == lName
-                                select lInterval;
-                            foreach (ScheduleDTO dto in query)
-                            {
-                                this.iOriginalCampaign.ActiveIntervals.Add(dto);
-                            }
+                            this.iOriginalCampaign.ActiveIntervals.Add(dto);
                         }
                     }
                 }
@@ -150,23 +130,20 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             try
             {
-                using (this.dateIntervalController = this.DateIntervalController)
+                //TODO ponerle a los campos el prefijo i
+                int i = 0;
+                IList<ScheduleDTO> lIntervals = this.dateIntervalController.ListSchedules();
+                IList<ScheduleDTO> lCampaignIntervals = this.iOriginalCampaign.ActiveIntervals;
+                foreach (ScheduleDTO lInterval in lIntervals)
                 {
-                    //TODO ponerle a los campos el prefijo i
-                    int i = 0;
-                    IList<ScheduleDTO> lIntervals = this.dateIntervalController.GetAll();
-                    IList<ScheduleDTO> lCampaignIntervals = this.iOriginalCampaign.ActiveIntervals;
-                    foreach (ScheduleDTO lInterval in lIntervals)
+                    this.chlInterval.Items.Add(lInterval.Name);
+                    if (lCampaignIntervals != null)
                     {
-                        this.chlInterval.Items.Add(lInterval.Name);
-                        if (lCampaignIntervals != null)
+                        if (lCampaignIntervals.Contains(lInterval, new DateIntervalDTOComparer()))
                         {
-                            if (lCampaignIntervals.Contains(lInterval, new DateIntervalDTOComparer()))
-                            {
-                                this.chlInterval.SetItemChecked(i, true);
-                            }
-                            i++;
+                            this.chlInterval.SetItemChecked(i, true);
                         }
+                        i++;
                     }
                 }
             }
