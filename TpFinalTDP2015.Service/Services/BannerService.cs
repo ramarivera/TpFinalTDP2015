@@ -12,7 +12,7 @@ using MarrSystems.TpFinalTDP2015.Persistence;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class BannerService: BaseService<AdminBannerDTO>
+    public class BannerService: BaseService<Banner>
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
@@ -144,45 +144,41 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             return lTempBanner.Id;
         }*/
 
-        public override void Delete(AdminBannerDTO pBanner)
+        public override void Delete(int pId)
         {
             iUoW.BeginTransaction();
             IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
-            Banner lBanner = Mapper.Map<AdminBannerDTO, Banner>(pBanner);
-            lRepo.Delete(lBanner.Id);
+            lRepo.Delete(pId);
             iUoW.Commit();
         }
 
-        public override IList<AdminBannerDTO> GetAll()
+        public override IList<Banner> GetAll()
         {
-            IList<AdminBannerDTO> lResult = new List<AdminBannerDTO>();
+            IList<Banner> lResult = new List<Banner>();
 
             IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
             IList<Banner> lTemp = lRepo.GetAll().ToList();
 
             foreach (var banner in lTemp)
             {
-                AdminBannerDTO lDto = Mapper.Map<Banner, AdminBannerDTO>(banner);
-                lResult.Add(lDto);
+                lResult.Add(banner);
             }
 
-            return lResult.ToList<AdminBannerDTO>();
+            return lResult;
         }
 
-        public override AdminBannerDTO Get(int pId)
+        public override Banner Get(int pId)
         {
-            AdminBannerDTO lResult = new AdminBannerDTO();
+            Banner lResult = new Banner();
 
             IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
 
             var lTemp = lRepo.GetByID(pId);
 
-            lResult = Mapper.Map<Banner, AdminBannerDTO>(lTemp);
-
             return lResult;
         }
 
-        public override int Save(AdminBannerDTO pDTO)
+        public override int Save(Banner pDTO)
         {
             throw new NotImplementedException();
         }

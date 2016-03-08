@@ -11,14 +11,14 @@ using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.UI.View;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     [AdminModePageInfo(Name = "Administrador de Banners")]
     public partial class BannerAdministrator : AdminModePage
     {
-        AdminBannerDTO banner;
-        BannerService iController;
+        ManageBannerHandler iController;
         private GenericDGV<AdminBannerDTO> dgvBanner;
                   
 
@@ -26,16 +26,6 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             InitializeComponent();
             this.Load += BannerAdministrator_Load;
-        }
-
-        private BannerService Controller
-        {
-            get
-            {
-                return
-                    BusinessServiceLocator.
-                    Resolve<BannerService>();
-            }
         }
 
         private void BannerAdministrator_Load(object sender, EventArgs e)
@@ -49,10 +39,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
-                {
-                    this.dgvBanner.SetSource(this.iController.GetAll());
-                }
+                this.dgvBanner.SetSource(this.iController.ListBanner());
             }
             catch (Exception)
             {
@@ -99,14 +86,13 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
-                {
-                    this.banner = new AdminBannerDTO();
+                
+                    AdminBannerDTO banner = new AdminBannerDTO();
                     AgregarModificarBanner ventana = new AgregarModificarBanner();
                     this.dgvBanner.Add(ventana, banner);
-                    iController.Save(this.banner);
+                    iController.AddBanner(banner);
                     this.CargarDataGrid();
-                }
+                
             }
             catch (Exception)
             {
@@ -119,14 +105,11 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                using (iController = this.Controller)
-                {
-                    DataGridViewRow row = dgvBanner.CurrentRow;
-                    this.banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
-                    AgregarModificarBanner ventana = new AgregarModificarBanner();
-                    this.dgvBanner.Modify(ventana, this.banner);
-                    iController.Save(this.banner);
-                }
+                DataGridViewRow row = dgvBanner.CurrentRow;
+                AdminBannerDTO banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
+                AgregarModificarBanner ventana = new AgregarModificarBanner();
+                this.dgvBanner.Modify(ventana, banner);
+                iController.UpdateBanner(banner);
             }
             catch (Exception)
             {
@@ -138,9 +121,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void btnView_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvBanner.CurrentRow;
-            this.banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
+            AdminBannerDTO banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
             BannerView ventana = new BannerView();
-            ventana.View(this.banner);
+            ventana.View(banner);
         }
     }
 }

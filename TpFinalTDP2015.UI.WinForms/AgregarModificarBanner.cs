@@ -10,13 +10,14 @@ using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Comparers;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
         DateIntervalService dateIntervalController;
-        StaticTextService staticTextController;
+        ManageTextHandler staticTextController;
         RssSourceService rssSourcesController;
 
         private AdminBannerDTO iOriginalBanner = new AdminBannerDTO();
@@ -121,7 +122,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 {
                     int i = 0;
                     IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetAll();
-                    IList<StaticTextDTO> lTexts = this.staticTextController.GetAll();
+                    IList<StaticTextDTO> lTexts = this.staticTextController.ListTexts();
                     IList<RssSourceDTO> lSources = this.rssSourcesController.GetAll();
                     IList<DateIntervalDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
                     IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
@@ -204,7 +205,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                         {
                             string lTitle = this.chlTexts.Items[i].ToString();
                             IEnumerable<StaticTextDTO> query =
-                                from lText in this.staticTextController.GetAll()
+                                from lText in this.staticTextController.ListTexts()
                                 where lText.Title == lTitle
                                 select lText;
                             foreach (StaticTextDTO dto in query)

@@ -13,7 +13,7 @@ using AutoMapper;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class StaticTextService : BaseService<StaticTextDTO>
+    public class StaticTextService : BaseService<StaticText>
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
@@ -24,59 +24,51 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         {
         }
 
-        public override int Save(StaticTextDTO pStaticText)
+        public override int Save(StaticText pStaticText)
         {
             iUoW.BeginTransaction();
             IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-
-            StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pStaticText);
 
             if (pStaticText.Id == 0)
             {
-                lRepo.Add(lStaticText);
+                lRepo.Add(pStaticText);
             }
             else
             {
-                lRepo.Update(lStaticText);
+                lRepo.Update(pStaticText);
             }
             iUoW.Commit();
-            return lStaticText.Id;
+            return pStaticText.Id;
         }
 
-        public override void Delete(StaticTextDTO pStaticText)
+        public override void Delete(int pId)
         {
             iUoW.BeginTransaction();
             IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-            StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pStaticText);
-            lRepo.Delete(lStaticText.Id);
+            
+            lRepo.Delete(pId);
             iUoW.Commit();
         }
 
-        public override IList<StaticTextDTO> GetAll()
+        public override IList<StaticText> GetAll()
         {
-            IList<StaticTextDTO> lResult = new List<StaticTextDTO>();
+            IList<StaticText> lResult = new List<StaticText>();
 
             IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
             IList<StaticText> lTemp = lRepo.GetAll().ToList();
 
             foreach (var staticText in lTemp)
             {
-                StaticTextDTO lDto = Mapper.Map<StaticText, StaticTextDTO>(staticText);
-                lResult.Add(lDto);
+                lResult.Add(staticText);
             }
-            return lResult.ToList<StaticTextDTO>();
+            return lResult;//.ToList<StaticText>();
         }
 
-        public override StaticTextDTO Get(int pId)
+        public override StaticText Get(int pId)
         {
-            StaticTextDTO lResult = new StaticTextDTO();
-
+            StaticText lResult = new StaticText();
             IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-
             var lTemp = lRepo.GetByID(pId);
-
-            lResult = Mapper.Map<StaticText, StaticTextDTO>(lTemp);
-
             return lResult;
         }
     }
