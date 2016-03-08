@@ -66,9 +66,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 else
                 {
                     this.dgvDateInterval.Delete(intervalosAEliminar);
-                    foreach (int id in intervalosAEliminar.Select(i => i.Id))
+                    foreach (var sche in intervalosAEliminar)
                     {
-                        iController.DeleteSchedule(id);
+                        iController.DeleteSchedule(sche);
                     }
                 }
             }

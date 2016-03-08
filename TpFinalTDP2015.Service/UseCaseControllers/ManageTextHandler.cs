@@ -34,8 +34,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
             {
-                StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pDto);
-                serv.Delete(lStaticText);
+                serv.Delete(pDto.Id);
             }
         }
 

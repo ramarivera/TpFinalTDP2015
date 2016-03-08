@@ -30,11 +30,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             }
         }
 
-        public void DeleteSource(int pId)
+        public void DeleteSource(RssSourceDTO pDto)
         {
             using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
             {
-                serv.Delete(pId);
+                serv.Delete(pDto.Id);
             }
         }
 

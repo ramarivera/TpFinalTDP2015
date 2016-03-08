@@ -32,11 +32,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             }
         }
 
-        public void DeleteSchedule(int pId)
+        public void DeleteSchedule(ScheduleDTO pDto)
         {
             using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
-                serv.Delete(pId);
+                serv.Delete(pDto.Id);
             }
         }
 

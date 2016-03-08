@@ -24,12 +24,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         public void UpdateBanner(AdminBannerDTO pDto) { }
         //TODO: update
 
-        public void DeleteText(AdminBannerDTO pDto)
+        public void DeleteText(int pId)
         {
             using (var serv = BusinessServiceLocator.Resolve<BannerService>())
             {
-                Banner lBanner = Mapper.Map<AdminBannerDTO, Banner>(pDto);
-                serv.Delete(lBanner);
+                serv.Delete(pId);
             }
         }
 
