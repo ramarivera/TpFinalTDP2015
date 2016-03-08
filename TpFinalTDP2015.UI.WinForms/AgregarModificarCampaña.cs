@@ -10,12 +10,13 @@ using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Comparers;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : Form, IAddModifyViewForm
     {
-        ScheduleService dateIntervalController;
+        ManageScheduleHandler dateIntervalController;
         //TODO ajustar ventana para poder agregar intervalos y slides
         private CampaignDTO iOriginalCampaign = new CampaignDTO();
 
