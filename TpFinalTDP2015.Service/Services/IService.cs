@@ -15,8 +15,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 
         TEntity Get(int pId);
 
-        void Delete(TEntity pDTO);
+        void Delete(int pId);
 
-        int Save(TEntity pDTO);
+        int Save(TEntity pEntity);
     }
 }

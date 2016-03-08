@@ -14,14 +14,14 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     public partial class DateIntervalView: Form
     {
-        private AdminModePages.GenericDGV<TimeIntervalDTO> dgvTimeInterval;
+        private AdminModePages.GenericDGV<ScheduleEntryDTO> dgvTimeInterval;
 
         public DateIntervalView()
         {
             InitializeComponent();
         }
 
-        public void View(DateIntervalDTO pDateInterval)
+        public void View(ScheduleDTO pDateInterval)
         {
             if (pDateInterval == null)
             {

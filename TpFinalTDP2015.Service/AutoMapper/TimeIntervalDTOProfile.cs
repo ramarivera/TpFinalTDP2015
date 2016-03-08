@@ -13,19 +13,19 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<TimeIntervalDTO, ScheduleEntry>()
+            Mapper.CreateMap<ScheduleEntryDTO, ScheduleEntry>()
                 .ConvertUsing<TimeIntervalConverter>();
         }
 
-        private class TimeIntervalConverter : ITypeConverter<TimeIntervalDTO, ScheduleEntry>
+        private class TimeIntervalConverter : ITypeConverter<ScheduleEntryDTO, ScheduleEntry>
         {
-            ScheduleEntry ITypeConverter<TimeIntervalDTO, ScheduleEntry>.Convert(ResolutionContext context)
+            ScheduleEntry ITypeConverter<ScheduleEntryDTO, ScheduleEntry>.Convert(ResolutionContext context)
             {
                 if (context == null || context.IsSourceValueNull)
                     return null;
 
 
-                TimeIntervalDTO lDto = (TimeIntervalDTO)context.SourceValue;
+                ScheduleEntryDTO lDto = (ScheduleEntryDTO)context.SourceValue;
                 try
                 {
                     ScheduleEntry lResult = new ScheduleEntry()

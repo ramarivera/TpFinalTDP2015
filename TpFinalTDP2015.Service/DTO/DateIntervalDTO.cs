@@ -7,7 +7,7 @@ using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
 {
-    public class DateIntervalDTO: IDTO
+    public class ScheduleDTO: IDTO
     {
         public int Id { get; set; }
         public DateTime CreationDate { get; set; }
@@ -16,12 +16,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
         public DateTime ActiveUntil { get; set; }
         public DateTime ActiveFrom { get; set; }
         public IList<Days> Days { get; set; }
-        public IList<TimeIntervalDTO> ActiveHours { get; set; }
+        public IList<ScheduleEntryDTO> ActiveHours { get; set; }
 
-        public DateIntervalDTO()
+        public ScheduleDTO()
         {
             this.Days = new List<Days>();
-            this.ActiveHours = new List<TimeIntervalDTO>();
+            this.ActiveHours = new List<ScheduleEntryDTO>();
         }
     }
 }

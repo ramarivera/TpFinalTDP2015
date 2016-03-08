@@ -14,9 +14,9 @@ namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervaloFecha : BaseForm, IAddModifyViewForm
     {
-        private DateIntervalDTO iOriginalDateInterval;
+        private ScheduleDTO iOriginalDateInterval;
 
-        public DateIntervalDTO DateInterval
+        public ScheduleDTO DateInterval
         {
             get { return this.iOriginalDateInterval; }
         }
@@ -31,7 +31,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             this.dtpStartDate.Value = DateTime.Now;
             this.dtpEndDate.Value = DateTime.Now;
             this.Text = "Agregar nuevo Intervalo";
-            this.iOriginalDateInterval = (DateIntervalDTO)pNewDateInterval;
+            this.iOriginalDateInterval = (ScheduleDTO)pNewDateInterval;
         }
 
         void IAddModifyViewForm.Modify(IDTO pDateInterval)
@@ -43,7 +43,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
             }
             else
             {
-                this.iOriginalDateInterval = (DateIntervalDTO)pDateInterval;
+                this.iOriginalDateInterval = (ScheduleDTO)pDateInterval;
                 this.txtTitle.Text = iOriginalDateInterval.Name;
                 this.dtpStartDate.Value = iOriginalDateInterval.ActiveFrom;
                 this.dtpEndDate.Value = iOriginalDateInterval.ActiveUntil;

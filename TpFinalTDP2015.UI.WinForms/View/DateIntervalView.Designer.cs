@@ -42,7 +42,7 @@
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.lblDays = new System.Windows.Forms.Label();
             this.grbTimeInterval = new System.Windows.Forms.GroupBox();
-            this.dgvTimeInterval = new AdminModePages.GenericDGV<BusinessLogic.DTO.TimeIntervalDTO>(this.components);
+            this.dgvTimeInterval = new AdminModePages.GenericDGV<BusinessLogic.DTO.ScheduleEntryDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();

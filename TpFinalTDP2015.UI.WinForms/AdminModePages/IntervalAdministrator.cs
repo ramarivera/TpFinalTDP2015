@@ -18,12 +18,12 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     public partial class IntervalAdministrator : AdminModePage
     {
         ManageScheduleHandler iController = new ManageScheduleHandler();
-        private GenericDGV<DateIntervalDTO> dgvDateInterval;
-        private GenericDGV<TimeIntervalDTO> dgvTimeInterval;
+        private GenericDGV<ScheduleDTO> dgvDateInterval;
+        private GenericDGV<ScheduleEntryDTO> dgvTimeInterval;
 
-        DateIntervalDTO dateInterval;
+        ScheduleDTO dateInterval;
 
-        TimeIntervalDTO timeInterval;
+        ScheduleEntryDTO timeInterval;
 
         public IntervalAdministrator() : base()
         {
@@ -37,7 +37,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                this.dateInterval = new DateIntervalDTO();
+                this.dateInterval = new ScheduleDTO();
                 AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
                 this.dgvDateInterval.Add(ventana, this.dateInterval);
                 iController.AddSchedule(this.dateInterval);
@@ -54,7 +54,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                IList<DateIntervalDTO> intervalosAEliminar = new List<DateIntervalDTO>();
+                IList<ScheduleDTO> intervalosAEliminar = new List<ScheduleDTO>();
                 foreach (DataGridViewRow row in this.dgvDateInterval.SelectedRows)
                 {
                     intervalosAEliminar.Add(dgvDateInterval.GetItem(row.Index));
@@ -66,9 +66,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 else
                 {
                     this.dgvDateInterval.Delete(intervalosAEliminar);
-                    foreach (DateIntervalDTO interval in intervalosAEliminar)
+                    foreach (int id in intervalosAEliminar.Select(i => i.Id))
                     {
-                        iController.DeleteSchedule(interval);
+                        iController.DeleteSchedule(id);
                     }
                 }
             }
@@ -87,7 +87,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 this.dateInterval = dgvDateInterval.GetItem(row.Index);
                 AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
                 this.dgvDateInterval.Modify(ventana, this.dateInterval);
-                iController.UpdateSchedule(this.dateInterval);
+                iController.ModifySchedule(this.dateInterval);
             }
             catch (Exception)
             {
@@ -107,7 +107,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                IList<DateIntervalDTO> lList = this.iController.ListSchedules();
+                IList<ScheduleDTO> lList = this.iController.ListSchedules();
                 this.dgvDateInterval.SetSource(lList);
             }
             catch (Exception)
@@ -136,7 +136,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             DataGridViewRow row = dgvDateInterval.CurrentRow;
             this.dateInterval = dgvDateInterval.GetItem(row.Index);
-            this.timeInterval = new TimeIntervalDTO();
+            this.timeInterval = new ScheduleEntryDTO();
             IAddModifyViewForm ventana = new AgregarModificarIntervaloTiempo();
             ventana.Add((IDTO)this.timeInterval);
             DialogResult resultado = ventana.ShowForm();
@@ -149,7 +149,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void btnDeleteTimeInterval_Click(object sender, EventArgs e)
         {
-            IList<TimeIntervalDTO> intervalosAEliminar = new List<TimeIntervalDTO>();
+            IList<ScheduleEntryDTO> intervalosAEliminar = new List<ScheduleEntryDTO>();
             foreach (DataGridViewRow row in this.dgvTimeInterval.SelectedRows)
             {
                 intervalosAEliminar.Add(dgvTimeInterval.GetItem(row.Index));
@@ -161,7 +161,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             else
             {
                 this.dgvTimeInterval.Delete(intervalosAEliminar);
-                foreach (TimeIntervalDTO interval in intervalosAEliminar)
+                foreach (ScheduleEntryDTO interval in intervalosAEliminar)
                 {
                     //TODO ver esto
                 }

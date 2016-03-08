@@ -106,7 +106,7 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\CampaignService.cs" />
     <Compile Include="Services\BusinessServiceLocator.cs" />
-    <Compile Include="Services\DateIntervalService.cs" />
+    <Compile Include="Services\ScheduleService.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\RssSourceService.cs" />
     <Compile Include="Services\StaticTextService.cs" />
@@ -130,6 +130,7 @@
     <Compile Include="RSS\RssReader.cs" />
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
     <Compile Include="UseCaseControllers\ManageScheduleHandler.cs" />
+    <Compile Include="UseCaseControllers\ManageSourceHandler.cs" />
     <Compile Include="UseCaseControllers\ManageTextHandler.cs" />
   </ItemGroup>
   <ItemGroup>

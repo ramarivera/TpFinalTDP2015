@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
 {
-    public class TimeIntervalDTO: IDTO
+    public class ScheduleEntryDTO: IDTO
     {
         public int Id { get; set; }
         public DateTime CreationDate { get; set; }

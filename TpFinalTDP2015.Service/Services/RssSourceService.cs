@@ -13,7 +13,7 @@ using AutoMapper;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class RssSourceService : BaseService<RssSourceDTO>
+    public class RssSourceService : BaseService<RssSource>
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
@@ -24,58 +24,47 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         {
         }
 
-        public override int Save(RssSourceDTO pRssSource)
+        public override int Save(RssSource pRssSource)
         {
             iUoW.BeginTransaction();
             IRepository<RssSource> lRepo = iUoW.GetRepository<RssSource>();
-
-            RssSource lRssSource = Mapper.Map<RssSourceDTO, RssSource>(pRssSource);
 
             if (pRssSource.Id == 0)
             {
-                lRepo.Add(lRssSource);
+                lRepo.Add(pRssSource);
             }
             else
             {
-                lRepo.Update(lRssSource);
+                lRepo.Update(pRssSource);
             }
+
             iUoW.Commit();
-            return lRssSource.Id;
+            return pRssSource.Id;
         }
 
-        public override void Delete(RssSourceDTO pRssSource)
+        public override void Delete(int pId)
         {
             iUoW.BeginTransaction();
-            IRepository<RssSource> lRepo = iUoW.GetRepository<RssSource>();
-            RssSource lRssSource = Mapper.Map<RssSourceDTO, RssSource>(pRssSource);
-            lRepo.Delete(lRssSource.Id);
+            iUoW.GetRepository<RssSource>().Delete(pId);
             iUoW.Commit();
         }
-        public override IList<RssSourceDTO> GetAll()
+        public override IList<RssSource> GetAll()
         {
-            IList<RssSourceDTO> lResult = new List<RssSourceDTO>();
-
             IRepository<RssSource> lRepo = iUoW.GetRepository<RssSource>();
-            IList<RssSource> lTemp = lRepo.GetAll().ToList();
+            IList<RssSource> lResult = lRepo.GetAll().ToList();
 
-            foreach (var rssSource in lTemp)
-            {
-                RssSourceDTO lDto = Mapper.Map<RssSource, RssSourceDTO>(rssSource);
-                lResult.Add(lDto);
-            }
-
-            return lResult.ToList<RssSourceDTO>();
+            return lResult;
         }
 
-        public override RssSourceDTO Get(int pId)
+        public override RssSource Get(int pId)
         {
-            RssSourceDTO lResult = new RssSourceDTO();
+            RssSource lResult = new RssSource();
 
             IRepository<RssSource> lRepo = iUoW.GetRepository<RssSource>();
 
             var lTemp = lRepo.GetByID(pId);
 
-            lResult = Mapper.Map<RssSource, RssSourceDTO>(lTemp);
+            lResult = Mapper.Map<RssSource, RssSource>(lTemp);
 
             return lResult;
         }

@@ -28,7 +28,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                 OperativeBannerDTO lResult = new OperativeBannerDTO()
                 {
                     Id = lBanner.Id,
-                    ActiveIntervals = new List<DateIntervalDTO>(),
+                    ActiveIntervals = new List<ScheduleDTO>(),
                     Texts = new List<StaticTextDTO>(),
                     RssItems = new List<RssItemDTO>()
                 };
@@ -37,7 +37,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                 foreach (var interval in lBanner.Schedules)
                 {
                     lResult.ActiveIntervals.Add(
-                        Mapper.Map<Schedule, DateIntervalDTO>(interval)
+                        Mapper.Map<Schedule, ScheduleDTO>(interval)
                         );
                 }
 

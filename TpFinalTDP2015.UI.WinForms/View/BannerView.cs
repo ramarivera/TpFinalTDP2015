@@ -13,7 +13,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
 {
     public partial class BannerView : Form
     {
-        private AdminModePages.GenericDGV<DateIntervalDTO> dgvIntervals;
+        private AdminModePages.GenericDGV<ScheduleDTO> dgvIntervals;
         private AdminModePages.GenericDGV<StaticTextDTO> dgvTexts;
         private AdminModePages.GenericDGV<RssSourceDTO> dgvSources;
 
@@ -44,7 +44,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
         private void dgvIntervals_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvIntervals.CurrentRow;
-            DateIntervalDTO lInterval = (DateIntervalDTO)dgvIntervals.GetItem(row.Index);
+            ScheduleDTO lInterval = (ScheduleDTO)dgvIntervals.GetItem(row.Index);
             DateIntervalView ventana = new DateIntervalView();
             ventana.View(lInterval);
         }

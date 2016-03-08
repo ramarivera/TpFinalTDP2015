@@ -43,8 +43,8 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             this.btnAddTimeInterval = new System.Windows.Forms.Button();
             this.btnDeleteTimeInterval = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
-            this.dgvTimeInterval = new GenericDGV<TimeIntervalDTO>(this.components);
-            this.dgvDateInterval = new GenericDGV<DateIntervalDTO>(this.components);
+            this.dgvTimeInterval = new GenericDGV<ScheduleEntryDTO>(this.components);
+            this.dgvDateInterval = new GenericDGV<ScheduleDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.grbDateInterval.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();

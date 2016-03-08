@@ -43,7 +43,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
             this.grbIntervalos = new System.Windows.Forms.GroupBox();
             this.grbTextos = new System.Windows.Forms.GroupBox();
             this.grbFuentes = new System.Windows.Forms.GroupBox();
-            this.dgvIntervals = new AdminModePages.GenericDGV<DateIntervalDTO>(this.components);
+            this.dgvIntervals = new AdminModePages.GenericDGV<ScheduleDTO>(this.components);
             this.dgvTexts = new AdminModePages.GenericDGV<StaticTextDTO>(this.components);
             this.dgvSources = new AdminModePages.GenericDGV<RssSourceDTO>(this.components);
             this.tableLayoutPanel1.SuspendLayout();

@@ -15,7 +15,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarCampaña : Form, IAddModifyViewForm
     {
-        DateIntervalService dateIntervalController;
+        ScheduleService dateIntervalController;
         //TODO ajustar ventana para poder agregar intervalos y slides
         private CampaignDTO iOriginalCampaign = new CampaignDTO();
 
@@ -31,13 +31,13 @@ namespace MarrSystems.TpFinalTDP2015.UI
             InitializeComponent();
         }
 
-        private DateIntervalService DateIntervalController
+        private ScheduleService DateIntervalController
         {
             get
             {
                 return 
                     BusinessServiceLocator.
-                    Resolve<DateIntervalService>();
+                    Resolve<ScheduleService>();
             }
         }
 
@@ -120,17 +120,17 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 using (this.dateIntervalController = this.DateIntervalController)
                 {
                     //TODO ponerle a los campos el prefijo i
-                    iOriginalCampaign.ActiveIntervals = new List<DateIntervalDTO>();
+                    iOriginalCampaign.ActiveIntervals = new List<ScheduleDTO>();
                     for (int i = 0; i < this.chlInterval.Items.Count; i++)
                     {
                         if (this.chlInterval.GetItemChecked(i))
                         {
                             string lName = this.chlInterval.Items[i].ToString();
-                            IEnumerable<DateIntervalDTO> query =
+                            IEnumerable<ScheduleDTO> query =
                                 from lInterval in this.dateIntervalController.GetAll()
                                 where lInterval.Name == lName
                                 select lInterval;
-                            foreach (DateIntervalDTO dto in query)
+                            foreach (ScheduleDTO dto in query)
                             {
                                 this.iOriginalCampaign.ActiveIntervals.Add(dto);
                             }
@@ -153,9 +153,9 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 {
                     //TODO ponerle a los campos el prefijo i
                     int i = 0;
-                    IList<DateIntervalDTO> lIntervals = this.dateIntervalController.GetAll();
-                    IList<DateIntervalDTO> lCampaignIntervals = this.iOriginalCampaign.ActiveIntervals;
-                    foreach (DateIntervalDTO lInterval in lIntervals)
+                    IList<ScheduleDTO> lIntervals = this.dateIntervalController.GetAll();
+                    IList<ScheduleDTO> lCampaignIntervals = this.iOriginalCampaign.ActiveIntervals;
+                    foreach (ScheduleDTO lInterval in lIntervals)
                     {
                         this.chlInterval.Items.Add(lInterval.Name);
                         if (lCampaignIntervals != null)

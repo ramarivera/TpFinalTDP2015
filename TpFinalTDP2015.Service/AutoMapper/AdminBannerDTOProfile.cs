@@ -79,7 +79,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                     {
                         lResult.AddSchedule(
                             DomainServiceLocator.Resolve<IScheduleChecker>(),
-                            Mapper.Map<DateIntervalDTO, Schedule>(item));
+                            Mapper.Map<ScheduleDTO, Schedule>(item));
                     }
 
                     foreach (var item in lDto.Texts)
