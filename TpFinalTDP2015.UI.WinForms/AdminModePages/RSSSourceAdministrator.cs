@@ -57,9 +57,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     else
                     {
                         this.dgvRSSSource.Delete(fuentesAEliminar);
-                        foreach (int sourceId in fuentesAEliminar.Select(s => s.Id))
+                        foreach (var source in fuentesAEliminar)
                         {
-                            iController.DeleteSource(sourceId);
+                            iController.DeleteSource(source);
                         }
                     }
             }
