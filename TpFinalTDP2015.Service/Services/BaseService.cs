@@ -6,11 +6,11 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.Persistence;
-using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.Model;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public abstract class BaseService<TDto> : IService<TDto> where TDto : IDTO
+    public abstract class BaseService<TEntity> : IService<TEntity> where TEntity : BaseEntity
     {
         protected IUnitOfWork iUoW;
 
@@ -19,13 +19,13 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             this.iUoW = pUoW;
         }
 
-        public abstract void Delete(TDto pId);
+        public abstract void Delete(TEntity pId);
 
-        public abstract IList<TDto> GetAll();
+        public abstract IList<TEntity> GetAll();
 
-        public abstract TDto Get(int pId);
+        public abstract TEntity Get(int pId);
 
-        public abstract int Save(TDto pDTO);
+        public abstract int Save(TEntity pDTO);
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

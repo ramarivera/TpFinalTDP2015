@@ -10,17 +10,17 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 
         public static void Register<T>(Func<T> resolver)
         {
-            BusinessServiceLocator.cServices[typeof(T)] = () => resolver();
+            cServices[typeof(T)] = () => resolver();
         }
 
         public static T Resolve<T>()
         {
-            return (T)BusinessServiceLocator.cServices[typeof(T)]();
+            return (T)cServices[typeof(T)]();
         }
 
         internal static void Reset()
         {
-            BusinessServiceLocator.cServices.Clear();
+            cServices.Clear();
         }
     }
 

@@ -21,6 +21,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
         static void Main()
         {
             BootStrapper.Configure();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ModoAdministrador());
