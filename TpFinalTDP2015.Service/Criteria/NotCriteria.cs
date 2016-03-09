@@ -11,7 +11,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Criteria
     {
         internal NotCriteria(Criteria<T> pUnCriterio)
         {
-            this.iExpr = pUnCriterio.Expression.Not();
+            this.iExpr = pUnCriterio.Predicate.Not();
         }
     }
 }

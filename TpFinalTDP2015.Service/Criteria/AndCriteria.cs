@@ -11,7 +11,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Criteria
     {
         internal AndCriteria(Criteria<T> pUnCriterio, Criteria<T> pOtroCriterio)
         {
-            this.iExpr = pUnCriterio.Expression.And(pOtroCriterio.Expression);
+            this.iExpr = pUnCriterio.Predicate.And(pOtroCriterio.Predicate);
         }
     }
 }

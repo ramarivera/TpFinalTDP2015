@@ -109,15 +109,12 @@
     <Compile Include="Comparers\StaticTextDTOComparer.cs" />
     <Compile Include="Criteria\AndCriteria.cs" />
     <Compile Include="Criteria\CriteriaExtensionMethods.cs" />
-    <Compile Include="Criteria\Criterion\AfterDateCriterion.cs" />
-    <Compile Include="Criteria\Criterion\BeforeDateCriterion.cs" />
-    <Compile Include="Criteria\Criterion\DayOfWeekCriterion.cs" />
-    <Compile Include="Criteria\Criterion\FrequencyCriterion.cs" />
+    <Compile Include="Criteria\Criterion\Class1.cs" />
     <Compile Include="Criteria\ICriteria.cs" />
     <Compile Include="Criteria\NotCriteria.cs" />
     <Compile Include="Criteria\OrCriteria.cs" />
     <Compile Include="Criteria\Predicate.cs" />
-    <Compile Include="Criteria\ScheduleCriteria.cs" />
+    <Compile Include="Criteria\Criterion\ScheduleCriteria.cs" />
     <Compile Include="Services\BannerService.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\CampaignService.cs" />

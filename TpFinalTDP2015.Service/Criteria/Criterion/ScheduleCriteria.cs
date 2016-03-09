@@ -10,9 +10,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Criteria
 {
     public class ScheduleCriteria : Criteria<Schedule>
     {
-        IList<Schedule> Criteria<Schedule>.MeetCriteria(IList<Schedule> pEntity)
-        {
-           return pEntity.Where("String").ToList();
-        }
+        internal ScheduleCriteria() : base() { }
     }
 }

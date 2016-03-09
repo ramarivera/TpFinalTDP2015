@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Criteria
 {
-    internal abstract class Criteria<T>
+    public abstract class Criteria<T> : ICriteria<T>
     {
         protected Expression<Func<T, bool>> iExpr;
 
-        internal Expression<Func<T, bool>> Expression
+        internal Criteria() { }
+
+        public Expression<Func<T, bool>> Predicate
         {
             get
             {
@@ -19,9 +21,16 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Criteria
             }
         }
 
-        internal IQueryable<T> MeetCriteria(IQueryable<T> pEntities)
+        public IQueryable<T> MeetCriteria(IQueryable<T> pEntities)
         {
-            return pEntities.Where(this.Expression);
+            return pEntities.Where(this.Predicate);
         }
+    }
+
+    internal interface ICriteria<T>
+    {
+        Expression<Func<T, bool>> Predicate { get; }
+
+        IQueryable<T> MeetCriteria(IQueryable<T> pEntities);
     }
 }

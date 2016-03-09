@@ -10,7 +10,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Criteria
     {
         internal OrCriteria(Criteria<T> pUnCriterio, Criteria<T> pOtroCriterio)
         {
-            this.iExpr = pUnCriterio.Expression.Or(pOtroCriterio.Expression);
+            this.iExpr = pUnCriterio.Predicate.Or(pOtroCriterio.Predicate);
         }
     }
 }
