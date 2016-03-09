@@ -36,10 +36,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             {
                 return this.iNameOfDay;
             }
-            private set
-            {
-                this.iNameOfDay = value;
-            }
+            set { }
         }
     }
 }

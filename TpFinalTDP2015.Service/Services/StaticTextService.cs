@@ -68,7 +68,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         {
             StaticText lResult = new StaticText();
             IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-            var lTemp = lRepo.GetByID(pId);
+            lResult = lRepo.GetByID(pId);
             return lResult;
         }
     }

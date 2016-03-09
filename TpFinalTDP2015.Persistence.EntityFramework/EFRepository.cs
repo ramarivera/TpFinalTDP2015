@@ -62,7 +62,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
             var lDbEntry = this.iContext.Entry<TEntity>(lOld);
             lDbEntry.CurrentValues.SetValues(pEntityToUpdate);
-           // lDbEntry.State = EntityState.Modified;
+            lDbEntry.State = EntityState.Modified;
 
         }
 
