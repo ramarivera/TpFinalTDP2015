@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MarrSystems.TpFinalTDP2015.BusinessLogic;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.Test
 {
@@ -14,16 +15,6 @@ namespace MarrSystems.TpFinalTDP2015.Test
         {
             // AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
             AutoMapperConfiguration.Configure();
-        }
-
-        RssSourceService Controller
-        {
-            get
-            {
-                return
-                    BusinessServiceLocator.
-                    Resolve<RssSourceService>();
-            }
         }
 
         void AssertAreEqual(RssSourceDTO lDto, RssSourceDTO lResult)
@@ -42,7 +33,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             string lDescription = "Noticias del ámbito futbolistico, siendo su fuente ESPN (en inglés)";
             string lURL = "http://soccernet.espn.go.com/rss/news";
 
-            RssSourceService lController = this.Controller;
+            ManageSourceHandler lController = new ManageSourceHandler();
             RssSourceDTO lResult;
             RssSourceDTO lDto;
 
@@ -55,10 +46,10 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 URL = lURL
             };
 
-            lDto.Id = lController.Save(lDto);
+            lDto.Id = lController.AddSource(lDto);
 
             // Assert
-            lResult = lController.Get(lDto.Id);
+            lResult = lController.GetSource(lDto.Id);
             AssertAreEqual(lDto, lResult);
         }
 
@@ -69,17 +60,17 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             string lTitle = "Muchas noticias";
 
-            RssSourceService lController = this.Controller;
+            ManageSourceHandler lController = new ManageSourceHandler();
             RssSourceDTO lResult;
             RssSourceDTO lDto;
 
             // Act
-            lDto = lController.Get(lId);
+            lDto = lController.GetSource(lId);
             lDto.Title = lTitle;
-            lController.Save(lDto);
+            lController.ModifySource(lDto);
 
             // Assert
-            lResult = lController.Get(lId);
+            lResult = lController.GetSource(lId);
             this.AssertAreEqual(lDto, lResult);
         }
 
@@ -90,17 +81,17 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             string lDescription = "Noticias políticas, fuente Todo Noticias";
 
-            RssSourceService lController = this.Controller;
+            ManageSourceHandler lController = new ManageSourceHandler();
             RssSourceDTO lResult;
             RssSourceDTO lDto;
 
             // Act
-            lDto = lController.Get(lId);
+            lDto = lController.GetSource(lId);
             lDto.Description = lDescription;
-            lController.Save(lDto);
+            lController.ModifySource(lDto);
 
             // Assert
-            lResult = lController.Get(lId);
+            lResult = lController.GetSource(lId);
             this.AssertAreEqual(lDto, lResult);
         }
 
@@ -111,17 +102,17 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             string lURL = "http://tn.com.ar/rss.xml";
 
-            RssSourceService lController = this.Controller;
+            ManageSourceHandler lController = new ManageSourceHandler();
             RssSourceDTO lResult;
             RssSourceDTO lDto;
 
             // Act
-            lDto = lController.Get(lId);
+            lDto = lController.GetSource(lId);
             lDto.URL = lURL;
-            lController.Save(lDto);
+            lController.ModifySource(lDto);
 
             // Assert
-            lResult = lController.Get(lId);
+            lResult = lController.GetSource(lId);
             this.AssertAreEqual(lDto, lResult);
         }
 
@@ -132,16 +123,16 @@ namespace MarrSystems.TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
 
-            RssSourceService lController = this.Controller;
+            ManageSourceHandler lController = new ManageSourceHandler();
             RssSourceDTO lRemoved;
             RssSourceDTO lDto;
 
             // Act
-            lDto = lController.Get(lId);
-            lController.Delete(lDto);
+            lDto = lController.GetSource(lId);
+            lController.DeleteSource(lDto);
 
             // Assert
-            lRemoved = lController.Get(lId);
+            lRemoved = lController.GetSource(lId);
             Assert.IsNull(lRemoved);
         }
     }

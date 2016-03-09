@@ -3,28 +3,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MarrSystems.TpFinalTDP2015.BusinessLogic;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.Test
 {
 	[TestClass]
 	public class StaticTextServiceTest
 	{
-		[ClassInitialize()]
-		public static void ClassInitialize(TestContext testContext)
-		{
-			// AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
-			AutoMapperConfiguration.Configure();
-		}
-
-		StaticTextService Controller
-		{
-			get
-			{
-				return 
-					BusinessServiceLocator.
-					Resolve<StaticTextService>();
-			}
-		}
+        [ClassInitialize()]
+        public static void ClassInitialize(TestContext testContext)
+        {
+            // AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
+            AutoMapperConfiguration.Configure();
+        }
 
 		void AssertAreEqual(StaticTextDTO lDto, StaticTextDTO lResult)
 		{
@@ -42,7 +33,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			string lDescription = "Información super secreta";
 			string lText = "Siempre que llovió, paró";
 
-			StaticTextService lController = this.Controller;
+            ManageTextHandler lController = new ManageTextHandler();
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -55,10 +46,10 @@ namespace MarrSystems.TpFinalTDP2015.Test
 				Text = lText
 			};
 
-			lDto.Id = lController.Save(lDto);
+			lDto.Id = lController.AddText(lDto);
 
 			// Assert
-			lResult = lController.Get(lDto.Id);
+			lResult = lController.GetText(lDto.Id);
 			AssertAreEqual(lDto, lResult);
 		}
 
@@ -69,17 +60,17 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lTitle = "Texto 100";
 
-			StaticTextService lController = this.Controller;
-			StaticTextDTO lResult;
+            ManageTextHandler lController = new ManageTextHandler();
+            StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
 			// Act
-			lDto = lController.Get(lId);
+			lDto = lController.GetText(lId);
 			lDto.Title = lTitle;
-			lController.Save(lDto);
+			lController.ModifyText(lDto);
 
 			// Assert
-			lResult = lController.Get(lId);
+			lResult = lController.GetText(lId);
 			this.AssertAreEqual(lDto, lResult);
 		}
 
@@ -90,17 +81,17 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lDescription = "vamo a calmarno";
 
-			StaticTextService lController = this.Controller;
-			StaticTextDTO lResult;
+            ManageTextHandler lController = new ManageTextHandler();
+            StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
 			// Act
-			lDto = lController.Get(lId);
+			lDto = lController.GetText(lId);
 			lDto.Description = lDescription;
-			lController.Save(lDto);
+			lController.ModifyText(lDto);
 
 			// Assert
-			lResult = lController.Get(lId);
+			lResult = lController.GetText(lId);
 			this.AssertAreEqual(lDto, lResult);
 		}
 
@@ -111,17 +102,17 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lText = "Aguante todo";
 
-			StaticTextService lController = this.Controller;
-			StaticTextDTO lResult;
+            ManageTextHandler lController = new ManageTextHandler();
+            StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
 			// Act
-			lDto = lController.Get(lId);
+			lDto = lController.GetText(lId);
 			lDto.Text = lText;
-			lController.Save(lDto);
+			lController.ModifyText(lDto);
 
 			// Assert
-			lResult = lController.Get(lId);
+			lResult = lController.GetText(lId);
 			this.AssertAreEqual(lDto, lResult);
 		}
 
@@ -131,16 +122,16 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			// Arrange
 			int lId = 1;
 
-			StaticTextService lController = this.Controller;
-			StaticTextDTO lRemoved;
+            ManageTextHandler lController = new ManageTextHandler();
+            StaticTextDTO lRemoved;
 			StaticTextDTO lDto;
 
 			// Act
-			lDto = lController.Get(lId);
-			lController.Delete(lDto);
+			lDto = lController.GetText(lId);
+			lController.DeleteText(lDto);
 
 			// Assert
-			lRemoved = lController.Get(lId);
+			lRemoved = lController.GetText(lId);
 			Assert.IsNull(lRemoved);
 		}
 	}

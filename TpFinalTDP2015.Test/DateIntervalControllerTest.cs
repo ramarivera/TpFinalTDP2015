@@ -16,13 +16,6 @@ namespace MarrSystems.TpFinalTDP2015.Test
     [TestClass]
     public class DateIntervalControllerTest
     {
-        private ManageScheduleHandler Controller
-        {
-            get
-            {
-                return new ManageScheduleHandler();
-            }
-        }
         /// <summary>
         /// SACAR ESTO A LA MIERDA DE ACA!
         /// </summary>
@@ -89,7 +82,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan lNewStartTime = new TimeSpan(08, 0, 0);
             TimeSpan lNewEndTime = new TimeSpan(10, 0, 0);
 
-            ManageScheduleHandler lController = this.Controller;
+            ManageScheduleHandler lController = new ManageScheduleHandler();
             ScheduleDTO lResult;
             ScheduleDTO lDto;
 
@@ -119,7 +112,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             lDto.Id = lController.AddSchedule(lDto);
 
             // Assert
-            lResult = lController.Get(lDto.Id);
+            lResult = lController.GetSchedule(lDto.Id);
             AssertAreEqualForAdding(lDto, lResult);
 
         }
@@ -131,17 +124,17 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             DateTime lNewActiveFrom = new DateTime(2016, 03, 01);
 
-            ManageScheduleHandler lController = this.Controller;
+            ManageScheduleHandler lController = new ManageScheduleHandler();
             ScheduleDTO lResult;
             ScheduleDTO lDto;
 
             // Act
-            lDto = lController.Get(lId);
+            lDto = lController.GetSchedule(lId);
             lDto.ActiveFrom = lNewActiveFrom;
-            lController.Save(lDto);
+            lController.ModifySchedule(lDto);
 
             // Assert
-            lResult = lController.Get(lId);
+            lResult = lController.GetSchedule(lId);
             this.AssertAreEqualForUpdating(lDto, lResult);
         }
 
@@ -150,19 +143,19 @@ namespace MarrSystems.TpFinalTDP2015.Test
         {
             // Arrange
             int lId = 1;
- 
-            ManageScheduleHandler lController = this.Controller;
+
+            ManageScheduleHandler lController = new ManageScheduleHandler();
             ScheduleDTO lResult;
-            ScheduleDTO lDto = lController.Get(lId);
+            ScheduleDTO lDto = lController.GetSchedule(lId);
 
             IList<Days> lDayList = new List<Days>() { Days.Lunes, Days.Martes, Days.Jueves };
 
             // Act
             lDto.Days = lDayList;
-            lController.Save(lDto);
+            lController.ModifySchedule(lDto);
 
             // Assert
-            lResult = lController.Get(lId);
+            lResult = lController.GetSchedule(lId);
             this.AssertAreEqualForUpdating(lDto, lResult);
         }
 
@@ -174,13 +167,13 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan lNewEnd = new TimeSpan(22, 0, 0);
             TimeSpan lNewStart = new TimeSpan(20, 0, 0);
 
-            ManageScheduleHandler lController = this.Controller;
+            ManageScheduleHandler lController = new ManageScheduleHandler();
             ScheduleDTO lResult;
             ScheduleDTO lDto;
             ScheduleEntryDTO lNewTime;
 
             // Act
-            lDto = lController.Get(lId);
+            lDto = lController.GetSchedule(lId);
 
             lNewTime = new ScheduleEntryDTO()
             {
@@ -189,10 +182,10 @@ namespace MarrSystems.TpFinalTDP2015.Test
             };
 
             lDto.ActiveHours.Add(lNewTime);
-            lController.Save(lDto);
+            lController.ModifySchedule(lDto);
 
             // Assert
-            lResult = lController.Get(lId);
+            lResult = lController.GetSchedule(lId);
             this.AssertAreEqualForAdding(lDto, lResult);
         }
 
@@ -204,24 +197,24 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lTimeId = 19;
             TimeSpan lNewEnd = new TimeSpan(20, 0, 0);
 
-            ManageScheduleHandler lController = this.Controller;
-          //  var mock = new Mock<DateIntervalController>(IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>());
-            
+            ManageScheduleHandler lController = new ManageScheduleHandler();
+            //  var mock = new Mock<DateIntervalController>(IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>());
+
             ScheduleDTO lDto;
             ScheduleDTO lResult;
             ScheduleEntryDTO lTimeInterval;
 
             // Act
-            lDto = lController.Get(lId);
+            lDto = lController.GetSchedule(lId);
             lTimeInterval = lDto.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
             lTimeInterval.EndTime = lNewEnd;
-            lController.Save(lDto);
+            lController.ModifySchedule(lDto);
            // mock.Object.Save(lDto);
            // mock.Verify(foo => foo.Save(It.IsAny<ScheduleDTO>()), Times.Never());
             
 
             // Assert
-            lResult = lController.Get(lId);
+            lResult = lController.GetSchedule(lId);
             this.AssertAreEqualForUpdating(lDto, lResult);
 
         }
@@ -233,20 +226,20 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             int lTimeId = 1;
 
-            ManageScheduleHandler lController = this.Controller;
+            ManageScheduleHandler lController = new ManageScheduleHandler();
             ScheduleDTO lDto;
             ScheduleDTO lResult;
             ScheduleEntryDTO lTimeInterval;
             ScheduleEntryDTO lRemoved;
 
             // Act
-            lDto = lController.Get(lId);
+            lDto = lController.GetSchedule(lId);
             lTimeInterval = lDto.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
             lDto.ActiveHours.Remove(lTimeInterval);
-            lController.Save(lDto);
+            lController.ModifySchedule(lDto);
 
             // Assert
-            lResult = lController.Get(lId);
+            lResult = lController.GetSchedule(lId);
             lRemoved = lResult.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
             Assert.IsNull(lRemoved);
         }
@@ -257,16 +250,16 @@ namespace MarrSystems.TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
 
-            ManageScheduleHandler lController = this.Controller;
+            ManageScheduleHandler lController = new ManageScheduleHandler();
             ScheduleDTO lRemoved;
             ScheduleDTO lDto;
 
             // Act
-            lDto = lController.Get(lId);
-            lController.Delete(lDto);
+            lDto = lController.GetSchedule(lId);
+            lController.DeleteSchedule(lDto);
 
             // Assert
-            lRemoved = lController.Get(lId);
+            lRemoved = lController.GetSchedule(lId);
             Assert.IsNull(lRemoved);
         }
 

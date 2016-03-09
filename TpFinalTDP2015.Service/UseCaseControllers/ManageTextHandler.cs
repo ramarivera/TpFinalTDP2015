@@ -12,16 +12,17 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ManageTextHandler
     {
-        public void AddText(StaticTextDTO pDto)
+        public int AddText(StaticTextDTO pDto)
         {
             using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
             {
                 StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pDto);
                 serv.Save(lStaticText);
+                return lStaticText.Id;
             }
         }
 
-        public void UpdateText(StaticTextDTO pDto)
+        public void ModifyText(StaticTextDTO pDto)
         {
             using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
             {

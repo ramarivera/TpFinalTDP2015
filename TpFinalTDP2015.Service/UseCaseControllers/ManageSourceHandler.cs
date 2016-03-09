@@ -12,12 +12,13 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ManageSourceHandler
     {
-        public void AddSource(RssSourceDTO pDto)
+        public int AddSource(RssSourceDTO pDto)
         {
             using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
             {
                 RssSource lSource = Mapper.Map<RssSourceDTO, RssSource>(pDto);
                 serv.Save(lSource);
+                return lSource.Id;
             }
         }
 
@@ -52,6 +53,17 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
                 }
             }
 
+            return lResult;
+        }
+
+        public RssSourceDTO GetSource(int pId)
+        {
+            RssSourceDTO lResult = new RssSourceDTO();
+
+            using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
+            {
+                lResult = Mapper.Map<RssSource, RssSourceDTO>(serv.Get(pId));
+            }
             return lResult;
         }
     }

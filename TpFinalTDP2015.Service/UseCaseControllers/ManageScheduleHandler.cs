@@ -58,5 +58,16 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 
             return lResult;
         }
+
+        public ScheduleDTO GetSchedule(int pId)
+        {
+            ScheduleDTO lResult = new ScheduleDTO();
+
+            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
+            {
+                lResult = Mapper.Map<Schedule, ScheduleDTO>(serv.Get(pId));
+            }
+            return lResult;
+        }
     }
 }
