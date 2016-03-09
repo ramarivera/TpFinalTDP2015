@@ -109,7 +109,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 AdminBannerDTO banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
                 AgregarModificarBanner ventana = new AgregarModificarBanner();
                 this.dgvBanner.Modify(ventana, banner);
-                iController.UpdateBanner(banner);
+                iController.ModifyBanner(banner);
             }
             catch (Exception)
             {

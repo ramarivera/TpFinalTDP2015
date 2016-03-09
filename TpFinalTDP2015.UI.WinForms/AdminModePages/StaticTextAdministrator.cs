@@ -80,7 +80,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 StaticTextDTO staticText = dgvStaticText.GetItem(row.Index);
                 AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
                 this.dgvStaticText.Modify(ventana, staticText);
-                iController.UpdateText(staticText);
+                iController.ModifyText(staticText);
             }
             catch (Exception)
             {

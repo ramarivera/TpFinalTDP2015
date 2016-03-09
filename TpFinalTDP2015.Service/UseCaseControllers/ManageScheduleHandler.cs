@@ -14,12 +14,13 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
     {
 
 
-        public void AddSchedule(ScheduleDTO pDto)
+        public int AddSchedule(ScheduleDTO pDto)
         {
             using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
                 serv.Save(lSchedule);
+                return lSchedule.Id;
             }
         }
 
@@ -54,6 +55,17 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
                 }
             }
 
+            return lResult;
+        }
+
+        public ScheduleDTO GetSchedule(int pId)
+        {
+            ScheduleDTO lResult = new ScheduleDTO();
+
+            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
+            {
+                lResult = Mapper.Map<Schedule, ScheduleDTO>(serv.Get(pId));
+            }
             return lResult;
         }
     }
