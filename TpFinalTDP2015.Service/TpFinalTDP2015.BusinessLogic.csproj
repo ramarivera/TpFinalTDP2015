@@ -113,14 +113,14 @@
     <Compile Include="Services\StaticTextService.cs" />
     <Compile Include="DTO\AdminBannerDTO.cs" />
     <Compile Include="DTO\CampaignDTO.cs" />
-    <Compile Include="DTO\ScheduleDTO.cs" />
+    <Compile Include="DTO\DateIntervalDTO.cs" />
     <Compile Include="DTO\IDTO.cs" />
     <Compile Include="DTO\OperativeBannerDTO.cs" />
     <Compile Include="DTO\RssItemDTO.cs" />
     <Compile Include="DTO\RssSourceDTO.cs" />
     <Compile Include="DTO\SlideDTO.cs" />
     <Compile Include="DTO\StaticTextDTO.cs" />
-    <Compile Include="DTO\ScheduleEntryDTO.cs" />
+    <Compile Include="DTO\TimeIntervalDTO.cs" />
     <Compile Include="DTO\ValueAndDescription.cs" />
     <Compile Include="Enum\EnumConversion.cs" />
     <Compile Include="Enum\SlideTransition.cs" />

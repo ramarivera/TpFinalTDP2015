@@ -13,15 +13,15 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
         public DateTime ModificationDate { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public IList<ValueAndDescription> ActiveIntervals { get; set; }
-        public IList<ValueAndDescription> Texts { get; set; }
-        public IList<ValueAndDescription> RssSources { get; set; }
+        public IList<ScheduleDTO> ActiveIntervals { get; set; }
+        public IList<StaticTextDTO> Texts { get; set; }
+        public IList<RssSourceDTO> RssSources { get; set; }
 
         public AdminBannerDTO()
         {
-            this.ActiveIntervals = new List<ValueAndDescription>();
-            this.Texts = new List<ValueAndDescription>();
-            this.RssSources = new List<ValueAndDescription>();
+            this.ActiveIntervals = new List<ScheduleDTO>();
+            this.Texts = new List<StaticTextDTO>();
+            this.RssSources = new List<RssSourceDTO>();
         }
     }
 }
