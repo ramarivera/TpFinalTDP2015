@@ -50,7 +50,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         void IRepository<TEntity>.Delete(TEntity pEntityToDelete)
         {
-            if (this.iContext.Entry<TEntity>(pEntityToDelete).State == EntityState.Detached)
+            if (this.iContext.Entry(pEntityToDelete).State == EntityState.Detached)
             {
                 this.iDbSet.Attach(pEntityToDelete);
             }
@@ -60,7 +60,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         void IRepository<TEntity>.Update(TEntity pEntityToUpdate)
         {
             var lOld = this.iDbSet.Find(pEntityToUpdate.Id);
-            var lDbEntry = this.iContext.Entry<TEntity>(lOld);
+            var lDbEntry = this.iContext.Entry(lOld);
             lDbEntry.CurrentValues.SetValues(pEntityToUpdate);
             lDbEntry.State = EntityState.Modified;
 
@@ -68,7 +68,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
        TEntity IRepository<TEntity>.GetByID(object pId)
        {
-           return (TEntity) this.iDbSet.Find(pId);
+           return this.iDbSet.Find(pId);
        }
 
        IQueryable<TEntity> IRepository<TEntity>.GetAll(Expression<Func<TEntity, bool>> pPredicate)
@@ -77,7 +77,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
            if (pPredicate == null)
            {
-                lResult = this.iDbSet.AsQueryable<TEntity>();
+                lResult = this.iDbSet.AsQueryable();
            }
            else
            {

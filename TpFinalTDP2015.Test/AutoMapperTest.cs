@@ -43,7 +43,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 cfg.AddProfile<SlideDTOProfile>();
                 cfg.AddProfile<SlideTransitioProfile>();
                 cfg.AddProfile<StaticTextDTOProfile>();
-                cfg.AddProfile<TimeIntervalDTOProfile>();
+                cfg.AddProfile<ScheduleEntryDTOProfile>();
             });
          //   Mapper.AssertConfigurationIsValid();
         }

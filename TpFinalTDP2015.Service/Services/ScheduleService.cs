@@ -34,6 +34,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         public override int Save(Schedule pSchedule)
         {
             iUoW.BeginTransaction();
+            Schedule lSchedule;
             IRepository<ScheduleEntry> lTimeRepo = iUoW.GetRepository<ScheduleEntry>();
             IRepository<Schedule> lDateRepo = iUoW.GetRepository<Schedule>();
             IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
@@ -42,55 +43,44 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             if (pSchedule.Id == 0)
             {
                 lDateRepo.Add(pSchedule);
+                lSchedule = new Schedule();
             }
             else
             {
                 lDateRepo.Update(pSchedule);
+                lSchedule = lDateRepo.GetByID(pSchedule.Id);
+            }
 
 
-                //   DateInterval lOrigSchedule = lDateRepo.GetAll(d => d.Id == lDateInterval.Id).Single();
-                Schedule lOrigSchedule = lDateRepo.GetByID(pSchedule.Id);
-
-
-
-
-                foreach (ScheduleEntry lHours in pSchedule.ActiveHours)
+            foreach (ScheduleEntry lHours in pSchedule.ActiveHours)
+            {
+                if (lHours.Id == 0)
                 {
-                    if (lHours.Id == 0)
-                    {
-                        lOrigSchedule.AddTimeInterval(lHours);
-                    }
-                    else
-                    {
-                        //lOrigSchedule.AddActiveHours(lHours);
-                        lTimeRepo.Update(lHours);
-                    }
+                    lSchedule.AddTimeInterval(lHours);
                 }
-
-                //   lDateRepo.Update(lDateInterval);
-
-
-                foreach (ScheduleEntry lOrigTimeInt in lOrigSchedule.ActiveHours.Reverse())
+                else
                 {
-                    if (!pSchedule.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
-                    {
-                        lOrigSchedule.RemoveTimeInterval(lOrigTimeInt);
-                        lTimeRepo.Delete(lOrigTimeInt.Id);
-                    }
+                    lTimeRepo.Update(lHours);
                 }
+            }
 
-                /*  foreach (Day day in lOrigSchedule.ActiveDays.Reverse())
-                  {
-                      lOrigSchedule.RemoveActiveDay(day);
-                  }*/
 
-                lOrigSchedule.RemoveAllDays();
 
-                foreach (int item in pSchedule.ActiveDays.Select(d => d.Id))
+            foreach (ScheduleEntry lOrigTimeInt in lSchedule.ActiveHours.Reverse())
+            {
+                if (!pSchedule.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
                 {
-                    lOrigSchedule.AddDay(lDayRepo.GetByID(item));
-                    //  lDayRepo.Update(item);
-                }    
+                    lSchedule.RemoveTimeInterval(lOrigTimeInt);
+                    lTimeRepo.Delete(lOrigTimeInt.Id);
+                }
+            }
+
+
+            lSchedule.RemoveAllDays();
+
+            foreach (int item in pSchedule.ActiveDays.Select(d => d.Id))
+            {
+                lSchedule.AddDay(lDayRepo.GetByID(item));
             }
 
             iUoW.Commit();
@@ -111,7 +101,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 
             IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
             IList<Schedule> lResult = lRepo.GetAll().ToList();
-            
+
             return lResult;
         }
 

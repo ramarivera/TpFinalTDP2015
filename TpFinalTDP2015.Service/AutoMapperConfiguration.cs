@@ -39,7 +39,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
                 cfg.AddProfile<SlideDTOProfile>();
                 cfg.AddProfile<SlideTransitioProfile>();
                 cfg.AddProfile<StaticTextDTOProfile>();
-                cfg.AddProfile<TimeIntervalDTOProfile>();
+                cfg.AddProfile<ScheduleEntryDTOProfile>();
             });
         }
     }  

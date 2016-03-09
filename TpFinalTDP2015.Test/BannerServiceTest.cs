@@ -182,7 +182,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             BannerController lController = this.Controller;
             AdminBannerDTO lResult;
 
-            TimeIntervalDTO lTiDto = new TimeIntervalDTO()
+            ScheduleEntryDTO lTiDto = new ScheduleEntryDTO()
             {
                 EndTime = lEndTime,
                 StartTime = lStartTime,
@@ -194,7 +194,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 Days = lDayList,
                 ActiveUntil = lEnd,
                 ActiveFrom = lStart,
-                ActiveHours = new List<TimeIntervalDTO>()
+                ActiveHours = new List<ScheduleEntryDTO>()
                 {
                     lTiDto
                 }
