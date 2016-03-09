@@ -9,12 +9,20 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 using Microsoft.Practices.Unity;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.Test
 {
     [TestClass]
     public class DateIntervalControllerTest
     {
+        private ManageScheduleHandler Controller
+        {
+            get
+            {
+                return new ManageScheduleHandler();
+            }
+        }
         /// <summary>
         /// SACAR ESTO A LA MIERDA DE ACA!
         /// </summary>
@@ -81,7 +89,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan lNewStartTime = new TimeSpan(08, 0, 0);
             TimeSpan lNewEndTime = new TimeSpan(10, 0, 0);
 
-            ScheduleService lController = this.Controller;
+            ManageScheduleHandler lController = this.Controller;
             ScheduleDTO lResult;
             ScheduleDTO lDto;
 
@@ -98,9 +106,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
                     Days.Miercoles,
                     Days.Viernes,
                 },
-                ActiveHours = new List<TimeIntervalDTO>()
+                ActiveHours = new List<ScheduleEntryDTO>()
                 {
-                    new TimeIntervalDTO()
+                    new ScheduleEntryDTO()
                     {
                         EndTime = lNewEndTime,
                         StartTime = lNewStartTime
@@ -108,7 +116,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 }
             };
 
-            lDto.Id = lController.Save(lDto);
+            lDto.Id = lController.AddSchedule(lDto);
 
             // Assert
             lResult = lController.Get(lDto.Id);
@@ -123,7 +131,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             DateTime lNewActiveFrom = new DateTime(2016, 03, 01);
 
-            ScheduleService lController = this.Controller;
+            ManageScheduleHandler lController = this.Controller;
             ScheduleDTO lResult;
             ScheduleDTO lDto;
 
@@ -143,7 +151,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
  
-            ScheduleService lController = this.Controller;
+            ManageScheduleHandler lController = this.Controller;
             ScheduleDTO lResult;
             ScheduleDTO lDto = lController.Get(lId);
 
@@ -166,15 +174,15 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan lNewEnd = new TimeSpan(22, 0, 0);
             TimeSpan lNewStart = new TimeSpan(20, 0, 0);
 
-            ScheduleService lController = this.Controller;
+            ManageScheduleHandler lController = this.Controller;
             ScheduleDTO lResult;
             ScheduleDTO lDto;
-            TimeIntervalDTO lNewTime;
+            ScheduleEntryDTO lNewTime;
 
             // Act
             lDto = lController.Get(lId);
 
-            lNewTime = new TimeIntervalDTO()
+            lNewTime = new ScheduleEntryDTO()
             {
                 EndTime = lNewEnd,
                 StartTime = lNewStart
@@ -196,12 +204,12 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lTimeId = 19;
             TimeSpan lNewEnd = new TimeSpan(20, 0, 0);
 
-            ScheduleService lController = this.Controller;
+            ManageScheduleHandler lController = this.Controller;
           //  var mock = new Mock<DateIntervalController>(IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>());
             
             ScheduleDTO lDto;
             ScheduleDTO lResult;
-            TimeIntervalDTO lTimeInterval;
+            ScheduleEntryDTO lTimeInterval;
 
             // Act
             lDto = lController.Get(lId);
@@ -225,11 +233,11 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             int lTimeId = 1;
 
-            ScheduleService lController = this.Controller;
+            ManageScheduleHandler lController = this.Controller;
             ScheduleDTO lDto;
             ScheduleDTO lResult;
-            TimeIntervalDTO lTimeInterval;
-            TimeIntervalDTO lRemoved;
+            ScheduleEntryDTO lTimeInterval;
+            ScheduleEntryDTO lRemoved;
 
             // Act
             lDto = lController.Get(lId);
@@ -249,7 +257,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
 
-            ScheduleService lController = this.Controller;
+            ManageScheduleHandler lController = this.Controller;
             ScheduleDTO lRemoved;
             ScheduleDTO lDto;
 

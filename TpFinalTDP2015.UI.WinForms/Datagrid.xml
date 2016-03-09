@@ -178,7 +178,7 @@
       </property>
     </language>
   </entity>
-  <entity name="TimeInterval" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.TimeIntervalDTO">
+  <entity name="TimeInterval" fullName="MarrSystems.TpFinalTDP2015.BusinessLogic.DTO.ScheduleEntryDTO">
     <language name="English" code="en">
       <property name="Id">
         <text>Id</text>

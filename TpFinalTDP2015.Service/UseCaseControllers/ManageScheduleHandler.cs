@@ -14,21 +14,23 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
     {
 
 
-        public void AddSchedule(ScheduleDTO pDto)
+        public int AddSchedule(ScheduleDTO pDto)
         {
             using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
                 serv.Save(lSchedule);
+                return lSchedule.Id;
             }
         }
 
-        public void ModifySchedule(ScheduleDTO pDto)
+        public int ModifySchedule(ScheduleDTO pDto)
         {
             using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
                 serv.Save(lSchedule);
+                return lSchedule.Id;
             }
         }
 

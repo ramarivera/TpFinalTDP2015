@@ -9,7 +9,7 @@ using MarrSystems.TpFinalTDP2015.Model;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
-    public class TimeIntervalDTOProfile: Profile
+    public class ScheduleEntryDTOProfile: Profile
     {
         protected override void Configure()
         {
@@ -52,7 +52,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
         }
         /*protected override void Configure() ANTERIOR
         {
-            Mapper.CreateMap<TimeIntervalDTO, TimeInterval>()
+            Mapper.CreateMap<ScheduleEntryDTO, TimeInterval>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
               .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
               .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
