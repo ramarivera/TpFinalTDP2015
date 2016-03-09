@@ -209,9 +209,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             lTimeInterval = lDto.ActiveHours.Where(ti => ti.EndTime.Hours == lTimeId).SingleOrDefault();
             lTimeInterval.EndTime = lNewEnd;
             lController.ModifySchedule(lDto);
-           // mock.Object.Save(lDto);
-           // mock.Verify(foo => foo.Save(It.IsAny<ScheduleDTO>()), Times.Never());
-            
+            // mock.Object.Save(lDto);
+            // mock.Verify(foo => foo.Save(It.IsAny<ScheduleDTO>()), Times.Never());
+
 
             // Assert
             lResult = lController.GetSchedule(lId);

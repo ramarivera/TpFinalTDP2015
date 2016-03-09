@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Criteria.Criterion
 {
-    class StartsBefore : ScheduleCriteria
+    public class StartsBefore : ScheduleCriteria
     {
         public StartsBefore(DateTime pStart) : base()
         {
