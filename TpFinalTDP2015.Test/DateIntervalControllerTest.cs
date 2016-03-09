@@ -25,24 +25,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             BootStrapper.Configure(); //TODO SACAR ESTO DE ACA LPM
         }
 
-        [ClassInitialize()]
-        public static void ClassInitialize(TestContext testContext)
-        {
-            // AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
-            AutoMapperConfiguration.Configure();
-        }
-
-        DateIntervalService Controller
-        {
-            get
-            {
-                return 
-                    BusinessServiceLocator.
-                    Resolve<DateIntervalService>();
-            }
-        }
-
-        void BaseAssertAreEqual(DateIntervalDTO lDto, DateIntervalDTO lResult)
+        void BaseAssertAreEqual(ScheduleDTO lDto, ScheduleDTO lResult)
         {
             Assert.AreEqual(lDto.Id, lResult.Id);
             Assert.AreEqual(lDto.Name, lResult.Name);
@@ -60,7 +43,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             }
         }
 
-        void AssertAreEqualForAdding(DateIntervalDTO lDto, DateIntervalDTO lResult)
+        void AssertAreEqualForAdding(ScheduleDTO lDto, ScheduleDTO lResult)
         {
             BaseAssertAreEqual(lDto, lResult);
 
@@ -73,7 +56,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             }
         }
 
-        void AssertAreEqualForUpdating(DateIntervalDTO lDto, DateIntervalDTO lResult)
+        void AssertAreEqualForUpdating(ScheduleDTO lDto, ScheduleDTO lResult)
         {
             BaseAssertAreEqual(lDto, lResult);
 
@@ -98,13 +81,13 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan lNewStartTime = new TimeSpan(08, 0, 0);
             TimeSpan lNewEndTime = new TimeSpan(10, 0, 0);
 
-            DateIntervalService lController = this.Controller;
-            DateIntervalDTO lResult;
-            DateIntervalDTO lDto;
+            ScheduleService lController = this.Controller;
+            ScheduleDTO lResult;
+            ScheduleDTO lDto;
 
 
             // Act
-            lDto = new DateIntervalDTO()
+            lDto = new ScheduleDTO()
             {
                 Name = lNewName,
                 ActiveUntil = lNewActiveUntil,
@@ -140,9 +123,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             DateTime lNewActiveFrom = new DateTime(2016, 03, 01);
 
-            DateIntervalService lController = this.Controller;
-            DateIntervalDTO lResult;
-            DateIntervalDTO lDto;
+            ScheduleService lController = this.Controller;
+            ScheduleDTO lResult;
+            ScheduleDTO lDto;
 
             // Act
             lDto = lController.Get(lId);
@@ -160,9 +143,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
  
-            DateIntervalService lController = this.Controller;
-            DateIntervalDTO lResult;
-            DateIntervalDTO lDto = lController.Get(lId);
+            ScheduleService lController = this.Controller;
+            ScheduleDTO lResult;
+            ScheduleDTO lDto = lController.Get(lId);
 
             IList<Days> lDayList = new List<Days>() { Days.Lunes, Days.Martes, Days.Jueves };
 
@@ -183,9 +166,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             TimeSpan lNewEnd = new TimeSpan(22, 0, 0);
             TimeSpan lNewStart = new TimeSpan(20, 0, 0);
 
-            DateIntervalService lController = this.Controller;
-            DateIntervalDTO lResult;
-            DateIntervalDTO lDto;
+            ScheduleService lController = this.Controller;
+            ScheduleDTO lResult;
+            ScheduleDTO lDto;
             TimeIntervalDTO lNewTime;
 
             // Act
@@ -213,11 +196,11 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lTimeId = 19;
             TimeSpan lNewEnd = new TimeSpan(20, 0, 0);
 
-            DateIntervalService lController = this.Controller;
+            ScheduleService lController = this.Controller;
           //  var mock = new Mock<DateIntervalController>(IoCUnityContainerLocator.Container.Resolve<IUnitOfWork>());
             
-            DateIntervalDTO lDto;
-            DateIntervalDTO lResult;
+            ScheduleDTO lDto;
+            ScheduleDTO lResult;
             TimeIntervalDTO lTimeInterval;
 
             // Act
@@ -226,7 +209,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
             lTimeInterval.EndTime = lNewEnd;
             lController.Save(lDto);
            // mock.Object.Save(lDto);
-           // mock.Verify(foo => foo.Save(It.IsAny<DateIntervalDTO>()), Times.Never());
+           // mock.Verify(foo => foo.Save(It.IsAny<ScheduleDTO>()), Times.Never());
             
 
             // Assert
@@ -242,9 +225,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             int lId = 1;
             int lTimeId = 1;
 
-            DateIntervalService lController = this.Controller;
-            DateIntervalDTO lDto;
-            DateIntervalDTO lResult;
+            ScheduleService lController = this.Controller;
+            ScheduleDTO lDto;
+            ScheduleDTO lResult;
             TimeIntervalDTO lTimeInterval;
             TimeIntervalDTO lRemoved;
 
@@ -266,9 +249,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
             // Arrange
             int lId = 1;
 
-            DateIntervalService lController = this.Controller;
-            DateIntervalDTO lRemoved;
-            DateIntervalDTO lDto;
+            ScheduleService lController = this.Controller;
+            ScheduleDTO lRemoved;
+            ScheduleDTO lDto;
 
             // Act
             lDto = lController.Get(lId);

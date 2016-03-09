@@ -5,6 +5,8 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 using MarrSystems.TpFinalTDP2015.BusinessLogic;
 using System.Collections.Generic;
+using MarrSystems.TpFinalTDP2015.Model;
+using AutoMapper;
 
 namespace MarrSystems.TpFinalTDP2015.Test
 {
@@ -17,47 +19,9 @@ namespace MarrSystems.TpFinalTDP2015.Test
         {
             // AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
             AutoMapperConfiguration.Configure();
+
         }
 
-        IService<AdminBannerDTO> BannerController
-        {
-            get
-            {
-                return
-                    BusinessServiceLocator.
-                    Resolve<BannerService>();
-            }
-        }
-
-        IService<DateIntervalDTO> DateIntervalController
-        {
-            get
-            {
-                return
-                    BusinessServiceLocator.
-                    Resolve<DateIntervalService>();
-            }
-        }
-
-        IService<RssSourceDTO> RssSourceController
-        {
-            get
-            {
-                return
-                    BusinessServiceLocator.
-                    Resolve<RssSourceService>();
-            }
-        }
-
-        IService<StaticTextDTO> StaticTextController
-        {
-            get
-            {
-                return
-                    BusinessServiceLocator.
-                    Resolve<StaticTextService>();
-            }
-        }
 
         private void AssertAreEqualBase(AdminBannerDTO lDto, AdminBannerDTO lResult)
         {
@@ -147,21 +111,23 @@ namespace MarrSystems.TpFinalTDP2015.Test
             string lBannerDescription = "Distintas informaciones durante la mañana";
 
 
-            IService<AdminBannerDTO> lController = this.BannerController;
-            IService<StaticTextDTO> lStController = this.StaticTextController;
-            IService<DateIntervalDTO> lDiController = this.DateIntervalController;
-            IService<RssSourceDTO> lRssController = this.RssSourceController;
+           IService<Banner> lController = BusinessServiceLocator.Resolve<BannerService>();
+            IService<StaticText> lStController = BusinessServiceLocator.Resolve<StaticTextService>();
+            IService<Schedule> lDiController = BusinessServiceLocator.Resolve<ScheduleService>();
+            IService<RssSource> lRssController = BusinessServiceLocator.Resolve<RssSourceService>();
 
 
             AdminBannerDTO lResult;
-            DateIntervalDTO lDiDto;
+            ScheduleDTO lDiDto;
             StaticTextDTO lStDto;
             RssSourceDTO lRssDto;
 
             // Act
-            lDiDto = lDiController.Get(lDiId);
-            lRssDto = lRssController.Get(lRssId);
-            lStDto = lStController.Get(lStid);
+            lDiDto =  Mapper.Map<Schedule,ScheduleDTO>(lDiController.Get(lDiId));
+            lRssDto = Mapper.Map<RssSource,RssSourceDTO>(lRssController.Get(lRssId));
+            lStDto =  Mapper.Map<StaticText,StaticTextDTO>(lStController.Get(lStid));
+
+
 
             AdminBannerDTO lDto = new AdminBannerDTO()
             {
@@ -171,7 +137,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 {
                     lRssDto
                 },
-                ActiveIntervals = new List<DateIntervalDTO>()
+                ActiveIntervals = new List<ScheduleDTO>()
                 {
                     lDiDto
                 },
@@ -180,10 +146,11 @@ namespace MarrSystems.TpFinalTDP2015.Test
                     lStDto
                 }
             };
-            lDto.Id = lController.Save(lDto);
+
+            lDto.Id = lController.Save(Mapper.Map<AdminBannerDTO, Banner>(  lDto));
 
             // Assert
-            lResult = lController.Get(lDto.Id);
+            lResult = Mapper.Map<Banner, AdminBannerDTO> (lController.Get(lDto.Id));
             AssertAreEqual(lDto, lResult);
 
         }
@@ -221,7 +188,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 StartTime = lStartTime,
             };
 
-            DateIntervalDTO lDiDto = new DateIntervalDTO()
+            ScheduleDTO lDiDto = new ScheduleDTO()
             {
                 Name = lDiName,
                 Days = lDayList,
@@ -255,7 +222,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 {
                     lRssDto
                 },
-                ActiveIntervals = new List<DateIntervalDTO>()
+                ActiveIntervals = new List<ScheduleDTO>()
                 {
                     lDiDto
                 },

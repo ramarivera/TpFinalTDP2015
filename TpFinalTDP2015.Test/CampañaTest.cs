@@ -42,15 +42,15 @@ namespace MarrSystems.TpFinalTDP2015.Test
 
 
 
-            var serv1 = DomainServiceLocator.Resolve<IScheduleChecker>();
+        /*    var serv1 = DomainServiceLocator.Resolve<IScheduleChecker>();
             var serv2 = DomainServiceLocator.Resolve<IScheduleChecker>();
-            var serv3 = BusinessServiceLocator.Resolve<DateIntervalService>();
+            var serv3 = BusinessServiceLocator.Resolve<>();
             var serv4 = BusinessServiceLocator.Resolve<DateIntervalService>();
 
 
 
             Assert.AreSame(serv1, serv2);
-            Assert.AreNotSame(serv3, serv4);
+            Assert.AreNotSame(serv3, serv4);*/
 
 
 
