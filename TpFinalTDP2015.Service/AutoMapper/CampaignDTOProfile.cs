@@ -12,19 +12,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     public class CampaignDTOProfile : Profile
     {
-        /* protected override void Configure()
-         {
-             Mapper.CreateMap<CampaignDTO, Campaign>()
-               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-               .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
-               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
-               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-            //TODO agragar al dto los campos lista   .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-               .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
-               .ForMember(dest => dest.Slides, opt => opt.MapFrom(source => source.Slides));
-         }*/
-
         protected override void Configure()
         {
             Mapper.CreateMap<CampaignDTO, Campaign>()
@@ -56,7 +43,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                     {
                         lResult.AddSchedule(
                             iValidator,
-                            Mapper.Map<ScheduleDTO, Schedule>(item)
+                            Mapper.Map<ValueAndDescription, Schedule>(item)
                             );
                     }
                    /* foreach (var item in lDto.Slides)

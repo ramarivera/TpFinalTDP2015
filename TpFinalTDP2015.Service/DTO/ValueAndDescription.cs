@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
 {
-    class ValueAndDescription
+    public class ValueAndDescription
     {
         public ValueAndDescription()
         {

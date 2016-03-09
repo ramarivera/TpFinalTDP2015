@@ -18,8 +18,23 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<BannerService>();
+        private readonly IService<Schedule> iScheduleService;
+        private readonly IService<StaticText> iStaticTextService;
+        private readonly IService<RssSource> iRssSourceService;
 
-        public BannerService(IUnitOfWork iUoW) : base(iUoW) { }
+
+
+        public BannerService(
+            IUnitOfWork pUoW,
+            IService<Schedule> pScheduleService,
+            IService<StaticText> pStaticTextService,
+            IService<RssSource> pRssSourceService
+            ) : base(pUoW)
+        {
+            iScheduleService = pScheduleService;
+            iStaticTextService = pStaticTextService;
+            iRssSourceService = pRssSourceService;
+        }
 
         /*
         public override int Save(AdminBannerDTO pBanner)
