@@ -43,36 +43,35 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             if (pSchedule.Id == 0)
             {
                 lDateRepo.Add(pSchedule);
-                lSchedule = new Schedule();
+                lSchedule = pSchedule;
             }
             else
             {
                 lDateRepo.Update(pSchedule);
                 lSchedule = lDateRepo.GetByID(pSchedule.Id);
-            }
 
-
-            foreach (ScheduleEntry lHours in pSchedule.ActiveHours)
-            {
-                if (lHours.Id == 0)
+                foreach (ScheduleEntry lHours in pSchedule.ActiveHours)
                 {
-                    lSchedule.AddTimeInterval(lHours);
+                    if (lHours.Id == 0)
+                    {
+                        lSchedule.AddTimeInterval(lHours);
+                    }
+                    else
+                    {
+                        lTimeRepo.Update(lHours);
+                    }
                 }
-                else
+
+                foreach (ScheduleEntry lOrigTimeInt in lSchedule.ActiveHours.Reverse())
                 {
-                    lTimeRepo.Update(lHours);
+                    if (!pSchedule.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
+                    {
+                        lSchedule.RemoveTimeInterval(lOrigTimeInt);
+                        lTimeRepo.Delete(lOrigTimeInt.Id);
+                    }
                 }
-            }
 
 
-
-            foreach (ScheduleEntry lOrigTimeInt in lSchedule.ActiveHours.Reverse())
-            {
-                if (!pSchedule.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
-                {
-                    lSchedule.RemoveTimeInterval(lOrigTimeInt);
-                    lTimeRepo.Delete(lOrigTimeInt.Id);
-                }
             }
 
 
