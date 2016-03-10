@@ -11,11 +11,10 @@ namespace MarrSystems.TpFinalTDP2015.Test
     [TestClass]
     public class AutoMapperTest
     {
-        [ClassCleanup()]
-        public static void ClassCleanup()
+        [TestCleanup()]
+        public void TestCleanup()
         {
-            Mapper.Reset();
-            BootStrapper.Configure();
+            AutoMapperConfiguration.Configure();
         }
 
 
@@ -50,7 +49,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
                 cfg.AddProfile<RssItemDTOProfile>();
                 cfg.AddProfile<RssSourceDTOProfile>();
                 cfg.AddProfile<DaysEnumProfile>();
-                cfg.AddProfile<SlideDTOProfile>();
+               // cfg.AddProfile<SlideDTOProfile>();
                 cfg.AddProfile<SlideTransitioProfile>();
                 cfg.AddProfile<StaticTextDTOProfile>();
                 cfg.AddProfile<ScheduleEntryDTOProfile>();

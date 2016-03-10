@@ -62,6 +62,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 
             using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
             {
+                var tipos = Mapper.GetAllTypeMaps();
                 lResult = Mapper.Map<RssSource, RssSourceDTO>(serv.Get(pId));
             }
             return lResult;

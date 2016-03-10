@@ -61,6 +61,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 
             using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
             {
+                var tipos = Mapper.GetAllTypeMaps();
                 lResult = Mapper.Map<StaticText, StaticTextDTO>(serv.Get(pId));
             }
             return lResult;

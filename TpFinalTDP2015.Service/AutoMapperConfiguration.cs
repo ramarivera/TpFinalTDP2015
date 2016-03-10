@@ -18,6 +18,9 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
         static public void  Configure()
         {
+
+            Mapper.Reset();
+
             Mapper.Initialize(cfg => {//ida
                 cfg.AddProfile<AdminBannerProfile>();
                 cfg.AddProfile<OperativeBannerProfile>();

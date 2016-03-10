@@ -123,19 +123,18 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         {
 
             IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
-            IList<Schedule> lResult = lRepo.GetAll().ToList();
+            IList<Schedule> lResult = lRepo.GetAll().ToList<Schedule>();
 
             return lResult;
         }
 
         public override Schedule Get(int pId)
         {
-            Schedule lResult = null;
             IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
 
-            lResult = lRepo.GetByID(pId);
+            var lResult = lRepo.GetByID(pId);
 
-            return lResult;
+            return (Schedule) lResult;
         }
     }
 }

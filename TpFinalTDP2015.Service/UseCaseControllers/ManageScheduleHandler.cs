@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.Model;
@@ -62,13 +63,18 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         public ScheduleDTO GetSchedule(int pId)
         {
             ScheduleDTO lResult = new ScheduleDTO();
+            Schedule lTemp;
 
             using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
-                Schedule aux = serv.Get(pId);
-                lResult = Mapper.Map<Schedule, ScheduleDTO>(aux);//serv.Get(pId));
+                lTemp = serv.Get(pId);
+                //lResult = MapperHelper.Map<Schedule, ScheduleDTO>(lTemp, lResult);
+                lResult = Mapper.Map<Schedule, ScheduleDTO>(lTemp);
             }
+
+          //  lResult = MapperHelper.Map<Schedule,ScheduleDTO>(lTemp,lResult);
             return lResult;
         }
     }
 }
+    
