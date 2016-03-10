@@ -16,7 +16,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 
         public static DateTime Resolve(DateTime source)
         {
-            return source == new DateTime(0) ? DateTime.Now : source;
+            return source;//== new DateTime(0) ? DateTime.Now : source;
         }
     }
 }
