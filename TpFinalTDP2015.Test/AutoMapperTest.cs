@@ -4,12 +4,22 @@ using AutoMapper;
 using MarrSystems.TpFinalTDP2015.Model;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic;
 
 namespace MarrSystems.TpFinalTDP2015.Test
 {
     [TestClass]
     public class AutoMapperTest
     {
+        [ClassCleanup()]
+        public static void ClassCleanup()
+        {
+            Mapper.Reset();
+            BootStrapper.Configure();
+        }
+
+
+
         [TestMethod]
         public void Mappings_ConfigureMappings_pass()
         {

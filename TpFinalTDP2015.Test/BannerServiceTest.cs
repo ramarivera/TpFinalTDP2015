@@ -14,15 +14,6 @@ namespace MarrSystems.TpFinalTDP2015.Test
     public class BannerServiceTest
     {
 
-        [ClassInitialize()]
-        public static void ClassInitialize(TestContext testContext)
-        {
-            // AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
-            AutoMapperConfiguration.Configure();
-
-        }
-
-
         private void AssertAreEqualBase(AdminBannerDTO lDto, AdminBannerDTO lResult)
         {
             Assert.AreEqual(lDto.Id, lResult.Id);

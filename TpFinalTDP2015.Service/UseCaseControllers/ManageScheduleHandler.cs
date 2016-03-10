@@ -19,7 +19,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
             {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
-                serv.Save(lSchedule);
+                serv.Insert(lSchedule);
                 return lSchedule.Id;
             }
         }

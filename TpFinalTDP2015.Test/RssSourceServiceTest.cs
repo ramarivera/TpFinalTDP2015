@@ -10,12 +10,6 @@ namespace MarrSystems.TpFinalTDP2015.Test
     [TestClass]
     public class RssSourceServiceTest
     {
-        [ClassInitialize()]
-        public static void ClassInitialize(TestContext testContext)
-        {
-            // AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
-            AutoMapperConfiguration.Configure();
-        }
 
         void AssertAreEqual(RssSourceDTO lDto, RssSourceDTO lResult)
         {

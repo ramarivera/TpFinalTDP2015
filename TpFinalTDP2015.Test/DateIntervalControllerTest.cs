@@ -16,10 +16,6 @@ namespace MarrSystems.TpFinalTDP2015.Test
     [TestClass]
     public class DateIntervalControllerTest
     {
-        /// <summary>
-        /// SACAR ESTO A LA MIERDA DE ACA!
-        /// </summary>
-        /// <param name="context"></param>
         [AssemblyInitialize()]
         public static void AssemblyInit(TestContext context)
         {

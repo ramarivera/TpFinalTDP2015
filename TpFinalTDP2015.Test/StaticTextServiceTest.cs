@@ -10,12 +10,6 @@ namespace MarrSystems.TpFinalTDP2015.Test
 	[TestClass]
 	public class StaticTextServiceTest
 	{
-        [ClassInitialize()]
-        public static void ClassInitialize(TestContext testContext)
-        {
-            // AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"Test.config");
-            AutoMapperConfiguration.Configure();
-        }
 
 		void AssertAreEqual(StaticTextDTO lDto, StaticTextDTO lResult)
 		{
@@ -33,7 +27,7 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			string lDescription = "Información super secreta";
 			string lText = "Siempre que llovió, paró";
 
-            ManageTextHandler lController = new ManageTextHandler();
+			ManageTextHandler lController = new ManageTextHandler();
 			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
@@ -60,8 +54,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lTitle = "Texto 100";
 
-            ManageTextHandler lController = new ManageTextHandler();
-            StaticTextDTO lResult;
+			ManageTextHandler lController = new ManageTextHandler();
+			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
 			// Act
@@ -81,8 +75,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lDescription = "vamo a calmarno";
 
-            ManageTextHandler lController = new ManageTextHandler();
-            StaticTextDTO lResult;
+			ManageTextHandler lController = new ManageTextHandler();
+			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
 			// Act
@@ -102,8 +96,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			int lId = 1;
 			string lText = "Aguante todo";
 
-            ManageTextHandler lController = new ManageTextHandler();
-            StaticTextDTO lResult;
+			ManageTextHandler lController = new ManageTextHandler();
+			StaticTextDTO lResult;
 			StaticTextDTO lDto;
 
 			// Act
@@ -122,8 +116,8 @@ namespace MarrSystems.TpFinalTDP2015.Test
 			// Arrange
 			int lId = 1;
 
-            ManageTextHandler lController = new ManageTextHandler();
-            StaticTextDTO lRemoved;
+			ManageTextHandler lController = new ManageTextHandler();
+			StaticTextDTO lRemoved;
 			StaticTextDTO lDto;
 
 			// Act
