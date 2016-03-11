@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using Common.Logging;
 using Microsoft.Practices.Unity;
 using MarrSystems.TpFinalTDP2015.Model;
-using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
-using AutoMapper;
 using MarrSystems.TpFinalTDP2015.Persistence;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
@@ -178,7 +176,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             return lResult;
         }
 
-        public override int Save(Banner pDTO)
+        public override int Save(Banner pBanner)
         {
             throw new NotImplementedException();
         }

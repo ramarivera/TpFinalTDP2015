@@ -12,75 +12,70 @@ using AutoMapper;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class CampaignService //: BaseService<CampaignDTO>
+    public class CampaignService : BaseService<Campaign>
     { 
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-    private static readonly ILog cLogger = LogManager.GetLogger<CampaignService>();
+        private static readonly ILog cLogger = LogManager.GetLogger<CampaignService>();
 
-        private IUnitOfWork iUoW;
+        public CampaignService(IUnitOfWork iUoW) : base(iUoW) { }
 
-
-        public CampaignService()
+        public override int Save(Campaign pCampaign)
         {
-        }
+            iUoW.BeginTransaction();
+            IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
 
-        private IUnitOfWork GetUnitOfWork()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<CampaignDTO> GetCampaigns()
-        {
-            IList<CampaignDTO> lResult = new List<CampaignDTO>();
-
-            using (this.iUoW = GetUnitOfWork())
+            //Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
+            if (pCampaign.Id == 0)
             {
-                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                IList<Campaign> lTemp = lRepo.GetAll().ToList();
-
-                foreach (var campaign in lTemp)
-                {
-                    CampaignDTO lDto = Mapper.Map<Campaign, CampaignDTO>(campaign);
-                    lResult.Add(lDto);
-                }
+                lRepo.Add(pCampaign);
             }
+            else
+            {
+                lRepo.Update(pCampaign);
+            }
+            iUoW.Commit();
+            return pCampaign.Id;
+        }
+
+        public override void Delete(int pId)
+        {
+            iUoW.BeginTransaction();
+            IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+            //Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
+            lRepo.Delete(pId);
+            iUoW.Commit();
+        }
+
+        public override IList<Campaign> GetAll()
+        {
+            IList<Campaign> lResult = new List<Campaign>();
+
+            IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+            IList<Campaign> lTemp = lRepo.GetAll().ToList();
+
+            foreach (var campaign in lTemp)
+            {
+                //CampaignDTO lDto = Mapper.Map<Campaign, CampaignDTO>(campaign);
+                lResult.Add(campaign);
+            }
+
             return lResult;
         }
 
-        public void SaveCampaign(CampaignDTO pCampaign)
+        public override Campaign Get(int pId)
         {
-            using (this.iUoW = GetUnitOfWork())
-            {
-                iUoW.BeginTransaction();
-                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
-                if (pCampaign.Id == 0)
-                {
-                    lRepo.Add(lCampaign);
-                }
-                else
-                {
-                    lRepo.Update(lCampaign);
-                }
-                iUoW.Commit();
-            }
+            Campaign lResult = new Campaign();
+
+            IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+
+            var lTemp = lRepo.GetByID(pId);
+
+            return lResult;
         }
 
-        public void DeleteCampaign(CampaignDTO pCampaign)
-        {
-            using (this.iUoW = GetUnitOfWork())
-            {
-                iUoW.BeginTransaction();
-                IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-                Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
-                lRepo.Delete(lCampaign.Id);
-                iUoW.Commit();
-            }
-        }        
 
-        
 
         /*public List<Campaign> GetAllCampaigns()
         {

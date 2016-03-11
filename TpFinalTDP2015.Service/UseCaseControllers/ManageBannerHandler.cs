@@ -24,7 +24,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         public void ModifyBanner(AdminBannerDTO pDto) { }
         //TODO: update
 
-        public void DeleteText(int pId)
+        public void DeleteBanner(int pId)
         {
             using (var serv = BusinessServiceLocator.Resolve<BannerService>())
             {

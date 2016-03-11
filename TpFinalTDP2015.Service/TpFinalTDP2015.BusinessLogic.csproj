@@ -143,6 +143,7 @@
     <Compile Include="RSS\RssReader.cs" />
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
     <Compile Include="UseCaseControllers\ManageBannerHandler.cs" />
+    <Compile Include="UseCaseControllers\ManageCampaignHandler.cs" />
     <Compile Include="UseCaseControllers\ManageScheduleHandler.cs" />
     <Compile Include="UseCaseControllers\ManageSourceHandler.cs" />
     <Compile Include="UseCaseControllers\ManageTextHandler.cs" />
