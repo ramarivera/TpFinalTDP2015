@@ -15,12 +15,14 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
     {
         private IDbContext iContext;
         private DbContextTransaction iTransaction;
+        private IsolationLevel iIsoLevel;
         private bool iDisposed = false;
         private IDictionary<Type, Object> iRepositories;
 
-        public EFUnitOfWork(IDbContext pContext)
+        public EFUnitOfWork(IDbContext pContext, IsolationLevel pIsolationLevel = IsolationLevel.ReadCommitted)
         {
             this.iContext = pContext;
+            this.iIsoLevel = pIsolationLevel;
             this.iRepositories = new Dictionary<Type, Object>();
             //TODO levantar el dato de un archivo de configuracion
         }
@@ -94,7 +96,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         #endregion
 
-        void IUnitOfWork.BeginTransaction(IsolationLevel pIsolationLevel)
+        void IUnitOfWork.BeginTransaction()
         {
             if (this.iTransaction == null)
             {
@@ -103,7 +105,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                     this.iTransaction.Dispose();
                 }
 
-                this.iTransaction = this.iContext.BeginTransaction(pIsolationLevel);
+                this.iTransaction = this.iContext.BeginTransaction(this.iIsoLevel);
             }
         }
 
