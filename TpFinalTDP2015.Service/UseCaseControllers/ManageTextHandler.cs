@@ -14,12 +14,24 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
     {
         public int AddText(StaticTextDTO pDto)
         {
+            using (var tran = UnitOfWorkFactory.GetUnitOfWork())
+            using (var serv = new ServiceFactory(tran))
+            {
+                
+            }
             using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
             {
                 StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pDto);
                 serv.Save(lStaticText);
                 return lStaticText.Id;
             }
+
+
+
+
+
+
+
         }
 
         public void ModifyText(StaticTextDTO pDto)

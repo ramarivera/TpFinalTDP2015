@@ -88,21 +88,4 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
        }
     }
 
-    static class EFExtensionMethods
-    {
-        public static IQueryable<TEntity> IncludeAll<TEntity>(this IQueryable<TEntity> queryable)
-        {
-            var type = typeof(TEntity);
-            var properties = type.GetProperties();
-            foreach (var property in properties)
-            {
-                var isVirtual = property.GetGetMethod().IsVirtual;
-                if (isVirtual && properties.FirstOrDefault(c => c.Name == property.Name + "Id") != null)
-                {
-                    queryable = queryable.Include(property.Name);
-                }
-            }
-            return queryable;
-        }
-    }
 }

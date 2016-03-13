@@ -30,18 +30,16 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         public virtual IDbSet<Day> Days { get; set; }
 
 
-        public DigitalSignageContext() : base(EFConfiguration.ConnectionString)
+        public DigitalSignageContext() : this(EFConfiguration.ConnectionString) { }
+
+        public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
         {
-            //  this.Configuration.ProxyCreationEnabled = false;
-            // this.Configuration.LazyLoadingEnabled = false;
-            
             this.Database.Log = (str => LogManager.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
 
             Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
 
             cLogger.InfoFormat("Conexion establecida a: {0}", this.Database.Connection.ConnectionString);
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

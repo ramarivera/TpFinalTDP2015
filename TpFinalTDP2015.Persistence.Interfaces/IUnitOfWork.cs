@@ -15,7 +15,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence
         void Commit();
         void Rollback();
 
-        void BeginTransaction(IsolationLevel pIsolationLevel = IsolationLevel.ReadCommitted);
+        void BeginTransaction();
     }
 
 }
