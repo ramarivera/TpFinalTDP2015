@@ -14,7 +14,6 @@ namespace MarrSystems.TpFinalTDP2015.Persistence
 
         void Commit();
         void Rollback();
-
         void BeginTransaction();
     }
 

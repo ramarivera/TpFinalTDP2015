@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 {
@@ -23,6 +24,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
             BusinessServiceLocator.Instance.Register(() => IoCContainerLocator.Container.Resolve<RssSourceService>());
 
 
+        }
+
+        public static IControllerFactory GetControllerFactory()
+        {
+            //TODO CAMBIAR NOMBREEEEEE
+            throw new NotImplementedException();
         }
     }
 }

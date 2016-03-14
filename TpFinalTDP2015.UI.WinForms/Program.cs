@@ -9,6 +9,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Enum;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
@@ -21,10 +22,11 @@ namespace MarrSystems.TpFinalTDP2015.UI
         static void Main()
         {
             BootStrapper.Configure();
+            IControllerFactory lFactory = BootStrapper.GetControllerFactory();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModoAdministrador());
+            Application.Run(new ModoAdministrador(lFactory));
         }
     }
 }
