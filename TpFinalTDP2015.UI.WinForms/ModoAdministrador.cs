@@ -7,15 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MarrSystems.TpFinalTDP2015.BusinessLogic;
 using MarrSystems.TpFinalTDP2015.UI.AdminModePages;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class ModoAdministrador : BaseForm
     {
-        public ModoAdministrador()
+        private IControllerFactory iContFactory;
+
+
+        public ModoAdministrador(IControllerFactory pFactory)
         {
+            this.iContFactory = pFactory; 
             InitializeComponent();
             this.Load += ModoAdministrador_Load;
         }

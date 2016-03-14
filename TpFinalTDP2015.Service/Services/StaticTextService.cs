@@ -19,56 +19,41 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<StaticTextService>();
+        private readonly IRepository<StaticText> iRepo;
 
-        public StaticTextService(IUnitOfWork iUoW) : base(iUoW)
+        public StaticTextService(IRepository<StaticText> pRepo, IUnitOfWork iUoW = null) : base(iUoW) //TODO  revisame, sacame Uow
         {
+            this.iRepo = pRepo;
         }
 
         public override int Save(StaticText pStaticText)
         {
-            iUoW.BeginTransaction();
-            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-
             if (pStaticText.Id == 0)
             {
-                lRepo.Add(pStaticText);
+                iRepo.Add(pStaticText);
             }
             else
             {
-                lRepo.Update(pStaticText);
+                iRepo.Update(pStaticText);
             }
-            iUoW.Commit();
             return pStaticText.Id;
         }
 
         public override void Delete(int pId)
         {
-            iUoW.BeginTransaction();
-            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-            
-            lRepo.Delete(pId);
-            iUoW.Commit();
+            iRepo.Delete(pId);
         }
 
         public override IList<StaticText> GetAll()
         {
-            IList<StaticText> lResult = new List<StaticText>();
-
-            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-            IList<StaticText> lTemp = lRepo.GetAll().ToList();
-
-            foreach (var staticText in lTemp)
-            {
-                lResult.Add(staticText);
-            }
+            IList<StaticText> lResult = iRepo.GetAll().ToList();
             return lResult;//.ToList<StaticText>();
         }
 
         public override StaticText Get(int pId)
         {
             StaticText lResult = new StaticText();
-            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-            lResult = lRepo.GetByID(pId);
+            lResult = iRepo.GetByID(pId);
             return lResult;
         }
     }
