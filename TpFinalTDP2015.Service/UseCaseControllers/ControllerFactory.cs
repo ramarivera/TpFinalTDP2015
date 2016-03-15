@@ -12,10 +12,10 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
     class ControllerFactory : IControllerFactory
     {
         private IServiceFactory iServFact;
-        private IUnitOfWorkFactory iUowFactory;
+        private IPersistenceFactory iUowFactory;
         private readonly IDictionary<Type, IController> iControllers;
 
-        internal ControllerFactory(IUnitOfWorkFactory pUowFact, IServiceFactory pServFact)
+        internal ControllerFactory(IPersistenceFactory pUowFact, IServiceFactory pServFact)
         {
             this.iUowFactory = pUowFact;
             this.iServFact = pServFact;

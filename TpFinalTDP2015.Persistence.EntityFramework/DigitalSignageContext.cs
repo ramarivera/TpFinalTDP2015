@@ -30,8 +30,6 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         public virtual IDbSet<Day> Days { get; set; }
 
 
-        public DigitalSignageContext() : this(EFConfiguration.ConnectionString) { }
-
         public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
         {
             this.Database.Log = (str => LogManager.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));

@@ -23,12 +23,5 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             pModel.Configurations.AddFromAssembly(typeof(EFConfiguration).Assembly);
         }
 
-        public static string ConnectionString
-        {
-            get
-            {
-                return ConfigurationManager.ConnectionStrings["DigitalSignage"].ConnectionString;
-            }
-        }
     }
 }

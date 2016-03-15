@@ -144,7 +144,6 @@
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
     <Compile Include="UseCaseControllers\ControllerFactory.cs" />
     <Compile Include="UseCaseControllers\IController.cs" />
-    <Compile Include="UseCaseControllers\IControllerClient.cs" />
     <Compile Include="UseCaseControllers\IControllerFactory.cs" />
     <Compile Include="UseCaseControllers\IServiceFactory.cs" />
     <Compile Include="UseCaseControllers\IStaticTextService.cs" />
