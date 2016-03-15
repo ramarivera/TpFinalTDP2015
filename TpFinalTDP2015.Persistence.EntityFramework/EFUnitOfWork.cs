@@ -96,7 +96,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         #endregion
 
-        void IUnitOfWork.BeginTransaction()
+        public void BeginTransaction()
         {
             if (this.iTransaction == null)
             {
@@ -109,7 +109,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             }
         }
 
-        void IUnitOfWork.Commit()
+        public void Commit()
         {
             try
             {
@@ -124,12 +124,12 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             }
         }
 
-        void IUnitOfWork.Rollback()
+        public void Rollback()
         {
             this.iTransaction.Rollback();
         }
 
-        IRepository<TEntity> IUnitOfWork.GetRepository<TEntity>()
+        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
             IRepository<TEntity> lRepo;
 

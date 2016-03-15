@@ -148,15 +148,12 @@
     <Compile Include="UseCaseControllers\IControllerFactory.cs" />
     <Compile Include="UseCaseControllers\IServiceFactory.cs" />
     <Compile Include="UseCaseControllers\IStaticTextService.cs" />
-    <Compile Include="UseCaseControllers\IUnitOfWorkFactory.cs" />
     <Compile Include="UseCaseControllers\ManageBannerHandler.cs" />
     <Compile Include="UseCaseControllers\ManageCampaignHandler.cs" />
     <Compile Include="UseCaseControllers\ManageScheduleHandler.cs" />
     <Compile Include="UseCaseControllers\ManageSourceHandler.cs" />
     <Compile Include="UseCaseControllers\ManageTextHandler.cs" />
     <Compile Include="UseCaseControllers\ServiceFactory.cs" />
-    <Compile Include="UseCaseControllers\TransactionManager.cs" />
-    <Compile Include="UseCaseControllers\UnitOfWorkFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
