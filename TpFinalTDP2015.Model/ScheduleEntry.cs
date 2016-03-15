@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarrSystems.TpFinalTDP2015.Model.Exceptiones;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,8 +33,26 @@ namespace MarrSystems.TpFinalTDP2015.Model
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new HoraInvalidaException("La hora indicada no es valida");
                 }
+
+                /*
+                if (!(value < this.iEndTime))
+                {
+                    throw new HoraInvalidaException("La hora de inicio del intervalo debe ser menor a la hora de fin");
+                }
+                else if (!(value >= MIN_VALUE))
+                {
+                    throw new HoraInvalidaException("La hora indicada debe ser mayor o igual a "+MIN_VALUE.ToString());
+                }
+                else if (!(value <= MAX_VALUE))
+                {
+                    throw new HoraInvalidaException("La hora indicada debe ser menor o igual a " + MAX_VALUE.ToString());
+                }
+                else
+                {
+                    this.iStartTime = value;
+                }*/
             }
         }
         public virtual TimeSpan End
@@ -47,8 +66,26 @@ namespace MarrSystems.TpFinalTDP2015.Model
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new HoraInvalidaException("La hora indicada no es valida");
                 }
+
+                /*
+                if (!(value > this.iStartTime))
+                {
+                    throw new HoraInvalidaException("La hora de fin del intervalo debe ser mayor a la hora de inicio");
+                }
+                else if (!(value >= MIN_VALUE))
+                {
+                    throw new HoraInvalidaException("La hora indicada debe ser mayor o igual a "+MIN_VALUE.ToString());
+                }
+                else if (!(value <= MAX_VALUE))
+                {
+                    throw new HoraInvalidaException("La hora indicada debe ser menor o igual a " + MAX_VALUE.ToString());
+                }
+                else
+                {
+                    this.iStartTime = value;
+                }*/
             }
         }
 

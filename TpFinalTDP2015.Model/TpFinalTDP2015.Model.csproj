@@ -65,6 +65,12 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Campaign.cs" />
     <Compile Include="DomainServices\DomainServiceFactory.cs" />
+    <Compile Include="Exceptiones\DiaRepetidoException.cs" />
+    <Compile Include="Exceptiones\EntidadNulaException.cs" />
+    <Compile Include="Exceptiones\FechaInvalidaException.cs" />
+    <Compile Include="Exceptiones\HoraInvalidaException.cs" />
+    <Compile Include="Exceptiones\IntervaloFechaInvalidoException.cs" />
+    <Compile Include="Exceptiones\IntervaloTiempoInvalidoException.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Day.cs" />
     <Compile Include="DomainServices\ISeFijaSiEstaActivo.cs" />

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.Model.Enum;
 using MarrSystems.TpFinalTDP2015.Model.Interfaces;
+using MarrSystems.TpFinalTDP2015.Model.Exceptiones;
 
 namespace MarrSystems.TpFinalTDP2015.Model
 {
@@ -43,8 +44,25 @@ namespace MarrSystems.TpFinalTDP2015.Model
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new FechaInvalidaException("La fecha indicada no es valida");
                 }
+/*
+                if (!(value <= this.iActiveUntil))
+                {
+                    throw new FechaInvalidaException("La fecha de inicio del intervalo debe ser menor o igual a la fecha de fin");
+                }
+                else if (!(value >= MIN_VALUE))
+                {
+                    throw new FechaInvalidaException("La fecha indicada debe ser mayor o igual a "+MIN_VALUE.ToString());
+                }
+                else if (!(value <= MAX_VALUE))
+                {
+                    throw new FechaInvalidaException("La fecha indicada debe ser menor o igual a " + MAX_VALUE.ToString());
+                }
+                else
+                {
+                    this.iActiveFrom = value;
+                }*/
             }
         }
         public virtual DateTime ActiveUntil
@@ -58,8 +76,27 @@ namespace MarrSystems.TpFinalTDP2015.Model
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException();
+                    throw new FechaInvalidaException("La fecha indicada no es valida");
                 }
+
+                /*
+                if (!(value >= this.iActiveFrom))
+                {
+                    throw new FechaInvalidaException("La fecha de fin del intervalo debe ser mayor o igual a la fecha de inicio");
+                }
+                else if (!(value >= MIN_VALUE))
+                {
+                    throw new FechaInvalidaException("La fecha indicada debe ser mayor o igual a "+MIN_VALUE.ToString());
+                }
+                else if (!(value <= MAX_VALUE))
+                {
+                    throw new FechaInvalidaException("La fecha indicada debe ser menor o igual a " + MAX_VALUE.ToString());
+                }
+                else
+                {
+                    this.iActiveFrom = value;
+                }*/
+
             }
         }
 
@@ -91,7 +128,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
             if (this.Days.Contains(pDay))
             {
                 //TODO excepcion dia repetido
-                throw new ArgumentOutOfRangeException();
+                throw new DiaRepetidoException("El día indicado ya existe en el intervalo");
             }
             else
             {
@@ -116,11 +153,11 @@ namespace MarrSystems.TpFinalTDP2015.Model
         {
             if (pInterval == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("El intervalo de tiempo indicado es nulo");
             }
             if (!this.CanBeAdded(pInterval))
             {
-                throw new ArgumentOutOfRangeException();
+                throw new IntervaloTiempoInvalidoException("El intervalo de tiempo indicado no puede ser agregado al Intervalo de fechas debido a que se superpone con un intervalo de tiempo existente");
             }
             else
             {

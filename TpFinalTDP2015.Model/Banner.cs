@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 using MarrSystems.TpFinalTDP2015.Model.Interfaces;
+using MarrSystems.TpFinalTDP2015.Model.Exceptiones;
 
 namespace MarrSystems.TpFinalTDP2015.Model
 {
@@ -57,11 +58,11 @@ namespace MarrSystems.TpFinalTDP2015.Model
         {
             if (pInterval == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("El intervalo de fechas indicado es nulo");
             }
             else if (!pValidator.CanAddSchedule(this, pInterval))
             {
-                throw new ArgumentOutOfRangeException();
+                throw new IntervaloFechaInvalidoException("El intervalo de fechas indicado no puede ser agregado al Banner debido a que se superpone con un intervalo existente");
             }
             else
             {
@@ -88,7 +89,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
         {
             if(pItem == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("El item indicado es nulo");
             }
             else
             {
@@ -104,7 +105,14 @@ namespace MarrSystems.TpFinalTDP2015.Model
 
         public virtual void AddSource(RssSource pSource)
         {
-            this.RSSSources.Add(pSource);
+            if (pSource == null)
+            {
+                throw new EntidadNulaException("La fuente RSS indicada es nula");
+            }
+            else
+            {
+                this.RSSSources.Add(pSource);
+            }
             //TODO verificar que ya no este? donde se llame al metodo
         }
 
