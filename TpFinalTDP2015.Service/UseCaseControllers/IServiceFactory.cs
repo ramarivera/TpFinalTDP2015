@@ -1,6 +1,14 @@
-﻿namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
+﻿using MarrSystems.TpFinalTDP2015.Persistence;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    internal interface IServiceFactory
+    public interface IServiceFactory
     {
+        //TODO Cambiar namespace
     }
 }

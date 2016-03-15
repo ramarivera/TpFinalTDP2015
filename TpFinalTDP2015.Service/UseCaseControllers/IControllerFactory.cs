@@ -8,5 +8,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public interface IControllerFactory
     {
+        T GetController<T>() where T : IController;
+        void ReleaseController(IController pController);
     }
 }

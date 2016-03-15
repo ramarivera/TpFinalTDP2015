@@ -17,11 +17,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
             AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"TpFinalTDP2015.config");
             AutoMapperConfiguration.Configure();
 
-            BusinessServiceLocator.Instance.Register(() => IoCContainerLocator.Container.Resolve<BannerService>());
-            BusinessServiceLocator.Instance.Register(() => IoCContainerLocator.Container.Resolve<StaticTextService>());
-            BusinessServiceLocator.Instance.Register(() => IoCContainerLocator.Container.Resolve<CampaignService>());
-            BusinessServiceLocator.Instance.Register(() => IoCContainerLocator.Container.Resolve<ScheduleService>());
-            BusinessServiceLocator.Instance.Register(() => IoCContainerLocator.Container.Resolve<RssSourceService>());
+            BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<BannerService>());
+            BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<StaticTextService>());
+            BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<CampaignService>());
+            BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<ScheduleService>());
+            BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<RssSourceService>());
 
 
         }
@@ -29,7 +29,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
         public static IControllerFactory GetControllerFactory()
         {
             //TODO CAMBIAR NOMBREEEEEE
-            throw new NotImplementedException();
+            return IoCContainerLocator.Container.Resolve<IControllerFactory>();
+        //    throw new NotImplementedException();
         }
     }
 }

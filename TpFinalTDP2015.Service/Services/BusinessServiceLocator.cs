@@ -6,40 +6,21 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 
     public class BusinessServiceLocator
     {
-        private static BusinessServiceLocator cInstance = null;
-        private readonly Dictionary<Type, Func<object>> iServices;
+        private static readonly Dictionary<Type, Func<object>> cServices = new Dictionary<Type, Func<object>>();
 
-        private BusinessServiceLocator()
+        public static void Register<T>(Func<T> resolver)
         {
-            iServices = new Dictionary<Type, Func<object>>();
+            cServices[typeof(T)] = () => resolver();
         }
 
-
-        public static BusinessServiceLocator Instance
+        public static T Resolve<T>()
         {
-            get
-            {
-                if (cInstance == null)
-                {
-                    cInstance = new BusinessServiceLocator();
-                }
-                return cInstance;
-            }
+            return (T)cServices[typeof(T)]();
         }
 
-        public void Register<T>(Func<T> resolver)
+        internal static void Reset()
         {
-            iServices[typeof(T)] = () => resolver();
-        }
-
-        public T Resolve<T>()
-        {
-            return (T)iServices[typeof(T)]();
-        }
-
-        internal void Reset()
-        {
-            iServices.Clear();
+            cServices.Clear();
         }
 
 
