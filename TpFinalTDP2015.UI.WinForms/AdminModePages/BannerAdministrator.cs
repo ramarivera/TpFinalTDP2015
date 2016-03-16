@@ -12,6 +12,8 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.UI.View;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Extensibility;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
@@ -35,6 +37,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             this.btnDelete.Click += BtnDelete_Click;
         }
 
+        [Log]
         private void CargarDataGrid()
         {
             try
