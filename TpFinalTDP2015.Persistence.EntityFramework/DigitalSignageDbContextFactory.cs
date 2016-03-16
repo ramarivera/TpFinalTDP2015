@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
-    class DigitalSignageDbContextFactory : IDbContextFactory
+   public class DigitalSignageDbContextFactory : IDbContextFactory
     {
         private readonly string iConnString;
 
-        DigitalSignageDbContextFactory(string pConectionStringName)
+       public DigitalSignageDbContextFactory(string pConectionStringName)
         {
-            if (ConfigurationManager.ConnectionStrings[pConectionStringName] != null)
+            string lName = pConectionStringName;
+            if (ConfigurationManager.ConnectionStrings[pConectionStringName] == null)
             {
-                iConnString = ConfigurationManager.ConnectionStrings[pConectionStringName].ConnectionString;
+                lName = "DigitalSignage";
             }
-            iConnString = ConfigurationManager.ConnectionStrings[@"DigitalSignageContext"].ConnectionString;
+            iConnString = ConfigurationManager.ConnectionStrings[lName].ConnectionString;
+
         }
 
 

@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-
-
-    class ControllerFactory : IControllerFactory
+    public class ControllerFactory : IControllerFactory
     {
         private IServiceFactory iServFact;
         private IPersistenceFactory iUowFactory;
         private readonly IDictionary<Type, IController> iControllers;
 
-        internal ControllerFactory(IPersistenceFactory pUowFact, IServiceFactory pServFact)
+        public ControllerFactory(IPersistenceFactory pUowFact, IServiceFactory pServFact)
         {
             this.iUowFactory = pUowFact;
             this.iServFact = pServFact;
             this.iControllers = new Dictionary<Type, IController>();
         }
+
+     
 
 
 
