@@ -72,6 +72,10 @@
       <HintPath>..\packages\PostSharp.4.2.22\lib\net35-client\PostSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PostSharp.Patterns.Diagnostics, Version=4.2.22.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.Patterns.Diagnostics.4.2.22\lib\net40\PostSharp.Patterns.Diagnostics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
@@ -162,6 +166,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="TpFinalTDP2015.BusinessLogic.psproj" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TpFinalTDP2015.CrossCutting\TpFinalTDP2015.CrossCutting.csproj">
@@ -185,7 +190,6 @@
       <Name>TpFinalTDP2015.Persistence.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)PostBuild.bat" "$(TargetPath)"</PostBuildEvent>
