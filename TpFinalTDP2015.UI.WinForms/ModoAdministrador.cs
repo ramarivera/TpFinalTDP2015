@@ -71,7 +71,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 lPageName = trvPageNames.SelectedNode.Text;
                
             }
-            AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(lPageName);
+            AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(this.iContFactory, lPageName);
             this.PageName = lPageName;
             this.SelectedPage = lPage;
             

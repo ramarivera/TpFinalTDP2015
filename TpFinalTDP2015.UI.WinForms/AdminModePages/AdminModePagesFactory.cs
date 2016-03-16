@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
@@ -26,12 +27,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
                 iNameList = new List<String>();
 
-                var types = AppDomain
-                        .CurrentDomain
-                        .GetAssemblies()
-                        .SelectMany(s => s.GetTypes());
-
-                foreach (Type t in types)
+                foreach (Type t in this.GetType().Assembly.GetTypes())
                 {
                     System.Attribute[] attrs = System.Attribute.GetCustomAttributes(t);
 
@@ -41,7 +37,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                         {
                             string lName = ((AdminModePageInfo)attr).Name;
                             iNameList.Add(lName);
-                            AdminModePage lPage = (AdminModePage)Activator.CreateInstance(t);
+                            AdminModePage lPage = (AdminModePage)Activator.CreateInstance(t, new object[] { });
                             //TODO Ajustar esto, no deberia ser publica?
                             //TODO Ajustar y usar lazy Init
                             //TODO revisar tema excepcion de reflection
@@ -72,6 +68,11 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 //Display or log the error based on your application.
             }
             
+        }
+
+        internal AdminModePage GetAdminModePage(IControllerFactory iContFactory, string lPageName)
+        {
+            throw new NotImplementedException();
         }
 
         public static AdminModePagesFactory Instance

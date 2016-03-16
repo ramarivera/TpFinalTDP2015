@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 using MarrSystems.TpFinalTDP2015.Persistence;
 using MarrSystems.TpFinalTDP2015.Persistence.EntityFramework;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Extensibility;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 {
     public static class BootStrapper
     {
+        [Log]
         public static void Configure()
         {
-            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE", @"TpFinalTDP2015.config");
+            AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE","TpFinalTDP2015.config");
             AutoMapperConfiguration.Configure();
 
         //   BusinessServiceLocator.Register(() => IoCContainerLocator.Container.Resolve<BannerService>());
@@ -28,6 +31,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
         }
 
+        [Log]
         public static IControllerFactory GetControllerFactory()
         {
             //TODO CAMBIAR NOMBREEEEEE
