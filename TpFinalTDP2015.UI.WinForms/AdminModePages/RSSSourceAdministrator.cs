@@ -11,6 +11,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.UI.View;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
@@ -107,10 +108,17 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dgvRSSSource.CurrentRow;
-            var lRssSource = dgvRSSSource.GetItem(row.Index);
-            RssSourceView ventana = new RssSourceView();
-            ventana.View(lRssSource);
+            try
+            {
+                DataGridViewRow row = dgvRSSSource.CurrentRow;
+                var lRssSource = dgvRSSSource.GetItem(row.Index);
+                RssSourceView ventana = new RssSourceView();
+                ventana.View(lRssSource);
+            }
+            catch (EntidadNulaException ex)
+            {
+                MessageBox.Show(ex.Message, "Entidad nula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

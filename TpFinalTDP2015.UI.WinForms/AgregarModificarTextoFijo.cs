@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
@@ -39,7 +40,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             if (pStaticText == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("El texto fijo indicado es nulo");
                 //TODO excepcion argumentexception creo
             }
             else
@@ -59,7 +60,34 @@ namespace MarrSystems.TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
+            try
+            {
+                if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Título'");
+                }
+                else if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Descripción'");
+                }
+                else if ((String.IsNullOrWhiteSpace(this.txtText.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Texto'");
+                }
+                else
+                {
+                    this.iOriginalStaticText.Title = this.txtTitle.Text;
+                    this.iOriginalStaticText.Description = this.txtDescription.Text;
+                    this.iOriginalStaticText.Text = this.txtText.Text;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            catch (CampoNuloOVacioException ex)
+            {
+                MessageBox.Show(ex.Message, "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            /*if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
             {
                 MessageBox.Show("Complete el campo 'Título'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -78,7 +106,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 this.iOriginalStaticText.Text = this.txtText.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            }
+            }*/
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

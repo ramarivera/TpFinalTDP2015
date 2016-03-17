@@ -11,6 +11,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.UI.View;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
@@ -109,10 +110,17 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dgvStaticText.CurrentRow;
-            StaticTextDTO staticText = dgvStaticText.GetItem(row.Index);
-            StaticTextView ventana = new StaticTextView();
-            ventana.View(staticText);
+            try
+            {
+                DataGridViewRow row = dgvStaticText.CurrentRow;
+                StaticTextDTO staticText = dgvStaticText.GetItem(row.Index);
+                StaticTextView ventana = new StaticTextView();
+                ventana.View(staticText);
+            }
+            catch (EntidadNulaException ex)
+            {
+                MessageBox.Show(ex.Message, "Entidad nula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

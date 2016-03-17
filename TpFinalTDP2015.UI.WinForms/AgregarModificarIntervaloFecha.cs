@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
@@ -38,7 +39,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             if (pDateInterval == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("El intervalo de fechas indicado es nulo");
                 //TODO excepcion argumentexception creo
             }
             else
@@ -98,6 +99,55 @@ namespace MarrSystems.TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Título'");
+                }
+                else
+                {
+                    this.iOriginalDateInterval.Name = this.txtTitle.Text;
+                    this.iOriginalDateInterval.ActiveFrom = this.dtpStartDate.Value;
+                    this.iOriginalDateInterval.ActiveUntil = this.dtpEndDate.Value;
+                    this.iOriginalDateInterval.Days.Clear();
+                    if (this.chkSunday.Checked)
+                    {
+                        this.iOriginalDateInterval.Days.Add(Days.Domingo);
+                    }
+                    if (this.chkMonday.Checked)
+                    {
+                        this.iOriginalDateInterval.Days.Add(Days.Lunes);
+                    }
+                    if (this.chkTuesday.Checked)
+                    {
+                        this.iOriginalDateInterval.Days.Add(Days.Martes);
+                    }
+                    if (this.chkWednesday.Checked)
+                    {
+                        this.iOriginalDateInterval.Days.Add(Days.Miercoles);
+                    }
+                    if (this.chkThursday.Checked)
+                    {
+                        this.iOriginalDateInterval.Days.Add(Days.Jueves);
+                    }
+                    if (this.chkFriday.Checked)
+                    {
+                        this.iOriginalDateInterval.Days.Add(Days.Viernes);
+                    }
+                    if (this.chkSaturday.Checked)
+                    {
+                        this.iOriginalDateInterval.Days.Add(Days.Sabado);
+                    }
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            catch (CampoNuloOVacioException ex)
+            {
+                MessageBox.Show(ex.Message, "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            /*
             if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
             {
                 MessageBox.Show("Complete el campo 'Título'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -138,8 +188,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 }
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            }
-                
+            }*/
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -162,6 +162,8 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Excepciones\CampoNuloOVacioException.cs" />
+    <Compile Include="Excepciones\EntidadNulaException.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

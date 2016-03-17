@@ -12,6 +12,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.UI.View;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
@@ -43,7 +44,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
             catch (Exception)
             {
-
+                //TODO tengo que ver cual
                 throw;
             }
         }
@@ -86,17 +87,15 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                
-                    AdminBannerDTO banner = new AdminBannerDTO();
-                    AgregarModificarBanner ventana = new AgregarModificarBanner();
-                    this.dgvBanner.Add(ventana, banner);
-                    iController.AddBanner(banner);
-                    this.CargarDataGrid();
-                
+                AdminBannerDTO banner = new AdminBannerDTO();
+                AgregarModificarBanner ventana = new AgregarModificarBanner();
+                this.dgvBanner.Add(ventana, banner);
+                iController.AddBanner(banner);
+                this.CargarDataGrid();
             }
             catch (Exception)
             {
-
+                //TODO faltan excepciones en business logic
                 throw;
             }
         }
@@ -113,17 +112,25 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
             catch (Exception)
             {
-
+                //TODO faltan excepciones en business logic
                 throw;
             }
         }
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dgvBanner.CurrentRow;
-            AdminBannerDTO banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
-            BannerView ventana = new BannerView();
-            ventana.View(banner);
+            try
+            {
+                DataGridViewRow row = dgvBanner.CurrentRow;
+                AdminBannerDTO banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
+                BannerView ventana = new BannerView();
+                ventana.View(banner);
+            }
+            catch (EntidadNulaException ex)
+            {
+                MessageBox.Show(ex.Message, "Entidad nula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

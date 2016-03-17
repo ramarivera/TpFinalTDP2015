@@ -11,6 +11,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.Comparers;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
@@ -37,7 +38,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             if (pCampaign == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("La campaña indicada es nula");
                 //TODO excepcion argumentexception creo
             }
             else
@@ -56,6 +57,29 @@ namespace MarrSystems.TpFinalTDP2015.UI
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Título'");
+                }
+                else if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Descripción'");
+                }
+                else
+                {
+                    this.iOriginalCampaign.Name = this.txtTitle.Text;
+                    this.iOriginalCampaign.Description = this.txtDescription.Text;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            catch (CampoNuloOVacioException ex)
+            {
+                MessageBox.Show(ex.Message, "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            /*
             if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
             {
                 MessageBox.Show("Complete el campo 'Título'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -70,7 +94,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 this.iOriginalCampaign.Description = this.txtDescription.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            }
+            }*/
                 
         }
 

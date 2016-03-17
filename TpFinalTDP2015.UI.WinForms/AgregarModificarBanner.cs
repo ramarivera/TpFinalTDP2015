@@ -11,6 +11,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Comparers;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
@@ -45,7 +46,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             if (pBanner == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("El Banner indicado es nulo");
                 //TODO excepcion argumentexception creo
             }
             else
@@ -69,6 +70,29 @@ namespace MarrSystems.TpFinalTDP2015.UI
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if ((String.IsNullOrWhiteSpace(this.txtName.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Nombre'");
+                }
+                else if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Descripción'");
+                }
+                else
+                {
+                    this.iOriginalBanner.Name = this.txtName.Text;
+                    this.iOriginalBanner.Description = this.txtDescription.Text;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            catch (CampoNuloOVacioException ex)
+            {
+                MessageBox.Show(ex.Message, "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            /*
             if ((String.IsNullOrWhiteSpace(this.txtName.Text)))
             {
                 MessageBox.Show("Complete el campo 'Nombre'","Faltan datos",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -83,7 +107,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 this.iOriginalBanner.Description = this.txtDescription.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            }
+            }*/
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -108,52 +132,52 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             try
             {
-                    int i = 0;
-                    IList<ScheduleDTO> lIntervals = this.dateIntervalController.ListSchedules();
-                    IList<StaticTextDTO> lTexts = this.staticTextController.ListTexts();
-                    IList<RssSourceDTO> lSources = this.rssSourcesController.ListSources();
-                    IList<ScheduleDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
-                    IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
-                    IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
+                int i = 0;
+                IList<ScheduleDTO> lIntervals = this.dateIntervalController.ListSchedules();
+                IList<StaticTextDTO> lTexts = this.staticTextController.ListTexts();
+                IList<RssSourceDTO> lSources = this.rssSourcesController.ListSources();
+                IList<ScheduleDTO> lBannerIntervals = this.iOriginalBanner.ActiveIntervals;
+                IList<StaticTextDTO> lBannerTexts = this.iOriginalBanner.Texts;
+                IList<RssSourceDTO> lBannerSources = this.iOriginalBanner.RssSources;
 
-                    foreach (ScheduleDTO lInterval in lIntervals)
+                foreach (ScheduleDTO lInterval in lIntervals)
+                {
+                    this.chlInterval.Items.Add(lInterval.Name);
+                    if (lBannerIntervals != null)
                     {
-                        this.chlInterval.Items.Add(lInterval.Name);
-                        if (lBannerIntervals != null)
+                        if (lBannerIntervals.Contains(lInterval, new DateIntervalDTOComparer()))
                         {
-                            if (lBannerIntervals.Contains(lInterval, new DateIntervalDTOComparer()))
-                            {
-                                this.chlInterval.SetItemChecked(i, true);
-                            }
-                            i++;
+                            this.chlInterval.SetItemChecked(i, true);
                         }
+                        i++;
                     }
-                    i = 0;
-                    foreach (RssSourceDTO lSource in lSources)
+                }
+                i = 0;
+                foreach (RssSourceDTO lSource in lSources)
+                {
+                    this.chlSources.Items.Add(lSource.Title);
+                    if (lBannerSources != null)
                     {
-                        this.chlSources.Items.Add(lSource.Title);
-                        if (lBannerSources != null)
+                        if (lBannerSources.Contains(lSource, new RssSourceDTOComparer()))
                         {
-                            if (lBannerSources.Contains(lSource, new RssSourceDTOComparer()))
-                            {
-                                this.chlSources.SetItemChecked(i, true);
-                            }
-                            i++;
+                            this.chlSources.SetItemChecked(i, true);
                         }
+                        i++;
                     }
-                    i = 0;
-                    foreach (StaticTextDTO lText in lTexts)
+                }
+                i = 0;
+                foreach (StaticTextDTO lText in lTexts)
+                {
+                    this.chlTexts.Items.Add(lText.Title);
+                    if (lBannerTexts != null)
                     {
-                        this.chlTexts.Items.Add(lText.Title);
-                        if (lBannerTexts != null)
+                        if (lBannerTexts.Contains(lText, new StaticTextDTOComparer()))
                         {
-                            if (lBannerTexts.Contains(lText, new StaticTextDTOComparer()))
-                            {
-                                this.chlTexts.SetItemChecked(i, true);
-                            }
-                            i++;
+                            this.chlTexts.SetItemChecked(i, true);
                         }
+                        i++;
                     }
+                }
             }
             catch (Exception)
             {

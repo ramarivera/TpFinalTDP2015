@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
@@ -37,7 +38,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             if (pRSSSource == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("La fuente RSS indicada es nula");
                 //TODO excepcion argumentexception creo
             }
             else
@@ -57,6 +58,34 @@ namespace MarrSystems.TpFinalTDP2015.UI
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Título'");
+                }
+                else if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'Descripción'");
+                }
+                else if ((String.IsNullOrWhiteSpace(this.txtURL.Text)))
+                {
+                    throw new CampoNuloOVacioException("Complete el campo 'URL'");
+                }
+                else
+                {
+                    this.iOriginalRSSSource.Title = this.txtTitle.Text;
+                    this.iOriginalRSSSource.Description = this.txtDescription.Text;
+                    this.iOriginalRSSSource.URL = this.txtURL.Text;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            catch (CampoNuloOVacioException ex)
+            {
+                MessageBox.Show(ex.Message, "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            /*
             if ((String.IsNullOrWhiteSpace(this.txtTitle.Text)))
             {
                 MessageBox.Show("Complete el campo 'Título'", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -76,7 +105,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 this.iOriginalRSSSource.URL = this.txtURL.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            }   
+            } */  
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

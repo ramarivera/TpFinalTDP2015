@@ -11,6 +11,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.UI.View;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
@@ -170,10 +171,17 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dgvDateInterval.CurrentRow;
-            this.dateInterval = dgvDateInterval.GetItem(row.Index);
-            DateIntervalView ventana = new DateIntervalView();
-            ventana.View(this.dateInterval);
+            try
+            {
+                DataGridViewRow row = dgvDateInterval.CurrentRow;
+                this.dateInterval = dgvDateInterval.GetItem(row.Index);
+                DateIntervalView ventana = new DateIntervalView();
+                ventana.View(this.dateInterval);
+            }
+            catch (EntidadNulaException ex)
+            {
+                MessageBox.Show(ex.Message, "Entidad nula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

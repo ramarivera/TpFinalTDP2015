@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI.View
 {
@@ -25,7 +26,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
         {
             if (pDateInterval == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("El Intervalo de fechas indicado es nulo");
                 //TODO excepcion argumentexception creo
             }
             else

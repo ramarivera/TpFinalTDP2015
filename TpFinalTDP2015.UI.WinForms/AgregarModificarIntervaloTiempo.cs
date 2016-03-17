@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using TpFinalTDP2015.UI.Excepciones;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
@@ -36,7 +37,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
         {
             if (pTimeInterval == null)
             {
-                throw new ArgumentNullException();
+                throw new EntidadNulaException("El intervalo de tiempo indicado es nulo");
                 //TODO excepcion argumentexception creo
             }
             else
