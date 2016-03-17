@@ -7,8 +7,8 @@
     <ProjectGuid>{92F31C87-F056-4C81-9318-967A88A530D3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TpFinalTDP2015.UI</RootNamespace>
-    <AssemblyName>TpFinalTDP2015.UI</AssemblyName>
+    <RootNamespace>TpFinalTDP2015.UI.WinForms</RootNamespace>
+    <AssemblyName>TpFinalTDP2015.UI.WinForms</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -104,12 +104,6 @@
     </Compile>
     <Compile Include="AdminModePages\IntervalAdministrator.Designer.cs">
       <DependentUpon>IntervalAdministrator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminModePages\NullPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminModePages\NullPage.Designer.cs">
-      <DependentUpon>NullPage.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminModePages\RSSSourceAdministrator.cs">
       <SubType>Form</SubType>
@@ -239,9 +233,6 @@
     <EmbeddedResource Include="AdminModePages\IntervalAdministrator.resx">
       <DependentUpon>IntervalAdministrator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminModePages\NullPage.resx">
-      <DependentUpon>NullPage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdminModePages\RSSSourceAdministrator.resx">
       <DependentUpon>RSSSourceAdministrator.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +283,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\BannerView.resx">
       <DependentUpon>BannerView.cs</DependentUpon>

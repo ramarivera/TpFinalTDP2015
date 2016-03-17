@@ -14,12 +14,15 @@ namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class ModoAdministrador : BaseForm
     {
-        private IControllerFactory iContFactory;
+        private readonly IControllerFactory iContFactory;
+        private readonly AdminModePagesFactory iFactory;
 
 
         public ModoAdministrador(IControllerFactory pFactory)
         {
-            this.iContFactory = pFactory; 
+            this.iContFactory = pFactory;
+            this.iFactory = new AdminModePagesFactory(this.iContFactory);
+                
             InitializeComponent();
             this.Load += ModoAdministrador_Load;
         }
@@ -49,7 +52,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
 
         private void ParseNames()
         {
-            IList<String> lList = AdminModePagesFactory.Instance.PageNames;
+            IList<String> lList = this.iFactory.PageNames;
 
             foreach (string name in lList)
             {
@@ -71,7 +74,7 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 lPageName = trvPageNames.SelectedNode.Text;
                
             }
-            AdminModePage lPage = AdminModePagesFactory.Instance.GetAdminModePage(this.iContFactory, lPageName);
+            AdminModePage lPage = this.iFactory.GetPage(lPageName);
             this.PageName = lPageName;
             this.SelectedPage = lPage;
             

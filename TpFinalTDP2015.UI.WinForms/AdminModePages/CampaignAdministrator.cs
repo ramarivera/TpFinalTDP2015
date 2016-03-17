@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
@@ -20,7 +21,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
 
         CampaignDTO campaign;
-        public CampaignAdministrator() : base()
+        public CampaignAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
            
             InitializeComponent();
