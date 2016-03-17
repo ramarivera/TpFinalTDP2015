@@ -31,6 +31,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
         }
 
+
         [Log]
         public static IControllerFactory GetControllerFactory()
         {

@@ -23,7 +23,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private GenericDGV<AdminBannerDTO> dgvBanner;
                   
 
-        public BannerAdministrator(): base()
+        public BannerAdministrator(IControllerFactory pFactory): base(pFactory)
         {
             InitializeComponent();
             this.Load += BannerAdministrator_Load;
