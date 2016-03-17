@@ -1,4 +1,5 @@
-﻿using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
+﻿using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
 using MarrSystems.TpFinalTDP2015.Persistence;
 using System;
 using System.Collections.Generic;
@@ -43,12 +44,23 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
                     var lArgsInfo = lCons.GetParameters();
                     int lArgsCount = lArgsInfo.Count();
                     Object[] lArgs = new Object[lArgsCount];
+                    IUnitOfWork lUow = iUowFactory.CreateUnitOfWork(); ;
+
 
                     foreach (var info in lArgsInfo)
                     {
-                        if (info.ParameterType == typeof()
-                        {
+                        object lDependency;
+                        bool isUnitOfWork = info.ParameterType == typeof(IUnitOfWork);
+                        bool isDomainService = true;
+                        bool isBusinessService = true;
 
+                        if (isUnitOfWork)
+                        {
+                            lDependency = lUow;
+                        }
+                        else if (isBusinessService)
+                        {
+                            lDependency = iServFact.BusinessServiceFactory.GetService<>
                         }
                     }
                 }
