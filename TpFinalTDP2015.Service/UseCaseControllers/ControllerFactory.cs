@@ -1,4 +1,5 @@
-﻿using MarrSystems.TpFinalTDP2015.Persistence;
+﻿using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
+using MarrSystems.TpFinalTDP2015.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
+    [CanResolve(typeof(ManageBannerHandler), typeof(ManageScheduleHandler),
+        typeof(ManageScheduleHandler), typeof(ManageTextHandler))]
     public class ControllerFactory : IControllerFactory
     {
         private IServiceFactory iServFact;
@@ -34,6 +37,26 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             }
             else
             {
+                var lCons = typeof(T).GetConstructors().FirstOrDefault();
+                if (lCons != null)
+                {
+                    var lArgsInfo = lCons.GetParameters();
+                    int lArgsCount = lArgsInfo.Count();
+                    Object[] lArgs = new Object[lArgsCount];
+
+                    foreach (var info in lArgsInfo)
+                    {
+                        if (info.ParameterType == typeof()
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+                    throw new Exception();
+                }
+                
                 // aCA DE alguna manera magica CREO EL CONTROLADOR PEDIDO
 
 
