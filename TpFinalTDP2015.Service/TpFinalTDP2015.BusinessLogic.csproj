@@ -151,9 +151,14 @@
     <Compile Include="RSS\RawXmlRssReader.cs" />
     <Compile Include="RSS\RssReader.cs" />
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
+    <Compile Include="UseCaseControllers\BusinessServiceFactory.cs" />
     <Compile Include="UseCaseControllers\ControllerFactory.cs" />
+    <Compile Include="UseCaseControllers\IBusinessService.cs" />
+    <Compile Include="UseCaseControllers\IBusinessServiceFactory.cs" />
     <Compile Include="UseCaseControllers\IController.cs" />
     <Compile Include="UseCaseControllers\IControllerFactory.cs" />
+    <Compile Include="UseCaseControllers\IDomainService.cs" />
+    <Compile Include="UseCaseControllers\IDomainServiceFactory.cs" />
     <Compile Include="UseCaseControllers\IServiceFactory.cs" />
     <Compile Include="UseCaseControllers\IStaticTextService.cs" />
     <Compile Include="UseCaseControllers\ManageBannerHandler.cs" />

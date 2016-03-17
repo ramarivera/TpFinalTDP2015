@@ -9,6 +9,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public interface IServiceFactory
     {
-        //TODO Cambiar namespace
+        IDomainServiceFactory DomainServiceFactory { get; }
+
+
+        IBusinessServiceFactory BusinessServiceFactory { get; }
+
+
+
     }
 }
