@@ -30,39 +30,30 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             this.iSchChecker = pCheckService;
         }
 
-
-        public void SaveCampaign(CampaignDTO pCampaign)
-        {
-                Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
-                if (pCampaign.Id == 0)
-                {
-                    iRepo.Add(lCampaign);
-                }
-                else
-                {
-                    iRepo.Update(lCampaign);
-                }
-            
-        }
-
-
-
-        public IEnumerable<Campaign> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         int ICrudService<Campaign>.Create(Campaign pEntity)
         {
-            var lSchedules = pEntity.Schedules;
+            var lSchedules = pEntity.Schedules.ToList();
             pEntity.RemoveAllSchedules();
+
+            iRepo.Add(pEntity);
 
             foreach (var sche in lSchedules)
             {
+                if (sche.Id == 0)
+                {
+                    iSchServ.Create(sche);
+                }
+                else if (sche.Id > 0)
+                {
+                    iSchServ.Update(sche);
+                }
+                else
+                {
+
+                }
                 pEntity.AddSchedule(iSchChecker, sche);
             }
 
-            iRepo.Add(pEntity);
             return pEntity.Id;
         }
 

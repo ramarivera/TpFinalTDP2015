@@ -13,34 +13,25 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ManageScheduleHandler
     {
-
+        private IScheduleService serv;
 
         public int AddSchedule(ScheduleDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
-            {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
-                serv.Insert(lSchedule);
+                serv.Create(lSchedule);
                 return lSchedule.Id;
-            }
         }
 
         public int ModifySchedule(ScheduleDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
-            {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
-                serv.Save(lSchedule);
+                serv.Update(lSchedule);
                 return lSchedule.Id;
-            }
         }
 
         public void DeleteSchedule(ScheduleDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
-            {
                 serv.Delete(pDto.Id);
-            }
         }
 
 
@@ -48,14 +39,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             IList<ScheduleDTO> lResult = new List<ScheduleDTO>();
 
-            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
-            {
                 foreach (var sche in serv.GetAll())
                 {
                     ScheduleDTO lDto = Mapper.Map<Schedule, ScheduleDTO>(sche);
                     lResult.Add(lDto);
                 }
-            }
 
             return lResult;
         }
@@ -65,12 +53,9 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             ScheduleDTO lResult = new ScheduleDTO();
             Schedule lTemp;
 
-            using (var serv = BusinessServiceLocator.Resolve<ScheduleService>())
-            {
-                lTemp = serv.Get(pId);
+                lTemp = serv.Read(pId);
                 //lResult = MapperHelper.Map<Schedule, ScheduleDTO>(lTemp, lResult);
                 lResult = Mapper.Map<Schedule, ScheduleDTO>(lTemp);
-            }
 
           //  lResult = MapperHelper.Map<Schedule,ScheduleDTO>(lTemp,lResult);
             return lResult;
