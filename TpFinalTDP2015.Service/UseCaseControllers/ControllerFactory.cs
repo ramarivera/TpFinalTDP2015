@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    [CanResolve(typeof(ManageBannerHandler), typeof(ManageScheduleHandler),
-        typeof(ManageScheduleHandler), typeof(ManageTextHandler))]
     public class ControllerFactory : IControllerFactory
     {
         private IServiceFactory iServFact;
@@ -24,58 +22,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             this.iControllers = new Dictionary<Type, IController>();
         }
 
-     
 
 
 
         public T GetController<T>() where T : IController
         {
-            T lResult;
-            IController lController;
-            if (iControllers.TryGetValue(typeof(T), out lController))
-            {
-                lResult = (T)lController;
-            }
-            else
-            {
-                var lCons = typeof(T).GetConstructors().FirstOrDefault();
-                if (lCons != null)
-                {
-                    var lArgsInfo = lCons.GetParameters();
-                    int lArgsCount = lArgsInfo.Count();
-                    Object[] lArgs = new Object[lArgsCount];
-                    IUnitOfWork lUow = iUowFactory.CreateUnitOfWork(); ;
-
-
-                    foreach (var info in lArgsInfo)
-                    {
-                        object lDependency;
-                        bool isUnitOfWork = info.ParameterType == typeof(IUnitOfWork);
-                        bool isDomainService = true;
-                        bool isBusinessService = true;
-
-                        if (isUnitOfWork)
-                        {
-                            lDependency = lUow;
-                        }
-                        else if (isBusinessService)
-                        {
-                            lDependency = iServFact.BusinessServiceFactory.GetService<>
-                        }
-                    }
-                }
-                else
-                {
-                    throw new Exception();
-                }
-                
-                // aCA DE alguna manera magica CREO EL CONTROLADOR PEDIDO
-
-
-                lResult = (T)(new object());
-            }
-            return lResult;
-
+            return (T)this.GetController(typeof(T));
         }
 
 
@@ -88,6 +40,66 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             }
         }
 
+        public IController GetController(Type pType)
+        {
+            Object lResult = new object();
+            if (!iControllers.ContainsKey(pType))
+            {
+                var lCons = pType.GetConstructors().FirstOrDefault();
+                if (lCons != null)
+                {
+                    var lArgsInfo = lCons.GetParameters();
+                    int lArgsCount = lArgsInfo.Count();
+                    Object[] lArgs = new Object[lArgsCount];
+                    IUnitOfWork lUow = iUowFactory.CreateUnitOfWork();
+
+                    foreach (var info in lArgsInfo)
+                    {
+                        object lDependency = new object();
+                        Type lType = info.ParameterType;
+                        bool isUnitOfWork = lType is IUnitOfWork;
+                        bool isDomainService = true;
+                        bool isBusinessService = true;
+
+                        if (isUnitOfWork)
+                        {
+                            lDependency = lUow;
+                        }
+                        else if (isBusinessService)
+                        {
+                            lDependency = iServFact.BusinessServiceFactory.GetService(lType, lUow);
+                        }
+                        else if (isDomainService)
+                        {
+                            lDependency = iServFact.DomainServiceFactory.GetService(lType);
+                        }
+
+
+                        /*
+                        En el peor de los casos me van a pedir un BannerHandler.
+                        Depende de una UnitOfWork, y de un BannerService,
+                        que a su vez depende creo de: 
+                        ScheduleService, IHasScheduleValidator, StaticText, RssSources
+
+
+                         */
+
+                        lArgs[info.Position] = lDependency;
+                    }
+
+                    lResult = Activator.CreateInstance(pType, lArgs);
+
+                    iControllers[pType] = (IController)lResult;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+                // aCA DE alguna manera magica CREO EL CONTROLADOR PEDIDO
+            }
+            return (IController)lResult;
+        }
     }
 
     /*

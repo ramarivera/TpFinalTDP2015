@@ -8,10 +8,6 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
-    [CanResolve(typeof(IUnitOfWork), typeof(IRepository<Campaign>), typeof(IRepository<Banner>),
-        typeof(IRepository<BaseBannerItem>), typeof(IRepository<Schedule>), typeof(IRepository<Schedule>),
-        typeof(ManageScheduleHandler),
-        typeof(ManageScheduleHandler), typeof(ManageTextHandler))]
     class EFPersistenceFactory : IPersistenceFactory
     {
 

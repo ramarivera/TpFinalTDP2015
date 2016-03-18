@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ServiceFactory : IServiceFactory
+    public interface IServiceFactory
     {
-        public ServiceFactory()
-        {
+        IDomainServiceFactory DomainServiceFactory { get; }
 
-        }
+        IBusinessServiceFactory BusinessServiceFactory { get; }
+
     }
 }

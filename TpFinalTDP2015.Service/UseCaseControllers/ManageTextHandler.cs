@@ -33,7 +33,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             try
             {
                 StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pDto);
-                iServ.Save(lStaticText);
+                iServ.Create(lStaticText);
                 iUoW.Commit();
                 return lStaticText.Id;
             }
@@ -50,7 +50,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             try
             {
                 StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pDto);
-                iServ.Save(lStaticText);
+                iServ.Update(lStaticText);
                 iUoW.Commit();
             }
             catch (Exception)
@@ -106,7 +106,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             iUoW.BeginTransaction();
             try
             {
-                lResult = Mapper.Map<StaticText, StaticTextDTO>(iServ.Get(pId));
+                lResult = Mapper.Map<StaticText, StaticTextDTO>(iServ.Read(pId));
             }
             finally
             {

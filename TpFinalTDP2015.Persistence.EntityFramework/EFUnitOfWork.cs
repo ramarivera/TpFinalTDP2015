@@ -129,7 +129,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             this.iTransaction.Rollback();
         }
 
-        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
+        internal IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
             IRepository<TEntity> lRepo;
 
