@@ -127,6 +127,8 @@
     <Compile Include="Services\BannerService.cs" />
     <Compile Include="Services\CampaignService.cs" />
     <Compile Include="Services\BusinessServiceLocator.cs" />
+    <Compile Include="Services\ICampaignService.cs" />
+    <Compile Include="Services\IScheduleService.cs" />
     <Compile Include="Services\ScheduleService.cs" />
     <Compile Include="Services\ICrudService.cs" />
     <Compile Include="Services\RssSourceService.cs" />
