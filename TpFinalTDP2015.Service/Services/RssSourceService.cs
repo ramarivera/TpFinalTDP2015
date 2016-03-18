@@ -13,22 +13,21 @@ using AutoMapper;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class RssSourceService 
+    public class RssSourceService : IRssSourceService
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<RssSourceService>();
-        private readonly IUnitOfWork iUoW;
+        private readonly IRepository<RssSource> iRepo;
 
-        public RssSourceService(IUnitOfWork pUoW)
+        public RssSourceService(IRepository<RssSource> pRepo)
         {
-            iUoW = pUoW;
+            this.iRepo = pRepo;
         }
 
-        public override int Save(RssSource pRssSource)
+      /*  public override int Save(RssSource pRssSource)
         {
-            iUoW.BeginTransaction();
             IRepository<RssSource> lRepo = iUoW.GetRepository<RssSource>();
 
             if (pRssSource.Id == 0)
@@ -40,15 +39,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
                 lRepo.Update(pRssSource);
             }
 
-            iUoW.Commit();
             return pRssSource.Id;
         }
 
         public override void Delete(int pId)
         {
-            iUoW.BeginTransaction();
             iUoW.GetRepository<RssSource>().Delete(pId);
-            iUoW.Commit();
         }
         public override IList<RssSource> GetAll()
         {
@@ -69,6 +65,31 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             lResult = Mapper.Map<RssSource, RssSource>(lTemp);
 
             return lResult;
+        }*/
+
+        int ICrudService<RssSource>.Create(RssSource pEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        RssSource ICrudService<RssSource>.Read(int pId)
+        {
+            throw new NotImplementedException();
+        }
+
+        int ICrudService<RssSource>.Update(RssSource pEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ICrudService<RssSource>.Delete(int pId)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<RssSource> ICrudService<RssSource>.GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

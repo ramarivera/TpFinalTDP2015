@@ -12,46 +12,35 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ManageSourceHandler
     {
+        public IRssSourceService serv;
+
         public int AddSource(RssSourceDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
-            {
                 RssSource lSource = Mapper.Map<RssSourceDTO, RssSource>(pDto);
-                serv.Save(lSource);
+                serv.Create(lSource);
                 return lSource.Id;
-            }
         }
 
         public void ModifySource(RssSourceDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
-            {
                 RssSource lSource = Mapper.Map<RssSourceDTO, RssSource>(pDto);
-                serv.Save(lSource);
-            }
+                serv.Update(lSource);
         }
 
         public void DeleteSource(RssSourceDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
-            {
                 serv.Delete(pDto.Id);
-            }
         }
 
 
         public IList<RssSourceDTO> ListSources()
         {
             IList<RssSourceDTO> lResult = new List<RssSourceDTO>();
-
-            using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
-            {
                 foreach (var rss in serv.GetAll())
                 {
                     RssSourceDTO lDto = Mapper.Map<RssSource, RssSourceDTO>(rss);
                     lResult.Add(lDto);
                 }
-            }
 
             return lResult;
         }
@@ -60,11 +49,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             RssSourceDTO lResult = new RssSourceDTO();
 
-            using (var serv = BusinessServiceLocator.Resolve<RssSourceService>())
-            {
                 var tipos = Mapper.GetAllTypeMaps();
-                lResult = Mapper.Map<RssSource, RssSourceDTO>(serv.Get(pId));
-            }
+                lResult = Mapper.Map<RssSource, RssSourceDTO>(serv.Read(pId));
             return lResult;
         }
     }

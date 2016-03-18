@@ -16,7 +16,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Campañas")]
     public partial class CampaignAdministrator : AdminModePage
     {
-        private CampaignService iController = new CampaignService();
+        private ManageCampaingHandler iController = new ManageCampaingHandler();
         private GenericDGV<CampaignDTO> dgvCampaign;
 
 

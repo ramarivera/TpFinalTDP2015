@@ -12,6 +12,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ManageBannerHandler
     {
+        private IBannerService serv;
+
         public void AddBanner(AdminBannerDTO pDto) { }
         /* {
              using (var serv = BusinessServiceLocator.Resolve<BannerService>())
@@ -26,24 +28,17 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 
         public void DeleteText(int pId)
         {
-            using (var serv = BusinessServiceLocator.Resolve<BannerService>())
-            {
-                serv.Delete(pId);
-            }
         }
 
         public IList<AdminBannerDTO> ListBanner()
         {
             IList<AdminBannerDTO> lResult = new List<AdminBannerDTO>();
 
-            using (var serv = BusinessServiceLocator.Resolve<BannerService>())
-            {
                 foreach (var banner in serv.GetAll())
                 {
                     AdminBannerDTO lDto = Mapper.Map<Banner, AdminBannerDTO>(banner);
                     lResult.Add(lDto);
                 }
-            }
             return lResult;
         }
 
@@ -51,10 +46,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             AdminBannerDTO lResult = new AdminBannerDTO();
 
-            using (var serv = BusinessServiceLocator.Resolve<BannerService>())
-            {
-                lResult = Mapper.Map<Banner, AdminBannerDTO>(serv.Get(pId));
-            }
+                lResult = Mapper.Map<Banner, AdminBannerDTO>(serv.Read(pId));
             return lResult;
         }
     }

@@ -105,6 +105,7 @@
     <Compile Include="AdminModePages\IntervalAdministrator.Designer.cs">
       <DependentUpon>IntervalAdministrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminModePages\ManageCampaingHandler.cs" />
     <Compile Include="AdminModePages\RSSSourceAdministrator.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -14,127 +14,152 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class ScheduleService : BaseService<Schedule>
+    public class ScheduleService : IScheduleService
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<ScheduleService>();
 
-        public ScheduleService(IUnitOfWork iUoW) : base(iUoW)
+        public ScheduleService(IUnitOfWork iUoW)
         {
 
         }
 
-        public void Insert(Schedule pSchedule)
+        //public void Insert(Schedule pSchedule)
+        //{
+        //    iUoW.BeginTransaction();
+        //    IRepository<ScheduleEntry> lTimeRepo = iUoW.GetRepository<ScheduleEntry>();
+        //    IRepository<Schedule> lDateRepo = iUoW.GetRepository<Schedule>();
+        //    IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
+
+        //    var dayList = pSchedule.ActiveDays.Select(d => d.Id).ToList();
+
+        //    pSchedule.RemoveAllDays();
+
+        //    lDateRepo.Add(pSchedule);
+
+        //    foreach (ScheduleEntry lHours in pSchedule.ActiveHours)
+        //    {
+        //        if (lHours.Id != 0)
+        //        {
+        //            lTimeRepo.Update(lHours);
+        //        }
+        //    }
+
+        //    foreach (int item in dayList)
+        //    {
+        //        pSchedule.AddDay(lDayRepo.GetByID(item));
+        //    }
+
+        //    iUoW.Commit();
+        //}
+
+        //public void Update(Schedule pSchedule)
+        //{
+        //    iUoW.BeginTransaction();
+        //    Schedule lSchedule;
+        //    IRepository<ScheduleEntry> lTimeRepo = iUoW.GetRepository<ScheduleEntry>();
+        //    IRepository<Schedule> lDateRepo = iUoW.GetRepository<Schedule>();
+        //    IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
+
+
+        //    lDateRepo.Update(pSchedule);
+        //    lSchedule = lDateRepo.GetByID(pSchedule.Id);
+
+        //    foreach (ScheduleEntry lHours in pSchedule.ActiveHours)
+        //    {
+        //        if (lHours.Id == 0)
+        //        {
+        //            lSchedule.AddTimeInterval(lHours);
+        //        }
+        //        else
+        //        {
+        //            lTimeRepo.Update(lHours);
+        //        }
+        //    }
+
+        //    foreach (ScheduleEntry lOrigTimeInt in lSchedule.ActiveHours.Reverse())
+        //    {
+        //        if (!pSchedule.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
+        //        {
+        //            lSchedule.RemoveTimeInterval(lOrigTimeInt);
+        //            lTimeRepo.Delete(lOrigTimeInt.Id);
+        //        }
+        //    }
+
+
+        //    lSchedule.RemoveAllDays();
+
+        //    foreach (int item in pSchedule.ActiveDays.Select(d => d.Id))
+        //    {
+        //        lSchedule.AddDay(lDayRepo.GetByID(item));
+        //    }
+
+        //    iUoW.Commit();
+
+        //}
+
+        ///// <summary>
+        ///// CORREGIR EL CLEAR COMENTADO!!!!
+        ///// </summary>
+        ///// <param name="pSchedule"></param>
+        ///// <returns></returns>
+        //public override int Save(Schedule pSchedule)
+        //{
+        //    this.Update(pSchedule);
+        //    return default(int);
+        //}
+
+        //public override void Delete(int pId)
+        //{
+        //    iUoW.BeginTransaction();
+        //    iUoW.GetRepository<Schedule>().Delete(pId);
+        //    iUoW.Commit();
+        //}
+
+        ////TODO hacer que entre un Expression<Func<IDTO, bool>> pPredicate = null y se pueda usar en el getall del repo
+        //public override IList<Schedule> GetAll()
+        //{
+
+        //    IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
+        //    IList<Schedule> lResult = lRepo.GetAll().ToList<Schedule>();
+
+        //    return lResult;
+        //}
+
+        //public override Schedule Get(int pId)
+        //{
+        //    IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
+
+        //    var lResult = lRepo.GetByID(pId);
+
+        //    return (Schedule) lResult;
+        //}
+
+        int ICrudService<Schedule>.Create(Schedule pEntity)
         {
-            iUoW.BeginTransaction();
-            IRepository<ScheduleEntry> lTimeRepo = iUoW.GetRepository<ScheduleEntry>();
-            IRepository<Schedule> lDateRepo = iUoW.GetRepository<Schedule>();
-            IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
-
-            var dayList = pSchedule.ActiveDays.Select(d => d.Id).ToList();
-
-            pSchedule.RemoveAllDays();
-
-            lDateRepo.Add(pSchedule);
-
-            foreach (ScheduleEntry lHours in pSchedule.ActiveHours)
-            {
-                if (lHours.Id != 0)
-                {
-                    lTimeRepo.Update(lHours);
-                }
-            }
-
-            foreach (int item in dayList)
-            {
-                pSchedule.AddDay(lDayRepo.GetByID(item));
-            }
-
-            iUoW.Commit();
+            throw new NotImplementedException();
         }
 
-        public void Update(Schedule pSchedule)
+        Schedule ICrudService<Schedule>.Read(int pId)
         {
-            iUoW.BeginTransaction();
-            Schedule lSchedule;
-            IRepository<ScheduleEntry> lTimeRepo = iUoW.GetRepository<ScheduleEntry>();
-            IRepository<Schedule> lDateRepo = iUoW.GetRepository<Schedule>();
-            IRepository<Day> lDayRepo = iUoW.GetRepository<Day>();
-
-
-            lDateRepo.Update(pSchedule);
-            lSchedule = lDateRepo.GetByID(pSchedule.Id);
-
-            foreach (ScheduleEntry lHours in pSchedule.ActiveHours)
-            {
-                if (lHours.Id == 0)
-                {
-                    lSchedule.AddTimeInterval(lHours);
-                }
-                else
-                {
-                    lTimeRepo.Update(lHours);
-                }
-            }
-
-            foreach (ScheduleEntry lOrigTimeInt in lSchedule.ActiveHours.Reverse())
-            {
-                if (!pSchedule.ActiveHours.Any(ti => ti.Id == lOrigTimeInt.Id))
-                {
-                    lSchedule.RemoveTimeInterval(lOrigTimeInt);
-                    lTimeRepo.Delete(lOrigTimeInt.Id);
-                }
-            }
-
-
-            lSchedule.RemoveAllDays();
-
-            foreach (int item in pSchedule.ActiveDays.Select(d => d.Id))
-            {
-                lSchedule.AddDay(lDayRepo.GetByID(item));
-            }
-
-            iUoW.Commit();
-
+            throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// CORREGIR EL CLEAR COMENTADO!!!!
-        /// </summary>
-        /// <param name="pSchedule"></param>
-        /// <returns></returns>
-        public override int Save(Schedule pSchedule)
+        int ICrudService<Schedule>.Update(Schedule pEntity)
         {
-            this.Update(pSchedule);
-            return default(int);
+            throw new NotImplementedException();
         }
 
-        public override void Delete(int pId)
+        void ICrudService<Schedule>.Delete(int pId)
         {
-            iUoW.BeginTransaction();
-            iUoW.GetRepository<Schedule>().Delete(pId);
-            iUoW.Commit();
+            throw new NotImplementedException();
         }
 
-        //TODO hacer que entre un Expression<Func<IDTO, bool>> pPredicate = null y se pueda usar en el getall del repo
-        public override IList<Schedule> GetAll()
+        IEnumerable<Schedule> ICrudService<Schedule>.GetAll()
         {
-
-            IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
-            IList<Schedule> lResult = lRepo.GetAll().ToList<Schedule>();
-
-            return lResult;
-        }
-
-        public override Schedule Get(int pId)
-        {
-            IRepository<Schedule> lRepo = iUoW.GetRepository<Schedule>();
-
-            var lResult = lRepo.GetByID(pId);
-
-            return (Schedule) lResult;
+            throw new NotImplementedException();
         }
     }
 }

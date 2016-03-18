@@ -128,6 +128,7 @@
     <Compile Include="Services\CampaignService.cs" />
     <Compile Include="Services\BusinessServiceLocator.cs" />
     <Compile Include="Services\ICampaignService.cs" />
+    <Compile Include="Services\IRssSourceService.cs" />
     <Compile Include="Services\IScheduleService.cs" />
     <Compile Include="Services\ScheduleService.cs" />
     <Compile Include="Services\ICrudService.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="UseCaseControllers\ControllerFactory.cs" />
     <Compile Include="Services\IBusinessService.cs" />
     <Compile Include="Services\IBusinessServiceFactory.cs" />
+    <Compile Include="UseCaseControllers\IBannerService.cs" />
     <Compile Include="UseCaseControllers\IController.cs" />
     <Compile Include="UseCaseControllers\IControllerFactory.cs" />
     <Compile Include="Services\IDomainService.cs" />
