@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using MarrSystems.TpFinalTDP2015.Model;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -104,7 +105,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate
             }
         }
 
-        IRepository<TEntity> IUnitOfWork.GetRepository<TEntity>()
+        internal IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
             IRepository<TEntity> lRepo;
 

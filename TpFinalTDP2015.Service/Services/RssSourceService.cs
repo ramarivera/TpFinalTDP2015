@@ -13,15 +13,17 @@ using AutoMapper;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class RssSourceService : BaseService<RssSource>
+    public class RssSourceService 
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<RssSourceService>();
+        private readonly IUnitOfWork iUoW;
 
-        public RssSourceService(IUnitOfWork iUoW): base(iUoW)
+        public RssSourceService(IUnitOfWork pUoW)
         {
+            iUoW = pUoW;
         }
 
         public override int Save(RssSource pRssSource)

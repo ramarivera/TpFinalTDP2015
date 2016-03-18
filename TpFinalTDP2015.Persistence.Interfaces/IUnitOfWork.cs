@@ -10,8 +10,6 @@ namespace MarrSystems.TpFinalTDP2015.Persistence
 {
     public interface IUnitOfWork : IDisposable //TODO pasar IDisposable a las implementaciones
     {
-        IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity;
-
         void Commit();
         void Rollback();
         void BeginTransaction();

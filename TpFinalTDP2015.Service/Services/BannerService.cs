@@ -12,14 +12,15 @@ using MarrSystems.TpFinalTDP2015.Persistence;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class BannerService: BaseService<Banner>
+    public class BannerService
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<BannerService>();
+        private IUnitOfWork iUoW;
 
-        public BannerService(IUnitOfWork iUoW) : base(iUoW) { }
+        public BannerService(IUnitOfWork iUoW) { }
 
         /*
         public override int Save(AdminBannerDTO pBanner)
@@ -144,7 +145,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             return lTempBanner.Id;
         }*/
 
-        public override void Delete(int pId)
+            /*
+        public  void Delete(int pId)
         {
             iUoW.BeginTransaction();
             IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
@@ -152,7 +154,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             iUoW.Commit();
         }
 
-        public override IList<Banner> GetAll()
+        public  IList<Banner> GetAll()
         {
             IList<Banner> lResult = new List<Banner>();
 
@@ -167,7 +169,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             return lResult;
         }
 
-        public override Banner Get(int pId)
+        public  Banner Get(int pId)
         {
             Banner lResult = new Banner();
 
@@ -178,9 +180,9 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             return lResult;
         }
 
-        public override int Save(Banner pDTO)
+        public  int Save(Banner pDTO)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }
