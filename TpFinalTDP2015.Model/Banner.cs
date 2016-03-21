@@ -118,5 +118,9 @@ namespace MarrSystems.TpFinalTDP2015.Model
             return pValidator.IsActiveAt(this, pDate);
         }
 
+        public void AddSchedule(object p, Schedule schedule)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

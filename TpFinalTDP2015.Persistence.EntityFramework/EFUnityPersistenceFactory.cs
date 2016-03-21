@@ -1,5 +1,6 @@
 ﻿using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
 using MarrSystems.TpFinalTDP2015.Model;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,39 +9,45 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
-    class EFPersistenceFactory : IPersistenceFactory
+    class EFUnityPersistenceFactory 
     {
 
         IDbContextFactory iFactory;
         EFUnitOfWork iUoW;
+        private readonly IUnityContainer iContainer;
 
-        public EFPersistenceFactory(IDbContextFactory pFactory)
+        public EFUnityPersistenceFactory(IUnityContainer pContainer,IDbContextFactory pFactory)
         {
+            
             this.iFactory = pFactory;
+            this.iContainer = pContainer;
+
+
         }
 
-        public IRepository<T> GetRepository<T>() where T : BaseEntity
+        IRepository<T> GetRepository<T>() where T : BaseEntity
         {
 
             return (IRepository<T>) this.GetRepository(typeof(T));
             
         }
 
-        public  IUnitOfWork CreateUnitOfWork()
+        IUnitOfWork CreateUnitOfWork()
         {
             return iUoW = new EFUnitOfWork(this.iFactory.CreateContext());
         }
 
-        public IUnitOfWork GetUnitOfWork()
+        IUnitOfWork GetLastUnitOfWork()
         {
             return iUoW;
         }
 
-        public IRepository<BaseEntity> GetRepository(Type pType)
+        IRepository<BaseEntity> GetRepository(Type pType)
         {
             if (iUoW != null)
             {
-                return iUoW.GetRepository(pType);
+                return (IRepository<BaseEntity>)
+                    iContainer.Resolve(typeof(EFRepository<>).MakeGenericType(pType));
             }
             else
             {

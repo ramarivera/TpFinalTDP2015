@@ -7,12 +7,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarrSystems.TpFinalTDP2015.Persistence;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageBannerHandler
+    public class ManageBannerHandler : IController
     {
         private IBannerService serv;
+        private readonly IUnitOfWork iUoW;
+        private readonly IBannerService iServ;
+
+        public ManageBannerHandler(IUnitOfWork pUow, IBannerService pServ)
+        {
+            this.iUoW = pUow;
+            this.iServ = pServ;
+        }
 
         public void AddBanner(AdminBannerDTO pDto) { }
         /* {

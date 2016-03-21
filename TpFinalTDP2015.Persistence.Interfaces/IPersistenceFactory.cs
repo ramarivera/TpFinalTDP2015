@@ -11,7 +11,14 @@ namespace MarrSystems.TpFinalTDP2015.Persistence
     {
         IUnitOfWork CreateUnitOfWork();
 
-        IRepository<T> CreateRepository<T>(IUnitOfWork pUoW) where T : BaseEntity;
+        IUnitOfWork GetUnitOfWork();
+
+        IRepository<T> GetRepository<T>() where T : BaseEntity;
+
+        IRepository<BaseEntity> GetRepository(Type pType);
+
+
+
 
     }
 }

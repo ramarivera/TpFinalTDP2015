@@ -9,9 +9,13 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public interface IServiceFactory
     {
-        IDomainServiceFactory DomainServiceFactory { get; }
+        IBusinessService GetBusinessService(Type pType);
 
-        IBusinessServiceFactory BusinessServiceFactory { get; }
+        T GetBusinessService<T>() where T : IBusinessService;
+
+        IDomainService GetDomainService(Type pType);
+
+        T GetDomainService<T>() where T : IDomainService;
 
     }
 }
