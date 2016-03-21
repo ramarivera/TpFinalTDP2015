@@ -38,6 +38,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
             //TODO CAMBIAR NOMBREEEEEE
             //  var aux = IoCContainerLocator.Container.Resolve<IPersistenceFactory>();
             var uni = IoCContainerLocator.Container;
+
+            uni.RegisterInstance(uni);
+            uni.RegisterType<IDbContext>(new PerResolveLifetimeManager(),
+                new InjectionFactory(c => c.Resolve<IDbContextFactory>().CreateContext()));
+
             var aux = uni.Resolve<IControllerFactory>();
 
             return aux;

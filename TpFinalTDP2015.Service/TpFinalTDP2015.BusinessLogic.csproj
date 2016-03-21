@@ -127,7 +127,6 @@
     <Compile Include="Services\BannerService.cs" />
     <Compile Include="Services\CampaignService.cs" />
     <Compile Include="Services\BusinessServiceLocator.cs" />
-    <Compile Include="Services\DomainServicefactory.cs" />
     <Compile Include="Services\ICampaignService.cs" />
     <Compile Include="Services\IRssSourceService.cs" />
     <Compile Include="Services\IScheduleService.cs" />
@@ -157,12 +156,10 @@
     <Compile Include="Services\BusinessServiceFactory.cs" />
     <Compile Include="UseCaseControllers\ControllerFactory.cs" />
     <Compile Include="Services\IBusinessService.cs" />
-    <Compile Include="Services\IBusinessServiceFactory.cs" />
     <Compile Include="UseCaseControllers\IBannerService.cs" />
     <Compile Include="UseCaseControllers\IController.cs" />
     <Compile Include="UseCaseControllers\IControllerFactory.cs" />
     <Compile Include="Services\IDomainService.cs" />
-    <Compile Include="Services\IDomainServiceFactory.cs" />
     <Compile Include="Services\IServiceFactory.cs" />
     <Compile Include="Services\IStaticTextService.cs" />
     <Compile Include="UseCaseControllers\ManageBannerHandler.cs" />
@@ -170,7 +167,6 @@
     <Compile Include="UseCaseControllers\ManageScheduleHandler.cs" />
     <Compile Include="UseCaseControllers\ManageSourceHandler.cs" />
     <Compile Include="UseCaseControllers\ManageTextHandler.cs" />
-    <Compile Include="Services\ServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

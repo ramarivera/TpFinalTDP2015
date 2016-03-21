@@ -1,6 +1,8 @@
 ﻿using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
+using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 using MarrSystems.TpFinalTDP2015.Persistence;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +14,52 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
     public class ControllerFactory : IControllerFactory
     {
         private IServiceFactory iServFact;
-        private IPersistenceFactory iUowFactory;
+        private IPersistenceFactory iPersistenceFact;
         private readonly IDictionary<Type, IController> iControllers;
+        private readonly IUnityContainer iContainer;
 
         public ControllerFactory(IPersistenceFactory pUowFact, IServiceFactory pServFact)
         {
-            this.iUowFactory = pUowFact;
+            this.iPersistenceFact = pUowFact;
             this.iServFact = pServFact;
             this.iControllers = new Dictionary<Type, IController>();
         }
 
+        public ControllerFactory(IUnityContainer pContainer, IPersistenceFactory pUowFact, IServiceFactory pServFact)
+        {
+            this.iPersistenceFact = pUowFact;
+            this.iServFact = pServFact;
+            this.iControllers = new Dictionary<Type, IController>();
+            this.iContainer = pContainer.CreateChildContainer();
+
+            iContainer.RegisterTypes(
+                AllClasses.FromAssembliesInBasePath(),
+                WithMappings.FromAllInterfaces,
+                WithName.TypeName,
+                WithLifetime.PerResolve,
+                type =>
+                {
+                    // If settings type, load the setting
+                    if (!type.IsAbstract)
+                    {
+                        Func<IUnityContainer, Type, String, Object> lFunc = (c,t,n) => new Object();
+
+                        if (typeof(IDomainService).IsAssignableFrom(type))
+                        {
+                            lFunc = ((c, t, n) => this.iServFact.GetDomainService(t));
+                        }
+                        else if (typeof(IDomainService).IsAssignableFrom(type))
+                        {
+                            lFunc = ((c, t, n) => this.iServFact.GetBusinessService(t));
+                        }
+                        return new[] { new InjectionFactory(lFunc) };
+                    }
+                    else // Otherwise, no special consideration is needed
+                    {
+                        return new InjectionMember[0];
+                    }
+                });
+        }
 
 
 
@@ -42,63 +80,22 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 
         public IController GetController(Type pType)
         {
-            Object lResult = new object();
-            if (!iControllers.ContainsKey(pType))
-            {
-                var lCons = pType.GetConstructors().FirstOrDefault();
-                if (lCons != null)
-                {
-                    var lArgsInfo = lCons.GetParameters();
-                    int lArgsCount = lArgsInfo.Count();
-                    Object[] lArgs = new Object[lArgsCount];
-                    IUnitOfWork lUow = iUowFactory.CreateUnitOfWork();
+            CompositeResolverOverride lResolvers = new CompositeResolverOverride();
+            lResolvers.Add(new DependencyOverride<IUnitOfWork>(iPersistenceFact.CreateUnitOfWork()));
 
-                    foreach (var info in lArgsInfo)
-                    {
-                        object lDependency = new object();
-                        Type lType = info.ParameterType;
-                        bool isUnitOfWork = lType is IUnitOfWork;
-                        bool isDomainService = true;
-                        bool isBusinessService = true;
-
-                        if (isUnitOfWork)
-                        {
-                            lDependency = lUow;
-                        }
-                        else if (isBusinessService)
-                        {
-                            lDependency = iServFact.BusinessServiceFactory.GetService(lType, lUow);
-                        }
-                        else if (isDomainService)
-                        {
-                            lDependency = iServFact.DomainServiceFactory.GetService(lType);
-                        }
+            /*
+            Pido un statictextcontroller, necesito:
+                IUnitOfWork
+                IServStText, necesito:
+                    IRepoStText
 
 
-                        /*
-                        En el peor de los casos me van a pedir un BannerHandler.
-                        Depende de una UnitOfWork, y de un BannerService,
-                        que a su vez depende creo de: 
-                        ScheduleService, IHasScheduleValidator, StaticText, RssSources
+            El poroblema que tengo es que unity no puede resolver los repos, 
+            ni darse uenta que los repos se tienen que sincronizar con la uow
+            */
 
+            return iContainer.Resolve(pType, lResolvers) as IController;
 
-                         */
-
-                        lArgs[info.Position] = lDependency;
-                    }
-
-                    lResult = Activator.CreateInstance(pType, lArgs);
-
-                    iControllers[pType] = (IController)lResult;
-                }
-                else
-                {
-                    throw new Exception();
-                }
-
-                // aCA DE alguna manera magica CREO EL CONTROLADOR PEDIDO
-            }
-            return (IController)lResult;
         }
     }
 

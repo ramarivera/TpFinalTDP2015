@@ -37,6 +37,8 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             Dispose(false);
         }
 
+        
+
         protected virtual void Dispose(bool pDisposing)
         {
             if (!iDisposed)
@@ -131,20 +133,25 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         internal IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
-            IRepository<TEntity> lRepo;
+            return (IRepository<TEntity>)this.GetRepository(typeof(TEntity));
 
-            if (this.iRepositories.ContainsKey(typeof(TEntity)))
+        }
+
+        internal IRepository<BaseEntity> GetRepository(Type pType)
+        {
+            EFRepository<BaseEntity> lRepo;
+
+            if (this.iRepositories.ContainsKey(pType))
             {
-                lRepo = (IRepository<TEntity>)this.iRepositories[typeof(TEntity)];
+                lRepo = (EFRepository<BaseEntity>) this.iRepositories[pType];
             }
             else
             {
-                lRepo = new EFRepository<TEntity>(this.iContext);
-                this.iRepositories.Add(typeof(TEntity), lRepo);
+                lRepo = new EFRepository<BaseEntity>(this.iContext);
+                this.iRepositories.Add(pType, lRepo);
             }
 
             return lRepo;
-
         }
 
     }

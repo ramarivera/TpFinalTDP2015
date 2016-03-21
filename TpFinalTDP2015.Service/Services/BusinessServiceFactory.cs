@@ -1,4 +1,7 @@
-﻿using MarrSystems.TpFinalTDP2015.Persistence;
+﻿using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Persistence;
+using MarrSystems.TpFinalTDP2015.Persistence.EntityFramework;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,65 +10,53 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class BusinessServiceFactory : IBusinessServiceFactory
+    public class ServiceFactory : IServiceFactory
     {
+        private readonly IUnityContainer iContainer;
         private readonly IPersistenceFactory iFactory;
 
-        public BusinessServiceFactory(IPersistenceFactory pFactory)
+        public ServiceFactory(IPersistenceFactory pFactory)
         {
             this.iFactory = pFactory;
         }
 
-        public IBusinessService GetService(Type pType, IUnitOfWork pUoW)
+        public ServiceFactory(IUnityContainer pContainer, IPersistenceFactory pFactory)
         {
-            Object lResult;
-            var lCons = pType.GetConstructors().FirstOrDefault();
-            if (lCons != null)
-            {
-                var lArgsInfo = lCons.GetParameters();
-                int lArgsCount = lArgsInfo.Count();
-                Object[] lArgs = new Object[lArgsCount];
-
-                foreach (var info in lArgsInfo)
+            this.iFactory = pFactory;
+            this.iContainer = pContainer.CreateChildContainer();
+            iContainer.RegisterType(typeof(IRepository<>),
+                new InjectionFactory((c, t, n) =>
                 {
-                    object lDependency = new object();
-                    Type lType = info.ParameterType;
-                    bool isBusinessService = true;
-                    bool isRepo = true;
-
-                    if (isBusinessService)
+                    object lResult = new object();
+                    var lRepoType = t.IsGenericType ? t.GenericTypeArguments[0] : null;
+                    if (lRepoType != null)
                     {
-                        lDependency =  this.GetService(lType,pUoW);
+                        lResult = this.iFactory.GetRepository(lRepoType);
                     }
-                    else if (isRepo)
-                    {
-                        lDependency = iFactory.
-                            GetType().GetMethod("GetRepository").
-                            MakeGenericMethod(info.ParameterType.GenericTypeArguments[1]).
-                            Invoke(iFactory, new object[] { pUoW });
-                    }
-
-
-                    lArgs[info.Position] = lDependency;
+                    return lResult;
                 }
-
-                lResult =  Activator.CreateInstance(pType, lArgs);
-            }
-            else
-            {
-                throw new Exception();
-            }
-
-            // aCA DE alguna manera magica CREO EL CONTROLADOR PEDIDO
-            return (IBusinessService) lResult;
+                ));
         }
 
-
-
-        public T GetService<T>(IUnitOfWork pUoW) where T : IBusinessService
+        public IBusinessService GetBusinessService(Type pType)
         {
-            return (T)this.GetService(typeof(T), pUoW);
-
+            return this.iContainer.Resolve(pType) as IBusinessService;
         }
+
+        public T GetBusinessService<T>() where T : IBusinessService
+        {
+            return (T)this.GetBusinessService(typeof(T));
+        }
+
+        public IDomainService GetDomainService(Type pType)
+        {
+            return this.iContainer.Resolve(pType) as IDomainService;
+        }
+
+        public T GetDomainService<T>() where T : IDomainService
+        {
+            return (T)this.GetDomainService(typeof(T));
+        }
+
     }
 }
