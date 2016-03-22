@@ -126,7 +126,6 @@
     <Compile Include="Criteria\Criterion\ScheduleCriteria.cs" />
     <Compile Include="Services\BannerService.cs" />
     <Compile Include="Services\CampaignService.cs" />
-    <Compile Include="Services\BusinessServiceLocator.cs" />
     <Compile Include="Services\ICampaignService.cs" />
     <Compile Include="Services\IRssSourceService.cs" />
     <Compile Include="Services\IScheduleService.cs" />
@@ -153,10 +152,10 @@
     <Compile Include="RSS\RawXmlRssReader.cs" />
     <Compile Include="RSS\RssReader.cs" />
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
-    <Compile Include="Services\BusinessServiceFactory.cs" />
+    <Compile Include="Services\ServiceFactory.cs" />
     <Compile Include="UseCaseControllers\ControllerFactory.cs" />
     <Compile Include="Services\IBusinessService.cs" />
-    <Compile Include="UseCaseControllers\IBannerService.cs" />
+    <Compile Include="Services\IBannerService.cs" />
     <Compile Include="UseCaseControllers\IController.cs" />
     <Compile Include="UseCaseControllers\IControllerFactory.cs" />
     <Compile Include="Services\IDomainService.cs" />

@@ -13,10 +13,12 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         IDbContextFactory iFactory;
         EFUnitOfWork iUoW;
+        private readonly Guid guid;
 
         public EFPersistenceFactory(IDbContextFactory pFactory)
         {
             this.iFactory = pFactory;
+            this.guid = Guid.NewGuid();
         }
 
         public IRepository<T> GetRepository<T>() where T : BaseEntity
