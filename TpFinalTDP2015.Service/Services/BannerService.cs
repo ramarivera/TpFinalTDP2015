@@ -6,18 +6,46 @@ using System.Threading.Tasks;
 using Common.Logging;
 using Microsoft.Practices.Unity;
 using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using AutoMapper;
 using MarrSystems.TpFinalTDP2015.Persistence;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class BannerService: BaseService<Banner>
+    public class BannerService : IBannerService
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = LogManager.GetLogger<BannerService>();
+        private IUnitOfWork iUoW;
 
-        public BannerService(IUnitOfWork iUoW) : base(iUoW) { }
+        public BannerService(IUnitOfWork iUoW) { }
+
+        public int Create(Banner pEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int pId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Banner> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Banner Read(int pId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update(Banner pEntity)
+        {
+            throw new NotImplementedException();
+        }
 
         /*
         public override int Save(AdminBannerDTO pBanner)
@@ -142,43 +170,44 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             return lTempBanner.Id;
         }*/
 
-        public override void Delete(int pId)
+        /*
+    public  void Delete(int pId)
+    {
+        iUoW.BeginTransaction();
+        IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
+        lRepo.Delete(pId);
+        iUoW.Commit();
+    }
+
+    public  IList<Banner> GetAll()
+    {
+        IList<Banner> lResult = new List<Banner>();
+
+        IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
+        IList<Banner> lTemp = lRepo.GetAll().ToList();
+
+        foreach (var banner in lTemp)
         {
-            iUoW.BeginTransaction();
-            IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
-            lRepo.Delete(pId);
-            iUoW.Commit();
+            lResult.Add(banner);
         }
 
-        public override IList<Banner> GetAll()
-        {
-            IList<Banner> lResult = new List<Banner>();
+        return lResult;
+    }
 
-            IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
-            IList<Banner> lTemp = lRepo.GetAll().ToList();
+    public  Banner Get(int pId)
+    {
+        Banner lResult = new Banner();
 
-            foreach (var banner in lTemp)
-            {
-                lResult.Add(banner);
-            }
+        IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
 
-            return lResult;
-        }
+        var lTemp = lRepo.GetByID(pId);
 
-        public override Banner Get(int pId)
-        {
-            Banner lResult = new Banner();
+        return lResult;
+    }
 
-            IRepository<Banner> lRepo = iUoW.GetRepository<Banner>();
-
-            var lTemp = lRepo.GetByID(pId);
-
-            return lResult;
-        }
-
-        public override int Save(Banner pBanner)
-        {
-            throw new NotImplementedException();
-        }
+    public  int Save(Banner pDTO)
+    {
+        throw new NotImplementedException();
+    }*/
     }
 }

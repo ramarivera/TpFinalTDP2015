@@ -1,4 +1,5 @@
-﻿using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+﻿using Common.Logging;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 using MarrSystems.TpFinalTDP2015.Persistence;
@@ -13,46 +14,47 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ControllerFactory : IControllerFactory
     {
+        private static readonly ILog cLogger = LogManager.GetLogger<ControllerFactory>();
+
         private IServiceFactory iServFact;
         private IPersistenceFactory iPersistenceFact;
         private readonly IDictionary<Type, IController> iControllers;
         private readonly IUnityContainer iContainer;
-
-        public ControllerFactory(IPersistenceFactory pUowFact, IServiceFactory pServFact)
-        {
-            this.iPersistenceFact = pUowFact;
-            this.iServFact = pServFact;
-            this.iControllers = new Dictionary<Type, IController>();
-        }
 
         public ControllerFactory(IUnityContainer pContainer, IPersistenceFactory pUowFact, IServiceFactory pServFact)
         {
             this.iPersistenceFact = pUowFact;
             this.iServFact = pServFact;
             this.iControllers = new Dictionary<Type, IController>();
-            this.iContainer = pContainer.CreateChildContainer();
+            this.iContainer = pContainer;
 
             iContainer.RegisterTypes(
-                AllClasses.FromAssembliesInBasePath(),
-                WithMappings.FromAllInterfaces,
+                AllClasses.FromAssembliesInBasePath().Where(t => t.Namespace.Contains("BusinessLogic.Services") ),
+                WithMappings.FromMatchingInterface,
                 WithName.TypeName,
                 WithLifetime.PerResolve,
                 type =>
                 {
                     // If settings type, load the setting
-                    if (!type.IsAbstract)
+                    if (typeof(IDomainService).IsAssignableFrom(type))
                     {
-                        Func<IUnityContainer, Type, String, Object> lFunc = (c,t,n) => new Object();
-
-                        if (typeof(IDomainService).IsAssignableFrom(type))
+                        return new[]
                         {
-                            lFunc = ((c, t, n) => this.iServFact.GetDomainService(t));
-                        }
-                        else if (typeof(IDomainService).IsAssignableFrom(type))
-                        {
-                            lFunc = ((c, t, n) => this.iServFact.GetBusinessService(t));
-                        }
-                        return new[] { new InjectionFactory(lFunc) };
+                            new InjectionFactory ((c,t,n) =>
+                            {
+                               return this.iServFact.GetDomainService(t);
+                            })
+                        };
+                    }
+                    else if (typeof(IBusinessService).IsAssignableFrom(type))
+                    {
+                        return new[]
+                            {
+                            new InjectionFactory ((c,t,n) =>
+                            {
+                              return  this.iServFact.GetBusinessService(t);
+                            })
+                        };
                     }
                     else // Otherwise, no special consideration is needed
                     {
@@ -80,8 +82,10 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 
         public IController GetController(Type pType)
         {
+            var aux = iPersistenceFact.CreateUnitOfWork();
             CompositeResolverOverride lResolvers = new CompositeResolverOverride();
-            lResolvers.Add(new DependencyOverride<IUnitOfWork>(iPersistenceFact.CreateUnitOfWork()));
+            lResolvers.Add(new DependencyOverride<IUnitOfWork>(aux));
+
 
             /*
             Pido un statictextcontroller, necesito:
@@ -93,7 +97,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             El poroblema que tengo es que unity no puede resolver los repos, 
             ni darse uenta que los repos se tienen que sincronizar con la uow
             */
-
+            
+            var chau = iContainer.Resolve<IStaticTextService>(lResolvers);
             return iContainer.Resolve(pType, lResolvers) as IController;
 
         }

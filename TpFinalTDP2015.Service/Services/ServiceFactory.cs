@@ -15,15 +15,10 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         private readonly IUnityContainer iContainer;
         private readonly IPersistenceFactory iFactory;
 
-        public ServiceFactory(IPersistenceFactory pFactory)
-        {
-            this.iFactory = pFactory;
-        }
-
         public ServiceFactory(IUnityContainer pContainer, IPersistenceFactory pFactory)
         {
             this.iFactory = pFactory;
-            this.iContainer = pContainer.CreateChildContainer();
+            this.iContainer = pContainer;
             iContainer.RegisterType(typeof(IRepository<>),
                 new InjectionFactory((c, t, n) =>
                 {
