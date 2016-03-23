@@ -51,12 +51,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
             int i = 0;
             foreach (var item in hola)
             {
-                cLogger.DebugFormat("[{4}] {0}\t\t\t: {1}\t\t\t => {2} ({3}) ", item.Name ?? "Null", item.RegisteredType, item.MappedToType, item.LifetimeManager, i++);
+                cLogger.DebugFormat("\n[{4}] {0}:\n\t\t\t {1}=>\n\t\t\t  {2}\n\t\t\t\t ({3}) ", item.Name ?? "Null", item.RegisteredType, item.MappedToType, item.LifetimeManager, i++);
             }
 
 
 
-            var aux = (IControllerFactory) uni.Resolve(typeof(IControllerFactory), typeof(IControllerFactory).Name);
+            var aux = (IControllerFactory) uni.Resolve(typeof(IControllerFactory));
            // var chau = uni.Resolve<IRepository<StaticText>>();
             //var hola = uni.Resolve<StaticTextService>();
 
