@@ -26,7 +26,11 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
                     var lRepoType = t.IsGenericType ? t.GenericTypeArguments[0] : null;
                     if (lRepoType != null)
                     {
-                        lResult = this.iFactory.GetRepository(lRepoType);
+                        var tempyType = typeof(IRepository<>).MakeGenericType(lRepoType);
+                        //   lResult = Convert.ChangeType(this.iFactory.GetRepository(lRepoType), tempyType);
+                        var met = iFactory.GetType().GetMethods().
+                        FirstOrDefault(m => m.IsGenericMethod && m.Name == "GetRepository").MakeGenericMethod(lRepoType);
+                        lResult =  met.Invoke(iFactory, new Object[] { });//  his.iFactory.GetRepository(lRepoType);
                     }
                     return lResult;
                 }

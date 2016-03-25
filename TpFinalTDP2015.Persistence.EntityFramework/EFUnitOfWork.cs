@@ -133,8 +133,19 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         internal IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
-            return (IRepository<TEntity>)this.GetRepository(typeof(TEntity));
+            IRepository<TEntity> lRepo;
 
+            if (this.iRepositories.ContainsKey(typeof(TEntity)))
+            {
+                lRepo = (IRepository < TEntity > ) this.iRepositories[typeof(TEntity)];
+            }
+            else
+            {
+                lRepo = new EFRepository<TEntity>(this.iContext);
+                this.iRepositories.Add(typeof(TEntity), lRepo);
+            }
+
+            return lRepo;
         }
 
         internal IRepository<BaseEntity> GetRepository(Type pType)
