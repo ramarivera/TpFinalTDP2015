@@ -31,7 +31,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             iContainer.RegisterTypes(
                 AllClasses.FromAssembliesInBasePath().Where(t => t.Namespace.Contains("BusinessLogic.Services") ),
                 WithMappings.FromMatchingInterface,
-                WithName.TypeName,
+                WithName.Default,
                 WithLifetime.PerResolve,
                 type =>
                 {

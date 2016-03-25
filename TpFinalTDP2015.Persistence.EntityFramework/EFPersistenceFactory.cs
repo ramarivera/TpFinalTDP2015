@@ -24,8 +24,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         public IRepository<T> GetRepository<T>() where T : BaseEntity
         {
 
-            return (IRepository<T>) this.GetRepository(typeof(T));
-            
+            return (IRepository<T>)this.iUoW.GetRepository<T>();           
         }
 
         public  IUnitOfWork CreateUnitOfWork()
@@ -42,7 +41,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         {
             if (iUoW != null)
             {
-                return iUoW.GetRepository(pType);
+                return (IRepository < BaseEntity>) iUoW.GetRepository(pType);
             }
             else
             {
