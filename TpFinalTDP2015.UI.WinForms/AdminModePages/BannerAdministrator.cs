@@ -38,7 +38,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             this.btnDelete.Click += BtnDelete_Click;
         }
 
-        [Log]
+        
         private void CargarDataGrid()
         {
             try

@@ -26,7 +26,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         }
 
 
-        [Log]
+        
         public int AddText(StaticTextDTO pDto)
         {
             iUoW.BeginTransaction();

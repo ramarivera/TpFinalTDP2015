@@ -21,7 +21,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
         private static readonly ILog cLogger = LogManager.GetLogger(typeof(BootStrapper));
 
 
-        [Log]
+        
         public static void Configure()
         {
             AppDomain.CurrentDomain.SetData("APP_CONFIG_FILE","TpFinalTDP2015.config");
@@ -37,7 +37,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
         }
 
 
-        [Log]
+        
         public static IControllerFactory GetControllerFactory()
         {
             //TODO CAMBIAR NOMBREEEEEE
@@ -49,16 +49,23 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
             var hola = uni.Registrations;
             int i = 0;
+            cLogger.Debug("Registrations:");
             foreach (var item in hola)
             {
-                cLogger.DebugFormat("\n[{4}] {0}:\n\t\t\t {1}=>\n\t\t\t  {2}\n\t\t\t\t ({3}) ", item.Name ?? "Null", item.RegisteredType, item.MappedToType, item.LifetimeManager, i++);
+                cLogger.DebugFormat("\t[{4}] {0}: {1} => {2} ({3}) ", item.Name ?? "Unnamed", item.RegisteredType, item.MappedToType, item.LifetimeManager, i++);
             }
 
 
 
             var aux = (IControllerFactory) uni.Resolve(typeof(IControllerFactory));
-           // var chau = uni.Resolve<IRepository<StaticText>>();
+            // var chau = uni.Resolve<IRepository<StaticText>>();
             //var hola = uni.Resolve<StaticTextService>();
+
+            var hel = uni.Resolve<IStaticTextService>();
+           var st = hel.Read(1);
+
+
+            var con = aux.GetController(typeof(ManageBannerHandler));
 
             return aux;
             //return aux;
