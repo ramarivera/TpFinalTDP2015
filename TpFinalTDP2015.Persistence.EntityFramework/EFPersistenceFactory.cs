@@ -23,7 +23,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         public IRepository<T> GetRepository<T>() where T : BaseEntity
         {
-
+            iUoW = new EFUnitOfWork(this.iFactory.CreateContext());
             return (IRepository<T>)this.iUoW.GetRepository<T>();           
         }
 

@@ -1,9 +1,11 @@
 ﻿using Common.Logging;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Interceptor;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 using MarrSystems.TpFinalTDP2015.Persistence;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.InterceptionExtension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +31,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             this.iContainer = pContainer;
 
             iContainer.RegisterTypes(
-                AllClasses.FromAssembliesInBasePath().Where(t => t.Namespace.Contains("BusinessLogic.Services") ),
+                AllClasses.FromAssembliesInBasePath().Where(t => t.Namespace.Contains("BusinessLogic.Services")),
                 WithMappings.FromMatchingInterface,
                 WithName.Default,
                 WithLifetime.PerResolve,
@@ -38,22 +40,27 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
                     // If settings type, load the setting
                     if (typeof(IDomainService).IsAssignableFrom(type))
                     {
-                        return new[]
+                        return new InjectionMember[]
                         {
+                            new Interceptor<InterfaceInterceptor>(),
+                            new InterceptionBehavior<MyBehavior>(),
                             new InjectionFactory ((c,t,n) =>
                             {
                                return this.iServFact.GetDomainService(t);
-                            })
+                            }),
+                            
                         };
                     }
                     else if (typeof(IBusinessService).IsAssignableFrom(type))
                     {
-                        return new[]
-                            {
+                        return new InjectionMember[]
+                        {
+                            new Interceptor<InterfaceInterceptor>(),
+                            new InterceptionBehavior<MyBehavior>(),
                             new InjectionFactory ((c,t,n) =>
                             {
-                              return  this.iServFact.GetBusinessService(t);
-                            })
+                               return this.iServFact.GetBusinessService(t);
+                            }),
                         };
                     }
                     else // Otherwise, no special consideration is needed
@@ -97,7 +104,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             El poroblema que tengo es que unity no puede resolver los repos, 
             ni darse uenta que los repos se tienen que sincronizar con la uow
             */
-            
+
             var chau = iContainer.Resolve<IStaticTextService>(lResolvers);
             return iContainer.Resolve(pType, lResolvers) as IController;
 
