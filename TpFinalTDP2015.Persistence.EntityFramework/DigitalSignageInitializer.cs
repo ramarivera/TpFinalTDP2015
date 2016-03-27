@@ -13,7 +13,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
     class DigitalSignageInitializer : System.Data.Entity.DropCreateDatabaseAlways<DigitalSignageContext>
     {
-        private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<DigitalSignageContext>();
 
         protected override void Seed(DigitalSignageContext pContext)
         {

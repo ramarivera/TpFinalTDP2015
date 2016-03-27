@@ -15,7 +15,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     public partial class GenericDGV<TDto> : DataGridView where TDto: IDTO
     {
-        private static readonly ILog cLogger = LogManager.GetLogger<GenericDGV<TDto>>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<GenericDGV<TDto>>();
 
         public BindingSource iSource = new BindingSource(); //TODO cambiar public por private
         private DGVHelper<TDto> iHelper = new DGVHelper<TDto>();
@@ -104,7 +104,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
     class DGVHelper<TDto> where TDto : IDTO
     {
-        private static readonly ILog cLogger = LogManager.GetLogger<DGVHelper<TDto>>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<DGVHelper<TDto>>();
 
         IList<PropertyConfigurations> PropertyConfigs { get; set; }
 

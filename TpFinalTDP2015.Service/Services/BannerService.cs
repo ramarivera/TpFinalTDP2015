@@ -17,7 +17,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<BannerService>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<BannerService>();
         private IUnitOfWork iUoW;
 
         public BannerService(IUnitOfWork iUoW) { }

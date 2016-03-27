@@ -18,7 +18,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<StaticTextService>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<StaticTextService>();
         private readonly IRepository<StaticText> iRepo;
 
         public StaticTextService(IRepository<StaticText> pRepo) //TODO  revisame, sacame Uow

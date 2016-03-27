@@ -14,7 +14,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<AutoMapperConfiguration>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<AutoMapperConfiguration>();
 
         static public void  Configure()
         {

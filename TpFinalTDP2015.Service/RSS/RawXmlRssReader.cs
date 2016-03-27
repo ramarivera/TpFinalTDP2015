@@ -15,7 +15,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.RSS
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<RawXmlRssReader>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<RawXmlRssReader>();
 
         public override IEnumerable<RssItem> Read(Uri pUrl)
         {
