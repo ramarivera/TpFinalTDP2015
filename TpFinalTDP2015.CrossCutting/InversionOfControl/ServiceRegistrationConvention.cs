@@ -79,7 +79,7 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting.InversionOfControl
 
             return new List<InjectionMember>()
             {
-                new Interceptor<TransparentProxyInterceptor>(),
+                new Interceptor<InterfaceInterceptor>(),
                 new InterceptionBehavior<PolicyInjectionBehavior>()
             };
 

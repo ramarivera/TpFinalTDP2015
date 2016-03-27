@@ -18,7 +18,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<CampaignService>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<CampaignService>();
         private readonly IScheduleService iSchServ;
         private readonly IRepository<Campaign> iRepo;
         private readonly IScheduleChecker iSchChecker;

@@ -11,6 +11,7 @@ using MarrSystems.TpFinalTDP2015.Model;
 using MarrSystems.TpFinalTDP2015.Persistence.EntityFramework;
 using MarrSystems.TpFinalTDP2015.Persistence;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
@@ -19,7 +20,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<ScheduleService>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<ScheduleService>();
 
         public ScheduleService(IUnitOfWork iUoW)
         {

@@ -1,4 +1,5 @@
 ﻿using Common.Logging;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using System;
@@ -12,7 +13,7 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection
     //TOOD cambiar a internal
     public class IoCContainerLocator
     {
-        private static readonly ILog cLogger = LogManager.GetLogger<IoCContainerLocator>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<IoCContainerLocator>();
 
         /// <summary>
         /// Instancia lazy del contenedor de IoC.
