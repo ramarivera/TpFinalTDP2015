@@ -23,7 +23,7 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection
 
             IUnityContainer mUnityContainer = new UnityContainer();
 
-            mUnityContainer.LoadConfiguration();
+            mUnityContainer.LoadConfiguration("Registrations");
 
             return mUnityContainer;
         });

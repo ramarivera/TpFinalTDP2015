@@ -78,14 +78,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
             cContainer.RegisterInstance(typeof(IUnityContainer), "IUnityContainer", cContainer, new ContainerControlledLifetimeManager());
 
 
-            var hola = cContainer.Registrations;
-            int i = 0;
-            cLogger.Debug("Registrations:");
-            foreach (var item in hola)
-            {
-                cLogger.DebugFormat("\t[{4}] {0}: {1} => {2} ({3}) ",
-                    item.Name ?? "Unnamed", item.RegisteredType, item.MappedToType, item.LifetimeManager, i++);
-            }
+            
 
 
 
@@ -96,6 +89,14 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
             var hel = cContainer.Resolve<IStaticTextService>();
             var st = hel.Read(1);
 
+            var hola = cContainer.Registrations;
+            int i = 0;
+            cLogger.Debug("Registrations:");
+            foreach (var item in hola)
+            {
+                cLogger.DebugFormat("\t[{4}] {0}: {1} => {2} ({3}) ",
+                    item.Name ?? "Unnamed", item.RegisteredType, item.MappedToType, item.LifetimeManager, i++);
+            }
 
             var con = aux.GetController(typeof(ManageBannerHandler));
 
