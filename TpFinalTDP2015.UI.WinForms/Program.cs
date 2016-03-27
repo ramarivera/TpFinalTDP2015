@@ -22,8 +22,8 @@ namespace MarrSystems.TpFinalTDP2015.UI
         [STAThread]
         static void Main()
         {
-            BootStrapper.Configure();
-            IControllerFactory lContFactory = BootStrapper.GetControllerFactory();
+            BootStrap.Configure();
+            IControllerFactory lContFactory = BootStrap.GetControllerFactory();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

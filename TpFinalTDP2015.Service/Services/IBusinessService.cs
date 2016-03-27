@@ -1,4 +1,4 @@
-﻿namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
+﻿namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
     public interface IBusinessService
     {

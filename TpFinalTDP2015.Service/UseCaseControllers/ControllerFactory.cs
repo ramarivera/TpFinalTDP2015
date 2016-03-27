@@ -1,7 +1,6 @@
 ﻿using Common.Logging;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
-using MarrSystems.TpFinalTDP2015.CrossCutting.Interceptor;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 using MarrSystems.TpFinalTDP2015.Persistence;
 using Microsoft.Practices.Unity;
@@ -42,8 +41,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
                     {
                         return new InjectionMember[]
                         {
-                            new Interceptor<InterfaceInterceptor>(),
-                            new InterceptionBehavior<MyBehavior>(),
+                            new Interceptor<TransparentProxyInterceptor>(),
+                            new InterceptionBehavior<PolicyInjectionBehavior>(),
                             new InjectionFactory ((c,t,n) =>
                             {
                                return this.iServFact.GetDomainService(t);
@@ -55,8 +54,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
                     {
                         return new InjectionMember[]
                         {
-                            new Interceptor<InterfaceInterceptor>(),
-                            new InterceptionBehavior<MyBehavior>(),
+                            new Interceptor<TransparentProxyInterceptor>(),
+                            new InterceptionBehavior<PolicyInjectionBehavior>(),
                             new InjectionFactory ((c,t,n) =>
                             {
                                return this.iServFact.GetBusinessService(t);
@@ -105,7 +104,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             ni darse uenta que los repos se tienen que sincronizar con la uow
             */
 
-            var chau = iContainer.Resolve<IStaticTextService>(lResolvers);
             return iContainer.Resolve(pType, lResolvers) as IController;
 
         }
