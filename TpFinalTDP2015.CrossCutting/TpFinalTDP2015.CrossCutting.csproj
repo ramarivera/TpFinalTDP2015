@@ -86,9 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\CanResolve.cs" />
-    <Compile Include="Behaviour.cs" />
+    <Compile Include="LoggingCallHandler.cs" />
     <Compile Include="Enum\Days.cs" />
-    <Compile Include="DependencyInjection\IoCContainerLocator.cs" />
+    <Compile Include="InversionOfControl\ServiceRegistrationConvention.cs" />
+    <Compile Include="InversionOfControl\IoCContainerLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,7 +101,7 @@
     <None Include="TpFinalTDP2015.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="DependencyInjection\Unity.config">
+    <None Include="InversionOfControl\Unity.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
