@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,19 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.CrossCutting
 {
-    internal static class StringUtils
+    public static class StringUtils
     {
+
+        public static string ToJson(this object pValue)
+        {
+            return JsonConvert.SerializeObject(pValue, new JsonSerializerSettings
+            {
+                ObjectCreationHandling = ObjectCreationHandling.Replace,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+        }
+
+
         internal static string RemoveNamespacePrefix(this string pString)
         {
             return pString.Replace("MarrSystems.TpFinalTDP2015.", String.Empty);

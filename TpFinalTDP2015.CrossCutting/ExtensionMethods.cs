@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -128,6 +129,21 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting
             return sb.ToString();
         }
 
+
+        public static KeyValuePair<string, object> Is(this string key, object value)
+        {
+            return new KeyValuePair<string, object>(key, value);
+        }
+
+        public static ExpandoObject Init(
+            this ExpandoObject expando, params KeyValuePair<string, object>[] values)
+        {
+            foreach (KeyValuePair<string, object> kvp in values)
+            {
+                ((IDictionary<string, Object>)expando)[kvp.Key] = kvp.Value;
+            }
+            return expando;
+        }
     }
-}
+}   
 

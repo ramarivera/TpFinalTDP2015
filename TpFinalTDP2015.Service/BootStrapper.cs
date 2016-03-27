@@ -17,6 +17,7 @@ using Microsoft.Practices.Unity.Configuration;
 using Microsoft.Practices.Unity.InterceptionExtension;
 using MarrSystems.TpFinalTDP2015.CrossCutting;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
+using System.Dynamic;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 {
@@ -150,15 +151,21 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
             var st = hel.Read(1);
 
-            var hola = cContainer.Registrations;
-            int i = 0;
-            cLogger.Debug("Registrations:");
-            foreach (var item in hola)
+            dynamic lRegistrations = new ExpandoObject().Init(
+                "Registrations".Is(new List<ExpandoObject>()));
+
+            foreach (var item in cContainer.Registrations)
             {
-                cLogger.DebugFormat("\t[{4}] {0}: {1} => {2} ({3}) ",
-                    item.Name ?? "Unnamed", item.RegisteredType, item.MappedToType, item.LifetimeManager, i++);
+                lRegistrations.Registrations.Add(
+                    new ExpandoObject().Init(
+                        "Name".Is(item.Name ?? "Unnamed"),
+                        "Registered".Is(item.RegisteredType),
+                        "MappedTo".Is(item.MappedToType),
+                        "LifetimeManager".Is(item.LifetimeManager)));
+
             }
 
+            cLogger.Trace(StringUtils.ToJson(lRegistrations));
 
             return aux;
             //return aux;
