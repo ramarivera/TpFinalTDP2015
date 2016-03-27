@@ -8,12 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace MarrSystems.TpFinalTDP2015.CrossCutting
 {
     public class LoggingCallHandler : ICallHandler
     {
-        public IMethodReturn Invoke(IMethodInvocation input,GetNextHandlerDelegate getNext)
+
+        public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)
         {
             var lLogger = Logging.LogManagerWrapper.GetLogger(input.Target.GetType());
             var lTypeString = (input.Target.GetType().GetFriendlyTypeName());
@@ -25,11 +27,11 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting
             for (int i = 0; i < input.Arguments.Count; i++)
             {
                 var argInfo = input.Arguments.GetParameterInfo(i);
-                var arg = input.Arguments[i];
-                lLogger.TraceFormat("\tName: {0}\t Type: {1} \tValue: {2}",
-                    argInfo.Name, argInfo.ParameterType.GetFriendlyTypeName(), arg);
+                var value = input.Arguments[i].ToJson();
+                lLogger.TraceFormat("{{\"Name\": \"{0}\", \"Type\": \"{1}\", \"Value\": {2}}}",
+                    argInfo.Name, argInfo.ParameterType.GetFriendlyTypeName(), value);
             }
-
+        
             IMethodReturn methodReturn = getNext().Invoke(input, getNext);
 
             if (methodReturn.Exception == null)
@@ -42,8 +44,7 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting
                 else
                 {
                     lMsg = String.Format("Method {0}::{1} returned: [{2}]",
-                        lTypeString, lMethodSignature,
-                        methodReturn.ReturnValue.ToString().RemoveNamespacePrefix());
+                        lTypeString, lMethodSignature, methodReturn.ReturnValue.ToJson());
                 }
                 lLogger.Trace(lMsg);
             }
