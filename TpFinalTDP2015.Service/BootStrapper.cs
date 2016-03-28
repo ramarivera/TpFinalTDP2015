@@ -18,7 +18,7 @@ using Microsoft.Practices.Unity.InterceptionExtension;
 using MarrSystems.TpFinalTDP2015.CrossCutting;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
 using System.Dynamic;
-using System.Diagnostics;
+using MarrSystems.TpFinalTDP2015.CrossCutting.InversionOfControl;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 {
@@ -53,9 +53,10 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
         {
 
             cContainer.
-                LoadConfiguration("Registrations").
-                AddNewExtension<Interception>();
-
+                AddNewExtension<BuildTracking>().
+                AddNewExtension<LogCreation>().
+                AddNewExtension<Interception>().
+                LoadConfiguration("Registrations");
 
 
 
@@ -84,8 +85,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
                 WithLifetime.PerResolve,
                 type =>
                 {
-
-                    // If settings type, load the setting
                     cLogger.TraceFormat("Ejecutando funcion para el tipo {0}", type);
                     return new InjectionMember[]
                         {
@@ -96,9 +95,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
             cContainer.RegisterType(typeof(IUnitOfWork),
               new PerResolveLifetimeManager(),
-              new InjectionFactory((c, t, n) => c.Resolve<IPersistenceFactory>().CreateUnitOfWork()),
-              new InterceptionBehavior<PolicyInjectionBehavior>(),
-              new Interceptor<InterfaceInterceptor>());
+              new InjectionMember[]
+              {
+                  new InjectionFactory((c, t, n) => c.Resolve<IPersistenceFactory>().CreateUnitOfWork()),
+                  new InterceptionBehavior<PolicyInjectionBehavior>(),
+                  new Interceptor<InterfaceInterceptor>()
+              });
 
             cContainer.
                 Configure<Interception>().
@@ -152,67 +154,21 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
             var st = hel.Read(1);
 
-
-
-            TimeSpan elap;
-
-
-            elap = new TimeSpan(0);
-            for (int i = 0; i < 1000; i++)
-            {
-                Stopwatch lStop = Stopwatch.StartNew();
-
-                var sb = new StringBuilder("{\"Registrations\": [");
-                foreach (var item in cContainer.Registrations)
-                {
-                    sb.AppendFormat("{{\"Name\":\"{0}\", \"Registered\": \"{1}\", \"MappedTo\": \"{2}\",\"LifetimeManager\": \"{3}\"}},",
-                         item.Name ?? "Unnamed", item.RegisteredType, item.MappedToType, item.LifetimeManager);
-                }
-                sb.Remove(sb.Length - 1, 1);
-                sb.Append("]}");
-
-                // cLogger.Trace(sb.ToString());
-                string lca = sb.ToString();
-                lStop.Stop();
-                elap += lStop.Elapsed;
-
-            }
-            cLogger.DebugFormat("Promedio de 1000 veces construyendo json: {0}", elap.Ticks);
-            
-
-            elap = new TimeSpan(0);
-            for (int i = 0; i < 1000; i++)
-            {
-                Stopwatch lStop = Stopwatch.StartNew();
-
-                dynamic lRegistrations = new ExpandoObject().Init(
+            dynamic lRegistrations = new ExpandoObject().Init(
                 "Registrations".Is(new List<ExpandoObject>()));
 
-                foreach (var item in cContainer.Registrations)
-                {
-                    lRegistrations.Registrations.Add(
-                        new ExpandoObject().Init(
-                            "Name".Is(item.Name ?? "Unnamed"),
-                            "Registered".Is(item.RegisteredType),
-                            "MappedTo".Is(item.MappedToType),
-                            "LifetimeManager".Is(item.LifetimeManager)));
-
-                }
-
-                string lca = StringUtils.ToJson(lRegistrations);
-               // cLogger.Trace(StringUtils.ToJson(lRegistrations));
-
-                lStop.Stop();
-                elap += lStop.Elapsed;
+            foreach (var item in cContainer.Registrations)
+            {
+                lRegistrations.Registrations.Add(
+                    new ExpandoObject().Init(
+                        "Name".Is(item.Name ?? "Unnamed"),
+                        "Registered".Is(item.RegisteredType),
+                        "MappedTo".Is(item.MappedToType),
+                        "LifetimeManager".Is(item.LifetimeManager)));
 
             }
-            cLogger.DebugFormat("Promedio de 1000 veces usando expandoi: {0}", elap.Ticks);
 
-
-           
-
-
-
+            cLogger.Trace(StringUtils.ToJson(lRegistrations));
 
             return aux;
             //return aux;

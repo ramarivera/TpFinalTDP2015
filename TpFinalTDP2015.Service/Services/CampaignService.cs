@@ -13,7 +13,7 @@ using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class CampaignService : ICampaignService //: BaseService<CampaignDTO>
+    public class CampaignService : ServiceWithLogger, ICampaignService //: BaseService<CampaignDTO>
     { 
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
@@ -23,7 +23,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         private readonly IRepository<Campaign> iRepo;
         private readonly IScheduleChecker iSchChecker;
 
-        public CampaignService(IRepository<Campaign> pRepo, IScheduleService pScheService, IScheduleChecker pCheckService)
+        public CampaignService(ILog pLogger, IRepository<Campaign> pRepo, IScheduleService pScheService, IScheduleChecker pCheckService) : base(pLogger)
         {
             this.iRepo = pRepo;
             this.iSchServ = pScheService;

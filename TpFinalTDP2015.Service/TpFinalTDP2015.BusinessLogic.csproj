@@ -140,6 +140,7 @@
     <Compile Include="Services\ScheduleService.cs" />
     <Compile Include="Services\ICrudService.cs" />
     <Compile Include="Services\RssSourceService.cs" />
+    <Compile Include="Services\ServiceWithLogger.cs" />
     <Compile Include="Services\StaticTextService.cs" />
     <Compile Include="DTO\AdminBannerDTO.cs" />
     <Compile Include="DTO\CampaignDTO.cs" />
@@ -160,7 +161,6 @@
     <Compile Include="RSS\RawXmlRssReader.cs" />
     <Compile Include="RSS\RssReader.cs" />
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
-    <Compile Include="Services\ServiceFactory.cs" />
     <Compile Include="UseCaseControllers\ControllerFactory.cs" />
     <Compile Include="Services\IBusinessService.cs" />
     <Compile Include="Services\IBannerService.cs" />

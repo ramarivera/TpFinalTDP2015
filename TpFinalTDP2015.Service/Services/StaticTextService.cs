@@ -13,7 +13,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class StaticTextService : IStaticTextService
+    public class StaticTextService : ServiceWithLogger, IStaticTextService
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
@@ -21,7 +21,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<StaticTextService>();
         private readonly IRepository<StaticText> iRepo;
 
-        public StaticTextService(IRepository<StaticText> pRepo) //TODO  revisame, sacame Uow
+        public StaticTextService(ILog pLogger,IRepository<StaticText> pRepo) : base(pLogger) //TODO  revisame, sacame Uow
         {
             this.iRepo = pRepo;
         }

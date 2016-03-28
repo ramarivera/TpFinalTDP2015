@@ -13,7 +13,7 @@ using AutoMapper;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class RssSourceService : IRssSourceService
+    public class RssSourceService :  ServiceWithLogger, IRssSourceService
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
@@ -21,7 +21,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         private static readonly ILog cLogger = LogManager.GetLogger<RssSourceService>();
         private readonly IRepository<RssSource> iRepo;
 
-        public RssSourceService(IRepository<RssSource> pRepo)
+        public RssSourceService(ILog pLogger, IRepository<RssSource> pRepo) : base(pLogger)
         {
             this.iRepo = pRepo;
         }

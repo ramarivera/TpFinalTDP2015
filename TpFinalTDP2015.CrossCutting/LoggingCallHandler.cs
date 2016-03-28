@@ -17,12 +17,14 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting
 
         public IMethodReturn Invoke(IMethodInvocation input, GetNextHandlerDelegate getNext)
         {
-            var lLogger = Logging.LogManagerWrapper.GetLogger(input.Target.GetType());
+            var lLogger = LogManagerWrapper.GetLogger(input.Target.GetType());
+          // var lLogger2 = Logging.LogManagerWrapper.GetLogger(input.Target.GetType());
+          // var istrue = lLogger == lLogger2;
+          // var othertrue = Object.ReferenceEquals(lLogger2, lLogger);
             var lTypeString = (input.Target.GetType().GetFriendlyTypeName());
             var lMethodSignature = (input.MethodBase as MethodInfo).GetSignature();
 
-            lLogger.TraceFormat("Entering {0}::{1} with {2} argument(s)",
-                 lTypeString, lMethodSignature, input.Arguments.Count);
+            lLogger.TraceFormat("Entering {0}",lMethodSignature);
 
             for (int i = 0; i < input.Arguments.Count; i++)
             {

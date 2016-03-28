@@ -1,4 +1,5 @@
 ﻿using Common.Logging;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
 using Microsoft.Practices.ObjectBuilder2;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.ObjectBuilder;
@@ -92,7 +93,7 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting.InversionOfControl
         {
             if (context.Existing == null)
             {
-                ILog log = LogManager.GetLogger(LogType);
+                ILog log = LogManagerWrapper.GetLogger(LogType);
                 context.Existing = log;
             }
         }

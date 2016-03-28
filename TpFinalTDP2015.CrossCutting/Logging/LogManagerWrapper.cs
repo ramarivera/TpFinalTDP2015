@@ -16,7 +16,7 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting.Logging
 
         public static ILog GetLogger(Type pType)
         {
-            return LogManager.GetLogger(pType.AssemblyQualifiedName);
+            return LogManager.GetLogger(pType.GetFriendlyTypeName());
         }
     }
 }
