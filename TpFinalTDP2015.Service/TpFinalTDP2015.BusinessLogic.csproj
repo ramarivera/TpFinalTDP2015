@@ -140,6 +140,7 @@
     <Compile Include="Services\ScheduleService.cs" />
     <Compile Include="Services\ICrudService.cs" />
     <Compile Include="Services\RssSourceService.cs" />
+    <Compile Include="Services\ServiceFactory.cs" />
     <Compile Include="Services\ServiceWithLogger.cs" />
     <Compile Include="Services\StaticTextService.cs" />
     <Compile Include="DTO\AdminBannerDTO.cs" />
