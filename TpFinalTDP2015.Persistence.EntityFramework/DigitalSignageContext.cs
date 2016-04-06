@@ -17,7 +17,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
     public class DigitalSignageContext : DbContext, IDbContext
     {
-        private static readonly ILog cLogger = LogManager.GetLogger<DigitalSignageContext>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<DigitalSignageContext>();
 
         public virtual IDbSet<Campaign> Campaigns { get; set; }
         public virtual IDbSet<Banner> Banners { get; set; }
@@ -30,18 +30,14 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         public virtual IDbSet<Day> Days { get; set; }
 
 
-        public DigitalSignageContext() : base(EFConfiguration.ConnectionString)
+        public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
         {
-            //  this.Configuration.ProxyCreationEnabled = false;
-            // this.Configuration.LazyLoadingEnabled = false;
-            
-            this.Database.Log = (str => LogManager.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
+            this.Database.Log = (str => MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
 
             Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
 
             cLogger.InfoFormat("Conexion establecida a: {0}", this.Database.Connection.ConnectionString);
         }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

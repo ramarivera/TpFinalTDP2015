@@ -9,67 +9,48 @@ using Microsoft.Practices.Unity;
 using MarrSystems.TpFinalTDP2015.Model;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using AutoMapper;
-
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class StaticTextService : BaseService<StaticText>
+    public class StaticTextService : ServiceWithLogger, IStaticTextService
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<StaticTextService>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<StaticTextService>();
+        private readonly IRepository<StaticText> iRepo;
 
-        public StaticTextService(IUnitOfWork iUoW) : base(iUoW)
+        public StaticTextService(ILog pLogger,IRepository<StaticText> pRepo) : base(pLogger) //TODO  revisame, sacame Uow
         {
+            this.iRepo = pRepo;
         }
 
-        public override int Save(StaticText pStaticText)
+        int ICrudService<StaticText>.Create(StaticText pStaticText)
         {
-            iUoW.BeginTransaction();
-            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-
-            if (pStaticText.Id == 0)
-            {
-                lRepo.Add(pStaticText);
-            }
-            else
-            {
-                lRepo.Update(pStaticText);
-            }
-            iUoW.Commit();
+            iRepo.Add(pStaticText);
             return pStaticText.Id;
         }
 
-        public override void Delete(int pId)
+        StaticText ICrudService<StaticText>.Read(int pId)
         {
-            iUoW.BeginTransaction();
-            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-            
-            lRepo.Delete(pId);
-            iUoW.Commit();
+            return iRepo.GetByID(pId); //TODO revisar si esto sigue estando o no o whaaaaat
         }
 
-        public override IList<StaticText> GetAll()
+        int ICrudService<StaticText>.Update(StaticText pStaticText)
         {
-            IList<StaticText> lResult = new List<StaticText>();
-
-            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-            IList<StaticText> lTemp = lRepo.GetAll().ToList();
-
-            foreach (var staticText in lTemp)
-            {
-                lResult.Add(staticText);
-            }
-            return lResult;//.ToList<StaticText>();
+            iRepo.Update(pStaticText);
+            return pStaticText.Id;
         }
 
-        public override StaticText Get(int pId)
+        void ICrudService<StaticText>.Delete(int pId)
         {
-            StaticText lResult = new StaticText();
-            IRepository<StaticText> lRepo = iUoW.GetRepository<StaticText>();
-            lResult = lRepo.GetByID(pId);
-            return lResult;
+            iRepo.Delete(pId);
+        }
+
+        IEnumerable<StaticText> ICrudService<StaticText>.GetAll()
+        {
+            return iRepo.GetAll().ToList();
         }
     }
 }

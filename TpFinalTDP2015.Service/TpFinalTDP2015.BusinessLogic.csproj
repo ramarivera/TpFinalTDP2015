@@ -11,6 +11,7 @@
     <AssemblyName>MarrSystems.TpFinalTDP2015.BusinessLogic</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <DontImportPostSharp>True</DontImportPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,8 +64,24 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.4.0.1\lib\Net45\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.4.0.1\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PostSharp, Version=4.2.22.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.4.2.22\lib\net35-client\PostSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PostSharp.Patterns.Diagnostics, Version=4.2.22.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.Patterns.Diagnostics.4.2.22\lib\net40\PostSharp.Patterns.Diagnostics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -116,12 +133,15 @@
     <Compile Include="Criteria\Predicate.cs" />
     <Compile Include="Criteria\Criterion\ScheduleCriteria.cs" />
     <Compile Include="Services\BannerService.cs" />
-    <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\CampaignService.cs" />
-    <Compile Include="Services\BusinessServiceLocator.cs" />
+    <Compile Include="Services\ICampaignService.cs" />
+    <Compile Include="Services\IRssSourceService.cs" />
+    <Compile Include="Services\IScheduleService.cs" />
     <Compile Include="Services\ScheduleService.cs" />
-    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\ICrudService.cs" />
     <Compile Include="Services\RssSourceService.cs" />
+    <Compile Include="Services\ServiceFactory.cs" />
+    <Compile Include="Services\ServiceWithLogger.cs" />
     <Compile Include="Services\StaticTextService.cs" />
     <Compile Include="DTO\AdminBannerDTO.cs" />
     <Compile Include="DTO\CampaignDTO.cs" />
@@ -142,6 +162,14 @@
     <Compile Include="RSS\RawXmlRssReader.cs" />
     <Compile Include="RSS\RssReader.cs" />
     <Compile Include="RSS\SyndicationFeedRssReader.cs" />
+    <Compile Include="UseCaseControllers\ControllerFactory.cs" />
+    <Compile Include="Services\IBusinessService.cs" />
+    <Compile Include="Services\IBannerService.cs" />
+    <Compile Include="UseCaseControllers\IController.cs" />
+    <Compile Include="UseCaseControllers\IControllerFactory.cs" />
+    <Compile Include="Services\IDomainService.cs" />
+    <Compile Include="Services\IServiceFactory.cs" />
+    <Compile Include="Services\IStaticTextService.cs" />
     <Compile Include="UseCaseControllers\ManageBannerHandler.cs" />
     <Compile Include="UseCaseControllers\ManageCampaignHandler.cs" />
     <Compile Include="UseCaseControllers\ManageScheduleHandler.cs" />
@@ -151,6 +179,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="TpFinalTDP2015.BusinessLogic.psproj" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TpFinalTDP2015.CrossCutting\TpFinalTDP2015.CrossCutting.csproj">
@@ -174,11 +203,15 @@
       <Name>TpFinalTDP2015.Persistence.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"$(SolutionDir)PostBuild.bat" "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\PostSharp.4.2.22\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.2.22\tools\PostSharp.targets')" />
+  <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">
+    <Error Condition="!Exists('..\packages\PostSharp.4.2.22\tools\PostSharp.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://www.postsharp.net/links/nuget-restore." />
+    <Error Condition="Exists('..\packages\PostSharp.4.2.22\tools\PostSharp.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://www.postsharp.net/links/nuget-restore." />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

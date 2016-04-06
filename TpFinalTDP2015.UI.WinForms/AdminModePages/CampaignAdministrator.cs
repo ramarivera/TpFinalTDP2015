@@ -20,7 +20,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private GenericDGV<CampaignDTO> dgvCampaign;
 
 
-        public CampaignAdministrator() : base()
+        public CampaignAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
            
             InitializeComponent();

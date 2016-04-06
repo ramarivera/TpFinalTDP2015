@@ -8,15 +8,16 @@ using MarrSystems.TpFinalTDP2015.Model;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-   public interface IService<TEntity> : IDisposable where TEntity : BaseEntity
+   public interface ICrudService<TEntity>  where TEntity : BaseEntity
     {
+        int Create(TEntity pEntity);
 
-        IList<TEntity> GetAll();
+        TEntity Read(int pId);
 
-        TEntity Get(int pId);
+        int Update(TEntity pEntity);
 
         void Delete(int pId);
 
-        int Save(TEntity pEntity);
+        IEnumerable<TEntity> GetAll();
     }
 }

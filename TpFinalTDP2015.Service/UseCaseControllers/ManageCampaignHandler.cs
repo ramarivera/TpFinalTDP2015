@@ -19,24 +19,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 
         public void DeleteCampaign(CampaignDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<CampaignService>())
-            {
-                serv.Delete(pDto.Id);
-            }
         }
 
         public IList<CampaignDTO> ListCampaign()
         {
             IList<CampaignDTO> lResult = new List<CampaignDTO>();
 
-            using (var serv = BusinessServiceLocator.Resolve<CampaignService>())
-            {
-                foreach (var campaign in serv.GetAll())
-                {
-                    CampaignDTO lDto = Mapper.Map<Campaign, CampaignDTO>(campaign);
-                    lResult.Add(lDto);
-                }
-            }
             return lResult;
         }
 
@@ -44,10 +32,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             CampaignDTO lResult = new CampaignDTO();
 
-            using (var serv = BusinessServiceLocator.Resolve<CampaignService>())
-            {
-                lResult = Mapper.Map<Campaign, CampaignDTO>(serv.Get(pId));
-            }
             return lResult;
         }
     }

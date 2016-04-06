@@ -9,70 +9,72 @@ using Microsoft.Practices.Unity;
 using MarrSystems.TpFinalTDP2015.Model;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using AutoMapper;
+using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class CampaignService : BaseService<Campaign>
+    public class CampaignService : ServiceWithLogger, ICampaignService //: BaseService<CampaignDTO>
     { 
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
-        private static readonly ILog cLogger = LogManager.GetLogger<CampaignService>();
+        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<CampaignService>();
+        private readonly IScheduleService iSchServ;
+        private readonly IRepository<Campaign> iRepo;
+        private readonly IScheduleChecker iSchChecker;
 
-        public CampaignService(IUnitOfWork iUoW) : base(iUoW) { }
-
-        public override int Save(Campaign pCampaign)
+        public CampaignService(ILog pLogger, IRepository<Campaign> pRepo, IScheduleService pScheService, IScheduleChecker pCheckService) : base(pLogger)
         {
-            iUoW.BeginTransaction();
-            IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-
-            //Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
-            if (pCampaign.Id == 0)
-            {
-                lRepo.Add(pCampaign);
-            }
-            else
-            {
-                lRepo.Update(pCampaign);
-            }
-            iUoW.Commit();
-            return pCampaign.Id;
+            this.iRepo = pRepo;
+            this.iSchServ = pScheService;
+            this.iSchChecker = pCheckService;
         }
 
-        public override void Delete(int pId)
+        int ICrudService<Campaign>.Create(Campaign pEntity)
         {
-            iUoW.BeginTransaction();
-            IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-            //Campaign lCampaign = Mapper.Map<CampaignDTO, Campaign>(pCampaign);
-            lRepo.Delete(pId);
-            iUoW.Commit();
-        }
+            var lSchedules = pEntity.Schedules.ToList();
+            pEntity.RemoveAllSchedules();
 
-        public override IList<Campaign> GetAll()
-        {
-            IList<Campaign> lResult = new List<Campaign>();
+            iRepo.Add(pEntity);
 
-            IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
-            IList<Campaign> lTemp = lRepo.GetAll().ToList();
-
-            foreach (var campaign in lTemp)
+            foreach (var sche in lSchedules)
             {
-                //CampaignDTO lDto = Mapper.Map<Campaign, CampaignDTO>(campaign);
-                lResult.Add(campaign);
+                if (sche.Id == 0)
+                {
+                    iSchServ.Create(sche);
+                }
+                else if (sche.Id > 0)
+                {
+                    iSchServ.Update(sche);
+                }
+                else
+                {
+
+                }
+                pEntity.AddSchedule(iSchChecker, sche);
             }
 
-            return lResult;
+            return pEntity.Id;
         }
 
-        public override Campaign Get(int pId)
+        Campaign ICrudService<Campaign>.Read(int pId)
         {
-            Campaign lResult = new Campaign();
+            return iRepo.GetAll(c => c.Id == pId).FirstOrDefault();
+        }
 
-            IRepository<Campaign> lRepo = iUoW.GetRepository<Campaign>();
+        int ICrudService<Campaign>.Update(Campaign pEntity)
+        {
+            throw new NotImplementedException();
+        }
 
-            var lTemp = lRepo.GetByID(pId);
+        void ICrudService<Campaign>.Delete(int pId)
+        {
+            iRepo.Delete(pId);
+        }
 
-            return lResult;
+        IEnumerable<Campaign> ICrudService<Campaign>.GetAll()
+        {
+            return iRepo.GetAll();
         }
 
 

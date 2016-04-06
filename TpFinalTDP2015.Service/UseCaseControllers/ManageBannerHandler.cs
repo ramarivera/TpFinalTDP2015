@@ -7,11 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarrSystems.TpFinalTDP2015.Persistence;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageBannerHandler
+    public class ManageBannerHandler : IController
     {
+        private IBannerService serv;
+        private readonly IUnitOfWork iUoW;
+        private readonly IBannerService iServ;
+
+        public ManageBannerHandler(IUnitOfWork pUow, IBannerService pServ)
+        {
+            this.iUoW = pUow;
+            this.iServ = pServ;
+        }
+
         public void AddBanner(AdminBannerDTO pDto) { }
         /* {
              using (var serv = BusinessServiceLocator.Resolve<BannerService>())
@@ -26,24 +37,17 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 
         public void DeleteBanner(int pId)
         {
-            using (var serv = BusinessServiceLocator.Resolve<BannerService>())
-            {
-                serv.Delete(pId);
-            }
         }
 
         public IList<AdminBannerDTO> ListBanner()
         {
             IList<AdminBannerDTO> lResult = new List<AdminBannerDTO>();
 
-            using (var serv = BusinessServiceLocator.Resolve<BannerService>())
-            {
                 foreach (var banner in serv.GetAll())
                 {
                     AdminBannerDTO lDto = Mapper.Map<Banner, AdminBannerDTO>(banner);
                     lResult.Add(lDto);
                 }
-            }
             return lResult;
         }
 
@@ -51,10 +55,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             AdminBannerDTO lResult = new AdminBannerDTO();
 
-            using (var serv = BusinessServiceLocator.Resolve<BannerService>())
-            {
-                lResult = Mapper.Map<Banner, AdminBannerDTO>(serv.Get(pId));
-            }
+                lResult = Mapper.Map<Banner, AdminBannerDTO>(serv.Read(pId));
             return lResult;
         }
     }

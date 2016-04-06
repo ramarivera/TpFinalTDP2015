@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using MarrSystems.TpFinalTDP2015.Model;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,13 +11,15 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate
     {
         private ISession iSession;
         private ITransaction iTransaction;
+        private IsolationLevel iIsoLevel;
         private bool iDisposed = false;
         private IDictionary<Type, Object> iRepositories;
 
-        public NHUnitOfWork()
+        public NHUnitOfWork(IsolationLevel pIsolationLevel = IsolationLevel.ReadCommitted)
         {
 
             this.OpenSession();
+            this.iIsoLevel = pIsolationLevel;
             this.iRepositories = new Dictionary<Type, Object>();
         }
 
@@ -102,7 +105,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate
             }
         }
 
-        IRepository<TEntity> IUnitOfWork.GetRepository<TEntity>()
+        internal IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
             IRepository<TEntity> lRepo;
 
@@ -120,14 +123,14 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.NHibernate
 
         }
 
-        void IUnitOfWork.BeginTransaction(IsolationLevel pIsolationLevel)
+        void IUnitOfWork.BeginTransaction()
         {
             if (this.iTransaction == null || !this.iTransaction.IsActive)
             {
                 if (this.iTransaction != null)
                     this.iTransaction.Dispose();
 
-                this.iTransaction = this.iSession.BeginTransaction(pIsolationLevel);
+                this.iTransaction = this.iSession.BeginTransaction(iIsoLevel);
             }
         }
 
