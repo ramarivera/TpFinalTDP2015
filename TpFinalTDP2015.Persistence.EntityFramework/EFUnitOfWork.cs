@@ -15,12 +15,14 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
     {
         private IDbContext iContext;
         private DbContextTransaction iTransaction;
+        private IsolationLevel iIsoLevel;
         private bool iDisposed = false;
         private IDictionary<Type, Object> iRepositories;
 
-        public EFUnitOfWork(IDbContext pContext)
+        public EFUnitOfWork(IDbContext pContext, IsolationLevel pIsolationLevel = IsolationLevel.ReadCommitted)
         {
             this.iContext = pContext;
+            this.iIsoLevel = pIsolationLevel;
             this.iRepositories = new Dictionary<Type, Object>();
             //TODO levantar el dato de un archivo de configuracion
         }
@@ -34,6 +36,8 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             // runs the next time.
             Dispose(false);
         }
+
+        
 
         protected virtual void Dispose(bool pDisposing)
         {
@@ -94,7 +98,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         #endregion
 
-        void IUnitOfWork.BeginTransaction(IsolationLevel pIsolationLevel)
+        public void BeginTransaction()
         {
             if (this.iTransaction == null)
             {
@@ -103,11 +107,11 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                     this.iTransaction.Dispose();
                 }
 
-                this.iTransaction = this.iContext.BeginTransaction(pIsolationLevel);
+                this.iTransaction = this.iContext.BeginTransaction(this.iIsoLevel);
             }
         }
 
-        void IUnitOfWork.Commit()
+        public void Commit()
         {
             try
             {
@@ -122,18 +126,18 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             }
         }
 
-        void IUnitOfWork.Rollback()
+        public void Rollback()
         {
             this.iTransaction.Rollback();
         }
 
-        IRepository<TEntity> IUnitOfWork.GetRepository<TEntity>()
+        internal IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
             IRepository<TEntity> lRepo;
 
             if (this.iRepositories.ContainsKey(typeof(TEntity)))
             {
-                lRepo = (IRepository<TEntity>)this.iRepositories[typeof(TEntity)];
+                lRepo = (IRepository < TEntity > ) this.iRepositories[typeof(TEntity)];
             }
             else
             {
@@ -142,7 +146,23 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             }
 
             return lRepo;
+        }
 
+        internal IRepository<BaseEntity> GetRepository(Type pType)
+        {
+            EFRepository<BaseEntity> lRepo;
+
+            if (this.iRepositories.ContainsKey(pType))
+            {
+                lRepo = (EFRepository<BaseEntity>) this.iRepositories[pType];
+            }
+            else
+            {
+                lRepo = new EFRepository<BaseEntity>(this.iContext);
+                this.iRepositories.Add(pType, lRepo);
+            }
+
+            return lRepo;
         }
 
     }

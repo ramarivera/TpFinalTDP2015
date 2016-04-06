@@ -22,7 +22,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private GenericDGV<StaticTextDTO> dgvStaticText;
 
-        public StaticTextAdministrator(): base()
+        public StaticTextAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
             InitializeComponent();
         }

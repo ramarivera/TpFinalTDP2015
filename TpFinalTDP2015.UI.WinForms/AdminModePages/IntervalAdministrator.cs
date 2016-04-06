@@ -26,7 +26,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         ScheduleEntryDTO timeInterval;
 
-        public IntervalAdministrator() : base()
+        public IntervalAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
            
             InitializeComponent();

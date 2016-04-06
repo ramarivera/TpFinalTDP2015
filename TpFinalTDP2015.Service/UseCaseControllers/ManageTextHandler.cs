@@ -7,35 +7,72 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MarrSystems.TpFinalTDP2015.Persistence;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Extensibility;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ManageTextHandler
     {
+
+        private readonly IUnitOfWork iUoW;
+        private readonly IStaticTextService iServ;
+
+        internal ManageTextHandler(IUnitOfWork pUoW, IStaticTextService pService)
+        {
+            this.iUoW = pUoW;
+            this.iServ = pService;
+        }
+
+
+        
         public int AddText(StaticTextDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
+            iUoW.BeginTransaction();
+            try
             {
                 StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pDto);
-                serv.Save(lStaticText);
+                iServ.Create(lStaticText);
+                iUoW.Commit();
                 return lStaticText.Id;
+            }
+            catch (Exception)
+            {
+                iUoW.Rollback();
+                throw;
             }
         }
 
         public void ModifyText(StaticTextDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
+            iUoW.BeginTransaction();
+            try
             {
                 StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pDto);
-                serv.Save(lStaticText);
+                iServ.Update(lStaticText);
+                iUoW.Commit();
+            }
+            catch (Exception)
+            {
+                iUoW.Rollback();
+                throw;
             }
         }
 
         public void DeleteText(StaticTextDTO pDto)
         {
-            using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
+            iUoW.BeginTransaction();
+            try
             {
-                serv.Delete(pDto.Id);
+                StaticText lStaticText = Mapper.Map<StaticTextDTO, StaticText>(pDto);
+                iServ.Delete(pDto.Id);
+                iUoW.Commit();
+            }
+            catch (Exception)
+            {
+                iUoW.Rollback();
+                throw;
             }
         }
 
@@ -44,26 +81,38 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             IList<StaticTextDTO> lResult = new List<StaticTextDTO>();
 
-            using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
+            iUoW.BeginTransaction();
+            try
             {
-                foreach (var text in serv.GetAll())
+                foreach (var text in iServ.GetAll())
                 {
                     StaticTextDTO lDto = Mapper.Map<StaticText, StaticTextDTO>(text);
                     lResult.Add(lDto);
                 }
             }
+            finally
+            {
+                iUoW.Rollback();
+            }
+
             return lResult;
+
         }
 
         public StaticTextDTO GetText(int pId)
         {
             StaticTextDTO lResult = new StaticTextDTO();
 
-            using (var serv = BusinessServiceLocator.Resolve<StaticTextService>())
+            iUoW.BeginTransaction();
+            try
             {
-                var tipos = Mapper.GetAllTypeMaps();
-                lResult = Mapper.Map<StaticText, StaticTextDTO>(serv.Get(pId));
+                lResult = Mapper.Map<StaticText, StaticTextDTO>(iServ.Read(pId));
             }
+            finally
+            {
+                iUoW.Rollback();
+            }
+
             return lResult;
         }
     }

@@ -21,7 +21,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private ManageSourceHandler iController = new ManageSourceHandler();
         private GenericDGV<RssSourceDTO> dgvRSSSource;
 
-        public RSSSourceAdministrator(): base()
+        public RSSSourceAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
             InitializeComponent();
         }

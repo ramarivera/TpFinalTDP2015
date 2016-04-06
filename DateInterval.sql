@@ -13,8 +13,7 @@ FROM DigitalSignage.MARR.DateInterval as di
 	INNER JOIN DigitalSignage.MARR.DateIntervalDay as did ON di.Id = did.DateIntervalId
 	INNER JOIN DigitalSignage.MARR.[Day] as d ON d.id = did.DayId;
 
-SELECT * 
-FROM DigitalSignage.MARR.[Day];
+SELECT * FROM DigitalSignage.MARR.[Day];
 
 
 use master;
