@@ -35,6 +35,7 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting
             }
         
             IMethodReturn methodReturn = getNext().Invoke(input, getNext);
+           
 
             if (methodReturn.Exception == null)
             {

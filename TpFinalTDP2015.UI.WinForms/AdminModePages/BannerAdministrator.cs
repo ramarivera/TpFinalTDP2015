@@ -26,7 +26,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         public BannerAdministrator(IControllerFactory pFactory): base(pFactory)
         {
             InitializeComponent();
-            var aux = pFactory.GetController<ManageBannerHandler>();
+            this.iController = pFactory.GetController<ManageBannerHandler>();
             this.Load += BannerAdministrator_Load;
         }
 
