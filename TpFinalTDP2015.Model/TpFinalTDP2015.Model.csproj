@@ -73,14 +73,11 @@
     <Compile Include="Exceptiones\IntervaloTiempoInvalidoException.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="Day.cs" />
-    <Compile Include="DomainServices\ISeFijaSiEstaActivo.cs" />
-    <Compile Include="DomainServices\SeFijaSiEstaActivo.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Interfaces\IHasSchedules.cs" />
     <Compile Include="DomainServices\IScheduleChecker.cs" />
     <Compile Include="DomainServices\ScheduleChecker.cs" />
-    <Compile Include="Interfaces\ISchedule.cs" />
     <Compile Include="RssItem.cs" />
     <Compile Include="RssSource.cs" />
     <Compile Include="Slide.cs" />

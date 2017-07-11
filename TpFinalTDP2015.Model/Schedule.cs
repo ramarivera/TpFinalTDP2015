@@ -10,7 +10,7 @@ using MarrSystems.TpFinalTDP2015.Model.Exceptiones;
 namespace MarrSystems.TpFinalTDP2015.Model
 {
     [Serializable]
-    public class Schedule : BaseEntity, ISchedule
+    public class Schedule : BaseEntity
     {
         private string iName;
         private DateTime iActiveFrom;

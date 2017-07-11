@@ -88,16 +88,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\CanResolve.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="InversionOfControl\BuildTracking.cs" />
-    <Compile Include="InversionOfControl\LogCreation.cs" />
-    <Compile Include="LoggingCallHandler.cs" />
     <Compile Include="Enum\Days.cs" />
     <Compile Include="InversionOfControl\ServiceRegistrationConvention.cs" />
     <Compile Include="InversionOfControl\IoCContainerLocator.cs" />
     <Compile Include="Logging\LogManagerWrapper.cs" />
-    <Compile Include="Logging\ShortLoggerName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringUtils.cs" />
   </ItemGroup>

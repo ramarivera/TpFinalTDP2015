@@ -128,22 +128,6 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting
             sb.Append('>');
             return sb.ToString();
         }
-
-
-        public static KeyValuePair<string, object> Is(this string key, object value)
-        {
-            return new KeyValuePair<string, object>(key, value);
-        }
-
-        public static ExpandoObject Init(
-            this ExpandoObject expando, params KeyValuePair<string, object>[] values)
-        {
-            foreach (KeyValuePair<string, object> kvp in values)
-            {
-                ((IDictionary<string, Object>)expando)[kvp.Key] = kvp.Value;
-            }
-            return expando;
-        }
     }
 }   
 

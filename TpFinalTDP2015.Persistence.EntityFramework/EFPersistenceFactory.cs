@@ -1,5 +1,4 @@
-﻿using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
-using MarrSystems.TpFinalTDP2015.Model;
+﻿using MarrSystems.TpFinalTDP2015.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

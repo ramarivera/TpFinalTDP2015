@@ -1,6 +1,5 @@
 ﻿using Common.Logging;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
-using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
 using MarrSystems.TpFinalTDP2015.Persistence;

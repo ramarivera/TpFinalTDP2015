@@ -1,5 +1,4 @@
-﻿using MarrSystems.TpFinalTDP2015.CrossCutting.Attributes;
-using MarrSystems.TpFinalTDP2015.Model;
+﻿using MarrSystems.TpFinalTDP2015.Model;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -18,11 +17,8 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         public EFUnityPersistenceFactory(IUnityContainer pContainer,IDbContextFactory pFactory)
         {
-            
             this.iFactory = pFactory;
             this.iContainer = pContainer;
-
-
         }
 
         IRepository<T> GetRepository<T>() where T : BaseEntity
