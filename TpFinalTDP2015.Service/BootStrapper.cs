@@ -74,8 +74,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
               });
         }
 
-
-
         public static IControllerFactory GetControllerFactory()
         {
             var aux = (IControllerFactory)cContainer.Resolve(typeof(IControllerFactory));

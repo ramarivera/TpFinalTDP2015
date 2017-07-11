@@ -13,20 +13,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     public class AdminBannerDTOProfile : Profile
     {
-        /* protected override void Configure()
-         {
-             Mapper.CreateMap<AdminBannerDTO, Banner>()
-               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-               .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
-               .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
-               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
-               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.ActiveIntervals))
-               .ForMember(dest => dest.Items, opt => opt.ResolveUsing<BannerTextDTOResolver>().FromMember(source => source.Texts))
-               .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources));
-         }
-
-    */
 
         class BannerTextDTOResolver : ValueResolver<IList<StaticTextDTO>, IList<BaseBannerItem>>
         {
@@ -63,8 +49,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                 if (context == null || context.IsSourceValueNull)
                     return null;
 
-
                 AdminBannerDTO lDto = (AdminBannerDTO)context.SourceValue;
+
                 try
                 {
                     Banner lResult = new Banner()
@@ -103,11 +89,14 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                 catch (EntidadNulaException ex)
                 {
                     //TODO como lo muestro acá
+                    return null;
                 }
                 catch(IntervaloFechaInvalidoException ex)
                 {
                     //TODO como lo muestro acá
+                    return null;
                 }
+
             }
         }
     }
