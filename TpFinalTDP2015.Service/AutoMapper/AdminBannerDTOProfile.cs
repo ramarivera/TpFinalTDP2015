@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.Model;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
+using MarrSystems.TpFinalTDP2015.Model.Exceptiones;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
@@ -99,10 +100,13 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                     return lResult;
 
                 }
-                catch (Exception)
+                catch (EntidadNulaException ex)
                 {
-
-                    throw;
+                    //TODO como lo muestro acá
+                }
+                catch(IntervaloFechaInvalidoException ex)
+                {
+                    //TODO como lo muestro acá
                 }
             }
         }
