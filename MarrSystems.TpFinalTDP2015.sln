@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpFinalTDP2015.Test", "TpFinalTDP2015.Test\TpFinalTDP2015.Test.csproj", "{9D834F4D-22EF-4BC5-A3DA-4CD8ABAB2C96}"
 EndProject
@@ -23,7 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Consulta.sql = Consulta.sql
 		DateInterval.sql = DateInterval.sql
-		MarrSystems.TpFinalTDP2015.pssln = MarrSystems.TpFinalTDP2015.pssln
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xml Settings", "xml\Xml Settings.csproj", "{38C7AFDF-A2B9-4C81-B684-2ED9C3E35850}"

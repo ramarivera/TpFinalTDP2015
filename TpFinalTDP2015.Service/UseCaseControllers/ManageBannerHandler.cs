@@ -13,7 +13,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ManageBannerHandler : IController
     {
-        private IBannerService serv;
         private readonly IUnitOfWork iUoW;
         private readonly IBannerService iServ;
 
@@ -43,7 +42,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             IList<AdminBannerDTO> lResult = new List<AdminBannerDTO>();
 
-                foreach (var banner in serv.GetAll())
+                foreach (var banner in iServ.GetAll())
                 {
                     AdminBannerDTO lDto = Mapper.Map<Banner, AdminBannerDTO>(banner);
                     lResult.Add(lDto);
@@ -55,7 +54,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             AdminBannerDTO lResult = new AdminBannerDTO();
 
-                lResult = Mapper.Map<Banner, AdminBannerDTO>(serv.Read(pId));
+                lResult = Mapper.Map<Banner, AdminBannerDTO>(iServ.Read(pId));
             return lResult;
         }
     }

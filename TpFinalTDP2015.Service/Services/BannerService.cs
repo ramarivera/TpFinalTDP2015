@@ -51,7 +51,8 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         public override int Save(AdminBannerDTO pBanner)
         {
             iUoW.BeginTransaction();
-            IRepository<Banner> lBannerRepo = iUoW.GetRepository<Banner>();
+            IRepository<Banner> lBannerRepo = iUo
+            W.GetRepository<Banner>();
             IController<DateIntervalDTO> lIntervalController = ControllerFactory.GetController<DateIntervalDTO>();
             IController<StaticTextDTO> lStaticTextController = ControllerFactory.GetController<StaticTextDTO>();
             IController<RssSourceDTO> lRssSourceController = ControllerFactory.GetController<RssSourceDTO>();
