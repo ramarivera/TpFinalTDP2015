@@ -17,7 +17,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         private readonly IUnitOfWork iUoW;
         private readonly IStaticTextService iServ;
 
-        internal ManageTextHandler(IUnitOfWork pUoW, IStaticTextService pService)
+        public ManageTextHandler(IUnitOfWork pUoW, IStaticTextService pService)
         {
             this.iUoW = pUoW;
             this.iServ = pService;

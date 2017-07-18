@@ -15,14 +15,14 @@ using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {
-    public class ScheduleService : ServiceWithLogger, IScheduleService
+    public class ScheduleService : IScheduleService
     {
         /// <summary>
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<ScheduleService>();
 
-        public ScheduleService(ILog pLogger, IUnitOfWork iUoW) : base(pLogger)
+        public ScheduleService(IUnitOfWork iUoW)
         {
 
         }
@@ -160,7 +160,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 
         IEnumerable<Schedule> ICrudService<Schedule>.GetAll()
         {
-            throw new NotImplementedException();
+            return new List<Schedule>();
         }
     }
 }

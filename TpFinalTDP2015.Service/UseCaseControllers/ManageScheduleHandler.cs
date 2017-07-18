@@ -15,6 +15,13 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
     {
         private IScheduleService serv;
 
+
+        public ManageScheduleHandler(IScheduleService pService)
+        {
+            this.serv = pService;
+        }
+
+
         public int AddSchedule(ScheduleDTO pDto)
         {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);

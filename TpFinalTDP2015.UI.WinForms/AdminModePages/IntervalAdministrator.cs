@@ -18,7 +18,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Intervalos de Fechas")]
     public partial class IntervalAdministrator : AdminModePage
     {
-        ManageScheduleHandler iController = new ManageScheduleHandler();
+        ManageScheduleHandler iController;
         private GenericDGV<ScheduleDTO> dgvDateInterval;
         private GenericDGV<ScheduleEntryDTO> dgvTimeInterval;
 
@@ -121,7 +121,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private void CargarTimeDataGrid()
         {
             this.dateInterval = dgvDateInterval.GetItem(0);
-            this.dgvTimeInterval.SetSource(this.dateInterval.ActiveHours);
+            if (this.dateInterval != null)
+            {
+                this.dgvTimeInterval.SetSource(this.dateInterval.ActiveHours);
+            }
         }
 
         //TODO estos dos metodos son muy similares. No podes por ej cuando se carga todo setear el dgvDate en index 0 cosa de que se dispare auto el segundo metodo?

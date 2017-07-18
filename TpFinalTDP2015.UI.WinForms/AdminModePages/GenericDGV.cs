@@ -18,13 +18,19 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<GenericDGV<TDto>>();
 
         public BindingSource iSource = new BindingSource(); //TODO cambiar public por private
-        private DGVHelper<TDto> iHelper = new DGVHelper<TDto>();
         private bool configured = false;
 
 
         public TDto GetItem(int pRowIndex)
         {
-            return (TDto) this.Rows[pRowIndex].DataBoundItem;
+            TDto result = default(TDto);
+
+            if (this.Rows.Count > 0 && pRowIndex <= this.Rows.Count - 1)
+            {
+                result = (TDto)this.Rows[pRowIndex].DataBoundItem;
+            }
+
+            return result;
         }
 
         public GenericDGV(IContainer container)
@@ -87,12 +93,6 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
 
             this.DataSource = this.iSource;
-
-            if (!configured)
-            {
-                this.iHelper.Configure(this); //TODO esto se tendria que hacer una vez por cada dgv, no una vez cada vez que se agrega algo :(
-                configured = true;
-            } 
         }
 
         public IList<TDto> GetAll()
@@ -102,136 +102,136 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     }
 
 
-    class DGVHelper<TDto> where TDto : IDTO
-    {
-        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<DGVHelper<TDto>>();
+    //class DGVHelper<TDto> where TDto : IDTO
+    //{
+    //    private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<DGVHelper<TDto>>();
 
-        IList<PropertyConfigurations> PropertyConfigs { get; set; }
+    //    IList<PropertyConfigurations> PropertyConfigs { get; set; }
 
-        internal DGVHelper()
-        {
-            this.PropertyConfigs = new List<PropertyConfigurations>();
-        }
+    //    internal DGVHelper()
+    //    {
+    //        this.PropertyConfigs = new List<PropertyConfigurations>();
+    //    }
 
-        public void Configure(GenericDGV<TDto> pDGV)
-        {
-            pDGV.AutoGenerateColumns = false;
-            //  pDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.GetConfigForEntity(typeof(TDto));
-            this.ConfigureColumns(pDGV);
-            pDGV.RowHeadersVisible = false;
+    //    public void Configure(GenericDGV<TDto> pDGV)
+    //    {
+    //        pDGV.AutoGenerateColumns = false;
+    //        //  pDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+    //        this.GetConfigForEntity(typeof(TDto));
+    //        this.ConfigureColumns(pDGV);
+    //        pDGV.RowHeadersVisible = false;
 
-        }
-
-
-        private void ConfigureColumns(GenericDGV<TDto> pDGV)
-        {
-            int i = 0;
-            bool lError = false;
-            IList<DataGridViewColumn> lColumnsToRemove = new List<DataGridViewColumn>();
-            IList<DataGridViewColumn> lColumns = this.CopyColumns(pDGV);
-
-            while (!lError && i < lColumns.Count)
-            {
-                DataGridViewColumn lCol = lColumns[i];
-                lCol.ReadOnly = true;
-                PropertyConfigurations lProp = PropertyConfigs
-                                    .Where(pro => pro.PropertyName == lCol.Name)
-                                    .FirstOrDefault();
-                if (lProp != null)      // meramente para estar seguro que no falle nada
-                {
-                    if (lProp.Enabled)
-                    {
-                        lCol.HeaderText = lProp.Value;
-                    }
-                    else
-                    {
-                        lColumnsToRemove.Add(lCol);
-                    }
-                    i++;
-                }
-                else//TODO cagamos viteh
-                {
-                    lError = true;
-                }
-
-            }
-
-            if (!lError)
-            {
-                foreach (DataGridViewColumn col in lColumnsToRemove)
-                {
-                    lColumns.Remove(col);
-                }
-                pDGV.Columns.Clear();
-                pDGV.Columns.AddRange(lColumns.ToArray());
-            }
-
-        }
-
-        private IList<DataGridViewColumn> CopyColumns(GenericDGV<TDto> pDGV)
-        {
-            IList<DataGridViewColumn> lResult = new List<DataGridViewColumn>();
-
-            foreach (DataGridViewColumn col in pDGV.Columns)
-            {
-                lResult.Add((DataGridViewColumn)col.Clone());
-            }
-
-            return lResult;
-        }
-
-        private void GetConfigForEntity(Type pEntityType)
-        {
-            XDocument lXDoc = XDocument.Load("Datagrid.xml");
-            IEnumerable<XElement> lXEntityElements = lXDoc.Elements().Elements();
-
-            cLogger.Info("Descomponiendo XML");
-
-            var query = from entity in lXEntityElements
-                        where ((string)entity.Attribute("fullName") == pEntityType.FullName)
-                        select entity;
-
-            XElement lXEntity = query.FirstOrDefault();
-            //TODO excepcion de lxEntity es null despues del default
-            string lLanCode = "es-AR"; //TODO obtenerlo de otro luga, anda a saber de donde
+    //    }
 
 
-            query = from language in lXEntity.Elements()
-                    where ((string)language.Attribute("code") == lLanCode)
-                    select language;
+    //    private void ConfigureColumns(GenericDGV<TDto> pDGV)
+    //    {
+    //        int i = 0;
+    //        bool lError = false;
+    //        IList<DataGridViewColumn> lColumnsToRemove = new List<DataGridViewColumn>();
+    //        IList<DataGridViewColumn> lColumns = this.CopyColumns(pDGV);
 
-            XElement lXLanguage = query.FirstOrDefault();
+    //        while (!lError && i < lColumns.Count)
+    //        {
+    //            DataGridViewColumn lCol = lColumns[i];
+    //            lCol.ReadOnly = true;
+    //            PropertyConfigurations lProp = PropertyConfigs
+    //                                .Where(pro => pro.PropertyName == lCol.Name)
+    //                                .FirstOrDefault();
+    //            if (lProp != null)      // meramente para estar seguro que no falle nada
+    //            {
+    //                if (lProp.Enabled)
+    //                {
+    //                    lCol.HeaderText = lProp.Value;
+    //                }
+    //                else
+    //                {
+    //                    lColumnsToRemove.Add(lCol);
+    //                }
+    //                i++;
+    //            }
+    //            else//TODO cagamos viteh
+    //            {
+    //                lError = true;
+    //            }
 
-            foreach (var xl in lXLanguage.Elements())
-            {
-                this.PropertyConfigs.Add
-                (
-                    new PropertyConfigurations()
-                    {
-                        PropertyName = xl.Attribute("name").Value,
-                        Value = xl.Element("text").Value,
-                        Enabled = xl.Element("enable").Value == "true"
-                    }
-                );
-            }
+    //        }
+
+    //        if (!lError)
+    //        {
+    //            foreach (DataGridViewColumn col in lColumnsToRemove)
+    //            {
+    //                lColumns.Remove(col);
+    //            }
+    //            pDGV.Columns.Clear();
+    //            pDGV.Columns.AddRange(lColumns.ToArray());
+    //        }
+
+    //    }
+
+    //    private IList<DataGridViewColumn> CopyColumns(GenericDGV<TDto> pDGV)
+    //    {
+    //        IList<DataGridViewColumn> lResult = new List<DataGridViewColumn>();
+
+    //        foreach (DataGridViewColumn col in pDGV.Columns)
+    //        {
+    //            lResult.Add((DataGridViewColumn)col.Clone());
+    //        }
+
+    //        return lResult;
+    //    }
+
+    //    private void GetConfigForEntity(Type pEntityType)
+    //    {
+    //        XDocument lXDoc = XDocument.Load("Datagrid.xml");
+    //        IEnumerable<XElement> lXEntityElements = lXDoc.Elements().Elements();
+
+    //        cLogger.Info("Descomponiendo XML");
+
+    //        var query = from entity in lXEntityElements
+    //                    where ((string)entity.Attribute("fullName") == pEntityType.FullName)
+    //                    select entity;
+
+    //        XElement lXEntity = query.FirstOrDefault();
+    //        //TODO excepcion de lxEntity es null despues del default
+    //        string lLanCode = "es-AR"; //TODO obtenerlo de otro luga, anda a saber de donde
+
+
+    //        query = from language in lXEntity.Elements()
+    //                where ((string)language.Attribute("code") == lLanCode)
+    //                select language;
+
+    //        XElement lXLanguage = query.FirstOrDefault();
+
+    //        foreach (var xl in lXLanguage.Elements())
+    //        {
+    //            this.PropertyConfigs.Add
+    //            (
+    //                new PropertyConfigurations()
+    //                {
+    //                    PropertyName = xl.Attribute("name").Value,
+    //                    Value = xl.Element("text").Value,
+    //                    Enabled = xl.Element("enable").Value == "true"
+    //                }
+    //            );
+    //        }
 
 
 
-        }
+    //    }
 
-        class PropertyConfigurations
-        {
-            internal string PropertyName { get; set; }
-            internal string Value { get; set; }
-            internal bool Enabled { get; set; }
+    //    class PropertyConfigurations
+    //    {
+    //        internal string PropertyName { get; set; }
+    //        internal string Value { get; set; }
+    //        internal bool Enabled { get; set; }
 
-            public override string ToString()
-            {
-                return String.Format("{0}:{1} ({2})", this.PropertyName, this.Value, this.Enabled);
-            }
-        }
-    }
+    //        public override string ToString()
+    //        {
+    //            return String.Format("{0}:{1} ({2})", this.PropertyName, this.Value, this.Enabled);
+    //        }
+    //    }
+    //}
 }
 
 
