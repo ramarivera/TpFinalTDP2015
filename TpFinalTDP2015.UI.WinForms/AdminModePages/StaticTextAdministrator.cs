@@ -25,6 +25,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         public StaticTextAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
             InitializeComponent();
+            this.iController = pFactory.GetController<ManageTextHandler>();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

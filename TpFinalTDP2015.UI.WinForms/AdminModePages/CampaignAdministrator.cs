@@ -22,8 +22,8 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         public CampaignAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
-           
             InitializeComponent();
+            this.iController = pFactory.GetController<ManageCampaignHandler>();
             this.Load += CampaignAdministrator_Load;
         }
 

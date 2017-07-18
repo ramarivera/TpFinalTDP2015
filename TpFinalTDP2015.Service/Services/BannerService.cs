@@ -34,7 +34,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 
         public IEnumerable<Banner> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<Banner>();
         }
 
         public Banner Read(int pId)
