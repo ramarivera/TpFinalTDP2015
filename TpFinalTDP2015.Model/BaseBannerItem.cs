@@ -10,8 +10,6 @@ namespace MarrSystems.TpFinalTDP2015.Model
     {
         private string iType;
 
-        private string test_property;
-
         public BaseBannerItem() : base() { }
 
         public string Type

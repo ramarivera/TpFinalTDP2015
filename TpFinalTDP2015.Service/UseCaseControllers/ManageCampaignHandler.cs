@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageCampaignHandler
+    public class ManageCampaignHandler : IController
     {
         public void AddCampaign(CampaignDTO pDto) { }
 

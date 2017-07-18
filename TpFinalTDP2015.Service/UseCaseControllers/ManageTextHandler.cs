@@ -11,7 +11,7 @@ using MarrSystems.TpFinalTDP2015.Persistence;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageTextHandler
+    public class ManageTextHandler : IController
     {
 
         private readonly IUnitOfWork iUoW;
@@ -22,7 +22,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             this.iUoW = pUoW;
             this.iServ = pService;
         }
-
 
         
         public int AddText(StaticTextDTO pDto)
