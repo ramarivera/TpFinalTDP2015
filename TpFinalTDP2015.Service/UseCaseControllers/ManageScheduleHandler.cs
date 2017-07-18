@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageScheduleHandler
+    public class ManageScheduleHandler: IController
     {
         private IScheduleService serv;
 

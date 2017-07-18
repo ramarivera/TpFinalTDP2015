@@ -24,6 +24,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         public RSSSourceAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
             InitializeComponent();
+            this.iController = pFactory.GetController<ManageSourceHandler>();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

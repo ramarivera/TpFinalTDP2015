@@ -28,8 +28,8 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         public IntervalAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
-           
             InitializeComponent();
+            this.iController = pFactory.GetController<ManageScheduleHandler>();
         }
 
 

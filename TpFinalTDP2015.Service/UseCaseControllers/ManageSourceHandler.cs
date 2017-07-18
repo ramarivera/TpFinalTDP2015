@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageSourceHandler
+    public class ManageSourceHandler: IController
     {
         public IRssSourceService serv;
 
