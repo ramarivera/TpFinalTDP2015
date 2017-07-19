@@ -12,7 +12,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
     public class ManageSourceHandler: IController
     {
-        public IRssSourceService serv;
+        private IRssSourceService serv;
+
+        public ManageSourceHandler(IRssSourceService pService)
+        {
+            this.serv = pService;
+        }
 
         public int AddSource(RssSourceDTO pDto)
         {

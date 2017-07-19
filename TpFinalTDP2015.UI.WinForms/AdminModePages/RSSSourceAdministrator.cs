@@ -18,7 +18,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Fuentes RSS")]
     public partial class RSSSourceAdministrator : AdminModePage
     {
-        private ManageSourceHandler iController = new ManageSourceHandler();
+        private ManageSourceHandler iController;
         private GenericDGV<RssSourceDTO> dgvRSSSource;
 
         public RSSSourceAdministrator(IControllerFactory pFactory) : base(pFactory)
