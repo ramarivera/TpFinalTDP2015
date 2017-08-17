@@ -17,16 +17,17 @@ namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarBanner : Form, IAddModifyViewForm
     {
-        ManageScheduleHandler dateIntervalController;
-        ManageTextHandler staticTextController;
-        ManageSourceHandler rssSourcesController;
+        //ManageScheduleHandler dateIntervalController;
+        //ManageTextHandler staticTextController;
+        //ManageSourceHandler rssSourcesController;
 
         private AdminBannerDTO iOriginalBanner = new AdminBannerDTO();
+        private readonly IControllerFactory iFactory;
 
-        
-        public AgregarModificarBanner()
+        public AgregarModificarBanner(IControllerFactory pFactory)
         {
             InitializeComponent();
+            this.iFactory = pFactory;
         }
 
         public AdminBannerDTO Banner

@@ -9,20 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using TpFinalTDP2015.UI.Excepciones;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarFuenteRSS : BaseForm, IAddModifyViewForm
     {
         private RssSourceDTO iOriginalRSSSource = new RssSourceDTO();
+        private readonly IControllerFactory iFactory;
 
         public RssSourceDTO RSSSource
         {
             get { return this.iOriginalRSSSource; }
         }
-        public AgregarModificarFuenteRSS()
+        public AgregarModificarFuenteRSS(IControllerFactory pFactory)
         {
             InitializeComponent();
+            this.iFactory = pFactory;
         }
 
         void IAddModifyViewForm.Add(IDTO pNewRSSSource)

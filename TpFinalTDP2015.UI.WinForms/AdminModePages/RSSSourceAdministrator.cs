@@ -32,7 +32,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             try
             {
                 var lRssSource = new RssSourceDTO();
-                    AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
+                    AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS(this.iFactory);
                     this.dgvRSSSource.Add(ventana, lRssSource);
                     iController.AddSource(lRssSource);
             }
@@ -78,7 +78,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                     DataGridViewRow row = dgvRSSSource.CurrentRow;
                     var lRssSource = dgvRSSSource.GetItem(row.Index);
-                    AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS();
+                    AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS(this.iFactory);
                     this.dgvRSSSource.Modify(ventana, lRssSource);
                     iController.ModifySource(lRssSource);
             }

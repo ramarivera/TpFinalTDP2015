@@ -20,10 +20,12 @@ namespace MarrSystems.TpFinalTDP2015.UI
         ManageScheduleHandler dateIntervalController;
         //TODO ajustar ventana para poder agregar intervalos y slides
         private CampaignDTO iOriginalCampaign = new CampaignDTO();
-        
-        public AgregarModificarCampaña()
+        private readonly IControllerFactory iFactory;
+
+        public AgregarModificarCampaña(IControllerFactory pFactory)
         {
             InitializeComponent();
+            this.iFactory = pFactory;
         }
 
         void IAddModifyViewForm.Add(IDTO pNewCampaign)

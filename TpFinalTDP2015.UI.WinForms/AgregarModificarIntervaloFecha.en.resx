@@ -149,7 +149,7 @@
     <value>Start Date</value>
   </data>
   <data name="dtpStartDate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 26</value>
+    <value>88, 20</value>
   </data>
   <data name="tableLayoutPanel13.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 3</value>
@@ -158,7 +158,7 @@
     <value>94, 32</value>
   </data>
   <data name="dtpEndDate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 26</value>
+    <value>88, 20</value>
   </data>
   <data name="tableLayoutPanel14.Location" type="System.Drawing.Point, System.Drawing">
     <value>303, 3</value>
@@ -179,10 +179,10 @@
     <value>400, 38</value>
   </data>
   <data name="btnAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 31</value>
+    <value>297, 34</value>
   </data>
   <data name="btnAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 23</value>
+    <value>94, 26</value>
   </data>
   <data name="btnAll.Text" xml:space="preserve">
     <value>Select All</value>
@@ -191,19 +191,19 @@
     <value>76, 3</value>
   </data>
   <data name="chkMonday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 16</value>
+    <value>13, 19</value>
   </data>
   <data name="lblMonday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>67, 25</value>
   </data>
   <data name="lblMonday.Text" xml:space="preserve">
     <value>Monday</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 22</value>
+    <value>92, 25</value>
   </data>
   <data name="lblTuesday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>67, 25</value>
   </data>
   <data name="lblTuesday.Text" xml:space="preserve">
     <value>Tuesday</value>
@@ -212,16 +212,16 @@
     <value>76, 3</value>
   </data>
   <data name="chkTuesday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 16</value>
+    <value>13, 19</value>
   </data>
   <data name="tableLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 3</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 22</value>
+    <value>92, 25</value>
   </data>
   <data name="lblWednesday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>67, 25</value>
   </data>
   <data name="lblWednesday.Text" xml:space="preserve">
     <value>Wednesday</value>
@@ -230,16 +230,16 @@
     <value>76, 3</value>
   </data>
   <data name="chkWednesday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 16</value>
+    <value>13, 19</value>
   </data>
   <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
     <value>199, 3</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 22</value>
+    <value>92, 25</value>
   </data>
   <data name="lblThursday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 22</value>
+    <value>69, 25</value>
   </data>
   <data name="lblThursday.Text" xml:space="preserve">
     <value>Thursday</value>
@@ -248,16 +248,16 @@
     <value>78, 3</value>
   </data>
   <data name="chkThursday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 16</value>
+    <value>13, 19</value>
   </data>
   <data name="tableLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
     <value>297, 3</value>
   </data>
   <data name="tableLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 22</value>
+    <value>94, 25</value>
   </data>
   <data name="lblFriday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 23</value>
+    <value>67, 26</value>
   </data>
   <data name="lblFriday.Text" xml:space="preserve">
     <value>Friday</value>
@@ -266,16 +266,16 @@
     <value>76, 3</value>
   </data>
   <data name="chkFriday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 17</value>
+    <value>13, 20</value>
   </data>
   <data name="tableLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 31</value>
+    <value>3, 34</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 23</value>
+    <value>92, 26</value>
   </data>
   <data name="lblSaturday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 23</value>
+    <value>67, 26</value>
   </data>
   <data name="lblSaturday.Text" xml:space="preserve">
     <value>Saturday</value>
@@ -284,16 +284,16 @@
     <value>76, 3</value>
   </data>
   <data name="chkSaturday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 17</value>
+    <value>13, 20</value>
   </data>
   <data name="tableLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 31</value>
+    <value>101, 34</value>
   </data>
   <data name="tableLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 23</value>
+    <value>92, 26</value>
   </data>
   <data name="lblSunday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 23</value>
+    <value>67, 26</value>
   </data>
   <data name="lblSunday.Text" xml:space="preserve">
     <value>Sunday</value>
@@ -302,19 +302,16 @@
     <value>76, 3</value>
   </data>
   <data name="chkSunday.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 17</value>
+    <value>13, 20</value>
   </data>
   <data name="tableLayoutPanel11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>199, 31</value>
+    <value>199, 34</value>
   </data>
   <data name="tableLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 23</value>
-  </data>
-  <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 22</value>
+    <value>92, 26</value>
   </data>
   <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 57</value>
+    <value>394, 63</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 84</value>
@@ -332,7 +329,7 @@
     <value>103, 6</value>
   </data>
   <data name="txtTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 26</value>
+    <value>294, 20</value>
   </data>
   <data name="tableLayoutPanel16.Size" type="System.Drawing.Size, System.Drawing">
     <value>400, 31</value>
@@ -345,15 +342,5 @@
   </data>
   <data name="comentario.Text" xml:space="preserve">
     <value>Allows u to</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>9, 20</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>608, 322</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
   </data>
 </root>

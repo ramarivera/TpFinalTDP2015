@@ -9,20 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using TpFinalTDP2015.UI.Excepciones;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervaloTiempo : BaseForm, IAddModifyViewForm
     {
         private ScheduleEntryDTO iOriginalTimeInterval = new ScheduleEntryDTO();
+        private readonly IControllerFactory iFactory;
 
         public ScheduleEntryDTO TimeInterval
         {
             get { return this.iOriginalTimeInterval; }
         }
-        public AgregarModificarIntervaloTiempo()
+        public AgregarModificarIntervaloTiempo(IControllerFactory pFactory)
         {
             InitializeComponent();
+            this.iFactory = pFactory;
         }
 
         void IAddModifyViewForm.Add(IDTO pNewTimeInterval)

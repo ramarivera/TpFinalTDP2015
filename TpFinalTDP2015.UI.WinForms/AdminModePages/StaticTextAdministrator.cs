@@ -33,7 +33,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             try
             {
                 StaticTextDTO staticText = new StaticTextDTO();
-                AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
+                AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo(this.iFactory);
                 this.dgvStaticText.Add(ventana, staticText);
                 iController.AddText(staticText);
                 this.CargarDataGrid();
@@ -80,7 +80,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 DataGridViewRow row = dgvStaticText.CurrentRow;
                 StaticTextDTO staticText = dgvStaticText.GetItem(row.Index);
-                AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo();
+                AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo(this.iFactory);
                 this.dgvStaticText.Modify(ventana, staticText);
                 iController.ModifyText(staticText);
             }

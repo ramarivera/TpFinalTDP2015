@@ -89,7 +89,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             try
             {
                 AdminBannerDTO banner = new AdminBannerDTO();
-                AgregarModificarBanner ventana = new AgregarModificarBanner();
+                AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
                 this.dgvBanner.Add(ventana, banner);
                 iController.AddBanner(banner);
                 this.CargarDataGrid();
@@ -107,7 +107,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 DataGridViewRow row = dgvBanner.CurrentRow;
                 AdminBannerDTO banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
-                AgregarModificarBanner ventana = new AgregarModificarBanner();
+                AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
                 this.dgvBanner.Modify(ventana, banner);
                 iController.ModifyBanner(banner);
             }

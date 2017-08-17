@@ -8,21 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarSlide : Form, IAddModifyViewForm
     {
         private SlideDTO iOriginalSlide;
+        private readonly IControllerFactory iFactory;
 
         public SlideDTO Slide
         {
             get { return this.iOriginalSlide; }
         }
 
-        public AgregarModificarSlide()
+        public AgregarModificarSlide(IControllerFactory pFactory)
         {
             InitializeComponent();
+            this.iFactory = pFactory;
         }
 
         void IAddModifyViewForm.Add(IDTO pNewSlide)

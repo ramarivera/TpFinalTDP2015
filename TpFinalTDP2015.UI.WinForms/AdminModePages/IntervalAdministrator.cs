@@ -39,7 +39,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             try
             {
                 this.dateInterval = new ScheduleDTO();
-                AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
+                AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha(this.iFactory);
                 this.dgvDateInterval.Add(ventana, this.dateInterval);
                 iController.AddSchedule(this.dateInterval);
                 this.CargarDateDataGrid();
@@ -86,7 +86,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 DataGridViewRow row = dgvDateInterval.CurrentRow;
                 this.dateInterval = dgvDateInterval.GetItem(row.Index);
-                AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha();
+                AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha(this.iFactory);
                 this.dgvDateInterval.Modify(ventana, this.dateInterval);
                 iController.ModifySchedule(this.dateInterval);
             }
@@ -141,7 +141,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             DataGridViewRow row = dgvDateInterval.CurrentRow;
             this.dateInterval = dgvDateInterval.GetItem(row.Index);
             this.timeInterval = new ScheduleEntryDTO();
-            IAddModifyViewForm ventana = new AgregarModificarIntervaloTiempo();
+            IAddModifyViewForm ventana = new AgregarModificarIntervaloTiempo(this.iFactory);
             ventana.Add((IDTO)this.timeInterval);
             DialogResult resultado = ventana.ShowForm();
             if (resultado == DialogResult.OK)

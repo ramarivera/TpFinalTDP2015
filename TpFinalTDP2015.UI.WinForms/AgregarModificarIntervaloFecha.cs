@@ -10,20 +10,23 @@ using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 using TpFinalTDP2015.UI.Excepciones;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarIntervaloFecha : BaseForm, IAddModifyViewForm
     {
         private ScheduleDTO iOriginalDateInterval;
+        private readonly IControllerFactory iFactory;
 
         public ScheduleDTO DateInterval
         {
             get { return this.iOriginalDateInterval; }
         }
-        public AgregarModificarIntervaloFecha()
+        public AgregarModificarIntervaloFecha(IControllerFactory pFactory)
         {
             InitializeComponent();
+            this.iFactory = pFactory;
         }
 
         void IAddModifyViewForm.Add(IDTO pNewDateInterval)

@@ -11,7 +11,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     public partial class AdminModePage : BaseForm
     {
-        private IControllerFactory iFactory;
+        protected IControllerFactory iFactory;
 
         public AdminModePage(IControllerFactory pFactory) : base()
         {

@@ -50,7 +50,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             try
             {
                 CampaignDTO campaign = new CampaignDTO();
-                AgregarModificarCampaña ventana = new AgregarModificarCampaña();
+                AgregarModificarCampaña ventana = new AgregarModificarCampaña(this.iFactory);
                 this.dgvCampaign.Add(ventana, campaign);
                 iController.AddCampaign(campaign);
                 this.CargarDataGrid();
@@ -96,7 +96,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             DataGridViewRow row = dgvCampaign.CurrentRow;
             CampaignDTO campaign = (CampaignDTO)dgvCampaign.GetItem(row.Index);
-            AgregarModificarCampaña ventana = new AgregarModificarCampaña();
+            AgregarModificarCampaña ventana = new AgregarModificarCampaña(this.iFactory);
             this.dgvCampaign.Modify(ventana, campaign);
             iController.ModifyCampaign(campaign);
         }

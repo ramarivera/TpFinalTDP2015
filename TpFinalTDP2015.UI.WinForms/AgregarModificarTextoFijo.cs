@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using TpFinalTDP2015.UI.Excepciones;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
     public partial class AgregarModificarTextoFijo : BaseForm, IAddModifyViewForm
     {
         private StaticTextDTO iOriginalStaticText = new StaticTextDTO();
+        private readonly IControllerFactory iFactory;
 
         public StaticTextDTO StaticText
         {
@@ -22,9 +24,10 @@ namespace MarrSystems.TpFinalTDP2015.UI
         }
 
         
-        public AgregarModificarTextoFijo()
+        public AgregarModificarTextoFijo(IControllerFactory pFactory)
         {
             InitializeComponent();
+            this.iFactory = pFactory;
         }
 
         void IAddModifyViewForm.Add(IDTO pNewStaticText)
