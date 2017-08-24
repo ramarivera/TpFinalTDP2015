@@ -18,25 +18,25 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Textos Fijos")]
     public partial class StaticTextAdministrator : AdminModePage
     {
-        ManageTextHandler iController;
-
         private GenericDGV<StaticTextDTO> dgvStaticText;
 
         public StaticTextAdministrator(IControllerFactory pFactory) : base(pFactory)
         {
             InitializeComponent();
-            this.iController = pFactory.GetController<ManageTextHandler>();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                StaticTextDTO staticText = new StaticTextDTO();
-                AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo(this.iFactory);
-                this.dgvStaticText.Add(ventana, staticText);
-                iController.AddText(staticText);
-                this.CargarDataGrid();
+                using (var controller = this.iFactory.GetController<ManageTextHandler>())
+                {
+                    StaticTextDTO staticText = new StaticTextDTO();
+                    AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo(this.iFactory);
+                    this.dgvStaticText.Add(ventana, staticText);
+                    controller.AddText(staticText);
+                    this.CargarDataGrid();
+                }
             }
             catch (Exception)
             {
@@ -63,7 +63,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     this.dgvStaticText.Delete(textosAEliminar);
                     foreach (StaticTextDTO text in textosAEliminar)
                     {
-                        iController.DeleteText(text);
+                        //iController.DeleteText(text);
                     }
                 }
             }
@@ -82,7 +82,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 StaticTextDTO staticText = dgvStaticText.GetItem(row.Index);
                 AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo(this.iFactory);
                 this.dgvStaticText.Modify(ventana, staticText);
-                iController.ModifyText(staticText);
+                //iController.ModifyText(staticText);
             }
             catch (Exception)
             {
@@ -100,7 +100,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                this.dgvStaticText.SetSource(this.iController.ListTexts());
+                using (var controller = this.iFactory.GetController<ManageTextHandler>())
+                {
+                    this.dgvStaticText.SetSource(controller.ListTexts());
+                }
             }
             catch (Exception)
             {
