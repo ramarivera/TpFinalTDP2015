@@ -22,12 +22,6 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             this.iDbSet = this.iContext.Set<TEntity>();
         }
 
-        public EFRepository(IDbContext pContext, IDbSet<TEntity> pDbSet)
-        {
-            this.iContext = pContext;
-            this.iDbSet = pDbSet;
-        }
-
         public IQueryable<TEntity> Queryable
         {
             get

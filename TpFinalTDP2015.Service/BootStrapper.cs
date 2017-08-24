@@ -17,6 +17,7 @@ using MarrSystems.TpFinalTDP2015.CrossCutting;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
 using System.Dynamic;
 using MarrSystems.TpFinalTDP2015.CrossCutting.InversionOfControl;
+using System.Data;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 {
@@ -45,33 +46,23 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
             cContainer.RegisterInstance(cContainer.Resolve<IPersistenceFactory>("IPersistenceFactory"));
 
+            cContainer.RegisterInstance(typeof(IsolationLevel), IsolationLevel.ReadCommitted);
+            cContainer.RegisterType(typeof(IUnitOfWork), typeof(EFUnitOfWork), new PerResolveLifetimeManager());
+            cContainer.RegisterType(typeof(IRepository<>), typeof(EFRepository<>), new PerResolveLifetimeManager());
 
-            cContainer.RegisterType(typeof(IRepository<>),
-                                new PerResolveLifetimeManager(),
-
-              new InjectionFactory((c, t, n) =>
-              {
-                  var lRepoType = t.IsGenericType ? t.GenericTypeArguments[0] : null;
-                  var met = typeof(IPersistenceFactory).GetMethods().
-                  FirstOrDefault(m => m.IsGenericMethod && m.Name == "GetRepository").MakeGenericMethod(lRepoType);
-                  return met.Invoke(c.Resolve<IPersistenceFactory>(),
-                      new object[] { });
-              })
-              );
 
             cContainer.RegisterTypes(
                 AllClasses.FromAssembliesInBasePath().Where(t => t.Namespace.Contains("BusinessLogic.Services")),
                 WithMappings.FromMatchingInterface,
                 WithName.Default,
                 WithLifetime.PerResolve
-               );
+            );
 
-            cContainer.RegisterType(typeof(IUnitOfWork),
-              new PerResolveLifetimeManager(),
-              new InjectionMember[]
-              {
-                  new InjectionFactory((c, t, n) => c.Resolve<IPersistenceFactory>().CreateUnitOfWork())
-              });
+            cContainer.RegisterType<IDbContext>(
+                new PerResolveLifetimeManager(),
+                new InjectionFactory(c => c.Resolve<IDbContextFactory>().CreateContext())
+            );
+                
         }
 
         public static IControllerFactory GetControllerFactory()

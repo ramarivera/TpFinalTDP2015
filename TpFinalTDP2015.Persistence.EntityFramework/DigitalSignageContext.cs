@@ -29,14 +29,16 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         public virtual IDbSet<Schedule> DateIntervals { get; set; }
         public virtual IDbSet<Day> Days { get; set; }
 
+        static Random _r = new Random();
 
         public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
         {
+            //Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
+
             this.Database.Log = (str => MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
-
-            Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
-
             cLogger.InfoFormat("Conexion establecida a: {0}", this.Database.Connection.ConnectionString);
+
+            this.RandomId = _r.Next(1,1000000);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -91,6 +93,8 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                 return this.Database;
             }
         }
+
+        public int RandomId { get; private set; }
         #endregion
     }
 }
