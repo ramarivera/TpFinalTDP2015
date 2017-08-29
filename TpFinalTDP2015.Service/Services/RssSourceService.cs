@@ -67,30 +67,31 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
             return lResult;
         }*/
 
-        int ICrudService<RssSource>.Create(RssSource pEntity)
+        int ICrudService<RssSource>.Create(RssSource pSource)
         {
-            throw new NotImplementedException();
+            iRepo.Add(pSource);
+            return pSource.Id;
         }
 
         RssSource ICrudService<RssSource>.Read(int pId)
         {
-            throw new NotImplementedException();
+            return iRepo.GetByID(pId);
         }
 
-        int ICrudService<RssSource>.Update(RssSource pEntity)
+        int ICrudService<RssSource>.Update(RssSource pSource)
         {
-            throw new NotImplementedException();
+            iRepo.Update(pSource);
+            return pSource.Id;
         }
 
         void ICrudService<RssSource>.Delete(int pId)
         {
-            throw new NotImplementedException();
+            iRepo.Delete(pId);
         }
 
         IEnumerable<RssSource> ICrudService<RssSource>.GetAll()
         {
-            return new List<RssSource>();
-            //throw new NotImplementedException();
+            return iRepo.GetAll().ToList();
         }
     }
 }

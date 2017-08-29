@@ -153,9 +153,6 @@
   <data name="&gt;&gt;dtpStartDate.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>405, 209</value>
-  </data>
   <data name="tableLayoutPanel7.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -173,6 +170,9 @@
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="chkMonday.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 3</value>
   </data>
   <data name="lblEndDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -258,7 +258,7 @@
   <data name="lblThursday.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="chkThursday.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkTuesday.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkWednesday.AutoSize" type="System.Boolean, mscorlib">
@@ -398,6 +398,12 @@
   </data>
   <data name="lblMonday.Text" xml:space="preserve">
     <value>Lunes</value>
+  </data>
+  <data name="lblFriday.Text" xml:space="preserve">
+    <value>Viernes</value>
+  </data>
+  <data name="chkThursday.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel3.Name" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -600,6 +606,9 @@
   <data name="lblThursday.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 24</value>
   </data>
+  <data name="&gt;&gt;chkSaturday.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="tableLayoutPanel4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -617,9 +626,6 @@
   </data>
   <data name="&gt;&gt;lblThursday.Name" xml:space="preserve">
     <value>lblThursday</value>
-  </data>
-  <data name="btnAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 25</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel8.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -677,6 +683,9 @@
   </data>
   <data name="tableLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="tableLayoutPanel10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -750,9 +759,6 @@
   <data name="lblWednesday.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
   </data>
-  <data name="lblSunday.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;comentario.Name" xml:space="preserve">
     <value>comentario</value>
   </data>
@@ -800,9 +806,6 @@
   </data>
   <data name="chkSaturday.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="chkTuesday.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="lblSaturday.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -872,9 +875,6 @@
   </data>
   <data name="&gt;&gt;lblEndDate.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;dtpStartDate.Parent" xml:space="preserve">
-    <value>tableLayoutPanel13</value>
   </data>
   <data name="tableLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 24</value>
@@ -987,8 +987,8 @@
   <data name="&gt;&gt;dtpStartDate.Type" xml:space="preserve">
     <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="btnAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 25</value>
   </data>
   <data name="chkSunday.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1107,8 +1107,8 @@
   <data name="btnAccept.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;chkSaturday.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblStartDate.Parent" xml:space="preserve">
+    <value>tableLayoutPanel5</value>
   </data>
   <data name="tableLayoutPanel14.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1155,8 +1155,8 @@
   <data name="&gt;&gt;lblSunday.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;lblStartDate.Parent" xml:space="preserve">
-    <value>tableLayoutPanel5</value>
+  <data name="lblSunday.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel13.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1173,8 +1173,8 @@
   <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="lblFriday.Text" xml:space="preserve">
-    <value>Viernes</value>
+  <data name="tableLayoutPanel10.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel10.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -1248,8 +1248,8 @@
   <data name="tableLayoutPanel13.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="chkMonday.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 3</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>405, 209</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnAll" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel4" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel6" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel7" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel8" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel9" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel10" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel11" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,25,Percent,25,Percent,25,Percent,25" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -1374,8 +1374,8 @@
   <data name="&gt;&gt;tableLayoutPanel9.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
   </data>
-  <data name="tableLayoutPanel10.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;dtpStartDate.Parent" xml:space="preserve">
+    <value>tableLayoutPanel13</value>
   </data>
   <data name="btnAccept.Location" type="System.Drawing.Point, System.Drawing">
     <value>240, 3</value>
