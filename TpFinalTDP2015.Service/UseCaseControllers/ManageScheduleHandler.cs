@@ -3,6 +3,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,34 +12,67 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageScheduleHandler: IController
+    public class ManageScheduleHandler: IController, IDisposable
     {
-        private IScheduleService serv;
+        private readonly IScheduleService iServ;
+        private readonly IUnitOfWork iUoW;
 
 
-        public ManageScheduleHandler(IScheduleService pService)
+        public ManageScheduleHandler(IScheduleService pService, IUnitOfWork pUoW)
         {
-            this.serv = pService;
+            this.iUoW = pUoW;
+            this.iServ = pService;
         }
 
 
         public int AddSchedule(ScheduleDTO pDto)
         {
+            iUoW.BeginTransaction();
+            try
+            {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
-                serv.Create(lSchedule);
+                iServ.Create(lSchedule);
+                iUoW.Commit();
                 return lSchedule.Id;
+            }
+            catch (Exception)
+            {
+                iUoW.Rollback();
+                throw;
+            }
+                
         }
 
-        public int ModifySchedule(ScheduleDTO pDto)
+        public void ModifySchedule(ScheduleDTO pDto)
         {
+            iUoW.BeginTransaction();
+            try
+            {
                 Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
-                serv.Update(lSchedule);
-                return lSchedule.Id;
+                iServ.Update(lSchedule);
+                iUoW.Commit();
+            }
+            catch (Exception)
+            {
+                iUoW.Rollback();
+                throw;
+            }
         }
 
         public void DeleteSchedule(ScheduleDTO pDto)
         {
-                serv.Delete(pDto.Id);
+            iUoW.BeginTransaction();
+            try
+            {
+                Schedule lSchedule = Mapper.Map<ScheduleDTO, Schedule>(pDto);
+                iServ.Delete(pDto.Id);
+                iUoW.Commit();
+            }
+            catch (Exception)
+            {
+                iUoW.Rollback();
+                throw;
+            }
         }
 
 
@@ -46,11 +80,19 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             IList<ScheduleDTO> lResult = new List<ScheduleDTO>();
 
-                foreach (var sche in serv.GetAll())
+            iUoW.BeginTransaction();
+            try
+            {
+                foreach (var sche in iServ.GetAll())
                 {
                     ScheduleDTO lDto = Mapper.Map<Schedule, ScheduleDTO>(sche);
                     lResult.Add(lDto);
                 }
+            }
+            finally
+            {
+                iUoW.Rollback();
+            }
 
             return lResult;
         }
@@ -58,15 +100,55 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         public ScheduleDTO GetSchedule(int pId)
         {
             ScheduleDTO lResult = new ScheduleDTO();
-            Schedule lTemp;
 
-                lTemp = serv.Read(pId);
-                //lResult = MapperHelper.Map<Schedule, ScheduleDTO>(lTemp, lResult);
-                lResult = Mapper.Map<Schedule, ScheduleDTO>(lTemp);
+            iUoW.BeginTransaction();
+            try
+            {
+                lResult = Mapper.Map<Schedule, ScheduleDTO>(iServ.Read(pId));
+            }
+            finally
+            {
+                iUoW.Rollback();
+            }
 
-          //  lResult = MapperHelper.Map<Schedule,ScheduleDTO>(lTemp,lResult);
             return lResult;
+            //TODO esto lo comenté y no lo borré por el tema del helper, por las dudas
+            //  Schedule lTemp;
+
+            //      lTemp = serv.Read(pId);
+            //      //lResult = MapperHelper.Map<Schedule, ScheduleDTO>(lTemp, lResult);
+            //      lResult = Mapper.Map<Schedule, ScheduleDTO>(lTemp);
+
+            ////  lResult = MapperHelper.Map<Schedule,ScheduleDTO>(lTemp,lResult);
+            //  return lResult;
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    this.iUoW.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+        }
+        #endregion
     }
 }
     
