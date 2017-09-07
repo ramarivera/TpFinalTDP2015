@@ -21,10 +21,37 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         /// Definición de logger para todas las instancias de la clase.
         /// </summary>
         private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<ScheduleService>();
-
-        public ScheduleService(IUnitOfWork iUoW)
+        private readonly IRepository<Schedule> iRepo;
+        public ScheduleService(IRepository<Schedule> pRepo)
         {
+            this.iRepo = pRepo;
+        }
 
+        int ICrudService<Schedule>.Create(Schedule pSchedule)
+        {
+            iRepo.Add(pSchedule);
+            return pSchedule.Id;
+        }
+
+        Schedule ICrudService<Schedule>.Read(int pId)
+        {
+            return iRepo.GetByID(pId);
+        }
+
+        int ICrudService<Schedule>.Update(Schedule pSchedule)
+        {
+            iRepo.Update(pSchedule);
+            return pSchedule.Id;
+        }
+
+        void ICrudService<Schedule>.Delete(int pId)
+        {
+            iRepo.Delete(pId);
+        }
+
+        IEnumerable<Schedule> ICrudService<Schedule>.GetAll()
+        {
+            return iRepo.GetAll().ToList();
         }
 
         //public void Insert(Schedule pSchedule)
@@ -138,29 +165,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
         //    return (Schedule) lResult;
         //}
 
-        int ICrudService<Schedule>.Create(Schedule pEntity)
-        {
-            throw new NotImplementedException();
-        }
 
-        Schedule ICrudService<Schedule>.Read(int pId)
-        {
-            throw new NotImplementedException();
-        }
-
-        int ICrudService<Schedule>.Update(Schedule pEntity)
-        {
-            throw new NotImplementedException();
-        }
-
-        void ICrudService<Schedule>.Delete(int pId)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Schedule> ICrudService<Schedule>.GetAll()
-        {
-            return new List<Schedule>();
-        }
     }
 }

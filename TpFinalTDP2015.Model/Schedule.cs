@@ -111,7 +111,8 @@ namespace MarrSystems.TpFinalTDP2015.Model
         {
             get
             {
-                return this.Days;
+                //return this.Days;
+                return Days;
             }
         }
 
