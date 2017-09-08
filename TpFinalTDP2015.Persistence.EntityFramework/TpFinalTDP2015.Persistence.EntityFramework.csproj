@@ -106,7 +106,6 @@
     <Compile Include="IDbContextFactory.cs" />
     <Compile Include="Mappings\BannerConfiguration.cs" />
     <Compile Include="Mappings\DateIntervalConfiguration.cs" />
-    <Compile Include="Mappings\DayConfiguration.cs" />
     <Compile Include="Mappings\RssItemConfiguration.cs" />
     <Compile Include="Mappings\RssSourceConfiguration.cs" />
     <Compile Include="Mappings\SlideConfiguration.cs" />

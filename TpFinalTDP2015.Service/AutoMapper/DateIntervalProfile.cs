@@ -20,7 +20,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.ActiveFrom, opt => opt.MapFrom(source => source.ActiveFrom))
               .ForMember(dest => dest.ActiveUntil, opt => opt.MapFrom(source => source.ActiveUntil))
-              .ForMember(dest => dest.Days, opt => opt.MapFrom(source => source.ActiveDays))
+              .ForMember(dest => dest.ActiveDays, opt => opt.MapFrom(source => source.ActiveDays))
               .ForMember(dest => dest.ActiveHours, opt => opt.MapFrom(source => source.ActiveHours));
         }
     }

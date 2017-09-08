@@ -27,13 +27,12 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         public virtual IDbSet<Slide> Slides { get; set; }
         public virtual IDbSet<ScheduleEntry> TimeIntervals { get; set; }
         public virtual IDbSet<Schedule> DateIntervals { get; set; }
-        public virtual IDbSet<Day> Days { get; set; }
 
         static Random _r = new Random();
 
         public DigitalSignageContext(string pConnectionString) : base(pConnectionString)
         {
-            //Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
+            Database.SetInitializer<DigitalSignageContext>(new DigitalSignageInitializer());
 
             this.Database.Log = (str => MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<System.Data.Entity.DbContext>().DebugFormat(str));
             cLogger.InfoFormat("Conexion establecida a: {0}", this.Database.Connection.ConnectionString);

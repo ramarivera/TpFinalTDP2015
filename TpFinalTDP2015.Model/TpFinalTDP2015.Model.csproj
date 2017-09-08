@@ -72,7 +72,6 @@
     <Compile Include="Exceptiones\IntervaloFechaInvalidoException.cs" />
     <Compile Include="Exceptiones\IntervaloTiempoInvalidoException.cs" />
     <Compile Include="Schedule.cs" />
-    <Compile Include="Day.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="ExtensionMethod.cs" />
     <Compile Include="Interfaces\IHasSchedules.cs" />

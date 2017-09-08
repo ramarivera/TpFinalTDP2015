@@ -31,15 +31,16 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework.Mapping
             Property(di => di.ActiveUntil).HasColumnType("DateTime2");
 
 
+            Property(di => di.Monday);
+            Property(di => di.Tuesday);
+            Property(di => di.Wednesday);
+            Property(di => di.Thursday);
+            Property(di => di.Friday);
+            Property(di => di.Saturday);
+            Property(di => di.Sunday);
 
-            this.HasMany(di => di.ActiveDays)
-                .WithMany()
-                .Map(m =>
-                {
-                    m.MapLeftKey("DateIntervalId");
-                    m.MapRightKey("DayId");
-                    m.ToTable("DateIntervalDay");
-                });
+
+
 
             this.HasMany(di => di.ActiveHours)
                 .WithRequired()

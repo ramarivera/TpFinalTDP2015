@@ -98,12 +98,10 @@
     <Compile Include="AutoMapper\DateIntervalProfile.cs" />
     <Compile Include="AutoMapper\CampaignProfile.cs" />
     <Compile Include="AutoMapper\DateTimeResolver.cs" />
-    <Compile Include="AutoMapper\DayProfile.cs" />
     <Compile Include="AutoMapper\OperativeBannerProfile.cs" />
     <Compile Include="AutoMapper\RssItemDTOProfile.cs" />
     <Compile Include="AutoMapper\RssItemProfile.cs" />
     <Compile Include="AutoMapper\RssSourceDTOProfile.cs" />
-    <Compile Include="AutoMapper\DaysEnumProfile.cs" />
     <Compile Include="AutoMapper\SlideDTOProfile.cs" />
     <Compile Include="AutoMapper\SlideProfile.cs" />
     <Compile Include="AutoMapper\SlideTransitioProfile.cs" />
@@ -135,7 +133,7 @@
     <Compile Include="DTO\SlideDTO.cs" />
     <Compile Include="DTO\StaticTextDTO.cs" />
     <Compile Include="DTO\ScheduleEntryDTO.cs" />
-    <Compile Include="DTO\ValueAndDescription.cs" />
+    <Compile Include="DTO\ValueAndDescriptionDTO.cs" />
     <Compile Include="Enum\EnumConversion.cs" />
     <Compile Include="Enum\SlideTransition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

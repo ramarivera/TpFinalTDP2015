@@ -41,16 +41,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 
                     foreach (var item in lDto.ActiveHours)
                     {
-                        lResult.AddTimeInterval(
-                            Mapper.Map<ScheduleEntryDTO, ScheduleEntry>(item)
-                            );
+                        lResult.AddTimeInterval(Mapper.Map<ScheduleEntryDTO, ScheduleEntry>(item));
                     }
 
-                    foreach (var item in lDto.Days)
+                    foreach (var item in lDto.ActiveDays)
                     {
-                        lResult.AddDay(
-                            Mapper.Map<Days, Day>(item)
-                            );
+                        lResult.AddDay(item);
                     }
 
                     return lResult;

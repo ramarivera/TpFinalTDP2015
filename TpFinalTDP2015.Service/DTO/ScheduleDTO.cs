@@ -15,12 +15,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
         public string Name { get; set; }
         public DateTime ActiveUntil { get; set; }
         public DateTime ActiveFrom { get; set; }
-        public IList<Days> Days { get; set; }
+        public IList<Days> ActiveDays { get; set; }
         public IList<ScheduleEntryDTO> ActiveHours { get; set; }
 
         public ScheduleDTO()
         {
-            this.Days = new List<Days>();
+            this.ActiveDays = new List<Days>();
             this.ActiveHours = new List<ScheduleEntryDTO>();
         }
     }

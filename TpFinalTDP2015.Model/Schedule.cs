@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.Model.Enum;
 using MarrSystems.TpFinalTDP2015.Model.Interfaces;
 using MarrSystems.TpFinalTDP2015.Model.Exceptiones;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 
 namespace MarrSystems.TpFinalTDP2015.Model
 {
@@ -16,6 +17,14 @@ namespace MarrSystems.TpFinalTDP2015.Model
         private DateTime iActiveFrom;
         private DateTime iActiveUntil;
 
+        private bool iMonday;
+        private bool iTuesday;
+        private bool iWednesday;
+        private bool iThursday;
+        private bool iFriday;
+        private bool iSaturday;
+        private bool iSunday;
+
         private static readonly DateTime MIN_VALUE = new DateTime(1980, 1, 1);
         private static readonly DateTime MAX_VALUE = new DateTime(2099, 12, 31);
 
@@ -24,7 +33,6 @@ namespace MarrSystems.TpFinalTDP2015.Model
             this.iActiveUntil = MAX_VALUE;
             this.iActiveFrom = MIN_VALUE;
             this.TimeIntervals = new List<ScheduleEntry>();
-            this.Days = new List<Day>();
         }
 
         public virtual string Name
@@ -46,23 +54,23 @@ namespace MarrSystems.TpFinalTDP2015.Model
                 {
                     throw new FechaInvalidaException("La fecha indicada no es valida");
                 }
-/*
-                if (!(value <= this.iActiveUntil))
-                {
-                    throw new FechaInvalidaException("La fecha de inicio del intervalo debe ser menor o igual a la fecha de fin");
-                }
-                else if (!(value >= MIN_VALUE))
-                {
-                    throw new FechaInvalidaException("La fecha indicada debe ser mayor o igual a "+MIN_VALUE.ToString());
-                }
-                else if (!(value <= MAX_VALUE))
-                {
-                    throw new FechaInvalidaException("La fecha indicada debe ser menor o igual a " + MAX_VALUE.ToString());
-                }
-                else
-                {
-                    this.iActiveFrom = value;
-                }*/
+                /*
+                                if (!(value <= this.iActiveUntil))
+                                {
+                                    throw new FechaInvalidaException("La fecha de inicio del intervalo debe ser menor o igual a la fecha de fin");
+                                }
+                                else if (!(value >= MIN_VALUE))
+                                {
+                                    throw new FechaInvalidaException("La fecha indicada debe ser mayor o igual a "+MIN_VALUE.ToString());
+                                }
+                                else if (!(value <= MAX_VALUE))
+                                {
+                                    throw new FechaInvalidaException("La fecha indicada debe ser menor o igual a " + MAX_VALUE.ToString());
+                                }
+                                else
+                                {
+                                    this.iActiveFrom = value;
+                                }*/
             }
         }
         public virtual DateTime ActiveUntil
@@ -100,19 +108,67 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
+        public virtual bool Monday
+        {
+            get { return this.iMonday; }
+            set { this.iMonday = value; }
+        }
 
-     
+        public virtual bool Thursday
+        {
+            get { return this.iThursday; }
+            set { this.iThursday = value; }
+        }
+
+        public virtual bool Wednesday
+        {
+            get { return this.iWednesday; }
+            set { this.iWednesday = value; }
+        }
+
+        public virtual bool Tuesday
+        {
+            get { return this.iTuesday; }
+            set { this.iTuesday = value; }
+        }
+        public virtual bool Friday
+        {
+            get { return this.iFriday; }
+            set { this.iFriday = value; }
+        }
+
+        public virtual bool Saturday
+        {
+            get { return this.iSaturday; }
+            set { this.iSaturday = value; }
+        }
+
+        public virtual bool Sunday
+        {
+            get { return this.iSunday; }
+            set { this.iSunday = value; }
+        }
+
         protected virtual IList<ScheduleEntry> TimeIntervals { get; set; }
-        protected virtual IList<Day> Days  { get; set; }
-
-      
-
-        public virtual IEnumerable<Day> ActiveDays
+        public List<Days> ActiveDays
         {
             get
             {
-                //return this.Days;
-                return Days;
+                var lResult = new List<Days>();
+
+                if (Monday)
+                {
+                    lResult.Add(Days.Lunes);
+                }
+
+                // ....
+
+                if (Sunday)
+                {
+                    lResult.Add(Days.Domingo);
+                }
+
+                return lResult;
             }
         }
 
@@ -124,30 +180,22 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        public virtual void AddDay(Day pDay)
+        public virtual void AddDay(Days pDay)
         {
-            if (this.Days.Contains(pDay))
+            if (this.ActiveDays.Contains(pDay))
             {
                 //TODO excepcion dia repetido
                 throw new DiaRepetidoException("El día indicado ya existe en el intervalo");
             }
             else
             {
-                this.Days.Add(pDay);
+                this.ActiveDays.Add(pDay);
             }
         }
 
-        public virtual void RemoveDay(Day pDay)
+        public virtual void RemoveDay(Days pDay)
         {
-            this.Days.Remove(pDay);
-        }
-
-        public virtual void RemoveAllDays()
-        {
-            foreach (var day in ActiveDays.Reverse())
-            {
-                RemoveDay(day);
-            }
+            this.ActiveDays.Remove(pDay);
         }
 
         public virtual void AddTimeInterval(ScheduleEntry pInterval)
@@ -239,10 +287,10 @@ namespace MarrSystems.TpFinalTDP2015.Model
         private bool HasEqualDays(Schedule pInterval)
         {
             bool lResult = false;
-            int i = this.Days.Count - 1;
+            int i = this.ActiveDays.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
-                Day day = this.Days[i];
+                Days day = this.ActiveDays[i];
                 if (pInterval.ActiveDays.Contains(day))
                 {
                     lResult = true;
@@ -288,10 +336,10 @@ namespace MarrSystems.TpFinalTDP2015.Model
         {
             bool lResult = false;
             int lDay = (int)pDate.Day;
-            int i = this.Days.Count - 1;
+            int i = this.ActiveDays.Count - 1;
             while ((lResult == false) && (i >= 0))
             {
-                int day = (int)this.Days[i].Value;
+                int day = (int)this.ActiveDays[i];
                 lResult = (lDay == day);
                 i--;
             }

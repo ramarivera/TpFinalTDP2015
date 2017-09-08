@@ -18,7 +18,6 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         protected override void Seed(DigitalSignageContext pContext)
         {
             cLogger.Debug("Corriendo metodo Seed, super clase: " + this.GetType().BaseType.Name);
-            SeedDays(pContext);
             SeedDateIntervals(pContext);
             SeedTimeIntervals(pContext);
             SeedCampaigns(pContext);
@@ -200,7 +199,18 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 
         private void SeedDateIntervals(DigitalSignageContext pContext)
         {
-            IList<Day> lDayList = pContext.Days.ToList();
+            IList<Days> lDayList = new List<Days>
+            {
+                Days.Domingo,
+                Days.Sabado,
+                Days.Lunes,
+                Days.Martes,
+                Days.Miercoles,
+                Days.Jueves,
+                Days.Viernes
+            };
+
+
             IList<ScheduleEntry> lTimeIntervalList = pContext.TimeIntervals.ToList();
 
             Schedule lDateInterval1 = new Schedule()
@@ -210,11 +220,11 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                 ActiveFrom = new DateTime(2016,05,01),
             };
 
+            lDateInterval1.AddDay(lDayList[0]);
             lDateInterval1.AddDay(lDayList[1]);
             lDateInterval1.AddDay(lDayList[2]);
             lDateInterval1.AddDay(lDayList[3]);
             lDateInterval1.AddDay(lDayList[4]);
-            lDateInterval1.AddDay(lDayList[5]);
 
            /* lDateInterval1.AddActiveHours
             (
@@ -264,30 +274,6 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             pContext.SaveChanges();
         }
 
-        private void SeedDays(DigitalSignageContext pContext)
-        {
-            Day lDay1 = new Day() {Value = Days.Domingo };
-            Day lDay2 = new Day() {Value = Days.Lunes };
-            Day lDay3 = new Day() {Value = Days.Martes };
-            Day lDay4 = new Day() {Value = Days.Miercoles };
-            Day lDay5 = new Day() {Value = Days.Jueves };
-            Day lDay6 = new Day() {Value = Days.Viernes };
-            Day lDay7 = new Day() {Value = Days.Sabado };
-
-            IList<Day> lList = new List<Day>()
-                {
-                    lDay1,
-                    lDay2,
-                    lDay3,
-                    lDay4,
-                    lDay5,
-                    lDay6,
-                    lDay7
-                };
-
-            pContext.Set<Day>().AddRange(lList);
-            pContext.SaveChanges();
-        }
 
     }
 }

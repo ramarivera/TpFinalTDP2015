@@ -35,7 +35,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.View
                 this.dtpStartDate.Value = pDateInterval.ActiveFrom;
                 this.dtpEndDate.Value = pDateInterval.ActiveUntil;
                 this.Text = "Intervalo de fechas: " + pDateInterval.Name;
-                foreach (Days dia in pDateInterval.Days)
+                foreach (Days dia in pDateInterval.ActiveDays)
                 {
                     switch (dia)
                     {

@@ -26,7 +26,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
                 cfg.AddProfile<OperativeBannerProfile>();
                 cfg.AddProfile<CampaignProfile>();
                 cfg.AddProfile<DateIntervalProfile>();
-                cfg.AddProfile<DayProfile>();
                 cfg.AddProfile<RssItemProfile>();
                 cfg.AddProfile<RssSourceProfile>();
                 cfg.AddProfile<SlideProfile>();
@@ -38,7 +37,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
                 cfg.AddProfile<DateIntervalDTOProfile>();
                 cfg.AddProfile<RssItemDTOProfile>();
                 cfg.AddProfile<RssSourceDTOProfile>();
-                cfg.AddProfile<DaysEnumProfile>();
                 cfg.AddProfile<SlideDTOProfile>();
                 cfg.AddProfile<SlideTransitioProfile>();
                 cfg.AddProfile<StaticTextDTOProfile>();
