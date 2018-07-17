@@ -80,7 +80,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
         {
             IList<ScheduleDTO> lResult = new List<ScheduleDTO>();
 
-            iUoW.BeginTransaction();
+            iUoW.BeginTransaction(); 
             try
             {
                 foreach (var sche in iServ.GetAll())
