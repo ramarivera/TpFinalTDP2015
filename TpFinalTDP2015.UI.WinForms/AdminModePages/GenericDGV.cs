@@ -1,15 +1,9 @@
 ﻿using Common.Logging;
-using System;
+using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
