@@ -1,55 +1,41 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.Model;
+using System.Collections.Generic;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
-    public class AdminBannerProfile: Profile
+    public class AdminBannerProfile : Profile
     {
-        protected override void Configure()
+        public AdminBannerProfile()
         {
-            Mapper.CreateMap<Banner, AdminBannerDTO>()
+            CreateMap<Banner, AdminBannerDTO>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
               .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
               .ForMember(dest => dest.ModificationDate, opt => opt.MapFrom(source => source.LastModified))
               .ForMember(dest => dest.Name, opt => opt.MapFrom(source => source.Name))
               .ForMember(dest => dest.Description, opt => opt.MapFrom(source => source.Description))
               .ForMember(dest => dest.ActiveIntervals, opt => opt.MapFrom(source => source.Schedules))
-              .ForMember(dest => dest.Texts, opt => opt.ResolveUsing<BannerItemResolver>().FromMember(source => source.Items))
+              .ForMember(dest => dest.Texts, opt => opt.ResolveUsing<BannerItemResolver>())
               .ForMember(dest => dest.RssSources, opt => opt.MapFrom(source => source.RssSources)); ;
         }
 
-
-        class BannerItemResolver : ValueResolver<IList<BaseBannerItem>, IList<StaticTextDTO>>
+        class BannerItemResolver : IValueResolver<Banner, AdminBannerDTO, IList<StaticTextDTO>>
         {
-            protected override IList<StaticTextDTO> ResolveCore(IList<BaseBannerItem> source)
+            public IList<StaticTextDTO> Resolve(Banner source, AdminBannerDTO destination, IList<StaticTextDTO> destMember, ResolutionContext context)
             {
                 IList<StaticTextDTO> lResult = new List<StaticTextDTO>();
 
-                foreach (var baseItem in source)
+                foreach (var baseItem in source.Items)
                 {
                     if (baseItem.Type == "Text")
                     {
-                        lResult.Add(
-                            Mapper.Map<StaticText, StaticTextDTO>(
-                                (StaticText)baseItem
-                                )
-                            );
+                        lResult.Add(Mapper.Map<StaticTextDTO>((StaticText)baseItem));
                     }
                 }
 
                 return lResult;
             }
-
         }
-
-
-
     }
-
 }

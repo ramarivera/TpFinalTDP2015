@@ -1,10 +1,12 @@
-﻿using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.InterceptionExtension;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Unity.Interception.ContainerIntegration;
+using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
+using Unity.Interception.PolicyInjection;
+using Unity.Lifetime;
+using Unity.Registration;
+using Unity.RegistrationByConvention;
 
 namespace MarrSystems.TpFinalTDP2015.CrossCutting.InversionOfControl
 {

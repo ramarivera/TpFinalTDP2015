@@ -1,31 +1,25 @@
 ﻿using MarrSystems.TpFinalTDP2015.Model;
-using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Unity;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
     class EFUnityPersistenceFactory 
     {
-
         IDbContextFactory iFactory;
         EFUnitOfWork iUoW;
         private readonly IUnityContainer iContainer;
 
-        public EFUnityPersistenceFactory(IUnityContainer pContainer,IDbContextFactory pFactory)
+        public EFUnityPersistenceFactory(IUnityContainer pContainer, IDbContextFactory pFactory)
         {
             this.iFactory = pFactory;
             this.iContainer = pContainer;
         }
 
-        IRepository<T> GetRepository<T>() where T : BaseEntity
+        IRepository<T> GetRepository<T>() 
+            where T : BaseEntity
         {
-
             return (IRepository<T>) this.GetRepository(typeof(T));
-            
         }
 
         IUnitOfWork CreateUnitOfWork()

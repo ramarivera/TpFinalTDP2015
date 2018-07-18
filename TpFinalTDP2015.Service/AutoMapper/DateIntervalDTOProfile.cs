@@ -1,55 +1,49 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.Model;
-using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
+using System;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
-    public class DateIntervalDTOProfile: Profile
+    public class DateIntervalDTOProfile : Profile
     {
-        protected override void Configure()
+        public DateIntervalDTOProfile()
         {
-            Mapper.CreateMap<ScheduleDTO, Schedule>()
+            CreateMap<ScheduleDTO, Schedule>()
                 .ConvertUsing<DateIntervalConverter>();
         }
 
         private class DateIntervalConverter : ITypeConverter<ScheduleDTO, Schedule>
         {
-            Schedule ITypeConverter<ScheduleDTO, Schedule>.Convert(ResolutionContext context)
+            public Schedule Convert(ScheduleDTO source, Schedule destination, ResolutionContext context)
             {
-                if (context == null || context.IsSourceValueNull)
+                if (source == null)
+                {
                     return null;
+                }
 
-
-                ScheduleDTO lDto = (ScheduleDTO)context.SourceValue;
                 try
                 {
-                    Schedule lResult = new Schedule()
-                    {
-                        Id = lDto.Id,
-                        LastModified = DateTimeResolver.Resolve(lDto.ModificationDate),
-                        CreationDate = DateTimeResolver.Resolve(lDto.CreationDate),
-                        Name = lDto.Name,
-                        ActiveUntil = lDto.ActiveUntil,
-                        ActiveFrom = lDto.ActiveFrom,
-                    };
+                    destination = destination ?? new Schedule();
 
-                    foreach (var item in lDto.ActiveHours)
+                    destination.Id = source.Id;
+                    destination.LastModified = DateTimeResolver.Resolve(source.ModificationDate);
+                    destination.CreationDate = DateTimeResolver.Resolve(source.CreationDate);
+                    destination.Name = source.Name;
+                    destination.ActiveUntil = source.ActiveUntil;
+                    destination.ActiveFrom = source.ActiveFrom;
+
+                    foreach (var item in source.ActiveHours)
                     {
-                        lResult.AddTimeInterval(Mapper.Map<ScheduleEntryDTO, ScheduleEntry>(item));
+                        destination.AddTimeInterval(Mapper.Map<ScheduleEntryDTO, ScheduleEntry>(item));
                     }
 
-                    foreach (var item in lDto.ActiveDays)
+                    foreach (var item in source.ActiveDays)
                     {
-                        lResult.AddDay(item);
+                        destination.AddDay(item);
                     }
 
-                    return lResult;
+                    return destination;
 
                 }
                 catch (Exception)

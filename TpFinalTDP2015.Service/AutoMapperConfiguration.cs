@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+using log4net;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper;
-using Common.Logging;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 {
@@ -18,10 +13,10 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 
         static public void  Configure()
         {
-
             Mapper.Reset();
 
-            Mapper.Initialize(cfg => {//ida
+            Mapper.Initialize(cfg => {
+                //ida
                 cfg.AddProfile<AdminBannerProfile>();
                 cfg.AddProfile<OperativeBannerProfile>();
                 cfg.AddProfile<CampaignProfile>();
@@ -38,7 +33,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
                 cfg.AddProfile<RssItemDTOProfile>();
                 cfg.AddProfile<RssSourceDTOProfile>();
                 cfg.AddProfile<SlideDTOProfile>();
-                cfg.AddProfile<SlideTransitioProfile>();
+                cfg.AddProfile<SlideTransitionProfile>();
                 cfg.AddProfile<StaticTextDTOProfile>();
                 cfg.AddProfile<ScheduleEntryDTOProfile>();
             });

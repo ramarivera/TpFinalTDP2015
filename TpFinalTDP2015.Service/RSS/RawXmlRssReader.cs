@@ -1,8 +1,8 @@
-﻿using Common.Logging;
+﻿using log4net;
+using MarrSystems.TpFinalTDP2015.Model;
 using System;
 using System.Collections.Generic;
 using System.Xml;
-using MarrSystems.TpFinalTDP2015.Model;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.RSS
 {
@@ -55,7 +55,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.RSS
             mRssXmlDocument.Load(mXmlReader);
 
             cLogger.Info("Ha finalizado la obtención de feeds.");
-            cLogger.Debug(pLogger => pLogger("Se ha obtenido el siguiente XML: {0}", mRssXmlDocument.OuterXml));
+            cLogger.DebugFormat("Se ha obtenido el siguiente XML: {0}", mRssXmlDocument.OuterXml);
             IList<RssItem> mRssItems = new List<RssItem>();
 
             cLogger.Info("Adaptando feeds...");
@@ -63,10 +63,10 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.RSS
             {
                 mRssItems.Add(new RssItem
                 {
-                    Title = RawXmlRssReader.GetXmlNodeValue<String>(bRssXmlItem, "title"),
-                    Description = RawXmlRssReader.GetXmlNodeValue<String>(bRssXmlItem, "description"),
-                    URL = RawXmlRssReader.GetXmlNodeValue<String>(bRssXmlItem, "link"),
-                    PublicationDate = RawXmlRssReader.GetXmlNodeValue<DateTime?>(bRssXmlItem, "pubDate")
+                    Title = GetXmlNodeValue<string>(bRssXmlItem, "title"),
+                    Description = GetXmlNodeValue<string>(bRssXmlItem, "description"),
+                    URL = GetXmlNodeValue<string>(bRssXmlItem, "link"),
+                    PublicationDate = GetXmlNodeValue<DateTime?>(bRssXmlItem, "pubDate")
                 });
             }
 

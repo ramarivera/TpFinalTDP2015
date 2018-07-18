@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.Model;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
@@ -13,90 +8,58 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     public class AdminBannerDTOProfile : Profile
     {
-
-        class BannerTextDTOResolver : ValueResolver<IList<StaticTextDTO>, IList<BaseBannerItem>>
+        public AdminBannerDTOProfile()
         {
-            protected override IList<BaseBannerItem> ResolveCore(IList<StaticTextDTO> source)
-            {
-                IList<BaseBannerItem> lResult = new List<BaseBannerItem>();
-
-                foreach (StaticTextDTO text in source)
-                {
-                    lResult.Add(
-                         Mapper.Map<StaticTextDTO, StaticText>(
-                            text
-                            )
-                        );
-                }
-
-                return lResult;
-            }
-
-
-        }
-
-
-        protected override void Configure()
-        {
-            Mapper.CreateMap<AdminBannerDTO, Banner>()
+            CreateMap<AdminBannerDTO, Banner>()
                 .ConvertUsing<BannerConverter>();
         }
 
         private class BannerConverter : ITypeConverter<AdminBannerDTO, Banner>
         {
-            Banner ITypeConverter<AdminBannerDTO, Banner>.Convert(ResolutionContext context)
+            public Banner Convert(AdminBannerDTO source, Banner destination, ResolutionContext context)
             {
-                if (context == null || context.IsSourceValueNull)
+                if (source == null)
                     return null;
 
-                AdminBannerDTO lDto = (AdminBannerDTO)context.SourceValue;
+                destination = destination ?? new Banner();
 
                 try
                 {
-                    Banner lResult = new Banner()
-                    {
-                        Id = lDto.Id,
-                        LastModified = DateTimeResolver.Resolve(lDto.ModificationDate),
-                        CreationDate = DateTimeResolver.Resolve(lDto.CreationDate),
-                        Name = lDto.Name,
-                        Description = lDto.Description,
-                    };
+                    destination.Id = source.Id;
+                    destination.LastModified = DateTimeResolver.Resolve(source.ModificationDate);
+                    destination.CreationDate = DateTimeResolver.Resolve(source.CreationDate);
+                    destination.Name = source.Name;
+                    destination.Description = source.Description;
 
-                    foreach (var item in lDto.ActiveIntervals)
+                    var lScheduleChecker = DomainServiceLocator.Resolve<IScheduleChecker>();
+
+                    foreach (var item in source.ActiveIntervals)
                     {
-                        lResult.AddSchedule(
-                            DomainServiceLocator.Resolve<IScheduleChecker>(),
-                            Mapper.Map<ScheduleDTO, Schedule>(item));
+                        destination.AddSchedule(lScheduleChecker, Mapper.Map<Schedule>(item));
                     }
 
-                    foreach (var item in lDto.Texts)
+                    foreach (var item in source.Texts)
                     {
-                        lResult.AddBannerItem(
-                             Mapper.Map<StaticTextDTO, StaticText>(item)
-                             );
+                        destination.AddBannerItem(Mapper.Map<StaticText>(item));
                     }
 
-                    foreach (var item in lDto.RssSources)
+                    foreach (var item in source.RssSources)
                     {
-                        lResult.AddSource(
-                            Mapper.Map<RssSourceDTO, RssSource>(item)
-                            );
+                        destination.AddSource(Mapper.Map<RssSource>(item));
                     }
 
-                    return lResult;
-
+                    return destination;
                 }
                 catch (EntidadNulaException ex)
                 {
                     //TODO como lo muestro acá
                     return null;
                 }
-                catch(IntervaloFechaInvalidoException ex)
+                catch (IntervaloFechaInvalidoException ex)
                 {
                     //TODO como lo muestro acá
                     return null;
                 }
-
             }
         }
     }

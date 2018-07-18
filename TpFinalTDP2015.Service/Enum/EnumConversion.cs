@@ -1,18 +1,10 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Enum
+﻿namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Enum
 {
     public class EnumConversion
     {
-        internal static BusinessLogic.Enum.SlideTransition SlideTransition(ResolutionContext arg)
+        public static BusinessLogic.Enum.SlideTransition SlideTransition(Model.Enum.SlideTransition source)
         {
-            Model.Enum.SlideTransition value = (Model.Enum.SlideTransition)arg.SourceValue;
-            switch (value)
+            switch (source)
             {
                 case Model.Enum.SlideTransition.Default:
                     return BusinessLogic.Enum.SlideTransition.Default;

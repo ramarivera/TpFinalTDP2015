@@ -1,12 +1,8 @@
-﻿using System;
+﻿using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
+using MarrSystems.TpFinalTDP2015.Model.Exceptiones;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarrSystems.TpFinalTDP2015.Model.Enum;
-using MarrSystems.TpFinalTDP2015.Model.Interfaces;
-using MarrSystems.TpFinalTDP2015.Model.Exceptiones;
-using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 
 namespace MarrSystems.TpFinalTDP2015.Model
 {

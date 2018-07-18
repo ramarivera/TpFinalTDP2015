@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.Model;
 
@@ -11,13 +6,12 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
     public class SlideDTOProfile : Profile
     {
-        protected override void Configure()
+        public SlideDTOProfile()
         {
-            Mapper.CreateMap<SlideDTO, Slide>()
+            CreateMap<SlideDTO, Slide>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-              .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
-              .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
-              //.ForMember(dest => dest.Image, opt => opt.MapFrom(source => source.Image))
+              .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
+              .ForMember(dest => dest.LastModified, opt => opt.MapFrom(source => source.ModificationDate))
               .ForMember(dest => dest.Duration, opt => opt.MapFrom(source => source.Duration))
               .ForMember(dest => dest.Transition, opt => opt.MapFrom(source => source.Transition));
         }

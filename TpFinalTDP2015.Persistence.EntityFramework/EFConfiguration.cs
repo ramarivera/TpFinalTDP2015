@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.Entity;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using MarrSystems.TpFinalTDP2015.Persistence.EntityFramework.Mapping;
+﻿using System.Data.Entity;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {

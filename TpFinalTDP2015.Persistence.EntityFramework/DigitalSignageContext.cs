@@ -1,17 +1,9 @@
-﻿using Common.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
-using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using log4net;
 using MarrSystems.TpFinalTDP2015.Model;
+using System;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {

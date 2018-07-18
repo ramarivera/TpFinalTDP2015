@@ -1,15 +1,7 @@
-﻿using Common.Logging;
-using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
+﻿using log4net;
 using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
-using MarrSystems.TpFinalTDP2015.Model.DomainServices;
-using MarrSystems.TpFinalTDP2015.Persistence;
-using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.InterceptionExtension;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Unity;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
@@ -24,9 +16,10 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             this.iContainer = pContainer;
         }
 
-        public T GetController<T>() where T : IController
+        public T GetController<T>()
+            where T : class, IController
         {
-            return (T)this.GetController(typeof(T));
+            return this.GetController(typeof(T)) as T;
         }
 
         public IController GetController(Type pType)

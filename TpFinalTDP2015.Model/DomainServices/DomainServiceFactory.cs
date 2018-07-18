@@ -1,11 +1,7 @@
 ﻿using MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Practices.Unity;
-
+using Unity;
 
 namespace MarrSystems.TpFinalTDP2015.Model.DomainServices
 {
@@ -14,16 +10,17 @@ namespace MarrSystems.TpFinalTDP2015.Model.DomainServices
         private readonly static IDictionary<Type, Object> cServices = new Dictionary<Type, Object>();
 
         public static T Resolve<T>()
+            where T : class
         {
-            dynamic lResult;
+            T lResult;
             Type lType = typeof(T);
             if (cServices.ContainsKey(lType))
             {
-                lResult = cServices[lType];
+                lResult = cServices[lType] as T;
             }
             else
             {
-                lResult = IoCContainerLocator.Container.Resolve(lType);
+                lResult = IoCContainerLocator.Container.Resolve(lType) as T;
                 cServices.Add(lType, lResult);
             }
 

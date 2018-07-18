@@ -1,19 +1,14 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.Model;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
-    public class RssItemProfile: Profile
+    public class RssItemProfile : Profile
     {
-        protected override void Configure()
+        public RssItemProfile()
         {
-            Mapper.CreateMap<RssItem, RssItemDTO>()
+            CreateMap<RssItem, RssItemDTO>()
               .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
               .ForMember(dest => dest.CreationDate, opt => opt.MapFrom(source => source.CreationDate))
               .ForMember(dest => dest.ModificationDate, opt => opt.MapFrom(source => source.LastModified))

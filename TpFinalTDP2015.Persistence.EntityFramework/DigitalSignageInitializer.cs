@@ -1,13 +1,10 @@
-﻿using Common.Logging;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using log4net;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
 using MarrSystems.TpFinalTDP2015.Model;
 using MarrSystems.TpFinalTDP2015.Model.DomainServices;
-using MarrSystems.TpFinalTDP2015.CrossCutting.Enum;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {

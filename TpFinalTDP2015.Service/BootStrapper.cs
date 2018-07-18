@@ -1,23 +1,15 @@
-﻿using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
-using MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection;
-using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using log4net;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 using MarrSystems.TpFinalTDP2015.Persistence;
 using MarrSystems.TpFinalTDP2015.Persistence.EntityFramework;
-using MarrSystems.TpFinalTDP2015.Model;
-using Common.Logging;
 using Microsoft.Practices.Unity.Configuration;
-using Microsoft.Practices.Unity.InterceptionExtension;
-using MarrSystems.TpFinalTDP2015.CrossCutting;
-using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
-using System.Dynamic;
-using MarrSystems.TpFinalTDP2015.CrossCutting.InversionOfControl;
+using System;
 using System.Data;
+using System.Linq;
+using Unity;
+using Unity.Injection;
+using Unity.Lifetime;
+using Unity.RegistrationByConvention;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic
 {
@@ -25,7 +17,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic
     {
         private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger(typeof(BootStrap));
         private static IUnityContainer cContainer;
-
 
         public static void Configure()
         {

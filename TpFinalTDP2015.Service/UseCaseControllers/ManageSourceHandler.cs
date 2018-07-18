@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageSourceHandler: IController, IDisposable
+    public class ManageSourceHandler : IController, IDisposable
     {
         private readonly IUnitOfWork iUoW;
         private readonly IRssSourceService iServ;
@@ -101,7 +101,6 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
             iUoW.BeginTransaction();
             try
             {
-                var tipos = Mapper.GetAllTypeMaps();
                 lResult = Mapper.Map<RssSource, RssSourceDTO>(iServ.Read(pId));
             }
             finally

@@ -1,15 +1,8 @@
-﻿using System;
+﻿using log4net;
+using MarrSystems.TpFinalTDP2015.Model;
+using MarrSystems.TpFinalTDP2015.Persistence;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common.Logging;
-using MarrSystems.TpFinalTDP2015.Persistence;
-using Microsoft.Practices.Unity;
-using MarrSystems.TpFinalTDP2015.Model;
-using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
-using AutoMapper;
-using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.Services
 {

@@ -1,46 +1,36 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.Model;
+using System;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
 {
-    public class ScheduleEntryDTOProfile: Profile
+    public class ScheduleEntryDTOProfile : Profile
     {
-        protected override void Configure()
+        public ScheduleEntryDTOProfile()
         {
-            Mapper.CreateMap<ScheduleEntryDTO, ScheduleEntry>()
+            CreateMap<ScheduleEntryDTO, ScheduleEntry>()
                 .ConvertUsing<TimeIntervalConverter>();
         }
 
         private class TimeIntervalConverter : ITypeConverter<ScheduleEntryDTO, ScheduleEntry>
         {
-            ScheduleEntry ITypeConverter<ScheduleEntryDTO, ScheduleEntry>.Convert(ResolutionContext context)
+            public ScheduleEntry Convert(ScheduleEntryDTO source, ScheduleEntry destination, ResolutionContext context)
             {
-                if (context == null || context.IsSourceValueNull)
+                if (source == null)
                     return null;
 
-
-                ScheduleEntryDTO lDto = (ScheduleEntryDTO)context.SourceValue;
                 try
                 {
-                    ScheduleEntry lResult = new ScheduleEntry()
-                    {
-                        Id = lDto.Id,
-                        LastModified = DateTimeResolver.Resolve(lDto.ModificationDate),
-                        CreationDate = DateTimeResolver.Resolve(lDto.CreationDate),
-                       // End = lDto.EndTime,
-                      //  Start = lDto.StartTime,
-                    };
+                    destination = destination ?? new ScheduleEntry();
 
-                    lResult.End = lDto.EndTime;
-                    lResult.Start = lDto.StartTime;
+                    destination.Id = source.Id;
+                    destination.LastModified = DateTimeResolver.Resolve(source.ModificationDate);
+                    destination.CreationDate = DateTimeResolver.Resolve(source.CreationDate);
+                    destination.End = source.EndTime;
+                    destination.Start = source.StartTime;
 
-                    return lResult;
+                    return destination;
 
                 }
                 catch (Exception)
@@ -50,14 +40,5 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.AutoMapper
                 }
             }
         }
-        /*protected override void Configure() ANTERIOR
-        {
-            Mapper.CreateMap<ScheduleEntryDTO, TimeInterval>()
-              .ForMember(dest => dest.Id, opt => opt.MapFrom(source => source.Id))
-              .ForMember(dest => dest.CreationDate, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.CreationDate))
-              .ForMember(dest => dest.LastModified, opt => opt.ResolveUsing<DateTimeResolver>().FromMember(source => source.ModificationDate))
-              .ForMember(dest => dest.Start, opt => opt.MapFrom(source => source.StartTime))
-              .ForMember(dest => dest.End, opt => opt.MapFrom(source => source.EndTime));
-        }*/
     }
 }

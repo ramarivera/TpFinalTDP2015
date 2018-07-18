@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
-   public class DigitalSignageDbContextFactory : IDbContextFactory
+    public class DigitalSignageDbContextFactory : IDbContextFactory
     {
         private readonly string iConnString;
 

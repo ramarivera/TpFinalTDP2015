@@ -1,12 +1,7 @@
-﻿using Common.Logging;
-using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
-using Microsoft.Practices.Unity;
+﻿using log4net;
 using Microsoft.Practices.Unity.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Unity;
 
 namespace MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection
 {
