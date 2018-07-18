@@ -1,9 +1,5 @@
 ﻿using MarrSystems.TpFinalTDP2015.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence
 {
@@ -16,9 +12,5 @@ namespace MarrSystems.TpFinalTDP2015.Persistence
         IRepository<T> GetRepository<T>() where T : BaseEntity;
 
         IRepository<BaseEntity> GetRepository(Type pType);
-
-
-
-
     }
 }

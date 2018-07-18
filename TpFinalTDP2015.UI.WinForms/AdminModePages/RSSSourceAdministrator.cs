@@ -116,7 +116,6 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

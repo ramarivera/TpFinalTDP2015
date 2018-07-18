@@ -1,15 +1,10 @@
 ﻿using MarrSystems.TpFinalTDP2015.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
 {
-    class EFPersistenceFactory : IPersistenceFactory
+    public class EFPersistenceFactory : IPersistenceFactory
     {
-
         IDbContextFactory iFactory;
         EFUnitOfWork iUoW;
         private readonly Guid guid;
@@ -23,10 +18,10 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         public IRepository<T> GetRepository<T>() where T : BaseEntity
         {
             iUoW = new EFUnitOfWork(this.iFactory.CreateContext());
-            return (IRepository<T>)this.iUoW.GetRepository<T>();           
+            return (IRepository<T>)this.iUoW.GetRepository<T>();
         }
 
-        public  IUnitOfWork CreateUnitOfWork()
+        public IUnitOfWork CreateUnitOfWork()
         {
             return iUoW = new EFUnitOfWork(this.iFactory.CreateContext());
         }
@@ -40,7 +35,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
         {
             if (iUoW != null)
             {
-                return (IRepository < BaseEntity>) iUoW.GetRepository(pType);
+                return (IRepository<BaseEntity>)iUoW.GetRepository(pType);
             }
             else
             {

@@ -8,7 +8,7 @@ namespace MarrSystems.TpFinalTDP2015.Model.DomainServices
     {
         public bool CanAddSchedule(IHasSchedules pHasSchedules, Schedule pSchedule)
         {
-            return pHasSchedules.Schedules.Any(x => pSchedule.IntersectsWith(x));
+            return !pHasSchedules.Schedules.Any(x => pSchedule.IntersectsWith(x));
         }
 
         public bool IsActiveAt(IHasSchedules pHasSchedules, DateTime pDate)

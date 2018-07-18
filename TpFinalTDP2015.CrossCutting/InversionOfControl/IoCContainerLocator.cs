@@ -1,7 +1,6 @@
 ﻿using log4net;
-using Microsoft.Practices.Unity.Configuration;
+using Microsoft.Practices.Unity;
 using System;
-using Unity;
 
 namespace MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection
 {
@@ -19,7 +18,7 @@ namespace MarrSystems.TpFinalTDP2015.CrossCutting.DependencyInjection
 
             IUnityContainer mUnityContainer = new UnityContainer();
 
-            mUnityContainer.LoadConfiguration("Registrations");
+            //mUnityContainer.LoadConfiguration("Registrations");
 
             return mUnityContainer;
         });
