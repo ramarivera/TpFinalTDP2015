@@ -91,8 +91,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 bool acepted = new bool();
                 AdminBannerDTO banner = new AdminBannerDTO();
                 AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
-                this.dgvBanner.Add(ventana, banner, acepted);
-                if (acepted)
+                if (this.dgvBanner.Add(ventana, banner))
                 {
                     iController.AddBanner(banner);
                     this.CargarDataGrid();

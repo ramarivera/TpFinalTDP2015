@@ -33,11 +33,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (var controller = this.iFactory.GetController<ManageSourceHandler>())
                     {
-                        bool acepted = new bool();
                         RssSourceDTO lRssSource = new RssSourceDTO();
                         AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS(this.iFactory);
-                        this.dgvRSSSource.Add(ventana, lRssSource, acepted);
-                        if (acepted)
+                        if (this.dgvRSSSource.Add(ventana, lRssSource))
                         {
                             controller.AddSource(lRssSource);
                             this.CargarDataGrid();

@@ -32,9 +32,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             this.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
-        public void Add(IAddModifyViewForm pForm, TDto pDTO, bool acepted)
+        public bool Add(IAddModifyViewForm pForm, TDto pDTO)
         {
-            acepted = false;
+            bool acepted = false;
             pForm.Add(pDTO);
             DialogResult resultado = pForm.ShowForm();
             if (resultado == DialogResult.OK)
@@ -43,6 +43,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 this.Rows[this.RowCount - 1].Tag = pDTO;
                 acepted = true;
             }
+            return acepted;
         }
 
         public void Modify(IAddModifyViewForm pForm, TDto pDTO)

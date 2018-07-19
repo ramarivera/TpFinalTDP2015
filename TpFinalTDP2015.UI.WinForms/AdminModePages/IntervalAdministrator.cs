@@ -34,11 +34,9 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (var controller = this.iFactory.GetController<ManageScheduleHandler>())
                 {
-                    bool acepted = new bool();
                     ScheduleDTO dateInterval = new ScheduleDTO();
                     AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha(this.iFactory);
-                    this.dgvDateInterval.Add(ventana, dateInterval, acepted);
-                    if (acepted)
+                    if (this.dgvDateInterval.Add(ventana, dateInterval))
                     {
                         controller.AddSchedule(dateInterval);
                         this.CargarDateDataGrid();
