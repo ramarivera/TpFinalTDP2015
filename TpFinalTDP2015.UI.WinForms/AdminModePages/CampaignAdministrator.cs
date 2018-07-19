@@ -49,11 +49,15 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
+                bool acepted = new bool();
                 CampaignDTO campaign = new CampaignDTO();
                 AgregarModificarCampaña ventana = new AgregarModificarCampaña(this.iFactory);
-                this.dgvCampaign.Add(ventana, campaign);
-                iController.AddCampaign(campaign);
-                this.CargarDataGrid();
+                this.dgvCampaign.Add(ventana, campaign, acepted);
+                if (acepted)
+                {
+                    iController.AddCampaign(campaign);
+                    this.CargarDataGrid();
+                }
             }
             catch (Exception)
             {

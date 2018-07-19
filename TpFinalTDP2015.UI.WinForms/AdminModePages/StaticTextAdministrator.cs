@@ -24,11 +24,15 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             {
                 using (var controller = this.iFactory.GetController<ManageTextHandler>())
                 {
+                    bool acepted = new bool();
                     StaticTextDTO staticText = new StaticTextDTO();
                     AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo(this.iFactory);
-                    this.dgvStaticText.Add(ventana, staticText);
-                    controller.AddText(staticText);
-                    this.CargarDataGrid();
+                    this.dgvStaticText.Add(ventana, staticText, acepted);
+                    if (acepted)
+                    {
+                        controller.AddText(staticText);
+                        this.CargarDataGrid();
+                    }                   
                 }
             }
             catch (Exception)

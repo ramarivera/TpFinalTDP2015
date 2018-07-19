@@ -88,11 +88,15 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
+                bool acepted = new bool();
                 AdminBannerDTO banner = new AdminBannerDTO();
                 AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
-                this.dgvBanner.Add(ventana, banner);
-                iController.AddBanner(banner);
-                this.CargarDataGrid();
+                this.dgvBanner.Add(ventana, banner, acepted);
+                if (acepted)
+                {
+                    iController.AddBanner(banner);
+                    this.CargarDataGrid();
+                }          
             }
             catch (Exception)
             {

@@ -32,14 +32,16 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             this.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
-        public void Add(IAddModifyViewForm pForm, TDto pDTO)
+        public void Add(IAddModifyViewForm pForm, TDto pDTO, bool acepted)
         {
+            acepted = false;
             pForm.Add(pDTO);
             DialogResult resultado = pForm.ShowForm();
             if (resultado == DialogResult.OK)
             {
                 this.iSource.Add(pDTO);
                 this.Rows[this.RowCount - 1].Tag = pDTO;
+                acepted = true;
             }
         }
 
