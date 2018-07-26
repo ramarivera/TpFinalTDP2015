@@ -99,8 +99,12 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             DataGridViewRow row = dgvCampaign.CurrentRow;
             CampaignDTO campaign = (CampaignDTO)dgvCampaign.GetItem(row.Index);
             AgregarModificarCampaña ventana = new AgregarModificarCampaña(this.iFactory);
-            this.dgvCampaign.Modify(ventana, campaign);
-            iController.ModifyCampaign(campaign);
+            if (this.dgvCampaign.Modify(ventana, campaign))
+            {
+                iController.ModifyCampaign(campaign);
+                this.CargarDataGrid();
+            }
+            
         }
     }
 }

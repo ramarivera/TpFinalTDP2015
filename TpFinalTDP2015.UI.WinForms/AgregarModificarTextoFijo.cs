@@ -69,7 +69,8 @@ namespace MarrSystems.TpFinalTDP2015.UI
                 {
                     throw new CampoNuloOVacioException("Complete el campo 'Título'");
                 }
-                else if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
+                else 
+                if ((String.IsNullOrWhiteSpace(this.txtDescription.Text)))
                 {
                     throw new CampoNuloOVacioException("Complete el campo 'Descripción'");
                 }

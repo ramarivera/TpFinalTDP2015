@@ -91,8 +91,12 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     DataGridViewRow row = dgvRSSSource.CurrentRow;
                     RssSourceDTO lRssSource = dgvRSSSource.GetItem(row.Index);
                     AgregarModificarFuenteRSS ventana = new AgregarModificarFuenteRSS(this.iFactory);
-                    this.dgvRSSSource.Modify(ventana, lRssSource);
-                    controller.ModifySource(lRssSource);
+                    if (this.dgvRSSSource.Modify(ventana, lRssSource))
+                    {
+                        controller.ModifySource(lRssSource);
+                        this.CargarDataGrid();
+                    }
+                    
                 }
             }
             catch (Exception)
