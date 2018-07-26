@@ -81,8 +81,11 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     DataGridViewRow row = dgvStaticText.CurrentRow;
                     StaticTextDTO staticText = dgvStaticText.GetItem(row.Index);
                     AgregarModificarTextoFijo ventana = new AgregarModificarTextoFijo(this.iFactory);
-                    this.dgvStaticText.Modify(ventana, staticText);
-                    controller.ModifyText(staticText);
+                    if (this.dgvStaticText.Modify(ventana, staticText))
+                    {
+                        controller.ModifyText(staticText);
+                        this.CargarDataGrid();
+                    }             
                 }
             }
             catch (Exception)

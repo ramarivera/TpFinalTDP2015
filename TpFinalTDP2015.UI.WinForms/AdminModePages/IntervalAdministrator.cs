@@ -92,8 +92,12 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     DataGridViewRow row = dgvDateInterval.CurrentRow;
                     ScheduleDTO dateInterval = dgvDateInterval.GetItem(row.Index);
                     AgregarModificarIntervaloFecha ventana = new AgregarModificarIntervaloFecha(this.iFactory);
-                    this.dgvDateInterval.Modify(ventana, dateInterval);
-                    controller.ModifySchedule(dateInterval);
+                    if (this.dgvDateInterval.Modify(ventana, dateInterval))
+                    {
+                        controller.ModifySchedule(dateInterval);
+                        this.CargarDateDataGrid();
+                    }
+                    
                 }
             }
             catch (Exception)

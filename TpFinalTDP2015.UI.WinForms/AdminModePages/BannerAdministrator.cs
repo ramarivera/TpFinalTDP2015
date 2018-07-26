@@ -111,8 +111,11 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                 DataGridViewRow row = dgvBanner.CurrentRow;
                 AdminBannerDTO banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
                 AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
-                this.dgvBanner.Modify(ventana, banner);
-                iController.ModifyBanner(banner);
+                if (this.dgvBanner.Modify(ventana, banner))
+                {
+                    iController.ModifyBanner(banner);
+                    this.CargarDataGrid();
+                }
             }
             catch (Exception)
             {

@@ -94,14 +94,16 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             return acepted;
         }
 
-        public void Modify(IAddModifyViewForm pForm, TDto pDTO)
+        public bool Modify(IAddModifyViewForm pForm, TDto pDTO)
         {
+            bool acepted = false;
             pForm.Modify(pDTO);
             DialogResult resultado = pForm.ShowForm();
             if (resultado == DialogResult.OK)
             {
-                //TODO fachada en cada administrador
+                acepted = true;
             }
+            return acepted;
         }
 
         public void Delete(IList<TDto> pDTOs)
