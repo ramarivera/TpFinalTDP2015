@@ -30,7 +30,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                     {
                         controller.AddText(staticText);
                         this.CargarDataGrid();
-                    }                   
+                    }
                 }
             }
             catch (Exception)
@@ -63,13 +63,13 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
                             controller.DeleteText(text);
                         }
                     }
-                }    
+                }
             }
             catch (Exception)
             {
 
                 throw;
-            }   
+            }
         }
 
         private void dgvStaticText_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -97,6 +97,7 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void StaticTextAdministrator_Load(object sender, EventArgs e)
         {
+            this.ConfigurarDataGrid();
             this.CargarDataGrid();
         }
 
@@ -114,6 +115,15 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
                 throw;
             }
+        }
+
+        private void ConfigurarDataGrid()
+        {
+            this.dgvStaticText.AddColumn(x => x.Title, "Titulo");
+            this.dgvStaticText.AddColumn(x => x.Description, "Descripcion");
+            this.dgvStaticText.AddColumn(x => x.Text, "Texto");
+            this.dgvStaticText.AddColumn(x => x.CreationDate, "Creado");
+            this.dgvStaticText.AddColumn(x => x.ModificationDate, "Modificado");
         }
 
         private void btnView_Click(object sender, EventArgs e)
