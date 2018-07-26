@@ -104,7 +104,15 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void RSSSourceAdministrator_Load(object sender, EventArgs e)
         {
+            this.ConfigurarGrillas();
             this.CargarDataGrid();
+        }
+
+        private void ConfigurarGrillas()
+        {
+            this.dgvRSSSource.AddColumn(x => x.Title, "Titulo");
+            this.dgvRSSSource.AddColumn(x => x.Description, "Descripcion");
+            this.dgvRSSSource.AddColumn(x => x.URL, "URL");
         }
 
         private void CargarDataGrid()

@@ -106,8 +106,20 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 
         private void IntervalAdministrator_Load(object sender, EventArgs e)
         {
+            this.ConfigurarGrillas();
             this.CargarDateDataGrid();
             this.CargarTimeDataGrid();
+        }
+
+        private void ConfigurarGrillas()
+        {
+            this.dgvDateInterval.AddColumn(x => x.Name, "Nombre");
+            this.dgvDateInterval.AddColumn(x => x.ActiveFrom, "Desde");
+            this.dgvDateInterval.AddColumn(x => x.ActiveUntil, "Hasta");
+            this.dgvDateInterval.AddColumn(x => x.ActiveDayNames, "Dias");
+
+            this.dgvTimeInterval.AddColumn(x => x.StartTime, "Inicio");
+            this.dgvTimeInterval.AddColumn(x => x.EndTime, "Fin");
         }
 
         private void CargarDateDataGrid()
