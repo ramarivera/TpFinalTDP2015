@@ -1,17 +1,72 @@
 ﻿using log4net;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
+using MarrSystems.TpFinalTDP2015.CrossCutting;
+using MarrSystems.TpFinalTDP2015.CrossCutting.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 
 namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
 {
     public partial class GenericDGV<TDto> : DataGridView where TDto : IDTO
     {
-        private static readonly ILog cLogger = MarrSystems.TpFinalTDP2015.CrossCutting.Logging.LogManagerWrapper.GetLogger<GenericDGV<TDto>>();
+        private static readonly ILog cLogger = LogManagerWrapper.GetLogger<GenericDGV<TDto>>();
 
-        private BindingSource iSource = new BindingSource(); //TODO cambiar public por private
+        private BindingSource iSource = new BindingSource();
+
+        public static DataGridViewColumn CreateColumn<TValue>(
+            Expression<Func<TDto, TValue>> pPropertySelector,
+            string pCabeceraColumna = null)
+        {
+            var lColumna = new DataGridViewTextBoxColumn();
+
+            var lNombrePropiedad = Reflect<TDto>.PropertyName(pPropertySelector);
+            var lCabeceraColumna = String.IsNullOrEmpty(pCabeceraColumna) ? lNombrePropiedad : pCabeceraColumna;
+
+            lColumna.DataPropertyName = lNombrePropiedad;
+            lColumna.HeaderText = lCabeceraColumna;
+
+            return lColumna;
+        }
+
+        public GenericDGV(IContainer container)
+        {
+            container.Add(this);
+            InitializeComponent();
+            this.EditMode = DataGridViewEditMode.EditProgrammatically;
+            this.AutoGenerateColumns = false;
+        }
+
+        public GenericDGV(IContainer container, params DataGridViewColumn[] pColumns)
+            : this(container)
+        {
+
+        }
+
+        public void AddColumns(params DataGridViewColumn[] pColumns)
+        {
+            if (pColumns != null && pColumns.Length > 0)
+            {
+                this.ClearColumns();
+                this.Columns.AddRange(pColumns);
+            }
+        }
+
+        public void AddColumn(DataGridViewColumn pColumn)
+        {
+            this.Columns.Add(pColumn);
+        }
+
+        public void AddColumn(
+            Expression<Func<TDto, object>> pPropertySelector,
+            string pCabeceraColumna = null)
+        {
+            var lColumna = CreateColumn(pPropertySelector, pCabeceraColumna);
+            this.Columns.Add(lColumna);
+        }
 
         public TDto GetItem(int pRowIndex)
         {
@@ -23,13 +78,6 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }
 
             return result;
-        }
-
-        public GenericDGV(IContainer container)
-        {
-            container.Add(this);
-            InitializeComponent();
-            this.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
         public bool Add(IAddModifyViewForm pForm, TDto pDTO)
@@ -93,6 +141,14 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         public IList<TDto> GetAll()
         {
             return iSource.Cast<TDto>().ToList();
+        }
+
+        private void ClearColumns()
+        {
+            for (int i = this.Columns.Count - 1; i > 0; i--)
+            {
+                this.Columns.RemoveAt(i);
+            }
         }
     }
 }
