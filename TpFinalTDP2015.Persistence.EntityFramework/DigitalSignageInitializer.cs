@@ -199,12 +199,12 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
             IList<Days> lDayList = new List<Days>
             {
                 Days.Domingo,
-                Days.Sabado,
                 Days.Lunes,
                 Days.Martes,
                 Days.Miercoles,
                 Days.Jueves,
-                Days.Viernes
+                Days.Viernes,
+                Days.Sabado,
             };
 
 
@@ -217,11 +217,11 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                 ActiveFrom = new DateTime(2016,05,01),
             };
 
-            lDateInterval1.AddDay(lDayList[0]);
-            lDateInterval1.AddDay(lDayList[1]);
-            lDateInterval1.AddDay(lDayList[2]);
-            lDateInterval1.AddDay(lDayList[3]);
-            lDateInterval1.AddDay(lDayList[4]);
+            lDateInterval1.Monday = true;
+            lDateInterval1.Tuesday = true;
+            lDateInterval1.Wednesday = true;
+            lDateInterval1.Thursday = true;
+            lDateInterval1.Friday = true;
 
            /* lDateInterval1.AddActiveHours
             (
@@ -236,17 +236,8 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                 ActiveFrom = new DateTime(2016, 02, 01)
             };
 
-           /* var query = from interval in lTimeIntervalList
-                        where interval.Start < new TimeSpan(12, 0, 0)
-                        select interval;
-
-            foreach (var interval in query)
-            {
-                lDateInterval2.AddActiveHours(interval);
-            }*/
-
-            lDateInterval2.AddDay(lDayList[0]);
-            lDateInterval2.AddDay(lDayList[6]);
+            lDateInterval2.Saturday = true;
+            lDateInterval2.Sunday = true;
 
             Schedule lDateInterval3 = new Schedule()
             {
@@ -255,16 +246,7 @@ namespace MarrSystems.TpFinalTDP2015.Persistence.EntityFramework
                 ActiveFrom = new DateTime(2016, 10, 01),
             };
 
-          /*  query = from interval in lTimeIntervalList
-                        where interval.End > new TimeSpan(15, 0, 0)
-                        select interval;
-
-            foreach (var interval in query)
-            {
-                lDateInterval3.AddActiveHours(interval);
-            }*/
-
-            lDateInterval3.AddDay(lDayList[3]);
+            lDateInterval3.Wednesday = true;
 
             pContext.Set<Schedule>().AddRange(new[] { lDateInterval1, lDateInterval2, lDateInterval3 });
             pContext.Set<Schedule>().Add(lDateInterval1);

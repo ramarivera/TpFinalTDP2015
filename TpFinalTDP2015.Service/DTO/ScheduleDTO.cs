@@ -23,5 +23,7 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.DTO
             this.ActiveDays = new List<Days>();
             this.ActiveHours = new List<ScheduleEntryDTO>();
         }
+
+        public string ActiveDayNames => String.Join(", ", ActiveDays.Select(x => x.ToString()));
     }
 }

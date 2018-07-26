@@ -146,6 +146,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
         }
 
         protected virtual IList<ScheduleEntry> TimeIntervals { get; set; }
+
         public List<Days> ActiveDays
         {
             get
@@ -157,7 +158,30 @@ namespace MarrSystems.TpFinalTDP2015.Model
                     lResult.Add(Days.Lunes);
                 }
 
-                // ....
+                if (Tuesday)
+                {
+                    lResult.Add(Days.Martes);
+                }
+
+                if (Wednesday)
+                {
+                    lResult.Add(Days.Miercoles);
+                }
+
+                if (Thursday)
+                {
+                    lResult.Add(Days.Jueves);
+                }
+
+                if (Friday)
+                {
+                    lResult.Add(Days.Viernes);
+                }
+
+                if (Saturday)
+                {
+                    lResult.Add(Days.Sabado);
+                }
 
                 if (Sunday)
                 {
@@ -176,24 +200,6 @@ namespace MarrSystems.TpFinalTDP2015.Model
             }
         }
 
-        public virtual void AddDay(Days pDay)
-        {
-            if (this.ActiveDays.Contains(pDay))
-            {
-                //TODO excepcion dia repetido
-                throw new DiaRepetidoException("El día indicado ya existe en el intervalo");
-            }
-            else
-            {
-                this.ActiveDays.Add(pDay);
-            }
-        }
-
-        public virtual void RemoveDay(Days pDay)
-        {
-            this.ActiveDays.Remove(pDay);
-        }
-
         public virtual void AddTimeInterval(ScheduleEntry pInterval)
         {
             if (pInterval == null)
@@ -207,7 +213,6 @@ namespace MarrSystems.TpFinalTDP2015.Model
             else
             {
                 this.TimeIntervals.Add(pInterval);
-                //TODO excepción si no es valido por interseccion, si es intervalo nulo. irian arriba
             }
         }
 
@@ -282,18 +287,7 @@ namespace MarrSystems.TpFinalTDP2015.Model
 
         private bool HasEqualDays(Schedule pInterval)
         {
-            bool lResult = false;
-            int i = this.ActiveDays.Count - 1;
-            while ((lResult == false) && (i >= 0))
-            {
-                Days day = this.ActiveDays[i];
-                if (pInterval.ActiveDays.Contains(day))
-                {
-                    lResult = true;
-                }
-                i--;
-            }
-            return lResult;
+            return this.ActiveDays.Any(x => pInterval.ActiveDays.Contains(x));
         }
 
         private bool HasEqualTimeIntervals(Schedule pInterval)
@@ -316,46 +310,39 @@ namespace MarrSystems.TpFinalTDP2015.Model
 
         public bool IsActiveAt(DateTime pDate)
         {
-            bool lResult = false;
-            if ((pDate >= this.ActiveFrom) && (pDate <= this.ActiveUntil))
-            {
-                lResult = this.IsActiveAtDate(pDate);
-                if (lResult)
-                {
-                    lResult = this.IsActiveAtTime(pDate.TimeOfDay);
-                }
-            }
-            return lResult;
+            return (pDate >= this.ActiveFrom)
+                && (pDate <= this.ActiveUntil)
+                && this.IsActiveAtDate(pDate)
+                && this.IsActiveAtTime(pDate.TimeOfDay);
         }
 
         private bool IsActiveAtDate(DateTime pDate)
         {
-            bool lResult = false;
-            int lDay = (int)pDate.Day;
-            int i = this.ActiveDays.Count - 1;
-            while ((lResult == false) && (i >= 0))
-            {
-                int day = (int)this.ActiveDays[i];
-                lResult = (lDay == day);
-                i--;
-            }
-            return lResult;
-            //TODO ver si anda despues de los cambios
+            return this.ActiveDays.Any(x => (int)x == pDate.Day);
         }
 
         private bool IsActiveAtTime(TimeSpan pTime)
         {
-            bool lResult = false;
-            int i = this.TimeIntervals.Count - 1;
-            while ((lResult == false) && (i >= 0))
-            {
-                ScheduleEntry pInterval = this.TimeIntervals[i];
-                lResult = ((pTime > pInterval.Start) && (pTime < pInterval.End));
-                i--;
-            }
-            return lResult;
+            return this.TimeIntervals.Any(x => x.Start < pTime && pTime < x.End);
         }
 
-
+        public virtual void AddDay(Days pDay)
+        {
+            if (this.ActiveDays.Contains(pDay))
+            {
+                //TODO excepcion dia repetido
+                throw new DiaRepetidoException("El día indicado ya existe en el intervalo");
+            }
+            else
+            {
+                if (pDay == Days.Domingo) this.Sunday = true;
+                if (pDay == Days.Lunes) this.Monday = true;
+                if (pDay == Days.Martes) this.Tuesday = true;
+                if (pDay == Days.Miercoles) this.Wednesday = true;
+                if (pDay == Days.Jueves) this.Thursday = true;
+                if (pDay == Days.Viernes) this.Friday = true;
+                if (pDay == Days.Sabado) this.Saturday = true;
+            }
+        }
     }
 }
