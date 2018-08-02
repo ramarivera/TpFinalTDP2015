@@ -19,15 +19,36 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
     [AdminModePageInfo(Name = "Administrador de Banners")]
     public partial class BannerAdministrator : AdminModePage
     {
-        ManageBannerHandler iController;
-        private GenericDGV<AdminBannerDTO> dgvBanner;
-                  
+        private GenericDGV<AdminBannerDTO> dgvBanner;         
 
         public BannerAdministrator(IControllerFactory pFactory): base(pFactory)
         {
             InitializeComponent();
-            this.iController = pFactory.GetController<ManageBannerHandler>();
-            this.Load += BannerAdministrator_Load;
+            //this.iController = pFactory.GetController<ManageBannerHandler>();
+            //this.Load += BannerAdministrator_Load;
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var controller = this.iFactory.GetController<ManageBannerHandler>())
+                {
+                    AdminBannerDTO banner = new AdminBannerDTO();
+                    AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
+                    if (this.dgvBanner.Add(ventana, banner))
+                    {
+                        controller.AddBanner(banner);
+                        this.CargarDataGrid();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                //TODO faltan excepciones en business logic
+                throw;
+            }
         }
 
         private void BannerAdministrator_Load(object sender, EventArgs e)
@@ -41,7 +62,10 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
         {
             try
             {
-                this.dgvBanner.SetSource(this.iController.ListBanner());
+                using (var controller = this.iFactory.GetController<ManageBannerHandler>())
+                {
+                    this.dgvBanner.SetSource(controller.ListBanner());
+                }
             }
             catch (Exception)
             {
@@ -84,37 +108,20 @@ namespace MarrSystems.TpFinalTDP2015.UI.AdminModePages
             }*/
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                bool acepted = new bool();
-                AdminBannerDTO banner = new AdminBannerDTO();
-                AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
-                if (this.dgvBanner.Add(ventana, banner))
-                {
-                    iController.AddBanner(banner);
-                    this.CargarDataGrid();
-                }          
-            }
-            catch (Exception)
-            {
-                //TODO faltan excepciones en business logic
-                throw;
-            }
-        }
-
         private void dgvBanner_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                DataGridViewRow row = dgvBanner.CurrentRow;
-                AdminBannerDTO banner = (AdminBannerDTO)dgvBanner.GetItem(row.Index);
-                AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
-                if (this.dgvBanner.Modify(ventana, banner))
+                using (var controller = this.iFactory.GetController<ManageBannerHandler>())
                 {
-                    iController.ModifyBanner(banner);
-                    this.CargarDataGrid();
+                    DataGridViewRow row = dgvBanner.CurrentRow;
+                    AdminBannerDTO banner = dgvBanner.GetItem(row.Index);
+                    AgregarModificarBanner ventana = new AgregarModificarBanner(this.iFactory);
+                    if (this.dgvBanner.Modify(ventana, banner))
+                    {
+                        controller.ModifyBanner(banner);
+                        this.CargarDataGrid();
+                    }
                 }
             }
             catch (Exception)

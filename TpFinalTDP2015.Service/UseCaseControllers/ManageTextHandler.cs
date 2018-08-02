@@ -4,9 +4,6 @@ using MarrSystems.TpFinalTDP2015.Model;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarrSystems.TpFinalTDP2015.Persistence;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers

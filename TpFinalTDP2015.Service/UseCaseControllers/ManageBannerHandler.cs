@@ -2,12 +2,14 @@
 using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Services;
 using MarrSystems.TpFinalTDP2015.Model;
+using AutoMapper;
+using System;
 using MarrSystems.TpFinalTDP2015.Persistence;
 using System.Collections.Generic;
 
 namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
 {
-    public class ManageBannerHandler : IController
+    public class ManageBannerHandler : IController, IDisposable
     {
         private readonly IUnitOfWork iUoW;
         private readonly IBannerService iServ;
@@ -53,5 +55,32 @@ namespace MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers
                 lResult = Mapper.Map<Banner, AdminBannerDTO>(iServ.Read(pId));
             return lResult;
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    this.iUoW.Dispose();
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+        }
+        #endregion
     }
 }
