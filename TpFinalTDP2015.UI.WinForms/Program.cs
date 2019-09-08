@@ -11,6 +11,7 @@ using MarrSystems.TpFinalTDP2015.BusinessLogic.DTO;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.Enum;
 using MarrSystems.TpFinalTDP2015.BusinessLogic.UseCaseControllers;
 using MarrSystems.TpFinalTDP2015.UI.AdminModePages;
+using TpFinalTDP2015.UI.WinForms;
 
 namespace MarrSystems.TpFinalTDP2015.UI
 {
@@ -27,7 +28,8 @@ namespace MarrSystems.TpFinalTDP2015.UI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModoAdministrador(lContFactory));
+            //Application.Run(new ModoAdministrador(lContFactory));
+            Application.Run(new Player());
         }
     }
 }
