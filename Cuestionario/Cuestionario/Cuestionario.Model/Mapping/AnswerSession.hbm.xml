@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Cuestionario.Model"
+                   namespace="Cuestionario.Model">
+
+  <class name="AnswerSession" table="AnswerSessions">
+    <id name="pId" column="id">
+      <generator class="identity"/>
+    </id>
+    <property name="pUsername" column="username" />
+    <property name="pCategoryId" column="categoryId" />
+    <property name="pDifficultyId" column="difficultyId" />
+    <property name="pAnswerTime" column="answerTime" />
+    <property name="pScore" column="score" />
+    <property name="pDate" column="date" />
+  </class>
+
+</hibernate-mapping>

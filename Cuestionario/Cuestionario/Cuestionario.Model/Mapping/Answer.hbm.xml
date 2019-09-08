@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Cuestionario.Model"
+                   namespace="Cuestionario.Model">
+
+  <class name="Answer" table="Answers">
+    <id name="pId" column="id">
+      <generator class="identity"/>
+    </id>
+    <property name="pDescription" column="description" />
+    <property name="pQuestionId" column="questionId" />
+    <property name="pCorrect" column="correct" />
+  </class>
+
+</hibernate-mapping>
