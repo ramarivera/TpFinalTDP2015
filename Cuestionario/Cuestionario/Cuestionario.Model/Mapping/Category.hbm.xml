@@ -4,10 +4,14 @@
                    namespace="Cuestionario.Model">
 
   <class name="Category" table="Categories">
-    <id name="pId" column="id">
+    <id name="Id" column="id">
       <generator class="identity"/>
     </id>
-    <property name="pDescription" column="description" />
+    <property name="Description" column="description" />
+    <set name="Questions">
+      <key column="questionId" not-null="true"/>
+      <one-to-many class="Question"/>
+    </set>
   </class>
 
 </hibernate-mapping>

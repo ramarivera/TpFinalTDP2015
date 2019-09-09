@@ -8,9 +8,9 @@ namespace Cuestionario.Model
 {
     public class Answer
     {
-        public virtual int pId { get; set; }
-        public virtual int pQuestionId { get; set; }
-        public virtual string pDescription { get; set; }
-        public virtual bool pCorrect { get; set; }
+        public virtual int Id { get; set; }
+        public virtual Question Question { get; set; }
+        public virtual string Description { get; set; }
+        public virtual bool Correct { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NHibernate;
+using NHibernate.Linq;
 
 namespace Cuestionario.Model
 {
@@ -11,17 +12,60 @@ namespace Cuestionario.Model
     {
         static void Main(string[] args)
         {
-            ISession session = NHibernateHelper.GetCurrentSession();
+            var sessionFactory = NHibernateHelper.CreateSessionFactory();
 
-            using (session.BeginTransaction())
+            using (var session = sessionFactory.OpenSession())
             {
-                UserAnswer aux = new UserAnswer { pQuestionId = 1, pAnswerSessionId = 1, pAnswerStatus = false, pChosenAnswerId = 1};
-                session.Save(aux);
+                using (var transaction = session.BeginTransaction())
+                {
+                    //Prueba de alta
 
-                session.Transaction.Commit();
-            }
-            Console.Write("FIN");
-            Console.ReadKey();
+                    {
+                        Category pCategory = new Category { Description = "prueba" };
+                        session.Save(pCategory);
+
+                        Difficulty pDifficulty = new Difficulty { Description = "prueba" };
+                        session.Save(pDifficulty);
+
+                        Question pQuestion = new Question { Description = "prueba", Category = pCategory, Difficulty = pDifficulty };
+                        session.Save(pQuestion);
+
+                        Answer pAnswer = new Answer { Description = "prueba", Question = pQuestion, Correct = true };
+                        session.Save(pAnswer);
+
+                        AnswerSession pAnswerSession = new AnswerSession { Username = "prueba", AnswerTime = 20, Category = pCategory, Date = DateTime.Now.Date, Difficulty = pDifficulty, Score = 10 };
+                        session.Save(pAnswerSession);
+
+                        UserAnswer pUserAnswer = new UserAnswer { AnswerSession = pAnswerSession, AnswerStatus = true, ChosenAnswer = pAnswer, Question = pQuestion };
+                        session.Save(pUserAnswer);
+
+                        session.Transaction.Commit();
+
+                        Console.Write("FIN de alta");
+                        Console.ReadKey();
+                    }
+
+                    //Prueba de consulta
+                    //using (session.BeginTransaction())
+                    //{
+                    //    IList<Category> categories =
+
+                    //        session.Query<Category>()
+                    //            .FetchMany(c => c.Questions)
+                    //            .Where(c => c.Description == "prueba")
+                    //            .ToList();
+
+                    //IList<Answer> answers =
+
+                    //    session.Query<Answer>()
+
+                    //        .Where(c => c.Description == "prueba")
+                    //        .ToList();
+
+                    //Console.Write("FIN de consulta");
+                      //  Console.ReadKey();
+                    }
+                }
+            }            
         }
     }
-}

@@ -4,10 +4,10 @@
                    namespace="Cuestionario.Model">
 
   <class name="Difficulty" table="Difficulties">
-    <id name="pId" column="id">
+    <id name="Id" column="id">
       <generator class="identity"/>
     </id>
-    <property name="pDescription" column="description" />
+    <property name="Description" column="description" />
   </class>
 
 </hibernate-mapping>

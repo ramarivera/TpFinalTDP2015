@@ -8,13 +8,13 @@ namespace Cuestionario.Model
 {
     public class AnswerSession
     {
-        public virtual int pId { get; set; }
-        public virtual string pUsername { get; set; }
-        public virtual int pCategoryId { get; set; }
-        public virtual int pDifficultyId { get; set; }
-        public virtual int pAnswerTime { get; set; }
-        public virtual int pScore { get; set; }
-        public virtual DateTime pDate { get; set; }
-        public virtual IList<UserAnswer> pUserAnswers { get; set; }
+        public virtual int Id { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual Difficulty Difficulty { get; set; }
+        public virtual string Username { get; set; }
+        public virtual int AnswerTime { get; set; }
+        public virtual int Score { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual IList<UserAnswer> UserAnswers { get; set; }
     }
 }

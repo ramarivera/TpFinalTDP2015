@@ -4,13 +4,13 @@
                    namespace="Cuestionario.Model">
 
   <class name="UserAnswer" table="UserAnswers">
-    <id name="pId" column="id">
+    <id name="Id" column="id">
       <generator class="identity"/>
     </id>
-    <property name="pQuestionId" column="questionId" />
-    <property name="pAnswerSessionId" column="answerSessionId" />
-    <property name="pChosenAnswerId" column="chosenAnswerId" />
-    <property name="pAnswerStatus" column="answerStatus" />
+    <property name="QuestionId" column="questionId" />
+    <property name="AnswerSessionId" column="answerSessionId" />
+    <property name="ChosenAnswerId" column="chosenAnswerId" />
+    <property name="AnswerStatus" column="answerStatus" />
   </class>
 
 </hibernate-mapping>

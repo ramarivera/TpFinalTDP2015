@@ -4,15 +4,15 @@
                    namespace="Cuestionario.Model">
 
   <class name="AnswerSession" table="AnswerSessions">
-    <id name="pId" column="id">
+    <id name="Id" column="id">
       <generator class="identity"/>
     </id>
-    <property name="pUsername" column="username" />
-    <property name="pCategoryId" column="categoryId" />
-    <property name="pDifficultyId" column="difficultyId" />
-    <property name="pAnswerTime" column="answerTime" />
-    <property name="pScore" column="score" />
-    <property name="pDate" column="date" />
+    <property name="Username" column="username" />
+    <property name="CategoryId" column="categoryId" />
+    <property name="DifficultyId" column="difficultyId" />
+    <property name="AnswerTime" column="answerTime" />
+    <property name="Score" column="score" />
+    <property name="Date" column="date" />
   </class>
 
 </hibernate-mapping>

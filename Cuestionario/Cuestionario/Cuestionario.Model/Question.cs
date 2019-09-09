@@ -8,10 +8,10 @@ namespace Cuestionario.Model
 {
     public class Question
     {
-        public virtual int pId { get; set; }
-        public virtual int pCategoryId { get; set; }
-        public virtual int pDifficultyId { get; set; }
-        public virtual string pDescription { get; set; }
-        public virtual IList<Answer> pAnswers { get; set; }
+        public virtual int Id { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual Difficulty Difficulty { get; set; }
+        public virtual string Description { get; set; }
+        public virtual IList<Answer> Answers { get; set; }
     }
 }

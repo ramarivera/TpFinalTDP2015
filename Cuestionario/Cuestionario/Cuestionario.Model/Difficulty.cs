@@ -8,9 +8,9 @@ namespace Cuestionario.Model
 {
     public class Difficulty
     {
-        public virtual int pId { get; set; }
-        public virtual string pDescription { get; set; }
-        public virtual IList<Question> pQuestion { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Description { get; set; }
+        public virtual IList<Question> Questions { get; set; }
     }
     
 }
