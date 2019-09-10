@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Cuestionario.Services.DTO
 {
-    class AnswerDTO
+    public class AnswerDTO
     {
+        public int Id { get; set; }
+        public QuestionDTO Question { get; set; }
+        public string Description { get; set; }
+        public bool Correct { get; set; }
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cuestionario.Services.DTO
 {
-    class DifficultyDTO
+    public class DifficultyDTO
     {
+        public int Id { get; set; }
+        public string Description { get; set; }
+        public IList<QuestionDTO> Questions { get; set; }
     }
 }

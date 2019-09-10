@@ -19,23 +19,15 @@ namespace Cuestionario.Services
         }
         public Category Create(CategoryDTO pCategory)
         {
-            var sessionFactory = NHibernateHelper.CreateSessionFactory();
-
-            using (var session = sessionFactory.OpenSession())
+            Category lCategory = new Category
             {
-                using (session.BeginTransaction())
-                {
-                    Category lCategory = new Category
-                    {
-                        Description = pCategory.Description
-                    };
+                Description = pCategory.Description
+            };
 
-                    session.Save(lCategory);
-                    session.Transaction.Commit();
+            _session.Save(lCategory);
+            _session.Transaction.Commit();
 
-                    return lCategory;
-                }
-            }
+            return lCategory;
         }
 
         public void Delete(long pId)
@@ -62,26 +54,18 @@ namespace Cuestionario.Services
             //        return lCategories;
             //    }
             //}            
-        }
+        
         public Category GetById(long pCategoryId)
         {
-            var sessionFactory = NHibernateHelper.CreateSessionFactory();
+            var lCategory = GetAll()
+                .FirstOrDefault(x => x.Id == pCategoryId);
 
-            using (var session = sessionFactory.OpenSession())
+            if (lCategory == null)
             {
-                using (session.BeginTransaction())
-                {
-                    var lCategory = GetAll()
-                         .FirstOrDefault(x => x.Id == pCategoryId);
-
-                    if (lCategory == null)
-                    {
-                        throw new ArgumentException($"Category with Id {pCategoryId} was not found");
-                    }
-
-                    return lCategory;
-                }
+                throw new ArgumentException($"Category with Id {pCategoryId} was not found");
             }
+
+            return lCategory;
         }
 
         public Category Update(long pId, CategoryDTO pUpdateCategory)
