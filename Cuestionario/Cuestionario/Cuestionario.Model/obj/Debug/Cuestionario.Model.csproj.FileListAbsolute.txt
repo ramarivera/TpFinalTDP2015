@@ -29,3 +29,7 @@ D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\C
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.Model\bin\Debug\Iesi.Collections.xml
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.Model\bin\Debug\Remotion.Linq.xml
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.Model\bin\Debug\Remotion.Linq.EagerFetching.xml
+D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.Model\bin\Debug\Newtonsoft.Json.dll
+D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.Model\bin\Debug\System.Net.Http.Formatting.dll
+D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.Model\bin\Debug\Newtonsoft.Json.xml
+D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.Model\bin\Debug\System.Net.Http.Formatting.xml
