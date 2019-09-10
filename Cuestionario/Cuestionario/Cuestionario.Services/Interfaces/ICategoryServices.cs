@@ -15,5 +15,6 @@ namespace Cuestionario.Services.Interfaces
         Category Create(CategoryDTO pCategory);
         Category Update(long pCategoryId, CategoryDTO pUpdateCategory);
         void Delete(long pCategoryId);
+        Category GetByDescription(string pCategoryDescription);
     }
 }

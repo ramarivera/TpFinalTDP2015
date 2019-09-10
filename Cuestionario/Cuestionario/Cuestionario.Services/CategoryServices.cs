@@ -72,5 +72,23 @@ namespace Cuestionario.Services
         {
             throw new NotImplementedException();
         }
+
+        public Category GetByDescription(string pCategoryDescription)
+        {
+            var lCategory = GetAll()
+                    .FirstOrDefault(x => x.Description == pCategoryDescription);
+
+            if (lCategory == null)
+            {
+                var lCategoryDTO = new CategoryDTO
+                {
+                    Description = pCategoryDescription
+                };
+
+                lCategory = Create(lCategoryDTO);
+            }
+
+            return lCategory;
+        }
     }
 }

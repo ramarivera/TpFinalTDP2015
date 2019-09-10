@@ -7,6 +7,7 @@ using Cuestionario.Model;
 using Cuestionario.Services.DTO;
 using NHibernate;
 using Cuestionario.Services.Interfaces;
+using Cuestionario.Services.OpenTrivia;
 
 namespace Cuestionario.Services
 {
@@ -18,14 +19,22 @@ namespace Cuestionario.Services
 
         private IDifficultyServices _difficultyServices;
 
+        private IAnswerServices _answerServices;
+
+        private OpenTriviaQuestionsServices _opentdbQuestionsServices;
+
         public QuestionServices(
             ISession session,
             ICategoryServices categoryServices,
-            IDifficultyServices dificcultyServices)
+            IDifficultyServices difficcultyServices,
+            IAnswerServices answerServices,
+            OpenTriviaQuestionsServices opentdbQuestionsServices)
         {
             _session = session;
             _categoryServices = categoryServices;
-            _difficultyServices = dificcultyServices;
+            _difficultyServices = difficcultyServices;
+            _answerServices = answerServices;
+            _opentdbQuestionsServices = opentdbQuestionsServices;
         }
 
         public Question Create(QuestionDTO pQuestion)
@@ -78,6 +87,50 @@ namespace Cuestionario.Services
         public Question Update(long pId, QuestionDTO pUpdateQuestion)
         {
             throw new NotImplementedException();
+        }
+
+        public void GetModelQuestions(string pPath)
+        {
+            //obtiene las preguntas desde Opentdb
+            Task<RootObject> lOperTriviaQuestions = _opentdbQuestionsServices.GetQuestionsAsync(pPath);
+
+            //para cada pregunta obtenida
+            foreach (var lOpenTriviaQuestion in lOperTriviaQuestions.Result.Results)
+            {
+                var lCategory = _categoryServices.GetByDescription(lOpenTriviaQuestion.Category);
+
+                var lDifficulty = _difficultyServices.GetByDescription(lOpenTriviaQuestion.Difficulty);
+
+                QuestionDTO lQuestionDTO = new QuestionDTO
+                {
+                    Description = lOpenTriviaQuestion.Question,
+                    //Category = lCategory,
+                    //Difficulty = lDifficulty,
+                };
+
+                var lQuestion = Create(lQuestionDTO);
+
+                //para la repsuesta correcta de la pregunta
+                AnswerDTO lAnswerDTO = new AnswerDTO
+                {
+                    Description = lOpenTriviaQuestion.Correct_Answer,
+                    Question = lQuestionDTO
+                };
+
+                var lAnswer = _answerServices.Create(lAnswerDTO);
+
+                //para cada respuesta incorrecta de la pregunta
+                foreach (var lOpenTriviaAnswer in lOpenTriviaQuestion.Incorrect_Answers)
+                {
+                    lAnswerDTO = new AnswerDTO
+                    {
+                        Description = lOpenTriviaAnswer,
+                        Question = lQuestionDTO
+                    };
+
+                    lAnswer = _answerServices.Create(lAnswerDTO);
+                }
+            }
         }
     }
 }

@@ -60,5 +60,23 @@ namespace Cuestionario.Services
         {
             throw new NotImplementedException();
         }
+
+        public Difficulty GetByDescription(string pDifficultyDescription)
+        {
+            var lDifficulty = GetAll()
+                    .FirstOrDefault(x => x.Description == pDifficultyDescription);
+
+            if (lDifficulty == null)
+            {
+                var lDifficultyDTO = new DifficultyDTO
+                {
+                    Description = pDifficultyDescription
+                };
+
+                lDifficulty = Create(lDifficultyDTO);
+            }
+
+            return lDifficulty;
+        }
     }
 }
