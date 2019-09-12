@@ -12,8 +12,8 @@ namespace Cuestionario.Services.Interfaces
     {
         IQueryable<UserAnswer> GetAll();
         UserAnswer GetById(long pUserAnswerId);
-        UserAnswer Create(UserAnswerDTO pUserAnswer);
-        UserAnswer Update(long pUserAnswerId, UserAnswerDTO pUpdateUserAnswer);
+        UserAnswer Create(UserAnswerCreactionData pUserAnswerData);
+        UserAnswer Update(long pUserAnswerId, UserAnswerCreactionData pUpdateUserAnswer);
         void Delete(long pUserAnswerId);
     }
 }

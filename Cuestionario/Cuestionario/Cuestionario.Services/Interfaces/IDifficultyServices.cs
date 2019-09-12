@@ -12,9 +12,9 @@ namespace Cuestionario.Services.Interfaces
     {
         IQueryable<Difficulty> GetAll();
         Difficulty GetById(long pDifficultyId);
-        Difficulty Create(DifficultyDTO pDifficulty);
-        Difficulty Update(long pDifficultyId, DifficultyDTO pUpdateDifficulty);
+        Difficulty Create(DifficultyCreationData pDifficultyData);
+        Difficulty Update(long pDifficultyId, DifficultyData pUpdateDifficulty);
         void Delete(long pDifficultyId);
-        Difficulty GetByDescription(string pDifficultyDescription);
+        DifficultyData RetrieveByDescription(string pDifficultyDescription);
     }
 }

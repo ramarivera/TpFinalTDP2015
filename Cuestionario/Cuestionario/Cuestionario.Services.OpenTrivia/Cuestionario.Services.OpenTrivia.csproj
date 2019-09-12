@@ -57,6 +57,8 @@
     <Compile Include="OpenTriviaQuestionsServices.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="RootObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -66,6 +68,10 @@
     <ProjectReference Include="..\Cuestionario.Model\Cuestionario.Model.csproj">
       <Project>{e3f34edb-c212-4d6d-8e9f-f24955303bde}</Project>
       <Name>Cuestionario.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cuestionario.Services\Cuestionario.Services.csproj">
+      <Project>{866c7fe3-f59e-48b6-a175-5afe7ceb7b6c}</Project>
+      <Name>Cuestionario.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

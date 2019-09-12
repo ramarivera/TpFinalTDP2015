@@ -12,8 +12,8 @@ namespace Cuestionario.Services.Interfaces
     {
         IQueryable<AnswerSession> GetAll();
         AnswerSession GetById(long pAnswerSessionId);
-        AnswerSession Create(AnswerSessionDTO pAnswerSession);
-        AnswerSession Update(long pAnswerSessionId, AnswerSessionDTO pUpdateAnswerSession);
+        AnswerSession Create(AnswerSessionData pAnswerSessionData);
+        AnswerSession Update(long pAnswerSessionId, AnswerSessionData pUpdateAnswerSession);
         void Delete(long pAnswerSessionId);
     }
 }

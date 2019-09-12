@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Cuestionario.Services.DTO
 {
-    public class AnswerSessionDTO
+    public class AnswerSessionData
     {
         public int Id { get; set; }
-        public CategoryDTO Category { get; set; }
-        public DifficultyDTO Difficulty { get; set; }
+        public CategoryData Category { get; set; }
+        public DifficultyData Difficulty { get; set; }
         public string Username { get; set; }
         public int AnswerTime { get; set; }
         public int Score { get; set; }
         public DateTime Date { get; set; }
-        public IList<UserAnswerDTO> UserAnswers { get; set; }
+        public IList<UserAnswerCreactionData> UserAnswers { get; set; }
     }
 }

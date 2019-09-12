@@ -17,11 +17,11 @@ namespace Cuestionario.Services
         {
             _session = session;
         }
-        public Difficulty Create(DifficultyDTO pDifficulty)
+        public Difficulty Create(DifficultyCreationData pDifficultyData)
         {
             Difficulty lDifficulty = new Difficulty
             {
-                Description = pDifficulty.Description
+                Description = pDifficultyData.Description
             };
 
             _session.Save(lDifficulty);
@@ -56,27 +56,32 @@ namespace Cuestionario.Services
             return lDifficulty;
         }
 
-        public Difficulty Update(long pId, DifficultyDTO pUpdateDifficulty)
+        public Difficulty Update(long pId, DifficultyData pUpdateDifficulty)
         {
             throw new NotImplementedException();
         }
 
-        public Difficulty GetByDescription(string pDifficultyDescription)
+        public DifficultyData RetrieveByDescription(string pDifficultyDescription)
         {
             var lDifficulty = GetAll()
                     .FirstOrDefault(x => x.Description == pDifficultyDescription);
 
             if (lDifficulty == null)
             {
-                var lDifficultyDTO = new DifficultyDTO
+                var lDifficultyCreationData = new DifficultyCreationData
                 {
                     Description = pDifficultyDescription
                 };
 
-                lDifficulty = Create(lDifficultyDTO);
+                lDifficulty = Create(lDifficultyCreationData);
             }
 
-            return lDifficulty;
+            DifficultyData lDifficultyData = new DifficultyData
+            {
+                Description = pDifficultyDescription
+            };
+
+            return lDifficultyData;
         }
     }
 }

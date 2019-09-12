@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cuestionario.Model
+namespace Cuestionario.Services.OpenTrivia
 {
     public class RootObject
     {

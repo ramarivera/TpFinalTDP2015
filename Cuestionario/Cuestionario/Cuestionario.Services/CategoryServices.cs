@@ -17,11 +17,11 @@ namespace Cuestionario.Services
         {
             _session = session;
         }
-        public Category Create(CategoryDTO pCategory)
+        public Category Create(CategoryCreationData pCategoryData)
         {
             Category lCategory = new Category
             {
-                Description = pCategory.Description
+                Description = pCategoryData.Description
             };
 
             _session.Save(lCategory);
@@ -41,19 +41,7 @@ namespace Cuestionario.Services
                 _session.Query<Category>();
 
             return lCategories;
-        }
-
-            //var sessionFactory = NHibernateHelper.CreateSessionFactory();
-
-            //using (var session = sessionFactory.OpenSession())
-            //{
-            //    using (session.BeginTransaction())
-            //    {
-            //        IQueryable<Category> lCategories =
-            //            session.Query<Category>();
-            //        return lCategories;
-            //    }
-            //}            
+        }       
         
         public Category GetById(long pCategoryId)
         {
@@ -68,27 +56,32 @@ namespace Cuestionario.Services
             return lCategory;
         }
 
-        public Category Update(long pId, CategoryDTO pUpdateCategory)
+        public Category Update(long pId, CategoryData pUpdateCategory)
         {
             throw new NotImplementedException();
         }
 
-        public Category GetByDescription(string pCategoryDescription)
+        public CategoryData RetrieveByDescription(string pCategoryDescription)
         {
             var lCategory = GetAll()
                     .FirstOrDefault(x => x.Description == pCategoryDescription);
 
             if (lCategory == null)
             {
-                var lCategoryDTO = new CategoryDTO
+                var lCategoryCreationData = new CategoryCreationData
                 {
                     Description = pCategoryDescription
                 };
 
-                lCategory = Create(lCategoryDTO);
+                lCategory = Create(lCategoryCreationData);
             }
 
-            return lCategory;
+            CategoryData lCategoryData = new CategoryData
+            {
+                Description = pCategoryDescription
+            };
+
+            return lCategoryData;
         }
     }
 }

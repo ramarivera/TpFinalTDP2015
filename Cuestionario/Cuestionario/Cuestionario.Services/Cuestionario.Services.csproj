@@ -46,24 +46,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnswerServices.cs" />
     <Compile Include="AnswerSessionServices.cs" />
     <Compile Include="CategoryServices.cs" />
     <Compile Include="DifficultyServices.cs" />
-    <Compile Include="DTO\AnswerDTO.cs" />
-    <Compile Include="DTO\AnswerSessionDTO.cs" />
-    <Compile Include="DTO\CategoryDTO.cs" />
-    <Compile Include="DTO\DifficultyDTO.cs" />
-    <Compile Include="DTO\QuestionDTO.cs" />
-    <Compile Include="DTO\UserAnswerDTO.cs" />
-    <Compile Include="Interfaces\IAnswerServices.cs" />
+    <Compile Include="DTO\AnswerCreationData.cs" />
+    <Compile Include="DTO\AnswerData.cs" />
+    <Compile Include="DTO\AnswerSessionCreationData.cs" />
+    <Compile Include="DTO\AnswerSessionData.cs" />
+    <Compile Include="DTO\CategoryCreationData.cs" />
+    <Compile Include="DTO\CategoryData.cs" />
+    <Compile Include="DTO\DifficultyCreationData.cs" />
+    <Compile Include="DTO\DifficultyData.cs" />
+    <Compile Include="DTO\QuestionCreationData.cs" />
+    <Compile Include="DTO\QuestionData.cs" />
+    <Compile Include="DTO\UserAnswerCreationData.cs" />
+    <Compile Include="DTO\UserAnswerData.cs" />
     <Compile Include="Interfaces\IAnswerSessionServices.cs" />
     <Compile Include="Interfaces\ICategoryServices.cs" />
     <Compile Include="Interfaces\IDifficultyServices.cs" />
+    <Compile Include="Interfaces\IQuestionProvider.cs" />
     <Compile Include="Interfaces\IQuestionServices.cs" />
     <Compile Include="Interfaces\IUserAnswerServices.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionHandler.cs" />
+    <Compile Include="QuestionProviderFactory.cs" />
+    <Compile Include="QuestionProviderType.cs" />
     <Compile Include="QuestionServices.cs" />
     <Compile Include="UserAnswerServices.cs" />
   </ItemGroup>
@@ -74,10 +82,6 @@
     <ProjectReference Include="..\Cuestionario.Model\Cuestionario.Model.csproj">
       <Project>{e3f34edb-c212-4d6d-8e9f-f24955303bde}</Project>
       <Name>Cuestionario.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Cuestionario.Services.OpenTrivia\Cuestionario.Services.OpenTrivia.csproj">
-      <Project>{307c22d6-e354-414f-9bbd-bffbd695c5e5}</Project>
-      <Name>Cuestionario.Services.OpenTrivia</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

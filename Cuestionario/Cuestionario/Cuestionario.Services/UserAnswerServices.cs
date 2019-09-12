@@ -18,30 +18,26 @@ namespace Cuestionario.Services
 
         private IAnswerSessionServices _answerSessionServices;
 
-        private IAnswerServices _answerServices;
-
         public UserAnswerServices(
             ISession session,
             IQuestionServices questionServices,
-            IAnswerSessionServices answerSessionServices,
-            IAnswerServices answerServices)
+            IAnswerSessionServices answerSessionServices)
         {
             _session = session;
             _questionServices = questionServices;
             _answerSessionServices = answerSessionServices;
-            _answerServices = answerServices;
         }
-        public UserAnswer Create(UserAnswerDTO pUserAnswer)
+        public UserAnswer Create(UserAnswerCreactionData pUserAnswerData)
         {
-            var lQuestion = _questionServices.GetById(pUserAnswer.Question.Id);
+            var lQuestion = _questionServices.GetById(pUserAnswerData.Question.Id);
 
-            var lAnswerSession = _answerSessionServices.GetById(pUserAnswer.AnswerSession.Id);
+            var lAnswerSession = _answerSessionServices.GetById(pUserAnswerData.AnswerSession.Id);
 
-            var lChosenAnswer = _answerServices.GetById(pUserAnswer.ChosenAnswer.Id);
+            var lChosenAnswer = _questionServices.GetAnswerById(pUserAnswerData.ChosenAnswer.Id);
 
             UserAnswer lUserAnswer = new UserAnswer
             {
-                AnswerStatus = pUserAnswer.AnswerStatus,
+                AnswerStatus = pUserAnswerData.AnswerStatus,
                 Question = lQuestion,
                 AnswerSession = lAnswerSession,
                 ChosenAnswer = lChosenAnswer
@@ -79,7 +75,7 @@ namespace Cuestionario.Services
             return lUserAnswer;
         }
 
-        public UserAnswer Update(long pId, UserAnswerDTO pUpdateUserAnswer)
+        public UserAnswer Update(long pId, UserAnswerCreactionData pUpdateUserAnswer)
         {
             throw new NotImplementedException();
         }

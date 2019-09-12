@@ -12,9 +12,9 @@ namespace Cuestionario.Services.Interfaces
     {
         IQueryable<Category> GetAll();
         Category GetById(long pCategoryId);
-        Category Create(CategoryDTO pCategory);
-        Category Update(long pCategoryId, CategoryDTO pUpdateCategory);
+        Category Create(CategoryCreationData pCategoryData);
+        Category Update(long pCategoryId, CategoryData pUpdateCategory);
         void Delete(long pCategoryId);
-        Category GetByDescription(string pCategoryDescription);
+        CategoryData RetrieveByDescription(string pCategoryDescription);
     }
 }

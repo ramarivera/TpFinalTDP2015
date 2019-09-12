@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Cuestionario.Services.DTO
 {
-    public class UserAnswerDTO
+    public class UserAnswerCreactionData
     {
         public int Id { get; set; }
-        public QuestionDTO Question { get; set; }
-        public AnswerSessionDTO AnswerSession { get; set; }
-        public AnswerDTO ChosenAnswer { get; set; }
+        public QuestionData Question { get; set; }
+        public AnswerSessionData AnswerSession { get; set; }
+        public AnswerData ChosenAnswer { get; set; }
         public bool AnswerStatus { get; set; }
     }
 }

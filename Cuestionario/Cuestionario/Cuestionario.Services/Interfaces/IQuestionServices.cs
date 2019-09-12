@@ -12,8 +12,10 @@ namespace Cuestionario.Services.Interfaces
     {
         IQueryable<Question> GetAll();
         Question GetById(long pQuestionId);
-        Question Create(QuestionDTO pQuestion);
-        Question Update(long pQuestionId, QuestionDTO pUpdateQuestion);
+        Question Create(QuestionCreationData pQuestionData);
+        Question Update(long pQuestionId, QuestionData pUpdateQuestion);
         void Delete(long pQuestionId);
+        Answer CreateAnswer(AnswerCreationData pAnswerData);
+        Answer GetAnswerById(long pAnswerId);
     }
 }

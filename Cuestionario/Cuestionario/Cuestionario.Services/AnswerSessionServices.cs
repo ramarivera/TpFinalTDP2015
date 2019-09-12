@@ -28,7 +28,7 @@ namespace Cuestionario.Services
             _difficultyServices = dificcultyServices;
         }
 
-        public AnswerSession Create(AnswerSessionDTO pAnswerSession)
+        public AnswerSession Create(AnswerSessionCreationData pAnswerSession)
         {
             var lCategory = _categoryServices.GetById(pAnswerSession.Category.Id);
 
@@ -76,7 +76,7 @@ namespace Cuestionario.Services
             return lAnswerSession;
         }
 
-        public AnswerSession Update(long pId, AnswerSessionDTO pUpdateAnswerSession)
+        public AnswerSession Update(long pId, AnswerSessionData pUpdateAnswerSession)
         {
             throw new NotImplementedException();
         }

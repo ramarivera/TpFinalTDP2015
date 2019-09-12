@@ -7,7 +7,6 @@ using Cuestionario.Model;
 using Cuestionario.Services.DTO;
 using NHibernate;
 using Cuestionario.Services.Interfaces;
-using Cuestionario.Services.OpenTrivia;
 
 namespace Cuestionario.Services
 {
@@ -19,36 +18,35 @@ namespace Cuestionario.Services
 
         private IDifficultyServices _difficultyServices;
 
-        private IAnswerServices _answerServices;
-
-        private OpenTriviaQuestionsServices _opentdbQuestionsServices;
-
         public QuestionServices(
             ISession session,
             ICategoryServices categoryServices,
-            IDifficultyServices difficcultyServices,
-            IAnswerServices answerServices,
-            OpenTriviaQuestionsServices opentdbQuestionsServices)
+            IDifficultyServices difficcultyServices)
         {
             _session = session;
             _categoryServices = categoryServices;
             _difficultyServices = difficcultyServices;
-            _answerServices = answerServices;
-            _opentdbQuestionsServices = opentdbQuestionsServices;
         }
 
-        public Question Create(QuestionDTO pQuestion)
+        public Question Create(QuestionCreationData pQuestionData)
         {
-            var lCategory = _categoryServices.GetById(pQuestion.Category.Id);
+            var lCategory = _categoryServices.GetById(pQuestionData.Category.Id);
 
-            var lDifficulty = _difficultyServices.GetById(pQuestion.Difficulty.Id);
+            var lDifficulty = _difficultyServices.GetById(pQuestionData.Difficulty.Id);
 
             Question lQuestion = new Question
             {
-                Description = pQuestion.Description,
+                Description = pQuestionData.Description,
                 Category = lCategory,
                 Difficulty = lDifficulty
             };
+
+            Answer lAnswer = new Answer();
+
+            foreach (var lAnswerData in pQuestionData.Answers)
+            {
+                lAnswer = this.CreateAnswer(lAnswerData);
+            }
 
             //faltaría agregar las respuestas relacionadas
 
@@ -65,10 +63,10 @@ namespace Cuestionario.Services
 
         public IQueryable<Question> GetAll()
         {
-            IQueryable<Question> lDifficulties =
+            IQueryable<Question> lQuestions =
                 _session.Query<Question>();
 
-            return lDifficulties;
+            return lQuestions;
         }         
 
         public Question GetById(long pQuestionId)
@@ -84,53 +82,39 @@ namespace Cuestionario.Services
             return lQuestion;
         }
 
-        public Question Update(long pId, QuestionDTO pUpdateQuestion)
+        public Question Update(long pId, QuestionData pUpdateQuestion)
         {
             throw new NotImplementedException();
         }
 
-        public void GetModelQuestions(string pPath)
+        public Answer CreateAnswer(AnswerCreationData pAnswerData)
         {
-            //obtiene las preguntas desde Opentdb
-            Task<RootObject> lOperTriviaQuestions = _opentdbQuestionsServices.GetQuestionsAsync(pPath);
+            //var lQuestion = _questionServices.GetById(pAnswer.Question.Id);
 
-            //para cada pregunta obtenida
-            foreach (var lOpenTriviaQuestion in lOperTriviaQuestions.Result.Results)
+            Answer lAnswer = new Answer
             {
-                var lCategory = _categoryServices.GetByDescription(lOpenTriviaQuestion.Category);
+                Description = pAnswerData.Description,
+                Correct = pAnswerData.Correct,
+                //Question = lQuestion
+            };
 
-                var lDifficulty = _difficultyServices.GetByDescription(lOpenTriviaQuestion.Difficulty);
+            _session.Save(lAnswer);
+            _session.Transaction.Commit();
 
-                QuestionDTO lQuestionDTO = new QuestionDTO
-                {
-                    Description = lOpenTriviaQuestion.Question,
-                    //Category = lCategory,
-                    //Difficulty = lDifficulty,
-                };
+            return lAnswer;
+        }
 
-                var lQuestion = Create(lQuestionDTO);
+        public Answer GetAnswerById(long pAnswerId)
+        {
+            var lAnswer = _session.Query<Answer>()
+                .FirstOrDefault(x => x.Id == pAnswerId);
 
-                //para la repsuesta correcta de la pregunta
-                AnswerDTO lAnswerDTO = new AnswerDTO
-                {
-                    Description = lOpenTriviaQuestion.Correct_Answer,
-                    Question = lQuestionDTO
-                };
-
-                var lAnswer = _answerServices.Create(lAnswerDTO);
-
-                //para cada respuesta incorrecta de la pregunta
-                foreach (var lOpenTriviaAnswer in lOpenTriviaQuestion.Incorrect_Answers)
-                {
-                    lAnswerDTO = new AnswerDTO
-                    {
-                        Description = lOpenTriviaAnswer,
-                        Question = lQuestionDTO
-                    };
-
-                    lAnswer = _answerServices.Create(lAnswerDTO);
-                }
+            if (lAnswer == null)
+            {
+                throw new ArgumentException($"Answer with Id {lAnswer} was not found");
             }
+
+            return lAnswer;
         }
     }
 }
