@@ -12,20 +12,20 @@ namespace Cuestionario.Model
     class Program
     {
         static HttpClient client = new HttpClient();
-        static async Task<RootObject> GetQuestionsAsync(string path)
-        {
-            RootObject question = null;
-            HttpResponseMessage response = await client.GetAsync(path);
-            if (response.IsSuccessStatusCode)
-            {
-                question = await response.Content.ReadAsAsync<RootObject>();
-            }
+        //static async Task<RootObject> GetQuestionsAsync(string path)
+        //{
+        //    RootObject question = null;
+        //    HttpResponseMessage response = await client.GetAsync(path);
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        question = await response.Content.ReadAsAsync<RootObject>();
+        //    }
 
-            return question;
-        }
+        //    return question;
+        //}
         static void Main(string[] args)
         {
-            Task<RootObject> q = GetQuestionsAsync("https://opentdb.com/api.php?amount=10");
+            //Task<RootObject> q = GetQuestionsAsync("https://opentdb.com/api.php?amount=10");
 
             var sessionFactory = NHibernateHelper.CreateSessionFactory();
 

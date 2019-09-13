@@ -25,7 +25,7 @@ namespace Cuestionario.Services
             };
 
             _session.Save(lDifficulty);
-            _session.Transaction.Commit();
+            //_session.Transaction.Commit();
 
             return lDifficulty;
         }

@@ -14,7 +14,7 @@ namespace Cuestionario.Model
         public virtual string Description { get; set; }
         public virtual IList<Answer> Answers { get; set; }
 
-        public void AddAnswer(Answer pAnswer)
+        public virtual void AddAnswer(Answer pAnswer)
         {
             Answers.Add(pAnswer);
             pAnswer.Question = this;

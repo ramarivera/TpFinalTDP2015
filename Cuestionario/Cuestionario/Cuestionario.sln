@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cuestionario.Services", "Cu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cuestionario.Services.OpenTrivia", "Cuestionario.Services.OpenTrivia\Cuestionario.Services.OpenTrivia.csproj", "{307C22D6-E354-414F-9BBD-BFFBD695C5E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cuestionario.UI.WinForms", "Cuestionario.UI.WinForms\Cuestionario.UI.WinForms.csproj", "{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{307C22D6-E354-414F-9BBD-BFFBD695C5E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{307C22D6-E354-414F-9BBD-BFFBD695C5E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{307C22D6-E354-414F-9BBD-BFFBD695C5E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,7 +17,8 @@ namespace Cuestionario.Services
         {
             _session = session;
         }
-        public Category Create(CategoryCreationData pCategoryData)
+        //public Category Create(CategoryCreationData pCategoryData)
+        public Category Create(CategoryData pCategoryData)
         {
             Category lCategory = new Category
             {
@@ -73,7 +74,7 @@ namespace Cuestionario.Services
                     Description = pCategoryDescription
                 };
 
-                lCategory = Create(lCategoryCreationData);
+                //lCategory = Create(lCategoryCreationData);
             }
 
             CategoryData lCategoryData = new CategoryData

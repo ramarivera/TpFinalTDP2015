@@ -28,18 +28,18 @@ namespace Cuestionario.Services
             _difficultyServices = dificcultyServices;
         }
 
-        public AnswerSession Create(AnswerSessionCreationData pAnswerSession)
+        public AnswerSession Create(AnswerSessionCreationData pAnswerSessionData)
         {
-            var lCategory = _categoryServices.GetById(pAnswerSession.Category.Id);
+            var lCategory = _categoryServices.GetById(pAnswerSessionData.Category.Id);
 
-            var lDifficulty = _difficultyServices.GetById(pAnswerSession.Difficulty.Id);
+            var lDifficulty = _difficultyServices.GetById(pAnswerSessionData.Difficulty.Id);
 
             AnswerSession lAnswerSession = new AnswerSession
             {
-                Username = pAnswerSession.Username,
-                AnswerTime = pAnswerSession.AnswerTime,
-                Score = pAnswerSession.Score,
-                Date = pAnswerSession.Date,
+                Username = pAnswerSessionData.Username,
+                AnswerTime = pAnswerSessionData.AnswerTime,
+                Score = pAnswerSessionData.Score,
+                Date = pAnswerSessionData.Date,
                 Category = lCategory,
                 Difficulty = lDifficulty
             };

@@ -12,7 +12,8 @@ namespace Cuestionario.Services.Interfaces
     {
         IQueryable<Category> GetAll();
         Category GetById(long pCategoryId);
-        Category Create(CategoryCreationData pCategoryData);
+        //Category Create(CategoryCreationData pCategoryData);
+        Category Create(CategoryData pCategoryData);
         Category Update(long pCategoryId, CategoryData pUpdateCategory);
         void Delete(long pCategoryId);
         CategoryData RetrieveByDescription(string pCategoryDescription);

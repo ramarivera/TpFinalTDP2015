@@ -30,15 +30,17 @@ namespace Cuestionario.Services
 
         public Question Create(QuestionCreationData pQuestionData)
         {
-            var lCategory = _categoryServices.GetById(pQuestionData.Category.Id);
+            //var lCategory = _categoryServices.GetById(pQuestionData.Category.Id);
 
-            var lDifficulty = _difficultyServices.GetById(pQuestionData.Difficulty.Id);
+            //var lDifficulty = _difficultyServices.GetById(pQuestionData.Difficulty.Id);
+
+            var lCategory = _categoryServices.Create(pQuestionData.Category);
 
             Question lQuestion = new Question
             {
                 Description = pQuestionData.Description,
                 Category = lCategory,
-                Difficulty = lDifficulty
+                //Difficulty = lDifficulty
             };
 
             Answer lAnswer = new Answer();

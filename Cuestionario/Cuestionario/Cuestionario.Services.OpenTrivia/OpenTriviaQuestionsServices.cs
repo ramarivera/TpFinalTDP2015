@@ -33,7 +33,7 @@ namespace Cuestionario.Services.OpenTrivia
         public async Task<RootObject> GetQuestionsAsync(string pPath)
         {
             RootObject question = null;
-            HttpResponseMessage response = await client.GetAsync(pPath);
+            HttpResponseMessage response = await client.GetAsync(pPath).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 question = await response.Content.ReadAsAsync<RootObject>();
@@ -68,6 +68,7 @@ namespace Cuestionario.Services.OpenTrivia
                 {
                     Description = lOpenTriviaQuestion.Correct_Answer,
                     //Question = lQuestionDTO
+                    Correct = true
                 };
 
                 lQuestionData.Answers.Add(lAnswerData);
@@ -77,8 +78,9 @@ namespace Cuestionario.Services.OpenTrivia
                 {
                     lAnswerData = new AnswerCreationData
                     {
-                        Description = lOpenTriviaAnswer//,
+                        Description = lOpenTriviaAnswer,
                         //Question = lQuestionDTO
+                        Correct = false
                     };
 
                     lQuestionData.Answers.Add(lAnswerData);
