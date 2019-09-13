@@ -13,5 +13,11 @@ namespace Cuestionario.Model
         public virtual Difficulty Difficulty { get; set; }
         public virtual string Description { get; set; }
         public virtual IList<Answer> Answers { get; set; }
+
+        public void AddAnswer(Answer pAnswer)
+        {
+            Answers.Add(pAnswer);
+            pAnswer.Question = this;
+        }
     }
 }

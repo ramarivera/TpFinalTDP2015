@@ -45,11 +45,10 @@ namespace Cuestionario.Services
 
             foreach (var lAnswerData in pQuestionData.Answers)
             {
-                lAnswer = this.CreateAnswer(lAnswerData);
+                lAnswer = CreateAnswer(lAnswerData);
+                lQuestion.AddAnswer(lAnswer);
             }
-
-            //faltaría agregar las respuestas relacionadas
-
+            
             _session.Save(lQuestion);
             _session.Transaction.Commit();
 
@@ -98,8 +97,8 @@ namespace Cuestionario.Services
                 //Question = lQuestion
             };
 
-            _session.Save(lAnswer);
-            _session.Transaction.Commit();
+            //_session.Save(lAnswer);
+            //_session.Transaction.Commit();
 
             return lAnswer;
         }
