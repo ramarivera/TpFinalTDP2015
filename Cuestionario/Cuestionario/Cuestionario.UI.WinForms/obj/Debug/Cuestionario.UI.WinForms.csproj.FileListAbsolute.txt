@@ -2,7 +2,6 @@ D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\C
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\bin\Debug\Cuestionario.UI.WinForms.exe
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\bin\Debug\Cuestionario.UI.WinForms.pdb
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.csprojResolveAssemblyReference.cache
-D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.Form1.resources
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.Properties.Resources.resources
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.csproj.GenerateResource.Cache
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.exe
@@ -27,3 +26,7 @@ D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\C
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\bin\Debug\System.Net.Http.Formatting.xml
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\bin\Debug\Newtonsoft.Json.xml
 D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.csproj.Cuestionario.UI.WinForms.exe.config
+D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.MultipleAnswerView.resources
+D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.WelcomeView.resources
+D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.BooleanAnswerView.resources
+D:\Martín\Dropbox\FACULTAD\UTN\TALLER DE PROGRAMACIÓN\Martín\TpFinalTDP2015\Cuestionario\Cuestionario\Cuestionario.UI.WinForms\obj\Debug\Cuestionario.UI.WinForms.ResultsView.resources

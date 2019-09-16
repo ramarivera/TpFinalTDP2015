@@ -50,16 +50,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BooleanAnswerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="BooleanAnswerView.Designer.cs">
+      <DependentUpon>BooleanAnswerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MultipleAnswerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultipleAnswerView.Designer.cs">
+      <DependentUpon>MultipleAnswerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResultsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultsView.Designer.cs">
+      <DependentUpon>ResultsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WelcomeView.Designer.cs">
+      <DependentUpon>WelcomeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="BooleanAnswerView.resx">
+      <DependentUpon>BooleanAnswerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultipleAnswerView.resx">
+      <DependentUpon>MultipleAnswerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResultsView.resx">
+      <DependentUpon>ResultsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WelcomeView.resx">
+      <DependentUpon>WelcomeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

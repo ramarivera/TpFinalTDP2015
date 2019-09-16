@@ -17,7 +17,7 @@ using NHibernate;
 
 namespace Cuestionario.UI.WinForms
 {
-    public partial class Form1 : Form
+    public partial class WelcomeView : Form
     {
         private static ISessionFactory sessionFactory = NHibernateHelper.CreateSessionFactory();
         static ISession _session = sessionFactory.OpenSession();
@@ -26,7 +26,7 @@ namespace Cuestionario.UI.WinForms
         private static IQuestionServices _questionService = new QuestionServices(_session, _categoryService, _difficultyService);
         private OpenTriviaQuestionsServices _opentdb = new OpenTriviaQuestionsServices(_categoryService, _difficultyService, _questionService);
 
-        public Form1()
+        public WelcomeView()
         {
             InitializeComponent();
         }
