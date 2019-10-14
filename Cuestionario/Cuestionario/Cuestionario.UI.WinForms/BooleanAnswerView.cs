@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Questionnaire.Handlers.Handlers;
+using Questionnaire.Handlers.Handlers.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +27,14 @@ namespace Cuestionario.UI.WinForms
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             button1.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+            {
+                lHandler.StartAnswerSession2();
+            }
         }
     }
 }

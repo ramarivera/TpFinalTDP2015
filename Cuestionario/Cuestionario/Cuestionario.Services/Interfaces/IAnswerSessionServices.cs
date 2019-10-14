@@ -11,9 +11,13 @@ namespace Cuestionario.Services.Interfaces
     public interface IAnswerSessionServices
     {
         IQueryable<AnswerSession> GetAll();
+
         AnswerSession GetById(long pAnswerSessionId);
-        AnswerSession Create(AnswerSessionCreationData pAnswerSessionData);
+
+        AnswerSession StartSession(AnswerSessionStartData pAnswerSessionStartData);
+
         AnswerSession Update(long pAnswerSessionId, AnswerSessionData pUpdateAnswerSession);
+
         void Delete(long pAnswerSessionId);
     }
 }

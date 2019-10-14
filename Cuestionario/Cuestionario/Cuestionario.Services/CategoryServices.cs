@@ -1,23 +1,21 @@
-﻿using Cuestionario.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cuestionario.Model;
+﻿using Cuestionario.Model;
 using Cuestionario.Services.DTO;
+using Cuestionario.Services.Interfaces;
 using NHibernate;
+using System;
+using System.Linq;
 
 namespace Cuestionario.Services
 {
     public class CategoryServices : ICategoryServices
     {
         private ISession _session;
+
         public CategoryServices(ISession session)
         {
             _session = session;
         }
-        //public Category Create(CategoryCreationData pCategoryData)
+
         public Category Create(CategoryData pCategoryData)
         {
             Category lCategory = new Category
@@ -26,7 +24,6 @@ namespace Cuestionario.Services
             };
 
             _session.Save(lCategory);
-            _session.Transaction.Commit();
 
             return lCategory;
         }

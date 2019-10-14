@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Questionnaire.Handlers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace Cuestionario.UI.WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            Bootstrapper.BootstrapApplication();
+
             //Application.Run(new WelcomeView());
             Application.Run(new BooleanAnswerView());
         }
