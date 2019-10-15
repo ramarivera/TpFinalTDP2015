@@ -15,13 +15,6 @@ namespace Questionnaire.Handlers
         {
             var lBuilder = new ContainerBuilder();
 
-            void PerformInstancePerLifetimeRegistration<TInterface, TImplementation>()
-            {
-                lBuilder.RegisterType<TImplementation>()
-                       .As<TInterface>()
-                       .InstancePerLifetimeScope();
-            }
-
             lBuilder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
 
             lBuilder.RegisterInstance(NHibernateHelper.CreateSessionFactory())
@@ -30,14 +23,22 @@ namespace Questionnaire.Handlers
             lBuilder.Register(c => c.Resolve<ISessionFactory>().GetCurrentSession())
                     .InstancePerLifetimeScope();
 
-            PerformInstancePerLifetimeRegistration<IAnswerSessionServices, AnswerSessionServices>();
-            PerformInstancePerLifetimeRegistration<IAnswerSessionHandler, AnswerSessionHandler>();
-            PerformInstancePerLifetimeRegistration<ICategoryServices, CategoryServices>();
-            PerformInstancePerLifetimeRegistration<IDifficultyServices, DifficultyServices>();
+            PerformInstancePerLifetimeRegistration<IAnswerSessionServices, AnswerSessionServices>(lBuilder);
+            PerformInstancePerLifetimeRegistration<IAnswerSessionHandler, AnswerSessionHandler>(lBuilder);
+            PerformInstancePerLifetimeRegistration<ICategoryServices, CategoryServices>(lBuilder);
+            PerformInstancePerLifetimeRegistration<IDifficultyServices, DifficultyServices>(lBuilder);
 
             var lContainer = lBuilder.Build();
 
             HandlerFactory.ConfigureHandlerFactory(lContainer);
+        }
+
+
+        private static void PerformInstancePerLifetimeRegistration<TInterface, TImplementation>(ContainerBuilder pBuilder)
+        {
+            pBuilder.RegisterType<TImplementation>()
+                   .As<TInterface>()
+                   .InstancePerLifetimeScope();
         }
     }
 }
