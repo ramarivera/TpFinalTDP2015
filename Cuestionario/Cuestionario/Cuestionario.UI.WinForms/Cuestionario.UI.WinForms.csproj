@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NHibernate, Version=5.2.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\..\TDP\NHibernate\Required_Bins\NHibernate.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -126,6 +122,10 @@
     <ProjectReference Include="..\Questionnaire.Handlers\Questionnaire.Handlers.csproj">
       <Project>{6FE9F7E1-D136-4273-96C4-124156B2CF2A}</Project>
       <Name>Questionnaire.Handlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Questionnaire.Persistence\Questionnaire.Persistence.csproj">
+      <Project>{b419b543-15d5-47ac-82f7-915e2cd72c3c}</Project>
+      <Name>Questionnaire.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

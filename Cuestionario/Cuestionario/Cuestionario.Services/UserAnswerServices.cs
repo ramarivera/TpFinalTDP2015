@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cuestionario.Model;
+﻿using Cuestionario.Model;
 using Cuestionario.Services.DTO;
-using NHibernate;
 using Cuestionario.Services.Interfaces;
+using NHibernate;
+using System;
+using System.Linq;
 
 namespace Cuestionario.Services
 {

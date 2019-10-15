@@ -1,11 +1,11 @@
 ﻿using Autofac;
 using Autofac.Features.ResolveAnything;
-using Cuestionario.Model;
 using Cuestionario.Services;
 using Cuestionario.Services.Interfaces;
 using NHibernate;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
+using Questionnaire.Persistence;
 
 namespace Questionnaire.Handlers
 {

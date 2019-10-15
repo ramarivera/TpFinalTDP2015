@@ -1,20 +1,19 @@
-﻿using FluentNHibernate.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Cuestionario.Model;
+using FluentNHibernate.Mapping;
 
-namespace Cuestionario.Model.Mapping
+namespace Questionnaire.Persistence
 {
     class CategoryMap : ClassMap<Category>
     {
         public CategoryMap()
         {
             Id(x => x.Id);
+
             Map(x => x.Description);
+
             HasMany(x => x.Questions)
                 .Inverse();
+
             Table("Categories");
         }
     }
