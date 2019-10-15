@@ -16,8 +16,8 @@ namespace Cuestionario.UI.WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new WelcomeView());
-            Application.Run(new BooleanAnswerView());
+            Application.Run(new WelcomeView());
+            //Application.Run(new BooleanAnswerView());
         }
     }
 }

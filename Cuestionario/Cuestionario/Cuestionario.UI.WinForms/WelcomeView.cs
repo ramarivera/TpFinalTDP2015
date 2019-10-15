@@ -45,5 +45,13 @@ namespace Cuestionario.UI.WinForms
                 _questionService.Create(item);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MultipleAnswerView myNewForm = new MultipleAnswerView();
+            this.Hide();
+            myNewForm.ShowDialog();
+            
+        }
     }
 }
