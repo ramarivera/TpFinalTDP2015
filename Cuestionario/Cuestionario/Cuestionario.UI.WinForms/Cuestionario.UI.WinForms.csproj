@@ -123,6 +123,10 @@
       <Project>{866C7FE3-F59E-48B6-A175-5AFE7CEB7B6C}</Project>
       <Name>Cuestionario.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Questionnaire.Handlers\Questionnaire.Handlers.csproj">
+      <Project>{6FE9F7E1-D136-4273-96C4-124156B2CF2A}</Project>
+      <Name>Questionnaire.Handlers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

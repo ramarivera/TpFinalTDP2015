@@ -1,51 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cuestionario.Model;
+﻿using Cuestionario.Model;
 using Cuestionario.Services.DTO;
-using NHibernate;
 using Cuestionario.Services.Interfaces;
+using NHibernate;
+using System;
+using System.Linq;
 
 namespace Cuestionario.Services
 {
     public class AnswerSessionServices : IAnswerSessionServices
     {
-        private ISession _session;
+        private readonly ISessionFactory iSessionFactory;
 
-        private ICategoryServices _categoryServices;
+        private readonly ICategoryServices iCategoryServices;
 
-        private IDifficultyServices _difficultyServices;
+        private readonly IDifficultyServices iDifficultyServices;
 
         public AnswerSessionServices(
-            ISession session,
+            ISessionFactory pSessionFactory,
             ICategoryServices categoryServices,
             IDifficultyServices dificcultyServices)
         {
-            _session = session;
-            _categoryServices = categoryServices;
-            _difficultyServices = dificcultyServices;
+            iSessionFactory = pSessionFactory;
+            iCategoryServices = categoryServices;
+            iDifficultyServices = dificcultyServices;
         }
 
-        public AnswerSession Create(AnswerSessionCreationData pAnswerSessionData)
+        public AnswerSession StartSession(AnswerSessionStartData pAnswerSessionStartData)
         {
-            var lCategory = _categoryServices.GetById(pAnswerSessionData.Category.Id);
+            var lCategory = this.iCategoryServices.GetById(pAnswerSessionStartData.CategoryId);
 
-            var lDifficulty = _difficultyServices.GetById(pAnswerSessionData.Difficulty.Id);
+            var lDifficulty = this.iDifficultyServices.GetById(pAnswerSessionStartData.DifficultyId);
 
             AnswerSession lAnswerSession = new AnswerSession
             {
-                Username = pAnswerSessionData.Username,
-                AnswerTime = pAnswerSessionData.AnswerTime,
-                Score = pAnswerSessionData.Score,
-                Date = pAnswerSessionData.Date,
+                Username = pAnswerSessionStartData.Username,
+                Date = DateTime.Now,
                 Category = lCategory,
                 Difficulty = lDifficulty
             };
 
-            _session.Save(lAnswerSession);
-            _session.Transaction.Commit();
+            this.Session.Save(lAnswerSession);
 
             return lAnswerSession;
         }
@@ -58,7 +52,7 @@ namespace Cuestionario.Services
         public IQueryable<AnswerSession> GetAll()
         {
             IQueryable<AnswerSession> lAnswerSessions =
-                _session.Query<AnswerSession>();
+                this.Session.Query<AnswerSession>();
 
             return lAnswerSessions;
         }        
@@ -80,5 +74,7 @@ namespace Cuestionario.Services
         {
             throw new NotImplementedException();
         }
+
+        private ISession Session => this.iSessionFactory.GetCurrentSession();
     }
 }
