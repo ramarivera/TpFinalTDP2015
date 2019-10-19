@@ -14,6 +14,11 @@ namespace Cuestionario.Model
         public virtual string Description { get; set; }
         public virtual IList<Answer> Answers { get; set; }
 
+        public Question()
+        {
+            Answers = new List<Answer>();
+        }
+
         public virtual void AddAnswer(Answer pAnswer)
         {
             Answers.Add(pAnswer);

@@ -24,16 +24,16 @@ namespace Questionnaire.Handlers.Handlers
             return lAnswerSession.Id;
         }
 
-        [Transactional]
-        public int StartAnswerSession2()
-        {
-            var cat = this.iCategoryServices.Create(new CategoryData
-            {
-                Description = "test",
-            });
+        //[Transactional]
+        //public int StartAnswerSession2()
+        //{
+        //    var cat = this.iCategoryServices.Create(new CategoryData
+        //    {
+        //        Description = "test",
+        //    });
 
 
-            return cat.Id;
-        }
+        //    return cat.Id;
+        //}
     }
 }

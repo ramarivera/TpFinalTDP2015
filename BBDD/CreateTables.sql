@@ -1,4 +1,4 @@
-use Cuestionario
+use [MARR.Questionnaire]
 go
 
 --Creacion tabla Categories

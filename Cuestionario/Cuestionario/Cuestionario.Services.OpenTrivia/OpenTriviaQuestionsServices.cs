@@ -13,11 +13,11 @@ namespace Cuestionario.Services.OpenTrivia
 {
     public class OpenTriviaQuestionsServices : IQuestionProvider
     {
-        private ICategoryServices _categoryServices;
+        private ICategoryServices iCategoryServices;
 
-        private IDifficultyServices _difficultyServices;
+        private IDifficultyServices iDifficultyServices;
 
-        private IQuestionServices _questionServices;
+        private IQuestionServices iQuestionServices;
 
         HttpClient client = new HttpClient();
         public OpenTriviaQuestionsServices(
@@ -25,9 +25,9 @@ namespace Cuestionario.Services.OpenTrivia
             IDifficultyServices difficcultyServices,
             IQuestionServices questionServices)
         {
-            _categoryServices = categoryServices;
-            _difficultyServices = difficcultyServices;
-            _questionServices = questionServices;
+            iCategoryServices = categoryServices;
+            iDifficultyServices = difficcultyServices;
+            iQuestionServices = questionServices;
         }
 
         public async Task<RootObject> GetQuestionsAsync(string pPath)
@@ -52,9 +52,9 @@ namespace Cuestionario.Services.OpenTrivia
             //para cada pregunta obtenida
             foreach (var lOpenTriviaQuestion in lOperTriviaQuestions.Result.Results)
             {
-                var lCategoryData = _categoryServices.RetrieveByDescription(lOpenTriviaQuestion.Category);
+                var lCategoryData = iCategoryServices.RetrieveByDescription(lOpenTriviaQuestion.Category);
 
-                var lDifficultyData = _difficultyServices.RetrieveByDescription(lOpenTriviaQuestion.Difficulty);
+                var lDifficultyData = iDifficultyServices.RetrieveByDescription(lOpenTriviaQuestion.Difficulty);
 
                 QuestionCreationData lQuestionData = new QuestionCreationData
                 {

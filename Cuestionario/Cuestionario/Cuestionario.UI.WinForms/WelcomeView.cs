@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cuestionario.Services;
 using Cuestionario.Model;
+using Questionnaire.Handlers.Handlers;
+using Questionnaire.Handlers.Handlers.Interfaces;
 
 namespace Cuestionario.UI.WinForms
 {
@@ -41,6 +43,10 @@ namespace Cuestionario.UI.WinForms
             //{
             //    _questionService.Create(item);
             //}
+            using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
+            {
+                lHandler.HandlerImportQuestionsFromProvider(QuestionProviderType.OpenTrivia);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

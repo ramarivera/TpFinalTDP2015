@@ -12,7 +12,8 @@ namespace Cuestionario.Services.Interfaces
     {
         IQueryable<Difficulty> GetAll();
         Difficulty GetById(long pDifficultyId);
-        Difficulty Create(DifficultyCreationData pDifficultyData);
+        //Difficulty Create(DifficultyCreationData pDifficultyData);
+        Difficulty Create(DifficultyData pDifficultyData);
         Difficulty Update(long pDifficultyId, DifficultyData pUpdateDifficulty);
         void Delete(long pDifficultyId);
         DifficultyData RetrieveByDescription(string pDifficultyDescription);

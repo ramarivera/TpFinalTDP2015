@@ -17,7 +17,7 @@ namespace Cuestionario.Services
         {
             _session = session;
         }
-        public Difficulty Create(DifficultyCreationData pDifficultyData)
+        public Difficulty Create(DifficultyData pDifficultyData)
         {
             Difficulty lDifficulty = new Difficulty
             {
@@ -68,7 +68,7 @@ namespace Cuestionario.Services
 
             if (lDifficulty == null)
             {
-                var lDifficultyCreationData = new DifficultyCreationData
+                var lDifficultyCreationData = new DifficultyData
                 {
                     Description = pDifficultyDescription
                 };
@@ -78,6 +78,7 @@ namespace Cuestionario.Services
 
             DifficultyData lDifficultyData = new DifficultyData
             {
+                Id = lDifficulty.Id,
                 Description = pDifficultyDescription
             };
 

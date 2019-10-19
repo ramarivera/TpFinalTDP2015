@@ -12,35 +12,37 @@ namespace Cuestionario.Services
 {
     public class QuestionServices : IQuestionServices
     {
-        private ISession _session;
+        private ISession iSession;
 
-        private ICategoryServices _categoryServices;
+        private ICategoryServices iCategoryServices;
 
-        private IDifficultyServices _difficultyServices;
+        private IDifficultyServices iDifficultyServices;
 
         public QuestionServices(
             ISession session,
             ICategoryServices categoryServices,
             IDifficultyServices difficcultyServices)
         {
-            _session = session;
-            _categoryServices = categoryServices;
-            _difficultyServices = difficcultyServices;
+            iSession = session;
+            iCategoryServices = categoryServices;
+            iDifficultyServices = difficcultyServices;
         }
 
         public Question Create(QuestionCreationData pQuestionData)
         {
-            //var lCategory = _categoryServices.GetById(pQuestionData.Category.Id);
+            var lCategory = iCategoryServices.GetById(pQuestionData.Category.Id);
+            if (lCategory == null)
+            {
+                lCategory = iCategoryServices.Create(pQuestionData.Category);
+            }
 
-            //var lDifficulty = _difficultyServices.GetById(pQuestionData.Difficulty.Id);
-
-            var lCategory = _categoryServices.Create(pQuestionData.Category);
+            var lDifficulty = iDifficultyServices.GetById(pQuestionData.Difficulty.Id);
 
             Question lQuestion = new Question
             {
                 Description = pQuestionData.Description,
                 Category = lCategory,
-                //Difficulty = lDifficulty
+                Difficulty = lDifficulty
             };
 
             Answer lAnswer = new Answer();
@@ -51,8 +53,8 @@ namespace Cuestionario.Services
                 lQuestion.AddAnswer(lAnswer);
             }
             
-            _session.Save(lQuestion);
-            _session.Transaction.Commit();
+            iSession.Save(lQuestion);
+            iSession.Transaction.Commit();
 
             return lQuestion;
         }
@@ -65,7 +67,7 @@ namespace Cuestionario.Services
         public IQueryable<Question> GetAll()
         {
             IQueryable<Question> lQuestions =
-                _session.Query<Question>();
+                iSession.Query<Question>();
 
             return lQuestions;
         }         
@@ -107,7 +109,7 @@ namespace Cuestionario.Services
 
         public Answer GetAnswerById(long pAnswerId)
         {
-            var lAnswer = _session.Query<Answer>()
+            var lAnswer = iSession.Query<Answer>()
                 .FirstOrDefault(x => x.Id == pAnswerId);
 
             if (lAnswer == null)

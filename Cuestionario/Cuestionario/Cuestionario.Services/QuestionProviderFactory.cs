@@ -1,18 +1,20 @@
 ﻿using Cuestionario.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Questionnaire.Services.DependencyInjection;
 
 namespace Cuestionario.Services
 {
     public class QuestionProviderFactory
     {
-        public QuestionProviderFactory() { }
+        private readonly IContainer iContainer;
+
+        public QuestionProviderFactory(IContainer pContainer)
+        {
+            this.iContainer = pContainer;
+        }
+
         public IQuestionProvider BuildProvider(QuestionProviderType pType)
         {
-            throw new NotImplementedException();
+            return this.iContainer.Resolve<IQuestionProvider>(pType.ToString().ToUpper());
         }
     }
 }

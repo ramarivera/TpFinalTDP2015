@@ -66,16 +66,17 @@ namespace Cuestionario.Services
 
             if (lCategory == null)
             {
-                var lCategoryCreationData = new CategoryCreationData
+                var lCategoryCreationData = new CategoryData
                 {
                     Description = pCategoryDescription
                 };
 
-                //lCategory = Create(lCategoryCreationData);
+                lCategory = Create(lCategoryCreationData);
             }
 
             CategoryData lCategoryData = new CategoryData
             {
+                Id = lCategory.Id,
                 Description = pCategoryDescription
             };
 

@@ -29,6 +29,7 @@ namespace Questionnaire.Handlers.Proxies
                 catch
                 {
                     lTransaction.Rollback();
+                    throw; 
                 }
             }
             else

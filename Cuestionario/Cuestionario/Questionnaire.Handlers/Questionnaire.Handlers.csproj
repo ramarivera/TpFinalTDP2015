@@ -82,12 +82,14 @@
   <ItemGroup>
     <Compile Include="Attributes\TransactionalAttribute.cs" />
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="DependencyInjection\IContainer.cs" />
+    <Compile Include="DependencyInjection\AutofacContainer.cs" />
     <Compile Include="Handlers\AnswerSessionHandler.cs" />
     <Compile Include="Handlers\BaseHandler.cs" />
     <Compile Include="Handlers\HandlerFactory.cs" />
     <Compile Include="Handlers\Interfaces\IAnswerSessionHandler.cs" />
     <Compile Include="Handlers\Interfaces\IBaseHandler.cs" />
+    <Compile Include="Handlers\Interfaces\IQuestionHandler.cs" />
+    <Compile Include="Handlers\QuestionHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxies\DisposableInterceptor.cs" />
     <Compile Include="Proxies\TransactionalMethodInterceptor.cs" />
@@ -100,6 +102,10 @@
     <ProjectReference Include="..\Cuestionario.Model\Cuestionario.Model.csproj">
       <Project>{E3F34EDB-C212-4D6D-8E9F-F24955303BDE}</Project>
       <Name>Cuestionario.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cuestionario.Services.OpenTrivia\Cuestionario.Services.OpenTrivia.csproj">
+      <Project>{307C22D6-E354-414F-9BBD-BFFBD695C5E5}</Project>
+      <Name>Cuestionario.Services.OpenTrivia</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cuestionario.Services\Cuestionario.Services.csproj">
       <Project>{866C7FE3-F59E-48B6-A175-5AFE7CEB7B6C}</Project>

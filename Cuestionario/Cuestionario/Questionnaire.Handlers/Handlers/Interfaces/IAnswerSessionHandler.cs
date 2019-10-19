@@ -6,6 +6,6 @@ namespace Questionnaire.Handlers.Handlers.Interfaces
     {
         int StartAnswerSession(AnswerSessionStartData pSessionStartData);
 
-        int StartAnswerSession2();
+        //int StartAnswerSession2();
     }
 }

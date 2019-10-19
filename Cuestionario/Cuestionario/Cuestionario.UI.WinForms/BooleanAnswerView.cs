@@ -33,7 +33,7 @@ namespace Cuestionario.UI.WinForms
         {
             using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
             {
-                lHandler.StartAnswerSession2();
+                //lHandler.StartAnswerSession2();
             }
         }
     }

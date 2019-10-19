@@ -8,6 +8,7 @@ namespace Cuestionario.Services
 {
     public enum QuestionProviderType
     {
-        OpenTrivia = 0,
+        None = 0,
+        OpenTrivia = 1,
     }
 }

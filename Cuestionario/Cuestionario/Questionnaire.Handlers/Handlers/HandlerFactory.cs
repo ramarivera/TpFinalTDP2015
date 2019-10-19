@@ -31,6 +31,7 @@ namespace Questionnaire.Handlers.Handlers
             var lGenerator = new ProxyGenerator();
 
             var lScopedContainer = mContainer.BeginLifetimeScope();
+
             var lSessionFactory = lScopedContainer.Resolve<ISessionFactory>();
 
             if (!CurrentSessionContext.HasBind(lSessionFactory))

@@ -2,10 +2,14 @@
 using Autofac.Features.ResolveAnything;
 using Cuestionario.Services;
 using Cuestionario.Services.Interfaces;
+using Cuestionario.Services.OpenTrivia;
 using NHibernate;
+using Questionnaire.Handlers.DependencyInjection;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using Questionnaire.Persistence;
+using Questionnaire.Services.DependencyInjection;
+using IContainer = Questionnaire.Services.DependencyInjection.IContainer;
 
 namespace Questionnaire.Handlers
 {
@@ -27,6 +31,14 @@ namespace Questionnaire.Handlers
             PerformInstancePerLifetimeRegistration<IAnswerSessionHandler, AnswerSessionHandler>(lBuilder);
             PerformInstancePerLifetimeRegistration<ICategoryServices, CategoryServices>(lBuilder);
             PerformInstancePerLifetimeRegistration<IDifficultyServices, DifficultyServices>(lBuilder);
+            PerformInstancePerLifetimeRegistration<IQuestionServices, QuestionServices>(lBuilder);
+            PerformInstancePerLifetimeRegistration<IQuestionHandler, QuestionHandler>(lBuilder);
+
+            PerformInstancePerLifetimeRegistration<IContainer, AutofacContainer>(lBuilder);
+
+            lBuilder.RegisterType<OpenTriviaQuestionsServices>()
+                  .Named<IQuestionProvider>(QuestionProviderType.OpenTrivia.ToString().ToUpper())
+                  .InstancePerLifetimeScope();
 
             var lContainer = lBuilder.Build();
 
