@@ -44,17 +44,16 @@ namespace Cuestionario.Services
                 Category = lCategory,
                 Difficulty = lDifficulty
             };
+            
+            iSession.Save(lQuestion);
 
             Answer lAnswer = new Answer();
 
             foreach (var lAnswerData in pQuestionData.Answers)
             {
-                lAnswer = CreateAnswer(lAnswerData);
+                lAnswer = CreateAnswer(lAnswerData, lQuestion.Id);
                 lQuestion.AddAnswer(lAnswer);
             }
-            
-            iSession.Save(lQuestion);
-            iSession.Transaction.Commit();
 
             return lQuestion;
         }
@@ -90,19 +89,18 @@ namespace Cuestionario.Services
             throw new NotImplementedException();
         }
 
-        public Answer CreateAnswer(AnswerCreationData pAnswerData)
+        public Answer CreateAnswer(AnswerCreationData pAnswerData, long pQuestionId)
         {
-            //var lQuestion = _questionServices.GetById(pAnswer.Question.Id);
+            var lQuestion = GetById(pQuestionId);
 
             Answer lAnswer = new Answer
             {
                 Description = pAnswerData.Description,
                 Correct = pAnswerData.Correct,
-                //Question = lQuestion
+                Question = lQuestion
             };
 
-            //_session.Save(lAnswer);
-            //_session.Transaction.Commit();
+            iSession.Save(lAnswer);
 
             return lAnswer;
         }

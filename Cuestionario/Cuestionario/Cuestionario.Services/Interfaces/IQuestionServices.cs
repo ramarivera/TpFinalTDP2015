@@ -15,7 +15,7 @@ namespace Cuestionario.Services.Interfaces
         Question Create(QuestionCreationData pQuestionData);
         Question Update(long pQuestionId, QuestionData pUpdateQuestion);
         void Delete(long pQuestionId);
-        Answer CreateAnswer(AnswerCreationData pAnswerData);
+        Answer CreateAnswer(AnswerCreationData pAnswerData, long pQuestionId);
         Answer GetAnswerById(long pAnswerId);
     }
 }

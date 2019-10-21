@@ -29,7 +29,7 @@ namespace Questionnaire.Handlers.Handlers
         public void HandlerImportQuestionsFromProvider(QuestionProviderType pType)
         {
             var lProvider = this.iQuestionProviderFactory.BuildProvider(pType);
-            // :)
+
             var lExistentQuestion = iQuestionService.GetAll();
 
             var lNewQuestionCandidates = lProvider.FilterNotImportedQuestions(lExistentQuestion);
