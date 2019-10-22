@@ -85,9 +85,13 @@
     <Compile Include="DependencyInjection\AutofacContainer.cs" />
     <Compile Include="Handlers\AnswerSessionHandler.cs" />
     <Compile Include="Handlers\BaseHandler.cs" />
+    <Compile Include="Handlers\CategoryHandler.cs" />
+    <Compile Include="Handlers\DifficultyHandler.cs" />
     <Compile Include="Handlers\HandlerFactory.cs" />
     <Compile Include="Handlers\Interfaces\IAnswerSessionHandler.cs" />
     <Compile Include="Handlers\Interfaces\IBaseHandler.cs" />
+    <Compile Include="Handlers\Interfaces\ICategoryHandler.cs" />
+    <Compile Include="Handlers\Interfaces\IDifficultyHandler.cs" />
     <Compile Include="Handlers\Interfaces\IQuestionHandler.cs" />
     <Compile Include="Handlers\QuestionHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

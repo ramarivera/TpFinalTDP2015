@@ -30,7 +30,9 @@ namespace Questionnaire.Handlers
             PerformInstancePerLifetimeRegistration<IAnswerSessionServices, AnswerSessionServices>(lBuilder);
             PerformInstancePerLifetimeRegistration<IAnswerSessionHandler, AnswerSessionHandler>(lBuilder);
             PerformInstancePerLifetimeRegistration<ICategoryServices, CategoryServices>(lBuilder);
+            PerformInstancePerLifetimeRegistration<ICategoryHandler, CategoryHandler>(lBuilder);
             PerformInstancePerLifetimeRegistration<IDifficultyServices, DifficultyServices>(lBuilder);
+            PerformInstancePerLifetimeRegistration<IDifficultyHandler, DifficultyHandler>(lBuilder);
             PerformInstancePerLifetimeRegistration<IQuestionServices, QuestionServices>(lBuilder);
             PerformInstancePerLifetimeRegistration<IQuestionHandler, QuestionHandler>(lBuilder);
 

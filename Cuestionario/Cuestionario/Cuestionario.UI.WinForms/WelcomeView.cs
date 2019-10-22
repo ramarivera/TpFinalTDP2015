@@ -20,14 +20,31 @@ namespace Cuestionario.UI.WinForms
 {
     public partial class WelcomeView : Form
     {
-        //private static ICategoryServices _categoryService = new CategoryServices(_session);
-        //private static IDifficultyServices _difficultyService = new DifficultyServices(_session);
-        //private static IQuestionServices _questionService = new QuestionServices(_session, _categoryService, _difficultyService);
-        //private OpenTriviaQuestionsServices _opentdb = new OpenTriviaQuestionsServices(_categoryService, _difficultyService, _questionService);
-
         public WelcomeView()
         {
             InitializeComponent();
+            using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
+            {
+                IList<Category> lCategories = lHandler.GetAll().OrderBy(c => c.Description).ToList();
+                foreach (var lCategory in lCategories)
+                {
+                    comboBox1.Items.Add(lCategory.Description);
+                }
+            }
+            using (var lHandler = HandlerFactory.Get<IDifficultyHandler>())
+            {
+                IList<Difficulty> lDifficulties = lHandler.GetAll();
+                foreach (var lDifficulty in lDifficulties)
+                {
+                    comboBox2.Items.Add(lDifficulty.Description);
+                }
+            }
+
+            for (int i = 10; i <= 20; i++)
+            {
+                comboBox3.Items.Add(i);
+            }
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -37,20 +54,25 @@ namespace Cuestionario.UI.WinForms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //IEnumerable <QuestionCreationData> lNewQuiestions = _opentdb.FilterNotImportedQuestions(_questionService.GetAll());
-
-            //foreach (var item in lNewQuiestions)
-            //{
-            //    _questionService.Create(item);
-            //}
             using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
             {
                 lHandler.HandlerImportQuestionsFromProvider(QuestionProviderType.OpenTrivia);
             }
+            MessageBox.Show("Importación finalizada", "Cuestionario");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData
+            //{
+            //    CategoryId = comboBox1.SelectedItem.
+            //}
+
+            //using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+            //{
+            //    lHandler.StartAnswerSession
+            //}
+
             MultipleAnswerView myNewForm = new MultipleAnswerView();
             this.Hide();
             myNewForm.ShowDialog();
