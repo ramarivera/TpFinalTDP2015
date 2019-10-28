@@ -61,6 +61,7 @@ namespace Cuestionario.Services.OpenTrivia
                     Description = lOpenTriviaQuestion.Question,
                     Category = lCategoryData,
                     Difficulty = lDifficultyData,
+                    Type = lOpenTriviaQuestion.Type,
                 };
 
                 //para la respuesta correcta de la pregunta

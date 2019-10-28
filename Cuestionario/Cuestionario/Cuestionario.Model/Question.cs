@@ -12,6 +12,7 @@ namespace Cuestionario.Model
         public virtual Category Category { get; set; }
         public virtual Difficulty Difficulty { get; set; }
         public virtual string Description { get; set; }
+        public virtual string Type { get; set; } //podría ser un enum o un boolean, solo tiene valores "boolear" y "multiple"
         public virtual IList<Answer> Answers { get; set; }
 
         public Question()

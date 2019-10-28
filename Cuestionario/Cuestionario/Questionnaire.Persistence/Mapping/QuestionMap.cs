@@ -11,6 +11,8 @@ namespace Questionnaire.Persistence
 
             Map(x => x.Description);
 
+            Map(x => x.Type);
+
             References(x => x.Category)
                 .Column("categoryId")
                 .Cascade

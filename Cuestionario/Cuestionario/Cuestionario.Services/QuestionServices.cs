@@ -42,7 +42,8 @@ namespace Cuestionario.Services
             {
                 Description = pQuestionData.Description,
                 Category = lCategory,
-                Difficulty = lDifficulty
+                Difficulty = lDifficulty,
+                Type = pQuestionData.Type,
             };
             
             iSession.Save(lQuestion);

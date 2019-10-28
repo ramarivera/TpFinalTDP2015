@@ -18,7 +18,8 @@ CREATE TABLE Questions(
 id int identity(1,1) not null PRIMARY KEY,
 categoryId int not null,
 difficultyId int not null,
-description varchar(255) not null
+description varchar(255) not null,
+type varchar(8) not null,
 CONSTRAINT FK_Questions_categoryId FOREIGN KEY (categoryId) REFERENCES Categories(id),
 CONSTRAINT FK_Questions_difficultyId FOREIGN KEY (difficultyId) REFERENCES Difficulties(id)
 )
