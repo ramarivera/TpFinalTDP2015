@@ -39,6 +39,9 @@
     <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -70,12 +73,14 @@
     <Compile Include="DifficultyServices.cs" />
     <Compile Include="DTO\AnswerCreationData.cs" />
     <Compile Include="DTO\AnswerData.cs" />
-    <Compile Include="DTO\AnswerSessionCreationData.cs" />
+    <Compile Include="DTO\AnswerSessionStartData.cs" />
     <Compile Include="DTO\AnswerSessionData.cs" />
     <Compile Include="DTO\CategoryCreationData.cs" />
     <Compile Include="DTO\CategoryData.cs" />
     <Compile Include="DTO\DifficultyCreationData.cs" />
     <Compile Include="DTO\DifficultyData.cs" />
+    <Compile Include="DTO\Profiles\AnswerProfile.cs" />
+    <Compile Include="DTO\Profiles\QuestionProfile.cs" />
     <Compile Include="DTO\QuestionCreationData.cs" />
     <Compile Include="DTO\QuestionData.cs" />
     <Compile Include="DTO\UserAnswerCreationData.cs" />
@@ -103,6 +108,7 @@
       <Name>Cuestionario.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

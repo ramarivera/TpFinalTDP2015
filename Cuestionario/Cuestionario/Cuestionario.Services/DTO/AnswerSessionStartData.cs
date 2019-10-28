@@ -8,7 +8,7 @@
 
         public string Username { get; set; }
 
-        public int NumberOfQuestions { get; set; }
+        public int QuestionsCount { get; set; }
 
     }
 }
