@@ -159,7 +159,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(256, 31);
             this.comboBox3.TabIndex = 7;
-            this.comboBox3.Text = "10";
+            this.comboBox3.Text = "-";
             // 
             // comboBox2
             // 

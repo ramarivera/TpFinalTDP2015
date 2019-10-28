@@ -1,4 +1,6 @@
-﻿using Cuestionario.Services;
+﻿using Cuestionario.Model;
+using Cuestionario.Services;
+using Cuestionario.Services.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +12,7 @@ namespace Questionnaire.Handlers.Handlers.Interfaces
     public interface IQuestionHandler : IBaseHandler
     {
         void HandlerImportQuestionsFromProvider(QuestionProviderType pType);
+
+        IQueryable<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData);
     }
 }

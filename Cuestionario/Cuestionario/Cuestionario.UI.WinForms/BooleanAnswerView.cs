@@ -1,4 +1,5 @@
-﻿using Questionnaire.Handlers.Handlers;
+﻿using Cuestionario.Model;
+using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace Cuestionario.UI.WinForms
 {
     public partial class BooleanAnswerView : Form
     {
-        public BooleanAnswerView()
+        public BooleanAnswerView(Question pQuestion)
         {
             InitializeComponent();
+            label1.Text = pQuestion.Description;
+            radioButton1.Text = pQuestion.Answers[0].Description;
+            radioButton2.Text = pQuestion.Answers[1].Description;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

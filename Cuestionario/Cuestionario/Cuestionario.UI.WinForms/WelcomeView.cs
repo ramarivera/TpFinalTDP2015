@@ -25,7 +25,8 @@ namespace Cuestionario.UI.WinForms
             InitializeComponent();
             using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
             {
-                IList<Category> lCategories = lHandler.GetAll().OrderBy(c => c.Description).ToList();
+                IList<Category> lCategories = lHandler.GetAll()
+                    .OrderBy(x => x.Description).ToList();
                 foreach (var lCategory in lCategories)
                 {
                     comboBox1.Items.Add(lCategory.Description);
@@ -63,19 +64,50 @@ namespace Cuestionario.UI.WinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData
-            //{
-            //    CategoryId = comboBox1.SelectedItem.
-            //}
+            AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData();
 
-            //using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
-            //{
-            //    lHandler.StartAnswerSession
-            //}
+            lAnswerSessionStartData.Username = textBox1.Text;
+            lAnswerSessionStartData.QuestionsCount = Int32.Parse(comboBox3.SelectedItem.ToString());
+            List<Question> lQuestions = new List<Question>();
 
-            MultipleAnswerView myNewForm = new MultipleAnswerView();
-            this.Hide();
-            myNewForm.ShowDialog();
+            using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
+            {
+                //creo que esto no está bien que esté acá
+                lAnswerSessionStartData.CategoryId = lHandler.GetAll()
+                    .FirstOrDefault(x => x.Description == comboBox1.SelectedItem.ToString()).Id;
+            }
+            using (var lHandler = HandlerFactory.Get<IDifficultyHandler>())
+            {
+                lAnswerSessionStartData.DifficultyId = lHandler.GetAll()
+                    .FirstOrDefault(x => x.Description == comboBox2.SelectedItem.ToString()).Id;
+            }
+
+            using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+            {
+                lHandler.StartAnswerSession(lAnswerSessionStartData);
+            }
+
+            using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
+            {
+                lQuestions = lHandler.GetQuestionsForSession(lAnswerSessionStartData).ToList();
+            }
+
+            Question lQuestion = lQuestions[0];
+
+            if (lQuestion.Type == "boolean")
+            {
+                BooleanAnswerView myNewForm = new BooleanAnswerView(lAnswerSessionStartData, lQuestion);
+                this.Hide();
+                myNewForm.ShowDialog();
+            }
+            else
+            {
+                MultipleAnswerView myNewForm = new MultipleAnswerView(lAnswerSessionStartData, lQuestion);
+                this.Hide();
+                myNewForm.ShowDialog();
+            }
+            
+            
         }
     }
 }
