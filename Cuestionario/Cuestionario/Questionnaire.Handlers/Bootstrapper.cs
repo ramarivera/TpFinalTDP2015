@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Features.ResolveAnything;
+using AutoMapper;
 using Cuestionario.Services;
 using Cuestionario.Services.Interfaces;
 using Cuestionario.Services.OpenTrivia;
@@ -13,7 +14,7 @@ using IContainer = Questionnaire.Services.DependencyInjection.IContainer;
 
 namespace Questionnaire.Handlers
 {
-    public  class Bootstrapper
+    public class Bootstrapper
     {
         public static void BootstrapApplication()
         {
@@ -42,6 +43,19 @@ namespace Questionnaire.Handlers
                   .Named<IQuestionProvider>(QuestionProviderType.OpenTrivia.ToString().ToUpper())
                   .InstancePerLifetimeScope();
 
+            lBuilder.RegisterInstance(ConfigureAutomapper());
+
+            lBuilder.Register(
+              ctx =>
+              {
+                  var scope = ctx.Resolve<ILifetimeScope>();
+                  return new Mapper(
+                    ctx.Resolve<IConfigurationProvider>(),
+                    scope.Resolve);
+              })
+              .As<IMapper>()
+              .InstancePerLifetimeScope();
+
             var lContainer = lBuilder.Build();
 
             HandlerFactory.ConfigureHandlerFactory(lContainer);
@@ -53,6 +67,12 @@ namespace Questionnaire.Handlers
             pBuilder.RegisterType<TImplementation>()
                    .As<TInterface>()
                    .InstancePerLifetimeScope();
+        }
+
+        private static IConfigurationProvider ConfigureAutomapper()
+        {
+            var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(IQuestionServices).Assembly));
+            return configuration;
         }
     }
 }
