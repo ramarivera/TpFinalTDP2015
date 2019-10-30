@@ -31,8 +31,10 @@ namespace Questionnaire.Handlers.Handlers
         }
 
         [Transactional]
-        public void HandlerImportQuestionsFromProvider(QuestionProviderType pType)
+        public async void HandlerImportQuestionsFromProvider(QuestionProviderType pType)
         {
+            var query = await (this.iQuestionService as QuestionServices).TryGetQuestionsProjected();
+
             var lProvider = this.iQuestionProviderFactory.BuildProvider(pType);
 
             var lExistentQuestion = iQuestionService.GetAll();

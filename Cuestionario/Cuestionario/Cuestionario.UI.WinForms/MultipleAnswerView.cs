@@ -54,22 +54,22 @@ namespace Cuestionario.UI.WinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserAnswerCreationData lUserAnswer = new UserAnswerCreationData()
-            {
-                AnswerSession = iAnswerSession,
-                Question = iQuestion,
-                ChosenAnswer = 
-            }
+            //UserAnswerCreationData lUserAnswer = new UserAnswerCreationData()
+            //{
+            //    AnswerSession = iAnswerSession,
+            //    Question = iQuestion,
+            //    ChosenAnswer = 
+            //}
         }
 
-        private Answer GetChosenAnswer()
-        {
-            Answer lResult = new Answer(); 
-            if (radioButton1.Checked)
-            {
-                lResult = radio
-            }
-            return lResult;
-        }
+        //private Answer GetChosenAnswer()
+        //{
+        //    //Answer lResult = new Answer(); 
+        //    //if (radioButton1.Checked)
+        //    //{
+        //    //    lResult = radio
+        //    //}
+        //    //return lResult;
+        //}
     }
 }

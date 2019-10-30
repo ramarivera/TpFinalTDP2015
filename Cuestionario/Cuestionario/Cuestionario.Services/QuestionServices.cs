@@ -7,13 +7,19 @@ using Cuestionario.Model;
 using Cuestionario.Services.DTO;
 using NHibernate;
 using Cuestionario.Services.Interfaces;
+using AutoMapper.QueryableExtensions;
+using AutoMapper;
+using NHibernate.Linq;
+using NHibernate.Hql.Ast.ANTLR;
+using System.Reflection;
+using NHibernate.Engine;
 
 namespace Cuestionario.Services
 {
     public class QuestionServices : IQuestionServices
     {
         private ISession iSession;
-
+        private readonly IMapper iMapper;
         private ICategoryServices iCategoryServices;
 
         private IDifficultyServices iDifficultyServices;
@@ -21,11 +27,42 @@ namespace Cuestionario.Services
         public QuestionServices(
             ISession session,
             ICategoryServices categoryServices,
+            IMapper pMapper,
             IDifficultyServices difficcultyServices)
         {
             iSession = session;
+            iMapper = pMapper;
             iCategoryServices = categoryServices;
             iDifficultyServices = difficcultyServices;
+        }
+
+        public static String ToSql(IQueryable queryable, ISession session)
+        {
+            string GetGeneratedSql()
+            {
+                var sessionImp = (ISessionImplementor)session;
+                var nhLinqExpression = new NhLinqExpression(queryable.Expression, sessionImp.Factory);
+                var translatorFactory = new ASTQueryTranslatorFactory();
+                var translators = translatorFactory.CreateQueryTranslators(nhLinqExpression, null, false, sessionImp.EnabledFilters, sessionImp.Factory);
+
+                return translators[0].SQLString;
+            }
+
+            return GetGeneratedSql();
+        }
+
+        public Task<List<QuestionData>> TryGetQuestionsProjected()
+        {
+            var query = iSession.Query<Question>();
+
+            var queryString = ToSql(query, iSession);
+
+            var projectQuery = query.ProjectTo<QuestionData>(iMapper.ConfigurationProvider);
+            var expressionQueyr = projectQuery.Expression;
+
+            var projectedQuerySql = ToSql(projectQuery, iSession);
+
+            return projectQuery.ToListAsync();
         }
 
         public Question Create(QuestionCreationData pQuestionData)
@@ -45,7 +82,7 @@ namespace Cuestionario.Services
                 Difficulty = lDifficulty,
                 Type = pQuestionData.Type,
             };
-            
+
             iSession.Save(lQuestion);
 
             Answer lAnswer = new Answer();
@@ -70,7 +107,7 @@ namespace Cuestionario.Services
                 iSession.Query<Question>();
 
             return lQuestions;
-        }         
+        }
 
         public Question GetById(long pQuestionId)
         {

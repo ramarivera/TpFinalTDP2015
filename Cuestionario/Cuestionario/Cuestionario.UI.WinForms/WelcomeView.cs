@@ -94,18 +94,18 @@ namespace Cuestionario.UI.WinForms
 
             Question lQuestion = lQuestions[0];
 
-            if (lQuestion.Type == "boolean")
-            {
-                BooleanAnswerView myNewForm = new BooleanAnswerView(lAnswerSessionStartData, lQuestion);
-                this.Hide();
-                myNewForm.ShowDialog();
-            }
-            else
-            {
-                MultipleAnswerView myNewForm = new MultipleAnswerView(lAnswerSessionStartData, lQuestion);
-                this.Hide();
-                myNewForm.ShowDialog();
-            }
+            //if (lQuestion.Type == "boolean")
+            //{
+            //    BooleanAnswerView myNewForm = new BooleanAnswerView(lAnswerSessionStartData, lQuestion);
+            //    this.Hide();
+            //    myNewForm.ShowDialog();
+            //}
+            //else
+            //{
+            //    MultipleAnswerView myNewForm = new MultipleAnswerView(lAnswerSessionStartData, lQuestion);
+            //    this.Hide();
+            //    myNewForm.ShowDialog();
+            //}
             
             
         }
