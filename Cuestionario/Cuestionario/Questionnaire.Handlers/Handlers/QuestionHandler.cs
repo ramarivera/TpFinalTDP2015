@@ -9,6 +9,7 @@ using Questionnaire.Handlers.Handlers.Interfaces;
 using Cuestionario.Services;
 using Cuestionario.Model;
 using Cuestionario.Services.DTO;
+using AutoMapper;
 
 namespace Questionnaire.Handlers.Handlers
 {
@@ -23,7 +24,9 @@ namespace Questionnaire.Handlers.Handlers
         public QuestionHandler(
             IQuestionServices pQuestionService,
             ICategoryServices pCategoryService,
-            QuestionProviderFactory pQuestionProviderFactory)
+            QuestionProviderFactory pQuestionProviderFactory,
+            IMapper pMapper)    
+            : base(pMapper)
         {
             this.iQuestionService = pQuestionService;
             this.iCategoryService = pCategoryService;
@@ -47,10 +50,13 @@ namespace Questionnaire.Handlers.Handlers
 
         [Transactional]
         //aca sería correcto llevar todas las preguntas que cumplan con las condiciones? o solo el número indicado? como se pueden obtener al azar?
-        public IQueryable<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
+        public IEnumerable<QuestionData> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
-            return iQuestionService.GetAll()
+            var lQuestions = iQuestionService.GetAll()
                 .Where(x => x.Category == iCategoryService.GetById(pAnswerSessionStartData.CategoryId));
+
+            var lResult = Mapper.Map<IList<QuestionData>>(lQuestions);
+            return lResult;
         }
     }
 }

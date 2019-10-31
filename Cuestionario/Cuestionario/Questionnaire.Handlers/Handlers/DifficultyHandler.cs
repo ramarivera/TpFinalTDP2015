@@ -1,12 +1,12 @@
-﻿using Cuestionario.Model;
+﻿using AutoMapper;
+using Cuestionario.Model;
+using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Questionnaire.Handlers.Handlers
 {
@@ -14,16 +14,21 @@ namespace Questionnaire.Handlers.Handlers
     {
         private readonly IDifficultyServices iDifficultyServices;
 
-        public DifficultyHandler(IDifficultyServices pDifficultyServices)
+        public DifficultyHandler(
+            IDifficultyServices pDifficultyServices,
+            IMapper pMapper)
+            : base(pMapper)
         {
             this.iDifficultyServices = pDifficultyServices;
         }
 
         [Transactional]
-        public IList<Difficulty> GetAll()
+        public IEnumerable<DifficultyData> GetAll()
         {
-            //ver si no habria que mapear
-            return iDifficultyServices.GetAll().ToList();
+            var lDifficulties = iDifficultyServices.GetAll();
+
+            var lResult = Mapper.Map<IList<DifficultyData>>(lDifficulties);
+            return lResult;
         }
     }
 }

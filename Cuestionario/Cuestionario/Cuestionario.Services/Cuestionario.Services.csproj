@@ -80,6 +80,8 @@
     <Compile Include="DTO\DifficultyCreationData.cs" />
     <Compile Include="DTO\DifficultyData.cs" />
     <Compile Include="DTO\Profiles\AnswerProfile.cs" />
+    <Compile Include="DTO\Profiles\CategoryProfile.cs" />
+    <Compile Include="DTO\Profiles\DifficultyProfile.cs" />
     <Compile Include="DTO\Profiles\QuestionProfile.cs" />
     <Compile Include="DTO\QuestionCreationData.cs" />
     <Compile Include="DTO\QuestionData.cs" />

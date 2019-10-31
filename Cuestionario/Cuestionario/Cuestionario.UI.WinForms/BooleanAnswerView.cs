@@ -1,4 +1,5 @@
 ﻿using Cuestionario.Model;
+using Cuestionario.Services.DTO;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using System;
@@ -15,9 +16,12 @@ namespace Cuestionario.UI.WinForms
 {
     public partial class BooleanAnswerView : Form
     {
-        public BooleanAnswerView(Question pQuestion)
+        private readonly AnswerSessionStartData iAnswerSession;
+        private readonly QuestionData iQuestion;
+        public BooleanAnswerView(AnswerSessionStartData pAnswerSession, QuestionData pQuestion)
         {
             InitializeComponent();
+            iAnswerSession = pAnswerSession;
             label1.Text = pQuestion.Description;
             radioButton1.Text = pQuestion.Answers[0].Description;
             radioButton2.Text = pQuestion.Answers[1].Description;

@@ -13,6 +13,6 @@ namespace Questionnaire.Handlers.Handlers.Interfaces
     {
         void HandlerImportQuestionsFromProvider(QuestionProviderType pType);
 
-        IQueryable<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData);
+        IEnumerable<QuestionData> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData);
     }
 }

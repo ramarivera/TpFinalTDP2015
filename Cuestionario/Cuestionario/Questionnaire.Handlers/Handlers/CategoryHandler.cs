@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Cuestionario.Model;
+using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
@@ -14,16 +16,21 @@ namespace Questionnaire.Handlers.Handlers
     {
         private readonly ICategoryServices iCategoryServices;
 
-        public CategoryHandler(ICategoryServices pCategoryServices)
+        public CategoryHandler(
+            ICategoryServices pCategoryServices,
+            IMapper pMapper)
+            : base(pMapper)
         {
             this.iCategoryServices = pCategoryServices;
         }
 
         [Transactional]
-        public IList<Category> GetAll()
+        public IEnumerable<CategoryData> GetAll()
         {
-            //ver si no habria que mapear
-            return iCategoryServices.GetAll().ToList();
+            var lCategories = iCategoryServices.GetAll();
+
+            var lResult = Mapper.Map<IList<CategoryData>>(lCategories);
+            return lResult;
         }
     }
 }

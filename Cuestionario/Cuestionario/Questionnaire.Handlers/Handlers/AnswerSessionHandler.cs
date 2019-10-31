@@ -1,4 +1,5 @@
-﻿using Cuestionario.Services.DTO;
+﻿using AutoMapper;
+using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
@@ -10,7 +11,11 @@ namespace Questionnaire.Handlers.Handlers
         private readonly IAnswerSessionServices iAnswerSessionServices;
         private readonly ICategoryServices iCategoryServices;
 
-        public AnswerSessionHandler(IAnswerSessionServices pAnswerSessionServices, ICategoryServices pCategoryServices)
+        public AnswerSessionHandler(
+            IAnswerSessionServices pAnswerSessionServices,
+            ICategoryServices pCategoryServices,
+            IMapper pMapper)
+            : base(pMapper)
         {
             this.iAnswerSessionServices = pAnswerSessionServices;
             this.iCategoryServices = pCategoryServices;

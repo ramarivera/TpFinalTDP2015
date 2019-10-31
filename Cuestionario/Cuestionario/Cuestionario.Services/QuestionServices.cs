@@ -31,10 +31,10 @@ namespace Cuestionario.Services
         public Question Create(QuestionCreationData pQuestionData)
         {
             var lCategory = iCategoryServices.GetById(pQuestionData.Category.Id);
-            if (lCategory == null)
-            {
-                lCategory = iCategoryServices.Create(pQuestionData.Category);
-            }
+            //if (lCategory == null)
+            //{
+            //    lCategory = iCategoryServices.Create(pQuestionData.Category);
+            //}
 
             var lDifficulty = iDifficultyServices.GetById(pQuestionData.Difficulty.Id);
 

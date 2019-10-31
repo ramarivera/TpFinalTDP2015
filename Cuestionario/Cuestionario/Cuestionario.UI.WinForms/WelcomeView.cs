@@ -25,7 +25,7 @@ namespace Cuestionario.UI.WinForms
             InitializeComponent();
             using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
             {
-                IList<Category> lCategories = lHandler.GetAll()
+                IList<CategoryData> lCategories = lHandler.GetAll()
                     .OrderBy(x => x.Description).ToList();
                 foreach (var lCategory in lCategories)
                 {
@@ -34,7 +34,7 @@ namespace Cuestionario.UI.WinForms
             }
             using (var lHandler = HandlerFactory.Get<IDifficultyHandler>())
             {
-                IList<Difficulty> lDifficulties = lHandler.GetAll();
+                IList<DifficultyData> lDifficulties = lHandler.GetAll().ToList();
                 foreach (var lDifficulty in lDifficulties)
                 {
                     comboBox2.Items.Add(lDifficulty.Description);
@@ -68,7 +68,7 @@ namespace Cuestionario.UI.WinForms
 
             lAnswerSessionStartData.Username = textBox1.Text;
             lAnswerSessionStartData.QuestionsCount = Int32.Parse(comboBox3.SelectedItem.ToString());
-            List<Question> lQuestions = new List<Question>();
+            List<QuestionData> lQuestions = new List<QuestionData>();
 
             using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
             {
@@ -92,7 +92,7 @@ namespace Cuestionario.UI.WinForms
                 lQuestions = lHandler.GetQuestionsForSession(lAnswerSessionStartData).ToList();
             }
 
-            Question lQuestion = lQuestions[0];
+            QuestionData lQuestion = lQuestions[0];
 
             if (lQuestion.Type == "boolean")
             {
