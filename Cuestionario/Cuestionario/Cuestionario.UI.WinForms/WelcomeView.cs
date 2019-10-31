@@ -69,6 +69,7 @@ namespace Cuestionario.UI.WinForms
             lAnswerSessionStartData.Username = textBox1.Text;
             lAnswerSessionStartData.QuestionsCount = Int32.Parse(comboBox3.SelectedItem.ToString());
             List<QuestionData> lQuestions = new List<QuestionData>();
+            int lAnswerSessionId; 
 
             using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
             {
@@ -84,7 +85,7 @@ namespace Cuestionario.UI.WinForms
 
             using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
             {
-                lHandler.StartAnswerSession(lAnswerSessionStartData);
+                lAnswerSessionId = lHandler.StartAnswerSession(lAnswerSessionStartData);
             }
 
             using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
@@ -96,13 +97,13 @@ namespace Cuestionario.UI.WinForms
 
             if (lQuestion.Type == "boolean")
             {
-                BooleanAnswerView myNewForm = new BooleanAnswerView(lAnswerSessionStartData, lQuestion);
+                BooleanAnswerView myNewForm = new BooleanAnswerView(lAnswerSessionId, lQuestion);
                 this.Hide();
                 myNewForm.ShowDialog();
             }
             else
             {
-                MultipleAnswerView myNewForm = new MultipleAnswerView(lAnswerSessionStartData, lQuestion);
+                MultipleAnswerView myNewForm = new MultipleAnswerView(lAnswerSessionId, lQuestion);
                 this.Hide();
                 myNewForm.ShowDialog();
             }

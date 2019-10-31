@@ -6,7 +6,7 @@ using Questionnaire.Handlers.Handlers.Interfaces;
 
 namespace Questionnaire.Handlers.Handlers
 {
-    class AnswerSessionHandler : BaseHandler, IAnswerSessionHandler
+    public class AnswerSessionHandler : BaseHandler, IAnswerSessionHandler
     {
         private readonly IAnswerSessionServices iAnswerSessionServices;
         private readonly ICategoryServices iCategoryServices;
@@ -27,6 +27,15 @@ namespace Questionnaire.Handlers.Handlers
             var lAnswerSession = this.iAnswerSessionServices.StartSession(pSessionStartData);
 
             return lAnswerSession.Id;
+        }
+
+        [Transactional]
+        public AnswerSessionData GetById(int pId)
+        {
+            var lAnswerSession = iAnswerSessionServices.GetById(pId);
+
+            var lResult = Mapper.Map<AnswerSessionData>(lAnswerSession);
+            return lResult;
         }
 
         //[Transactional]

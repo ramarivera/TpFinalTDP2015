@@ -32,14 +32,14 @@ namespace Cuestionario.Services.OpenTrivia
 
         public async Task<RootObject> GetQuestionsAsync(string pPath)
         {
-            RootObject question = null;
-            HttpResponseMessage response = await client.GetAsync(pPath).ConfigureAwait(false);
-            if (response.IsSuccessStatusCode)
+            RootObject lQuestion = null;
+            HttpResponseMessage lResponse = await client.GetAsync(pPath).ConfigureAwait(false);
+            if (lResponse.IsSuccessStatusCode)
             {
-                question = await response.Content.ReadAsAsync<RootObject>();
+                lQuestion = await lResponse.Content.ReadAsAsync<RootObject>();
             }
 
-            return question;
+            return lQuestion;
         }
 
         public IEnumerable<QuestionCreationData> RetrieveAllQuestions()

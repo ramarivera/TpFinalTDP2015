@@ -16,12 +16,12 @@ namespace Cuestionario.UI.WinForms
 {
     public partial class BooleanAnswerView : Form
     {
-        private readonly AnswerSessionStartData iAnswerSession;
+        private readonly int iAnswerSessionId;
         private readonly QuestionData iQuestion;
-        public BooleanAnswerView(AnswerSessionStartData pAnswerSession, QuestionData pQuestion)
+        public BooleanAnswerView(int pAnswerSessionId, QuestionData pQuestion)
         {
             InitializeComponent();
-            iAnswerSession = pAnswerSession;
+            iAnswerSessionId = pAnswerSessionId;
             label1.Text = pQuestion.Description;
             radioButton1.Text = pQuestion.Answers[0].Description;
             radioButton2.Text = pQuestion.Answers[1].Description;

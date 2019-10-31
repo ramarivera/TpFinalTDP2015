@@ -1,5 +1,6 @@
 ﻿using Cuestionario.Model;
 using Cuestionario.Services.DTO;
+using Questionnaire.Handlers.Handlers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,12 @@ namespace Cuestionario.UI.WinForms
 {
     public partial class MultipleAnswerView : Form
     {
-        private readonly AnswerSessionStartData iAnswerSession;
+        private readonly int iAnswerSessionId;
         private readonly QuestionData iQuestion;
-        public MultipleAnswerView(AnswerSessionStartData pAnswerSession, QuestionData pQuestion)
+        public MultipleAnswerView(int pAnswerSessionId, QuestionData pQuestion)
         {
             InitializeComponent();
-            iAnswerSession = pAnswerSession;
+            iAnswerSessionId = pAnswerSessionId;
             label1.Text = pQuestion.Description;
             radioButton1.Text = pQuestion.Answers[0].Description;
             radioButton2.Text = pQuestion.Answers[1].Description;
@@ -54,22 +55,43 @@ namespace Cuestionario.UI.WinForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-        //    UserAnswerCreationData lUserAnswer = new UserAnswerCreationData()
-        //    {
-        //        AnswerSession = iAnswerSession,
-        //        Question = iQuestion,
-        //        ChosenAnswer = 
-        //    }
+            AnswerSessionData lAnswerSession = new AnswerSessionData();
+
+            using (var lHandler = HandlerFactory.Get<AnswerSessionHandler>())
+            {
+                lAnswerSession = lHandler.GetById(iAnswerSessionId);
+            }
+
+            UserAnswerCreationData lUserAnswer = new UserAnswerCreationData()
+            {
+                AnswerSession = lAnswerSession,
+                Question = iQuestion,
+                ChosenAnswer = this.GetChosenAnswer()
+            };
+
+          
         }
 
-        //private Answer GetChosenAnswer()
-        //{
-        //    Answer lResult = new Answer(); 
-        //    if (radioButton1.Checked)
-        //    {
-        //        lResult = radio
-        //    }
-        //    return lResult;
-        //}
+        private AnswerData GetChosenAnswer()
+        {
+            AnswerData lResult = new AnswerData();
+            if (radioButton1.Checked)
+            {
+                lResult = iQuestion.Answers.FirstOrDefault(x => x.Description == radioButton1.Text);
+            }
+            else if (radioButton2.Checked)
+            {
+                lResult = iQuestion.Answers.FirstOrDefault(x => x.Description == radioButton2.Text);
+            }
+            else if (radioButton3.Checked)
+            {
+                lResult = iQuestion.Answers.FirstOrDefault(x => x.Description == radioButton3.Text);
+            }
+            else if (radioButton4.Checked)
+            {
+                lResult = iQuestion.Answers.FirstOrDefault(x => x.Description == radioButton4.Text);
+            }
+            return lResult;
+        }
     }
-}
+} 
