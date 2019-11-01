@@ -15,6 +15,6 @@ namespace Cuestionario.Services.DTO
         public int AnswerTime { get; set; }
         public int Score { get; set; }
         public DateTime Date { get; set; }
-        public IList<UserAnswerCreactionData> UserAnswers { get; set; }
+        public IList<UserAnswerData> UserAnswers { get; set; }
     }
 }

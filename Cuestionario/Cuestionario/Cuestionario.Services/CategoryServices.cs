@@ -9,11 +9,11 @@ namespace Cuestionario.Services
 {
     public class CategoryServices : ICategoryServices
     {
-        private ISession _session;
+        private ISession iSession;
 
-        public CategoryServices(ISession session)
+        public CategoryServices(ISession pSession)
         {
-            _session = session;
+            iSession = pSession;
         }
 
         public Category Create(CategoryData pCategoryData)
@@ -23,7 +23,7 @@ namespace Cuestionario.Services
                 Description = pCategoryData.Description
             };
 
-            _session.Save(lCategory);
+            iSession.Save(lCategory);
 
             return lCategory;
         }
@@ -36,7 +36,7 @@ namespace Cuestionario.Services
         public IQueryable<Category> GetAll()
         {
             IQueryable<Category> lCategories =
-                _session.Query<Category>();
+                iSession.Query<Category>();
 
             return lCategories;
         }       

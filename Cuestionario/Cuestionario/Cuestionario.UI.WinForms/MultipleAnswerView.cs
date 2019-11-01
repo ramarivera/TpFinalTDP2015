@@ -1,6 +1,7 @@
 ﻿using Cuestionario.Model;
 using Cuestionario.Services.DTO;
 using Questionnaire.Handlers.Handlers;
+using Questionnaire.Handlers.Handlers.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace Cuestionario.UI.WinForms
         {
             InitializeComponent();
             iAnswerSessionId = pAnswerSessionId;
+            iQuestion = pQuestion;
             label1.Text = pQuestion.Description;
             radioButton1.Text = pQuestion.Answers[0].Description;
             radioButton2.Text = pQuestion.Answers[1].Description;
@@ -57,7 +59,7 @@ namespace Cuestionario.UI.WinForms
         {
             AnswerSessionData lAnswerSession = new AnswerSessionData();
 
-            using (var lHandler = HandlerFactory.Get<AnswerSessionHandler>())
+            using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
             {
                 lAnswerSession = lHandler.GetById(iAnswerSessionId);
             }
@@ -66,10 +68,15 @@ namespace Cuestionario.UI.WinForms
             {
                 AnswerSession = lAnswerSession,
                 Question = iQuestion,
-                ChosenAnswer = this.GetChosenAnswer()
+                ChosenAnswer = this.GetChosenAnswer(),
             };
 
-          
+            lUserAnswer.AnswerStatus = lUserAnswer.ChosenAnswer.Correct;
+
+            using (var lHandler = HandlerFactory.Get<IUserAnswerHandler>())
+            {
+               lHandler.SaveUserAnswer(lUserAnswer);
+            }
         }
 
         private AnswerData GetChosenAnswer()

@@ -36,6 +36,9 @@ namespace Questionnaire.Handlers
             PerformInstancePerLifetimeRegistration<IDifficultyHandler, DifficultyHandler>(lBuilder);
             PerformInstancePerLifetimeRegistration<IQuestionServices, QuestionServices>(lBuilder);
             PerformInstancePerLifetimeRegistration<IQuestionHandler, QuestionHandler>(lBuilder);
+            PerformInstancePerLifetimeRegistration<IUserAnswerServices, UserAnswerServices>(lBuilder);
+            PerformInstancePerLifetimeRegistration<IUserAnswerHandler, UserAnswerHandler>(lBuilder);
+
 
             PerformInstancePerLifetimeRegistration<IContainer, AutofacContainer>(lBuilder);
 

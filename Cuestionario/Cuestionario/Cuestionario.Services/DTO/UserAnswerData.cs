@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cuestionario.Services.DTO
 {
-    public class UserAnswerCreactionData
+    public class UserAnswerData
     {
         public int Id { get; set; }
         public QuestionData Question { get; set; }

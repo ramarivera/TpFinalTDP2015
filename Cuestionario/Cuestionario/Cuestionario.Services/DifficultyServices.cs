@@ -12,10 +12,10 @@ namespace Cuestionario.Services
 {
     public class DifficultyServices : IDifficultyServices
     {
-        private ISession _session;
-        public DifficultyServices(ISession session)
+        private ISession iSession;
+        public DifficultyServices(ISession pSession)
         {
-            _session = session;
+            iSession = pSession;
         }
         public Difficulty Create(DifficultyData pDifficultyData)
         {
@@ -24,8 +24,7 @@ namespace Cuestionario.Services
                 Description = pDifficultyData.Description
             };
 
-            _session.Save(lDifficulty);
-            //_session.Transaction.Commit();
+            iSession.Save(lDifficulty);
 
             return lDifficulty;
         }
@@ -38,7 +37,7 @@ namespace Cuestionario.Services
         public IQueryable<Difficulty> GetAll()
         {
             IQueryable<Difficulty> lCategories =
-                _session.Query<Difficulty>();
+                iSession.Query<Difficulty>();
 
             return lCategories;
         }      

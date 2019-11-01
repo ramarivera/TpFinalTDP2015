@@ -9,28 +9,28 @@ namespace Cuestionario.Services
 {
     public class UserAnswerServices : IUserAnswerServices
     {
-        private ISession _session;
+        private ISession iSession;
 
-        private IQuestionServices _questionServices;
+        private IQuestionServices iQuestionServices;
 
-        private IAnswerSessionServices _answerSessionServices;
+        private IAnswerSessionServices iAnswerSessionServices;
 
         public UserAnswerServices(
-            ISession session,
-            IQuestionServices questionServices,
-            IAnswerSessionServices answerSessionServices)
+            ISession pSession,
+            IQuestionServices pQuestionServices,
+            IAnswerSessionServices pAnswerSessionServices)
         {
-            _session = session;
-            _questionServices = questionServices;
-            _answerSessionServices = answerSessionServices;
+            iSession = pSession;
+            iQuestionServices = pQuestionServices;
+            iAnswerSessionServices = pAnswerSessionServices;
         }
-        public UserAnswer Create(UserAnswerCreactionData pUserAnswerData)
+        public UserAnswer Create(UserAnswerCreationData pUserAnswerData)
         {
-            var lQuestion = _questionServices.GetById(pUserAnswerData.Question.Id);
+            var lQuestion = iQuestionServices.GetById(pUserAnswerData.Question.Id);
 
-            var lAnswerSession = _answerSessionServices.GetById(pUserAnswerData.AnswerSession.Id);
+            var lAnswerSession = iAnswerSessionServices.GetById(pUserAnswerData.AnswerSession.Id);
 
-            var lChosenAnswer = _questionServices.GetAnswerById(pUserAnswerData.ChosenAnswer.Id);
+            var lChosenAnswer = iQuestionServices.GetAnswerById(pUserAnswerData.ChosenAnswer.Id);
 
             UserAnswer lUserAnswer = new UserAnswer
             {
@@ -40,8 +40,7 @@ namespace Cuestionario.Services
                 ChosenAnswer = lChosenAnswer
             };
 
-            _session.Save(lUserAnswer);
-            _session.Transaction.Commit();
+            iSession.Save(lUserAnswer);
 
             return lUserAnswer;
         }
@@ -54,7 +53,7 @@ namespace Cuestionario.Services
         public IQueryable<UserAnswer> GetAll()
         {
             IQueryable<UserAnswer> lUserAnswers =
-                _session.Query<UserAnswer>();
+                iSession.Query<UserAnswer>();
 
             return lUserAnswers;
         }            
@@ -72,7 +71,7 @@ namespace Cuestionario.Services
             return lUserAnswer;
         }
 
-        public UserAnswer Update(long pId, UserAnswerCreactionData pUpdateUserAnswer)
+        public UserAnswer Update(long pId, UserAnswerData pUpdateUserAnswer)
         {
             throw new NotImplementedException();
         }

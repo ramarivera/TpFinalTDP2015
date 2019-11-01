@@ -19,13 +19,13 @@ namespace Cuestionario.Services
         private IDifficultyServices iDifficultyServices;
 
         public QuestionServices(
-            ISession session,
-            ICategoryServices categoryServices,
-            IDifficultyServices difficcultyServices)
+            ISession pSession,
+            ICategoryServices pCategoryServices,
+            IDifficultyServices pDifficcultyServices)
         {
-            iSession = session;
-            iCategoryServices = categoryServices;
-            iDifficultyServices = difficcultyServices;
+            iSession = pSession;
+            iCategoryServices = pCategoryServices;
+            iDifficultyServices = pDifficcultyServices;
         }
 
         public Question Create(QuestionCreationData pQuestionData)
