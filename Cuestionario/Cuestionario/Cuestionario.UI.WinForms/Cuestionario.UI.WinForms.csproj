@@ -52,11 +52,24 @@
     <Compile Include="BooleanAnswerView.Designer.cs">
       <DependentUpon>BooleanAnswerView.cs</DependentUpon>
     </Compile>
+    <Compile Include="IQuestionViewer.cs" />
     <Compile Include="MultipleAnswerView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MultipleAnswerView.Designer.cs">
       <DependentUpon>MultipleAnswerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MultipleChoiceQuestionViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MultipleChoiceQuestionViewer.Designer.cs">
+      <DependentUpon>MultipleChoiceQuestionViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionsPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionsPlayer.Designer.cs">
+      <DependentUpon>QuestionsPlayer.cs</DependentUpon>
     </Compile>
     <Compile Include="ResultsView.cs">
       <SubType>Form</SubType>
@@ -77,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MultipleAnswerView.resx">
       <DependentUpon>MultipleAnswerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultipleChoiceQuestionViewer.resx">
+      <DependentUpon>MultipleChoiceQuestionViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResultsView.resx">
       <DependentUpon>ResultsView.cs</DependentUpon>
@@ -107,9 +123,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cuestionario.Model\Cuestionario.Model.csproj">
+    <ProjectReference Include="..\Cuestionario.Model\Questionnaire.Model.csproj">
       <Project>{e3f34edb-c212-4d6d-8e9f-f24955303bde}</Project>
-      <Name>Cuestionario.Model</Name>
+      <Name>Questionnaire.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cuestionario.Services.OpenTrivia\Cuestionario.Services.OpenTrivia.csproj">
       <Project>{307c22d6-e354-414f-9bbd-bffbd695c5e5}</Project>

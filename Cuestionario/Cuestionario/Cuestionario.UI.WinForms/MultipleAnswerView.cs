@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
@@ -17,17 +17,27 @@ namespace Cuestionario.UI.WinForms
     public partial class MultipleAnswerView : Form
     {
         private readonly int iAnswerSessionId;
+
         private readonly QuestionData iQuestion;
+
+        private int iCurrentQuestionIndex = 0;
+
+        private IQuestionViewer iCurrentQuestionViewer;
+
         public MultipleAnswerView(int pAnswerSessionId, QuestionData pQuestion)
         {
             InitializeComponent();
+
             iAnswerSessionId = pAnswerSessionId;
             iQuestion = pQuestion;
             label1.Text = pQuestion.Description;
-            radioButton1.Text = pQuestion.Answers[0].Description;
-            radioButton2.Text = pQuestion.Answers[1].Description;
-            radioButton3.Text = pQuestion.Answers[2].Description;
-            radioButton4.Text = pQuestion.Answers[3].Description;
+
+            SetupFirstQuestion();
+        }
+
+        private void SetupFirstQuestion()
+        {
+            throw new NotImplementedException();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -35,28 +45,13 @@ namespace Cuestionario.UI.WinForms
 
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            button1.Enabled = true;
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            button1.Enabled = true;
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            button1.Enabled = true;
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            button1.Enabled = true;
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!this.iCurrentQuestionViewer.CanProceed())
+            {
+                // mostrar un cartel obligando a responder la pregunta no respondida.
+            }
+
             AnswerSessionData lAnswerSession = new AnswerSessionData();
 
             using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
@@ -68,37 +63,44 @@ namespace Cuestionario.UI.WinForms
             {
                 AnswerSession = lAnswerSession,
                 Question = iQuestion,
-                ChosenAnswer = this.GetChosenAnswer(),
+                ChosenAnswer = this.iCurrentQuestionViewer.GetUserAnswer(),
             };
 
             lUserAnswer.AnswerStatus = lUserAnswer.ChosenAnswer.Correct;
 
             using (var lHandler = HandlerFactory.Get<IUserAnswerHandler>())
             {
-               lHandler.SaveUserAnswer(lUserAnswer);
+                lHandler.SaveUserAnswer(lUserAnswer);
             }
+
+            this.MoveToNextQuestion();
         }
 
-        private AnswerData GetChosenAnswer()
+        private void MoveToQuestion(int pQuestionIndex)
         {
-            AnswerData lResult = new AnswerData();
-            if (radioButton1.Checked)
+            if (this.iCurrentQuestionIndex < pQuestionIndex)
             {
-                lResult = iQuestion.Answers.FirstOrDefault(x => x.Description == radioButton1.Text);
+                // error
             }
-            else if (radioButton2.Checked)
-            {
-                lResult = iQuestion.Answers.FirstOrDefault(x => x.Description == radioButton2.Text);
-            }
-            else if (radioButton3.Checked)
-            {
-                lResult = iQuestion.Answers.FirstOrDefault(x => x.Description == radioButton3.Text);
-            }
-            else if (radioButton4.Checked)
-            {
-                lResult = iQuestion.Answers.FirstOrDefault(x => x.Description == radioButton4.Text);
-            }
-            return lResult;
+
+            // de algun lugar, en funcion del index, obtener la siguiente pregunt aa mostrar
+            QuestionData lQuestionData = null;
+
+            IQuestionViewer lQuestionViewer = GetQuestionViewerFor(lQuestionData);
+
+            // guardar el current viewer (como IQV)
+
+            var lQuestionViewerControl = lQuestionViewer as UserControl;
+
+            this.iQuestionViewerPnl.Controls.Add(lQuestionViewerControl);
+
+            // 
+        }
+
+        private IQuestionViewer GetQuestionViewerFor(QuestionData lQuestionData)
+        {
+            // aca, segun la pregunta, construir el viewer (mult choice vs yes no) correcto
+            throw new NotImplementedException();
         }
     }
-} 
+}
