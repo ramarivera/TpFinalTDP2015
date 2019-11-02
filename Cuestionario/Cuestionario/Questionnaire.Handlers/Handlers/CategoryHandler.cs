@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using Cuestionario.Model;
+using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using Questionnaire.Handlers.Attributes;

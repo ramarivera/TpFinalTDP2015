@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Cuestionario.Model
+namespace Questionnaire.Model
 {
     public class AnswerSession
     {
         public AnswerSession()
         {
-            this.UserAnswers = new List<UserAnswer>();
+            this.Answers = new List<UserAnswer>();
         }
 
         public virtual int Id { get; set; }
@@ -18,12 +18,14 @@ namespace Cuestionario.Model
 
         public virtual string Username { get; set; }
 
-        public virtual int AnswerTime { get; set; }
+        // TODO add comment that the duration is in seconds
+        public virtual int SessionDuration { get; set; }
 
         public virtual int Score { get; set; }
 
-        public virtual DateTime Date { get; set; }
+        public virtual DateTime StartTime { get; set; }
 
-        public virtual IList<UserAnswer> UserAnswers { get; set; }
+        public virtual IList<UserAnswer> Answers { get; set; }
+        // TODO replace by ienum
     }
 }

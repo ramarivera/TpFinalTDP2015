@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using NHibernate;
@@ -34,7 +34,7 @@ namespace Cuestionario.Services
             AnswerSession lAnswerSession = new AnswerSession
             {
                 Username = pAnswerSessionStartData.Username,
-                Date = DateTime.Now,
+                StartTime = DateTime.Now,
                 Category = lCategory,
                 Difficulty = lDifficulty
             };

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Cuestionario.Model
+namespace Questionnaire.Model
 {
+    // TODO review if, since diff and cat both have a list of questions, an specification patter 
+    // would be of any use
     public class Difficulty
     {
         public virtual int Id { get; set; }

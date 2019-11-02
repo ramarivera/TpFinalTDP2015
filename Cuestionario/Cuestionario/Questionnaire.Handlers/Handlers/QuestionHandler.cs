@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using Cuestionario.Services;
-using Cuestionario.Model;
+using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using AutoMapper;
 

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Cuestionario.Model;
+using Questionnaire.Model;
 
 namespace Cuestionario.Services.DTO.Profiles
 {

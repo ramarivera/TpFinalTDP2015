@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using FluentNHibernate.Mapping;
 
 namespace Questionnaire.Persistence
@@ -11,7 +11,7 @@ namespace Questionnaire.Persistence
 
             Map(x => x.Description);
 
-            Map(x => x.Type);
+            Map(x => x.QuestionType);
 
             References(x => x.Category)
                 .Column("categoryId")
@@ -24,7 +24,13 @@ namespace Questionnaire.Persistence
                 .All();
 
             HasMany(x => x.Answers)
+                .Access.CamelCaseField()
+                .Cascade.All()
                 .Inverse();
+
+            References(x => x.CorrectAnswer)
+                .Column("correctAnswerId")
+                .Cascade.All();
 
             Table("Questions");
         }

@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using FluentNHibernate.Mapping;
 
 namespace Questionnaire.Persistence
@@ -11,11 +11,11 @@ namespace Questionnaire.Persistence
 
             Map(x => x.Username);
 
-            Map(x => x.AnswerTime);
+            Map(x => x.SessionDuration);
 
             Map(x => x.Score);
 
-            Map(x => x.Date);
+            Map(x => x.StartTime);
 
             References(x => x.Category)
                 .Column("categoryId")
@@ -27,7 +27,7 @@ namespace Questionnaire.Persistence
                 .Cascade
                 .All();
 
-            HasMany(x => x.UserAnswers)
+            HasMany(x => x.Answers)
                 .Inverse();
 
             Table("AnswerSessions");

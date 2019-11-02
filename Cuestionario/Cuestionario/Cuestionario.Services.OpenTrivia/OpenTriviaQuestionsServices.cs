@@ -1,13 +1,13 @@
-﻿using Cuestionario.Model;
-using Cuestionario.Services.DTO;
+﻿using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
-using System;
+using Cuestionario.Services.OpenTrivia.Models;
+using Newtonsoft.Json;
+using Questionnaire.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Linq.Expressions;
 
 namespace Cuestionario.Services.OpenTrivia
 {
@@ -30,22 +30,24 @@ namespace Cuestionario.Services.OpenTrivia
             iQuestionServices = questionServices;
         }
 
-        public async Task<RootObject> GetQuestionsAsync(string pPath)
+        public async Task<OpenTriviaResponseData> GetQuestionsAsync(string pPath)
         {
-            RootObject lQuestion = null;
+            OpenTriviaResponseData lQuestions = null;
             HttpResponseMessage lResponse = await client.GetAsync(pPath).ConfigureAwait(false);
+
             if (lResponse.IsSuccessStatusCode)
             {
-                lQuestion = await lResponse.Content.ReadAsAsync<RootObject>();
+                var lStringResponse = await lResponse.Content.ReadAsStringAsync();
+                lQuestions = JsonConvert.DeserializeObject<OpenTriviaResponseData>(lStringResponse);
             }
 
-            return lQuestion;
+            return lQuestions;
         }
 
         public IEnumerable<QuestionCreationData> RetrieveAllQuestions()
         {
             //obtiene las preguntas desde Opentdb
-            Task<RootObject> lOperTriviaQuestions = GetQuestionsAsync("https://opentdb.com/api.php?amount=50");
+            Task<OpenTriviaResponseData> lOperTriviaQuestions = GetQuestionsAsync("https://opentdb.com/api.php?amount=50");
 
             IList<QuestionCreationData> lQuestions = new List<QuestionCreationData>();
 
@@ -58,7 +60,7 @@ namespace Cuestionario.Services.OpenTrivia
 
                 QuestionCreationData lQuestionData = new QuestionCreationData
                 {
-                    Description = lOpenTriviaQuestion.Question,
+                    Description = WebUtility.HtmlDecode(lOpenTriviaQuestion.Question),
                     Category = lCategoryData,
                     Difficulty = lDifficultyData,
                     Type = lOpenTriviaQuestion.Type,
@@ -67,20 +69,19 @@ namespace Cuestionario.Services.OpenTrivia
                 //para la respuesta correcta de la pregunta
                 AnswerCreationData lAnswerData = new AnswerCreationData
                 {
-                    Description = lOpenTriviaQuestion.Correct_Answer,
-                    //Question = lQuestionDTO
+                    Description = WebUtility.HtmlDecode(lOpenTriviaQuestion.CorrectAnswer),
                     Correct = true
                 };
 
                 lQuestionData.Answers.Add(lAnswerData);
+                lQuestionData.CorrectAnswer = lAnswerData;
 
                 //para cada respuesta incorrecta de la pregunta
-                foreach (var lOpenTriviaAnswer in lOpenTriviaQuestion.Incorrect_Answers)
+                foreach (var lOpenTriviaAnswer in lOpenTriviaQuestion.IncorrectAnswers)
                 {
                     lAnswerData = new AnswerCreationData
                     {
-                        Description = lOpenTriviaAnswer,
-                        //Question = lQuestionDTO
+                        Description = WebUtility.HtmlDecode(lOpenTriviaAnswer),
                         Correct = false
                     };
 

@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using FluentNHibernate.Mapping;
 
 namespace Questionnaire.Persistence
@@ -10,8 +10,6 @@ namespace Questionnaire.Persistence
             Id(x => x.Id);
 
             Map(x => x.Description);
-
-            Map(x => x.Correct);
 
             References(x => x.Question)
                 .Column("questionId");

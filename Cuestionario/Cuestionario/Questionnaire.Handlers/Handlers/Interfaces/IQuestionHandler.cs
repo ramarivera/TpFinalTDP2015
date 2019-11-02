@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using Cuestionario.Services;
 using Cuestionario.Services.DTO;
 using System;

@@ -83,8 +83,10 @@
   <ItemGroup>
     <Compile Include="Answer.cs" />
     <Compile Include="AnswerSession.cs" />
+    <Compile Include="BaseEntity.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Difficulty.cs" />
+    <Compile Include="Enums\QuestionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="UserAnswer.cs" />

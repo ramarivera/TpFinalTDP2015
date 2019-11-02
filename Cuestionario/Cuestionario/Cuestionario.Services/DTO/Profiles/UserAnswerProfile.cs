@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Cuestionario.Model;
+using Questionnaire.Model;
 
 namespace Cuestionario.Services.DTO.Profiles
 {
@@ -11,8 +11,7 @@ namespace Cuestionario.Services.DTO.Profiles
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Question, opt => opt.MapFrom(src => src.Question))
                 .ForMember(dest => dest.AnswerSession, opt => opt.MapFrom(src => src.AnswerSession))
-                .ForMember(dest => dest.ChosenAnswer, opt => opt.MapFrom(src => src.ChosenAnswer))
-                .ForMember(dest => dest.AnswerStatus, opt => opt.MapFrom(src => src.AnswerStatus));
+                .ForMember(dest => dest.ChosenAnswer, opt => opt.MapFrom(src => src.ChosenAnswer));
         }
     }
 }

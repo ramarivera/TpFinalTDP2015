@@ -1,28 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Cuestionario.Model
+namespace Questionnaire.Model
 {
     public class Question
     {
-        public virtual int Id { get; set; }
-        public virtual Category Category { get; set; }
-        public virtual Difficulty Difficulty { get; set; }
-        public virtual string Description { get; set; }
-        public virtual string Type { get; set; } //podría ser un enum o un boolean, solo tiene valores "boolear" y "multiple"
-        public virtual IList<Answer> Answers { get; set; }
+        private readonly ICollection<Answer> answers;
+        private Answer iCorrectAnswer;
 
         public Question()
         {
-            Answers = new List<Answer>();
+            answers = new List<Answer>();
         }
+
+        public virtual int Id { get; set; }
+
+        public virtual Category Category { get; set; }
+
+        public virtual Difficulty Difficulty { get; set; }
+
+        public virtual string Description { get; set; }
+
+        public virtual string QuestionType { get; set; }
+        // TODO cambiar por QuestionType 
+
+        public virtual IEnumerable<Answer> Answers => answers;
+
+        public virtual Answer CorrectAnswer
+        {
+            get
+            {
+                return this.iCorrectAnswer;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    AddAnswer(value);
+                    this.iCorrectAnswer = value;
+                }
+            }
+        }
+
+        // TODO this property setter should probably take care of adding the answer to the list
+        // of answers as well
 
         public virtual void AddAnswer(Answer pAnswer)
         {
-            Answers.Add(pAnswer);
+            answers.Add(pAnswer);
             pAnswer.Question = this;
         }
     }

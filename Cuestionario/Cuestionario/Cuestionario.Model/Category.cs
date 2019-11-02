@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Cuestionario.Model
+namespace Questionnaire.Model
 {
     public class Category
     {
         public virtual int Id { get; set; }
+
         public virtual string Description { get; set; }
+
         public virtual IList<Question> Questions { get; set; }
+        // TODO replace by ienumerable
     }
 }

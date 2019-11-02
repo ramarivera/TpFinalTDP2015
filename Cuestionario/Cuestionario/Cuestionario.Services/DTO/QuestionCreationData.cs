@@ -8,10 +8,17 @@ namespace Cuestionario.Services.DTO
         {
             Answers = new List<AnswerCreationData>();
         }
+
         public CategoryData Category { get; set; }
+
         public DifficultyData Difficulty { get; set; }
+
         public string Description { get; set; }
+
         public string Type { get; set; }
+
         public IList<AnswerCreationData> Answers { get; set; }
+
+        public AnswerCreationData CorrectAnswer { get; set; }
     }
 }

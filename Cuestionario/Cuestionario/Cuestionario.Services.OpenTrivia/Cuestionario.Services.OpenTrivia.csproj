@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\..\..\..\..\..\..\..\TDP\NHibernate\Required_Bins\NHibernate.dll</HintPath>
@@ -46,6 +45,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,20 +54,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\OpenTriviaQuestionData.cs" />
+    <Compile Include="Models\OpenTriviaResponseData.cs" />
     <Compile Include="OpenTriviaQuestionsServices.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="RootObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cuestionario.Model\Cuestionario.Model.csproj">
+    <ProjectReference Include="..\Cuestionario.Model\Questionnaire.Model.csproj">
       <Project>{e3f34edb-c212-4d6d-8e9f-f24955303bde}</Project>
-      <Name>Cuestionario.Model</Name>
+      <Name>Questionnaire.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cuestionario.Services\Cuestionario.Services.csproj">
       <Project>{866c7fe3-f59e-48b6-a175-5afe7ceb7b6c}</Project>

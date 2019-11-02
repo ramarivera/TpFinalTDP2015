@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using NHibernate;

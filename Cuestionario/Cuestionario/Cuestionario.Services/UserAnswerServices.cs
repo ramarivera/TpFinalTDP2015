@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using NHibernate;
@@ -34,7 +34,7 @@ namespace Cuestionario.Services
 
             UserAnswer lUserAnswer = new UserAnswer
             {
-                AnswerStatus = pUserAnswerData.AnswerStatus,
+                //AnswerStatus = pUserAnswerData.AnswerStatus,
                 Question = lQuestion,
                 AnswerSession = lAnswerSession,
                 ChosenAnswer = lChosenAnswer

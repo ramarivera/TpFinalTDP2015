@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using FluentNHibernate.Mapping;
 
 namespace Questionnaire.Persistence
@@ -9,19 +9,20 @@ namespace Questionnaire.Persistence
         {
             Id(x => x.Id);
 
-            Map(x => x.AnswerStatus);
-
             References(x => x.Question)
                 .Column("questionId")
-                .Cascade.All();
+                .Cascade
+                .All();
 
             References(x => x.AnswerSession)
                 .Column("answerSessionId")
-                .Cascade.All();
+                .Cascade
+                .All();
 
             References(x => x.ChosenAnswer)
                 .Column("chosenAnswerId")
-                .Cascade.All();
+                .Cascade
+                .All();
 
             Table("UserAnswers");
         }

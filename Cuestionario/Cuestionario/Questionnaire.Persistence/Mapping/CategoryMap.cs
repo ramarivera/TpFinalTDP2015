@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using FluentNHibernate.Mapping;
 
 namespace Questionnaire.Persistence

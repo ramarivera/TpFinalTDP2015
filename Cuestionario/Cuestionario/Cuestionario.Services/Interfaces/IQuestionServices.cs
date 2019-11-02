@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model;
+﻿using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,6 @@ namespace Cuestionario.Services.Interfaces
         Question Create(QuestionCreationData pQuestionData);
         Question Update(long pQuestionId, QuestionData pUpdateQuestion);
         void Delete(long pQuestionId);
-        Answer CreateAnswer(AnswerCreationData pAnswerData, long pQuestionId);
         Answer GetAnswerById(long pAnswerId);
     }
 }

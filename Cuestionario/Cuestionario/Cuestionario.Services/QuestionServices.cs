@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cuestionario.Model;
+using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using NHibernate;
 using Cuestionario.Services.Interfaces;
@@ -30,11 +30,17 @@ namespace Cuestionario.Services
 
         public Question Create(QuestionCreationData pQuestionData)
         {
+            Answer CreateAnswer(AnswerCreationData pAnswerCreationData)
+            {
+                var lAnswer = new Answer
+                {
+                    Description = pAnswerCreationData.Description,
+                };
+
+                return lAnswer;
+            }
+
             var lCategory = iCategoryServices.GetById(pQuestionData.Category.Id);
-            //if (lCategory == null)
-            //{
-            //    lCategory = iCategoryServices.Create(pQuestionData.Category);
-            //}
 
             var lDifficulty = iDifficultyServices.GetById(pQuestionData.Difficulty.Id);
 
@@ -43,18 +49,22 @@ namespace Cuestionario.Services
                 Description = pQuestionData.Description,
                 Category = lCategory,
                 Difficulty = lDifficulty,
-                Type = pQuestionData.Type,
+                QuestionType = pQuestionData.Type,
             };
             
             iSession.Save(lQuestion);
 
-            Answer lAnswer = new Answer();
+            var lCorrectAnswer = CreateAnswer(pQuestionData.CorrectAnswer);
 
-            foreach (var lAnswerData in pQuestionData.Answers)
+            lQuestion.CorrectAnswer = lCorrectAnswer;
+
+            foreach (var lAnswerData in pQuestionData.Answers.Where(x => x != pQuestionData.CorrectAnswer))
             {
-                lAnswer = CreateAnswer(lAnswerData, lQuestion.Id);
+                var lAnswer = CreateAnswer(lAnswerData);
                 lQuestion.AddAnswer(lAnswer);
             }
+
+            iSession.Save(lQuestion);
 
             return lQuestion;
         }
@@ -90,21 +100,6 @@ namespace Cuestionario.Services
             throw new NotImplementedException();
         }
 
-        public Answer CreateAnswer(AnswerCreationData pAnswerData, long pQuestionId)
-        {
-            var lQuestion = GetById(pQuestionId);
-
-            Answer lAnswer = new Answer
-            {
-                Description = pAnswerData.Description,
-                Correct = pAnswerData.Correct,
-                Question = lQuestion
-            };
-
-            iSession.Save(lAnswer);
-
-            return lAnswer;
-        }
 
         public Answer GetAnswerById(long pAnswerId)
         {

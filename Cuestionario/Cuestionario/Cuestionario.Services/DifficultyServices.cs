@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cuestionario.Model;
+using Questionnaire.Model;
 using Cuestionario.Services.DTO;
 using NHibernate;
 using Cuestionario.Services.Interfaces;

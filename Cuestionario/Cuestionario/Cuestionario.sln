@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cuestionario.Model", "Cuestionario.Model\Cuestionario.Model.csproj", "{E3F34EDB-C212-4D6D-8E9F-F24955303BDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire.Model", "Cuestionario.Model\Questionnaire.Model.csproj", "{E3F34EDB-C212-4D6D-8E9F-F24955303BDE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cuestionario.Services", "Cuestionario.Services\Cuestionario.Services.csproj", "{866C7FE3-F59E-48B6-A175-5AFE7CEB7B6C}"
 EndProject
