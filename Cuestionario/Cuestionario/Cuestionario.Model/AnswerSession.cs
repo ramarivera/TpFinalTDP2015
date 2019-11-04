@@ -5,9 +5,10 @@ namespace Questionnaire.Model
 {
     public class AnswerSession
     {
+        private readonly ICollection<UserAnswer> answers;
         public AnswerSession()
         {
-            this.Answers = new List<UserAnswer>();
+            answers = new List<UserAnswer>();
         }
 
         public virtual int Id { get; set; }
@@ -25,7 +26,6 @@ namespace Questionnaire.Model
 
         public virtual DateTime StartTime { get; set; }
 
-        public virtual IList<UserAnswer> Answers { get; set; }
-        // TODO replace by ienum
+        public virtual IEnumerable<UserAnswer> Answers => answers;
     }
 }

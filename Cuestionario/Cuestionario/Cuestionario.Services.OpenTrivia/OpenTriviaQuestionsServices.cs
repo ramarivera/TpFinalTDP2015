@@ -63,7 +63,7 @@ namespace Cuestionario.Services.OpenTrivia
                     Description = WebUtility.HtmlDecode(lOpenTriviaQuestion.Question),
                     Category = lCategoryData,
                     Difficulty = lDifficultyData,
-                    Type = lOpenTriviaQuestion.Type,
+                    QuestionType = lOpenTriviaQuestion.Type,
                 };
 
                 //para la respuesta correcta de la pregunta

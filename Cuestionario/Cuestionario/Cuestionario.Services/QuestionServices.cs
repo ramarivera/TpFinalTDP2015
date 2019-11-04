@@ -49,7 +49,7 @@ namespace Cuestionario.Services
                 Description = pQuestionData.Description,
                 Category = lCategory,
                 Difficulty = lDifficulty,
-                QuestionType = pQuestionData.Type,
+                QuestionType = pQuestionData.QuestionType,
             };
             
             iSession.Save(lQuestion);

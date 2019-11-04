@@ -15,9 +15,9 @@ namespace Cuestionario.Services.DTO.Profiles
             CreateMap<Question, QuestionData>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.QuestionType))
+                .ForMember(dest => dest.QuestionType, opt => opt.MapFrom(src => src.QuestionType))
                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category))
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.CorrectAnswer, opt => opt.MapFrom(src => src.CorrectAnswer))
                 .ForMember(dest => dest.Difficulty, opt => opt.MapFrom(src => src.Difficulty))
                 .ForMember(dest => dest.Answers, opt => opt.MapFrom(src => src.Answers));
         }

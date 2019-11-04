@@ -6,9 +6,15 @@ namespace Questionnaire.Model
     // would be of any use
     public class Difficulty
     {
+        private readonly ICollection<Question> questions;
+
+        public Difficulty()
+        {
+            questions = new List<Question>();
+        }
         public virtual int Id { get; set; }
         public virtual string Description { get; set; }
-        public virtual IList<Question> Questions { get; set; }
+        public virtual IEnumerable<Question> Questions => questions;
     }
     
 }

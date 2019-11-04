@@ -15,7 +15,7 @@ namespace Cuestionario.Services.DTO
 
         public string Description { get; set; }
 
-        public string Type { get; set; }
+        public string QuestionType { get; set; }
 
         public IList<AnswerCreationData> Answers { get; set; }
 

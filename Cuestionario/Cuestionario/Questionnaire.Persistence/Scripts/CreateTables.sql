@@ -20,8 +20,7 @@ categoryId int not null,
 difficultyId int not null,
 description varchar(255) not null,
 questionType varchar(8) not null,
-correctAnswerId int not null,
-CONSTRAINT FK_Questions_correctAnswerId FOREIGN KEY (correctAnswerId) REFERENCES Answers(id),
+correctAnswerId int,
 CONSTRAINT FK_Questions_categoryId FOREIGN KEY (categoryId) REFERENCES Categories(id),
 CONSTRAINT FK_Questions_difficultyId FOREIGN KEY (difficultyId) REFERENCES Difficulties(id)
 )
