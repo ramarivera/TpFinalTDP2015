@@ -1,6 +1,6 @@
 ﻿namespace Cuestionario.UI.WinForms
 {
-    partial class BooleanAnswerView
+    partial class YesNoQuestionViewer
     {
         /// <summary>
         /// Required designer variable.

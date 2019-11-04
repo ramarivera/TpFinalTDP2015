@@ -18,26 +18,33 @@ namespace Cuestionario.UI.WinForms
     {
         private readonly int iAnswerSessionId;
 
-        private readonly QuestionData iQuestion;
+        private readonly List<QuestionData> iQuestions;
 
         private int iCurrentQuestionIndex = 0;
 
         private IQuestionViewer iCurrentQuestionViewer;
 
-        public MultipleAnswerView(int pAnswerSessionId, QuestionData pQuestion)
+        public MultipleAnswerView(int pAnswerSessionId, List<QuestionData> pQuestions)
         {
             InitializeComponent();
 
             iAnswerSessionId = pAnswerSessionId;
-            iQuestion = pQuestion;
-            label1.Text = pQuestion.Description;
+            iQuestions = pQuestions;
 
             SetupFirstQuestion();
         }
 
         private void SetupFirstQuestion()
         {
-            throw new NotImplementedException();
+            QuestionData lQuestionData = iQuestions[iCurrentQuestionIndex];
+
+            IQuestionViewer lQuestionViewer = GetQuestionViewerFor(lQuestionData);
+
+            iCurrentQuestionViewer = lQuestionViewer;
+
+            var lQuestionViewerControl = lQuestionViewer as UserControl;
+
+            this.iQuestionViewerPnl.Controls.Add(lQuestionViewerControl);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -62,7 +69,7 @@ namespace Cuestionario.UI.WinForms
             UserAnswerCreationData lUserAnswer = new UserAnswerCreationData()
             {
                 AnswerSession = lAnswerSession,
-                Question = iQuestion,
+                Question = iQuestions[iCurrentQuestionIndex],
                 ChosenAnswer = this.iCurrentQuestionViewer.GetUserAnswer(),
             };
 
@@ -73,18 +80,19 @@ namespace Cuestionario.UI.WinForms
                 lHandler.SaveUserAnswer(lUserAnswer);
             }
 
-            this.MoveToNextQuestion();
+            this.MoveToNextQuestion(iCurrentQuestionIndex);
         }
 
-        private void MoveToQuestion(int pQuestionIndex)
+        private void MoveToNextQuestion(int pQuestionIndex)
         {
+            iCurrentQuestionIndex++;
+
             if (this.iCurrentQuestionIndex < pQuestionIndex)
             {
                 // error
             }
 
-            // de algun lugar, en funcion del index, obtener la siguiente pregunt aa mostrar
-            QuestionData lQuestionData = null;
+            QuestionData lQuestionData = iQuestions[iCurrentQuestionIndex];
 
             IQuestionViewer lQuestionViewer = GetQuestionViewerFor(lQuestionData);
 
@@ -99,8 +107,14 @@ namespace Cuestionario.UI.WinForms
 
         private IQuestionViewer GetQuestionViewerFor(QuestionData lQuestionData)
         {
-            // aca, segun la pregunta, construir el viewer (mult choice vs yes no) correcto
-            throw new NotImplementedException();
+            if (lQuestionData.QuestionType == "boolean")
+            {
+                return new MultipleChoiceQuestionViewer();//YesNoQuestionViewer();
+            }
+            else
+            {
+                return new MultipleChoiceQuestionViewer(lQuestionData);
+            }
         }
     }
 }

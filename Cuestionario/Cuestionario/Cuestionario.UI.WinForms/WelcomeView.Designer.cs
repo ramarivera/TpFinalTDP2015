@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.iTitleLbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.iBeginBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.iQuestionsCountCmbBox = new System.Windows.Forms.ComboBox();
+            this.iDifficultyCmbBox = new System.Windows.Forms.ComboBox();
+            this.iCategoryCmbBox = new System.Windows.Forms.ComboBox();
+            this.INameTxtBox = new System.Windows.Forms.TextBox();
+            this.iQuestionsCountLbl = new System.Windows.Forms.Label();
+            this.iDifficultLbl = new System.Windows.Forms.Label();
+            this.iCategoryLbl = new System.Windows.Forms.Label();
+            this.iNameLbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -55,24 +55,24 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.iTitleLbl);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(784, 141);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // iTitleLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(212, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(364, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Bienvenido a Cuestionario";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.iTitleLbl.AutoSize = true;
+            this.iTitleLbl.BackColor = System.Drawing.Color.Transparent;
+            this.iTitleLbl.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iTitleLbl.Location = new System.Drawing.Point(212, 52);
+            this.iTitleLbl.Name = "iTitleLbl";
+            this.iTitleLbl.Size = new System.Drawing.Size(364, 39);
+            this.iTitleLbl.TabIndex = 0;
+            this.iTitleLbl.Text = "Bienvenido a Cuestionario";
+            this.iTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iTitleLbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -107,7 +107,7 @@
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.button1);
+            this.panel5.Controls.Add(this.iBeginBtn);
             this.panel5.Location = new System.Drawing.Point(0, 294);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(784, 71);
@@ -124,112 +124,112 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // iBeginBtn
             // 
-            this.button1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(563, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Iniciar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.iBeginBtn.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iBeginBtn.Location = new System.Drawing.Point(563, 24);
+            this.iBeginBtn.Name = "iBeginBtn";
+            this.iBeginBtn.Size = new System.Drawing.Size(83, 29);
+            this.iBeginBtn.TabIndex = 0;
+            this.iBeginBtn.Text = "Iniciar";
+            this.iBeginBtn.UseVisualStyleBackColor = true;
+            this.iBeginBtn.Click += new System.EventHandler(this.iBeginBtn_Click);
             // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel4.Controls.Add(this.comboBox3);
-            this.panel4.Controls.Add(this.comboBox2);
-            this.panel4.Controls.Add(this.comboBox1);
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.iQuestionsCountCmbBox);
+            this.panel4.Controls.Add(this.iDifficultyCmbBox);
+            this.panel4.Controls.Add(this.iCategoryCmbBox);
+            this.panel4.Controls.Add(this.INameTxtBox);
+            this.panel4.Controls.Add(this.iQuestionsCountLbl);
+            this.panel4.Controls.Add(this.iDifficultLbl);
+            this.panel4.Controls.Add(this.iCategoryLbl);
+            this.panel4.Controls.Add(this.iNameLbl);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(784, 288);
             this.panel4.TabIndex = 3;
             // 
-            // comboBox3
+            // iQuestionsCountCmbBox
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(390, 196);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(256, 31);
-            this.comboBox3.TabIndex = 7;
-            this.comboBox3.Text = "-";
+            this.iQuestionsCountCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iQuestionsCountCmbBox.FormattingEnabled = true;
+            this.iQuestionsCountCmbBox.Location = new System.Drawing.Point(390, 196);
+            this.iQuestionsCountCmbBox.Name = "iQuestionsCountCmbBox";
+            this.iQuestionsCountCmbBox.Size = new System.Drawing.Size(256, 31);
+            this.iQuestionsCountCmbBox.TabIndex = 7;
+            this.iQuestionsCountCmbBox.Text = "-";
             // 
-            // comboBox2
+            // iDifficultyCmbBox
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(390, 150);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(256, 31);
-            this.comboBox2.TabIndex = 6;
-            this.comboBox2.Text = "Dificultad";
+            this.iDifficultyCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iDifficultyCmbBox.FormattingEnabled = true;
+            this.iDifficultyCmbBox.Location = new System.Drawing.Point(390, 150);
+            this.iDifficultyCmbBox.Name = "iDifficultyCmbBox";
+            this.iDifficultyCmbBox.Size = new System.Drawing.Size(256, 31);
+            this.iDifficultyCmbBox.TabIndex = 6;
+            this.iDifficultyCmbBox.Text = "Dificultad";
             // 
-            // comboBox1
+            // iCategoryCmbBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(390, 104);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(256, 31);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Text = "Categoría";
+            this.iCategoryCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iCategoryCmbBox.FormattingEnabled = true;
+            this.iCategoryCmbBox.Location = new System.Drawing.Point(390, 104);
+            this.iCategoryCmbBox.Name = "iCategoryCmbBox";
+            this.iCategoryCmbBox.Size = new System.Drawing.Size(256, 31);
+            this.iCategoryCmbBox.TabIndex = 5;
+            this.iCategoryCmbBox.Text = "Categoría";
             // 
-            // textBox1
+            // INameTxtBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(390, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(256, 31);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "nombre";
+            this.INameTxtBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.INameTxtBox.Location = new System.Drawing.Point(390, 58);
+            this.INameTxtBox.Name = "INameTxtBox";
+            this.INameTxtBox.Size = new System.Drawing.Size(256, 31);
+            this.INameTxtBox.TabIndex = 4;
+            this.INameTxtBox.Text = "nombre";
             // 
-            // label5
+            // iQuestionsCountLbl
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(107, 199);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(277, 23);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Seleccione el número de preguntas";
+            this.iQuestionsCountLbl.AutoSize = true;
+            this.iQuestionsCountLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iQuestionsCountLbl.Location = new System.Drawing.Point(107, 199);
+            this.iQuestionsCountLbl.Name = "iQuestionsCountLbl";
+            this.iQuestionsCountLbl.Size = new System.Drawing.Size(277, 23);
+            this.iQuestionsCountLbl.TabIndex = 3;
+            this.iQuestionsCountLbl.Text = "Seleccione el número de preguntas";
             // 
-            // label4
+            // iDifficultLbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(139, 153);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(245, 23);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Seleccione el nivel de dificultad";
+            this.iDifficultLbl.AutoSize = true;
+            this.iDifficultLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iDifficultLbl.Location = new System.Drawing.Point(139, 153);
+            this.iDifficultLbl.Name = "iDifficultLbl";
+            this.iDifficultLbl.Size = new System.Drawing.Size(245, 23);
+            this.iDifficultLbl.TabIndex = 2;
+            this.iDifficultLbl.Text = "Seleccione el nivel de dificultad";
             // 
-            // label3
+            // iCategoryLbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(202, 107);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(182, 23);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Seleccione la categoría";
+            this.iCategoryLbl.AutoSize = true;
+            this.iCategoryLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iCategoryLbl.Location = new System.Drawing.Point(202, 107);
+            this.iCategoryLbl.Name = "iCategoryLbl";
+            this.iCategoryLbl.Size = new System.Drawing.Size(182, 23);
+            this.iCategoryLbl.TabIndex = 1;
+            this.iCategoryLbl.Text = "Seleccione la categoría";
             // 
-            // label2
+            // iNameLbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(152, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(232, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Por favor, ingrese su nombre";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iNameLbl.AutoSize = true;
+            this.iNameLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iNameLbl.Location = new System.Drawing.Point(152, 61);
+            this.iNameLbl.Name = "iNameLbl";
+            this.iNameLbl.Size = new System.Drawing.Size(232, 23);
+            this.iNameLbl.TabIndex = 0;
+            this.iNameLbl.Text = "Por favor, ingrese su nombre";
+            this.iNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // WelcomeView
             // 
@@ -258,20 +258,20 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label iTitleLbl;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label iQuestionsCountLbl;
+        private System.Windows.Forms.Label iDifficultLbl;
+        private System.Windows.Forms.Label iCategoryLbl;
+        private System.Windows.Forms.Label iNameLbl;
+        private System.Windows.Forms.Button iBeginBtn;
+        private System.Windows.Forms.ComboBox iQuestionsCountCmbBox;
+        private System.Windows.Forms.ComboBox iDifficultyCmbBox;
+        private System.Windows.Forms.ComboBox iCategoryCmbBox;
+        private System.Windows.Forms.TextBox INameTxtBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
     }

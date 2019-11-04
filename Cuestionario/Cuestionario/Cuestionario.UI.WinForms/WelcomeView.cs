@@ -29,7 +29,7 @@ namespace Cuestionario.UI.WinForms
                     .OrderBy(x => x.Description).ToList();
                 foreach (var lCategory in lCategories)
                 {
-                    comboBox1.Items.Add(lCategory.Description);
+                    iCategoryCmbBox.Items.Add(lCategory.Description);
                 }
             }
             using (var lHandler = HandlerFactory.Get<IDifficultyHandler>())
@@ -37,13 +37,13 @@ namespace Cuestionario.UI.WinForms
                 IList<DifficultyData> lDifficulties = lHandler.GetAll().ToList();
                 foreach (var lDifficulty in lDifficulties)
                 {
-                    comboBox2.Items.Add(lDifficulty.Description);
+                    iDifficultyCmbBox.Items.Add(lDifficulty.Description);
                 }
             }
 
             for (int i = 10; i <= 20; i++)
             {
-                comboBox3.Items.Add(i);
+                iQuestionsCountCmbBox.Items.Add(i);
             }
 
         }
@@ -62,12 +62,12 @@ namespace Cuestionario.UI.WinForms
             MessageBox.Show("Importación finalizada", "Cuestionario");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void iBeginBtn_Click(object sender, EventArgs e)
         {
             AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData();
 
-            lAnswerSessionStartData.Username = textBox1.Text;
-            lAnswerSessionStartData.QuestionsCount = Int32.Parse(comboBox3.SelectedItem.ToString());
+            lAnswerSessionStartData.Username = INameTxtBox.Text;
+            lAnswerSessionStartData.QuestionsCount = Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString());
             List<QuestionData> lQuestions = new List<QuestionData>();
             int lAnswerSessionId; 
 
@@ -75,12 +75,12 @@ namespace Cuestionario.UI.WinForms
             {
                 //creo que esto no está bien que esté acá
                 lAnswerSessionStartData.CategoryId = lHandler.GetAll()
-                    .FirstOrDefault(x => x.Description == comboBox1.SelectedItem.ToString()).Id;
+                    .FirstOrDefault(x => x.Description == iCategoryCmbBox.SelectedItem.ToString()).Id;
             }
             using (var lHandler = HandlerFactory.Get<IDifficultyHandler>())
             {
                 lAnswerSessionStartData.DifficultyId = lHandler.GetAll()
-                    .FirstOrDefault(x => x.Description == comboBox2.SelectedItem.ToString()).Id;
+                    .FirstOrDefault(x => x.Description == iDifficultyCmbBox.SelectedItem.ToString()).Id;
             }
 
             using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
@@ -93,22 +93,9 @@ namespace Cuestionario.UI.WinForms
                 lQuestions = lHandler.GetQuestionsForSession(lAnswerSessionStartData).ToList();
             }
 
-            QuestionData lQuestion = lQuestions[0];
-
-            if (lQuestion.Type == "boolean")
-            {
-                BooleanAnswerView myNewForm = new BooleanAnswerView(lAnswerSessionId, lQuestion);
-                this.Hide();
-                myNewForm.ShowDialog();
-            }
-            else
-            {
-                MultipleAnswerView myNewForm = new MultipleAnswerView(lAnswerSessionId, lQuestion);
-                this.Hide();
-                myNewForm.ShowDialog();
-            }
-            
-            
+            MultipleAnswerView lMultipleAnswerView = new MultipleAnswerView(lAnswerSessionId, lQuestions);
+            this.Hide();
+            lMultipleAnswerView.ShowDialog();
         }
     }
 }

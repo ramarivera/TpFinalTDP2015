@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooleanAnswerView.cs">
+    <Compile Include="YesNoQuestionViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BooleanAnswerView.Designer.cs">
-      <DependentUpon>BooleanAnswerView.cs</DependentUpon>
+    <Compile Include="YesNoQuestionViewer.Designer.cs">
+      <DependentUpon>YesNoQuestionViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="IQuestionViewer.cs" />
     <Compile Include="MultipleAnswerView.cs">
@@ -85,8 +85,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BooleanAnswerView.resx">
-      <DependentUpon>BooleanAnswerView.cs</DependentUpon>
+    <EmbeddedResource Include="YesNoQuestionViewer.resx">
+      <DependentUpon>YesNoQuestionViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MultipleAnswerView.resx">
       <DependentUpon>MultipleAnswerView.cs</DependentUpon>

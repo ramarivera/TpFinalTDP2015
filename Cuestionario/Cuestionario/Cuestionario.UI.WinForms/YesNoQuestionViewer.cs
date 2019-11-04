@@ -14,11 +14,11 @@ using System.Windows.Forms;
 
 namespace Cuestionario.UI.WinForms
 {
-    public partial class BooleanAnswerView : Form
+    public partial class YesNoQuestionViewer : Form
     {
         private readonly int iAnswerSessionId;
         private readonly QuestionData iQuestion;
-        public BooleanAnswerView(int pAnswerSessionId, QuestionData pQuestion)
+        public YesNoQuestionViewer(int pAnswerSessionId, QuestionData pQuestion)
         {
             InitializeComponent();
             iAnswerSessionId = pAnswerSessionId;

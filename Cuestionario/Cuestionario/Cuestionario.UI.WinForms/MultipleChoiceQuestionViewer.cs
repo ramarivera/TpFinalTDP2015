@@ -41,11 +41,17 @@ namespace Cuestionario.UI.WinForms
 
         private void SetupControl(QuestionData iQuestion)
         {
-            //radioButton1.Text = pQuestion.Answers[0].Description;
-            //radioButton2.Text = pQuestion.Answers[1].Description;
-            //radioButton3.Text = pQuestion.Answers[2].Description;
-            //radioButton4.Text = pQuestion.Answers[3].Description;
+            iQuestionTitle.Text = iQuestion.Description;
+            radioButton1.Text = iQuestion.Answers[0].Description;
+            radioButton2.Text = iQuestion.Answers[1].Description;
+            radioButton3.Text = iQuestion.Answers[2].Description;
+            radioButton4.Text = iQuestion.Answers[3].Description;
             // Aca deberiamos poner las distintas descriptions en los labels
+        }
+
+        private void MultipleChoiceQuestionViewer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
