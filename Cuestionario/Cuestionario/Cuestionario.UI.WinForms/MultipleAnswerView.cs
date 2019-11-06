@@ -52,35 +52,37 @@ namespace Cuestionario.UI.WinForms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void iNextBtn_Click(object sender, EventArgs e)
         {
             if (!this.iCurrentQuestionViewer.CanProceed())
             {
-                // mostrar un cartel obligando a responder la pregunta no respondida.
+                MessageBox.Show("Por favor, seleccione una respuesta para la pregunta", "Cuestionario");
             }
-
-            AnswerSessionData lAnswerSession = new AnswerSessionData();
-
-            using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+            else
             {
-                lAnswerSession = lHandler.GetById(iAnswerSessionId);
+                AnswerSessionData lAnswerSession = new AnswerSessionData();
+
+                using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+                {
+                    lAnswerSession = lHandler.GetById(iAnswerSessionId);
+                }
+
+                UserAnswerCreationData lUserAnswer = new UserAnswerCreationData()
+                {
+                    AnswerSession = lAnswerSession,
+                    Question = iQuestions[iCurrentQuestionIndex],
+                    ChosenAnswer = this.iCurrentQuestionViewer.GetUserAnswer(),
+                };
+
+                lUserAnswer.AnswerStatus = lUserAnswer.ChosenAnswer.Correct;
+
+                using (var lHandler = HandlerFactory.Get<IUserAnswerHandler>())
+                {
+                    lHandler.SaveUserAnswer(lUserAnswer);
+                }
+
+                //this.MoveToNextQuestion(iCurrentQuestionIndex);
             }
-
-            UserAnswerCreationData lUserAnswer = new UserAnswerCreationData()
-            {
-                AnswerSession = lAnswerSession,
-                Question = iQuestions[iCurrentQuestionIndex],
-                ChosenAnswer = this.iCurrentQuestionViewer.GetUserAnswer(),
-            };
-
-            lUserAnswer.AnswerStatus = lUserAnswer.ChosenAnswer.Correct;
-
-            using (var lHandler = HandlerFactory.Get<IUserAnswerHandler>())
-            {
-                lHandler.SaveUserAnswer(lUserAnswer);
-            }
-
-            this.MoveToNextQuestion(iCurrentQuestionIndex);
         }
 
         private void MoveToNextQuestion(int pQuestionIndex)
@@ -96,22 +98,20 @@ namespace Cuestionario.UI.WinForms
 
             IQuestionViewer lQuestionViewer = GetQuestionViewerFor(lQuestionData);
 
-            // guardar el current viewer (como IQV)
+            iCurrentQuestionViewer = lQuestionViewer;
 
             var lQuestionViewerControl = lQuestionViewer as UserControl;
 
             this.iQuestionViewerPnl.Controls.Add(lQuestionViewerControl);
-
-            // 
         }
 
         private IQuestionViewer GetQuestionViewerFor(QuestionData lQuestionData)
         {
             if (lQuestionData.QuestionType == "boolean")
             {
-                return new MultipleChoiceQuestionViewer();//YesNoQuestionViewer();
+                return new YesNoQuestionViewer(lQuestionData);
             }
-            else
+            else 
             {
                 return new MultipleChoiceQuestionViewer(lQuestionData);
             }

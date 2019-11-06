@@ -1,47 +1,63 @@
-﻿using Questionnaire.Model;
-using Cuestionario.Services.DTO;
-using Questionnaire.Handlers.Handlers;
-using Questionnaire.Handlers.Handlers.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cuestionario.Services.DTO;
 
 namespace Cuestionario.UI.WinForms
 {
-    public partial class YesNoQuestionViewer : Form
+    public partial class YesNoQuestionViewer : UserControl, IQuestionViewer
     {
-        private readonly int iAnswerSessionId;
         private readonly QuestionData iQuestion;
-        public YesNoQuestionViewer(int pAnswerSessionId, QuestionData pQuestion)
+        private AnswerData iUserAnswer;
+        public YesNoQuestionViewer()
         {
             InitializeComponent();
-            iAnswerSessionId = pAnswerSessionId;
-            label1.Text = pQuestion.Description;
-            radioButton1.Text = pQuestion.Answers[0].Description;
-            radioButton2.Text = pQuestion.Answers[1].Description;
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        public YesNoQuestionViewer(QuestionData pQuestionData)
+            : this()
         {
-            button1.Enabled = true;
+            this.iQuestion = pQuestionData;
+
+            SetupControl(this.iQuestion);
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        public bool CanProceed()
         {
-            button1.Enabled = true;
+            return this.iUserAnswer != null;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public AnswerData GetUserAnswer()
         {
-            using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+            return this.iUserAnswer;
+        }
+
+        private void SetupControl(QuestionData iQuestion)
+        {
+            iQuestionTitle.Text = iQuestion.Description;
+            iAnswerBtn1.Text = iQuestion.Answers[0].Description;
+            iAnswerBtn2.Text = iQuestion.Answers[1].Description;
+        }
+
+        private void iAnswerBtn1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (iAnswerBtn1.Checked)
             {
-                //lHandler.StartAnswerSession2();
+                this.iUserAnswer = iQuestion.Answers.FirstOrDefault(x => x.Description == iAnswerBtn1.Text);
+            }
+        }
+
+        private void iAnswerBtn2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (iAnswerBtn2.Checked)
+            {
+                this.iUserAnswer = iQuestion.Answers.FirstOrDefault(x => x.Description == iAnswerBtn2.Text);
             }
         }
     }

@@ -30,10 +30,10 @@
         {
             this.iQuestionTitle = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.iAnswerBtn4 = new System.Windows.Forms.RadioButton();
+            this.iAnswerBtn3 = new System.Windows.Forms.RadioButton();
+            this.iAnswerBtn2 = new System.Windows.Forms.RadioButton();
+            this.iAnswerBtn1 = new System.Windows.Forms.RadioButton();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,60 +53,64 @@
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel4.Controls.Add(this.iQuestionTitle);
-            this.panel4.Controls.Add(this.radioButton3);
-            this.panel4.Controls.Add(this.radioButton4);
-            this.panel4.Controls.Add(this.radioButton2);
-            this.panel4.Controls.Add(this.radioButton1);
+            this.panel4.Controls.Add(this.iAnswerBtn4);
+            this.panel4.Controls.Add(this.iAnswerBtn3);
+            this.panel4.Controls.Add(this.iAnswerBtn2);
+            this.panel4.Controls.Add(this.iAnswerBtn1);
             this.panel4.Location = new System.Drawing.Point(-14, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(784, 390);
             this.panel4.TabIndex = 4;
             // 
-            // radioButton3
+            // iAnswerBtn4
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(159, 344);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(121, 27);
-            this.radioButton3.TabIndex = 7;
-            this.radioButton3.Text = "Respuesta 4";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.iAnswerBtn4.AutoSize = true;
+            this.iAnswerBtn4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAnswerBtn4.Location = new System.Drawing.Point(159, 344);
+            this.iAnswerBtn4.Name = "iAnswerBtn4";
+            this.iAnswerBtn4.Size = new System.Drawing.Size(121, 27);
+            this.iAnswerBtn4.TabIndex = 7;
+            this.iAnswerBtn4.Text = "Respuesta 4";
+            this.iAnswerBtn4.UseVisualStyleBackColor = true;
+            this.iAnswerBtn4.CheckedChanged += new System.EventHandler(this.iAnswerBtn4_CheckedChanged);
             // 
-            // radioButton4
+            // iAnswerBtn3
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton4.Location = new System.Drawing.Point(159, 286);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(121, 27);
-            this.radioButton4.TabIndex = 6;
-            this.radioButton4.Text = "Respuesta 3";
-            this.radioButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.iAnswerBtn3.AutoSize = true;
+            this.iAnswerBtn3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAnswerBtn3.Location = new System.Drawing.Point(159, 286);
+            this.iAnswerBtn3.Name = "iAnswerBtn3";
+            this.iAnswerBtn3.Size = new System.Drawing.Size(121, 27);
+            this.iAnswerBtn3.TabIndex = 6;
+            this.iAnswerBtn3.Text = "Respuesta 3";
+            this.iAnswerBtn3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iAnswerBtn3.UseVisualStyleBackColor = true;
+            this.iAnswerBtn3.CheckedChanged += new System.EventHandler(this.iAnswerBtn3_CheckedChanged);
             // 
-            // radioButton2
+            // iAnswerBtn2
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(159, 228);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(121, 27);
-            this.radioButton2.TabIndex = 5;
-            this.radioButton2.Text = "Respuesta 2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.iAnswerBtn2.AutoSize = true;
+            this.iAnswerBtn2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAnswerBtn2.Location = new System.Drawing.Point(159, 228);
+            this.iAnswerBtn2.Name = "iAnswerBtn2";
+            this.iAnswerBtn2.Size = new System.Drawing.Size(121, 27);
+            this.iAnswerBtn2.TabIndex = 5;
+            this.iAnswerBtn2.Text = "Respuesta 2";
+            this.iAnswerBtn2.UseVisualStyleBackColor = true;
+            this.iAnswerBtn2.CheckedChanged += new System.EventHandler(this.iAnswerBtn2_CheckedChanged);
             // 
-            // radioButton1
+            // iAnswerBtn1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(159, 170);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(121, 27);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.Text = "Respuesta 1";
-            this.radioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.iAnswerBtn1.AutoSize = true;
+            this.iAnswerBtn1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAnswerBtn1.Location = new System.Drawing.Point(159, 170);
+            this.iAnswerBtn1.Name = "iAnswerBtn1";
+            this.iAnswerBtn1.Size = new System.Drawing.Size(121, 27);
+            this.iAnswerBtn1.TabIndex = 4;
+            this.iAnswerBtn1.Text = "Respuesta 1";
+            this.iAnswerBtn1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iAnswerBtn1.UseVisualStyleBackColor = true;
+            this.iAnswerBtn1.CheckedChanged += new System.EventHandler(this.iAnswerBtn1_CheckedChanged);
             // 
             // MultipleChoiceQuestionViewer
             // 
@@ -115,7 +119,6 @@
             this.Controls.Add(this.panel4);
             this.Name = "MultipleChoiceQuestionViewer";
             this.Size = new System.Drawing.Size(757, 499);
-            this.Load += new System.EventHandler(this.MultipleChoiceQuestionViewer_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -125,9 +128,9 @@
         #endregion
         private System.Windows.Forms.Label iQuestionTitle;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton iAnswerBtn4;
+        private System.Windows.Forms.RadioButton iAnswerBtn3;
+        private System.Windows.Forms.RadioButton iAnswerBtn2;
+        private System.Windows.Forms.RadioButton iAnswerBtn1;
     }
 }

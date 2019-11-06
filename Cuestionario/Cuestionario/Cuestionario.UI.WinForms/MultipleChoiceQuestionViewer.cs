@@ -42,16 +42,42 @@ namespace Cuestionario.UI.WinForms
         private void SetupControl(QuestionData iQuestion)
         {
             iQuestionTitle.Text = iQuestion.Description;
-            radioButton1.Text = iQuestion.Answers[0].Description;
-            radioButton2.Text = iQuestion.Answers[1].Description;
-            radioButton3.Text = iQuestion.Answers[2].Description;
-            radioButton4.Text = iQuestion.Answers[3].Description;
-            // Aca deberiamos poner las distintas descriptions en los labels
+            iAnswerBtn1.Text = iQuestion.Answers[0].Description;
+            iAnswerBtn2.Text = iQuestion.Answers[1].Description;
+            iAnswerBtn3.Text = iQuestion.Answers[2].Description;
+            iAnswerBtn4.Text = iQuestion.Answers[3].Description;
         }
 
-        private void MultipleChoiceQuestionViewer_Load(object sender, EventArgs e)
+        private void iAnswerBtn1_CheckedChanged(object sender, EventArgs e)
         {
+            if (iAnswerBtn1.Checked)
+            {
+                this.iUserAnswer = iQuestion.Answers.FirstOrDefault(x => x.Description == iAnswerBtn1.Text);
+            }
+        }
 
+        private void iAnswerBtn2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (iAnswerBtn2.Checked)
+            {
+                this.iUserAnswer = iQuestion.Answers.FirstOrDefault(x => x.Description == iAnswerBtn2.Text);
+            }
+        }
+
+        private void iAnswerBtn3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (iAnswerBtn3.Checked)
+            {
+                this.iUserAnswer = iQuestion.Answers.FirstOrDefault(x => x.Description == iAnswerBtn3.Text);
+            }
+        }
+
+        private void iAnswerBtn4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (iAnswerBtn4.Checked)
+            {
+                this.iUserAnswer = iQuestion.Answers.FirstOrDefault(x => x.Description == iAnswerBtn4.Text);
+            }
         }
     }
 }

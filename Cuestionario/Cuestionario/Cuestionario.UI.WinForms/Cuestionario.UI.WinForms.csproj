@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="YesNoQuestionViewer.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="YesNoQuestionViewer.Designer.cs">
       <DependentUpon>YesNoQuestionViewer.cs</DependentUpon>

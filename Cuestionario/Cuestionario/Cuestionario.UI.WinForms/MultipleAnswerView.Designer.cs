@@ -30,8 +30,8 @@
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.iFinishBtn = new System.Windows.Forms.Button();
+            this.iNextBtn = new System.Windows.Forms.Button();
             this.iQuestionViewerPnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -52,34 +52,33 @@
             // panel5
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.button1);
+            this.panel5.Controls.Add(this.iFinishBtn);
+            this.panel5.Controls.Add(this.iNextBtn);
             this.panel5.Location = new System.Drawing.Point(0, 426);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(784, 68);
             this.panel5.TabIndex = 4;
             // 
-            // button2
+            // iFinishBtn
             // 
-            this.button2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(111, 24);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 29);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Terminar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.iFinishBtn.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iFinishBtn.Location = new System.Drawing.Point(111, 24);
+            this.iFinishBtn.Name = "iFinishBtn";
+            this.iFinishBtn.Size = new System.Drawing.Size(89, 29);
+            this.iFinishBtn.TabIndex = 1;
+            this.iFinishBtn.Text = "Terminar";
+            this.iFinishBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // iNextBtn
             // 
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(557, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Siguiente";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.iNextBtn.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iNextBtn.Location = new System.Drawing.Point(557, 24);
+            this.iNextBtn.Name = "iNextBtn";
+            this.iNextBtn.Size = new System.Drawing.Size(89, 29);
+            this.iNextBtn.TabIndex = 0;
+            this.iNextBtn.Text = "Siguiente";
+            this.iNextBtn.UseVisualStyleBackColor = true;
+            this.iNextBtn.Click += new System.EventHandler(this.iNextBtn_Click);
             // 
             // iQuestionViewerPnl
             // 
@@ -130,8 +129,8 @@
         #endregion
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button iFinishBtn;
+        private System.Windows.Forms.Button iNextBtn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel iQuestionViewerPnl;
