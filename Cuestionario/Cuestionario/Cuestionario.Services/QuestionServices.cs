@@ -113,5 +113,41 @@ namespace Cuestionario.Services
 
             return lAnswer;
         }
+
+        public IList<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
+        {
+            var lQuestions = this.GetAll()
+               .Where(x => x.Category == iCategoryServices.GetById(pAnswerSessionStartData.CategoryId))
+               .Where(x => x.Difficulty == iDifficultyServices.GetById(pAnswerSessionStartData.DifficultyId)); //esto creo se puede escribir de otra manera
+
+            Random lRandomNumber = new Random();
+            int lQuestionIndex;
+            var lSessionQuestions = new List<Question>();
+
+            if (lQuestions.Count() < pAnswerSessionStartData.QuestionsCount)
+            {
+                while (lSessionQuestions.Count < lQuestions.Count())
+                {
+                    lQuestionIndex = lRandomNumber.Next(lQuestions.Count());
+                    if (!lSessionQuestions.Contains(lQuestions.ToList().ElementAt(lQuestionIndex)))
+                    {
+                        lSessionQuestions.Add(lQuestions.ToList().ElementAt(lQuestionIndex));
+                    }
+                }
+            }
+            else
+            {
+                while (lSessionQuestions.Count < pAnswerSessionStartData.QuestionsCount)
+                {
+                    lQuestionIndex = lRandomNumber.Next(pAnswerSessionStartData.QuestionsCount);
+                    if (!lSessionQuestions.Contains(lQuestions.ToList().ElementAt(lQuestionIndex)))
+                    {
+                        lSessionQuestions.Add(lQuestions.ToList().ElementAt(lQuestionIndex));
+                    }
+                }
+            }
+
+            return lSessionQuestions;
+        }
     }
 }

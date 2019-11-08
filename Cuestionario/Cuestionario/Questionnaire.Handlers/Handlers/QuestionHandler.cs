@@ -17,6 +17,7 @@ namespace Questionnaire.Handlers.Handlers
     {
         private readonly IQuestionServices iQuestionService;
         private readonly ICategoryServices iCategoryService;
+        private readonly IDifficultyServices iDifficultyService;
         private readonly QuestionProviderFactory iQuestionProviderFactory;
 
         // No se que tan bien esta que el service y el provider se usen en el mismo metodo btw.
@@ -24,12 +25,14 @@ namespace Questionnaire.Handlers.Handlers
         public QuestionHandler(
             IQuestionServices pQuestionService,
             ICategoryServices pCategoryService,
+            IDifficultyServices pDifficultyServices,
             QuestionProviderFactory pQuestionProviderFactory,
             IMapper pMapper)    
             : base(pMapper)
         {
             this.iQuestionService = pQuestionService;
             this.iCategoryService = pCategoryService;
+            this.iDifficultyService = pDifficultyServices;
             this.iQuestionProviderFactory = pQuestionProviderFactory;
         }
 
@@ -49,13 +52,11 @@ namespace Questionnaire.Handlers.Handlers
         }
 
         [Transactional]
-        //aca sería correcto llevar todas las preguntas que cumplan con las condiciones? o solo el número indicado? como se pueden obtener al azar?
         public IEnumerable<QuestionData> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
-            var lQuestions = iQuestionService.GetAll()
-                .Where(x => x.Category == iCategoryService.GetById(pAnswerSessionStartData.CategoryId));
+            var lSessionQuestions = iQuestionService.GetQuestionsForSession(pAnswerSessionStartData);
 
-            var lResult = Mapper.Map<IList<QuestionData>>(lQuestions);
+            var lResult = Mapper.Map<IList<QuestionData>>(lSessionQuestions);
             return lResult;
         }
     }

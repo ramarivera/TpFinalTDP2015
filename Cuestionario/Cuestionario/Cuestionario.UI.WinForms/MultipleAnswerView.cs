@@ -47,11 +47,6 @@ namespace Cuestionario.UI.WinForms
             this.iQuestionViewerPnl.Controls.Add(lQuestionViewerControl);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void iNextBtn_Click(object sender, EventArgs e)
         {
             if (!this.iCurrentQuestionViewer.CanProceed())
@@ -81,20 +76,29 @@ namespace Cuestionario.UI.WinForms
                     lHandler.SaveUserAnswer(lUserAnswer);
                 }
 
-                //this.MoveToNextQuestion(iCurrentQuestionIndex);
+                if(iCurrentQuestionIndex < iQuestions.Count()-1)
+                {
+                    this.MoveToNextQuestion(iCurrentQuestionIndex + 1);
+                }
+                else
+                {
+                    MessageBox.Show("Fin");//ir a los resultados
+                }
             }
         }
 
         private void MoveToNextQuestion(int pQuestionIndex)
         {
-            iCurrentQuestionIndex++;
+            //if (this.iCurrentQuestionIndex < pQuestionIndex)
+            //{
+            //    // error
+            //}
 
-            if (this.iCurrentQuestionIndex < pQuestionIndex)
-            {
-                // error
-            }
+            iCurrentQuestionIndex = pQuestionIndex;
 
             QuestionData lQuestionData = iQuestions[iCurrentQuestionIndex];
+
+            this.iQuestionViewerPnl.Controls.Clear();
 
             IQuestionViewer lQuestionViewer = GetQuestionViewerFor(lQuestionData);
 

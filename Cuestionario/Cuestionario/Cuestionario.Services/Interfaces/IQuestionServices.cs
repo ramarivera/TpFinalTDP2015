@@ -16,5 +16,6 @@ namespace Cuestionario.Services.Interfaces
         Question Update(long pQuestionId, QuestionData pUpdateQuestion);
         void Delete(long pQuestionId);
         Answer GetAnswerById(long pAnswerId);
+        IList<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData);
     }
 }
