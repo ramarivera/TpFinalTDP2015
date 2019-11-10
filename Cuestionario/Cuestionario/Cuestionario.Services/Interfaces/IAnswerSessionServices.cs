@@ -16,6 +16,8 @@ namespace Cuestionario.Services.Interfaces
 
         AnswerSession StartSession(AnswerSessionStartData pAnswerSessionStartData);
 
+        AnswerSession EndSession(int pAnswerSessionId);
+
         AnswerSession Update(long pAnswerSessionId, AnswerSessionData pUpdateAnswerSession);
 
         void Delete(long pAnswerSessionId);

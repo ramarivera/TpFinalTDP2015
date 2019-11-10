@@ -13,22 +13,16 @@ namespace Cuestionario.Services
 
         private IQuestionServices iQuestionServices;
 
-        private IAnswerSessionServices iAnswerSessionServices;
-
         public UserAnswerServices(
             ISession pSession,
-            IQuestionServices pQuestionServices,
-            IAnswerSessionServices pAnswerSessionServices)
+            IQuestionServices pQuestionServices)
         {
             iSession = pSession;
             iQuestionServices = pQuestionServices;
-            iAnswerSessionServices = pAnswerSessionServices;
         }
-        public UserAnswer Create(UserAnswerCreationData pUserAnswerData)
+        public UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
         {
             var lQuestion = iQuestionServices.GetById(pUserAnswerData.Question.Id);
-
-            var lAnswerSession = iAnswerSessionServices.GetById(pUserAnswerData.AnswerSession.Id);
 
             var lChosenAnswer = iQuestionServices.GetAnswerById(pUserAnswerData.ChosenAnswer.Id);
 
@@ -36,7 +30,7 @@ namespace Cuestionario.Services
             {
                 //AnswerStatus = pUserAnswerData.AnswerStatus,
                 Question = lQuestion,
-                AnswerSession = lAnswerSession,
+                AnswerSession = pAnswerSession,
                 ChosenAnswer = lChosenAnswer
             };
 

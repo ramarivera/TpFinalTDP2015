@@ -83,5 +83,16 @@ namespace Cuestionario.Services
 
             return lDifficultyData;
         }
+
+        public int GetDifficultyFactor(string pDescription)
+        {
+            int lDifficultyFactor = 0;
+
+            if (pDescription == "easy") { lDifficultyFactor = 1; }
+            else if (pDescription == "medium") { lDifficultyFactor = 3; }
+            else if (pDescription == "hard") { lDifficultyFactor = 5; }
+
+            return lDifficultyFactor;
+        }
     }
 }

@@ -40,9 +40,9 @@
             this.iQuestionsCountCmbBox = new System.Windows.Forms.ComboBox();
             this.iDifficultyCmbBox = new System.Windows.Forms.ComboBox();
             this.iCategoryCmbBox = new System.Windows.Forms.ComboBox();
-            this.INameTxtBox = new System.Windows.Forms.TextBox();
+            this.iNameTxtBox = new System.Windows.Forms.TextBox();
             this.iQuestionsCountLbl = new System.Windows.Forms.Label();
-            this.iDifficultLbl = new System.Windows.Forms.Label();
+            this.iDifficultyLbl = new System.Windows.Forms.Label();
             this.iCategoryLbl = new System.Windows.Forms.Label();
             this.iNameLbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -141,9 +141,9 @@
             this.panel4.Controls.Add(this.iQuestionsCountCmbBox);
             this.panel4.Controls.Add(this.iDifficultyCmbBox);
             this.panel4.Controls.Add(this.iCategoryCmbBox);
-            this.panel4.Controls.Add(this.INameTxtBox);
+            this.panel4.Controls.Add(this.iNameTxtBox);
             this.panel4.Controls.Add(this.iQuestionsCountLbl);
-            this.panel4.Controls.Add(this.iDifficultLbl);
+            this.panel4.Controls.Add(this.iDifficultyLbl);
             this.panel4.Controls.Add(this.iCategoryLbl);
             this.panel4.Controls.Add(this.iNameLbl);
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -181,14 +181,14 @@
             this.iCategoryCmbBox.TabIndex = 5;
             this.iCategoryCmbBox.Text = "Categoría";
             // 
-            // INameTxtBox
+            // iNameTxtBox
             // 
-            this.INameTxtBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.INameTxtBox.Location = new System.Drawing.Point(390, 58);
-            this.INameTxtBox.Name = "INameTxtBox";
-            this.INameTxtBox.Size = new System.Drawing.Size(256, 31);
-            this.INameTxtBox.TabIndex = 4;
-            this.INameTxtBox.Text = "nombre";
+            this.iNameTxtBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iNameTxtBox.Location = new System.Drawing.Point(390, 58);
+            this.iNameTxtBox.Name = "iNameTxtBox";
+            this.iNameTxtBox.Size = new System.Drawing.Size(256, 31);
+            this.iNameTxtBox.TabIndex = 4;
+            this.iNameTxtBox.Text = "nombre";
             // 
             // iQuestionsCountLbl
             // 
@@ -200,15 +200,15 @@
             this.iQuestionsCountLbl.TabIndex = 3;
             this.iQuestionsCountLbl.Text = "Seleccione el número de preguntas";
             // 
-            // iDifficultLbl
+            // iDifficultyLbl
             // 
-            this.iDifficultLbl.AutoSize = true;
-            this.iDifficultLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iDifficultLbl.Location = new System.Drawing.Point(139, 153);
-            this.iDifficultLbl.Name = "iDifficultLbl";
-            this.iDifficultLbl.Size = new System.Drawing.Size(245, 23);
-            this.iDifficultLbl.TabIndex = 2;
-            this.iDifficultLbl.Text = "Seleccione el nivel de dificultad";
+            this.iDifficultyLbl.AutoSize = true;
+            this.iDifficultyLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iDifficultyLbl.Location = new System.Drawing.Point(139, 153);
+            this.iDifficultyLbl.Name = "iDifficultyLbl";
+            this.iDifficultyLbl.Size = new System.Drawing.Size(245, 23);
+            this.iDifficultyLbl.TabIndex = 2;
+            this.iDifficultyLbl.Text = "Seleccione el nivel de dificultad";
             // 
             // iCategoryLbl
             // 
@@ -264,14 +264,14 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label iQuestionsCountLbl;
-        private System.Windows.Forms.Label iDifficultLbl;
+        private System.Windows.Forms.Label iDifficultyLbl;
         private System.Windows.Forms.Label iCategoryLbl;
         private System.Windows.Forms.Label iNameLbl;
         private System.Windows.Forms.Button iBeginBtn;
         private System.Windows.Forms.ComboBox iQuestionsCountCmbBox;
         private System.Windows.Forms.ComboBox iDifficultyCmbBox;
         private System.Windows.Forms.ComboBox iCategoryCmbBox;
-        private System.Windows.Forms.TextBox INameTxtBox;
+        private System.Windows.Forms.TextBox iNameTxtBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
     }

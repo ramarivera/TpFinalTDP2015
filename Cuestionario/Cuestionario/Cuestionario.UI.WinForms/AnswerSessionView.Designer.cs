@@ -1,6 +1,6 @@
 ﻿namespace Cuestionario.UI.WinForms
 {
-    partial class MultipleAnswerView
+    partial class AnswerSessionView
     {
         /// <summary>
         /// Required designer variable.

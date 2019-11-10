@@ -3,6 +3,7 @@ using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
+using System.Collections.Generic;
 
 namespace Questionnaire.Handlers.Handlers
 {
@@ -30,12 +31,29 @@ namespace Questionnaire.Handlers.Handlers
         }
 
         [Transactional]
+        public IEnumerable<AnswerSessionData> GetAll()
+        {
+            var lAnswerSessions = iAnswerSessionServices.GetAll();
+
+            var lResult = Mapper.Map<IList<AnswerSessionData>>(lAnswerSessions);
+            return lResult;
+        }
+
+        [Transactional]
         public AnswerSessionData GetById(int pId)
         {
             var lAnswerSession = iAnswerSessionServices.GetById(pId);
 
             var lResult = Mapper.Map<AnswerSessionData>(lAnswerSession);
             return lResult;
+        }
+
+        [Transactional]
+        public int EndAnswerSession(int pId)
+        {
+            var lAnswerSession = this.iAnswerSessionServices.EndSession(pId);
+
+            return lAnswerSession.Id;
         }
 
         //[Transactional]

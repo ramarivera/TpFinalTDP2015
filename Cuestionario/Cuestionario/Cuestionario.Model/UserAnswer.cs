@@ -10,6 +10,17 @@
 
         public virtual Answer ChosenAnswer { get; set; }
 
-        // TODO review how to get correct question answer
+        public virtual bool IsAnswerCorrect
+        {
+            get
+            {
+                return (ChosenAnswer.Id == Question.CorrectAnswer.Id);
+            }
+            set
+            {
+
+            }
+        }
+        
     }
 }

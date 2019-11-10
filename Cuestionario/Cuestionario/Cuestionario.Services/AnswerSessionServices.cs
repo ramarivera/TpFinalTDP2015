@@ -15,14 +15,18 @@ namespace Cuestionario.Services
 
         private readonly IDifficultyServices iDifficultyServices;
 
+        private readonly IUserAnswerServices iUserAnswerServices;
+
         public AnswerSessionServices(
             ISessionFactory pSessionFactory,
-            ICategoryServices categoryServices,
-            IDifficultyServices dificcultyServices)
+            ICategoryServices pCategoryServices,
+            IDifficultyServices pDificcultyServices,
+            IUserAnswerServices pUserAnswerServces)
         {
             iSessionFactory = pSessionFactory;
-            iCategoryServices = categoryServices;
-            iDifficultyServices = dificcultyServices;
+            iCategoryServices = pCategoryServices;
+            iDifficultyServices = pDificcultyServices;
+            iUserAnswerServices = pUserAnswerServces;
         }
 
         public AnswerSession StartSession(AnswerSessionStartData pAnswerSessionStartData)
@@ -42,6 +46,54 @@ namespace Cuestionario.Services
             this.Session.Save(lAnswerSession);
 
             return lAnswerSession;
+        }
+
+        public AnswerSession EndSession(int pAnswerSessionId)
+        {
+            var lAnswerSession = this.GetById(pAnswerSessionId);
+
+            lAnswerSession.SessionDuration = (DateTime.Now - lAnswerSession.StartTime).TotalSeconds;
+            
+            int lDifficultyFactor = iDifficultyServices.GetDifficultyFactor(lAnswerSession.Difficulty.Description);
+
+            int lTimeFactor = this.GetTimeFactor(lAnswerSession);
+
+            lAnswerSession.Score = this.GetSessionScore(pAnswerSessionId, lDifficultyFactor, lTimeFactor);
+
+            this.Session.Update(lAnswerSession);
+
+            return lAnswerSession;
+        }
+
+        private double GetSessionScore(int pAnswerSessionId, int pDifficultyFactor, int pTimeFactor)
+        {
+            var lUserAnswers = iUserAnswerServices.GetAll().Where(x => x.AnswerSession.Id == pAnswerSessionId);
+
+            int lCorrectAnswersCount = 0;
+
+            foreach (var lUserAnswer in lUserAnswers)
+            {
+                if (lUserAnswer.IsAnswerCorrect)
+                {
+                    lCorrectAnswersCount++;
+                }
+            }
+
+            double lScore = ((double)lCorrectAnswersCount / (double)lUserAnswers.Count()) * pDifficultyFactor * pTimeFactor;
+
+            return lScore;
+        }
+
+        private int GetTimeFactor(AnswerSession pAnswerSession)
+        {
+            int lTimeFactor = 0;
+            double lTimePerQuestion = (pAnswerSession.Answers.Count() / pAnswerSession.SessionDuration);
+
+            if (lTimePerQuestion < 5) { lTimeFactor = 5; }
+            else if (lTimePerQuestion >= 5 && lTimePerQuestion <= 20) { lTimeFactor = 5; }
+            else if (lTimePerQuestion > 20) { lTimeFactor = 1; }
+
+            return lTimeFactor;
         }
 
         public void Delete(long pId)

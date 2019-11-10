@@ -12,7 +12,7 @@ namespace Cuestionario.Services.Interfaces
     {
         IQueryable<UserAnswer> GetAll();
         UserAnswer GetById(long pUserAnswerId);
-        UserAnswer Create(UserAnswerCreationData pUserAnswerData);
+        UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession);
         UserAnswer Update(long pUserAnswerId, UserAnswerData pUpdateUserAnswer);
         void Delete(long pUserAnswerId);
     }

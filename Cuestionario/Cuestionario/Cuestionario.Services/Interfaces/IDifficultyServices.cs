@@ -17,5 +17,6 @@ namespace Cuestionario.Services.Interfaces
         Difficulty Update(long pDifficultyId, DifficultyData pUpdateDifficulty);
         void Delete(long pDifficultyId);
         DifficultyData RetrieveByDescription(string pDifficultyDescription);
+        int GetDifficultyFactor(string pDescription);
     }
 }

@@ -66,7 +66,7 @@ namespace Cuestionario.UI.WinForms
         {
             AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData();
 
-            lAnswerSessionStartData.Username = INameTxtBox.Text;
+            lAnswerSessionStartData.Username = iNameTxtBox.Text;
             lAnswerSessionStartData.QuestionsCount = Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString());
             List<QuestionData> lQuestions = new List<QuestionData>();
             int lAnswerSessionId; 
@@ -93,7 +93,7 @@ namespace Cuestionario.UI.WinForms
                 lQuestions = lHandler.GetQuestionsForSession(lAnswerSessionStartData).ToList();
             }
 
-            MultipleAnswerView lMultipleAnswerView = new MultipleAnswerView(lAnswerSessionId, lQuestions);
+            AnswerSessionView lMultipleAnswerView = new AnswerSessionView(lAnswerSessionId, lQuestions);
             this.Hide();
             lMultipleAnswerView.ShowDialog();
         }

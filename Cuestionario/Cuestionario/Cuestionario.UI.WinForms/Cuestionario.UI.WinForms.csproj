@@ -53,11 +53,11 @@
       <DependentUpon>YesNoQuestionViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="IQuestionViewer.cs" />
-    <Compile Include="MultipleAnswerView.cs">
+    <Compile Include="AnswerSessionView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MultipleAnswerView.Designer.cs">
-      <DependentUpon>MultipleAnswerView.cs</DependentUpon>
+    <Compile Include="AnswerSessionView.Designer.cs">
+      <DependentUpon>AnswerSessionView.cs</DependentUpon>
     </Compile>
     <Compile Include="MultipleChoiceQuestionViewer.cs">
       <SubType>UserControl</SubType>
@@ -88,8 +88,8 @@
     <EmbeddedResource Include="YesNoQuestionViewer.resx">
       <DependentUpon>YesNoQuestionViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MultipleAnswerView.resx">
-      <DependentUpon>MultipleAnswerView.cs</DependentUpon>
+    <EmbeddedResource Include="AnswerSessionView.resx">
+      <DependentUpon>AnswerSessionView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MultipleChoiceQuestionViewer.resx">
       <DependentUpon>MultipleChoiceQuestionViewer.cs</DependentUpon>

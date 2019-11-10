@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace Cuestionario.UI.WinForms
 {
-    public partial class MultipleAnswerView : Form
+    public partial class AnswerSessionView : Form
     {
         private readonly int iAnswerSessionId;
 
@@ -24,7 +24,7 @@ namespace Cuestionario.UI.WinForms
 
         private IQuestionViewer iCurrentQuestionViewer;
 
-        public MultipleAnswerView(int pAnswerSessionId, List<QuestionData> pQuestions)
+        public AnswerSessionView(int pAnswerSessionId, List<QuestionData> pQuestions)
         {
             InitializeComponent();
 
@@ -73,7 +73,7 @@ namespace Cuestionario.UI.WinForms
 
                 using (var lHandler = HandlerFactory.Get<IUserAnswerHandler>())
                 {
-                    lHandler.SaveUserAnswer(lUserAnswer);
+                    lHandler.SaveUserAnswer(lUserAnswer, iAnswerSessionId);
                 }
 
                 if(iCurrentQuestionIndex < iQuestions.Count()-1)
@@ -82,7 +82,14 @@ namespace Cuestionario.UI.WinForms
                 }
                 else
                 {
-                    MessageBox.Show("Fin");//ir a los resultados
+                    using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+                    {
+                        lHandler.EndAnswerSession(iAnswerSessionId);
+                    }
+
+                    ResultsView lResultsView = new ResultsView();//iAnswerSessionId);
+                    this.Hide();
+                    lResultsView.ShowDialog();
                 }
             }
         }
