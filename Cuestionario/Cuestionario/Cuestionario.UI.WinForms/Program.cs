@@ -20,8 +20,8 @@ namespace Cuestionario.UI.WinForms
 
             Bootstrapper.BootstrapApplication();
 
-            //Application.Run(new WelcomeView());
-            Application.Run(new ResultsView());
+            Application.Run(new WelcomeView());
+            //Application.Run(new ResultsView());
         }
     }
 }

@@ -15,12 +15,16 @@ namespace Cuestionario.UI.WinForms
 {
     public partial class ResultsView : Form
     {
-        public ResultsView()//int pAnswerSessionId)
+        public ResultsView(int pAnswerSessionId)
         {
             InitializeComponent();
 
             using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
             {
+                AnswerSessionData lAnswerSession = lHandler.GetById(pAnswerSessionId);
+                this.iScoreLbl.Text = String.Format("Puntaje: {0} puntos", lAnswerSession.Score);
+                this.iTimeLbl.Text = String.Format("Tiempo de respuesta: {0} segundos", lAnswerSession.AnswerTime);
+
                 IList<AnswerSessionData> lAnswerSessions = lHandler.GetAll()
                     .OrderByDescending(x => x.Score).ToList();
 

@@ -63,12 +63,12 @@
             // 
             // iTitleLbl
             // 
-            this.iTitleLbl.AutoSize = true;
             this.iTitleLbl.BackColor = System.Drawing.Color.Transparent;
+            this.iTitleLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iTitleLbl.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iTitleLbl.Location = new System.Drawing.Point(212, 52);
+            this.iTitleLbl.Location = new System.Drawing.Point(0, 0);
             this.iTitleLbl.Name = "iTitleLbl";
-            this.iTitleLbl.Size = new System.Drawing.Size(364, 39);
+            this.iTitleLbl.Size = new System.Drawing.Size(784, 141);
             this.iTitleLbl.TabIndex = 0;
             this.iTitleLbl.Text = "Bienvenido a Cuestionario";
             this.iTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -82,6 +82,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(784, 55);
             this.panel2.TabIndex = 1;
+            this.panel2.UseWaitCursor = true;
             // 
             // label6
             // 
@@ -244,7 +245,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cuestionario";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);

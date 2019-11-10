@@ -87,7 +87,7 @@ namespace Cuestionario.UI.WinForms
                         lHandler.EndAnswerSession(iAnswerSessionId);
                     }
 
-                    ResultsView lResultsView = new ResultsView();//iAnswerSessionId);
+                    ResultsView lResultsView = new ResultsView(iAnswerSessionId);
                     this.Hide();
                     lResultsView.ShowDialog();
                 }
