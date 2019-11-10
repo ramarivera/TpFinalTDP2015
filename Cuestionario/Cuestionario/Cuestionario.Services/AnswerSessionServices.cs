@@ -29,6 +29,11 @@ namespace Cuestionario.Services
             iUserAnswerServices = pUserAnswerServces;
         }
 
+        /// <summary>
+        /// Initialize an Answer Session
+        /// </summary>
+        /// <param name="pAnswerSessionStartData"> Answer Session's inicial data</param>
+        /// <returns></returns>
         public AnswerSession StartSession(AnswerSessionStartData pAnswerSessionStartData)
         {
             var lCategory = this.iCategoryServices.GetById(pAnswerSessionStartData.CategoryId);

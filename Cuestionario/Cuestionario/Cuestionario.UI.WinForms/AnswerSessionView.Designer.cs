@@ -107,7 +107,7 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Desarrollado por John Wayne";
             // 
-            // MultipleAnswerView
+            // AnswerSessionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -115,9 +115,12 @@
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
-            this.Name = "MultipleAnswerView";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "AnswerSessionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cuestionario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnswerSessionView_FormClosing);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

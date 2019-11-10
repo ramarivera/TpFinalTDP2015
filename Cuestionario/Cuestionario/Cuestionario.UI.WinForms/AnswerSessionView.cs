@@ -127,5 +127,14 @@ namespace Cuestionario.UI.WinForms
                 return new MultipleChoiceQuestionViewer(lQuestionData);
             }
         }
+
+        private void AnswerSessionView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
+            if (lDialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

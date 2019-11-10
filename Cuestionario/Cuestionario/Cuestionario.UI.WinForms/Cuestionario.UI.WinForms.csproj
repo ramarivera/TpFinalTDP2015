@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministratorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministratorView.Designer.cs">
+      <DependentUpon>AdministratorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartUpView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartUpView.Designer.cs">
+      <DependentUpon>StartUpView.cs</DependentUpon>
+    </Compile>
     <Compile Include="YesNoQuestionViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,6 +97,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdministratorView.resx">
+      <DependentUpon>AdministratorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartUpView.resx">
+      <DependentUpon>StartUpView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="YesNoQuestionViewer.resx">
       <DependentUpon>YesNoQuestionViewer.cs</DependentUpon>
     </EmbeddedResource>

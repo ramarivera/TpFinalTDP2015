@@ -72,7 +72,6 @@
             this.iTitleLbl.TabIndex = 0;
             this.iTitleLbl.Text = "Bienvenido a Cuestionario";
             this.iTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.iTitleLbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -94,6 +93,7 @@
             this.label6.Size = new System.Drawing.Size(198, 19);
             this.label6.TabIndex = 0;
             this.label6.Text = "Desarrollado por John Wayne";
+            this.label6.UseWaitCursor = true;
             // 
             // panel3
             // 
@@ -116,6 +116,7 @@
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(111, 24);
             this.button2.Name = "button2";
@@ -241,9 +242,12 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "WelcomeView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cuestionario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WelcomeView_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

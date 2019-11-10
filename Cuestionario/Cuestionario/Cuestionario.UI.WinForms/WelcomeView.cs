@@ -48,11 +48,6 @@ namespace Cuestionario.UI.WinForms
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
@@ -64,38 +59,65 @@ namespace Cuestionario.UI.WinForms
 
         private void iBeginBtn_Click(object sender, EventArgs e)
         {
-            AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData();
-
-            lAnswerSessionStartData.Username = iNameTxtBox.Text;
-            lAnswerSessionStartData.QuestionsCount = Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString());
-            List<QuestionData> lQuestions = new List<QuestionData>();
-            int lAnswerSessionId; 
-
-            using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
+            if (!this.CanProceed())
             {
-                //creo que esto no está bien que esté acá
-                lAnswerSessionStartData.CategoryId = lHandler.GetAll()
-                    .FirstOrDefault(x => x.Description == iCategoryCmbBox.SelectedItem.ToString()).Id;
+                MessageBox.Show("Por favor, complete la información inicial", "Cuestionario");
             }
-            using (var lHandler = HandlerFactory.Get<IDifficultyHandler>())
+            else
             {
-                lAnswerSessionStartData.DifficultyId = lHandler.GetAll()
-                    .FirstOrDefault(x => x.Description == iDifficultyCmbBox.SelectedItem.ToString()).Id;
-            }
+                AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData();
 
-            using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+                lAnswerSessionStartData.Username = iNameTxtBox.Text;
+                lAnswerSessionStartData.QuestionsCount = Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString());
+                List<QuestionData> lQuestions = new List<QuestionData>();
+                int lAnswerSessionId;
+
+                using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
+                {
+                    //creo que esto no está bien que esté acá
+                    lAnswerSessionStartData.CategoryId = lHandler.GetAll()
+                        .FirstOrDefault(x => x.Description == iCategoryCmbBox.SelectedItem.ToString()).Id;
+                }
+                using (var lHandler = HandlerFactory.Get<IDifficultyHandler>())
+                {
+                    lAnswerSessionStartData.DifficultyId = lHandler.GetAll()
+                        .FirstOrDefault(x => x.Description == iDifficultyCmbBox.SelectedItem.ToString()).Id;
+                }
+
+                using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+                {
+                    lAnswerSessionId = lHandler.StartAnswerSession(lAnswerSessionStartData);
+                }
+
+                using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
+                {
+                    lQuestions = lHandler.GetQuestionsForSession(lAnswerSessionStartData).ToList();
+                }
+
+                AnswerSessionView lMultipleAnswerView = new AnswerSessionView(lAnswerSessionId, lQuestions);
+                this.Hide();
+                lMultipleAnswerView.ShowDialog();
+            }
+        }
+
+        private void WelcomeView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
+            if (lDialogResult == DialogResult.Yes)
             {
-                lAnswerSessionId = lHandler.StartAnswerSession(lAnswerSessionStartData);
+                Application.Exit();
             }
+        }
 
-            using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
-            {
-                lQuestions = lHandler.GetQuestionsForSession(lAnswerSessionStartData).ToList();
-            }
+        private bool CanProceed()
+        {
+            bool lResult = true;
 
-            AnswerSessionView lMultipleAnswerView = new AnswerSessionView(lAnswerSessionId, lQuestions);
-            this.Hide();
-            lMultipleAnswerView.ShowDialog();
+            if(iCategoryCmbBox.Text == "Categoría") { lResult = false; }
+            else if (iDifficultyCmbBox.Text == "Dificultad") { lResult = false; }
+            else if (iQuestionsCountCmbBox.Text == "-") { lResult = false; }
+
+            return lResult;
         }
     }
 }
