@@ -50,13 +50,11 @@ namespace Cuestionario.UI.WinForms
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void iBackBtn_Click(object sender, EventArgs e)
         {
-            using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
-            {
-                lHandler.HandlerImportQuestionsFromProvider(QuestionProviderType.OpenTrivia);
-            }
-            MessageBox.Show("Importación finalizada", "Cuestionario");
+            StartUpView lStartUpView = new StartUpView();
+            this.Hide();
+            lStartUpView.ShowDialog();
         }
 
         private void iBeginBtn_Click(object sender, EventArgs e)
@@ -97,7 +95,7 @@ namespace Cuestionario.UI.WinForms
             DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
-                Application.Exit();
+                Application.ExitThread();
             }
         }
 

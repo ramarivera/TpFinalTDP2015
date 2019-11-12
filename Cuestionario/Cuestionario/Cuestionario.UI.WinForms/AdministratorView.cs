@@ -28,5 +28,21 @@ namespace Cuestionario.UI.WinForms
             }
             MessageBox.Show("Importación finalizada", "Cuestionario");
         }
+
+        private void iBackBtn_Click(object sender, EventArgs e)
+        {
+            StartUpView lStartUpView = new StartUpView();
+            this.Hide();
+            lStartUpView.ShowDialog();
+        }
+
+        private void AdministratorView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
+            if (lDialogResult == DialogResult.Yes)
+            {
+                Application.ExitThread();
+            }
+        }
     }
 }

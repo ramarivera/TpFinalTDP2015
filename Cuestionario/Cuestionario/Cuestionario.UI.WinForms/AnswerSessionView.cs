@@ -133,7 +133,7 @@ namespace Cuestionario.UI.WinForms
             DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
-                Application.Exit();
+                Application.ExitThread();
             }
         }
     }

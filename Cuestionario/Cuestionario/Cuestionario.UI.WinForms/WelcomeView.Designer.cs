@@ -34,7 +34,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.iBackBtn = new System.Windows.Forms.Button();
             this.iBeginBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.iQuestionsCountCmbBox = new System.Windows.Forms.ComboBox();
@@ -107,29 +107,28 @@
             // panel5
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel5.Controls.Add(this.button2);
+            this.panel5.Controls.Add(this.iBackBtn);
             this.panel5.Controls.Add(this.iBeginBtn);
             this.panel5.Location = new System.Drawing.Point(0, 294);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(784, 71);
             this.panel5.TabIndex = 4;
             // 
-            // button2
+            // iBackBtn
             // 
-            this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(111, 24);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 29);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Actualizar preguntas";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.iBackBtn.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iBackBtn.Location = new System.Drawing.Point(140, 24);
+            this.iBackBtn.Name = "iBackBtn";
+            this.iBackBtn.Size = new System.Drawing.Size(83, 29);
+            this.iBackBtn.TabIndex = 1;
+            this.iBackBtn.Text = "Volver";
+            this.iBackBtn.UseVisualStyleBackColor = true;
+            this.iBackBtn.Click += new System.EventHandler(this.iBackBtn_Click);
             // 
             // iBeginBtn
             // 
             this.iBeginBtn.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iBeginBtn.Location = new System.Drawing.Point(563, 24);
+            this.iBeginBtn.Location = new System.Drawing.Point(560, 24);
             this.iBeginBtn.Name = "iBeginBtn";
             this.iBeginBtn.Size = new System.Drawing.Size(83, 29);
             this.iBeginBtn.TabIndex = 0;
@@ -280,7 +279,7 @@
         private System.Windows.Forms.ComboBox iCategoryCmbBox;
         private System.Windows.Forms.TextBox iNameTxtBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button iBackBtn;
     }
 }
 
