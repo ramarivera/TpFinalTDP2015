@@ -155,33 +155,36 @@
             // 
             // iQuestionsCountCmbBox
             // 
+            this.iQuestionsCountCmbBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.iQuestionsCountCmbBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iQuestionsCountCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iQuestionsCountCmbBox.FormattingEnabled = true;
             this.iQuestionsCountCmbBox.Location = new System.Drawing.Point(390, 196);
             this.iQuestionsCountCmbBox.Name = "iQuestionsCountCmbBox";
             this.iQuestionsCountCmbBox.Size = new System.Drawing.Size(256, 31);
             this.iQuestionsCountCmbBox.TabIndex = 7;
-            this.iQuestionsCountCmbBox.Text = "-";
             // 
             // iDifficultyCmbBox
             // 
+            this.iDifficultyCmbBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.iDifficultyCmbBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iDifficultyCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iDifficultyCmbBox.FormattingEnabled = true;
             this.iDifficultyCmbBox.Location = new System.Drawing.Point(390, 150);
             this.iDifficultyCmbBox.Name = "iDifficultyCmbBox";
             this.iDifficultyCmbBox.Size = new System.Drawing.Size(256, 31);
             this.iDifficultyCmbBox.TabIndex = 6;
-            this.iDifficultyCmbBox.Text = "Dificultad";
             // 
             // iCategoryCmbBox
             // 
+            this.iCategoryCmbBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.iCategoryCmbBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iCategoryCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iCategoryCmbBox.FormattingEnabled = true;
             this.iCategoryCmbBox.Location = new System.Drawing.Point(390, 104);
             this.iCategoryCmbBox.Name = "iCategoryCmbBox";
             this.iCategoryCmbBox.Size = new System.Drawing.Size(256, 31);
             this.iCategoryCmbBox.TabIndex = 5;
-            this.iCategoryCmbBox.Text = "Categoría";
             // 
             // iNameTxtBox
             // 

@@ -117,8 +117,8 @@ namespace Cuestionario.Services
         public IList<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
             var lQuestions = this.GetAll()
-               .Where(x => x.Category == iCategoryServices.GetById(pAnswerSessionStartData.CategoryId))
-               .Where(x => x.Difficulty == iDifficultyServices.GetById(pAnswerSessionStartData.DifficultyId)); //esto creo se puede escribir de otra manera
+               .Where(x => x.Category.Id == pAnswerSessionStartData.CategoryId)
+               .Where(x => x.Difficulty.Id == pAnswerSessionStartData.DifficultyId);
 
             Random lRandomNumber = new Random();
             int lQuestionIndex;

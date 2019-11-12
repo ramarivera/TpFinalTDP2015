@@ -28,7 +28,6 @@ namespace Cuestionario.Services
 
             UserAnswer lUserAnswer = new UserAnswer
             {
-                //AnswerStatus = pUserAnswerData.AnswerStatus,
                 Question = lQuestion,
                 AnswerSession = pAnswerSession,
                 ChosenAnswer = lChosenAnswer
