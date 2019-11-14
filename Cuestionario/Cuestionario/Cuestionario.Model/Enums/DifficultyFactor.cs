@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.Model.Enums
+﻿namespace Questionnaire.Model.Enums
 {
     public enum DifficultyFactor
     {

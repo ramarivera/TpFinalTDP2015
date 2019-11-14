@@ -1,11 +1,11 @@
 ﻿using Questionnaire.Model;
-using Cuestionario.Services.DTO;
-using Cuestionario.Services.Interfaces;
+using Questionnaire.Services.DTO;
+using Questionnaire.Services.Interfaces;
 using NHibernate;
 using System;
 using System.Linq;
 
-namespace Cuestionario.Services
+namespace Questionnaire.Services
 {
     public class AnswerSessionServices : IAnswerSessionServices
     {

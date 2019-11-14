@@ -1,7 +1,7 @@
-﻿using Cuestionario.Model.Enums;
-using Cuestionario.Services.DTO;
-using Cuestionario.Services.Interfaces;
-using Cuestionario.Services.OpenTrivia.Models;
+﻿using Questionnaire.Model.Enums;
+using Questionnaire.Services.DTO;
+using Questionnaire.Services.Interfaces;
+using Questionnaire.Services.OpenTrivia.Models;
 using Newtonsoft.Json;
 using Questionnaire.Model;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Cuestionario.Services.OpenTrivia
+namespace Questionnaire.Services.OpenTrivia
 {
     public class OpenTriviaQuestionsServices : IQuestionProvider
     {

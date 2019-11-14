@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.UI.WinForms
+﻿namespace Questionnaire.UI.WinForms
 {
     partial class WelcomeView
     {
@@ -70,7 +70,7 @@
             this.iTitleLbl.Name = "iTitleLbl";
             this.iTitleLbl.Size = new System.Drawing.Size(784, 141);
             this.iTitleLbl.TabIndex = 0;
-            this.iTitleLbl.Text = "Bienvenido a Cuestionario";
+            this.iTitleLbl.Text = "Bienvenido a Questionnaire";
             this.iTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -248,7 +248,7 @@
             this.MaximizeBox = false;
             this.Name = "WelcomeView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cuestionario";
+            this.Text = "Questionnaire";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WelcomeView_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

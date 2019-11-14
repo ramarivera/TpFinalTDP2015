@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cuestionario.Services.DTO
+namespace Questionnaire.Services.DTO
 {
     public class AnswerSessionData
     {

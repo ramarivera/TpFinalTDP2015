@@ -1,4 +1,4 @@
-﻿using Cuestionario.Services;
+﻿using Questionnaire.Services;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using System;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     public partial class AdministratorView : Form
     {
@@ -26,7 +26,7 @@ namespace Cuestionario.UI.WinForms
             {
                 lHandler.HandlerImportQuestionsFromProvider(QuestionProviderType.OpenTrivia);
             }
-            MessageBox.Show("Importación finalizada", "Cuestionario");
+            MessageBox.Show("Importación finalizada", "Questionnaire");
         }
 
         private void iBackBtn_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Cuestionario.UI.WinForms
 
         private void AdministratorView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();

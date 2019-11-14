@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cuestionario.Services.DTO;
+using Questionnaire.Services.DTO;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     public partial class MultipleChoiceQuestionViewer : UserControl, IQuestionViewer
     {

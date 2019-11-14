@@ -1,6 +1,6 @@
-﻿using Cuestionario.Services.Interfaces;
-using Cuestionario.Services.DTO;
-using Cuestionario.Services.OpenTrivia;
+﻿using Questionnaire.Services.Interfaces;
+using Questionnaire.Services.DTO;
+using Questionnaire.Services.OpenTrivia;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,12 +11,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cuestionario.Services;
+using Questionnaire.Services;
 using Questionnaire.Model;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     public partial class WelcomeView : Form
     {
@@ -99,7 +99,7 @@ namespace Cuestionario.UI.WinForms
 
         private void WelcomeView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();

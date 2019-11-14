@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.UI.WinForms
+﻿namespace Questionnaire.UI.WinForms
 {
     partial class StartUpView
     {
@@ -53,7 +53,7 @@
             this.iTitleLbl.Name = "iTitleLbl";
             this.iTitleLbl.Size = new System.Drawing.Size(504, 91);
             this.iTitleLbl.TabIndex = 1;
-            this.iTitleLbl.Text = "Bienvenido a Cuestionario";
+            this.iTitleLbl.Text = "Bienvenido a Questionnaire";
             this.iTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // iActionLbl
@@ -148,7 +148,7 @@
             this.MaximizeBox = false;
             this.Name = "StartUpView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cuestionario";
+            this.Text = "Questionnaire";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartUpView_FormClosing);
             this.iTitlePnl.ResumeLayout(false);
             this.iOptionsPnl.ResumeLayout(false);

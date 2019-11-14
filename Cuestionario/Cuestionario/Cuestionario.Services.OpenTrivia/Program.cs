@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cuestionario.Services.OpenTrivia
+namespace Questionnaire.Services.OpenTrivia
 {
     class Program
     {

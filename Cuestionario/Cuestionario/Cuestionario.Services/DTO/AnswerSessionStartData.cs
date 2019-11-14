@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.Services.DTO
+﻿namespace Questionnaire.Services.DTO
 {
     public class AnswerSessionStartData
     {

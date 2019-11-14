@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Cuestionario.Services.OpenTrivia.Models
+namespace Questionnaire.Services.OpenTrivia.Models
 {
     public class OpenTriviaQuestionData
     {

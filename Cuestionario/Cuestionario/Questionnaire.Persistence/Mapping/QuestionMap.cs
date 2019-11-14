@@ -1,6 +1,6 @@
 ﻿using Questionnaire.Model;
 using FluentNHibernate.Mapping;
-using Cuestionario.Model.Enums;
+using Questionnaire.Model.Enums;
 
 namespace Questionnaire.Persistence
 {

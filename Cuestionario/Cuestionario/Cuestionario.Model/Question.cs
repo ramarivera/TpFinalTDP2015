@@ -1,4 +1,4 @@
-﻿using Cuestionario.Model.Enums;
+﻿using Questionnaire.Model.Enums;
 using System.Collections.Generic;
 
 namespace Questionnaire.Model

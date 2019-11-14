@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.Model
+﻿namespace Questionnaire.Model
 {
     public class BaseEntity
     {

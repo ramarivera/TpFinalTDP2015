@@ -1,7 +1,7 @@
-﻿using Cuestionario.Services.Interfaces;
+﻿using Questionnaire.Services.Interfaces;
 using Questionnaire.Services.DependencyInjection;
 
-namespace Cuestionario.Services
+namespace Questionnaire.Services
 {
     public class QuestionProviderFactory
     {

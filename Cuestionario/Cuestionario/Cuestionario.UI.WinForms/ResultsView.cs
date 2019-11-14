@@ -1,4 +1,4 @@
-﻿using Cuestionario.Services.DTO;
+﻿using Questionnaire.Services.DTO;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using System;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     public partial class ResultsView : Form
     {
@@ -42,7 +42,7 @@ namespace Cuestionario.UI.WinForms
 
         private void iExitBtn_Click(object sender, EventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();
@@ -51,7 +51,7 @@ namespace Cuestionario.UI.WinForms
 
         private void iRestartBtn_Click(object sender, EventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea reiniciar el Cuestionario?", "Cuestionario", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea reiniciar el Questionnaire?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 WelcomeView lWelcomeView = new WelcomeView();

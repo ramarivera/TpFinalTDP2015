@@ -1,4 +1,4 @@
-﻿using Cuestionario.Services.DTO;
+﻿using Questionnaire.Services.DTO;
 
 namespace Questionnaire.Handlers.Handlers.Interfaces
 {

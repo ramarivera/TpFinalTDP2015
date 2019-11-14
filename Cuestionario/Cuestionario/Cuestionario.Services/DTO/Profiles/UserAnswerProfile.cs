@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Questionnaire.Model;
 
-namespace Cuestionario.Services.DTO.Profiles
+namespace Questionnaire.Services.DTO.Profiles
 {
     public class UserAnswerProfile : Profile
     {

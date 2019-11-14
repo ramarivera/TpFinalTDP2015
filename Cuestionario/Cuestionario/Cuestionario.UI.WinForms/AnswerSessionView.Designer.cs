@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.UI.WinForms
+﻿namespace Questionnaire.UI.WinForms
 {
     partial class AnswerSessionView
     {
@@ -119,7 +119,7 @@
             this.MaximizeBox = false;
             this.Name = "AnswerSessionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cuestionario";
+            this.Text = "Questionnaire";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnswerSessionView_FormClosing);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);

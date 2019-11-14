@@ -1,9 +1,9 @@
 ﻿using Autofac;
 using Autofac.Features.ResolveAnything;
 using AutoMapper;
-using Cuestionario.Services;
-using Cuestionario.Services.Interfaces;
-using Cuestionario.Services.OpenTrivia;
+using Questionnaire.Services;
+using Questionnaire.Services.Interfaces;
+using Questionnaire.Services.OpenTrivia;
 using NHibernate;
 using Questionnaire.Handlers.DependencyInjection;
 using Questionnaire.Handlers.Handlers;

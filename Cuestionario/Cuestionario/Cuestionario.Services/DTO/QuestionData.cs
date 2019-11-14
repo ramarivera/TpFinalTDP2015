@@ -1,7 +1,7 @@
-﻿using Cuestionario.Model.Enums;
+﻿using Questionnaire.Model.Enums;
 using System.Collections.Generic;
 
-namespace Cuestionario.Services.DTO
+namespace Questionnaire.Services.DTO
 {
     public class QuestionData
     {
