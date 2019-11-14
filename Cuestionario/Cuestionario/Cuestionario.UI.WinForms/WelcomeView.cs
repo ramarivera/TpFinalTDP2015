@@ -61,7 +61,7 @@ namespace Cuestionario.UI.WinForms
         {
             if (!this.CanProceed())
             {
-                MessageBox.Show("Por favor, complete la información inicial", "Cuestionario");
+                MessageBox.Show("Por favor, complete la información inicial", "Questionnarie");
             }
             else
             {
@@ -83,10 +83,17 @@ namespace Cuestionario.UI.WinForms
                 {
                     lQuestions = lHandler.GetQuestionsForSession(lAnswerSessionStartData).ToList();
                 }
-
-                AnswerSessionView lMultipleAnswerView = new AnswerSessionView(lAnswerSessionId, lQuestions);
-                this.Hide();
-                lMultipleAnswerView.ShowDialog();
+                //MessageBox.Show(lQuestions.Count().ToString(), "Cant. de preguntas");
+                if (!this.ValidateAmountQuestions(lQuestions, Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString())))
+                {
+                    MessageBox.Show("There are not enough questions matching the selected parameters, please retrieve more questions.", "Error");
+                }
+                else
+                {       
+                    AnswerSessionView lMultipleAnswerView = new AnswerSessionView(lAnswerSessionId, lQuestions);
+                    this.Hide();
+                    lMultipleAnswerView.ShowDialog();
+                }
             }
         }
 
@@ -108,6 +115,16 @@ namespace Cuestionario.UI.WinForms
             else if (iQuestionsCountCmbBox.SelectedItem == null) { lResult = false; }
 
             return lResult;
+        }
+        /// <summary>
+        /// Compares the amount of elements in the data set against a given number
+        /// </summary>
+        /// <param name="pQuestions"></param>
+        /// <param name="pQty"></param>
+        /// <returns>true or false</returns>
+        private bool ValidateAmountQuestions(List<QuestionData> pQuestions, Int32 pQty)
+        {
+            return pQuestions.Count() >= pQty;
         }
     }
 }
