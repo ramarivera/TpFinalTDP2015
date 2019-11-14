@@ -1,7 +1,7 @@
 ﻿using Questionnaire.Model;
 using FluentNHibernate.Mapping;
 
-namespace Questionnaire.Persistence
+namespace Questionnaire.Persistence.NHibernate.Mappings
 {
     class AnswerSessionMap : ClassMap<AnswerSession>
     {

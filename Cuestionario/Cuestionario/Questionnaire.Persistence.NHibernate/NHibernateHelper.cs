@@ -1,10 +1,11 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using Questionnaire.Persistence.NHibernate.Mappings;
 using System;
 using System.Configuration;
 
-namespace Questionnaire.Persistence
+namespace Questionnaire.Persistence.NHibernate
 {
     public static class NHibernateHelper
     {

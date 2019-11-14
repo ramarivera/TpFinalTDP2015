@@ -1,8 +1,7 @@
-﻿using Questionnaire.Model;
-using FluentNHibernate.Mapping;
-using Cuestionario.Model.Enums;
+﻿using FluentNHibernate.Mapping;
+using Questionnaire.Model;
 
-namespace Questionnaire.Persistence
+namespace Questionnaire.Persistence.NHibernate.Mappings
 {
     class QuestionMap : ClassMap<Question>
     {
