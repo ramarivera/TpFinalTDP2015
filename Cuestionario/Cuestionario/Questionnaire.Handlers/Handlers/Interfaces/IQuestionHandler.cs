@@ -1,6 +1,6 @@
 ﻿using Questionnaire.Model;
-using Cuestionario.Services;
-using Cuestionario.Services.DTO;
+using Questionnaire.Services;
+using Questionnaire.Services.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

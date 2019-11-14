@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     public partial class StartUpView : Form
     {
@@ -26,7 +26,7 @@ namespace Cuestionario.UI.WinForms
 
         private void StartUpView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();

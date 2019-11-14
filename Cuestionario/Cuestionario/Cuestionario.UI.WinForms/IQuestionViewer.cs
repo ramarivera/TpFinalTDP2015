@@ -1,6 +1,6 @@
-﻿using Cuestionario.Services.DTO;
+﻿using Questionnaire.Services.DTO;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     public interface IQuestionViewer
     {

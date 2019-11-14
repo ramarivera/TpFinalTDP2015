@@ -1,5 +1,5 @@
 ﻿using Questionnaire.Model;
-using Cuestionario.Services.DTO;
+using Questionnaire.Services.DTO;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using System;
@@ -11,9 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cuestionario.Model.Enums;
+using Questionnaire.Model.Enums;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     public partial class AnswerSessionView : Form
     {
@@ -52,7 +52,7 @@ namespace Cuestionario.UI.WinForms
         {
             if (!this.iCurrentQuestionViewer.CanProceed())
             {
-                MessageBox.Show("Por favor, seleccione una respuesta para la pregunta", "Cuestionario");
+                MessageBox.Show("Por favor, seleccione una respuesta para la pregunta", "Questionnaire");
             }
             else
             {
@@ -131,7 +131,7 @@ namespace Cuestionario.UI.WinForms
 
         private void AnswerSessionView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Cuestionario", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();

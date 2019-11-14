@@ -1,12 +1,12 @@
 ﻿using Questionnaire.Model;
-using Cuestionario.Services.DTO;
+using Questionnaire.Services.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cuestionario.Services.Interfaces
+namespace Questionnaire.Services.Interfaces
 {
     public interface IQuestionProvider
     {

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Questionnaire.Model;
-using Cuestionario.Services.DTO;
-using Cuestionario.Services.Interfaces;
+using Questionnaire.Services.DTO;
+using Questionnaire.Services.Interfaces;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using System.Collections.Generic;

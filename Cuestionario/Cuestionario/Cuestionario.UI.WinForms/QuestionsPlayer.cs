@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     public partial class QuestionsPlayer : Form
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cuestionario.UI.WinForms
+namespace Questionnaire.UI.WinForms
 {
     static class Program
     {

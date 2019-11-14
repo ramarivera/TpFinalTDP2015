@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.UI.WinForms
+﻿namespace Questionnaire.UI.WinForms
 {
     partial class AdministratorView
     {
@@ -65,7 +65,7 @@
             this.MaximizeBox = false;
             this.Name = "AdministratorView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cuestionario: Administrador";
+            this.Text = "Questionnaire: Administrador";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdministratorView_FormClosing);
             this.ResumeLayout(false);
 

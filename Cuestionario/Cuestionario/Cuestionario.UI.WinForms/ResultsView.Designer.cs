@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.UI.WinForms
+﻿namespace Questionnaire.UI.WinForms
 {
     partial class ResultsView
     {
@@ -258,7 +258,7 @@
             this.MaximizeBox = false;
             this.Name = "ResultsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cuestionario";
+            this.Text = "Questionnaire";
             this.iHeaderPnl.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);

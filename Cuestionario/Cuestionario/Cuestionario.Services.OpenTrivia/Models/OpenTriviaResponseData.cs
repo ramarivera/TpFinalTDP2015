@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Cuestionario.Services.OpenTrivia.Models
+namespace Questionnaire.Services.OpenTrivia.Models
 {
     public class OpenTriviaResponseData
     {

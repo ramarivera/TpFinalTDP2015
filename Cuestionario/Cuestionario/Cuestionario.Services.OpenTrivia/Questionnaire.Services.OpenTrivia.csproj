@@ -69,9 +69,9 @@
       <Project>{e3f34edb-c212-4d6d-8e9f-f24955303bde}</Project>
       <Name>Questionnaire.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cuestionario.Services\Cuestionario.Services.csproj">
+    <ProjectReference Include="..\Cuestionario.Services\Questionnaire.Services.csproj">
       <Project>{866c7fe3-f59e-48b6-a175-5afe7ceb7b6c}</Project>
-      <Name>Cuestionario.Services</Name>
+      <Name>Questionnaire.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

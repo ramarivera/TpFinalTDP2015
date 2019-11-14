@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Cuestionario.UI.WinForms.Properties
+namespace Questionnaire.UI.WinForms.Properties
 {
 
 

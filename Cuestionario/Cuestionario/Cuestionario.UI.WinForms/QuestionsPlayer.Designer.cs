@@ -1,4 +1,4 @@
-﻿namespace Cuestionario.UI.WinForms
+﻿namespace Questionnaire.UI.WinForms
 {
     partial class QuestionsPlayer
     {

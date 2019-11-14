@@ -1,5 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
-using Questionnaire.Model;
+using Questionnaire.Model.Enums;
 
 namespace Questionnaire.Persistence.NHibernate.Mappings
 {

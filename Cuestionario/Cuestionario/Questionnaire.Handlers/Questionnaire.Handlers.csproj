@@ -112,13 +112,13 @@
       <Project>{E3F34EDB-C212-4D6D-8E9F-F24955303BDE}</Project>
       <Name>Questionnaire.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cuestionario.Services.OpenTrivia\Cuestionario.Services.OpenTrivia.csproj">
+    <ProjectReference Include="..\Cuestionario.Services.OpenTrivia\Questionnaire.Services.OpenTrivia.csproj">
       <Project>{307C22D6-E354-414F-9BBD-BFFBD695C5E5}</Project>
-      <Name>Cuestionario.Services.OpenTrivia</Name>
+      <Name>Questionnaire.Services.OpenTrivia</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cuestionario.Services\Cuestionario.Services.csproj">
+    <ProjectReference Include="..\Cuestionario.Services\Questionnaire.Services.csproj">
       <Project>{866C7FE3-F59E-48B6-A175-5AFE7CEB7B6C}</Project>
-      <Name>Cuestionario.Services</Name>
+      <Name>Questionnaire.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Questionnaire.Persistence\Questionnaire.Persistence.csproj">
       <Project>{B419B543-15D5-47AC-82F7-915E2CD72C3C}</Project>

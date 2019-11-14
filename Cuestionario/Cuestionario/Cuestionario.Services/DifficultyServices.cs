@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Questionnaire.Model;
-using Cuestionario.Services.DTO;
+using Questionnaire.Services.DTO;
 using NHibernate;
-using Cuestionario.Services.Interfaces;
+using Questionnaire.Services.Interfaces;
 
-namespace Cuestionario.Services
+namespace Questionnaire.Services
 {
     public class DifficultyServices : IDifficultyServices
     {

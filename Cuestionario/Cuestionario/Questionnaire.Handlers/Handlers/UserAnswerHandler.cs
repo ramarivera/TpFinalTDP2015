@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Cuestionario.Services.DTO;
-using Cuestionario.Services.Interfaces;
+using Questionnaire.Services.DTO;
+using Questionnaire.Services.Interfaces;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using Questionnaire.Model;
 using System;
