@@ -61,7 +61,7 @@ namespace Cuestionario.UI.WinForms
         {
             if (!this.CanProceed())
             {
-                MessageBox.Show("Por favor, complete la información inicial", "Questionnarie");
+                MessageBox.Show("Por favor, complete la información inicial", "Questionnaire");
             }
             else
             {
