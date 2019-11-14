@@ -1,5 +1,6 @@
 ﻿using Questionnaire.Model;
 using FluentNHibernate.Mapping;
+using Cuestionario.Model.Enums;
 
 namespace Questionnaire.Persistence
 {
@@ -11,7 +12,7 @@ namespace Questionnaire.Persistence
 
             Map(x => x.Description);
 
-            Map(x => x.QuestionType);
+            Map(x => x.QuestionType).CustomType<int>();
 
             References(x => x.Category)
                 .Column("categoryId")

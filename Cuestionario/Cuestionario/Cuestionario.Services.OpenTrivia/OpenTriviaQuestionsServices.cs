@@ -1,4 +1,5 @@
-﻿using Cuestionario.Services.DTO;
+﻿using Cuestionario.Model.Enums;
+using Cuestionario.Services.DTO;
 using Cuestionario.Services.Interfaces;
 using Cuestionario.Services.OpenTrivia.Models;
 using Newtonsoft.Json;
@@ -58,12 +59,23 @@ namespace Cuestionario.Services.OpenTrivia
 
                 var lDifficultyData = iDifficultyServices.RetrieveByDescription(lOpenTriviaQuestion.Difficulty);
 
+                QuestionType lQuestionType = new QuestionType();
+
+                if (lOpenTriviaQuestion.Type == "boolean")
+                {
+                    lQuestionType = QuestionType.YesNo;
+                }
+                else if (lOpenTriviaQuestion.Type == "multiple")
+                {
+                    lQuestionType = QuestionType.MultipleChoice;
+                }
+
                 QuestionCreationData lQuestionData = new QuestionCreationData
                 {
                     Description = WebUtility.HtmlDecode(lOpenTriviaQuestion.Question),
                     Category = lCategoryData,
                     Difficulty = lDifficultyData,
-                    QuestionType = lOpenTriviaQuestion.Type,
+                    QuestionType = lQuestionType,
                 };
 
                 //para la respuesta correcta de la pregunta

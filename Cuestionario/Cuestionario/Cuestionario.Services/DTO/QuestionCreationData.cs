@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cuestionario.Model.Enums;
+using System.Collections.Generic;
 
 namespace Cuestionario.Services.DTO
 {
@@ -15,7 +16,7 @@ namespace Cuestionario.Services.DTO
 
         public string Description { get; set; }
 
-        public string QuestionType { get; set; }
+        public QuestionType QuestionType { get; set; }// TODO ver esto
 
         public IList<AnswerCreationData> Answers { get; set; }
 

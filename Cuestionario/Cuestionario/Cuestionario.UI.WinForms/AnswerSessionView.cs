@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cuestionario.Model.Enums;
 
 namespace Cuestionario.UI.WinForms
 {
@@ -118,7 +119,7 @@ namespace Cuestionario.UI.WinForms
 
         private IQuestionViewer GetQuestionViewerFor(QuestionData lQuestionData)
         {
-            if (lQuestionData.QuestionType == "boolean")
+            if (lQuestionData.QuestionType == QuestionType.YesNo)
             {
                 return new YesNoQuestionViewer(lQuestionData);
             }
