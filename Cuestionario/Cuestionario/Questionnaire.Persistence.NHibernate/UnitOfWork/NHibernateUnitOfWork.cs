@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using Questionnaire.Model;
 using Questionnaire.Persistence.NHibernate.Repository;
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Persistence.UnitOfWork;
@@ -18,7 +19,7 @@ namespace Questionnaire.Persistence.NHibernate.UnitOfWork
 
         protected ISession CurrentSession => this.iSessionFactory.GetCurrentSession();
 
-        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
+        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : IBaseEntity
         {
             return new NHibernateGenericRepository<TEntity>(this.CurrentSession);
         }

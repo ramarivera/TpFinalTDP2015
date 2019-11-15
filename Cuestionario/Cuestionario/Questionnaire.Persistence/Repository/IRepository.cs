@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Questionnaire.Model;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Questionnaire.Persistence.Repository
 {
     public interface IRepository<TEntity>
-        where TEntity : class
+        where TEntity : IBaseEntity
     {
         Task<TEntity> GetByIdAsync(object pId);
 

@@ -2,6 +2,7 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using Questionnaire.Model;
 using Questionnaire.Persistence.NHibernate.Mappings;
 using Questionnaire.Persistence.NHibernate.UnitOfWork;
 using Questionnaire.Persistence.Repository;
@@ -18,7 +19,7 @@ namespace Questionnaire.Persistence.NHibernate
     {
         private const string DEFAULT_CONNECTION_STRING_KEY = "DEFAULT";
         private readonly static MethodInfo GetRepositoryMethod =
-            Reflect<IUnitOfWork>.Method(x => x.GetRepository<object>());
+            Reflect<IUnitOfWork>.Method(x => x.GetRepository<Question>());
 
         public static void ConfigureContainer(ContainerBuilder pContainerBuilder)
         {

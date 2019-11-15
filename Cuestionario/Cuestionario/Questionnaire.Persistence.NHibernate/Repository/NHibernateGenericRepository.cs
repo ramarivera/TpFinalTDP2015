@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using Questionnaire.Model;
 using Questionnaire.Persistence.Repository;
 using System;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace Questionnaire.Persistence.NHibernate.Repository
 {
     public class NHibernateGenericRepository<TEntity> : IRepository<TEntity>
-        where TEntity : class
+        where TEntity : IBaseEntity
     {
         private readonly ISession iSession;
 

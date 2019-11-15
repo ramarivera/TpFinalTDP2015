@@ -1,7 +1,7 @@
 ﻿namespace Questionnaire.Model
 {
-    public class BaseEntity
+    public abstract class BaseEntity : IBaseEntity
     {
-        public virtual long Id { get; set; }
+        public virtual long Id { get; }
     }
 }

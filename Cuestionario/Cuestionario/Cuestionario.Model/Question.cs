@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Model
 {
-    public class Question
+    public class Question : BaseEntity
     {
         private readonly ICollection<Answer> answers;
         private Answer iCorrectAnswer;
@@ -12,8 +12,6 @@ namespace Questionnaire.Model
         {
             answers = new List<Answer>();
         }
-
-        public virtual int Id { get; set; }
 
         public virtual Category Category { get; set; }
 
