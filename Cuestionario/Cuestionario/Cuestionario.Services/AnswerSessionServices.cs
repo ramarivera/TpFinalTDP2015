@@ -9,21 +9,21 @@ namespace Questionnaire.Services
 {
     public class AnswerSessionServices : IAnswerSessionServices
     {
-        private readonly ISessionFactory iSessionFactory;
+        private ISession iSession;
 
-        private readonly ICategoryServices iCategoryServices;
+        private ICategoryServices iCategoryServices;
 
-        private readonly IDifficultyServices iDifficultyServices;
+        private IDifficultyServices iDifficultyServices;
 
-        private readonly IUserAnswerServices iUserAnswerServices;
+        private IUserAnswerServices iUserAnswerServices;
 
         public AnswerSessionServices(
-            ISessionFactory pSessionFactory,
+            ISession pSession,
             ICategoryServices pCategoryServices,
             IDifficultyServices pDificcultyServices,
             IUserAnswerServices pUserAnswerServces)
         {
-            iSessionFactory = pSessionFactory;
+            iSession = pSession;
             iCategoryServices = pCategoryServices;
             iDifficultyServices = pDificcultyServices;
             iUserAnswerServices = pUserAnswerServces;
@@ -44,11 +44,12 @@ namespace Questionnaire.Services
             {
                 Username = pAnswerSessionStartData.Username,
                 StartTime = DateTime.Now,
+                EndTime = null,
                 Category = lCategory,
                 Difficulty = lDifficulty
             };
 
-            this.Session.Save(lAnswerSession);
+            this.iSession.Save(lAnswerSession);
 
             return lAnswerSession;
         }
@@ -57,15 +58,16 @@ namespace Questionnaire.Services
         {
             var lAnswerSession = this.GetById(pAnswerSessionId);
 
-            lAnswerSession.SessionDuration = (DateTime.Now - lAnswerSession.StartTime).TotalSeconds;
+            lAnswerSession.EndTime = DateTime.Now;
             
+            // TODO difficultyFactor podría estar en los servicios de OpenTrivia por estar basado a las dificultades que este provider define
             int lDifficultyFactor = iDifficultyServices.GetDifficultyFactor(lAnswerSession.Difficulty.Description);
 
             int lTimeFactor = this.GetTimeFactor(lAnswerSession);
 
             lAnswerSession.Score = this.GetSessionScore(pAnswerSessionId, lDifficultyFactor, lTimeFactor);
 
-            this.Session.Update(lAnswerSession);
+            this.iSession.Update(lAnswerSession);
 
             return lAnswerSession;
         }
@@ -91,8 +93,9 @@ namespace Questionnaire.Services
 
         private int GetTimeFactor(AnswerSession pAnswerSession)
         {
+            double lSessionDuration = (pAnswerSession.EndTime - pAnswerSession.StartTime).Value.TotalSeconds;
             int lTimeFactor = 0;
-            double lTimePerQuestion = (pAnswerSession.Answers.Count() / pAnswerSession.SessionDuration);
+            double lTimePerQuestion = (pAnswerSession.Answers.Count() / lSessionDuration);
 
             if (lTimePerQuestion < 5) { lTimeFactor = 5; }
             else if (lTimePerQuestion >= 5 && lTimePerQuestion <= 20) { lTimeFactor = 5; }
@@ -109,7 +112,7 @@ namespace Questionnaire.Services
         public IQueryable<AnswerSession> GetAll()
         {
             IQueryable<AnswerSession> lAnswerSessions =
-                this.Session.Query<AnswerSession>();
+                this.iSession.Query<AnswerSession>();
 
             return lAnswerSessions;
         }        
@@ -131,7 +134,5 @@ namespace Questionnaire.Services
         {
             throw new NotImplementedException();
         }
-
-        private ISession Session => this.iSessionFactory.GetCurrentSession();
     }
 }

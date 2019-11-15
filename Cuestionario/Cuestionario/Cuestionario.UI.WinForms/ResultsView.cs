@@ -23,19 +23,19 @@ namespace Questionnaire.UI.WinForms
             {
                 AnswerSessionData lAnswerSession = lHandler.GetById(pAnswerSessionId);
                 this.iScoreLbl.Text = String.Format("Puntaje: {0} puntos", lAnswerSession.Score);
-                this.iTimeLbl.Text = String.Format("Tiempo de respuesta: {0} segundos", lAnswerSession.AnswerTime);
+                this.iTimeLbl.Text = String.Format("Tiempo de respuesta: {0} segundos", lAnswerSession.SessionDuration);
 
                 IList<AnswerSessionData> lAnswerSessions = lHandler.GetAll()
                     .OrderByDescending(x => x.Score).ToList();
 
-                // falta limitar que sean 20
+                // TODO falta limitar que sean 20
                 var lSource = new BindingList<AnswerSessionData>(lAnswerSessions);
                 iResultsDGV.DataSource = lSource.Select(x => new
                 {
                     Nombre = x.Username,
                     Puntaje = x.Score +" puntos",
-                    Tiempo = x.AnswerTime +" segundos",
-                    Fecha = x.Date
+                    Tiempo = x.SessionDuration +" segundos",
+                    Fecha = x.StartTime
                 }).ToList();
             }
         }

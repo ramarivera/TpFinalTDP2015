@@ -22,7 +22,6 @@ namespace Questionnaire.Model
         public virtual string Description { get; set; }
 
         public virtual QuestionType QuestionType { get; set; }
-        // TODO cambiar por QuestionType 
 
         public virtual IEnumerable<Answer> Answers => answers;
 

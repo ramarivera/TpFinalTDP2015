@@ -11,11 +11,11 @@ namespace Questionnaire.Persistence
 
             Map(x => x.Username);
 
-            Map(x => x.SessionDuration);
-
             Map(x => x.Score);
 
             Map(x => x.StartTime);
+
+            Map(x => x.EndTime).Nullable();
 
             References(x => x.Category)
                 .Column("categoryId")
