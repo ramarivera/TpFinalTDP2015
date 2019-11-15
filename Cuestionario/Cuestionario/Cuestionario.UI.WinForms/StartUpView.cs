@@ -26,7 +26,7 @@ namespace Questionnaire.UI.WinForms
 
         private void StartUpView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("Are you sure you want to exit?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();
@@ -38,6 +38,11 @@ namespace Questionnaire.UI.WinForms
             AdministratorView lAdministratorView = new AdministratorView();
             this.Hide();
             lAdministratorView.ShowDialog();
+        }
+
+        private void iTitleLbl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

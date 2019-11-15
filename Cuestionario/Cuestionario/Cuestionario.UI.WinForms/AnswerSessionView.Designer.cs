@@ -66,8 +66,9 @@
             this.iFinishBtn.Name = "iFinishBtn";
             this.iFinishBtn.Size = new System.Drawing.Size(89, 29);
             this.iFinishBtn.TabIndex = 1;
-            this.iFinishBtn.Text = "Terminar";
+            this.iFinishBtn.Text = "Quit";
             this.iFinishBtn.UseVisualStyleBackColor = true;
+            this.iFinishBtn.Click += new System.EventHandler(this.iFinishBtn_Click);
             // 
             // iNextBtn
             // 
@@ -76,7 +77,7 @@
             this.iNextBtn.Name = "iNextBtn";
             this.iNextBtn.Size = new System.Drawing.Size(89, 29);
             this.iNextBtn.TabIndex = 0;
-            this.iNextBtn.Text = "Siguiente";
+            this.iNextBtn.Text = "Next";
             this.iNextBtn.UseVisualStyleBackColor = true;
             this.iNextBtn.Click += new System.EventHandler(this.iNextBtn_Click);
             // 
@@ -103,9 +104,9 @@
             this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(293, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 19);
+            this.label6.Size = new System.Drawing.Size(178, 19);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Desarrollado por John Wayne";
+            this.label6.Text = "Developed by John Wayne";
             // 
             // AnswerSessionView
             // 

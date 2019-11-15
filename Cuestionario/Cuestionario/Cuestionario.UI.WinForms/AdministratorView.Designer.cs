@@ -39,7 +39,7 @@
             this.iQuestionsBtn.Name = "iQuestionsBtn";
             this.iQuestionsBtn.Size = new System.Drawing.Size(180, 29);
             this.iQuestionsBtn.TabIndex = 2;
-            this.iQuestionsBtn.Text = "Actualizar preguntas";
+            this.iQuestionsBtn.Text = "Update questions";
             this.iQuestionsBtn.UseVisualStyleBackColor = true;
             this.iQuestionsBtn.Click += new System.EventHandler(this.iQuestionsBtn_Click);
             // 
@@ -50,7 +50,7 @@
             this.iBackBtn.Name = "iBackBtn";
             this.iBackBtn.Size = new System.Drawing.Size(75, 29);
             this.iBackBtn.TabIndex = 3;
-            this.iBackBtn.Text = "Volver";
+            this.iBackBtn.Text = "Back";
             this.iBackBtn.UseVisualStyleBackColor = true;
             this.iBackBtn.Click += new System.EventHandler(this.iBackBtn_Click);
             // 
@@ -65,7 +65,7 @@
             this.MaximizeBox = false;
             this.Name = "AdministratorView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Questionnaire: Administrador";
+            this.Text = "Questionnaire: Administrator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdministratorView_FormClosing);
             this.ResumeLayout(false);
 
