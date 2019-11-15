@@ -23,7 +23,7 @@ namespace Questionnaire.UI.WinForms
             {
                 AnswerSessionData lAnswerSession = lHandler.GetById(pAnswerSessionId);
                 this.iScoreLbl.Text = String.Format("Score: {0} points", lAnswerSession.Score);
-                this.iTimeLbl.Text = String.Format("Game time: {0} seconds", lAnswerSession.AnswerTime);
+                this.iTimeLbl.Text = String.Format("Game time: {0} seconds", lAnswerSession.SessionDuration);
 
                 IList<AnswerSessionData> lAnswerSessions = lHandler.GetAll()
                     .OrderByDescending(x => x.Score).ToList();
@@ -32,10 +32,10 @@ namespace Questionnaire.UI.WinForms
                 var lSource = new BindingList<AnswerSessionData>(lAnswerSessions);
                 iResultsDGV.DataSource = lSource.Select(x => new
                 {
-                    Nombre = x.Username,
-                    Puntaje = x.Score +" points",
-                    Tiempo = x.AnswerTime +" seconds",
-                    Fecha = x.Date
+                    Name = x.Username,
+                    Score = x.Score +" points",
+                    Time = x.SessionDuration +" seconds",
+                    Date = x.StartTime
                 }).ToList();
             }
         }
