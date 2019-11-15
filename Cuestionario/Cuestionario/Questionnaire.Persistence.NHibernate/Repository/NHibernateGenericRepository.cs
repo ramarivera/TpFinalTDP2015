@@ -1,46 +1,65 @@
-﻿using Questionnaire.Persistence.Repositories;
+﻿using NHibernate;
+using Questionnaire.Persistence.Repository;
 using System;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Questionnaire.Persistence.NHibernate.Repository
 {
     public class NHibernateGenericRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
-        public void Add(TEntity pEntityToAdd)
+        private readonly ISession iSession;
+
+        public NHibernateGenericRepository(ISession pSession)
         {
-            throw new NotImplementedException();
+            this.iSession = pSession;
         }
 
-        public void Delete(object pId)
+        public async Task AddAsync(TEntity pEntityToAdd)
         {
-            throw new NotImplementedException();
+            if (pEntityToAdd == null) throw new ArgumentNullException(nameof(pEntityToAdd));
+
+            await this.iSession.SaveAsync(pEntityToAdd);
+
+            return;
         }
 
-        public void Delete(TEntity pEntityToDelete)
+        public async Task DeleteByIdAsync(object pId)
         {
-            throw new NotImplementedException();
+            if (pId == null) throw new ArgumentNullException(nameof(pId));
+
+            var lEntity = await this.GetByIdAsync(pId);
+            await this.DeleteAsync(lEntity);
+
+            return;
+        }
+
+        public Task DeleteAsync(TEntity pEntityToDelete)
+        {
+            if (pEntityToDelete == null) throw new ArgumentNullException(nameof(pEntityToDelete));
+
+            return this.iSession.DeleteAsync(pEntityToDelete);
         }
 
         public IQueryable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return this.iSession.Query<TEntity>();
         }
 
-        public IQueryable<TEntity> GetBy(Expression<Func<TEntity, bool>> pPredicate)
+        public Task<TEntity> GetByIdAsync(object pId)
         {
-            throw new NotImplementedException();
+            if (pId == null) throw new ArgumentNullException(nameof(pId));
+            return this.iSession.GetAsync<TEntity>(pId);
         }
 
-        public TEntity GetById(object pId)
+        public async Task UpdateAsync(TEntity pEntityToUpdate)
         {
-            throw new NotImplementedException();
-        }
+            if (pEntityToUpdate == null) throw new ArgumentNullException(nameof(pEntityToUpdate));
 
-        public void Update(TEntity pEntityToUpdate)
-        {
-            throw new NotImplementedException();
+            await this.iSession.UpdateAsync(pEntityToUpdate);
+
+            return;
         }
     }
 }

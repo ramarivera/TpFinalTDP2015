@@ -1,4 +1,7 @@
-﻿using Questionnaire.Persistence.Repositories;
+﻿
+using Questionnaire.Persistence.Repository;
+using System.Data;
+using System.Threading.Tasks;
 
 namespace Questionnaire.Persistence.UnitOfWork
 {
@@ -6,10 +9,10 @@ namespace Questionnaire.Persistence.UnitOfWork
     {
         IRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
 
-        void BeginTransaction();
+        void BeginTransaction(IsolationLevel pIsolationLevel);
 
-        void Commit();
+        Task CommitAsync();
 
-        void Rollback();
+        Task RollbackAsync();
     }
 }

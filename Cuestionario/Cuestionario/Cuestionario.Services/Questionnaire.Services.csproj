@@ -99,7 +99,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionProviderFactory.cs" />
     <Compile Include="QuestionProviderType.cs" />
-    <Compile Include="QuestionServices.cs" />
+    <Compile Include="Impl\QuestionServices.cs" />
     <Compile Include="UserAnswerServices.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +110,10 @@
     <ProjectReference Include="..\Cuestionario.Model\Questionnaire.Model.csproj">
       <Project>{e3f34edb-c212-4d6d-8e9f-f24955303bde}</Project>
       <Name>Questionnaire.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Questionnaire.Persistence\Questionnaire.Persistence.csproj">
+      <Project>{B419B543-15D5-47AC-82F7-915E2CD72C3C}</Project>
+      <Name>Questionnaire.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

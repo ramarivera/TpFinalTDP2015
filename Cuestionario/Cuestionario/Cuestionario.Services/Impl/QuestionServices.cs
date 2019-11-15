@@ -1,34 +1,34 @@
-﻿using System;
+﻿using Questionnaire.Model;
+using Questionnaire.Persistence.Repository;
+using Questionnaire.Services.DTO;
+using Questionnaire.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Questionnaire.Model;
-using Questionnaire.Services.DTO;
-using NHibernate;
-using Questionnaire.Services.Interfaces;
 
-namespace Questionnaire.Services
+namespace Questionnaire.Services.Impl
 {
     public class QuestionServices : IQuestionServices
     {
-        private ISession iSession;
-
-        private ICategoryServices iCategoryServices;
-
-        private IDifficultyServices iDifficultyServices;
+        private readonly IRepository<Question> iQuestionRepository;
+        private readonly IRepository<Answer> iAnswerRepository;
+        private readonly ICategoryServices iCategoryServices;
+        private readonly IDifficultyServices iDifficultyServices;
 
         public QuestionServices(
-            ISession pSession,
+            IRepository<Question> pQuestionRepository,
+            IRepository<Answer> pAnswerRepository,
             ICategoryServices pCategoryServices,
             IDifficultyServices pDifficcultyServices)
         {
-            iSession = pSession;
-            iCategoryServices = pCategoryServices;
-            iDifficultyServices = pDifficcultyServices;
+            this.iQuestionRepository = pQuestionRepository;
+            this.iAnswerRepository = pAnswerRepository;
+            this.iCategoryServices = pCategoryServices;
+            this.iDifficultyServices = pDifficcultyServices;
         }
 
-        public Question Create(QuestionCreationData pQuestionData)
+        public async Task<Question> CreateAsync(QuestionCreationData pQuestionData)
         {
             Answer CreateAnswer(AnswerCreationData pAnswerCreationData)
             {
@@ -41,10 +41,9 @@ namespace Questionnaire.Services
             }
 
             var lCategory = iCategoryServices.GetById(pQuestionData.Category.Id);
-
             var lDifficulty = iDifficultyServices.GetById(pQuestionData.Difficulty.Id);
 
-            Question lQuestion = new Question
+            var lQuestion = new Question
             {
                 Description = pQuestionData.Description,
                 Category = lCategory,
@@ -52,11 +51,8 @@ namespace Questionnaire.Services
                 QuestionType = pQuestionData.QuestionType,
             };
             
-            iSession.Save(lQuestion);
 
-            var lCorrectAnswer = CreateAnswer(pQuestionData.CorrectAnswer);
-
-            lQuestion.CorrectAnswer = lCorrectAnswer;
+            lQuestion.CorrectAnswer = CreateAnswer(pQuestionData.CorrectAnswer);
 
             foreach (var lAnswerData in pQuestionData.Answers.Where(x => x != pQuestionData.CorrectAnswer))
             {
@@ -64,7 +60,7 @@ namespace Questionnaire.Services
                 lQuestion.AddAnswer(lAnswer);
             }
 
-            iSession.Save(lQuestion);
+            await this.iQuestionRepository.AddAsync(lQuestion);
 
             return lQuestion;
         }
@@ -76,16 +72,13 @@ namespace Questionnaire.Services
 
         public IQueryable<Question> GetAll()
         {
-            IQueryable<Question> lQuestions =
-                iSession.Query<Question>();
-
-            return lQuestions;
+            // TODO RAR: IQueryables should be gone...
+            return this.iQuestionRepository.GetAll();
         }         
 
-        public Question GetById(long pQuestionId)
+        public async Task<Question> GetByIdAsync(long pQuestionId)
         {
-            var lQuestion = GetAll()
-                .FirstOrDefault(x => x.Id == pQuestionId);
+            var lQuestion = await this.iQuestionRepository.GetByIdAsync(pQuestionId);
 
             if (lQuestion == null)
             {
@@ -100,11 +93,9 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
-
-        public Answer GetAnswerById(long pAnswerId)
+        public async Task<Answer> GetAnswerByIdAsync(long pAnswerId)
         {
-            var lAnswer = iSession.Query<Answer>()
-                .FirstOrDefault(x => x.Id == pAnswerId);
+            var lAnswer = await this.iAnswerRepository.GetByIdAsync(pAnswerId);
 
             if (lAnswer == null)
             {
@@ -120,10 +111,11 @@ namespace Questionnaire.Services
                .Where(x => x.Category.Id == pAnswerSessionStartData.CategoryId)
                .Where(x => x.Difficulty.Id == pAnswerSessionStartData.DifficultyId);
 
-            Random lRandomNumber = new Random();
+            var lRandomNumber = new Random();
             int lQuestionIndex;
             var lSessionQuestions = new List<Question>();
 
+            // TODO RAR this has to be rewritten, we are potentially hitting the DB many many times.
             if (lQuestions.Count() < pAnswerSessionStartData.QuestionsCount)
             {
                 while (lSessionQuestions.Count < lQuestions.Count())

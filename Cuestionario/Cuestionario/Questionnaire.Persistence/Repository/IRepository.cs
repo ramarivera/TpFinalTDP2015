@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Questionnaire.Persistence.Repository
@@ -10,18 +8,16 @@ namespace Questionnaire.Persistence.Repository
     public interface IRepository<TEntity>
         where TEntity : class
     {
-        TEntity GetById(object pId);
+        Task<TEntity> GetByIdAsync(object pId);
 
         IQueryable<TEntity> GetAll();
 
-        IQueryable<TEntity> GetBy(Expression<Func<TEntity, bool>> pPredicate);
+        Task AddAsync(TEntity pEntityToAdd);
 
-        void Add(TEntity pEntityToAdd);
+        Task UpdateAsync(TEntity pEntityToUpdate);
 
-        void Update(TEntity pEntityToUpdate);
+        Task DeleteByIdAsync(object pId);
 
-        void Delete(object pId);
-
-        void Delete(TEntity pEntityToDelete);
+        Task DeleteAsync(TEntity pEntityToDelete);
     }
 }

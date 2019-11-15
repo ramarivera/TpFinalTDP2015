@@ -24,7 +24,7 @@ namespace Questionnaire.UI.WinForms
         {
             using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
             {
-                lHandler.HandlerImportQuestionsFromProvider(QuestionProviderType.OpenTrivia);
+                lHandler.HandlerImportQuestionsFromProviderAsync(QuestionProviderType.OpenTrivia);
             }
             MessageBox.Show("Importación finalizada", "Questionnaire");
         }

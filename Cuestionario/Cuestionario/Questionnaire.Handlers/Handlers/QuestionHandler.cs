@@ -37,7 +37,7 @@ namespace Questionnaire.Handlers.Handlers
         }
 
         [Transactional]
-        public void HandlerImportQuestionsFromProvider(QuestionProviderType pType)
+        public async Task HandlerImportQuestionsFromProviderAsync(QuestionProviderType pType)
         {
             var lProvider = this.iQuestionProviderFactory.BuildProvider(pType);
 
@@ -45,10 +45,12 @@ namespace Questionnaire.Handlers.Handlers
 
             var lNewQuestionCandidates = lProvider.FilterNotImportedQuestions(lExistentQuestion);
 
-            foreach (var lNewQuestion in lNewQuestionCandidates)
+            var lNewQuestionTasks = lNewQuestionCandidates.Select(x =>
             {
-                iQuestionService.Create(lNewQuestion);
-            }
+                return this.iQuestionService.CreateAsync(x);
+            });
+
+            await Task.WhenAll(lNewQuestionTasks);
         }
 
         [Transactional]

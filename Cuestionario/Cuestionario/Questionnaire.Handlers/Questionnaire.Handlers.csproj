@@ -120,6 +120,10 @@
       <Project>{866C7FE3-F59E-48B6-A175-5AFE7CEB7B6C}</Project>
       <Name>Questionnaire.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Questionnaire.Persistence.NHibernate\Questionnaire.Persistence.NHibernate.csproj">
+      <Project>{97368868-E393-4A4E-9B1F-642562439E6B}</Project>
+      <Name>Questionnaire.Persistence.NHibernate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Questionnaire.Persistence\Questionnaire.Persistence.csproj">
       <Project>{B419B543-15D5-47AC-82F7-915E2CD72C3C}</Project>
       <Name>Questionnaire.Persistence</Name>

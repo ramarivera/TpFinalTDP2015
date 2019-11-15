@@ -30,7 +30,7 @@ namespace Questionnaire.Handlers.Handlers
         public int SaveUserAnswer(UserAnswerCreationData pUserAnswer, int pAnswerSessionId)
         {
             AnswerSession lAnswerSession = iAnswerSessionServices.GetById(pAnswerSessionId);//esto podría no estar bien
-            var lUserAnswer = this.iUserAnswerServices.Create(pUserAnswer, lAnswerSession);
+            var lUserAnswer = this.iUserAnswerServices.CreateAsync(pUserAnswer, lAnswerSession);
 
             return lUserAnswer.Id;
         }

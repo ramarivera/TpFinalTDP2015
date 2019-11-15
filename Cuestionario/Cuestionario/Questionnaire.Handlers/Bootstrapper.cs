@@ -1,15 +1,16 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using Autofac.Features.ResolveAnything;
 using AutoMapper;
-using Questionnaire.Services;
-using Questionnaire.Services.Interfaces;
-using Questionnaire.Services.OpenTrivia;
 using NHibernate;
 using Questionnaire.Handlers.DependencyInjection;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
-using Questionnaire.Persistence;
-using Questionnaire.Services.DependencyInjection;
+using Questionnaire.Persistence.NHibernate;
+using Questionnaire.Services;
+using Questionnaire.Services.Impl;
+using Questionnaire.Services.Interfaces;
+using Questionnaire.Services.OpenTrivia;
 using IContainer = Questionnaire.Services.DependencyInjection.IContainer;
 
 namespace Questionnaire.Handlers
@@ -39,31 +40,25 @@ namespace Questionnaire.Handlers
             PerformInstancePerLifetimeRegistration<IUserAnswerServices, UserAnswerServices>(lBuilder);
             PerformInstancePerLifetimeRegistration<IUserAnswerHandler, UserAnswerHandler>(lBuilder);
 
-
             PerformInstancePerLifetimeRegistration<IContainer, AutofacContainer>(lBuilder);
 
             lBuilder.RegisterType<OpenTriviaQuestionsServices>()
                   .Named<IQuestionProvider>(QuestionProviderType.OpenTrivia.ToString().ToUpper())
                   .InstancePerLifetimeScope();
 
-            lBuilder.RegisterInstance(ConfigureAutomapper());
+            ConfigureAutomapper(lBuilder);
 
-            lBuilder.Register(
-              ctx =>
-              {
-                  var scope = ctx.Resolve<ILifetimeScope>();
-                  return new Mapper(
-                    ctx.Resolve<IConfigurationProvider>(),
-                    scope.Resolve);
-              })
-              .As<IMapper>()
-              .InstancePerLifetimeScope();
-
+            ConfigurePersistence(lBuilder);
+           
             var lContainer = lBuilder.Build();
 
             HandlerFactory.ConfigureHandlerFactory(lContainer);
         }
 
+        private static void ConfigurePersistence(ContainerBuilder lBuilder)
+        {
+            NHibernateHelper.ConfigureContainer(lBuilder);
+        }
 
         private static void PerformInstancePerLifetimeRegistration<TInterface, TImplementation>(ContainerBuilder pBuilder)
         {
@@ -72,10 +67,20 @@ namespace Questionnaire.Handlers
                    .InstancePerLifetimeScope();
         }
 
-        private static IConfigurationProvider ConfigureAutomapper()
+        private static void ConfigureAutomapper(ContainerBuilder lBuilder)
         {
-            var configuration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(IQuestionServices).Assembly));
-            return configuration;
+            var lConfiguration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(IQuestionServices).Assembly));
+
+            lBuilder.RegisterInstance(lConfiguration);
+
+            lBuilder.Register(
+              ctx =>
+              {
+                  var scope = ctx.Resolve<ILifetimeScope>();
+                  return new Mapper(ctx.Resolve<IConfigurationProvider>(), scope.Resolve);
+              })
+              .As<IMapper>()
+              .InstancePerLifetimeScope();
         }
     }
 }

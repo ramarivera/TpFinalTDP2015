@@ -11,7 +11,7 @@ namespace Questionnaire.Handlers.Handlers.Interfaces
 {
     public interface IQuestionHandler : IBaseHandler
     {
-        void HandlerImportQuestionsFromProvider(QuestionProviderType pType);
+        Task HandlerImportQuestionsFromProviderAsync(QuestionProviderType pType);
 
         IEnumerable<QuestionData> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData);
     }

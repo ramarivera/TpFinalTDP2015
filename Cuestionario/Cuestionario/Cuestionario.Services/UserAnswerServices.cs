@@ -4,13 +4,13 @@ using Questionnaire.Services.Interfaces;
 using NHibernate;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Questionnaire.Services
 {
     public class UserAnswerServices : IUserAnswerServices
     {
         private ISession iSession;
-
         private IQuestionServices iQuestionServices;
 
         public UserAnswerServices(
@@ -20,20 +20,22 @@ namespace Questionnaire.Services
             iSession = pSession;
             iQuestionServices = pQuestionServices;
         }
-        public UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
+
+        public async Task<UserAnswer> CreateAsync(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
         {
-            var lQuestion = iQuestionServices.GetById(pUserAnswerData.Question.Id);
+            // TODO RAR should we provide a get Ans by Id method, since Ans is "part" of the Q aggregate root?
 
-            var lChosenAnswer = iQuestionServices.GetAnswerById(pUserAnswerData.ChosenAnswer.Id);
+            var lQuestion = await iQuestionServices.GetByIdAsync(pUserAnswerData.Question.Id);
+            var lChosenAnswer = await iQuestionServices.GetAnswerByIdAsync(pUserAnswerData.ChosenAnswer.Id);
 
-            UserAnswer lUserAnswer = new UserAnswer
+            var lUserAnswer = new UserAnswer
             {
                 Question = lQuestion,
                 AnswerSession = pAnswerSession,
                 ChosenAnswer = lChosenAnswer
             };
 
-            iSession.Save(lUserAnswer);
+            await iSession.SaveAsync(lUserAnswer);
 
             return lUserAnswer;
         }
