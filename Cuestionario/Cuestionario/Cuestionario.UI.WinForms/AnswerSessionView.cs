@@ -52,7 +52,7 @@ namespace Questionnaire.UI.WinForms
         {
             if (!this.iCurrentQuestionViewer.CanProceed())
             {
-                MessageBox.Show("Por favor, seleccione una respuesta para la pregunta", "Questionnaire");
+                MessageBox.Show("Please, choose an answer for the question", "Questionnaire");
             }
             else
             {
@@ -131,11 +131,16 @@ namespace Questionnaire.UI.WinForms
 
         private void AnswerSessionView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("Are you sure you want to exit?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();
             }
+        }
+
+        private void iFinishBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

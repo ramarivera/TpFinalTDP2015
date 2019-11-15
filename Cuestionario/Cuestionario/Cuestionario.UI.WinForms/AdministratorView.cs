@@ -26,7 +26,7 @@ namespace Questionnaire.UI.WinForms
             {
                 lHandler.HandlerImportQuestionsFromProviderAsync(QuestionProviderType.OpenTrivia);
             }
-            MessageBox.Show("Importación finalizada", "Questionnaire");
+            MessageBox.Show("Import complete", "Questionnaire");
         }
 
         private void iBackBtn_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Questionnaire.UI.WinForms
 
         private void AdministratorView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("Are you sure you want to exit?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();

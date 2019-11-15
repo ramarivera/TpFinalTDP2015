@@ -18,7 +18,7 @@
             }
             set
             {
-
+                // TODO ver si iría algo acá
             }
         }
         

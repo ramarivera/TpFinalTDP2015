@@ -70,7 +70,7 @@
             this.iTitleLbl.Name = "iTitleLbl";
             this.iTitleLbl.Size = new System.Drawing.Size(784, 141);
             this.iTitleLbl.TabIndex = 0;
-            this.iTitleLbl.Text = "Bienvenido a Questionnaire";
+            this.iTitleLbl.Text = "Welcome to Questionnaire";
             this.iTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -90,9 +90,9 @@
             this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(293, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 19);
+            this.label6.Size = new System.Drawing.Size(178, 19);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Desarrollado por John Wayne";
+            this.label6.Text = "Developed by John Wayne";
             this.label6.UseWaitCursor = true;
             // 
             // panel3
@@ -121,7 +121,7 @@
             this.iBackBtn.Name = "iBackBtn";
             this.iBackBtn.Size = new System.Drawing.Size(83, 29);
             this.iBackBtn.TabIndex = 1;
-            this.iBackBtn.Text = "Volver";
+            this.iBackBtn.Text = "Back";
             this.iBackBtn.UseVisualStyleBackColor = true;
             this.iBackBtn.Click += new System.EventHandler(this.iBackBtn_Click);
             // 
@@ -132,7 +132,7 @@
             this.iBeginBtn.Name = "iBeginBtn";
             this.iBeginBtn.Size = new System.Drawing.Size(83, 29);
             this.iBeginBtn.TabIndex = 0;
-            this.iBeginBtn.Text = "Iniciar";
+            this.iBeginBtn.Text = "Start";
             this.iBeginBtn.UseVisualStyleBackColor = true;
             this.iBeginBtn.Click += new System.EventHandler(this.iBeginBtn_Click);
             // 
@@ -192,37 +192,37 @@
             this.iNameTxtBox.Name = "iNameTxtBox";
             this.iNameTxtBox.Size = new System.Drawing.Size(256, 31);
             this.iNameTxtBox.TabIndex = 4;
-            this.iNameTxtBox.Text = "nombre";
+            this.iNameTxtBox.Text = "name";
             // 
             // iQuestionsCountLbl
             // 
             this.iQuestionsCountLbl.AutoSize = true;
             this.iQuestionsCountLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iQuestionsCountLbl.Location = new System.Drawing.Point(107, 199);
+            this.iQuestionsCountLbl.Location = new System.Drawing.Point(129, 199);
             this.iQuestionsCountLbl.Name = "iQuestionsCountLbl";
-            this.iQuestionsCountLbl.Size = new System.Drawing.Size(277, 23);
+            this.iQuestionsCountLbl.Size = new System.Drawing.Size(219, 23);
             this.iQuestionsCountLbl.TabIndex = 3;
-            this.iQuestionsCountLbl.Text = "Seleccione el número de preguntas";
+            this.iQuestionsCountLbl.Text = "Select amount of questions";
             // 
             // iDifficultyLbl
             // 
             this.iDifficultyLbl.AutoSize = true;
             this.iDifficultyLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iDifficultyLbl.Location = new System.Drawing.Point(139, 153);
+            this.iDifficultyLbl.Location = new System.Drawing.Point(228, 153);
             this.iDifficultyLbl.Name = "iDifficultyLbl";
-            this.iDifficultyLbl.Size = new System.Drawing.Size(245, 23);
+            this.iDifficultyLbl.Size = new System.Drawing.Size(120, 23);
             this.iDifficultyLbl.TabIndex = 2;
-            this.iDifficultyLbl.Text = "Seleccione el nivel de dificultad";
+            this.iDifficultyLbl.Text = "Select dificulty";
             // 
             // iCategoryLbl
             // 
             this.iCategoryLbl.AutoSize = true;
             this.iCategoryLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iCategoryLbl.Location = new System.Drawing.Point(202, 107);
+            this.iCategoryLbl.Location = new System.Drawing.Point(222, 107);
             this.iCategoryLbl.Name = "iCategoryLbl";
-            this.iCategoryLbl.Size = new System.Drawing.Size(182, 23);
+            this.iCategoryLbl.Size = new System.Drawing.Size(126, 23);
             this.iCategoryLbl.TabIndex = 1;
-            this.iCategoryLbl.Text = "Seleccione la categoría";
+            this.iCategoryLbl.Text = "Select category";
             // 
             // iNameLbl
             // 
@@ -230,9 +230,9 @@
             this.iNameLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iNameLbl.Location = new System.Drawing.Point(152, 61);
             this.iNameLbl.Name = "iNameLbl";
-            this.iNameLbl.Size = new System.Drawing.Size(232, 23);
+            this.iNameLbl.Size = new System.Drawing.Size(196, 23);
             this.iNameLbl.TabIndex = 0;
-            this.iNameLbl.Text = "Por favor, ingrese su nombre";
+            this.iNameLbl.Text = "Please, enter your name";
             this.iNameLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // WelcomeView

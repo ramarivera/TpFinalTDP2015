@@ -29,34 +29,34 @@
         private void InitializeComponent()
         {
             this.iHeaderPnl = new System.Windows.Forms.Panel();
+            this.iTimePnl = new System.Windows.Forms.Panel();
+            this.iTimeLbl = new System.Windows.Forms.Label();
+            this.iScorePnl = new System.Windows.Forms.Panel();
+            this.iScoreLbl = new System.Windows.Forms.Label();
+            this.iTitlePnl = new System.Windows.Forms.Panel();
             this.iTitleLbl = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iRestartBtn = new System.Windows.Forms.Button();
             this.iExitBtn = new System.Windows.Forms.Button();
             this.iResultsPnl = new System.Windows.Forms.Panel();
+            this.iDataGridPnl = new System.Windows.Forms.Panel();
             this.iResultsDGV = new System.Windows.Forms.DataGridView();
+            this.iResultsTitlePnl = new System.Windows.Forms.Panel();
+            this.iBestScoresLbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.iScoreLbl = new System.Windows.Forms.Label();
-            this.iTimeLbl = new System.Windows.Forms.Label();
-            this.iBestScoresLbl = new System.Windows.Forms.Label();
-            this.iTitlePnl = new System.Windows.Forms.Panel();
-            this.iScorePnl = new System.Windows.Forms.Panel();
-            this.iTimePnl = new System.Windows.Forms.Panel();
-            this.iResultsTitlePnl = new System.Windows.Forms.Panel();
-            this.iDataGridPnl = new System.Windows.Forms.Panel();
             this.iHeaderPnl.SuspendLayout();
+            this.iTimePnl.SuspendLayout();
+            this.iScorePnl.SuspendLayout();
+            this.iTitlePnl.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.iResultsPnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iResultsDGV)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.iTitlePnl.SuspendLayout();
-            this.iScorePnl.SuspendLayout();
-            this.iTimePnl.SuspendLayout();
-            this.iResultsTitlePnl.SuspendLayout();
             this.iDataGridPnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iResultsDGV)).BeginInit();
+            this.iResultsTitlePnl.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // iHeaderPnl
@@ -70,6 +70,55 @@
             this.iHeaderPnl.Size = new System.Drawing.Size(784, 165);
             this.iHeaderPnl.TabIndex = 1;
             // 
+            // iTimePnl
+            // 
+            this.iTimePnl.Controls.Add(this.iTimeLbl);
+            this.iTimePnl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.iTimePnl.Location = new System.Drawing.Point(0, 109);
+            this.iTimePnl.Name = "iTimePnl";
+            this.iTimePnl.Size = new System.Drawing.Size(784, 56);
+            this.iTimePnl.TabIndex = 5;
+            // 
+            // iTimeLbl
+            // 
+            this.iTimeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iTimeLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iTimeLbl.Location = new System.Drawing.Point(0, 0);
+            this.iTimeLbl.Name = "iTimeLbl";
+            this.iTimeLbl.Size = new System.Drawing.Size(784, 56);
+            this.iTimeLbl.TabIndex = 2;
+            this.iTimeLbl.Text = "Game time: 0 seconds";
+            this.iTimeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // iScorePnl
+            // 
+            this.iScorePnl.Controls.Add(this.iScoreLbl);
+            this.iScorePnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iScorePnl.Location = new System.Drawing.Point(0, 68);
+            this.iScorePnl.Name = "iScorePnl";
+            this.iScorePnl.Size = new System.Drawing.Size(784, 38);
+            this.iScorePnl.TabIndex = 4;
+            // 
+            // iScoreLbl
+            // 
+            this.iScoreLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iScoreLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iScoreLbl.Location = new System.Drawing.Point(0, 0);
+            this.iScoreLbl.Name = "iScoreLbl";
+            this.iScoreLbl.Size = new System.Drawing.Size(784, 38);
+            this.iScoreLbl.TabIndex = 1;
+            this.iScoreLbl.Text = "Score: 0 points";
+            this.iScoreLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // iTitlePnl
+            // 
+            this.iTitlePnl.Controls.Add(this.iTitleLbl);
+            this.iTitlePnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iTitlePnl.Location = new System.Drawing.Point(0, 0);
+            this.iTitlePnl.Name = "iTitlePnl";
+            this.iTitlePnl.Size = new System.Drawing.Size(784, 68);
+            this.iTitlePnl.TabIndex = 3;
+            // 
             // iTitleLbl
             // 
             this.iTitleLbl.BackColor = System.Drawing.Color.Transparent;
@@ -79,7 +128,7 @@
             this.iTitleLbl.Name = "iTitleLbl";
             this.iTitleLbl.Size = new System.Drawing.Size(784, 68);
             this.iTitleLbl.TabIndex = 0;
-            this.iTitleLbl.Text = "¡Gracias por paticipar!";
+            this.iTitleLbl.Text = "Thanks for playing!";
             this.iTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
@@ -108,7 +157,7 @@
             this.iRestartBtn.Name = "iRestartBtn";
             this.iRestartBtn.Size = new System.Drawing.Size(83, 29);
             this.iRestartBtn.TabIndex = 1;
-            this.iRestartBtn.Text = "Reiniciar";
+            this.iRestartBtn.Text = "Restart";
             this.iRestartBtn.UseVisualStyleBackColor = true;
             this.iRestartBtn.Click += new System.EventHandler(this.iRestartBtn_Click);
             // 
@@ -119,7 +168,7 @@
             this.iExitBtn.Name = "iExitBtn";
             this.iExitBtn.Size = new System.Drawing.Size(83, 29);
             this.iExitBtn.TabIndex = 0;
-            this.iExitBtn.Text = "Salir";
+            this.iExitBtn.Text = "Exit";
             this.iExitBtn.UseVisualStyleBackColor = true;
             this.iExitBtn.Click += new System.EventHandler(this.iExitBtn_Click);
             // 
@@ -132,6 +181,15 @@
             this.iResultsPnl.Name = "iResultsPnl";
             this.iResultsPnl.Size = new System.Drawing.Size(784, 285);
             this.iResultsPnl.TabIndex = 3;
+            // 
+            // iDataGridPnl
+            // 
+            this.iDataGridPnl.Controls.Add(this.iResultsDGV);
+            this.iDataGridPnl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iDataGridPnl.Location = new System.Drawing.Point(0, 46);
+            this.iDataGridPnl.Name = "iDataGridPnl";
+            this.iDataGridPnl.Size = new System.Drawing.Size(784, 239);
+            this.iDataGridPnl.TabIndex = 4;
             // 
             // iResultsDGV
             // 
@@ -146,6 +204,26 @@
             this.iResultsDGV.ReadOnly = true;
             this.iResultsDGV.Size = new System.Drawing.Size(784, 239);
             this.iResultsDGV.TabIndex = 0;
+            // 
+            // iResultsTitlePnl
+            // 
+            this.iResultsTitlePnl.Controls.Add(this.iBestScoresLbl);
+            this.iResultsTitlePnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iResultsTitlePnl.Location = new System.Drawing.Point(0, 0);
+            this.iResultsTitlePnl.Name = "iResultsTitlePnl";
+            this.iResultsTitlePnl.Size = new System.Drawing.Size(784, 46);
+            this.iResultsTitlePnl.TabIndex = 3;
+            // 
+            // iBestScoresLbl
+            // 
+            this.iBestScoresLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iBestScoresLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iBestScoresLbl.Location = new System.Drawing.Point(0, 0);
+            this.iBestScoresLbl.Name = "iBestScoresLbl";
+            this.iBestScoresLbl.Size = new System.Drawing.Size(784, 46);
+            this.iBestScoresLbl.TabIndex = 2;
+            this.iBestScoresLbl.Text = "Best results";
+            this.iBestScoresLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -163,87 +241,9 @@
             this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(293, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 19);
+            this.label6.Size = new System.Drawing.Size(178, 19);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Desarrollado por John Wayne";
-            // 
-            // iScoreLbl
-            // 
-            this.iScoreLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iScoreLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iScoreLbl.Location = new System.Drawing.Point(0, 0);
-            this.iScoreLbl.Name = "iScoreLbl";
-            this.iScoreLbl.Size = new System.Drawing.Size(784, 38);
-            this.iScoreLbl.TabIndex = 1;
-            this.iScoreLbl.Text = "Puntaje: 0 puntos";
-            this.iScoreLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // iTimeLbl
-            // 
-            this.iTimeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iTimeLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iTimeLbl.Location = new System.Drawing.Point(0, 0);
-            this.iTimeLbl.Name = "iTimeLbl";
-            this.iTimeLbl.Size = new System.Drawing.Size(784, 56);
-            this.iTimeLbl.TabIndex = 2;
-            this.iTimeLbl.Text = "Tiempo de respuesta: 0 segundos";
-            this.iTimeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // iBestScoresLbl
-            // 
-            this.iBestScoresLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iBestScoresLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iBestScoresLbl.Location = new System.Drawing.Point(0, 0);
-            this.iBestScoresLbl.Name = "iBestScoresLbl";
-            this.iBestScoresLbl.Size = new System.Drawing.Size(784, 46);
-            this.iBestScoresLbl.TabIndex = 2;
-            this.iBestScoresLbl.Text = "Mejores resultados";
-            this.iBestScoresLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // iTitlePnl
-            // 
-            this.iTitlePnl.Controls.Add(this.iTitleLbl);
-            this.iTitlePnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iTitlePnl.Location = new System.Drawing.Point(0, 0);
-            this.iTitlePnl.Name = "iTitlePnl";
-            this.iTitlePnl.Size = new System.Drawing.Size(784, 68);
-            this.iTitlePnl.TabIndex = 3;
-            // 
-            // iScorePnl
-            // 
-            this.iScorePnl.Controls.Add(this.iScoreLbl);
-            this.iScorePnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iScorePnl.Location = new System.Drawing.Point(0, 68);
-            this.iScorePnl.Name = "iScorePnl";
-            this.iScorePnl.Size = new System.Drawing.Size(784, 38);
-            this.iScorePnl.TabIndex = 4;
-            // 
-            // iTimePnl
-            // 
-            this.iTimePnl.Controls.Add(this.iTimeLbl);
-            this.iTimePnl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.iTimePnl.Location = new System.Drawing.Point(0, 109);
-            this.iTimePnl.Name = "iTimePnl";
-            this.iTimePnl.Size = new System.Drawing.Size(784, 56);
-            this.iTimePnl.TabIndex = 5;
-            // 
-            // iResultsTitlePnl
-            // 
-            this.iResultsTitlePnl.Controls.Add(this.iBestScoresLbl);
-            this.iResultsTitlePnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iResultsTitlePnl.Location = new System.Drawing.Point(0, 0);
-            this.iResultsTitlePnl.Name = "iResultsTitlePnl";
-            this.iResultsTitlePnl.Size = new System.Drawing.Size(784, 46);
-            this.iResultsTitlePnl.TabIndex = 3;
-            // 
-            // iDataGridPnl
-            // 
-            this.iDataGridPnl.Controls.Add(this.iResultsDGV);
-            this.iDataGridPnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iDataGridPnl.Location = new System.Drawing.Point(0, 46);
-            this.iDataGridPnl.Name = "iDataGridPnl";
-            this.iDataGridPnl.Size = new System.Drawing.Size(784, 239);
-            this.iDataGridPnl.TabIndex = 4;
+            this.label6.Text = "Developed by John Wayne";
             // 
             // ResultsView
             // 
@@ -260,17 +260,17 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Questionnaire";
             this.iHeaderPnl.ResumeLayout(false);
+            this.iTimePnl.ResumeLayout(false);
+            this.iScorePnl.ResumeLayout(false);
+            this.iTitlePnl.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.iResultsPnl.ResumeLayout(false);
+            this.iDataGridPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iResultsDGV)).EndInit();
+            this.iResultsTitlePnl.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.iTitlePnl.ResumeLayout(false);
-            this.iScorePnl.ResumeLayout(false);
-            this.iTimePnl.ResumeLayout(false);
-            this.iResultsTitlePnl.ResumeLayout(false);
-            this.iDataGridPnl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

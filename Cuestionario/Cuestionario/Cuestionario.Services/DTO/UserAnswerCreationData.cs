@@ -11,6 +11,6 @@ namespace Questionnaire.Services.DTO
         public QuestionData Question { get; set; }
         public AnswerSessionData AnswerSession { get; set; }
         public AnswerData ChosenAnswer { get; set; }
-        public bool AnswerStatus { get; set; }
+        public bool AnswerStatus { get; set; } // TODO ver esto
     }
 }

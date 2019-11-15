@@ -20,7 +20,7 @@ namespace Questionnaire.UI.WinForms
 
             Bootstrapper.BootstrapApplication();
 
-            //Application.Run(new WelcomeView());
+            //Application.Run(new ResultView());
             Application.Run(new StartUpView());
         }
     }

@@ -19,12 +19,11 @@ namespace Questionnaire.Model
 
         public virtual string Username { get; set; }
 
-        // TODO add comment that the duration is in seconds
-        public virtual double SessionDuration { get; set; }
-
         public virtual double Score { get; set; }
 
         public virtual DateTime StartTime { get; set; }
+
+        public virtual DateTime? EndTime { get; set; }
 
         public virtual IEnumerable<UserAnswer> Answers => answers;
     }

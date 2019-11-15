@@ -39,9 +39,9 @@ id int identity(1,1) not null PRIMARY KEY,
 username varchar(50) not null,
 categoryId int not null,
 difficultyId int not null,
-sessionDuration float not null,
 score float not null,
 startTime DateTime not null,
+endTime DateTime,
 CONSTRAINT FK_AnswerSessions_categoryId FOREIGN KEY (categoryId) REFERENCES Categories(id),
 CONSTRAINT FK_AnswerSessions_difficultyId FOREIGN KEY (difficultyId) REFERENCES Difficulties(id)
 )
