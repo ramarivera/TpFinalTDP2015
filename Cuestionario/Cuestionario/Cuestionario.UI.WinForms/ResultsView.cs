@@ -22,27 +22,27 @@ namespace Questionnaire.UI.WinForms
             using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
             {
                 AnswerSessionData lAnswerSession = lHandler.GetById(pAnswerSessionId);
-                this.iScoreLbl.Text = String.Format("Puntaje: {0} puntos", lAnswerSession.Score);
-                this.iTimeLbl.Text = String.Format("Tiempo de respuesta: {0} segundos", lAnswerSession.SessionDuration);
+                this.iScoreLbl.Text = String.Format("Score: {0} points", lAnswerSession.Score);
+                this.iTimeLbl.Text = String.Format("Game time: {0} seconds", lAnswerSession.AnswerTime);
 
                 IList<AnswerSessionData> lAnswerSessions = lHandler.GetAll()
                     .OrderByDescending(x => x.Score).ToList();
 
-                // TODO falta limitar que sean 20
+                // falta limitar que sean 20
                 var lSource = new BindingList<AnswerSessionData>(lAnswerSessions);
                 iResultsDGV.DataSource = lSource.Select(x => new
                 {
                     Nombre = x.Username,
-                    Puntaje = x.Score +" puntos",
-                    Tiempo = x.SessionDuration +" segundos",
-                    Fecha = x.StartTime
+                    Puntaje = x.Score +" points",
+                    Tiempo = x.AnswerTime +" seconds",
+                    Fecha = x.Date
                 }).ToList();
             }
         }
 
         private void iExitBtn_Click(object sender, EventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("Are you sure you want to exit?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();
@@ -51,7 +51,7 @@ namespace Questionnaire.UI.WinForms
 
         private void iRestartBtn_Click(object sender, EventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea reiniciar el Questionnaire?", "Questionnaire", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("Are you sure you want to play again?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 WelcomeView lWelcomeView = new WelcomeView();

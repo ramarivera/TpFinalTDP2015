@@ -30,15 +30,15 @@
         {
             this.iQuestionTitle = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.iAnswersPnl = new System.Windows.Forms.Panel();
+            this.iAnswerBtn1 = new System.Windows.Forms.RadioButton();
+            this.iAnswerBtn2 = new System.Windows.Forms.RadioButton();
             this.iAnswerBtn4 = new System.Windows.Forms.RadioButton();
             this.iAnswerBtn3 = new System.Windows.Forms.RadioButton();
-            this.iAnswerBtn2 = new System.Windows.Forms.RadioButton();
-            this.iAnswerBtn1 = new System.Windows.Forms.RadioButton();
             this.iTitlePnl = new System.Windows.Forms.Panel();
-            this.iAnswersPnl = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
-            this.iTitlePnl.SuspendLayout();
             this.iAnswersPnl.SuspendLayout();
+            this.iTitlePnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // iQuestionTitle
@@ -50,7 +50,7 @@
             this.iQuestionTitle.Name = "iQuestionTitle";
             this.iQuestionTitle.Size = new System.Drawing.Size(754, 100);
             this.iQuestionTitle.TabIndex = 0;
-            this.iQuestionTitle.Text = "Espacio dinámico para la pregunta";
+            this.iQuestionTitle.Text = "Dynamic space for the question";
             this.iQuestionTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
@@ -62,66 +62,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(754, 390);
             this.panel4.TabIndex = 4;
-            // 
-            // iAnswerBtn4
-            // 
-            this.iAnswerBtn4.AutoSize = true;
-            this.iAnswerBtn4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn4.Location = new System.Drawing.Point(122, 221);
-            this.iAnswerBtn4.Name = "iAnswerBtn4";
-            this.iAnswerBtn4.Size = new System.Drawing.Size(121, 27);
-            this.iAnswerBtn4.TabIndex = 7;
-            this.iAnswerBtn4.Text = "Respuesta 4";
-            this.iAnswerBtn4.UseVisualStyleBackColor = true;
-            this.iAnswerBtn4.CheckedChanged += new System.EventHandler(this.iAnswerBtn4_CheckedChanged);
-            // 
-            // iAnswerBtn3
-            // 
-            this.iAnswerBtn3.AutoSize = true;
-            this.iAnswerBtn3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn3.Location = new System.Drawing.Point(122, 163);
-            this.iAnswerBtn3.Name = "iAnswerBtn3";
-            this.iAnswerBtn3.Size = new System.Drawing.Size(121, 27);
-            this.iAnswerBtn3.TabIndex = 6;
-            this.iAnswerBtn3.Text = "Respuesta 3";
-            this.iAnswerBtn3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.iAnswerBtn3.UseVisualStyleBackColor = true;
-            this.iAnswerBtn3.CheckedChanged += new System.EventHandler(this.iAnswerBtn3_CheckedChanged);
-            // 
-            // iAnswerBtn2
-            // 
-            this.iAnswerBtn2.AutoSize = true;
-            this.iAnswerBtn2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn2.Location = new System.Drawing.Point(122, 105);
-            this.iAnswerBtn2.Name = "iAnswerBtn2";
-            this.iAnswerBtn2.Size = new System.Drawing.Size(121, 27);
-            this.iAnswerBtn2.TabIndex = 5;
-            this.iAnswerBtn2.Text = "Respuesta 2";
-            this.iAnswerBtn2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.iAnswerBtn2.UseVisualStyleBackColor = true;
-            this.iAnswerBtn2.CheckedChanged += new System.EventHandler(this.iAnswerBtn2_CheckedChanged);
-            // 
-            // iAnswerBtn1
-            // 
-            this.iAnswerBtn1.AutoSize = true;
-            this.iAnswerBtn1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn1.Location = new System.Drawing.Point(122, 47);
-            this.iAnswerBtn1.Name = "iAnswerBtn1";
-            this.iAnswerBtn1.Size = new System.Drawing.Size(121, 27);
-            this.iAnswerBtn1.TabIndex = 4;
-            this.iAnswerBtn1.Text = "Respuesta 1";
-            this.iAnswerBtn1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.iAnswerBtn1.UseVisualStyleBackColor = true;
-            this.iAnswerBtn1.CheckedChanged += new System.EventHandler(this.iAnswerBtn1_CheckedChanged);
-            // 
-            // iTitlePnl
-            // 
-            this.iTitlePnl.Controls.Add(this.iQuestionTitle);
-            this.iTitlePnl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iTitlePnl.Location = new System.Drawing.Point(0, 0);
-            this.iTitlePnl.Name = "iTitlePnl";
-            this.iTitlePnl.Size = new System.Drawing.Size(754, 100);
-            this.iTitlePnl.TabIndex = 8;
             // 
             // iAnswersPnl
             // 
@@ -135,6 +75,66 @@
             this.iAnswersPnl.Size = new System.Drawing.Size(754, 290);
             this.iAnswersPnl.TabIndex = 9;
             // 
+            // iAnswerBtn1
+            // 
+            this.iAnswerBtn1.AutoSize = true;
+            this.iAnswerBtn1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAnswerBtn1.Location = new System.Drawing.Point(122, 47);
+            this.iAnswerBtn1.Name = "iAnswerBtn1";
+            this.iAnswerBtn1.Size = new System.Drawing.Size(101, 27);
+            this.iAnswerBtn1.TabIndex = 4;
+            this.iAnswerBtn1.Text = "Answer 1";
+            this.iAnswerBtn1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iAnswerBtn1.UseVisualStyleBackColor = true;
+            this.iAnswerBtn1.CheckedChanged += new System.EventHandler(this.iAnswerBtn1_CheckedChanged);
+            // 
+            // iAnswerBtn2
+            // 
+            this.iAnswerBtn2.AutoSize = true;
+            this.iAnswerBtn2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAnswerBtn2.Location = new System.Drawing.Point(122, 105);
+            this.iAnswerBtn2.Name = "iAnswerBtn2";
+            this.iAnswerBtn2.Size = new System.Drawing.Size(101, 27);
+            this.iAnswerBtn2.TabIndex = 5;
+            this.iAnswerBtn2.Text = "Answer 2";
+            this.iAnswerBtn2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iAnswerBtn2.UseVisualStyleBackColor = true;
+            this.iAnswerBtn2.CheckedChanged += new System.EventHandler(this.iAnswerBtn2_CheckedChanged);
+            // 
+            // iAnswerBtn4
+            // 
+            this.iAnswerBtn4.AutoSize = true;
+            this.iAnswerBtn4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAnswerBtn4.Location = new System.Drawing.Point(122, 221);
+            this.iAnswerBtn4.Name = "iAnswerBtn4";
+            this.iAnswerBtn4.Size = new System.Drawing.Size(101, 27);
+            this.iAnswerBtn4.TabIndex = 7;
+            this.iAnswerBtn4.Text = "Answer 4";
+            this.iAnswerBtn4.UseVisualStyleBackColor = true;
+            this.iAnswerBtn4.CheckedChanged += new System.EventHandler(this.iAnswerBtn4_CheckedChanged);
+            // 
+            // iAnswerBtn3
+            // 
+            this.iAnswerBtn3.AutoSize = true;
+            this.iAnswerBtn3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iAnswerBtn3.Location = new System.Drawing.Point(122, 163);
+            this.iAnswerBtn3.Name = "iAnswerBtn3";
+            this.iAnswerBtn3.Size = new System.Drawing.Size(101, 27);
+            this.iAnswerBtn3.TabIndex = 6;
+            this.iAnswerBtn3.Text = "Answer 3";
+            this.iAnswerBtn3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iAnswerBtn3.UseVisualStyleBackColor = true;
+            this.iAnswerBtn3.CheckedChanged += new System.EventHandler(this.iAnswerBtn3_CheckedChanged);
+            // 
+            // iTitlePnl
+            // 
+            this.iTitlePnl.Controls.Add(this.iQuestionTitle);
+            this.iTitlePnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iTitlePnl.Location = new System.Drawing.Point(0, 0);
+            this.iTitlePnl.Name = "iTitlePnl";
+            this.iTitlePnl.Size = new System.Drawing.Size(754, 100);
+            this.iTitlePnl.TabIndex = 8;
+            // 
             // MultipleChoiceQuestionViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,9 +143,9 @@
             this.Name = "MultipleChoiceQuestionViewer";
             this.Size = new System.Drawing.Size(757, 499);
             this.panel4.ResumeLayout(false);
-            this.iTitlePnl.ResumeLayout(false);
             this.iAnswersPnl.ResumeLayout(false);
             this.iAnswersPnl.PerformLayout();
+            this.iTitlePnl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

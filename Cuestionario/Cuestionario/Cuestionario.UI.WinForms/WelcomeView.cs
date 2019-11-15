@@ -61,7 +61,7 @@ namespace Questionnaire.UI.WinForms
         {
             if (!this.CanProceed())
             {
-                MessageBox.Show("Por favor, complete la información inicial", "Questionnaire");
+                MessageBox.Show("Please, complete all fields", "Questionnaire");
             }
             else
             {
@@ -99,7 +99,7 @@ namespace Questionnaire.UI.WinForms
 
         private void WelcomeView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult lDialogResult = MessageBox.Show("¿Está seguro que desea salir?", "Questionnaire", MessageBoxButtons.YesNo);
+            DialogResult lDialogResult = MessageBox.Show("Are you sure you want to exit?", "Questionnaire", MessageBoxButtons.YesNo);
             if (lDialogResult == DialogResult.Yes)
             {
                 Application.ExitThread();
