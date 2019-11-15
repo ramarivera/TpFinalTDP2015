@@ -71,7 +71,8 @@ namespace Questionnaire.Handlers
         {
             var lConfiguration = new MapperConfiguration(cfg => cfg.AddMaps(typeof(IQuestionServices).Assembly));
 
-            lBuilder.RegisterInstance(lConfiguration);
+            lBuilder.RegisterInstance(lConfiguration)
+                    .As<IConfigurationProvider>();
 
             lBuilder.Register(
               ctx =>

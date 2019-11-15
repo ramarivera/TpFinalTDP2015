@@ -4,6 +4,7 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using Questionnaire.Model;
 using Questionnaire.Persistence.NHibernate.Mappings;
+using Questionnaire.Persistence.NHibernate.Repository;
 using Questionnaire.Persistence.NHibernate.UnitOfWork;
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Persistence.UnitOfWork;
@@ -27,7 +28,7 @@ namespace Questionnaire.Persistence.NHibernate
                 .As<IUnitOfWork>()
                 .InstancePerLifetimeScope();
 
-            pContainerBuilder.RegisterGeneric(typeof(IRepository<>)).OnActivating(e =>
+            pContainerBuilder.RegisterGeneric(typeof(NHibernateGenericRepository<>)).OnActivating(e =>
             {
                 if (e.Parameters.FirstOrDefault() is TypedParameter typeParam)
                 {
@@ -37,7 +38,7 @@ namespace Questionnaire.Persistence.NHibernate
                     var lGenericRepository = lGenericGetRepositoryMethod.Invoke(lUnitOfWork, null);
                     e.ReplaceInstance(lGenericRepository);
                 }
-            });
+            }).As(typeof(IRepository<>));
         }
 
         public static ISessionFactory CreateSessionFactory()
