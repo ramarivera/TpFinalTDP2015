@@ -51,9 +51,9 @@ namespace Questionnaire.Services.Impl
                 QuestionType = pQuestionData.QuestionType,
             };
             
+            await this.iQuestionRepository.AddAsync(lQuestion);
 
             lQuestion.CorrectAnswer = CreateAnswer(pQuestionData.CorrectAnswer);
-            await this.iQuestionRepository.AddAsync(lQuestion);
 
             foreach (var lAnswerData in pQuestionData.Answers.Where(x => x != pQuestionData.CorrectAnswer))
             {
