@@ -16,6 +16,11 @@ namespace Questionnaire.Services
             iSession = pSession;
         }
 
+        /// <summary>
+        /// Persist a Category in the database
+        /// </summary>
+        /// <param name="pCategoryData"></param>
+        /// <returns></returns>
         public Category Create(CategoryData pCategoryData)
         {
             Category lCategory = new Category
@@ -59,6 +64,11 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Retrieve a Category by description, if it doesn´t exist create it
+        /// </summary>
+        /// <param name="pCategoryDescription"></param>
+        /// <returns></returns>
         public CategoryData RetrieveByDescription(string pCategoryDescription)
         {
             var lCategory = GetAll()

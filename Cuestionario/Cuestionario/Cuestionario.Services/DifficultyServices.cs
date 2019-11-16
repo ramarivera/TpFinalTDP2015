@@ -17,6 +17,12 @@ namespace Questionnaire.Services
         {
             iSession = pSession;
         }
+        
+        /// <summary>
+        /// Persist a Difficulty in the database
+        /// </summary>
+        /// <param name="pDifficultyData"></param>
+        /// <returns></returns>
         public Difficulty Create(DifficultyData pDifficultyData)
         {
             Difficulty lDifficulty = new Difficulty
@@ -60,6 +66,11 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Retrieve a Difficulty by description, if it doesn´t exist create it
+        /// </summary>
+        /// <param name="pDifficultyDescription"></param>
+        /// <returns></returns>
         public DifficultyData RetrieveByDescription(string pDifficultyDescription)
         {
             var lDifficulty = GetAll()
@@ -84,6 +95,11 @@ namespace Questionnaire.Services
             return lDifficultyData;
         }
 
+        /// <summary>
+        /// Retrieve a Difficulty Factor according to a given description
+        /// </summary>
+        /// <param name="pDescription"></param>
+        /// <returns></returns>
         public int GetDifficultyFactor(string pDescription)
         {
             int lDifficultyFactor = 0;

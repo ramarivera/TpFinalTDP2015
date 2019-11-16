@@ -31,6 +31,11 @@ namespace Questionnaire.Services.OpenTrivia
             iQuestionServices = questionServices;
         }
 
+        /// <summary>
+        /// Retrieve questions from a given url
+        /// </summary>
+        /// <param name="pPath"></param>
+        /// <returns></returns>
         public async Task<OpenTriviaResponseData> GetQuestionsAsync(string pPath)
         {
             OpenTriviaResponseData lQuestions = null;
@@ -45,14 +50,16 @@ namespace Questionnaire.Services.OpenTrivia
             return lQuestions;
         }
 
+        /// <summary>
+        /// Retrieve the list of all questions
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<QuestionCreationData> RetrieveAllQuestions()
         {
-            //obtiene las preguntas desde Opentdb
             Task<OpenTriviaResponseData> lOperTriviaQuestions = GetQuestionsAsync("https://opentdb.com/api.php?amount=50");
 
             IList<QuestionCreationData> lQuestions = new List<QuestionCreationData>();
 
-            //para cada pregunta obtenida
             foreach (var lOpenTriviaQuestion in lOperTriviaQuestions.Result.Results)
             {
                 var lCategoryData = iCategoryServices.RetrieveByDescription(lOpenTriviaQuestion.Category);
@@ -78,7 +85,7 @@ namespace Questionnaire.Services.OpenTrivia
                     QuestionType = lQuestionType,
                 };
 
-                //para la respuesta correcta de la pregunta
+                //for the correct answer of the question
                 AnswerCreationData lAnswerData = new AnswerCreationData
                 {
                     Description = WebUtility.HtmlDecode(lOpenTriviaQuestion.CorrectAnswer),
@@ -88,7 +95,7 @@ namespace Questionnaire.Services.OpenTrivia
                 lQuestionData.Answers.Add(lAnswerData);
                 lQuestionData.CorrectAnswer = lAnswerData;
 
-                //para cada respuesta incorrecta de la pregunta
+                //for the incorrect answers of the question
                 foreach (var lOpenTriviaAnswer in lOpenTriviaQuestion.IncorrectAnswers)
                 {
                     lAnswerData = new AnswerCreationData
@@ -106,6 +113,11 @@ namespace Questionnaire.Services.OpenTrivia
             return lQuestions.AsEnumerable();
         }
 
+        /// <summary>
+        /// Remove from the given set the Questions that were already imported
+        /// </summary>
+        /// <param name="pQuestions"></param>
+        /// <returns></returns>
         public IEnumerable<QuestionCreationData> FilterNotImportedQuestions(IEnumerable<Question> pQuestions)
         {
             IEnumerable<QuestionCreationData> lImportedQuestions = this.RetrieveAllQuestions();
@@ -117,6 +129,12 @@ namespace Questionnaire.Services.OpenTrivia
             return lNewQuestions;
         }
 
+        /// <summary>
+        /// Compare two questions
+        /// </summary>
+        /// <param name="pQuestion"></param>
+        /// <param name="pQuestionData"></param>
+        /// <returns></returns>
         public bool AreQuestionsEqual(Question pQuestion, QuestionCreationData pQuestionData)
         {
             return (pQuestion.Description == pQuestionData.Description);
