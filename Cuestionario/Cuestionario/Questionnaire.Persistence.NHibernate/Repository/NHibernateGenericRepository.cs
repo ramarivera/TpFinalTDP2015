@@ -22,8 +22,6 @@ namespace Questionnaire.Persistence.NHibernate.Repository
             if (pEntityToAdd == null) throw new ArgumentNullException(nameof(pEntityToAdd));
 
             await this.iSession.SaveAsync(pEntityToAdd);
-
-            return;
         }
 
         public async Task DeleteByIdAsync(object pId)
@@ -32,8 +30,6 @@ namespace Questionnaire.Persistence.NHibernate.Repository
 
             var lEntity = await this.GetByIdAsync(pId);
             await this.DeleteAsync(lEntity);
-
-            return;
         }
 
         public Task DeleteAsync(TEntity pEntityToDelete)
@@ -59,8 +55,6 @@ namespace Questionnaire.Persistence.NHibernate.Repository
             if (pEntityToUpdate == null) throw new ArgumentNullException(nameof(pEntityToUpdate));
 
             await this.iSession.UpdateAsync(pEntityToUpdate);
-
-            return;
         }
     }
 }

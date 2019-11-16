@@ -53,6 +53,7 @@ namespace Questionnaire.Services.Impl
             
 
             lQuestion.CorrectAnswer = CreateAnswer(pQuestionData.CorrectAnswer);
+            await this.iQuestionRepository.AddAsync(lQuestion);
 
             foreach (var lAnswerData in pQuestionData.Answers.Where(x => x != pQuestionData.CorrectAnswer))
             {
@@ -60,7 +61,7 @@ namespace Questionnaire.Services.Impl
                 lQuestion.AddAnswer(lAnswer);
             }
 
-            await this.iQuestionRepository.AddAsync(lQuestion);
+            await this.iQuestionRepository.UpdateAsync(lQuestion);
 
             return lQuestion;
         }
