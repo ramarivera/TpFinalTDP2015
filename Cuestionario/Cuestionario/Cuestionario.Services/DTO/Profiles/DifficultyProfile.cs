@@ -3,6 +3,9 @@ using Questionnaire.Model;
 
 namespace Questionnaire.Services.DTO.Profiles
 {
+    /// <summary>
+    /// Maps <see cref="Difficulty"/> model class to <see cref="DifficultyData"/> data transfer object using AutoMapper
+    /// </summary>
     public class DifficultyProfile : Profile
     {
         public DifficultyProfile()

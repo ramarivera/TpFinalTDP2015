@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Questionnaire.Model;
 
 namespace Questionnaire.Services.DTO
 {
+    /// <summary>
+    /// Represents <see cref="AnswerSession"/> data transfer object
+    /// </summary>
     public class AnswerSessionData
     {
         public int Id { get; set; }
@@ -16,6 +17,10 @@ namespace Questionnaire.Services.DTO
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public IList<UserAnswerData> UserAnswers { get; set; }
+        
+        /// <summary>
+        /// Expressed in seconds
+        /// </summary>
         public int SessionDuration
         {
             get

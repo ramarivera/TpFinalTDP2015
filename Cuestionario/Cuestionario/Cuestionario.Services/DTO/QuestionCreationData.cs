@@ -1,8 +1,12 @@
 ﻿using Questionnaire.Model.Enums;
 using System.Collections.Generic;
+using Questionnaire.Model;
 
 namespace Questionnaire.Services.DTO
 {
+    /// <summary>
+    /// Represents <see cref="Question"/> creation data transfer object
+    /// </summary>
     public class QuestionCreationData
     {
         public QuestionCreationData()

@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Questionnaire.Model;
 
 namespace Questionnaire.Services.DTO
 {
+    /// <summary>
+    /// Represents <see cref="UserAnswer"/> creation data transfer object
+    /// </summary>
     public class UserAnswerCreationData
     {
         public QuestionData Question { get; set; }
         public AnswerSessionData AnswerSession { get; set; }
         public AnswerData ChosenAnswer { get; set; }
-        public bool AnswerStatus { get; set; } // TODO ver esto
+        public bool AnswerStatus { get; set; }
     }
 }

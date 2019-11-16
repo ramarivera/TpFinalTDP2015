@@ -3,7 +3,7 @@
 namespace Questionnaire.Model
 {
     /// <summary>
-    /// Represents the Category to which a Question belongs
+    /// Represents the Category to which a <see cref="Model.Question"/> belongs
     /// </summary>
     public class Category
     {

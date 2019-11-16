@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Questionnaire.Model;
 
 namespace Questionnaire.Services.DTO.Profiles
 {
+    /// <summary>
+    /// Maps <see cref="Question"/> model class to <see cref="QuestionData"/> data transfer object using AutoMapper
+    /// </summary>
     public class QuestionProfile : Profile
     {
         public QuestionProfile()

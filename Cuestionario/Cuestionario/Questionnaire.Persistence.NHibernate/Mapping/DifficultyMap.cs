@@ -4,7 +4,7 @@ using Questionnaire.Model;
 namespace Questionnaire.Persistence.NHibernate.Mappings
 {
     /// <summary>
-    /// Maps the Difficulty's domain model to its representation in the solution's relational database
+    /// Maps <see cref="Difficulty"/> to its representation in the solution's relational database
     /// </summary>
     class DifficultyMap : ClassMap<Difficulty>
     {

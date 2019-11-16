@@ -3,7 +3,7 @@
 namespace Questionnaire.Model
 {
     /// <summary>
-    /// Represents the Difficulty to which a Question belongs
+    /// Represents the Difficulty to which a <see cref="Model.Question"/> belongs
     /// </summary>
     // TODO review if, since diff and cat both have a list of questions, an specification patter 
     // would be of any use

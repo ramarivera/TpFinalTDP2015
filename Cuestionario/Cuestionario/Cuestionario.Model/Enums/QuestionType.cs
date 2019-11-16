@@ -1,7 +1,7 @@
 ﻿namespace Questionnaire.Model.Enums
 {
     /// <summary>
-    /// Represents Question types
+    /// Represents <see cref="Question"/> types
     /// </summary>
     // TODO ver si se puede sumar algo más
     public enum QuestionType

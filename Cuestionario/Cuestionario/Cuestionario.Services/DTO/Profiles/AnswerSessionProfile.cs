@@ -3,6 +3,9 @@ using Questionnaire.Model;
 
 namespace Questionnaire.Services.DTO.Profiles
 {
+    /// <summary>
+    /// Maps <see cref="AnswerSession"/> model class to <see cref="AnswerSessionData"/> data transfer object using AutoMapper
+    /// </summary>
     public class AnswerSessionProfile : Profile
     {
         public AnswerSessionProfile()

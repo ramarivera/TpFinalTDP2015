@@ -1,7 +1,7 @@
 ﻿namespace Questionnaire.Model.Enums
 {
     /// <summary>
-    /// Represents the factor associated to a Difficulty, used in the Answer Session score's calculation
+    /// Represents the factor associated to a <see cref="Difficulty"/>, used in the <see cref="AnswerSession"/> score's calculation
     /// </summary>
     public enum DifficultyFactor
     {

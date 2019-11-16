@@ -4,7 +4,7 @@ using FluentNHibernate.Mapping;
 namespace Questionnaire.Persistence.NHibernate.Mappings
 {
     /// <summary>
-    /// Maps the Answer Session's domain model to its representation in the solution's relational database
+    /// Maps <see cref="AnswerSession"/> to its representation in the solution's relational database
     /// </summary>
     class AnswerSessionMap : ClassMap<AnswerSession>
     {
