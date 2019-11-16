@@ -1,5 +1,8 @@
 ﻿namespace Questionnaire.Model
 {
+    /// <summary>
+    /// Represent each User Answer during a Questionnaire's Answer Session
+    /// </summary>
     public class UserAnswer
     {
         public virtual int Id { get; set; }

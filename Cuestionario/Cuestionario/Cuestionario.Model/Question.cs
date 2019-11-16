@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Model
 {
+    /// <summary>
+    /// Represents a Questionnaire's Question, which contains many Answers, and belongs to a Category and Difficulty
+    /// </summary>
     public class Question : BaseEntity
     {
         private readonly ICollection<Answer> answers;

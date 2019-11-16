@@ -2,6 +2,9 @@
 
 namespace Questionnaire.Model
 {
+    /// <summary>
+    /// Represents the Category to which a Question belongs
+    /// </summary>
     public class Category
     {
         private readonly ICollection<Question> questions;
