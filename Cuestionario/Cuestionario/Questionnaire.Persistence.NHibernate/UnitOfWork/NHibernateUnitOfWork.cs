@@ -3,8 +3,8 @@ using Questionnaire.Model;
 using Questionnaire.Persistence.NHibernate.Repository;
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Persistence.UnitOfWork;
+using System;
 using System.Data;
-using System.Threading.Tasks;
 
 namespace Questionnaire.Persistence.NHibernate.UnitOfWork
 {
@@ -21,7 +21,7 @@ namespace Questionnaire.Persistence.NHibernate.UnitOfWork
 
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : IBaseEntity
         {
-            return new NHibernateGenericRepository<TEntity>(this.CurrentSession);
+            return new NHibernateGenericRepository<TEntity>(this.iSessionFactory);
         }
 
         public void BeginTransaction(IsolationLevel pIsolationLevel = IsolationLevel.Serializable)
@@ -32,24 +32,20 @@ namespace Questionnaire.Persistence.NHibernate.UnitOfWork
             }
         }
 
-        public Task CommitAsync()
+        public void Commit()
         {
-            if (this.CurrentSession != null && this.CurrentSession.IsOpen)
+            if (this.CurrentSession != null && this.CurrentSession.Transaction.IsActive)
             {
-                return this.CurrentSession.Transaction.CommitAsync();
+                this.CurrentSession.Transaction.Commit();
             }
-
-            throw new System.Exception("Closed session");
         }
 
-        public Task RollbackAsync()
+        public void Rollback()
         {
-            if (this.CurrentSession != null && this.CurrentSession.IsOpen)
+            if (this.CurrentSession != null && this.CurrentSession.Transaction.IsActive)
             {
-                return this.CurrentSession.Transaction.RollbackAsync();
+                this.CurrentSession.Transaction.Rollback();
             }
-
-            throw new System.Exception("Closed session");
         }
     }
 }

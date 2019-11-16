@@ -46,6 +46,10 @@ namespace Questionnaire.Persistence.NHibernate
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012.ConnectionString(GetConnectionString()))
                 .CurrentSessionContext("async_local")
+                .Diagnostics(diagSetup =>
+                {
+                    diagSetup.OutputToConsole();
+                })
                 .Mappings(m => m
                     .FluentMappings.AddFromAssemblyOf<AnswerMap>())
                 .BuildSessionFactory();

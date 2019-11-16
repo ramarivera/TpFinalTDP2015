@@ -19,10 +19,10 @@ namespace Questionnaire.Handlers.Proxies
         {
             if (invocation.MethodInvocationTarget.Name == nameof(IDisposable.Dispose))
             {
+                Console.WriteLine("DISPOSING");
                 var lSessionFactory = this.iLifetimeScope.Resolve<ISessionFactory>();
 
                 lSessionFactory.GetCurrentSession().Close();
-                lSessionFactory.GetCurrentSession().Dispose();
 
                 CurrentSessionContext.Unbind(lSessionFactory);
 

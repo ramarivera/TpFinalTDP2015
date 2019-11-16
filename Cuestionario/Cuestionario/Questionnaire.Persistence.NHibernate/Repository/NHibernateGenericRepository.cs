@@ -11,17 +11,25 @@ namespace Questionnaire.Persistence.NHibernate.Repository
         where TEntity : IBaseEntity
     {
         private readonly ISession iSession;
+        private readonly ISessionFactory iSessionFactory;
 
-        public NHibernateGenericRepository(ISession pSession)
+        protected NHibernateGenericRepository(ISession pSession)
         {
             this.iSession = pSession;
         }
+
+        public NHibernateGenericRepository(ISessionFactory pSessionFactory)
+        {
+            this.iSessionFactory = pSessionFactory;
+        }
+
+        private ISession Session => this.iSession ?? this.iSessionFactory.GetCurrentSession();
 
         public async Task AddAsync(TEntity pEntityToAdd)
         {
             if (pEntityToAdd == null) throw new ArgumentNullException(nameof(pEntityToAdd));
 
-            await this.iSession.SaveAsync(pEntityToAdd);
+            await this.Session.SaveAsync(pEntityToAdd);
         }
 
         public async Task DeleteByIdAsync(object pId)
@@ -36,25 +44,25 @@ namespace Questionnaire.Persistence.NHibernate.Repository
         {
             if (pEntityToDelete == null) throw new ArgumentNullException(nameof(pEntityToDelete));
 
-            return this.iSession.DeleteAsync(pEntityToDelete);
+            return this.Session.DeleteAsync(pEntityToDelete);
         }
 
         public IQueryable<TEntity> GetAll()
         {
-            return this.iSession.Query<TEntity>();
+            return this.Session.Query<TEntity>();
         }
 
         public Task<TEntity> GetByIdAsync(object pId)
         {
             if (pId == null) throw new ArgumentNullException(nameof(pId));
-            return this.iSession.GetAsync<TEntity>(pId);
+            return this.Session.GetAsync<TEntity>(pId);
         }
 
         public async Task UpdateAsync(TEntity pEntityToUpdate)
         {
             if (pEntityToUpdate == null) throw new ArgumentNullException(nameof(pEntityToUpdate));
 
-            await this.iSession.UpdateAsync(pEntityToUpdate);
+            await this.Session.UpdateAsync(pEntityToUpdate);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Castle.Core.Interceptor;
 using Castle.DynamicProxy;
 using NHibernate;
 using NHibernate.Context;
@@ -41,8 +40,8 @@ namespace Questionnaire.Handlers.Handlers
 
             var lInterceptors = new Castle.Core.Interceptor.IInterceptor[]
             {
-                lScopedContainer.Resolve<TransactionalMethodInterceptor>(),
-                lScopedContainer.Resolve<DisposableInterceptor>()
+                lScopedContainer.Resolve<DisposableInterceptor>(),
+                lScopedContainer.Resolve<TransactionalMethodInterceptor>()
             };
 
             var lHandler = lScopedContainer.Resolve<THandler>();

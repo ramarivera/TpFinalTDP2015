@@ -45,12 +45,10 @@ namespace Questionnaire.Handlers.Handlers
 
             var lNewQuestionCandidates = lProvider.FilterNotImportedQuestions(lExistentQuestion);
 
-            var lNewQuestionTasks = lNewQuestionCandidates.Select(x =>
+            foreach (var lNewQuestionCandidate in lNewQuestionCandidates)
             {
-                return this.iQuestionService.CreateAsync(x);
-            });
-
-            await Task.WhenAll(lNewQuestionTasks);
+                await this.iQuestionService.CreateAsync(lNewQuestionCandidate);
+            }
         }
 
         [Transactional]

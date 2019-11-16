@@ -1,14 +1,7 @@
-﻿using Questionnaire.Services;
-using Questionnaire.Handlers.Handlers;
+﻿using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
+using Questionnaire.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Questionnaire.UI.WinForms
@@ -20,13 +13,43 @@ namespace Questionnaire.UI.WinForms
             InitializeComponent();
         }
 
-        private void iQuestionsBtn_Click(object sender, EventArgs e)
+        private async void iQuestionsBtn_Click(object sender, EventArgs e)
         {
-            using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
+            //using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
+            //{
+            //    await lHandler.HandlerImportQuestionsFromProviderAsync(QuestionProviderType.OpenTrivia);
+            //    MessageBox.Show("Import complete", "Questionnaire");
+            //}
+
+            var lHandler = HandlerFactory.Get<IQuestionHandler>();
+            await lHandler.HandlerImportQuestionsFromProviderAsync(QuestionProviderType.OpenTrivia).ContinueWith(task =>
             {
-                lHandler.HandlerImportQuestionsFromProviderAsync(QuestionProviderType.OpenTrivia);
-            }
-            MessageBox.Show("Import complete", "Questionnaire");
+                if (task.Exception == null)
+                {
+                    MessageBox.Show("Import complete", "Questionnaire");
+                }
+                else
+                {
+                    MessageBox.Show(task.Exception.ToString(), "Import errored");
+                }
+
+                lHandler.Dispose();
+            });
+
+            //var lHandler = HandlerFactory.Get<IQuestionHandler>();
+            //try
+            //{
+            //    await lHandler.HandlerImportQuestionsFromProviderAsync(QuestionProviderType.OpenTrivia);
+            //    MessageBox.Show("Import complete", "Questionnaire");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString(), "Import errored");
+            //}
+            //finally
+            //{
+            //    lHandler.Dispose();
+            //}
         }
 
         private void iBackBtn_Click(object sender, EventArgs e)

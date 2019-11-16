@@ -128,6 +128,10 @@
       <Project>{B419B543-15D5-47AC-82F7-915E2CD72C3C}</Project>
       <Name>Questionnaire.Persistence</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Questionnaire.Utilities\Questionnaire.Utilities.csproj">
+      <Project>{CA22BB12-254F-4927-BC81-8C0A4A52F868}</Project>
+      <Name>Questionnaire.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
