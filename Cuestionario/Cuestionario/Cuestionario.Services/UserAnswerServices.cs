@@ -21,12 +21,12 @@ namespace Questionnaire.Services
             iQuestionServices = pQuestionServices;
         }
 
-        public async Task<UserAnswer> CreateAsync(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
+        public UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
         {
             // TODO RAR should we provide a get Ans by Id method, since Ans is "part" of the Q aggregate root?
 
-            var lQuestion = await iQuestionServices.GetByIdAsync(pUserAnswerData.Question.Id);
-            var lChosenAnswer = await iQuestionServices.GetAnswerByIdAsync(pUserAnswerData.ChosenAnswer.Id);
+            var lQuestion = iQuestionServices.GetById(pUserAnswerData.Question.Id);
+            var lChosenAnswer = iQuestionServices.GetAnswerById(pUserAnswerData.ChosenAnswer.Id);
 
             var lUserAnswer = new UserAnswer
             {
@@ -35,7 +35,7 @@ namespace Questionnaire.Services
                 ChosenAnswer = lChosenAnswer
             };
 
-            await iSession.SaveAsync(lUserAnswer);
+            iSession.Save(lUserAnswer);
 
             return lUserAnswer;
         }

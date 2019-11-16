@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
-using Questionnaire.Services.DTO;
-using Questionnaire.Services.Interfaces;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using Questionnaire.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Questionnaire.Services.DTO;
+using Questionnaire.Services.Interfaces;
 
 namespace Questionnaire.Handlers.Handlers
 {
@@ -30,7 +25,7 @@ namespace Questionnaire.Handlers.Handlers
         public int SaveUserAnswer(UserAnswerCreationData pUserAnswer, int pAnswerSessionId)
         {
             AnswerSession lAnswerSession = iAnswerSessionServices.GetById(pAnswerSessionId);//esto podría no estar bien
-            var lUserAnswer = this.iUserAnswerServices.CreateAsync(pUserAnswer, lAnswerSession);
+            var lUserAnswer = this.iUserAnswerServices.Create(pUserAnswer, lAnswerSession);
 
             return lUserAnswer.Id;
         }

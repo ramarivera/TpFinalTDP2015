@@ -5,7 +5,6 @@ using Questionnaire.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Questionnaire.Services.Impl
 {
@@ -28,7 +27,7 @@ namespace Questionnaire.Services.Impl
             this.iDifficultyServices = pDifficcultyServices;
         }
 
-        public async Task<Question> CreateAsync(QuestionCreationData pQuestionData)
+        public Question Create(QuestionCreationData pQuestionData)
         {
             Answer CreateAnswer(AnswerCreationData pAnswerCreationData)
             {
@@ -51,7 +50,7 @@ namespace Questionnaire.Services.Impl
                 QuestionType = pQuestionData.QuestionType,
             };
             
-            await this.iQuestionRepository.AddAsync(lQuestion);
+            this.iQuestionRepository.Add(lQuestion);
 
             lQuestion.CorrectAnswer = CreateAnswer(pQuestionData.CorrectAnswer);
 
@@ -61,7 +60,7 @@ namespace Questionnaire.Services.Impl
                 lQuestion.AddAnswer(lAnswer);
             }
 
-            await this.iQuestionRepository.UpdateAsync(lQuestion);
+            this.iQuestionRepository.Update(lQuestion);
 
             return lQuestion;
         }
@@ -77,9 +76,9 @@ namespace Questionnaire.Services.Impl
             return this.iQuestionRepository.GetAll();
         }         
 
-        public async Task<Question> GetByIdAsync(long pQuestionId)
+        public Question GetById(long pQuestionId)
         {
-            var lQuestion = await this.iQuestionRepository.GetByIdAsync(pQuestionId);
+            var lQuestion = this.iQuestionRepository.GetById(pQuestionId);
 
             if (lQuestion == null)
             {
@@ -94,9 +93,9 @@ namespace Questionnaire.Services.Impl
             throw new NotImplementedException();
         }
 
-        public async Task<Answer> GetAnswerByIdAsync(long pAnswerId)
+        public Answer GetAnswerById(long pAnswerId)
         {
-            var lAnswer = await this.iAnswerRepository.GetByIdAsync(pAnswerId);
+            var lAnswer = this.iAnswerRepository.GetById(pAnswerId);
 
             if (lAnswer == null)
             {

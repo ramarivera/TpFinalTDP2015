@@ -1,22 +1,21 @@
 ﻿using Questionnaire.Model;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Questionnaire.Persistence.Repository
 {
     public interface IRepository<TEntity>
         where TEntity : IBaseEntity
     {
-        Task<TEntity> GetByIdAsync(object pId);
+        TEntity GetById(object pId);
 
         IQueryable<TEntity> GetAll();
 
-        Task AddAsync(TEntity pEntityToAdd);
+        void Add(TEntity pEntityToAdd);
 
-        Task UpdateAsync(TEntity pEntityToUpdate);
+        void Update(TEntity pEntityToUpdate);
 
-        Task DeleteByIdAsync(object pId);
+        void DeleteById(object pId);
 
-        Task DeleteAsync(TEntity pEntityToDelete);
+        void Delete(TEntity pEntityToDelete);
     }
 }

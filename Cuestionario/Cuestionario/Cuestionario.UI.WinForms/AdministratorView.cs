@@ -24,9 +24,9 @@ namespace Questionnaire.UI.WinForms
         {
             using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
             {
-                lHandler.HandlerImportQuestionsFromProviderAsync(QuestionProviderType.OpenTrivia);
+                lHandler.HandlerImportQuestionsFromProvider(QuestionProviderType.OpenTrivia);
+                MessageBox.Show("Import complete", "Questionnaire");
             }
-            MessageBox.Show("Import complete", "Questionnaire");
         }
 
         private void iBackBtn_Click(object sender, EventArgs e)

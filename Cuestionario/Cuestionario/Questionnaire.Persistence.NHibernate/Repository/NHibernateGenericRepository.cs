@@ -3,7 +3,6 @@ using Questionnaire.Model;
 using Questionnaire.Persistence.Repository;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Questionnaire.Persistence.NHibernate.Repository
 {
@@ -17,26 +16,26 @@ namespace Questionnaire.Persistence.NHibernate.Repository
             this.iSession = pSession;
         }
 
-        public async Task AddAsync(TEntity pEntityToAdd)
+        public void Add(TEntity pEntityToAdd)
         {
             if (pEntityToAdd == null) throw new ArgumentNullException(nameof(pEntityToAdd));
 
-            await this.iSession.SaveAsync(pEntityToAdd);
+            this.iSession.Save(pEntityToAdd);
         }
 
-        public async Task DeleteByIdAsync(object pId)
+        public void DeleteById(object pId)
         {
             if (pId == null) throw new ArgumentNullException(nameof(pId));
 
-            var lEntity = await this.GetByIdAsync(pId);
-            await this.DeleteAsync(lEntity);
+            var lEntity = this.GetById(pId);
+            this.Delete(lEntity);
         }
 
-        public Task DeleteAsync(TEntity pEntityToDelete)
+        public void Delete(TEntity pEntityToDelete)
         {
             if (pEntityToDelete == null) throw new ArgumentNullException(nameof(pEntityToDelete));
 
-            return this.iSession.DeleteAsync(pEntityToDelete);
+            this.iSession.Delete(pEntityToDelete);
         }
 
         public IQueryable<TEntity> GetAll()
@@ -44,17 +43,18 @@ namespace Questionnaire.Persistence.NHibernate.Repository
             return this.iSession.Query<TEntity>();
         }
 
-        public Task<TEntity> GetByIdAsync(object pId)
+        public TEntity GetById(object pId)
         {
             if (pId == null) throw new ArgumentNullException(nameof(pId));
-            return this.iSession.GetAsync<TEntity>(pId);
+
+            return this.iSession.Get<TEntity>(pId);
         }
 
-        public async Task UpdateAsync(TEntity pEntityToUpdate)
+        public void Update(TEntity pEntityToUpdate)
         {
             if (pEntityToUpdate == null) throw new ArgumentNullException(nameof(pEntityToUpdate));
 
-            await this.iSession.UpdateAsync(pEntityToUpdate);
+            this.iSession.Update(pEntityToUpdate);
         }
     }
 }

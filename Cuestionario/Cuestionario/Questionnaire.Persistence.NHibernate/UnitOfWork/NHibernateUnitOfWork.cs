@@ -4,7 +4,6 @@ using Questionnaire.Persistence.NHibernate.Repository;
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Persistence.UnitOfWork;
 using System.Data;
-using System.Threading.Tasks;
 
 namespace Questionnaire.Persistence.NHibernate.UnitOfWork
 {
@@ -32,24 +31,29 @@ namespace Questionnaire.Persistence.NHibernate.UnitOfWork
             }
         }
 
-        public Task CommitAsync()
+        public void Commit()
         {
             if (this.CurrentSession != null && this.CurrentSession.IsOpen)
             {
-                return this.CurrentSession.Transaction.CommitAsync();
+                this.CurrentSession.Transaction.Commit();
             }
-
-            throw new System.Exception("Closed session");
+            else
+            {
+                throw new System.Exception("Closed session");
+            }
         }
 
-        public Task RollbackAsync()
+        public void Rollback()
         {
             if (this.CurrentSession != null && this.CurrentSession.IsOpen)
             {
-                return this.CurrentSession.Transaction.RollbackAsync();
+                this.CurrentSession.Transaction.Rollback();
+            }
+            else
+            {
+                throw new System.Exception("Closed session");
             }
 
-            throw new System.Exception("Closed session");
         }
     }
 }

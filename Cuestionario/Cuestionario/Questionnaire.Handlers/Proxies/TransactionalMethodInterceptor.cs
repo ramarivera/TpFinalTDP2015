@@ -1,34 +1,33 @@
 ﻿using Castle.Core.Interceptor;
-using NHibernate;
-using NHibernate.Context;
 using Questionnaire.Handlers.Attributes;
+using Questionnaire.Persistence.UnitOfWork;
 using System.Reflection;
 
 namespace Questionnaire.Handlers.Proxies
 {
     class TransactionalMethodInterceptor : Castle.Core.Interceptor.IInterceptor
     {
-        private readonly ISessionFactory iSessionFactory;
+        private readonly IUnitOfWork iUnitOfWork;
 
-        public TransactionalMethodInterceptor(ISessionFactory pSessionFactory)
+        public TransactionalMethodInterceptor(IUnitOfWork pUnitOfWork)
         {
-            this.iSessionFactory = pSessionFactory;
+            this.iUnitOfWork = pUnitOfWork;
         }
 
         public void Intercept(IInvocation invocation)
         {
             if (invocation.MethodInvocationTarget.GetCustomAttribute<TransactionalAttribute>() != null)
             {
-                var lTransaction = this.iSessionFactory.GetCurrentSession().BeginTransaction();
+                this.iUnitOfWork.BeginTransaction();
 
                 try
                 {
                     invocation.Proceed();
-                    lTransaction.Commit();
+                    this.iUnitOfWork.Commit();
                 }
                 catch
                 {
-                    lTransaction.Rollback();
+                    this.iUnitOfWork.Rollback();
                     throw; 
                 }
             }

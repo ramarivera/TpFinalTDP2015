@@ -1,15 +1,11 @@
-﻿using Questionnaire.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using Questionnaire.Services;
-using Questionnaire.Model;
 using Questionnaire.Services.DTO;
-using AutoMapper;
+using Questionnaire.Services.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionnaire.Handlers.Handlers
 {
@@ -37,7 +33,7 @@ namespace Questionnaire.Handlers.Handlers
         }
 
         [Transactional]
-        public async Task HandlerImportQuestionsFromProviderAsync(QuestionProviderType pType)
+        public void HandlerImportQuestionsFromProvider(QuestionProviderType pType)
         {
             var lProvider = this.iQuestionProviderFactory.BuildProvider(pType);
 
@@ -45,12 +41,10 @@ namespace Questionnaire.Handlers.Handlers
 
             var lNewQuestionCandidates = lProvider.FilterNotImportedQuestions(lExistentQuestion);
 
-            var lNewQuestionTasks = lNewQuestionCandidates.Select(x =>
+            foreach (var lNewQuestionCandidate in lNewQuestionCandidates)
             {
-                return this.iQuestionService.CreateAsync(x);
-            });
-
-            await Task.WhenAll(lNewQuestionTasks);
+                this.iQuestionService.Create(lNewQuestionCandidate);
+            }
         }
 
         [Transactional]
