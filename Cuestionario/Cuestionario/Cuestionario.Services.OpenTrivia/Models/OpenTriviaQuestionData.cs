@@ -4,6 +4,9 @@ using System.Runtime.Serialization;
 
 namespace Questionnaire.Services.OpenTrivia.Models
 {
+    /// <summary>
+    /// Represents an OpenTrivia (http://opentdb.com) question
+    /// </summary>
     public class OpenTriviaQuestionData
     {
         public string Category { get; set; }

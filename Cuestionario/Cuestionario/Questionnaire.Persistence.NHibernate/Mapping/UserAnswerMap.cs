@@ -3,6 +3,9 @@ using Questionnaire.Model;
 
 namespace Questionnaire.Persistence.NHibernate.Mappings
 {
+    /// <summary>
+    /// Maps <see cref="UserAnswer"/> to its representation in the solution's relational database
+    /// </summary>
     class UserAnswerMap : ClassMap<UserAnswer>
     {
         public UserAnswerMap()

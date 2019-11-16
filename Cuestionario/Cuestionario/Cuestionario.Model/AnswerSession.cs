@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Model
 {
+    /// <summary>
+    /// Represents a Questionnaire's Answer Session, where an user answers many <see cref="Model.Question"/>
+    /// </summary>
     public class AnswerSession
     {
         private readonly ICollection<UserAnswer> answers;

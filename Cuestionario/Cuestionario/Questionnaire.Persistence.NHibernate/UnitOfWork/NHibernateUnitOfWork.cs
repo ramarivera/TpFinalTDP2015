@@ -7,6 +7,7 @@ using System.Data;
 
 namespace Questionnaire.Persistence.NHibernate.UnitOfWork
 {
+    // TODO missing documentation
     class NHibernateUnitOfWork : IUnitOfWork
     {
         private readonly ISessionFactory iSessionFactory;

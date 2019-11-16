@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Model
 {
+    /// <summary>
+    /// Represents a Questionnaire's Question, which contains many <see cref="Model.Answer"/>, 
+    /// and belongs to a <see cref="Model.Category"/> and <see cref="Model.Difficulty"/>
+    /// </summary>
     public class Question : BaseEntity
     {
         private readonly ICollection<Answer> answers;

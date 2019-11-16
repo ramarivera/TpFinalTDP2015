@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Questionnaire.Model;
 
 namespace Questionnaire.Services.DTO
 {
+    /// <summary>
+    /// Represents <see cref="Difficulty"/> data transfer object
+    /// </summary>
     public class DifficultyData
     {
         public int Id { get; set; }

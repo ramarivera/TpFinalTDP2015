@@ -1,5 +1,8 @@
 ﻿namespace Questionnaire.Model
 {
+    /// <summary>
+    /// Represent each User Answer during a Questionnaire's <see cref="Model.AnswerSession"/>
+    /// </summary>
     public class UserAnswer
     {
         public virtual int Id { get; set; }

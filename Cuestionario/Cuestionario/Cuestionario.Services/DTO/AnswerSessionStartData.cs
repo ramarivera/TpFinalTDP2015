@@ -1,5 +1,10 @@
-﻿namespace Questionnaire.Services.DTO
+﻿using Questionnaire.Model;
+
+namespace Questionnaire.Services.DTO
 {
+    /// <summary>
+    /// Represents <see cref="AnswerSession"/> initial data transfer object
+    /// </summary>
     public class AnswerSessionStartData
     {
         public int CategoryId { get; set; }

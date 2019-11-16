@@ -54,6 +54,11 @@ namespace Questionnaire.Services
             return lAnswerSession;
         }
 
+        /// <summary>
+        /// Finalize an Answer Session
+        /// </summary>
+        /// <param name="pAnswerSessionId"></param>
+        /// <returns>The Answer Session with all its attributes completed</returns>
         public AnswerSession EndSession(int pAnswerSessionId)
         {
             var lAnswerSession = this.GetById(pAnswerSessionId);
@@ -72,6 +77,13 @@ namespace Questionnaire.Services
             return lAnswerSession;
         }
 
+        /// <summary>
+        /// Calculates the score of an Answer Session
+        /// </summary>
+        /// <param name="pAnswerSessionId"></param>
+        /// <param name="pDifficultyFactor"></param>
+        /// <param name="pTimeFactor"></param>
+        /// <returns></returns>
         private double GetSessionScore(int pAnswerSessionId, int pDifficultyFactor, int pTimeFactor)
         {
             var lUserAnswers = iUserAnswerServices.GetAll().Where(x => x.AnswerSession.Id == pAnswerSessionId);
@@ -91,6 +103,11 @@ namespace Questionnaire.Services
             return lScore;
         }
 
+        /// <summary>
+        /// Calculates the score per answer based on the total duration and amount of questions of the given Answer Session
+        /// </summary>
+        /// <param name="pAnswerSession"></param>
+        /// <returns></returns>
         private int GetTimeFactor(AnswerSession pAnswerSession)
         {
             double lSessionDuration = (pAnswerSession.EndTime - pAnswerSession.StartTime).Value.TotalSeconds;

@@ -21,6 +21,12 @@ namespace Questionnaire.Services
             iQuestionServices = pQuestionServices;
         }
 
+        /// <summary>
+        /// Persist a User Answer in the database
+        /// </summary>
+        /// <param name="pUserAnswerData"></param>
+        /// <param name="pAnswerSession"></param>
+        /// <returns></returns>
         public UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
         {
             // TODO RAR should we provide a get Ans by Id method, since Ans is "part" of the Q aggregate root?
