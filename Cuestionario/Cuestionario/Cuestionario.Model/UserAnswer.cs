@@ -3,10 +3,8 @@
     /// <summary>
     /// Represent each User Answer during a Questionnaire's <see cref="Model.AnswerSession"/>
     /// </summary>
-    public class UserAnswer
+    public class UserAnswer : BaseEntity
     {
-        public virtual int Id { get; set; }
-
         public virtual Question Question { get; set; }
 
         public virtual AnswerSession AnswerSession { get; set; }

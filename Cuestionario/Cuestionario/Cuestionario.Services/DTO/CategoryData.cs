@@ -8,7 +8,7 @@ namespace Questionnaire.Services.DTO
     /// </summary>
     public class CategoryData
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Description { get; set; }
         public IList<QuestionData> Questions { get; set; }
     }

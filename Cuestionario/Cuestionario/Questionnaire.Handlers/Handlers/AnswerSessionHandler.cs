@@ -10,20 +10,17 @@ namespace Questionnaire.Handlers.Handlers
     public class AnswerSessionHandler : BaseHandler, IAnswerSessionHandler
     {
         private readonly IAnswerSessionServices iAnswerSessionServices;
-        private readonly ICategoryServices iCategoryServices;
 
         public AnswerSessionHandler(
             IAnswerSessionServices pAnswerSessionServices,
-            ICategoryServices pCategoryServices,
             IMapper pMapper)
             : base(pMapper)
         {
             this.iAnswerSessionServices = pAnswerSessionServices;
-            this.iCategoryServices = pCategoryServices;
         }
 
         [Transactional]
-        public int StartAnswerSession(AnswerSessionStartData pSessionStartData)
+        public long StartAnswerSession(AnswerSessionStartData pSessionStartData)
         {
             var lAnswerSession = this.iAnswerSessionServices.StartSession(pSessionStartData);
 
@@ -40,7 +37,7 @@ namespace Questionnaire.Handlers.Handlers
         }
 
         [Transactional]
-        public AnswerSessionData GetById(int pId)
+        public AnswerSessionData GetById(long pId)
         {
             var lAnswerSession = iAnswerSessionServices.GetById(pId);
 
@@ -49,7 +46,7 @@ namespace Questionnaire.Handlers.Handlers
         }
 
         [Transactional]
-        public int EndAnswerSession(int pId)
+        public long EndAnswerSession(long pId)
         {
             var lAnswerSession = this.iAnswerSessionServices.EndSession(pId);
 

@@ -6,16 +6,14 @@ namespace Questionnaire.Model
     /// <summary>
     /// Represents a Questionnaire's Answer Session, where an user answers many <see cref="Model.Question"/>
     /// </summary>
-    public class AnswerSession
+    public class AnswerSession : BaseEntity
     {
         private readonly ICollection<UserAnswer> answers;
         public AnswerSession()
         {
             answers = new List<UserAnswer>();
         }
-
-        public virtual int Id { get; set; }
-
+        
         public virtual Category Category { get; set; }
 
         public virtual Difficulty Difficulty { get; set; }

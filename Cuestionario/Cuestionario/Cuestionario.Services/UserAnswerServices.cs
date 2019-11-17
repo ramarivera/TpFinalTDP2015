@@ -4,21 +4,21 @@ using Questionnaire.Services.Interfaces;
 using NHibernate;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
+using Questionnaire.Persistence.Repository;
 
 namespace Questionnaire.Services
 {
     public class UserAnswerServices : IUserAnswerServices
     {
-        private ISession iSession;
-        private IQuestionServices iQuestionServices;
+        private readonly IRepository<UserAnswer> iUserAnswerRepository;
+        private readonly IQuestionServices iQuestionServices;
 
         public UserAnswerServices(
-            ISession pSession,
+            IRepository<UserAnswer> pUserAnswerRepository,
             IQuestionServices pQuestionServices)
         {
-            iSession = pSession;
-            iQuestionServices = pQuestionServices;
+            this.iUserAnswerRepository = pUserAnswerRepository;
+            this.iQuestionServices = pQuestionServices;
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Questionnaire.Services
                 ChosenAnswer = lChosenAnswer
             };
 
-            iSession.Save(lUserAnswer);
+            this.iUserAnswerRepository.Add(lUserAnswer);
 
             return lUserAnswer;
         }
@@ -53,16 +53,12 @@ namespace Questionnaire.Services
 
         public IQueryable<UserAnswer> GetAll()
         {
-            IQueryable<UserAnswer> lUserAnswers =
-                iSession.Query<UserAnswer>();
-
-            return lUserAnswers;
+            return this.iUserAnswerRepository.GetAll();
         }            
 
         public UserAnswer GetById(long pUserAnswerId)
         {
-            var lUserAnswer = GetAll()
-                .FirstOrDefault(x => x.Id == pUserAnswerId);
+            var lUserAnswer = this.iUserAnswerRepository.GetById(pUserAnswerId);
 
             if (lUserAnswer == null)
             {

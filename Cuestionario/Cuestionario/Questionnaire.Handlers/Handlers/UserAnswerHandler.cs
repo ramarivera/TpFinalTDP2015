@@ -22,9 +22,9 @@ namespace Questionnaire.Handlers.Handlers
             iAnswerSessionServices = pAnswerSessionServices;
         }
 
-        public int SaveUserAnswer(UserAnswerCreationData pUserAnswer, int pAnswerSessionId)
+        public long SaveUserAnswer(UserAnswerCreationData pUserAnswer, long pAnswerSessionId)
         {
-            AnswerSession lAnswerSession = iAnswerSessionServices.GetById(pAnswerSessionId);//esto podría no estar bien
+            AnswerSession lAnswerSession = iAnswerSessionServices.GetById(pAnswerSessionId);
             var lUserAnswer = this.iUserAnswerServices.Create(pUserAnswer, lAnswerSession);
 
             return lUserAnswer.Id;

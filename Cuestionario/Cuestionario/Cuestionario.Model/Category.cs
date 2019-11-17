@@ -5,7 +5,7 @@ namespace Questionnaire.Model
     /// <summary>
     /// Represents the Category to which a <see cref="Model.Question"/> belongs
     /// </summary>
-    public class Category
+    public class Category : BaseEntity
     {
         private readonly ICollection<Question> questions;
 
@@ -13,7 +13,6 @@ namespace Questionnaire.Model
         {
             questions = new List<Question>();
         }
-        public virtual int Id { get; set; }
 
         public virtual string Description { get; set; }
 

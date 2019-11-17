@@ -67,29 +67,29 @@ namespace Questionnaire.UI.WinForms
             {
                 AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData();
                 List<QuestionData> lQuestions = new List<QuestionData>();
-                int lAnswerSessionId;
+                long lAnswerSessionId;
 
                 lAnswerSessionStartData.Username = iNameTxtBox.Text;
                 lAnswerSessionStartData.QuestionsCount = Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString());
                 lAnswerSessionStartData.CategoryId = ((CategoryData)iCategoryCmbBox.SelectedItem).Id;
                 lAnswerSessionStartData.DifficultyId = ((DifficultyData)iDifficultyCmbBox.SelectedItem).Id;
 
-                using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
-                {
-                    lAnswerSessionId = lHandler.StartAnswerSession(lAnswerSessionStartData);
-                }
-
                 using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
                 {
                     lQuestions = lHandler.GetQuestionsForSession(lAnswerSessionStartData).ToList();
                 }
-                //MessageBox.Show(lQuestions.Count().ToString(), "Cant. de preguntas");
+
                 if (!this.ValidateAmountQuestions(lQuestions, Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString())))
                 {
                     MessageBox.Show("There are not enough questions matching the selected parameters, please retrieve more questions.", "Error");
                 }
                 else
-                {       
+                {
+                    using (var lHandler = HandlerFactory.Get<IAnswerSessionHandler>())
+                    {
+                        lAnswerSessionId = lHandler.StartAnswerSession(lAnswerSessionStartData);
+                    }
+
                     AnswerSessionView lMultipleAnswerView = new AnswerSessionView(lAnswerSessionId, lQuestions);
                     this.Hide();
                     lMultipleAnswerView.ShowDialog();

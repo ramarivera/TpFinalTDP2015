@@ -1,4 +1,5 @@
 ﻿using Questionnaire.Model;
+using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
 using NHibernate;
@@ -9,11 +10,11 @@ namespace Questionnaire.Services
 {
     public class CategoryServices : ICategoryServices
     {
-        private ISession iSession;
+        private readonly IRepository<Category> iCategoryRepository;
 
-        public CategoryServices(ISession pSession)
+        public CategoryServices(IRepository<Category> pCategoryRepository)
         {
-            iSession = pSession;
+            this.iCategoryRepository = pCategoryRepository;
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace Questionnaire.Services
                 Description = pCategoryData.Description
             };
 
-            iSession.Save(lCategory);
+            this.iCategoryRepository.Add(lCategory);
 
             return lCategory;
         }
@@ -40,16 +41,12 @@ namespace Questionnaire.Services
 
         public IQueryable<Category> GetAll()
         {
-            IQueryable<Category> lCategories =
-                iSession.Query<Category>();
-
-            return lCategories;
+            return this.iCategoryRepository.GetAll();
         }       
         
         public Category GetById(long pCategoryId)
         {
-            var lCategory = GetAll()
-                .FirstOrDefault(x => x.Id == pCategoryId);
+            var lCategory = iCategoryRepository.GetById(pCategoryId);
 
             if (lCategory == null)
             {
@@ -71,7 +68,7 @@ namespace Questionnaire.Services
         /// <returns></returns>
         public CategoryData RetrieveByDescription(string pCategoryDescription)
         {
-            var lCategory = GetAll()
+            var lCategory = this.GetAll()
                     .FirstOrDefault(x => x.Description == pCategoryDescription);
 
             if (lCategory == null)
@@ -81,7 +78,7 @@ namespace Questionnaire.Services
                     Description = pCategoryDescription
                 };
 
-                lCategory = Create(lCategoryCreationData);
+                lCategory = this.Create(lCategoryCreationData);
             }
 
             CategoryData lCategoryData = new CategoryData

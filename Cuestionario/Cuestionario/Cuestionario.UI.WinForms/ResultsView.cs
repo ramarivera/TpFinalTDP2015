@@ -15,7 +15,7 @@ namespace Questionnaire.UI.WinForms
 {
     public partial class ResultsView : Form
     {
-        public ResultsView(int pAnswerSessionId)
+        public ResultsView(long pAnswerSessionId)
         {
             InitializeComponent();
 

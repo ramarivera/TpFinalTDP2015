@@ -17,7 +17,7 @@ namespace Questionnaire.UI.WinForms
 {
     public partial class AnswerSessionView : Form
     {
-        private readonly int iAnswerSessionId;
+        private readonly long iAnswerSessionId;
 
         private readonly List<QuestionData> iQuestions;
 
@@ -25,7 +25,7 @@ namespace Questionnaire.UI.WinForms
 
         private IQuestionViewer iCurrentQuestionViewer;
 
-        public AnswerSessionView(int pAnswerSessionId, List<QuestionData> pQuestions)
+        public AnswerSessionView(long pAnswerSessionId, List<QuestionData> pQuestions)
         {
             InitializeComponent();
 

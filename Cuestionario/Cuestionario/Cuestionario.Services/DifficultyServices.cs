@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Questionnaire.Model;
+using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using NHibernate;
 using Questionnaire.Services.Interfaces;
@@ -12,10 +10,10 @@ namespace Questionnaire.Services
 {
     public class DifficultyServices : IDifficultyServices
     {
-        private ISession iSession;
-        public DifficultyServices(ISession pSession)
+        private readonly IRepository<Difficulty> iDifficultyRepository;
+        public DifficultyServices(IRepository<Difficulty> pDifficultyRepository)
         {
-            iSession = pSession;
+            this.iDifficultyRepository = pDifficultyRepository;
         }
         
         /// <summary>
@@ -30,7 +28,7 @@ namespace Questionnaire.Services
                 Description = pDifficultyData.Description
             };
 
-            iSession.Save(lDifficulty);
+            this.iDifficultyRepository.Add(lDifficulty);
 
             return lDifficulty;
         }
@@ -42,16 +40,12 @@ namespace Questionnaire.Services
 
         public IQueryable<Difficulty> GetAll()
         {
-            IQueryable<Difficulty> lCategories =
-                iSession.Query<Difficulty>();
-
-            return lCategories;
+            return this.iDifficultyRepository.GetAll();
         }      
 
         public Difficulty GetById(long pDifficultyId)
         {
-            var lDifficulty = GetAll()
-                .FirstOrDefault(x => x.Id == pDifficultyId);
+            var lDifficulty = this.iDifficultyRepository.GetById(pDifficultyId);
 
             if (lDifficulty == null)
             {
@@ -73,7 +67,7 @@ namespace Questionnaire.Services
         /// <returns></returns>
         public DifficultyData RetrieveByDescription(string pDifficultyDescription)
         {
-            var lDifficulty = GetAll()
+            var lDifficulty = this.GetAll()
                     .FirstOrDefault(x => x.Description == pDifficultyDescription);
 
             if (lDifficulty == null)
@@ -83,7 +77,7 @@ namespace Questionnaire.Services
                     Description = pDifficultyDescription
                 };
 
-                lDifficulty = Create(lDifficultyCreationData);
+                lDifficulty = this.Create(lDifficultyCreationData);
             }
 
             DifficultyData lDifficultyData = new DifficultyData

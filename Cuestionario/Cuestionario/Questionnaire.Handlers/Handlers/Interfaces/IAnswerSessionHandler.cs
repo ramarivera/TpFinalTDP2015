@@ -5,13 +5,13 @@ namespace Questionnaire.Handlers.Handlers.Interfaces
 {
     public interface IAnswerSessionHandler : IBaseHandler
     {
-        int StartAnswerSession(AnswerSessionStartData pSessionStartData);
+        long StartAnswerSession(AnswerSessionStartData pSessionStartData);
 
-        int EndAnswerSession(int pId);
+        long EndAnswerSession(long pId);
 
         IEnumerable<AnswerSessionData> GetAll();
 
-        AnswerSessionData GetById(int pId);
+        AnswerSessionData GetById(long pId);
 
         //int StartAnswerSession2();
     }

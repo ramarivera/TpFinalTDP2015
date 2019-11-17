@@ -16,7 +16,7 @@ namespace Questionnaire.Services.Interfaces
 
         AnswerSession StartSession(AnswerSessionStartData pAnswerSessionStartData);
 
-        AnswerSession EndSession(int pAnswerSessionId);
+        AnswerSession EndSession(long pAnswerSessionId);
 
         AnswerSession Update(long pAnswerSessionId, AnswerSessionData pUpdateAnswerSession);
 

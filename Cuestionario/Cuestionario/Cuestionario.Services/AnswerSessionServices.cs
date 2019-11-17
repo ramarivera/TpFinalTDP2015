@@ -4,29 +4,27 @@ using Questionnaire.Services.Interfaces;
 using NHibernate;
 using System;
 using System.Linq;
+using Questionnaire.Persistence.Repository;
 
 namespace Questionnaire.Services
 {
     public class AnswerSessionServices : IAnswerSessionServices
     {
-        private ISession iSession;
-
-        private ICategoryServices iCategoryServices;
-
-        private IDifficultyServices iDifficultyServices;
-
-        private IUserAnswerServices iUserAnswerServices;
+        private readonly IRepository<AnswerSession> iAnswerSessionRepository;
+        private readonly ICategoryServices iCategoryServices;
+        private readonly IDifficultyServices iDifficultyServices;
+        private readonly IUserAnswerServices iUserAnswerServices;
 
         public AnswerSessionServices(
-            ISession pSession,
+            IRepository<AnswerSession> pAnswerSessionRepository,
             ICategoryServices pCategoryServices,
             IDifficultyServices pDificcultyServices,
             IUserAnswerServices pUserAnswerServces)
         {
-            iSession = pSession;
-            iCategoryServices = pCategoryServices;
-            iDifficultyServices = pDificcultyServices;
-            iUserAnswerServices = pUserAnswerServces;
+            this.iAnswerSessionRepository = pAnswerSessionRepository;
+            this.iCategoryServices = pCategoryServices;
+            this.iDifficultyServices = pDificcultyServices;
+            this.iUserAnswerServices = pUserAnswerServces;
         }
 
         /// <summary>
@@ -49,7 +47,7 @@ namespace Questionnaire.Services
                 Difficulty = lDifficulty
             };
 
-            this.iSession.Save(lAnswerSession);
+            this.iAnswerSessionRepository.Add(lAnswerSession);
 
             return lAnswerSession;
         }
@@ -59,7 +57,7 @@ namespace Questionnaire.Services
         /// </summary>
         /// <param name="pAnswerSessionId"></param>
         /// <returns>The Answer Session with all its attributes completed</returns>
-        public AnswerSession EndSession(int pAnswerSessionId)
+        public AnswerSession EndSession(long pAnswerSessionId)
         {
             var lAnswerSession = this.GetById(pAnswerSessionId);
 
@@ -72,7 +70,7 @@ namespace Questionnaire.Services
 
             lAnswerSession.Score = this.GetSessionScore(pAnswerSessionId, lDifficultyFactor, lTimeFactor);
 
-            this.iSession.Update(lAnswerSession);
+            this.iAnswerSessionRepository.Update(lAnswerSession);
 
             return lAnswerSession;
         }
@@ -84,7 +82,7 @@ namespace Questionnaire.Services
         /// <param name="pDifficultyFactor"></param>
         /// <param name="pTimeFactor"></param>
         /// <returns></returns>
-        private double GetSessionScore(int pAnswerSessionId, int pDifficultyFactor, int pTimeFactor)
+        private double GetSessionScore(long pAnswerSessionId, int pDifficultyFactor, int pTimeFactor)
         {
             var lUserAnswers = iUserAnswerServices.GetAll().Where(x => x.AnswerSession.Id == pAnswerSessionId);
 
@@ -128,16 +126,12 @@ namespace Questionnaire.Services
 
         public IQueryable<AnswerSession> GetAll()
         {
-            IQueryable<AnswerSession> lAnswerSessions =
-                this.iSession.Query<AnswerSession>();
-
-            return lAnswerSessions;
+            return this.iAnswerSessionRepository.GetAll();
         }        
 
         public AnswerSession GetById(long pAnswerSessionId)
         {
-            var lAnswerSession = GetAll()
-                .FirstOrDefault(x => x.Id == pAnswerSessionId);
+            var lAnswerSession = this.iAnswerSessionRepository.GetById(pAnswerSessionId);
 
             if (lAnswerSession == null)
             {
