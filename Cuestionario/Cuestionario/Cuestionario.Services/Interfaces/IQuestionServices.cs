@@ -1,13 +1,12 @@
 ﻿using Questionnaire.Model;
 using Questionnaire.Services.DTO;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Questionnaire.Services.Interfaces
 {
     public interface IQuestionServices
     {
-        IQueryable<Question> GetAll();
+        IEnumerable<Question> GetAll();
 
         Question GetById(long pQuestionId);
 

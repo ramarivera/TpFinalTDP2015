@@ -1,12 +1,12 @@
 ﻿using Questionnaire.Model;
 using Questionnaire.Services.DTO;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace Questionnaire.Services.Interfaces
 {
     public interface IUserAnswerServices
     {
-        IQueryable<UserAnswer> GetAll();
+        IEnumerable<UserAnswer> GetAll();
 
         UserAnswer GetById(long pUserAnswerId);
 

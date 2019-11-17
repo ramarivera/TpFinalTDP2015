@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.iTitleLbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.iFooterLbl = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iBackBtn = new System.Windows.Forms.Button();
@@ -76,24 +76,24 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.iFooterLbl);
             this.panel2.Location = new System.Drawing.Point(0, 506);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(784, 55);
             this.panel2.TabIndex = 1;
             this.panel2.UseWaitCursor = true;
             // 
-            // label6
+            // iFooterLbl
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(293, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(178, 19);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Developed by John Wayne";
-            this.label6.UseWaitCursor = true;
+            this.iFooterLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iFooterLbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iFooterLbl.Location = new System.Drawing.Point(0, 0);
+            this.iFooterLbl.Name = "iFooterLbl";
+            this.iFooterLbl.Size = new System.Drawing.Size(784, 55);
+            this.iFooterLbl.TabIndex = 0;
+            this.iFooterLbl.Text = "Developed by MARR";
+            this.iFooterLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.iFooterLbl.UseWaitCursor = true;
             // 
             // panel3
             // 
@@ -252,7 +252,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WelcomeView_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -278,7 +277,7 @@
         private System.Windows.Forms.ComboBox iDifficultyCmbBox;
         private System.Windows.Forms.ComboBox iCategoryCmbBox;
         private System.Windows.Forms.TextBox iNameTxtBox;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label iFooterLbl;
         private System.Windows.Forms.Button iBackBtn;
     }
 }

@@ -3,8 +3,8 @@ using System.Linq;
 using Questionnaire.Model;
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
-using NHibernate;
 using Questionnaire.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace Questionnaire.Services
 {
@@ -38,7 +38,7 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<Difficulty> GetAll()
+        public IEnumerable<Difficulty> GetAll()
         {
             return this.iDifficultyRepository.GetAll();
         }      

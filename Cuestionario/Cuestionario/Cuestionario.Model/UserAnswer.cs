@@ -17,10 +17,7 @@
             {
                 return (ChosenAnswer.Id == Question.CorrectAnswer.Id);
             }
-            set
-            {
-                // TODO ver si iría algo acá
-            }
+            set{}
         }
         
     }

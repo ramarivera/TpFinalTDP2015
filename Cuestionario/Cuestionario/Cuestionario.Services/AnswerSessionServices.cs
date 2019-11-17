@@ -1,10 +1,10 @@
 ﻿using Questionnaire.Model;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
-using NHibernate;
 using System;
 using System.Linq;
 using Questionnaire.Persistence.Repository;
+using System.Collections.Generic;
 
 namespace Questionnaire.Services
 {
@@ -124,7 +124,7 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<AnswerSession> GetAll()
+        public IEnumerable<AnswerSession> GetAll()
         {
             return this.iAnswerSessionRepository.GetAll();
         }        

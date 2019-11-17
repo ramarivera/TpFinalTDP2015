@@ -70,9 +70,8 @@ namespace Questionnaire.Services.Impl
             throw new NotImplementedException();
         }
 
-        public IQueryable<Question> GetAll()
+        public IEnumerable<Question> GetAll()
         {
-            // TODO RAR: IQueryables should be gone...
             return this.iQuestionRepository.GetAll();
         }         
 
@@ -108,8 +107,8 @@ namespace Questionnaire.Services.Impl
         public IList<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
             var lQuestions = this.GetAll()
-               .Where(x => x.Category.Id == pAnswerSessionStartData.CategoryId)
-               .Where(x => x.Difficulty.Id == pAnswerSessionStartData.DifficultyId);
+               .Where(x => x.Category.Id == pAnswerSessionStartData.CategoryId).ToList()
+               .Where(x => x.Difficulty.Id == pAnswerSessionStartData.DifficultyId).ToList();
 
             var lRandomNumber = new Random();
             int lQuestionIndex;
@@ -121,9 +120,9 @@ namespace Questionnaire.Services.Impl
                 while (lSessionQuestions.Count < lQuestions.Count())
                 {
                     lQuestionIndex = lRandomNumber.Next(lQuestions.Count());
-                    if (!lSessionQuestions.Contains(lQuestions.ToList().ElementAt(lQuestionIndex)))
+                    if (!lSessionQuestions.Contains(lQuestions.ElementAt(lQuestionIndex)))
                     {
-                        lSessionQuestions.Add(lQuestions.ToList().ElementAt(lQuestionIndex));
+                        lSessionQuestions.Add(lQuestions.ElementAt(lQuestionIndex));
                     }
                 }
             }
@@ -132,9 +131,9 @@ namespace Questionnaire.Services.Impl
                 while (lSessionQuestions.Count < pAnswerSessionStartData.QuestionsCount)
                 {
                     lQuestionIndex = lRandomNumber.Next(pAnswerSessionStartData.QuestionsCount);
-                    if (!lSessionQuestions.Contains(lQuestions.ToList().ElementAt(lQuestionIndex)))
+                    if (!lSessionQuestions.Contains(lQuestions.ElementAt(lQuestionIndex)))
                     {
-                        lSessionQuestions.Add(lQuestions.ToList().ElementAt(lQuestionIndex));
+                        lSessionQuestions.Add(lQuestions.ElementAt(lQuestionIndex));
                     }
                 }
             }

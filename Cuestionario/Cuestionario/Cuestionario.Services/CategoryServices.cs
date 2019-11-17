@@ -2,9 +2,9 @@
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
-using NHibernate;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Questionnaire.Services
 {
@@ -39,7 +39,7 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<Category> GetAll()
+        public IEnumerable<Category> GetAll()
         {
             return this.iCategoryRepository.GetAll();
         }       

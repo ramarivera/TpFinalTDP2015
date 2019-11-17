@@ -20,7 +20,7 @@ namespace Questionnaire.Services.DTO
 
         public string Description { get; set; }
 
-        public QuestionType QuestionType { get; set; }// TODO ver esto
+        public QuestionType QuestionType { get; set; }
 
         public IList<AnswerCreationData> Answers { get; set; }
 
