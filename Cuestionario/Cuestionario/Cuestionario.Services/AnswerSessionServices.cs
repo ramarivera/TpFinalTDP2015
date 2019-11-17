@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Services
 {
+    /// <summary>
+    /// Contains all business logic related to <see cref="AnswerSession"/> model class
+    /// </summary>
     public class AnswerSessionServices : IAnswerSessionServices
     {
         private readonly IRepository<AnswerSession> iAnswerSessionRepository;
@@ -28,10 +31,10 @@ namespace Questionnaire.Services
         }
 
         /// <summary>
-        /// Initialize an Answer Session
+        /// Initializes an <see cref="AnswerSession"/>, that will be stored in the database
         /// </summary>
-        /// <param name="pAnswerSessionStartData"> Answer Session's inicial data</param>
-        /// <returns></returns>
+        /// <param name="pAnswerSessionStartData"> <see cref="AnswerSession"/> inicial data</param>
+        /// <returns>Created <see cref="AnswerSession"/></returns>
         public AnswerSession StartSession(AnswerSessionStartData pAnswerSessionStartData)
         {
             var lCategory = this.iCategoryServices.GetById(pAnswerSessionStartData.CategoryId);
@@ -53,10 +56,10 @@ namespace Questionnaire.Services
         }
 
         /// <summary>
-        /// Finalize an Answer Session
+        /// Finalizes an <see cref="AnswerSession"/>, updating it in the database
         /// </summary>
         /// <param name="pAnswerSessionId"></param>
-        /// <returns>The Answer Session with all its attributes completed</returns>
+        /// <returns>The <see cref="AnswerSession"/> with all its attributes completed</returns>
         public AnswerSession EndSession(long pAnswerSessionId)
         {
             var lAnswerSession = this.GetById(pAnswerSessionId);
@@ -76,12 +79,12 @@ namespace Questionnaire.Services
         }
 
         /// <summary>
-        /// Calculates the score of an Answer Session
+        /// Calculates the score of an <see cref="AnswerSession"/>
         /// </summary>
-        /// <param name="pAnswerSessionId"></param>
-        /// <param name="pDifficultyFactor"></param>
-        /// <param name="pTimeFactor"></param>
-        /// <returns></returns>
+        /// <param name="pAnswerSessionId">Specific <see cref="AnswerSession"/> Id</param>
+        /// <param name="pDifficultyFactor"><see cref="AnswerSession"/> associated difficulty factor</param>
+        /// <param name="pTimeFactor"><see cref="AnswerSession"/> associated time factor</param>
+        /// <returns><see cref="AnswerSession"/> score</returns>
         private double GetSessionScore(long pAnswerSessionId, int pDifficultyFactor, int pTimeFactor)
         {
             var lUserAnswers = iUserAnswerServices.GetAll().Where(x => x.AnswerSession.Id == pAnswerSessionId);
@@ -102,10 +105,10 @@ namespace Questionnaire.Services
         }
 
         /// <summary>
-        /// Calculates the score per answer based on the total duration and amount of questions of the given Answer Session
+        /// Calculates the score per answer based on the total duration and amount of questions of the given <see cref="AnswerSession"/>
         /// </summary>
-        /// <param name="pAnswerSession"></param>
-        /// <returns></returns>
+        /// <param name="pAnswerSession">Specific <see cref="AnswerSession"/></param>
+        /// <returns><see cref="AnswerSession"/> time factor</returns>
         private int GetTimeFactor(AnswerSession pAnswerSession)
         {
             double lSessionDuration = (pAnswerSession.EndTime - pAnswerSession.StartTime).Value.TotalSeconds;
@@ -124,11 +127,20 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets all stored <see cref="AnswerSession"/>
+        /// </summary>
+        /// <returns>A list of <see cref="AnswerSession"/></returns>
         public IEnumerable<AnswerSession> GetAll()
         {
             return this.iAnswerSessionRepository.GetAll();
-        }        
+        }
 
+        /// <summary>
+        /// Gets a specific <see cref="AnswerSession"/>
+        /// </summary>
+        /// <param name="pAnswerSessionId">Specific <see cref="AnswerSession"/> Id</param>
+        /// <returns>A <see cref="AnswerSession"/></returns>
         public AnswerSession GetById(long pAnswerSessionId)
         {
             var lAnswerSession = this.iAnswerSessionRepository.GetById(pAnswerSessionId);

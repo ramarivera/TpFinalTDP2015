@@ -11,6 +11,7 @@ using Questionnaire.Services.DTO;
 
 namespace Questionnaire.UI.WinForms
 {
+    // TODO missing documentation
     public partial class YesNoQuestionViewer : UserControl, IQuestionViewer
     {
         private readonly QuestionData iQuestion;

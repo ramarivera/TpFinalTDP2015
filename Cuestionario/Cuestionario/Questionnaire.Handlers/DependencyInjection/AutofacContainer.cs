@@ -4,6 +4,7 @@ using IContainer = Questionnaire.Services.DependencyInjection.IContainer;
 
 namespace Questionnaire.Handlers.DependencyInjection
 {
+    // TODO missing documentation
     public class AutofacContainer : IContainer
     {
         private readonly Func<IComponentContext> iContainerFactory;

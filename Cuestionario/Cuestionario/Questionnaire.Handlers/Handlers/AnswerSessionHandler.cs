@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Handlers.Handlers
 {
+    // TODO missing documentation
     public class AnswerSessionHandler : BaseHandler, IAnswerSessionHandler
     {
         private readonly IAnswerSessionServices iAnswerSessionServices;
@@ -52,17 +53,5 @@ namespace Questionnaire.Handlers.Handlers
 
             return lAnswerSession.Id;
         }
-
-        //[Transactional]
-        //public int StartAnswerSession2()
-        //{
-        //    var cat = this.iCategoryServices.Create(new CategoryData
-        //    {
-        //        Description = "test",
-        //    });
-
-
-        //    return cat.Id;
-        //}
     }
 }

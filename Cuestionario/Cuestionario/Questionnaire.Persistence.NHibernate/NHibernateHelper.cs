@@ -16,6 +16,7 @@ using System.Reflection;
 
 namespace Questionnaire.Persistence.NHibernate
 {
+    // TODO missing documentation
     public static class NHibernateHelper
     {
         private const string DEFAULT_CONNECTION_STRING_KEY = "DEFAULT";

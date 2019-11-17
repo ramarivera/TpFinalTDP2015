@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Services
 {
+    /// <summary>
+    /// Contains all business logic related to <see cref="Difficulty"/> model class
+    /// </summary>
     public class DifficultyServices : IDifficultyServices
     {
         private readonly IRepository<Difficulty> iDifficultyRepository;
@@ -15,12 +18,12 @@ namespace Questionnaire.Services
         {
             this.iDifficultyRepository = pDifficultyRepository;
         }
-        
+
         /// <summary>
-        /// Persist a Difficulty in the database
+        /// Creates a new <see cref="Difficulty"/> that will be stored
         /// </summary>
-        /// <param name="pDifficultyData"></param>
-        /// <returns></returns>
+        /// <param name="pDifficultyData">New <see cref="Difficulty"/> data</param>
+        /// <returns>Created <see cref="Difficulty"/></returns>
         public Difficulty Create(DifficultyData pDifficultyData)
         {
             Difficulty lDifficulty = new Difficulty
@@ -38,11 +41,20 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets all stored <see cref="Difficulty"/>
+        /// </summary>
+        /// <returns>A list of <see cref="Difficulty"/></returns>
         public IEnumerable<Difficulty> GetAll()
         {
             return this.iDifficultyRepository.GetAll();
-        }      
+        }
 
+        /// <summary>
+        /// Gets a specific <see cref="Difficulty"/>
+        /// </summary>
+        /// <param name="pDifficultyId">Specific <see cref="Difficulty"/> Id</param>
+        /// <returns>A <see cref="Difficulty"/></returns>
         public Difficulty GetById(long pDifficultyId)
         {
             var lDifficulty = this.iDifficultyRepository.GetById(pDifficultyId);
@@ -61,9 +73,9 @@ namespace Questionnaire.Services
         }
 
         /// <summary>
-        /// Retrieve a Difficulty by description, if it doesn´t exist create it
+        /// Retrieve a <see cref="Difficulty"/> by description. If it doesn´t exist, creates it
         /// </summary>
-        /// <param name="pDifficultyDescription"></param>
+        /// <param name="pDifficultyDescription"><see cref="Category"/> description</param>
         /// <returns></returns>
         public DifficultyData RetrieveByDescription(string pDifficultyDescription)
         {
@@ -96,6 +108,7 @@ namespace Questionnaire.Services
         /// <returns></returns>
         public int GetDifficultyFactor(string pDescription)
         {
+            //TODO RAR review this
             int lDifficultyFactor = 0;
 
             if (pDescription == "easy") { lDifficultyFactor = 1; }

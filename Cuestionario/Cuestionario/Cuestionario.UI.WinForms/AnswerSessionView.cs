@@ -15,6 +15,7 @@ using Questionnaire.Model.Enums;
 
 namespace Questionnaire.UI.WinForms
 {
+    // TODO missing documentation
     public partial class AnswerSessionView : Form
     {
         private readonly long iAnswerSessionId;
@@ -97,6 +98,7 @@ namespace Questionnaire.UI.WinForms
 
         private void MoveToNextQuestion(int pQuestionIndex)
         {
+            // TODO RAR review this
             //if (this.iCurrentQuestionIndex < pQuestionIndex)
             //{
             //    // error

@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Services
 {
+    /// <summary>
+    /// Contains all business logic related to <see cref="Category"/> model class
+    /// </summary>
     public class CategoryServices : ICategoryServices
     {
         private readonly IRepository<Category> iCategoryRepository;
@@ -18,10 +21,10 @@ namespace Questionnaire.Services
         }
 
         /// <summary>
-        /// Persist a Category in the database
+        /// Creates a new <see cref="Category"/> that will be stored
         /// </summary>
-        /// <param name="pCategoryData"></param>
-        /// <returns></returns>
+        /// <param name="pCategoryData">New <see cref="Category"/> data</param>
+        /// <returns>Created <see cref="Category"/></returns>
         public Category Create(CategoryData pCategoryData)
         {
             Category lCategory = new Category
@@ -39,11 +42,20 @@ namespace Questionnaire.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets all stored <see cref="Category"/>
+        /// </summary>
+        /// <returns>A list of <see cref="Category"/></returns>
         public IEnumerable<Category> GetAll()
         {
             return this.iCategoryRepository.GetAll();
-        }       
-        
+        }
+
+        /// <summary>
+        /// Gets a specific <see cref="Category"/>
+        /// </summary>
+        /// <param name="pCategoryId">Specific <see cref="Category"/> Id</param>
+        /// <returns>A <see cref="Category"/></returns>
         public Category GetById(long pCategoryId)
         {
             var lCategory = iCategoryRepository.GetById(pCategoryId);
@@ -62,9 +74,9 @@ namespace Questionnaire.Services
         }
 
         /// <summary>
-        /// Retrieve a Category by description, if it doesn´t exist create it
+        /// Retrieve a <see cref="Category"/> by description. If it doesn´t exist, creates it
         /// </summary>
-        /// <param name="pCategoryDescription"></param>
+        /// <param name="pCategoryDescription"><see cref="Category"/> description</param>
         /// <returns></returns>
         public CategoryData RetrieveByDescription(string pCategoryDescription)
         {

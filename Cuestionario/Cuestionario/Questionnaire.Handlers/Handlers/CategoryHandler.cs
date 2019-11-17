@@ -12,6 +12,7 @@ using Questionnaire.Handlers.Handlers.Interfaces;
 
 namespace Questionnaire.Handlers.Handlers
 {
+    // TODO missing documentation
     class CategoryHandler : BaseHandler, ICategoryHandler
     {
         private readonly ICategoryServices iCategoryServices;

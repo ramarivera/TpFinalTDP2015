@@ -10,6 +10,7 @@ using System.Linq;
 
 namespace Questionnaire.Handlers.Handlers
 {
+    // TODO missing documentation
     class DifficultyHandler : BaseHandler, IDifficultyHandler
     {
         private readonly IDifficultyServices iDifficultyServices;

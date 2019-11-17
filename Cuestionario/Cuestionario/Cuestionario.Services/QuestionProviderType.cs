@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Questionnaire.Services
 {
+    /// <summary>
+    /// Represents Question providers types
+    /// </summary>
     public enum QuestionProviderType
     {
         None = 0,

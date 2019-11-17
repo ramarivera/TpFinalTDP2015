@@ -12,23 +12,20 @@ using System.Threading.Tasks;
 
 namespace Questionnaire.Services.OpenTrivia
 {
+    // TODO missing documentaion
     public class OpenTriviaQuestionsServices : IQuestionProvider
     {
         private ICategoryServices iCategoryServices;
 
         private IDifficultyServices iDifficultyServices;
 
-        private IQuestionServices iQuestionServices;
-
         HttpClient client = new HttpClient();
         public OpenTriviaQuestionsServices(
             ICategoryServices categoryServices,
-            IDifficultyServices difficcultyServices,
-            IQuestionServices questionServices)
+            IDifficultyServices difficcultyServices)
         {
             iCategoryServices = categoryServices;
             iDifficultyServices = difficcultyServices;
-            iQuestionServices = questionServices;
         }
 
         /// <summary>

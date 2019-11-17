@@ -18,6 +18,7 @@ using Questionnaire.Handlers.Handlers.Interfaces;
 
 namespace Questionnaire.UI.WinForms
 {
+    // TODO missing documentation
     public partial class WelcomeView : Form
     {
         public WelcomeView()

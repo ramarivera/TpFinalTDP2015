@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace Questionnaire.Services.Impl
 {
+    /// <summary>
+    /// Contains all business logic related to <see cref="Question"/> model class
+    /// </summary>
     public class QuestionServices : IQuestionServices
     {
         private readonly IRepository<Question> iQuestionRepository;
@@ -27,6 +30,11 @@ namespace Questionnaire.Services.Impl
             this.iDifficultyServices = pDifficcultyServices;
         }
 
+        /// <summary>
+        /// Creates a new <see cref="Question"/>, and its asociated <see cref="Answer"/>, that will be stored in the database
+        /// </summary>
+        /// <param name="pQuestionData">New <see cref="Question"/> data</param>
+        /// <returns>Created <see cref="Question"/></returns>
         public Question Create(QuestionCreationData pQuestionData)
         {
             Answer CreateAnswer(AnswerCreationData pAnswerCreationData)
@@ -70,11 +78,20 @@ namespace Questionnaire.Services.Impl
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets all stored <see cref="Question"/>
+        /// </summary>
+        /// <returns>A list of <see cref="Question"/></returns>
         public IEnumerable<Question> GetAll()
         {
             return this.iQuestionRepository.GetAll();
-        }         
+        }
 
+        /// <summary>
+        /// Gets a specific <see cref="Question"/>
+        /// </summary>
+        /// <param name="pQuestionId">Specific <see cref="Question"/> Id</param>
+        /// <returns>A <see cref="Question"/></returns>
         public Question GetById(long pQuestionId)
         {
             var lQuestion = this.iQuestionRepository.GetById(pQuestionId);
@@ -92,6 +109,11 @@ namespace Questionnaire.Services.Impl
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets a specific <see cref="Answer"/>
+        /// </summary>
+        /// <param name="pQuestionId">Specific <see cref="Answer"/> Id</param>
+        /// <returns>An <see cref="Answer"/></returns>
         public Answer GetAnswerById(long pAnswerId)
         {
             var lAnswer = this.iAnswerRepository.GetById(pAnswerId);
@@ -104,6 +126,11 @@ namespace Questionnaire.Services.Impl
             return lAnswer;
         }
 
+        /// <summary>
+        /// Gets a list of <see cref="Question"/> for Questionnaire's <see cref="AnswerSession"/>, according its data
+        /// </summary>
+        /// <param name="pAnswerSessionStartData"> <see cref="AnswerSession"/> data</param>
+        /// <returns>A list of <see cref="Question"/> according <see cref="AnswerSession"/> data</returns>
         public IList<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
             var lQuestions = this.GetAll()
@@ -114,12 +141,23 @@ namespace Questionnaire.Services.Impl
             int lQuestionIndex;
             var lSessionQuestions = new List<Question>();
 
-            // TODO RAR this has to be rewritten, we are potentially hitting the DB many many times.
+            // TODO RAR review this algorithm
+
+            //Basicamente busca obtener aleatoriamente las preguntas para la session, a partir de todas las
+            //preguntas almacenadas para una categoria y dificultad
+
+            // Si la cantidad de preguntas almacenadas en ddbb para la categoria y la dificultad, es menor
+            // al número selecciondao antes de iniciar la session (aunque este caso no se debería dar mas
+            // por la validación agregada por Franco)
             if (lQuestions.Count() < pAnswerSessionStartData.QuestionsCount)
             {
+                // mientras la cantidad de preguntas a devolver sea menor a la cantidad de preguntas almacenadas
                 while (lSessionQuestions.Count < lQuestions.Count())
                 {
+                    // Se obtiene un indice aleatorio entre 0 y el número de preguntas almacenadas
                     lQuestionIndex = lRandomNumber.Next(lQuestions.Count());
+                    // Si la pregunta en el indice aleatorio no fue agregada previamente a la lista resultado,
+                    // la agrega
                     if (!lSessionQuestions.Contains(lQuestions.ElementAt(lQuestionIndex)))
                     {
                         lSessionQuestions.Add(lQuestions.ElementAt(lQuestionIndex));
@@ -128,9 +166,14 @@ namespace Questionnaire.Services.Impl
             }
             else
             {
+                // mientras la cantidad de preguntas a devolver sea menor a la cantidad de preguntas deseadas
+                // para la session
                 while (lSessionQuestions.Count < pAnswerSessionStartData.QuestionsCount)
                 {
+                    // Se obtiene un indice aleatorio entre 0 y el número de preguntas deseadas
                     lQuestionIndex = lRandomNumber.Next(pAnswerSessionStartData.QuestionsCount);
+                    // Si la pregunta en el indice aleatorio no fue agregada previamente a la lista resultado,
+                    // la agrega
                     if (!lSessionQuestions.Contains(lQuestions.ElementAt(lQuestionIndex)))
                     {
                         lSessionQuestions.Add(lQuestions.ElementAt(lQuestionIndex));

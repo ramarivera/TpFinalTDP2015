@@ -3,6 +3,7 @@ using Questionnaire.Handlers.Handlers.Interfaces;
 
 namespace Questionnaire.Handlers.Handlers
 {
+    // TODO missing documentation
     public abstract class BaseHandler : IBaseHandler
     {
         private readonly IMapper iMapper;

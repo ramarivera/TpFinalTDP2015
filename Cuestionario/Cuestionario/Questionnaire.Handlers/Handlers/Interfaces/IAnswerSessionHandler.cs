@@ -12,7 +12,5 @@ namespace Questionnaire.Handlers.Handlers.Interfaces
         IEnumerable<AnswerSessionData> GetAll();
 
         AnswerSessionData GetById(long pId);
-
-        //int StartAnswerSession2();
     }
 }

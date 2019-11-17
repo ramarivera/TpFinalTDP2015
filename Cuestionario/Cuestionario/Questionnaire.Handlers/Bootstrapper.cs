@@ -15,6 +15,7 @@ using IContainer = Questionnaire.Services.DependencyInjection.IContainer;
 
 namespace Questionnaire.Handlers
 {
+    // TODO missing documentation
     public class Bootstrapper
     {
         public static void BootstrapApplication()

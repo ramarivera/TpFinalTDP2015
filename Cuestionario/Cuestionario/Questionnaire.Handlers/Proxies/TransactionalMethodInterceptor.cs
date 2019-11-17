@@ -5,6 +5,7 @@ using System.Reflection;
 
 namespace Questionnaire.Handlers.Proxies
 {
+    // TODO missing documentation
     class TransactionalMethodInterceptor : Castle.Core.Interceptor.IInterceptor
     {
         private readonly IUnitOfWork iUnitOfWork;
