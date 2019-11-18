@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using Questionnaire.Model;
 using Questionnaire.Services.DTO;
@@ -6,7 +7,9 @@ using Questionnaire.Services.Interfaces;
 
 namespace Questionnaire.Handlers.Handlers
 {
-    // TODO missing documentation
+    /// <summary>
+    /// Handler class for <see cref="Model.UserAnswer"/> related use cases such as: <see cref="SaveUserAnswer"/> 
+    /// </summary>
     public class UserAnswerHandler : BaseHandler, IUserAnswerHandler
     {
         private readonly IUserAnswerServices iUserAnswerServices;
@@ -23,6 +26,13 @@ namespace Questionnaire.Handlers.Handlers
             iAnswerSessionServices = pAnswerSessionServices;
         }
 
+        /// <summary>
+        /// Saves an User Answer during a Answer Session
+        /// </summary>
+        /// <param name="pUserAnswer">User Answer data</param>
+        /// <param name="pAnswerSessionId">Specific Answer Session</param>
+        /// <returns>New User Answer Id</returns>
+        [Transactional]
         public long SaveUserAnswer(UserAnswerCreationData pUserAnswer, long pAnswerSessionId)
         {
             AnswerSession lAnswerSession = iAnswerSessionServices.GetById(pAnswerSessionId);

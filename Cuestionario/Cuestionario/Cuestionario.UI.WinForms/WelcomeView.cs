@@ -18,7 +18,9 @@ using Questionnaire.Handlers.Handlers.Interfaces;
 
 namespace Questionnaire.UI.WinForms
 {
-    // TODO missing documentation
+    /// <summary>
+    /// Form in charge of allow an user to configure the questions to answer in a new session 
+    /// </summary>
     public partial class WelcomeView : Form
     {
         public WelcomeView()

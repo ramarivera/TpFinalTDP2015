@@ -8,13 +8,14 @@ using System.Collections.Generic;
 
 namespace Questionnaire.Handlers.Handlers
 {
-    // TODO missing documentation
+    /// <summary>
+    /// Handler class for <see cref="Model.Question"/> related use cases such as: <see cref="HandlerImportQuestionsFromProvider"/> 
+    /// and <see cref="GetQuestionsForSession"/>
+    /// </summary>
     public class QuestionHandler : BaseHandler, IQuestionHandler
     {
         private readonly IQuestionServices iQuestionService;
         private readonly QuestionProviderFactory iQuestionProviderFactory;
-
-        // TODO No se que tan bien esta que el service y el provider se usen en el mismo metodo btw.
 
         public QuestionHandler(
             IQuestionServices pQuestionService,
@@ -26,6 +27,10 @@ namespace Questionnaire.Handlers.Handlers
             this.iQuestionProviderFactory = pQuestionProviderFactory;
         }
 
+        /// <summary>
+        /// Imports new <see cref="Model.Question"/> from a specific Question Provider
+        /// </summary>
+        /// <param name="pType">Question Provider</param>
         [Transactional]
         public void HandlerImportQuestionsFromProvider(QuestionProviderType pType)
         {
@@ -41,6 +46,11 @@ namespace Questionnaire.Handlers.Handlers
             }
         }
 
+        /// <summary>
+        /// Gets Questions for a specific Answer Session, according to selected options
+        /// </summary>
+        /// <param name="pAnswerSessionStartData">Answer Session start data</param>
+        /// <returns>A list of <see cref="QuestionData"/></returns>
         [Transactional]
         public IEnumerable<QuestionData> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {

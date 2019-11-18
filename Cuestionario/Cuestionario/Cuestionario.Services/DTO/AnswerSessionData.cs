@@ -25,7 +25,7 @@ namespace Questionnaire.Services.DTO
         {
             get
             {
-                if (EndTime == null)
+                if (EndTime < StartTime)
                 {
                     return 0;
                 }

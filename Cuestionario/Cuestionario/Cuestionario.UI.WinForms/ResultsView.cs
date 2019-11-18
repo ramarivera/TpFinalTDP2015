@@ -13,7 +13,10 @@ using System.Windows.Forms;
 
 namespace Questionnaire.UI.WinForms
 {
-    // TODO missing documentation
+    /// <summary>
+    /// Form in charge of showing actual Answer Session result, 
+    /// and the historical best Answer Session results 
+    /// </summary>
     public partial class ResultsView : Form
     {
         public ResultsView(long pAnswerSessionId)
@@ -29,7 +32,7 @@ namespace Questionnaire.UI.WinForms
                 IList<AnswerSessionData> lAnswerSessions = lHandler.GetAll()
                     .OrderByDescending(x => x.Score).ToList();
 
-                // falta limitar que sean 20
+                // TODO the list must show only the 20 best results
                 var lSource = new BindingList<AnswerSessionData>(lAnswerSessions);
                 iResultsDGV.DataSource = lSource.Select(x => new
                 {

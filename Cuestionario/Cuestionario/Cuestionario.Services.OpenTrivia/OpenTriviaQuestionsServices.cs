@@ -12,7 +12,9 @@ using System.Threading.Tasks;
 
 namespace Questionnaire.Services.OpenTrivia
 {
-    // TODO missing documentaion
+    /// <summary>
+    /// Contains all business logic related to Open Trivia Question Provider
+    /// </summary>
     public class OpenTriviaQuestionsServices : IQuestionProvider
     {
         private ICategoryServices iCategoryServices;
@@ -29,7 +31,7 @@ namespace Questionnaire.Services.OpenTrivia
         }
 
         /// <summary>
-        /// Retrieve questions from a given url
+        /// Retrieve questions from a given URL
         /// </summary>
         /// <param name="pPath"></param>
         /// <returns></returns>

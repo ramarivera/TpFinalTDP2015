@@ -31,8 +31,6 @@ namespace Questionnaire.Services
         /// <returns>Created <see cref="UserAnswer"/></returns>
         public UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
         {
-            // TODO RAR should we provide a get Ans by Id method, since Ans is "part" of the Q aggregate root?
-
             var lQuestion = iQuestionServices.GetById(pUserAnswerData.Question.Id);
             var lChosenAnswer = iQuestionServices.GetAnswerById(pUserAnswerData.ChosenAnswer.Id);
 

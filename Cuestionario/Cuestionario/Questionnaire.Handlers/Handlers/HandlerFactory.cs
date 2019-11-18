@@ -8,7 +8,6 @@ using Questionnaire.Handlers.Proxies;
 
 namespace Questionnaire.Handlers.Handlers
 {
-    // TODO missing documentation
     public static class HandlerFactory
     {
         private static IContainer mContainer;

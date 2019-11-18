@@ -13,7 +13,9 @@ using System.Windows.Forms;
 
 namespace Questionnaire.UI.WinForms
 {
-    // TODO missing documentation
+    /// <summary>
+    /// Form in charge of allow Questionnaire's Administrator to import new Questions 
+    /// </summary>
     public partial class AdministratorView : Form
     {
         public AdministratorView()

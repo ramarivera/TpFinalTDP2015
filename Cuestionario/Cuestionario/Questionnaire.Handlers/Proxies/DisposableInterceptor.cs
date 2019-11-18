@@ -6,7 +6,6 @@ using System;
 
 namespace Questionnaire.Handlers.Proxies
 {
-    // TODO missing documentation
     public class DisposableInterceptor : Castle.Core.Interceptor.IInterceptor
     {
         private readonly ILifetimeScope iLifetimeScope;

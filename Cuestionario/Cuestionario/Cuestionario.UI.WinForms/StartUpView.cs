@@ -10,7 +10,9 @@ using System.Windows.Forms;
 
 namespace Questionnaire.UI.WinForms
 {
-    // TODO missing documentation
+    /// <summary>
+    /// Form in charge of show Questionnaire's initial options 
+    /// </summary>
     public partial class StartUpView : Form
     {
         public StartUpView()
@@ -39,11 +41,6 @@ namespace Questionnaire.UI.WinForms
             AdministratorView lAdministratorView = new AdministratorView();
             this.Hide();
             lAdministratorView.ShowDialog();
-        }
-
-        private void iTitleLbl_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -11,7 +11,9 @@ using Questionnaire.Services.DTO;
 
 namespace Questionnaire.UI.WinForms
 {
-    // TODO missing documentation
+    /// <summary>
+    /// User Control in charge of show a question and its possible answer when the Question Type is "MultipleChoiceQuestion" 
+    /// </summary>
     public partial class MultipleChoiceQuestionViewer : UserControl, IQuestionViewer
     {
         private readonly QuestionData iQuestion;

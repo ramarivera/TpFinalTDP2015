@@ -65,10 +65,7 @@ namespace Questionnaire.Services
             var lAnswerSession = this.GetById(pAnswerSessionId);
 
             lAnswerSession.EndTime = DateTime.Now;
-            
-            // TODO difficultyFactor podría estar en los servicios de OpenTrivia por estar basado a las dificultades que este provider define
             int lDifficultyFactor = iDifficultyServices.GetDifficultyFactor(lAnswerSession.Difficulty.Description);
-
             int lTimeFactor = this.GetTimeFactor(lAnswerSession);
 
             lAnswerSession.Score = this.GetSessionScore(pAnswerSessionId, lDifficultyFactor, lTimeFactor);

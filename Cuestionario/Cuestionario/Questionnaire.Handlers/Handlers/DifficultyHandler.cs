@@ -10,7 +10,9 @@ using System.Linq;
 
 namespace Questionnaire.Handlers.Handlers
 {
-    // TODO missing documentation
+    /// <summary>
+    /// Handler class for <see cref="Model.Difficulty"/> related use cases such as: <see cref="GetAll"/> 
+    /// </summary>
     class DifficultyHandler : BaseHandler, IDifficultyHandler
     {
         private readonly IDifficultyServices iDifficultyServices;
@@ -23,6 +25,10 @@ namespace Questionnaire.Handlers.Handlers
             this.iDifficultyServices = pDifficultyServices;
         }
 
+        /// <summary>
+        /// Gets all Difficulties
+        /// </summary>
+        /// <returns>A list of <see cref="DifficultyData"/></returns>
         [Transactional]
         public IEnumerable<DifficultyData> GetAll()
         {

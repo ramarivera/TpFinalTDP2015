@@ -3,7 +3,6 @@ using Questionnaire.Services.DependencyInjection;
 
 namespace Questionnaire.Services
 {
-    // TODO missing documentation
     public class QuestionProviderFactory
     {
         private readonly IContainer iContainer;

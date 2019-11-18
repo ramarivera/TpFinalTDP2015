@@ -5,6 +5,7 @@ using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
 using System.Collections.Generic;
+using Questionnaire.Model.Enums;
 
 namespace Questionnaire.Services
 {
@@ -108,12 +109,11 @@ namespace Questionnaire.Services
         /// <returns></returns>
         public int GetDifficultyFactor(string pDescription)
         {
-            //TODO RAR review this
             int lDifficultyFactor = 0;
 
-            if (pDescription == "easy") { lDifficultyFactor = 1; }
-            else if (pDescription == "medium") { lDifficultyFactor = 3; }
-            else if (pDescription == "hard") { lDifficultyFactor = 5; }
+            if (pDescription == "easy") { lDifficultyFactor = (int)DifficultyFactor.Easy; }
+            else if (pDescription == "medium") { lDifficultyFactor = (int)DifficultyFactor.Medium; }
+            else if (pDescription == "hard") { lDifficultyFactor = (int)DifficultyFactor.Hard; }
 
             return lDifficultyFactor;
         }

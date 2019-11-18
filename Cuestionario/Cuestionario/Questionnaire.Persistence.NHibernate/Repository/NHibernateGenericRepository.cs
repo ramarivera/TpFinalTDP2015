@@ -6,7 +6,6 @@ using System.Linq;
 
 namespace Questionnaire.Persistence.NHibernate.Repository
 {
-    // TODO missing documentation
     public class NHibernateGenericRepository<TEntity> : IRepository<TEntity>
         where TEntity : IBaseEntity
     {

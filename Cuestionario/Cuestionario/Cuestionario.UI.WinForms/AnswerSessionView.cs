@@ -15,7 +15,10 @@ using Questionnaire.Model.Enums;
 
 namespace Questionnaire.UI.WinForms
 {
-    // TODO missing documentation
+    /// <summary>
+    /// Form in charge of showing Questions belonging to one Answer Session, 
+    /// including managing the different viewers for each Question Type
+    /// </summary>
     public partial class AnswerSessionView : Form
     {
         private readonly long iAnswerSessionId;
@@ -98,11 +101,13 @@ namespace Questionnaire.UI.WinForms
 
         private void MoveToNextQuestion(int pQuestionIndex)
         {
-            // TODO RAR review this
-            //if (this.iCurrentQuestionIndex < pQuestionIndex)
-            //{
-            //    // error
-            //}
+            if (this.iCurrentQuestionIndex > pQuestionIndex)
+            {
+                DialogResult lDialogResult = MessageBox.Show("Internal error", "Questionnaire");
+                WelcomeView lWelcomeView = new WelcomeView();
+                this.Hide();
+                lWelcomeView.ShowDialog();
+            }
 
             iCurrentQuestionIndex = pQuestionIndex;
 
@@ -142,7 +147,13 @@ namespace Questionnaire.UI.WinForms
 
         private void iFinishBtn_Click(object sender, EventArgs e)
         {
-
+            DialogResult lDialogResult = MessageBox.Show("Are you sure you want to finish the session? Your progress will not be saved", "Questionnaire", MessageBoxButtons.YesNo);
+            if (lDialogResult == DialogResult.Yes)
+            {
+                WelcomeView lWelcomeView = new WelcomeView();
+                this.Hide();
+                lWelcomeView.ShowDialog();
+            }
         }
     }
 }

@@ -141,23 +141,13 @@ namespace Questionnaire.Services.Impl
             int lQuestionIndex;
             var lSessionQuestions = new List<Question>();
 
-            // TODO RAR review this algorithm
-
-            //Basicamente busca obtener aleatoriamente las preguntas para la session, a partir de todas las
-            //preguntas almacenadas para una categoria y dificultad
-
-            // Si la cantidad de preguntas almacenadas en ddbb para la categoria y la dificultad, es menor
-            // al número selecciondao antes de iniciar la session (aunque este caso no se debería dar mas
-            // por la validación agregada por Franco)
+            // TODO this algorithm might be reviewed
             if (lQuestions.Count() < pAnswerSessionStartData.QuestionsCount)
             {
-                // mientras la cantidad de preguntas a devolver sea menor a la cantidad de preguntas almacenadas
                 while (lSessionQuestions.Count < lQuestions.Count())
                 {
-                    // Se obtiene un indice aleatorio entre 0 y el número de preguntas almacenadas
                     lQuestionIndex = lRandomNumber.Next(lQuestions.Count());
-                    // Si la pregunta en el indice aleatorio no fue agregada previamente a la lista resultado,
-                    // la agrega
+                    
                     if (!lSessionQuestions.Contains(lQuestions.ElementAt(lQuestionIndex)))
                     {
                         lSessionQuestions.Add(lQuestions.ElementAt(lQuestionIndex));
@@ -166,14 +156,10 @@ namespace Questionnaire.Services.Impl
             }
             else
             {
-                // mientras la cantidad de preguntas a devolver sea menor a la cantidad de preguntas deseadas
-                // para la session
                 while (lSessionQuestions.Count < pAnswerSessionStartData.QuestionsCount)
                 {
-                    // Se obtiene un indice aleatorio entre 0 y el número de preguntas deseadas
                     lQuestionIndex = lRandomNumber.Next(pAnswerSessionStartData.QuestionsCount);
-                    // Si la pregunta en el indice aleatorio no fue agregada previamente a la lista resultado,
-                    // la agrega
+
                     if (!lSessionQuestions.Contains(lQuestions.ElementAt(lQuestionIndex)))
                     {
                         lSessionQuestions.Add(lQuestions.ElementAt(lQuestionIndex));
