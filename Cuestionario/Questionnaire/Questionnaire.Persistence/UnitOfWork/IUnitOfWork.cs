@@ -1,5 +1,4 @@
-﻿
-using Questionnaire.Model;
+﻿using Questionnaire.Model;
 using Questionnaire.Persistence.Repository;
 using System.Data;
 

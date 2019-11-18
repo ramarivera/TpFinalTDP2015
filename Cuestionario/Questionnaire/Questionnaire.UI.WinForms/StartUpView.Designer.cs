@@ -55,7 +55,6 @@
             this.iTitleLbl.TabIndex = 1;
             this.iTitleLbl.Text = "Welcome to Questionnaire";
             this.iTitleLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.iTitleLbl.Click += new System.EventHandler(this.iTitleLbl_Click);
             // 
             // iActionLbl
             // 

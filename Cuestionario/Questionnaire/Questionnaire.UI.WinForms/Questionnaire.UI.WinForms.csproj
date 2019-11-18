@@ -150,15 +150,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cuestionario.Model\Questionnaire.Model.csproj">
+    <ProjectReference Include="..\Questionnaire.Model\Questionnaire.Model.csproj">
       <Project>{e3f34edb-c212-4d6d-8e9f-f24955303bde}</Project>
       <Name>Questionnaire.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cuestionario.Services.OpenTrivia\Questionnaire.Services.OpenTrivia.csproj">
+    <ProjectReference Include="..\Questionnaire.Services.OpenTrivia\Questionnaire.Services.OpenTrivia.csproj">
       <Project>{307c22d6-e354-414f-9bbd-bffbd695c5e5}</Project>
       <Name>Questionnaire.Services.OpenTrivia</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cuestionario.Services\Questionnaire.Services.csproj">
+    <ProjectReference Include="..\Questionnaire.Services\Questionnaire.Services.csproj">
       <Project>{866C7FE3-F59E-48B6-A175-5AFE7CEB7B6C}</Project>
       <Name>Questionnaire.Services</Name>
     </ProjectReference>
