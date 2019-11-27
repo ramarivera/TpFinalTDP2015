@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Questionnaire.Model;
+using Questionnaire.Model.Enums;
 
 namespace Questionnaire.Services.DTO
 {
@@ -12,6 +13,7 @@ namespace Questionnaire.Services.DTO
         public int Id { get; set; }
         public CategoryData Category { get; set; }
         public DifficultyData Difficulty { get; set; }
+        public QuestionSource QuestionSource { get; set; }
         public string Username { get; set; }
         public int Score { get; set; }
         public DateTime StartTime { get; set; }

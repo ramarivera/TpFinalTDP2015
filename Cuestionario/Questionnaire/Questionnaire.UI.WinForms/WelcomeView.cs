@@ -1,20 +1,12 @@
-﻿using Questionnaire.Services.Interfaces;
-using Questionnaire.Services.DTO;
-using Questionnaire.Services.OpenTrivia;
+﻿using Questionnaire.Services.DTO;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Questionnaire.Services;
-using Questionnaire.Model;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
+using Questionnaire.Model.Enums;
 
 namespace Questionnaire.UI.WinForms
 {
@@ -26,6 +18,12 @@ namespace Questionnaire.UI.WinForms
         public WelcomeView()
         {
             InitializeComponent();
+
+            iQuestionSourceCmbBox.Items.Add(QuestionSource.OpenTrivia);
+
+            //OpenTrivia is selected by default because it's the available Question Source
+            iQuestionSourceCmbBox.SelectedItem = iQuestionSourceCmbBox.Items[0];
+            
             using (var lHandler = HandlerFactory.Get<ICategoryHandler>())
             {
                 IList<CategoryData> lCategories = lHandler.GetAll()
@@ -76,6 +74,7 @@ namespace Questionnaire.UI.WinForms
                 lAnswerSessionStartData.QuestionsCount = Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString());
                 lAnswerSessionStartData.CategoryId = ((CategoryData)iCategoryCmbBox.SelectedItem).Id;
                 lAnswerSessionStartData.DifficultyId = ((DifficultyData)iDifficultyCmbBox.SelectedItem).Id;
+                lAnswerSessionStartData.QuestionSource = (QuestionSource)iQuestionSourceCmbBox.SelectedItem;
 
                 using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
                 {

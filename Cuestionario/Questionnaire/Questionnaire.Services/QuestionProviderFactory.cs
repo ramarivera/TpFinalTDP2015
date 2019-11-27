@@ -13,7 +13,7 @@ namespace Questionnaire.Services
             this.iContainer = pContainer;
         }
 
-        public IQuestionProvider BuildProvider(QuestionProviderType pType)
+        public IQuestionProvider BuildProvider(QuestionSource pType)
         {
             return this.iContainer.Resolve<IQuestionProvider>(pType.ToString().ToUpper());
         }

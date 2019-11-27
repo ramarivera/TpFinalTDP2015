@@ -25,7 +25,7 @@ namespace Questionnaire.Model
 
         public virtual QuestionType QuestionType { get; set; }
 
-        public virtual QuestionProviderType QuestionProvider { get; set; }
+        public virtual QuestionSource Source { get; set; }
 
         public virtual IEnumerable<Answer> Answers => answers;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Questionnaire.Model.Enums;
+using System;
 using System.Collections.Generic;
 
 namespace Questionnaire.Model
@@ -17,6 +18,8 @@ namespace Questionnaire.Model
         public virtual Category Category { get; set; }
 
         public virtual Difficulty Difficulty { get; set; }
+
+        public virtual QuestionSource QuestionSource { get; set; }
 
         public virtual string Username { get; set; }
 

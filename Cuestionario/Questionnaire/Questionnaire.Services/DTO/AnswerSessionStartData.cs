@@ -1,4 +1,5 @@
 ﻿using Questionnaire.Model;
+using Questionnaire.Model.Enums;
 
 namespace Questionnaire.Services.DTO
 {
@@ -10,6 +11,8 @@ namespace Questionnaire.Services.DTO
         public long CategoryId { get; set; }
 
         public long DifficultyId { get; set; }
+
+        public QuestionSource QuestionSource { get; set; }
 
         public string Username { get; set; }
 

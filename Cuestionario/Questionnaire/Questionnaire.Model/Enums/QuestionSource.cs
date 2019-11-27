@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Questionnaire.Model.Enums
 {
     /// <summary>
-    /// Represents Question provider types
+    /// Represents Question sources
     /// </summary>
-    public enum QuestionProviderType
+    public enum QuestionSource
     {
         None = 0,
         OpenTrivia = 1,

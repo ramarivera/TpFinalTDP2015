@@ -31,11 +31,11 @@ namespace Questionnaire.Handlers.Handlers
         /// <summary>
         /// Imports new <see cref="Model.Question"/> from a specific Question Provider
         /// </summary>
-        /// <param name="pType">Question Provider</param>
+        /// <param name="pSource">Question Provider</param>
         [Transactional]
-        public void HandlerImportQuestionsFromProvider(QuestionProviderType pType)
+        public void HandlerImportQuestionsFromProvider(QuestionSource pSource)
         {
-            var lProvider = this.iQuestionProviderFactory.BuildProvider(pType);
+            var lProvider = this.iQuestionProviderFactory.BuildProvider(pSource);
 
             var lExistentQuestion = iQuestionService.GetAll();
 

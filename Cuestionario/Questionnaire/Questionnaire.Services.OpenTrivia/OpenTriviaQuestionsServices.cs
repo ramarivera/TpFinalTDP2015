@@ -82,7 +82,7 @@ namespace Questionnaire.Services.OpenTrivia
                     Category = lCategoryData,
                     Difficulty = lDifficultyData,
                     QuestionType = lQuestionType,
-                    QuestionProvider = QuestionProviderType.OpenTrivia
+                    Source = QuestionSource.OpenTrivia
                 };
 
                 //for the correct answer of the question

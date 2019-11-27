@@ -44,7 +44,7 @@ namespace Questionnaire.Handlers
             PerformInstancePerLifetimeRegistration<IContainer, AutofacContainer>(lBuilder);
 
             lBuilder.RegisterType<OpenTriviaQuestionsServices>()
-                  .Named<IQuestionProvider>(QuestionProviderType.OpenTrivia.ToString().ToUpper())
+                  .Named<IQuestionProvider>(QuestionSource.OpenTrivia.ToString().ToUpper())
                   .InstancePerLifetimeScope();
 
             ConfigureAutomapper(lBuilder);

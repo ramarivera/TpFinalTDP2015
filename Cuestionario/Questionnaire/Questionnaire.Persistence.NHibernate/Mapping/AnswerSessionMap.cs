@@ -16,6 +16,8 @@ namespace Questionnaire.Persistence.NHibernate.Mappings
 
             Map(x => x.Score);
 
+            Map(x => x.QuestionSource).CustomType<int>();
+
             Map(x => x.StartTime);
 
             Map(x => x.EndTime).Nullable();

@@ -47,7 +47,8 @@ namespace Questionnaire.Services
                 StartTime = DateTime.Now,
                 EndTime = null,
                 Category = lCategory,
-                Difficulty = lDifficulty
+                Difficulty = lDifficulty,
+                QuestionSource = pAnswerSessionStartData.QuestionSource
             };
 
             this.iAnswerSessionRepository.Add(lAnswerSession);

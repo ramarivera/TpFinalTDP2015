@@ -37,6 +37,8 @@
             this.iBackBtn = new System.Windows.Forms.Button();
             this.iBeginBtn = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.iQuestionSourceCmbBox = new System.Windows.Forms.ComboBox();
+            this.iQuestionSourceLbl = new System.Windows.Forms.Label();
             this.iQuestionsCountCmbBox = new System.Windows.Forms.ComboBox();
             this.iDifficultyCmbBox = new System.Windows.Forms.ComboBox();
             this.iCategoryCmbBox = new System.Windows.Forms.ComboBox();
@@ -139,6 +141,8 @@
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel4.Controls.Add(this.iQuestionSourceCmbBox);
+            this.panel4.Controls.Add(this.iQuestionSourceLbl);
             this.panel4.Controls.Add(this.iQuestionsCountCmbBox);
             this.panel4.Controls.Add(this.iDifficultyCmbBox);
             this.panel4.Controls.Add(this.iCategoryCmbBox);
@@ -152,13 +156,34 @@
             this.panel4.Size = new System.Drawing.Size(784, 288);
             this.panel4.TabIndex = 3;
             // 
+            // iQuestionSourceCmbBox
+            // 
+            this.iQuestionSourceCmbBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.iQuestionSourceCmbBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iQuestionSourceCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iQuestionSourceCmbBox.FormattingEnabled = true;
+            this.iQuestionSourceCmbBox.Location = new System.Drawing.Point(390, 89);
+            this.iQuestionSourceCmbBox.Name = "iQuestionSourceCmbBox";
+            this.iQuestionSourceCmbBox.Size = new System.Drawing.Size(256, 31);
+            this.iQuestionSourceCmbBox.TabIndex = 9;
+            // 
+            // iQuestionSourceLbl
+            // 
+            this.iQuestionSourceLbl.AutoSize = true;
+            this.iQuestionSourceLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iQuestionSourceLbl.Location = new System.Drawing.Point(162, 93);
+            this.iQuestionSourceLbl.Name = "iQuestionSourceLbl";
+            this.iQuestionSourceLbl.Size = new System.Drawing.Size(186, 23);
+            this.iQuestionSourceLbl.TabIndex = 8;
+            this.iQuestionSourceLbl.Text = "Select Question source";
+            // 
             // iQuestionsCountCmbBox
             // 
             this.iQuestionsCountCmbBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.iQuestionsCountCmbBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iQuestionsCountCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iQuestionsCountCmbBox.FormattingEnabled = true;
-            this.iQuestionsCountCmbBox.Location = new System.Drawing.Point(390, 196);
+            this.iQuestionsCountCmbBox.Location = new System.Drawing.Point(390, 230);
             this.iQuestionsCountCmbBox.Name = "iQuestionsCountCmbBox";
             this.iQuestionsCountCmbBox.Size = new System.Drawing.Size(256, 31);
             this.iQuestionsCountCmbBox.TabIndex = 7;
@@ -169,7 +194,7 @@
             this.iDifficultyCmbBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iDifficultyCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iDifficultyCmbBox.FormattingEnabled = true;
-            this.iDifficultyCmbBox.Location = new System.Drawing.Point(390, 150);
+            this.iDifficultyCmbBox.Location = new System.Drawing.Point(390, 183);
             this.iDifficultyCmbBox.Name = "iDifficultyCmbBox";
             this.iDifficultyCmbBox.Size = new System.Drawing.Size(256, 31);
             this.iDifficultyCmbBox.TabIndex = 6;
@@ -180,7 +205,7 @@
             this.iCategoryCmbBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iCategoryCmbBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iCategoryCmbBox.FormattingEnabled = true;
-            this.iCategoryCmbBox.Location = new System.Drawing.Point(390, 104);
+            this.iCategoryCmbBox.Location = new System.Drawing.Point(390, 136);
             this.iCategoryCmbBox.Name = "iCategoryCmbBox";
             this.iCategoryCmbBox.Size = new System.Drawing.Size(256, 31);
             this.iCategoryCmbBox.TabIndex = 5;
@@ -188,7 +213,7 @@
             // iNameTxtBox
             // 
             this.iNameTxtBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iNameTxtBox.Location = new System.Drawing.Point(390, 58);
+            this.iNameTxtBox.Location = new System.Drawing.Point(390, 42);
             this.iNameTxtBox.Name = "iNameTxtBox";
             this.iNameTxtBox.Size = new System.Drawing.Size(256, 31);
             this.iNameTxtBox.TabIndex = 4;
@@ -198,7 +223,7 @@
             // 
             this.iQuestionsCountLbl.AutoSize = true;
             this.iQuestionsCountLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iQuestionsCountLbl.Location = new System.Drawing.Point(129, 199);
+            this.iQuestionsCountLbl.Location = new System.Drawing.Point(129, 234);
             this.iQuestionsCountLbl.Name = "iQuestionsCountLbl";
             this.iQuestionsCountLbl.Size = new System.Drawing.Size(219, 23);
             this.iQuestionsCountLbl.TabIndex = 3;
@@ -208,7 +233,7 @@
             // 
             this.iDifficultyLbl.AutoSize = true;
             this.iDifficultyLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iDifficultyLbl.Location = new System.Drawing.Point(228, 153);
+            this.iDifficultyLbl.Location = new System.Drawing.Point(228, 187);
             this.iDifficultyLbl.Name = "iDifficultyLbl";
             this.iDifficultyLbl.Size = new System.Drawing.Size(120, 23);
             this.iDifficultyLbl.TabIndex = 2;
@@ -218,7 +243,7 @@
             // 
             this.iCategoryLbl.AutoSize = true;
             this.iCategoryLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iCategoryLbl.Location = new System.Drawing.Point(222, 107);
+            this.iCategoryLbl.Location = new System.Drawing.Point(222, 140);
             this.iCategoryLbl.Name = "iCategoryLbl";
             this.iCategoryLbl.Size = new System.Drawing.Size(126, 23);
             this.iCategoryLbl.TabIndex = 1;
@@ -228,7 +253,7 @@
             // 
             this.iNameLbl.AutoSize = true;
             this.iNameLbl.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iNameLbl.Location = new System.Drawing.Point(152, 61);
+            this.iNameLbl.Location = new System.Drawing.Point(152, 46);
             this.iNameLbl.Name = "iNameLbl";
             this.iNameLbl.Size = new System.Drawing.Size(196, 23);
             this.iNameLbl.TabIndex = 0;
@@ -279,6 +304,8 @@
         private System.Windows.Forms.TextBox iNameTxtBox;
         private System.Windows.Forms.Label iFooterLbl;
         private System.Windows.Forms.Button iBackBtn;
+        private System.Windows.Forms.ComboBox iQuestionSourceCmbBox;
+        private System.Windows.Forms.Label iQuestionSourceLbl;
     }
 }
 
