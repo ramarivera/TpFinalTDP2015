@@ -44,5 +44,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflect.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagramUtilities.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

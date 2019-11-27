@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Questionnaire.Handlers.Attributes.TransactionalAttribute">
+    <Position X="16.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\TransactionalAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Handlers.Bootstrapper">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Bootstrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Handlers.DependencyInjection.AutofacContainer" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DependencyInjection\AutofacContainer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Questionnaire.Handlers.Handlers.AnswerSessionHandler">
+    <Position X="5.25" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAhBAAAAAAIA=</HashCode>
+      <FileName>Handlers\AnswerSessionHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Questionnaire.Handlers.Handlers.BaseHandler">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAACAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\BaseHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Questionnaire.Handlers.Handlers.CategoryHandler">
+    <Position X="0.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Handlers\CategoryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Questionnaire.Handlers.Handlers.DifficultyHandler">
+    <Position X="3" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Handlers\DifficultyHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Questionnaire.Handlers.Handlers.HandlerFactory">
+    <Position X="14.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAiAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\HandlerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Handlers.Handlers.QuestionHandler">
+    <Position X="8" Y="7.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAgAAAAAAAAAAAACAAAAAgAAAA=</HashCode>
+      <FileName>Handlers\QuestionHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Questionnaire.Handlers.Handlers.UserAnswerHandler">
+    <Position X="11.5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Handlers\UserAnswerHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Questionnaire.Handlers.Proxies.DisposableInterceptor" BaseTypeListCollapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Proxies\DisposableInterceptor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Questionnaire.Handlers.Proxies.TransactionalMethodInterceptor" BaseTypeListCollapsed="true">
+    <Position X="18" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAgAAAAA=</HashCode>
+      <FileName>Proxies\TransactionalMethodInterceptor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Questionnaire.Handlers.Handlers.Interfaces.IAnswerSessionHandler">
+    <Position X="0.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAIA=</HashCode>
+      <FileName>Handlers\Interfaces\IAnswerSessionHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Handlers.Handlers.Interfaces.IBaseHandler">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\Interfaces\IBaseHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Handlers.Handlers.Interfaces.ICategoryHandler">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Handlers\Interfaces\ICategoryHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Handlers.Handlers.Interfaces.IDifficultyHandler">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Handlers\Interfaces\IDifficultyHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Handlers.Handlers.Interfaces.IQuestionHandler">
+    <Position X="10.25" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Handlers\Interfaces\IQuestionHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Handlers.Handlers.Interfaces.IUserAnswerHandler">
+    <Position X="3.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers\Interfaces\IUserAnswerHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagramPersistanceNHibernate.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

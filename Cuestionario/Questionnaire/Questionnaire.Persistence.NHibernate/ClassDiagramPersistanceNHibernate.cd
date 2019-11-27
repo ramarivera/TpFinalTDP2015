@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Questionnaire.Persistence.NHibernate.Mappings.AnswerMap">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\AnswerMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Persistence.NHibernate.Mappings.AnswerSessionMap">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\AnswerSessionMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Persistence.NHibernate.Mappings.CategoryMap">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\CategoryMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Persistence.NHibernate.Mappings.DifficultyMap">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\DifficultyMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Persistence.NHibernate.Mappings.QuestionMap">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\QuestionMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Persistence.NHibernate.Mappings.UserAnswerMap">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\UserAnswerMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Persistence.NHibernate.NHibernateHelper">
+    <Position X="4" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAQQAAAAAAAAAgQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NHibernateHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Persistence.NHibernate.Repository.NHibernateGenericRepository&lt;TEntity&gt;" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAIAAAAAAAAAAAAAACEAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>Repository\NHibernateGenericRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Questionnaire.Persistence.NHibernate.UnitOfWork.NHibernateUnitOfWork" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEgBAAAAAAACAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitOfWork\NHibernateUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
