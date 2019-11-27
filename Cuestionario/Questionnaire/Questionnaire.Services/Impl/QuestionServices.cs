@@ -56,6 +56,7 @@ namespace Questionnaire.Services.Impl
                 Category = lCategory,
                 Difficulty = lDifficulty,
                 QuestionType = pQuestionData.QuestionType,
+                QuestionProvider = pQuestionData.QuestionProvider
             };
             
             this.iQuestionRepository.Add(lQuestion);

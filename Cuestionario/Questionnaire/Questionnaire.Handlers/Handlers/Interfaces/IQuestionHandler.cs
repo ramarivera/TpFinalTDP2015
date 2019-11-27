@@ -1,4 +1,5 @@
-﻿using Questionnaire.Services;
+﻿using Questionnaire.Model.Enums;
+using Questionnaire.Services;
 using Questionnaire.Services.DTO;
 using System.Collections.Generic;
 

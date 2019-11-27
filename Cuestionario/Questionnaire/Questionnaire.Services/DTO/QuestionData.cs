@@ -14,6 +14,7 @@ namespace Questionnaire.Services.DTO
         public DifficultyData Difficulty { get; set; }
         public string Description { get; set; }
         public QuestionType QuestionType { get; set; }
+        public QuestionProviderType QuestionProvider { get; set; }
         public IList<AnswerData> Answers { get; set; }
         public AnswerData CorrectAnswer { get; set; }
     }

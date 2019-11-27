@@ -16,6 +16,8 @@ namespace Questionnaire.Persistence.NHibernate.Mappings
 
             Map(x => x.QuestionType).CustomType<int>();
 
+            Map(x => x.QuestionProvider).CustomType<int>();
+
             References(x => x.Category)
                 .Column("categoryId")
                 .Cascade

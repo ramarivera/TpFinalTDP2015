@@ -22,6 +22,8 @@ namespace Questionnaire.Services.DTO
 
         public QuestionType QuestionType { get; set; }
 
+        public QuestionProviderType QuestionProvider { get; set; }
+
         public IList<AnswerCreationData> Answers { get; set; }
 
         public AnswerCreationData CorrectAnswer { get; set; }

@@ -6,6 +6,7 @@ using NHibernate;
 using Questionnaire.Handlers.DependencyInjection;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
+using Questionnaire.Model.Enums;
 using Questionnaire.Persistence.NHibernate;
 using Questionnaire.Services;
 using Questionnaire.Services.Impl;

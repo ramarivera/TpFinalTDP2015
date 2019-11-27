@@ -98,7 +98,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionProviderFactory.cs" />
-    <Compile Include="QuestionProviderType.cs" />
     <Compile Include="Impl\QuestionServices.cs" />
     <Compile Include="UserAnswerServices.cs" />
   </ItemGroup>

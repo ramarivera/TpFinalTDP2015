@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Questionnaire.Services
+namespace Questionnaire.Model.Enums
 {
     /// <summary>
     /// Represents Question provider types

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
+using Questionnaire.Model.Enums;
 using Questionnaire.Services;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;

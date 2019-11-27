@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Answer.cs" />
     <Compile Include="AnswerSession.cs" />
+    <Compile Include="Enums\QuestionProviderType.cs" />
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Category.cs" />
