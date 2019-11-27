@@ -63,7 +63,7 @@
             // 
             this.iAnswerBtn1.AutoSize = true;
             this.iAnswerBtn1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn1.Location = new System.Drawing.Point(122, 87);
+            this.iAnswerBtn1.Location = new System.Drawing.Point(122, 65);
             this.iAnswerBtn1.Name = "iAnswerBtn1";
             this.iAnswerBtn1.Size = new System.Drawing.Size(101, 27);
             this.iAnswerBtn1.TabIndex = 4;
@@ -76,7 +76,7 @@
             // 
             this.iAnswerBtn2.AutoSize = true;
             this.iAnswerBtn2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn2.Location = new System.Drawing.Point(122, 180);
+            this.iAnswerBtn2.Location = new System.Drawing.Point(122, 158);
             this.iAnswerBtn2.Name = "iAnswerBtn2";
             this.iAnswerBtn2.Size = new System.Drawing.Size(101, 27);
             this.iAnswerBtn2.TabIndex = 5;
