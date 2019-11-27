@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Questionnaire.Services.AnswerSessionServices" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAggAAAACAAAAAACEAAAAAAgAAACAAAIA=</HashCode>
+      <FileName>AnswerSessionServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Questionnaire.Services.CategoryServices" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAgAAAAAAAAAAEAAEAAAgACAAAAAIA=</HashCode>
+      <FileName>CategoryServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Questionnaire.Services.DifficultyServices" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAABAAAAAgAAAAAAAAAAEAAEAAAgAIAAAAAIA=</HashCode>
+      <FileName>DifficultyServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Questionnaire.Services.Program">
+    <Position X="0.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.QuestionProviderFactory">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QuestionProviderFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.UserAnswerServices" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACAAAAAAAAAAAAAAAAAEAAEAAAgAAAAgAAIA=</HashCode>
+      <FileName>UserAnswerServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.AnswerCreationData">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAIAAA=</HashCode>
+      <FileName>DTO\AnswerCreationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.AnswerData">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAIAAA=</HashCode>
+      <FileName>DTO\AnswerData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.AnswerSessionData">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAQgAAwAAAAAAIAAgAABAAAAAAAAACAA=</HashCode>
+      <FileName>DTO\AnswerSessionData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.AnswerSessionStartData">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAQAgAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\AnswerSessionStartData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.CategoryCreationData">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\CategoryCreationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.CategoryData">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\CategoryData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.DifficultyCreationData">
+    <Position X="2.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\DifficultyCreationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.DifficultyData">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\DifficultyData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.QuestionCreationData">
+    <Position X="2.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAQAAAAAAAAAACAAAAABAQAAAAAAACAA=</HashCode>
+      <FileName>DTO\QuestionCreationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.QuestionData">
+    <Position X="4" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAQAAAAAAAAAACAAAAABAQAAAAAAACAA=</HashCode>
+      <FileName>DTO\QuestionData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.UserAnswerCreationData">
+    <Position X="2.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgEAAAAAAAIA=</HashCode>
+      <FileName>DTO\UserAnswerCreationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.UserAnswerData">
+    <Position X="4" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAEgEAAAAAAAAA=</HashCode>
+      <FileName>DTO\UserAnswerData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.Profiles.AnswerProfile">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\Profiles\AnswerProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.Profiles.AnswerSessionProfile">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\Profiles\AnswerSessionProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.Profiles.CategoryProfile">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\Profiles\CategoryProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.Profiles.DifficultyProfile">
+    <Position X="5.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\Profiles\DifficultyProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.Profiles.QuestionProfile">
+    <Position X="5.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\Profiles\QuestionProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.DTO.Profiles.UserAnswerProfile">
+    <Position X="5.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\Profiles\UserAnswerProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Questionnaire.Services.Impl.QuestionServices" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAIAAgAAAAAABAAAAAAACEAAEAAAgAAAAgAAIA=</HashCode>
+      <FileName>Impl\QuestionServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Questionnaire.Services.DependencyInjection.IContainer">
+    <Position X="4" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DependencyInjection\IContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Services.Interfaces.IAnswerSessionServices">
+    <Position X="0.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAgAAACAAAIA=</HashCode>
+      <FileName>Interfaces\IAnswerSessionServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Services.Interfaces.ICategoryServices">
+    <Position X="2.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAgAAAAAAAAAAEAAEAAAgAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\ICategoryServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Services.Interfaces.IDifficultyServices">
+    <Position X="5.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAgAAAAAAAAAAEAAEAAAgAIAAAAAIA=</HashCode>
+      <FileName>Interfaces\IDifficultyServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Services.Interfaces.IQuestionProvider">
+    <Position X="7.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAgAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IQuestionProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Services.Interfaces.IQuestionServices">
+    <Position X="0.5" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAABAAAAAAAAEAAEAAAgAAAAgAAIA=</HashCode>
+      <FileName>Interfaces\IQuestionServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Questionnaire.Services.Interfaces.IUserAnswerServices">
+    <Position X="2.25" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAgAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\IUserAnswerServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Questionnaire.Services.QuestionProviderType">
+    <Position X="0.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>QuestionProviderType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
