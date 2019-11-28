@@ -29,6 +29,10 @@ namespace Questionnaire.UI.WinForms
 
         private IQuestionViewer iCurrentQuestionViewer;
 
+        private int iSeconds = 0; // TODO review name
+
+        private int iMinutes = 0;
+
         public AnswerSessionView(long pAnswerSessionId, List<QuestionData> pQuestions)
         {
             InitializeComponent();
@@ -50,6 +54,8 @@ namespace Questionnaire.UI.WinForms
             var lQuestionViewerControl = lQuestionViewer as UserControl;
 
             this.iQuestionViewerPnl.Controls.Add(lQuestionViewerControl);
+
+            iTimer.Start();
         }
 
         private void iNextBtn_Click(object sender, EventArgs e)
@@ -153,6 +159,26 @@ namespace Questionnaire.UI.WinForms
                 WelcomeView lWelcomeView = new WelcomeView();
                 this.Hide();
                 lWelcomeView.ShowDialog();
+            }
+        }
+
+        private void iTimer_Tick(object sender, EventArgs e)
+        {
+            if (iSeconds < 9)
+            {
+                iSeconds++;
+                iTimeLbl.Text = "0"+ iMinutes +":0" + iSeconds;
+            }
+            else if (iSeconds < 59)
+            {
+                iSeconds++;
+                iTimeLbl.Text = "0" + iMinutes +":"+ iSeconds;
+            }
+            else
+            {
+                iSeconds = 0;
+                iMinutes++;
+                iTimeLbl.Text = "0" + iMinutes + ":0" + iSeconds;
             }
         }
     }

@@ -28,26 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.iTimeLbl = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.iFinishBtn = new System.Windows.Forms.Button();
             this.iNextBtn = new System.Windows.Forms.Button();
             this.iQuestionViewerPnl = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.iFooterLbl = new System.Windows.Forms.Label();
+            this.iTimer = new System.Windows.Forms.Timer(this.components);
             this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.iQuestionViewerPnl);
-            this.panel3.Location = new System.Drawing.Point(0, 12);
+            this.panel3.Location = new System.Drawing.Point(0, -1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(784, 494);
+            this.panel3.Size = new System.Drawing.Size(784, 507);
             this.panel3.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.iTimeLbl);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(778, 55);
+            this.panel1.TabIndex = 5;
+            // 
+            // iTimeLbl
+            // 
+            this.iTimeLbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iTimeLbl.Font = new System.Drawing.Font("Calibri", 32F, System.Drawing.FontStyle.Bold);
+            this.iTimeLbl.ForeColor = System.Drawing.Color.Red;
+            this.iTimeLbl.Location = new System.Drawing.Point(0, 0);
+            this.iTimeLbl.Name = "iTimeLbl";
+            this.iTimeLbl.Size = new System.Drawing.Size(778, 55);
+            this.iTimeLbl.TabIndex = 1;
+            this.iTimeLbl.Text = "00:00";
+            this.iTimeLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel5
             // 
@@ -56,7 +82,7 @@
             this.panel5.Controls.Add(this.iNextBtn);
             this.panel5.Location = new System.Drawing.Point(0, 426);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(784, 68);
+            this.panel5.Size = new System.Drawing.Size(784, 81);
             this.panel5.TabIndex = 4;
             // 
             // iFinishBtn
@@ -83,9 +109,9 @@
             // 
             // iQuestionViewerPnl
             // 
-            this.iQuestionViewerPnl.Location = new System.Drawing.Point(0, 3);
+            this.iQuestionViewerPnl.Location = new System.Drawing.Point(0, 68);
             this.iQuestionViewerPnl.Name = "iQuestionViewerPnl";
-            this.iQuestionViewerPnl.Size = new System.Drawing.Size(784, 417);
+            this.iQuestionViewerPnl.Size = new System.Drawing.Size(784, 352);
             this.iQuestionViewerPnl.TabIndex = 3;
             // 
             // panel2
@@ -108,6 +134,11 @@
             this.iFooterLbl.Text = "Developed by MARR";
             this.iFooterLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // iTimer
+            // 
+            this.iTimer.Interval = 1000;
+            this.iTimer.Tick += new System.EventHandler(this.iTimer_Tick);
+            // 
             // AnswerSessionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,6 +154,7 @@
             this.Text = "Questionnaire";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnswerSessionView_FormClosing);
             this.panel3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -137,5 +169,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label iFooterLbl;
         private System.Windows.Forms.Panel iQuestionViewerPnl;
+        private System.Windows.Forms.Label iTimeLbl;
+        private System.Windows.Forms.Timer iTimer;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -79,7 +79,7 @@
             // 
             this.iAnswerBtn1.AutoSize = true;
             this.iAnswerBtn1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn1.Location = new System.Drawing.Point(122, 47);
+            this.iAnswerBtn1.Location = new System.Drawing.Point(122, 28);
             this.iAnswerBtn1.Name = "iAnswerBtn1";
             this.iAnswerBtn1.Size = new System.Drawing.Size(101, 27);
             this.iAnswerBtn1.TabIndex = 4;
@@ -92,7 +92,7 @@
             // 
             this.iAnswerBtn2.AutoSize = true;
             this.iAnswerBtn2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn2.Location = new System.Drawing.Point(122, 105);
+            this.iAnswerBtn2.Location = new System.Drawing.Point(122, 86);
             this.iAnswerBtn2.Name = "iAnswerBtn2";
             this.iAnswerBtn2.Size = new System.Drawing.Size(101, 27);
             this.iAnswerBtn2.TabIndex = 5;
@@ -105,7 +105,7 @@
             // 
             this.iAnswerBtn4.AutoSize = true;
             this.iAnswerBtn4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn4.Location = new System.Drawing.Point(122, 221);
+            this.iAnswerBtn4.Location = new System.Drawing.Point(122, 202);
             this.iAnswerBtn4.Name = "iAnswerBtn4";
             this.iAnswerBtn4.Size = new System.Drawing.Size(101, 27);
             this.iAnswerBtn4.TabIndex = 7;
@@ -117,7 +117,7 @@
             // 
             this.iAnswerBtn3.AutoSize = true;
             this.iAnswerBtn3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iAnswerBtn3.Location = new System.Drawing.Point(122, 163);
+            this.iAnswerBtn3.Location = new System.Drawing.Point(122, 144);
             this.iAnswerBtn3.Name = "iAnswerBtn3";
             this.iAnswerBtn3.Size = new System.Drawing.Size(101, 27);
             this.iAnswerBtn3.TabIndex = 6;
