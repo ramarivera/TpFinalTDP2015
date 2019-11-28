@@ -27,7 +27,7 @@ namespace Questionnaire.Handlers.Handlers
         }
 
         /// <summary>
-        /// Saves an User Answer during a Answer Session
+        /// Saves a User Answer during an Answer Session
         /// </summary>
         /// <param name="pUserAnswer">User Answer data</param>
         /// <param name="pAnswerSessionId">Specific Answer Session</param>
