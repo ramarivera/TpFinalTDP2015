@@ -30,6 +30,7 @@ namespace Questionnaire.UI.WinForms
                 this.iTimeLbl.Text = String.Format("Game time: {0} seconds", lAnswerSession.SessionDuration);
 
                 IList<AnswerSessionData> lAnswerSessions = lHandler.GetAll()
+                    .Where(x => x.StartTime < x.EndTime)
                     .OrderByDescending(x => x.Score).ToList();
 
                 // TODO the list must show only the 20 best results
