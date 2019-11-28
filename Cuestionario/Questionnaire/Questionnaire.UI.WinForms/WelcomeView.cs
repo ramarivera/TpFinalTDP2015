@@ -11,7 +11,7 @@ using Questionnaire.Model.Enums;
 namespace Questionnaire.UI.WinForms
 {
     /// <summary>
-    /// Form in charge of allow an user to configure the questions to answer in a new session 
+    /// Form in charge of allowing a user to configure the questions to answer in a new session 
     /// </summary>
     public partial class WelcomeView : Form
     {
@@ -115,6 +115,7 @@ namespace Questionnaire.UI.WinForms
             if(iCategoryCmbBox.SelectedItem == null) { lResult = false; }
             else if (iDifficultyCmbBox.SelectedItem == null) { lResult = false; }
             else if (iQuestionsCountCmbBox.SelectedItem == null) { lResult = false; }
+            else if (String.IsNullOrEmpty(iNameTxtBox.Text)) { lResult = false; }
 
             return lResult;
         }
