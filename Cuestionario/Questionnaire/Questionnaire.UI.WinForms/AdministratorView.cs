@@ -19,17 +19,62 @@ namespace Questionnaire.UI.WinForms
     /// </summary>
     public partial class AdministratorView : Form
     {
+        private int iAmount;
         public AdministratorView()
         {
             InitializeComponent();
+
+            this.iBackgroundWorker = new BackgroundWorker();
+            this.iBackgroundWorker.DoWork += IBackgroundWorker_DoWork;
+            this.iBackgroundWorker.ProgressChanged += IBackgroundWorker_ProgressChanged;
+            this.iBackgroundWorker.RunWorkerCompleted += IBackgroundWorker_RunWorkerCompleted;
+            this.iBackgroundWorker.WorkerReportsProgress = true;
+
+            for (int i = 50; i <= 200; i=i+10)
+            {
+                iAmountCmbBox.Items.Add(i);
+            }
+        }
+
+        private void IBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Import complete", "Questionnaire");
+            this.iProgressBar.Value = 0;
+            this.iBackBtn.Enabled = true;
+            this.iQuestionsBtn.Enabled = true;
+        }
+
+        private void IBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.iProgressBar.Value = e.ProgressPercentage;
+        }
+
+        private void IBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //TODO review reportProgress
+            BackgroundWorker lWorker = (BackgroundWorker)sender;
+            for (int i = 0; i < 100; i++)
+            {
+                lWorker.ReportProgress(i);
+                using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
+                {
+                    lHandler.HandlerImportQuestionsFromProvider(QuestionSource.OpenTrivia, iAmount);
+                }
+            }
         }
 
         private void iQuestionsBtn_Click(object sender, EventArgs e)
         {
-            using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
+            if (!this.CanProceed())
             {
-                lHandler.HandlerImportQuestionsFromProvider(QuestionSource.OpenTrivia);
-                MessageBox.Show("Import complete", "Questionnaire");
+                MessageBox.Show("Please, select the amount of questions to add", "Questionnaire");
+            }
+            else if (!this.iBackgroundWorker.IsBusy)
+            {
+                iAmount = (int)iAmountCmbBox.SelectedItem;
+                this.iBackBtn.Enabled = false;
+                this.iQuestionsBtn.Enabled = false;
+                this.iBackgroundWorker.RunWorkerAsync();
             }
         }
 
@@ -47,6 +92,12 @@ namespace Questionnaire.UI.WinForms
             {
                 Application.ExitThread();
             }
+        }
+
+        private bool CanProceed()
+        {
+            if (iAmountCmbBox.SelectedItem == null) return false;
+            else return true;
         }
     }
 }

@@ -118,7 +118,7 @@ namespace Questionnaire.Services.OpenTrivia
         /// </summary>
         /// <param name="pQuestions"></param>
         /// <returns></returns>
-        public IEnumerable<QuestionCreationData> FilterNotImportedQuestions(IEnumerable<Question> pQuestions)
+        public IList<QuestionCreationData> FilterNotImportedQuestions(IEnumerable<Question> pQuestions)
         {
             IEnumerable<QuestionCreationData> lImportedQuestions = this.RetrieveAllQuestions();
 
@@ -126,7 +126,7 @@ namespace Questionnaire.Services.OpenTrivia
                                                               where !pQuestions.Any(lQuestion => this.AreQuestionsEqual(lQuestion, lImportedQuestion))
                                                               select lImportedQuestion;
 
-            return lNewQuestions;
+            return lNewQuestions.ToList();
         }
 
         /// <summary>

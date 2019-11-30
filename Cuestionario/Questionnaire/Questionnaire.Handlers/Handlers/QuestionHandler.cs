@@ -33,18 +33,34 @@ namespace Questionnaire.Handlers.Handlers
         /// </summary>
         /// <param name="pSource">Question Provider</param>
         [Transactional]
-        public void HandlerImportQuestionsFromProvider(QuestionSource pSource)
+        public void HandlerImportQuestionsFromProvider(QuestionSource pSource, int pAmount)
         {
             var lProvider = this.iQuestionProviderFactory.BuildProvider(pSource);
 
-            var lExistentQuestion = iQuestionService.GetAll();
-
-            var lNewQuestionCandidates = lProvider.FilterNotImportedQuestions(lExistentQuestion);
-
-            foreach (var lNewQuestionCandidate in lNewQuestionCandidates)
+            // TODO review this
+            while(pAmount > 0)
             {
-                this.iQuestionService.Create(lNewQuestionCandidate);
+                var lExistentQuestion = iQuestionService.GetAll();
+
+                var lNewQuestionCandidates = lProvider.FilterNotImportedQuestions(lExistentQuestion);
+
+                for (int i = 0; i < lNewQuestionCandidates.Count; i++)
+                {
+                    if (pAmount > 0)
+                    {
+                        this.iQuestionService.Create(lNewQuestionCandidates[i]);
+                        pAmount--;
+                    }
+                }
+
+                //foreach (var lNewQuestionCandidate in lNewQuestionCandidates)
+                //{
+                //    this.iQuestionService.Create(lNewQuestionCandidate);
+                //}
+
             }
+
+            
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ namespace Questionnaire.Services.Interfaces
     public interface IQuestionProvider
     {
         IEnumerable<QuestionCreationData> RetrieveAllQuestions();
-        IEnumerable<QuestionCreationData> FilterNotImportedQuestions(IEnumerable<Question> pQuestions);
+        IList<QuestionCreationData> FilterNotImportedQuestions(IEnumerable<Question> pQuestions);
         bool AreQuestionsEqual(Question pQuestion, QuestionCreationData pQuestionData);
     }
 }
