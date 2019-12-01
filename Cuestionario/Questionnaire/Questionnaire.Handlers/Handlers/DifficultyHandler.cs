@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using Questionnaire.Model;
+using Microsoft.Extensions.Logging;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 
 
 namespace Questionnaire.Handlers.Handlers
@@ -16,13 +15,16 @@ namespace Questionnaire.Handlers.Handlers
     class DifficultyHandler : BaseHandler, IDifficultyHandler
     {
         private readonly IDifficultyServices iDifficultyServices;
+        private readonly ILogger iLogger;
 
         public DifficultyHandler(
             IDifficultyServices pDifficultyServices,
+            ILogger pLogger,
             IMapper pMapper)
             : base(pMapper)
         {
             this.iDifficultyServices = pDifficultyServices;
+            this.iLogger = pLogger;
         }
 
         /// <summary>
@@ -32,9 +34,13 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public IEnumerable<DifficultyData> GetAll()
         {
+            this.iLogger.LogInformation("Request received for getting all existing Difficulties");
+
             var lDifficulties = iDifficultyServices.GetAll();
 
             var lResult = Mapper.Map<IList<DifficultyData>>(lDifficulties);
+
+            this.iLogger.LogInformation("Request finished for getting all existing Difficulties");
             return lResult;
         }
     }

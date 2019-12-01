@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using Questionnaire.Model;
@@ -13,17 +14,19 @@ namespace Questionnaire.Handlers.Handlers
     public class UserAnswerHandler : BaseHandler, IUserAnswerHandler
     {
         private readonly IUserAnswerServices iUserAnswerServices;
-
         private readonly IAnswerSessionServices iAnswerSessionServices;
+        private readonly ILogger iLogger;
 
         public UserAnswerHandler(
             IUserAnswerServices pUserAnswerServices,
             IAnswerSessionServices pAnswerSessionServices,
+            ILogger pLogger,
             IMapper pMapper)
             : base(pMapper)
         {
             iUserAnswerServices = pUserAnswerServices;
             iAnswerSessionServices = pAnswerSessionServices;
+            this.iLogger = pLogger;
         }
 
         /// <summary>
@@ -35,9 +38,12 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public long SaveUserAnswer(UserAnswerCreationData pUserAnswer, long pAnswerSessionId)
         {
+            this.iLogger.LogInformation("Request received for saving a new UserAnswer for AnswerSession with id {pAnswerSessionId}", pAnswerSessionId);
+
             AnswerSession lAnswerSession = iAnswerSessionServices.GetById(pAnswerSessionId);
             var lUserAnswer = this.iUserAnswerServices.Create(pUserAnswer, lAnswerSession);
 
+            this.iLogger.LogInformation("Request finished for saving UserAnswer with id {UserAnswerId}", lUserAnswer.Id);
             return lUserAnswer.Id;
         }
     }

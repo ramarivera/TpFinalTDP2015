@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 using AutoMapper;
-using Questionnaire.Model;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
 using Questionnaire.Handlers.Attributes;
@@ -18,13 +14,16 @@ namespace Questionnaire.Handlers.Handlers
     class CategoryHandler : BaseHandler, ICategoryHandler
     {
         private readonly ICategoryServices iCategoryServices;
+        private readonly ILogger iLogger;
 
         public CategoryHandler(
             ICategoryServices pCategoryServices,
+            ILogger pLogger,
             IMapper pMapper)
             : base(pMapper)
         {
             this.iCategoryServices = pCategoryServices;
+            this.iLogger = pLogger;
         }
 
         /// <summary>
@@ -34,9 +33,13 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public IEnumerable<CategoryData> GetAll()
         {
+            this.iLogger.LogInformation("Request received for getting all existing Categories");
+            
             var lCategories = iCategoryServices.GetAll();
 
             var lResult = Mapper.Map<IList<CategoryData>>(lCategories);
+
+            this.iLogger.LogInformation("Request finished for getting all existing Categories");
             return lResult;
         }
     }

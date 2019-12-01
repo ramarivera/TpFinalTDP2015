@@ -35,7 +35,7 @@ namespace Questionnaire.Handlers.Handlers
 
             var enabled = Logger.IsEnabled(LogLevel.Debug);
             Logger.LogDebug("Starting application");
-            Logger.LogError("Requesting handler of type {lHandlerType}", lHandlerType);
+            Logger.LogInformation("Requesting handler of type {lHandlerType}", lHandlerType);
 
             try
             {

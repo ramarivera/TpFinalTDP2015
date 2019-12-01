@@ -64,9 +64,8 @@ namespace Questionnaire.Handlers.Handlers
                 //    this.iQuestionService.Create(lNewQuestionCandidate);
                 //}
 
+                this.iLogger.LogInformation("Request finished for {pSource} for {pAmount} questions", pSource, pAmount);
             }
-
-            
         }
 
         /// <summary>
@@ -77,9 +76,12 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public IEnumerable<QuestionData> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
+            this.iLogger.LogInformation("Request received for {QuestionsCount} {QuestionSource} questions for a new AnswerSession", pAnswerSessionStartData.QuestionsCount, pAnswerSessionStartData.QuestionSource);
+           
             var lSessionQuestions = iQuestionService.GetQuestionsForSession(pAnswerSessionStartData);
 
             var lResult = Mapper.Map<IList<QuestionData>>(lSessionQuestions);
+            this.iLogger.LogInformation("Request finished for {QuestionsCount} {QuestionSource} questions for a new AnswerSession", pAnswerSessionStartData.QuestionsCount, pAnswerSessionStartData.QuestionSource);
             return lResult;
         }
     }

@@ -33,7 +33,7 @@ namespace Questionnaire.UI.WinForms
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var lEx = (e.ExceptionObject as Exception);
-            mLogger.LogError(lEx, "Uh oh. There was a problem");
+            mLogger.LogError(lEx, "Uh oh. There was a problem");//TODO error details?
             MessageBox.Show("Uh oh. There was a problem: " + lEx.Message);
         }
 
