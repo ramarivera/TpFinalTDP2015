@@ -1,6 +1,7 @@
 ﻿using Questionnaire.Model.Enums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionnaire.Model
 {
@@ -10,11 +11,12 @@ namespace Questionnaire.Model
     public class AnswerSession : BaseEntity
     {
         private readonly ICollection<UserAnswer> answers;
+
         public AnswerSession()
         {
             answers = new List<UserAnswer>();
         }
-        
+
         public virtual Category Category { get; set; }
 
         public virtual Difficulty Difficulty { get; set; }
@@ -30,5 +32,44 @@ namespace Questionnaire.Model
         public virtual DateTime? EndTime { get; set; }
 
         public virtual IEnumerable<UserAnswer> Answers => answers;
+
+        public double CalculateScore()
+        {
+            int lDifficultyFactor = this.Difficulty.DifficultyFactor;
+            int lTimeFactor = this.CalculateTimeFactor();
+
+            int lAnswersCount = this.Answers.Count();
+            int lCorrectAnswersCount = this.Answers.Where(x => x.IsAnswerCorrect).Count();
+
+            double lSessionScore = (lCorrectAnswersCount / lAnswersCount) * lDifficultyFactor * lTimeFactor;
+
+            return lSessionScore;
+        }
+
+        /// <summary>
+        /// Calculates the score per answer based on the total duration and amount of questions of the given <see cref="AnswerSession"/>
+        /// </summary>
+        /// <returns><see cref="AnswerSession"/> time factor</returns>
+        private int CalculateTimeFactor()
+        {
+            int lTimeFactor = 0;
+            double lSessionDuration = (this.EndTime - this.StartTime).Value.TotalSeconds;
+            double lTimePerQuestion = (this.Answers.Count() / lSessionDuration);
+
+            if (lTimePerQuestion < 5)
+            {
+                lTimeFactor = 5;
+            }
+            else if (lTimePerQuestion >= 5 && lTimePerQuestion <= 20)
+            {
+                lTimeFactor = 5;
+            }
+            else if (lTimePerQuestion > 20)
+            {
+                lTimeFactor = 1;
+            }
+
+            return lTimeFactor;
+        }
     }
 }

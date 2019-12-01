@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Questionnaire.Model.Enums;
+using System.Collections.Generic;
 
 namespace Questionnaire.Model
 {
@@ -9,14 +10,30 @@ namespace Questionnaire.Model
     // would be of any use
     public class Difficulty : BaseEntity
     {
+        private static readonly IDictionary<string, DifficultyFactor> mDifficultyFactorMap = new Dictionary<string, DifficultyFactor>
+        {
+            { "easy", Enums.DifficultyFactor.Easy },
+            { "medium", Enums.DifficultyFactor.Medium },
+            { "hard", Enums.DifficultyFactor.Hard },
+        };
+
         private readonly ICollection<Question> questions;
 
         public Difficulty()
         {
             questions = new List<Question>();
         }
+
         public virtual string Description { get; set; }
+
         public virtual IEnumerable<Question> Questions => questions;
+
+
+        /// <summary>
+        /// Retrieve a Difficulty Factor
+        /// </summary>
+        /// <param name="pDescription"></param>
+        /// <returns></returns>
+        public int DifficultyFactor => (int)mDifficultyFactorMap[this.Description];
     }
-    
 }

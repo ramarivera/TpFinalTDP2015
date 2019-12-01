@@ -16,6 +16,7 @@ namespace Questionnaire.Services
     public class DifficultyServices : IDifficultyServices
     {
         private readonly IRepository<Difficulty> iDifficultyRepository;
+
         public DifficultyServices(IRepository<Difficulty> pDifficultyRepository)
         {
             this.iDifficultyRepository = pDifficultyRepository;
@@ -94,20 +95,5 @@ namespace Questionnaire.Services
             return lDifficultyData;
         }
 
-        /// <summary>
-        /// Retrieve a Difficulty Factor according to a given description
-        /// </summary>
-        /// <param name="pDescription"></param>
-        /// <returns></returns>
-        public int GetDifficultyFactor(string pDescription)
-        {
-            int lDifficultyFactor = 0;
-
-            if (pDescription == "easy") { lDifficultyFactor = (int)DifficultyFactor.Easy; }
-            else if (pDescription == "medium") { lDifficultyFactor = (int)DifficultyFactor.Medium; }
-            else if (pDescription == "hard") { lDifficultyFactor = (int)DifficultyFactor.Hard; }
-
-            return lDifficultyFactor;
-        }
     }
 }

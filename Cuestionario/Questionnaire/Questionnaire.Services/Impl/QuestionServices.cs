@@ -75,11 +75,6 @@ namespace Questionnaire.Services.Impl
             return lQuestion;
         }
 
-        public void Delete(long pId)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Gets all stored <see cref="Question"/>
         /// </summary>
