@@ -1,0 +1,8 @@
+USE [master]
+GO
+CREATE DATABASE [MARR.Questionnaire]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'MARR.Questionnaire', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\MARR.Questionnaire.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'MARR.Questionnaire_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\MARR.Questionnaire_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
