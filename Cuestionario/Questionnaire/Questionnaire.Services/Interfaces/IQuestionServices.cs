@@ -8,15 +8,11 @@ namespace Questionnaire.Services.Interfaces
     {
         IEnumerable<Question> GetAll();
 
-        Question GetById(long pQuestionId);
+        Question GetById(int pQuestionId);
 
         Question Create(QuestionCreationData pQuestionData);
 
-        Question Update(long pQuestionId, QuestionData pUpdateQuestion);
-
-        void Delete(long pQuestionId);
-
-        Answer GetAnswerById(long pAnswerId);
+        Answer GetAnswerById(int pAnswerId);
 
         IList<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData);
     }

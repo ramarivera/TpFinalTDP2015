@@ -1,14 +1,11 @@
-﻿using Questionnaire.Services.DTO;
-using Questionnaire.Handlers.Handlers;
+﻿using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
+using Questionnaire.Services.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Questionnaire.UI.WinForms
@@ -19,7 +16,7 @@ namespace Questionnaire.UI.WinForms
     /// </summary>
     public partial class ResultsView : Form
     {
-        public ResultsView(long pAnswerSessionId)
+        public ResultsView(int pAnswerSessionId)
         {
             InitializeComponent();
 

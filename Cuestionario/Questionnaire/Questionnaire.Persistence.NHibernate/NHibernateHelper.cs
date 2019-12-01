@@ -26,6 +26,7 @@ namespace Questionnaire.Persistence.NHibernate
         {
             pContainerBuilder.RegisterType<NHibernateUnitOfWork>()
                 .As<IUnitOfWork>()
+                .PropertiesAutowired()
                 .InstancePerLifetimeScope();
 
             pContainerBuilder.RegisterGeneric(typeof(NHibernateGenericRepository<>)).OnActivating(e =>
@@ -38,7 +39,9 @@ namespace Questionnaire.Persistence.NHibernate
                     var lGenericRepository = lGenericGetRepositoryMethod.Invoke(lUnitOfWork, null);
                     e.ReplaceInstance(lGenericRepository);
                 }
-            }).As(typeof(IRepository<>));
+            })
+            .As(typeof(IRepository<>))
+            .PropertiesAutowired();
         }
 
         public static ISessionFactory CreateSessionFactory()

@@ -1,10 +1,10 @@
 ﻿using Questionnaire.Model;
+using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
 using System;
-using System.Linq;
-using Questionnaire.Persistence.Repository;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionnaire.Services
 {
@@ -61,7 +61,7 @@ namespace Questionnaire.Services
         /// </summary>
         /// <param name="pAnswerSessionId"></param>
         /// <returns>The <see cref="AnswerSession"/> with all its attributes completed</returns>
-        public AnswerSession EndSession(long pAnswerSessionId)
+        public AnswerSession EndSession(int pAnswerSessionId)
         {
             var lAnswerSession = this.GetById(pAnswerSessionId);
 
@@ -83,7 +83,7 @@ namespace Questionnaire.Services
         /// <param name="pDifficultyFactor"><see cref="AnswerSession"/> associated difficulty factor</param>
         /// <param name="pTimeFactor"><see cref="AnswerSession"/> associated time factor</param>
         /// <returns><see cref="AnswerSession"/> score</returns>
-        private double GetSessionScore(long pAnswerSessionId, int pDifficultyFactor, int pTimeFactor)
+        private double GetSessionScore(int pAnswerSessionId, int pDifficultyFactor, int pTimeFactor)
         {
             var lUserAnswers = iUserAnswerServices.GetAll().Where(x => x.AnswerSession.Id == pAnswerSessionId);
 
@@ -120,18 +120,13 @@ namespace Questionnaire.Services
             return lTimeFactor;
         }
 
-        public void Delete(long pId)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Gets all stored <see cref="AnswerSession"/>
         /// </summary>
         /// <returns>A list of <see cref="AnswerSession"/></returns>
         public IEnumerable<AnswerSession> GetAll()
         {
-            return this.iAnswerSessionRepository.GetAll();
+            return this.iAnswerSessionRepository.ToList();
         }
 
         /// <summary>
@@ -139,9 +134,9 @@ namespace Questionnaire.Services
         /// </summary>
         /// <param name="pAnswerSessionId">Specific <see cref="AnswerSession"/> Id</param>
         /// <returns>A <see cref="AnswerSession"/></returns>
-        public AnswerSession GetById(long pAnswerSessionId)
+        public AnswerSession GetById(int pAnswerSessionId)
         {
-            var lAnswerSession = this.iAnswerSessionRepository.GetById(pAnswerSessionId);
+            var lAnswerSession = this.iAnswerSessionRepository.FindById(pAnswerSessionId);
 
             if (lAnswerSession == null)
             {
@@ -149,11 +144,6 @@ namespace Questionnaire.Services
             }
 
             return lAnswerSession;
-        }
-
-        public AnswerSession Update(long pId, AnswerSessionData pUpdateAnswerSession)
-        {
-            throw new NotImplementedException();
         }
     }
 }

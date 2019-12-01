@@ -8,12 +8,8 @@ namespace Questionnaire.Services.Interfaces
     {
         IEnumerable<UserAnswer> GetAll();
 
-        UserAnswer GetById(long pUserAnswerId);
+        UserAnswer GetById(int pUserAnswerId);
 
         UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession);
-
-        UserAnswer Update(long pUserAnswerId, UserAnswerData pUpdateUserAnswer);
-
-        void Delete(long pUserAnswerId);
     }
 }

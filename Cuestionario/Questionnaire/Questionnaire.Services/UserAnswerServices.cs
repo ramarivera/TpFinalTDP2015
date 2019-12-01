@@ -1,8 +1,8 @@
 ﻿using Questionnaire.Model;
+using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
 using System;
-using Questionnaire.Persistence.Repository;
 using System.Collections.Generic;
 
 namespace Questionnaire.Services
@@ -27,7 +27,7 @@ namespace Questionnaire.Services
         /// Creates a new <see cref="UserAnswer"/> that will be stored in the database
         /// </summary>
         /// <param name="pUserAnswerData"> <see cref="UserAnswer"/> data</param>
-        /// <param name="pAnswerSession"><see cref="AnswerSession"/> asocciated to the new <see cref="UserAnswer"/></param>
+        /// <param name="pAnswerSession"><see cref="AnswerSession"/> associated to the new <see cref="UserAnswer"/></param>
         /// <returns>Created <see cref="UserAnswer"/></returns>
         public UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
         {
@@ -46,18 +46,13 @@ namespace Questionnaire.Services
             return lUserAnswer;
         }
 
-        public void Delete(long pId)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Gets all stored <see cref="UserAnswer"/>
         /// </summary>
         /// <returns>A list of <see cref="UserAnswer"/></returns>
         public IEnumerable<UserAnswer> GetAll()
         {
-            return this.iUserAnswerRepository.GetAll();
+            return this.iUserAnswerRepository.ToList();
         }
 
         /// <summary>
@@ -65,9 +60,9 @@ namespace Questionnaire.Services
         /// </summary>
         /// <param name="pUserAnswerId">Specific <see cref="UserAnswer"/> Id</param>
         /// <returns>A <see cref="UserAnswer"/></returns>
-        public UserAnswer GetById(long pUserAnswerId)
+        public UserAnswer GetById(int pUserAnswerId)
         {
-            var lUserAnswer = this.iUserAnswerRepository.GetById(pUserAnswerId);
+            var lUserAnswer = this.iUserAnswerRepository.FindById(pUserAnswerId);
 
             if (lUserAnswer == null)
             {
@@ -75,11 +70,6 @@ namespace Questionnaire.Services
             }
 
             return lUserAnswer;
-        }
-
-        public UserAnswer Update(long pId, UserAnswerData pUpdateUserAnswer)
-        {
-            throw new NotImplementedException();
         }
     }
 }

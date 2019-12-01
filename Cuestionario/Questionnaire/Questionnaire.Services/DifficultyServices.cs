@@ -1,11 +1,12 @@
-﻿using System;
-using System.Linq;
-using Questionnaire.Model;
+﻿using Questionnaire.Model;
+using Questionnaire.Model.Enums;
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
+using Questionnaire.Services.Specifications.Difficulties;
+using System;
 using System.Collections.Generic;
-using Questionnaire.Model.Enums;
+using System.Linq;
 
 namespace Questionnaire.Services
 {
@@ -37,18 +38,13 @@ namespace Questionnaire.Services
             return lDifficulty;
         }
 
-        public void Delete(long pId)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Gets all stored <see cref="Difficulty"/>
         /// </summary>
         /// <returns>A list of <see cref="Difficulty"/></returns>
         public IEnumerable<Difficulty> GetAll()
         {
-            return this.iDifficultyRepository.GetAll();
+            return this.iDifficultyRepository.ToList();
         }
 
         /// <summary>
@@ -56,9 +52,9 @@ namespace Questionnaire.Services
         /// </summary>
         /// <param name="pDifficultyId">Specific <see cref="Difficulty"/> Id</param>
         /// <returns>A <see cref="Difficulty"/></returns>
-        public Difficulty GetById(long pDifficultyId)
+        public Difficulty GetById(int pDifficultyId)
         {
-            var lDifficulty = this.iDifficultyRepository.GetById(pDifficultyId);
+            var lDifficulty = this.iDifficultyRepository.FindById(pDifficultyId);
 
             if (lDifficulty == null)
             {
@@ -68,11 +64,6 @@ namespace Questionnaire.Services
             return lDifficulty;
         }
 
-        public Difficulty Update(long pId, DifficultyData pUpdateDifficulty)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Retrieve a <see cref="Difficulty"/> by description. If it doesn´t exist, creates it
         /// </summary>
@@ -80,8 +71,9 @@ namespace Questionnaire.Services
         /// <returns></returns>
         public DifficultyData RetrieveByDescription(string pDifficultyDescription)
         {
-            var lDifficulty = this.GetAll()
-                    .FirstOrDefault(x => x.Description == pDifficultyDescription);
+            var lDifficulty = this.iDifficultyRepository
+                    .FindBy(new DifficultyDescriptionSpecification(pDifficultyDescription))
+                    .FirstOrDefault();
 
             if (lDifficulty == null)
             {

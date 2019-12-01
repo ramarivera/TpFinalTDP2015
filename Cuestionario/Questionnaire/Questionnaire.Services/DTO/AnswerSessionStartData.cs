@@ -8,9 +8,9 @@ namespace Questionnaire.Services.DTO
     /// </summary>
     public class AnswerSessionStartData
     {
-        public long CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
-        public long DifficultyId { get; set; }
+        public int DifficultyId { get; set; }
 
         public QuestionSource QuestionSource { get; set; }
 

@@ -38,7 +38,8 @@ namespace Questionnaire.Handlers
 
             lBuilder.RegisterType<OpenTriviaQuestionsServices>()
                   .Named<IQuestionProvider>(QuestionSource.OpenTrivia.ToString().ToUpper())
-                  .InstancePerLifetimeScope();
+                  .InstancePerLifetimeScope()
+                  .PropertiesAutowired();
 
             ConfigureAutomapper(lBuilder);
             ConfigurePersistence(lBuilder);
@@ -66,6 +67,7 @@ namespace Questionnaire.Handlers
         {
             pBuilder.RegisterType<TImplementation>()
                    .As<TInterface>()
+                   .PropertiesAutowired()
                    .InstancePerLifetimeScope();
         }
 

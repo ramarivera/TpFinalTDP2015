@@ -36,11 +36,11 @@ namespace Questionnaire.Handlers.Handlers
         /// <param name="pAnswerSessionId">Specific Answer Session</param>
         /// <returns>New User Answer Id</returns>
         [Transactional]
-        public long SaveUserAnswer(UserAnswerCreationData pUserAnswer, long pAnswerSessionId)
+        public int SaveUserAnswer(UserAnswerCreationData pUserAnswer, int pAnswerSessionId)
         {
             this.iLogger.LogInformation("Request received for saving a new UserAnswer for AnswerSession with id {pAnswerSessionId}", pAnswerSessionId);
 
-            AnswerSession lAnswerSession = iAnswerSessionServices.GetById(pAnswerSessionId);
+            var lAnswerSession = iAnswerSessionServices.GetById(pAnswerSessionId);
             var lUserAnswer = this.iUserAnswerServices.Create(pUserAnswer, lAnswerSession);
 
             this.iLogger.LogInformation("Request finished for saving UserAnswer with id {UserAnswerId}", lUserAnswer.Id);

@@ -68,7 +68,7 @@ namespace Questionnaire.UI.WinForms
             {
                 AnswerSessionStartData lAnswerSessionStartData = new AnswerSessionStartData();
                 List<QuestionData> lQuestions = new List<QuestionData>();
-                long lAnswerSessionId;
+                int lAnswerSessionId;
 
                 lAnswerSessionStartData.Username = iNameTxtBox.Text;
                 lAnswerSessionStartData.QuestionsCount = Int32.Parse(iQuestionsCountCmbBox.SelectedItem.ToString());
