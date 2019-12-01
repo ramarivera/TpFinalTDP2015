@@ -5,6 +5,7 @@ using Questionnaire.Services.Interfaces;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Questionnaire.Services.Specifications.Categories;
 
 namespace Questionnaire.Services
 {
@@ -37,11 +38,6 @@ namespace Questionnaire.Services
             return lCategory;
         }
 
-        public void Delete(long pId)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Gets all stored <see cref="Category"/>
         /// </summary>
@@ -68,20 +64,16 @@ namespace Questionnaire.Services
             return lCategory;
         }
 
-        public Category Update(long pId, CategoryData pUpdateCategory)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Retrieve a <see cref="Category"/> by description. If it doesn´t exist, creates it
         /// </summary>
         /// <param name="pCategoryDescription"><see cref="Category"/> description</param>
         /// <returns></returns>
-        public CategoryData RetrieveByDescription(string pCategoryDescription)
+        public CategoryData RetrieveOrCreateByDescription(string pCategoryDescription)
         {
-            var lCategory = this.GetAll()
-                    .FirstOrDefault(x => x.Description == pCategoryDescription);
+            var lCategory = this.iCategoryRepository
+                    .FindBy(new CategoryDescriptionSpecification(pCategoryDescription))
+                    .FirstOrDefault();
 
             if (lCategory == null)
             {

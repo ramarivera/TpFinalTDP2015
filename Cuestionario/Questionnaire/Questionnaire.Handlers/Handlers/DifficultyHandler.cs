@@ -15,16 +15,14 @@ namespace Questionnaire.Handlers.Handlers
     class DifficultyHandler : BaseHandler, IDifficultyHandler
     {
         private readonly IDifficultyServices iDifficultyServices;
-        private readonly ILogger iLogger;
 
         public DifficultyHandler(
             IDifficultyServices pDifficultyServices,
             ILogger pLogger,
             IMapper pMapper)
-            : base(pMapper)
+            : base(pMapper, pLogger)
         {
             this.iDifficultyServices = pDifficultyServices;
-            this.iLogger = pLogger;
         }
 
         /// <summary>
@@ -34,13 +32,13 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public IEnumerable<DifficultyData> GetAll()
         {
-            this.iLogger.LogInformation("Request received for getting all existing Difficulties");
+            this.Logger.LogInformation("Request received for getting all existing Difficulties");
 
             var lDifficulties = iDifficultyServices.GetAll();
 
             var lResult = Mapper.Map<IList<DifficultyData>>(lDifficulties);
 
-            this.iLogger.LogInformation("Request finished for getting all existing Difficulties");
+            this.Logger.LogInformation("Request finished for getting all existing Difficulties");
             return lResult;
         }
     }

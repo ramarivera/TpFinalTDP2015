@@ -143,7 +143,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionProviderFactory.cs" />
     <Compile Include="Impl\QuestionServices.cs" />
+    <Compile Include="Specifications\Categories\CategoryDescriptionSpecification.cs" />
     <Compile Include="Specifications\Difficulties\DifficultyDescriptionSpecification.cs" />
+    <Compile Include="Specifications\Questions\QuestionsByCategoryAndDifficultySpecification.cs" />
     <Compile Include="UserAnswerServices.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +167,7 @@
       <Name>Questionnaire.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Specifications\Categories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -13,6 +13,7 @@ namespace Questionnaire.Services.Interfaces
 
         Difficulty Create(DifficultyData pDifficultyData);
 
-        DifficultyData RetrieveByDescription(string pDifficultyDescription);
+        DifficultyData RetrieveOrCreateByDescription(string pDifficultyDescription);
+
     }
 }

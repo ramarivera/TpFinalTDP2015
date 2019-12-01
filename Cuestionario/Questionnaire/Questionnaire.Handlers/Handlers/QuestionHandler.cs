@@ -19,18 +19,16 @@ namespace Questionnaire.Handlers.Handlers
     {
         private readonly IQuestionServices iQuestionService;
         private readonly QuestionProviderFactory iQuestionProviderFactory;
-        private readonly ILogger iLogger;
 
         public QuestionHandler(
             IQuestionServices pQuestionService,
             QuestionProviderFactory pQuestionProviderFactory,
             ILogger pLogger,
             IMapper pMapper)    
-            : base(pMapper)
+            : base(pMapper, pLogger)
         {
             this.iQuestionService = pQuestionService;
             this.iQuestionProviderFactory = pQuestionProviderFactory;
-            this.iLogger = pLogger;
         }
 
         /// <summary>
@@ -43,7 +41,7 @@ namespace Questionnaire.Handlers.Handlers
             var lSource = pRequestData.Source;
             var lAmount = pRequestData.Amount;
 
-            this.iLogger.LogInformation("Request received for {lSource} for {lAmount} questions", lSource, lAmount);
+            this.Logger.LogInformation("Request received for {lSource} for {lAmount} questions", lSource, lAmount);
 
             var lProvider = this.iQuestionProviderFactory.BuildProvider(lSource);
             var lCurrentIndex = 0;
@@ -63,13 +61,13 @@ namespace Questionnaire.Handlers.Handlers
                         this.iQuestionService.Create(lCurrentQuestion);
                         lCurrentIndex++;
                         pOnProgressCallback(((decimal)lCurrentIndex / (decimal)lAmount)*100);
-                        this.iLogger.LogDebug("Created question number {lCurrentIndex} out of {lAmount}", lCurrentIndex, lAmount, lCurrentQuestion);
+                        this.Logger.LogDebug("Created question number {lCurrentIndex} out of {lAmount}", lCurrentIndex, lAmount, lCurrentQuestion);
                     }
                 }
             }
 
             pOnProgressCallback(100m);
-            this.iLogger.LogInformation("Request finished for {lSource} for {lAmount} questions", lSource, lAmount);
+            this.Logger.LogInformation("Request finished for {lSource} for {lAmount} questions", lSource, lAmount);
         }
 
         /// <summary>
@@ -80,12 +78,12 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public IEnumerable<QuestionData> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
-            this.iLogger.LogInformation("Request received for {QuestionsCount} {QuestionSource} questions for a new AnswerSession", pAnswerSessionStartData.QuestionsCount, pAnswerSessionStartData.QuestionSource);
+            this.Logger.LogInformation("Request received for {QuestionsCount} {QuestionSource} questions for a new AnswerSession", pAnswerSessionStartData.QuestionsCount, pAnswerSessionStartData.QuestionSource);
            
             var lSessionQuestions = iQuestionService.GetQuestionsForSession(pAnswerSessionStartData);
 
             var lResult = Mapper.Map<IList<QuestionData>>(lSessionQuestions);
-            this.iLogger.LogInformation("Request finished for {QuestionsCount} {QuestionSource} questions for a new AnswerSession", pAnswerSessionStartData.QuestionsCount, pAnswerSessionStartData.QuestionSource);
+            this.Logger.LogInformation("Request finished for {QuestionsCount} {QuestionSource} questions for a new AnswerSession", pAnswerSessionStartData.QuestionsCount, pAnswerSessionStartData.QuestionSource);
             return lResult;
         }
     }

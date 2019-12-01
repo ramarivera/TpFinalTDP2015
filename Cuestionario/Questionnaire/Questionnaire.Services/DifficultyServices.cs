@@ -70,7 +70,7 @@ namespace Questionnaire.Services
         /// </summary>
         /// <param name="pDifficultyDescription"><see cref="Category"/> description</param>
         /// <returns></returns>
-        public DifficultyData RetrieveByDescription(string pDifficultyDescription)
+        public DifficultyData RetrieveOrCreateByDescription(string pDifficultyDescription)
         {
             var lDifficulty = this.iDifficultyRepository
                     .FindBy(new DifficultyDescriptionSpecification(pDifficultyDescription))
