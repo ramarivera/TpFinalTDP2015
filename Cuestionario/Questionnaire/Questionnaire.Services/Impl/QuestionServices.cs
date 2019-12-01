@@ -2,6 +2,7 @@
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
+using Questionnaire.Services.Specifications.Questions;
 using Questionnaire.Utilities;
 using System;
 using System.Collections.Generic;
@@ -75,11 +76,6 @@ namespace Questionnaire.Services.Impl
             return lQuestion;
         }
 
-        public void Delete(long pId)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Gets all stored <see cref="Question"/>
         /// </summary>
@@ -130,10 +126,8 @@ namespace Questionnaire.Services.Impl
         /// <returns>A list of <see cref="Question"/> according <see cref="AnswerSession"/> data</returns>
         public IEnumerable<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
-            // TODO change to use a specification
-            var lQuestions = this.iQuestionRepository.ToList()
-               .Where(x => x.Category.Id == pAnswerSessionStartData.CategoryId)
-               .Where(x => x.Difficulty.Id == pAnswerSessionStartData.DifficultyId);
+            var lQuestions = this.iQuestionRepository
+                .FindBy(new QuestionsByCategoryAndDifficultySpecification(pAnswerSessionStartData.CategoryId, pAnswerSessionStartData.DifficultyId));
 
             return lQuestions.Shuffle();
         }
