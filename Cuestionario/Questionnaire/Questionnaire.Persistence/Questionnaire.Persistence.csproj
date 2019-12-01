@@ -112,13 +112,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\CreateTables.sql" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Questionnaire.Model\Questionnaire.Model.csproj">
       <Project>{e3f34edb-c212-4d6d-8e9f-f24955303bde}</Project>
       <Name>Questionnaire.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\CreateTables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

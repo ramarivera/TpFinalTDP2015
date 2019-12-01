@@ -7,8 +7,8 @@
     <ProjectGuid>{866C7FE3-F59E-48B6-A175-5AFE7CEB7B6C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cuestionario.Services</RootNamespace>
-    <AssemblyName>Cuestionario.Services</AssemblyName>
+    <RootNamespace>Questionnaire.Services</RootNamespace>
+    <AssemblyName>Questionnaire.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
