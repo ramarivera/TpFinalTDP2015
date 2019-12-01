@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29509.3
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire.Handlers", "Questionnaire.Handlers\Questionnaire.Handlers.csproj", "{6FE9F7E1-D136-4273-96C4-124156B2CF2A}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire.Services.OpenTrivia", "Questionnaire.Services.OpenTrivia\Questionnaire.Services.OpenTrivia.csproj", "{307C22D6-E354-414F-9BBD-BFFBD695C5E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire.UI.WinForms", "Questionnaire.UI.WinForms\Questionnaire.UI.WinForms.csproj", "{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire.CrossCutting", "Questionnaire.CrossCutting\Questionnaire.CrossCutting.csproj", "{5572503D-4820-4C24-A823-56C4D169DC4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5572503D-4820-4C24-A823-56C4D169DC4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5572503D-4820-4C24-A823-56C4D169DC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5572503D-4820-4C24-A823-56C4D169DC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5572503D-4820-4C24-A823-56C4D169DC4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
