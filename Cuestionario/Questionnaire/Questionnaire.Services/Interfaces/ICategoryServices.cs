@@ -13,6 +13,6 @@ namespace Questionnaire.Services.Interfaces
 
         Category Create(CategoryData pCategoryData);
 
-        CategoryData RetrieveByDescription(string pCategoryDescription);
+        CategoryData RetrieveOrCreateByDescription(string pCategoryDescription);
     }
 }

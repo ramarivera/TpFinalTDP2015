@@ -61,9 +61,9 @@ namespace Questionnaire.Services.OpenTrivia
 
             foreach (var lOpenTriviaQuestion in lOperTriviaQuestions.Result.Results)
             {
-                var lCategoryData = iCategoryServices.RetrieveByDescription(lOpenTriviaQuestion.Category);
+                var lCategoryData = iCategoryServices.RetrieveOrCreateByDescription(lOpenTriviaQuestion.Category);
 
-                var lDifficultyData = iDifficultyServices.RetrieveByDescription(lOpenTriviaQuestion.Difficulty);
+                var lDifficultyData = iDifficultyServices.RetrieveOrCreateByDescription(lOpenTriviaQuestion.Difficulty);
 
                 QuestionType lQuestionType = new QuestionType();
 
