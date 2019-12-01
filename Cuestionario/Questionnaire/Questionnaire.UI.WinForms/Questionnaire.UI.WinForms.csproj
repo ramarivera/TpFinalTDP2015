@@ -7,8 +7,8 @@
     <ProjectGuid>{E2024654-C05D-41AD-A2A9-9C3D9CE40FE9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cuestionario.UI.WinForms</RootNamespace>
-    <AssemblyName>Cuestionario.UI.WinForms</AssemblyName>
+    <RootNamespace>Questionnaire.UI.WinForms</RootNamespace>
+    <AssemblyName>Questionnaire.UI.WinForms</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -179,6 +179,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagramUIWinForms.cd" />
     <None Include="packages.config" />
