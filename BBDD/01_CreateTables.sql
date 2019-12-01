@@ -19,7 +19,9 @@ id int identity(1,1) not null PRIMARY KEY,
 categoryId int not null,
 difficultyId int not null,
 description varchar(255) not null,
-type varchar(8) not null,
+questionType int not null,
+source int not null,
+correctAnswerId int,
 CONSTRAINT FK_Questions_categoryId FOREIGN KEY (categoryId) REFERENCES Categories(id),
 CONSTRAINT FK_Questions_difficultyId FOREIGN KEY (difficultyId) REFERENCES Difficulties(id)
 )
@@ -28,7 +30,6 @@ CONSTRAINT FK_Questions_difficultyId FOREIGN KEY (difficultyId) REFERENCES Diffi
 CREATE TABLE Answers(
 id int identity(1,1) not null PRIMARY KEY,
 description varchar(255) not null,
-correct bit not null,
 questionId int not null,
 CONSTRAINT FK_Answers_questionId FOREIGN KEY (questionId) REFERENCES Questions(id)
 )
@@ -39,9 +40,12 @@ id int identity(1,1) not null PRIMARY KEY,
 username varchar(50) not null,
 categoryId int not null,
 difficultyId int not null,
-answerTime int not null,
-score int not null,
-date DateTime not null
+questionSource int not null,
+score float not null,
+startTime DateTime not null,
+endTime DateTime,
+CONSTRAINT FK_AnswerSessions_categoryId FOREIGN KEY (categoryId) REFERENCES Categories(id),
+CONSTRAINT FK_AnswerSessions_difficultyId FOREIGN KEY (difficultyId) REFERENCES Difficulties(id)
 )
 
 --Creacion tabla UserAnswers
@@ -50,8 +54,10 @@ id int identity(1,1) not null PRIMARY KEY,
 questionId int not null,
 answerSessionId int not null,
 chosenAnswerId int not null,
-answerStatus bit not null,
 CONSTRAINT FK_UserAnswers_questionId FOREIGN KEY (questionId) REFERENCES Questions(id),
 CONSTRAINT FK_UserAnswers_answerSessionId FOREIGN KEY (answerSessionId) REFERENCES AnswerSessions(id),
 CONSTRAINT FK_UserAnswers_chosenAnswerId FOREIGN KEY (chosenAnswerId) REFERENCES Answers(id)
 )
+
+
+ALTER TABLE Questions ADD CONSTRAINT FK_Questions_correctAnswerId FOREIGN KEY (correctAnswerId) REFERENCES Answers(id);
