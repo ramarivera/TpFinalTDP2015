@@ -1,20 +1,23 @@
 ﻿using Questionnaire.Model;
-using System.Linq;
+using Questionnaire.Persistence.Specification;
+using System.Collections.Generic;
 
 namespace Questionnaire.Persistence.Repository
 {
     public interface IRepository<TEntity>
         where TEntity : IBaseEntity
     {
-        TEntity GetById(object pId);
+        TEntity FindById(int pId);
 
-        IQueryable<TEntity> GetAll();
+        IEnumerable<TEntity> FindBy(ISpecification<TEntity> pSpecification);
+
+        IEnumerable<TEntity> ToList();
 
         void Add(TEntity pEntityToAdd);
 
         void Update(TEntity pEntityToUpdate);
 
-        void DeleteById(object pId);
+        void DeleteById(int pId);
 
         void Delete(TEntity pEntityToDelete);
     }

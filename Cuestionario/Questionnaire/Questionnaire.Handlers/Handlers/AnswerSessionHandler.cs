@@ -33,7 +33,7 @@ namespace Questionnaire.Handlers.Handlers
         /// <param name="pSessionStartData">Answer Session start data</param>
         /// <returns> New Answer Session Id</returns>
         [Transactional]
-        public long StartAnswerSession(AnswerSessionStartData pSessionStartData)
+        public int StartAnswerSession(AnswerSessionStartData pSessionStartData)
         {
             this.iLogger.LogInformation("Request received for starting a new AnswerSession");
 
@@ -66,7 +66,7 @@ namespace Questionnaire.Handlers.Handlers
         /// <param name="pId">Answer Session Id</param>
         /// <returns><see cref="AnswerSessionData"/> for the given Id</returns>
         [Transactional]
-        public AnswerSessionData GetById(long pId)
+        public AnswerSessionData GetById(int pId)
         {
             this.iLogger.LogInformation("Request received for getting AnswerSession with id {pId}", pId);
             
@@ -83,7 +83,7 @@ namespace Questionnaire.Handlers.Handlers
         /// <param name="pId">Answer Session Id</param>
         /// <returns></returns>
         [Transactional]
-        public long EndAnswerSession(long pId)
+        public int EndAnswerSession(int pId)
         {
             this.iLogger.LogInformation("Request received for ending AnswerSession with id {pId}", pId);
             

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Questionnaire.Model;
+﻿using Questionnaire.Model;
+using System.Collections.Generic;
 
 namespace Questionnaire.Services.DTO
 {
@@ -8,8 +8,10 @@ namespace Questionnaire.Services.DTO
     /// </summary>
     public class DifficultyData
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
+
         public string Description { get; set; }
+
         public IList<QuestionData> Questions { get; set; }
     }
 }

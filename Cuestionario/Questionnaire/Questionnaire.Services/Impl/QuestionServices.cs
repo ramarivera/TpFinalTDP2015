@@ -31,7 +31,7 @@ namespace Questionnaire.Services.Impl
         }
 
         /// <summary>
-        /// Creates a new <see cref="Question"/>, and its asociated <see cref="Answer"/>, that will be stored in the database
+        /// Creates a new <see cref="Question"/>, and its associated <see cref="Answer"/>, that will be stored in the database
         /// </summary>
         /// <param name="pQuestionData">New <see cref="Question"/> data</param>
         /// <returns>Created <see cref="Question"/></returns>
@@ -85,7 +85,7 @@ namespace Questionnaire.Services.Impl
         /// <returns>A list of <see cref="Question"/></returns>
         public IEnumerable<Question> GetAll()
         {
-            return this.iQuestionRepository.GetAll();
+            return this.iQuestionRepository.ToList();
         }
 
         /// <summary>
@@ -93,9 +93,9 @@ namespace Questionnaire.Services.Impl
         /// </summary>
         /// <param name="pQuestionId">Specific <see cref="Question"/> Id</param>
         /// <returns>A <see cref="Question"/></returns>
-        public Question GetById(long pQuestionId)
+        public Question GetById(int pQuestionId)
         {
-            var lQuestion = this.iQuestionRepository.GetById(pQuestionId);
+            var lQuestion = this.iQuestionRepository.FindById(pQuestionId);
 
             if (lQuestion == null)
             {
@@ -115,9 +115,9 @@ namespace Questionnaire.Services.Impl
         /// </summary>
         /// <param name="pQuestionId">Specific <see cref="Answer"/> Id</param>
         /// <returns>An <see cref="Answer"/></returns>
-        public Answer GetAnswerById(long pAnswerId)
+        public Answer GetAnswerById(int pAnswerId)
         {
-            var lAnswer = this.iAnswerRepository.GetById(pAnswerId);
+            var lAnswer = this.iAnswerRepository.FindById(pAnswerId);
 
             if (lAnswer == null)
             {

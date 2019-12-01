@@ -48,7 +48,7 @@ namespace Questionnaire.Services
         /// <returns>A list of <see cref="Category"/></returns>
         public IEnumerable<Category> GetAll()
         {
-            return this.iCategoryRepository.GetAll();
+            return this.iCategoryRepository.ToList();
         }
 
         /// <summary>
@@ -56,9 +56,9 @@ namespace Questionnaire.Services
         /// </summary>
         /// <param name="pCategoryId">Specific <see cref="Category"/> Id</param>
         /// <returns>A <see cref="Category"/></returns>
-        public Category GetById(long pCategoryId)
+        public Category GetById(int pCategoryId)
         {
-            var lCategory = iCategoryRepository.GetById(pCategoryId);
+            var lCategory = iCategoryRepository.FindById(pCategoryId);
 
             if (lCategory == null)
             {

@@ -1,7 +1,11 @@
-﻿using NHibernate;
+﻿using Microsoft.Extensions.Logging;
+using NHibernate;
 using Questionnaire.Model;
 using Questionnaire.Persistence.Repository;
+using Questionnaire.Persistence.Specification;
+using Questionnaire.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Questionnaire.Persistence.NHibernate.Repository
@@ -10,11 +14,13 @@ namespace Questionnaire.Persistence.NHibernate.Repository
         where TEntity : IBaseEntity
     {
         private readonly ISession iSession;
-
+        
         public NHibernateGenericRepository(ISession pSession)
         {
             this.iSession = pSession;
         }
+
+        public ILogger Logger { get; set; }
 
         public void Add(TEntity pEntityToAdd)
         {
@@ -23,11 +29,16 @@ namespace Questionnaire.Persistence.NHibernate.Repository
             this.iSession.Save(pEntityToAdd);
         }
 
-        public void DeleteById(object pId)
+        public void Update(TEntity pEntityToUpdate)
         {
-            if (pId == null) throw new ArgumentNullException(nameof(pId));
+            if (pEntityToUpdate == null) throw new ArgumentNullException(nameof(pEntityToUpdate));
 
-            var lEntity = this.GetById(pId);
+            this.iSession.Update(pEntityToUpdate);
+        }
+
+        public void DeleteById(int pId)
+        {
+            var lEntity = this.FindById(pId);
             this.Delete(lEntity);
         }
 
@@ -38,23 +49,33 @@ namespace Questionnaire.Persistence.NHibernate.Repository
             this.iSession.Delete(pEntityToDelete);
         }
 
-        public IQueryable<TEntity> GetAll()
+        public TEntity FindById(int pId)
         {
-            return this.iSession.Query<TEntity>();
-        }
-
-        public TEntity GetById(object pId)
-        {
-            if (pId == null) throw new ArgumentNullException(nameof(pId));
-
             return this.iSession.Get<TEntity>(pId);
         }
 
-        public void Update(TEntity pEntityToUpdate)
+        public IEnumerable<TEntity> FindBy(ISpecification<TEntity> pSpecification)
         {
-            if (pEntityToUpdate == null) throw new ArgumentNullException(nameof(pEntityToUpdate));
+            if (pSpecification == null)
+            {
+                throw new ArgumentNullException(nameof(pSpecification));
+            }
 
-            this.iSession.Update(pEntityToUpdate);
+            var lFilteredQuery = this.iSession.Query<TEntity>()
+                                              .Where(pSpecification.ToExpression());
+
+            if (Logger.IsEnabled(LogLevel.Debug))   
+            {
+                var lQueryDebugExpression = lFilteredQuery.Expression.DebugView();
+                this.Logger.LogDebug("Specification execution yielded debug expression of {lQueryDebugExpression}", pSpecification, lQueryDebugExpression);
+            }
+
+            return lFilteredQuery.ToList();
+        }
+
+        public IEnumerable<TEntity> ToList()
+        {
+            return this.iSession.Query<TEntity>().ToList();
         }
     }
 }
