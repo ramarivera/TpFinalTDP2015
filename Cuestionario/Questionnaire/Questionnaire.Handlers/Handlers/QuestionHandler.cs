@@ -62,7 +62,7 @@ namespace Questionnaire.Handlers.Handlers
                     {
                         this.iQuestionService.Create(lCurrentQuestion);
                         lCurrentIndex++;
-                        pOnProgressCallback(lCurrentIndex / lAmount);
+                        pOnProgressCallback(((decimal)lCurrentIndex / (decimal)lAmount)*100);
                         this.iLogger.LogDebug("Created question number {lCurrentIndex} out of {lAmount}", lCurrentIndex, lAmount, lCurrentQuestion);
                     }
                 }
