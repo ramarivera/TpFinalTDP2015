@@ -14,6 +14,6 @@ namespace Questionnaire.Services.Interfaces
 
         Answer GetAnswerById(int pAnswerId);
 
-        IList<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData);
+        IEnumerable<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData);
     }
 }

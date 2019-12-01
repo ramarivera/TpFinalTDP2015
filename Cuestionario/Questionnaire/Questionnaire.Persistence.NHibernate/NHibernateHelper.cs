@@ -31,14 +31,18 @@ namespace Questionnaire.Persistence.NHibernate
 
             pContainerBuilder.RegisterGeneric(typeof(NHibernateGenericRepository<>)).OnActivating(e =>
             {
-                if (e.Parameters.FirstOrDefault() is TypedParameter typeParam)
+                var lParameter = e.Parameters.FirstOrDefault();
+                var lShouldActivateRepository = lParameter is TypedParameter typeParam &&
+                                                typeParam.Value.GetType().IsAssignableFrom(typeof(IBaseEntity));
+
+                if (lShouldActivateRepository)
                 {
                     var lUnitOfWork = e.Context.Resolve<IUnitOfWork>();
-                    var lRepositoryType = typeParam.Value.GetType();
+                    var lRepositoryType = (lParameter as TypedParameter).Value.GetType();
                     var lGenericGetRepositoryMethod = GetRepositoryMethod.MakeGenericMethod(lRepositoryType);
                     var lGenericRepository = lGenericGetRepositoryMethod.Invoke(lUnitOfWork, null);
                     e.ReplaceInstance(lGenericRepository);
-                }
+                };
             })
             .As(typeof(IRepository<>))
             .PropertiesAutowired();

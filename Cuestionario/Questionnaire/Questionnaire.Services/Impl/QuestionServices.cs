@@ -2,6 +2,7 @@
 using Questionnaire.Persistence.Repository;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
+using Questionnaire.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +59,7 @@ namespace Questionnaire.Services.Impl
                 QuestionType = pQuestionData.QuestionType,
                 Source = pQuestionData.Source
             };
-            
+
             this.iQuestionRepository.Add(lQuestion);
 
             lQuestion.CorrectAnswer = CreateAnswer(pQuestionData.CorrectAnswer);
@@ -105,11 +106,6 @@ namespace Questionnaire.Services.Impl
             return lQuestion;
         }
 
-        public Question Update(long pId, QuestionData pUpdateQuestion)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Gets a specific <see cref="Answer"/>
         /// </summary>
@@ -132,43 +128,14 @@ namespace Questionnaire.Services.Impl
         /// </summary>
         /// <param name="pAnswerSessionStartData"> <see cref="AnswerSession"/> data</param>
         /// <returns>A list of <see cref="Question"/> according <see cref="AnswerSession"/> data</returns>
-        public IList<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
+        public IEnumerable<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
-            var lQuestions = this.GetAll()
-               .Where(x => x.Category.Id == pAnswerSessionStartData.CategoryId).ToList()
-               .Where(x => x.Difficulty.Id == pAnswerSessionStartData.DifficultyId).ToList();
+            // TODO change to use a specification
+            var lQuestions = this.iQuestionRepository.ToList()
+               .Where(x => x.Category.Id == pAnswerSessionStartData.CategoryId)
+               .Where(x => x.Difficulty.Id == pAnswerSessionStartData.DifficultyId);
 
-            var lRandomNumber = new Random();
-            int lQuestionIndex;
-            var lSessionQuestions = new List<Question>();
-
-            // TODO this algorithm might be reviewed
-            if (lQuestions.Count() < pAnswerSessionStartData.QuestionsCount)
-            {
-                while (lSessionQuestions.Count < lQuestions.Count())
-                {
-                    lQuestionIndex = lRandomNumber.Next(lQuestions.Count());
-                    
-                    if (!lSessionQuestions.Contains(lQuestions.ElementAt(lQuestionIndex)))
-                    {
-                        lSessionQuestions.Add(lQuestions.ElementAt(lQuestionIndex));
-                    }
-                }
-            }
-            else
-            {
-                while (lSessionQuestions.Count < pAnswerSessionStartData.QuestionsCount)
-                {
-                    lQuestionIndex = lRandomNumber.Next(pAnswerSessionStartData.QuestionsCount);
-
-                    if (!lSessionQuestions.Contains(lQuestions.ElementAt(lQuestionIndex)))
-                    {
-                        lSessionQuestions.Add(lQuestions.ElementAt(lQuestionIndex));
-                    }
-                }
-            }
-
-            return lSessionQuestions;
+            return lQuestions.Shuffle();
         }
     }
 }

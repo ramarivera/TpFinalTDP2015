@@ -65,7 +65,7 @@ namespace Questionnaire.Services
         }
 
         /// <summary>
-        /// Retrieve a <see cref="Difficulty"/> by description. If it doesn´t exist, creates it
+        /// Retrieve a <see cref="Difficulty"/> by description. If it doesn't exist, creates it
         /// </summary>
         /// <param name="pDifficultyDescription"><see cref="Category"/> description</param>
         /// <returns></returns>
