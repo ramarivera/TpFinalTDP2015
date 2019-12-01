@@ -1,2 +1,0 @@
-C:\DEV\TpFinalTDP2015\TpFinalTDP2015.Test\obj\Debug\TpFinalTDP2015.Test.csprojAssemblyReference.cache
-C:\DEV\TpFinalTDP2015\TpFinalTDP2015.Test\obj\Debug\TpFinalTDP2015.Test.csproj.CoreCompileInputs.cache
