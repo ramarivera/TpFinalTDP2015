@@ -31,20 +31,6 @@ namespace Questionnaire.Services.DTO
         /// <summary>
         /// Expressed in seconds
         /// </summary>
-        public int SessionDuration
-        {
-            get
-            {
-                if (EndTime < StartTime)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return (int)(this.EndTime - this.StartTime).TotalSeconds;
-                }       
-            }
-            set { }
-        }
+        public int SessionDuration { get; set; }
     }
 }

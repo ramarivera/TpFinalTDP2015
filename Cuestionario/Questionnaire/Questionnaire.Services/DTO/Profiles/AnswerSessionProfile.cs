@@ -19,7 +19,8 @@ namespace Questionnaire.Services.DTO.Profiles
                 .ForMember(dest => dest.Score, opt => opt.MapFrom(src => src.Score))
                 .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime))
                 .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => src.EndTime))
-                .ForMember(dest => dest.UserAnswers, opt => opt.MapFrom(src => src.Answers));
+                .ForMember(dest => dest.UserAnswers, opt => opt.MapFrom(src => src.Answers))
+                .ForMember(dest => dest.SessionDuration, opt => opt.MapFrom(src => src.CalculateDuration()));
         }
     }
 }

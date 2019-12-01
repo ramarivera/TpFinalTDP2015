@@ -112,7 +112,7 @@ namespace Questionnaire.Services.Impl
             var lQuestions = this.iQuestionRepository
                 .FindBy(new QuestionsByCategoryAndDifficultySpecification(pAnswerSessionStartData.CategoryId, pAnswerSessionStartData.DifficultyId));
 
-            return lQuestions.Shuffle();
+            return lQuestions.Shuffle().Take(pAnswerSessionStartData.QuestionsCount);
         }
     }
 }

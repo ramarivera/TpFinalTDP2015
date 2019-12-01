@@ -46,7 +46,6 @@ namespace Questionnaire.Handlers.Handlers
             var lProvider = this.iQuestionProviderFactory.BuildProvider(lSource);
             var lCurrentIndex = 0;
 
-            // TODO review this
             while(lCurrentIndex < lAmount)
             {
                 var lExistentQuestion = iQuestionService.GetAll();
