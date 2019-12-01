@@ -15,16 +15,14 @@ namespace Questionnaire.Handlers.Handlers
     public class AnswerSessionHandler : BaseHandler, IAnswerSessionHandler
     {
         private readonly IAnswerSessionServices iAnswerSessionServices;
-        private readonly ILogger iLogger;
 
         public AnswerSessionHandler(
             IAnswerSessionServices pAnswerSessionServices,
             ILogger pLogger,
             IMapper pMapper)
-            : base(pMapper)
+            : base(pMapper, pLogger)
         {
             this.iAnswerSessionServices = pAnswerSessionServices;
-            this.iLogger = pLogger;
         }
 
         /// <summary>
@@ -35,11 +33,11 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public int StartAnswerSession(AnswerSessionStartData pSessionStartData)
         {
-            this.iLogger.LogInformation("Request received for starting a new AnswerSession");
+            this.Logger.LogInformation("Request received for starting a new AnswerSession");
 
             var lAnswerSession = this.iAnswerSessionServices.StartSession(pSessionStartData);
 
-            this.iLogger.LogInformation("Request finished for starting AnswerSession with id {AnswerSessionId}", lAnswerSession.Id);
+            this.Logger.LogInformation("Request finished for starting AnswerSession with id {AnswerSessionId}", lAnswerSession.Id);
             return lAnswerSession.Id;
         }
 
@@ -50,13 +48,13 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public IEnumerable<AnswerSessionData> GetAll()
         {
-            this.iLogger.LogInformation("Request received for getting all existing AnswerSessions");
+            this.Logger.LogInformation("Request received for getting all existing AnswerSessions");
             
             var lAnswerSessions = iAnswerSessionServices.GetAll();
 
             var lResult = Mapper.Map<IList<AnswerSessionData>>(lAnswerSessions);
 
-            this.iLogger.LogInformation("Request finished for getting all existing AnswerSessions");
+            this.Logger.LogInformation("Request finished for getting all existing AnswerSessions");
             return lResult;
         }
 
@@ -68,12 +66,12 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public AnswerSessionData GetById(int pId)
         {
-            this.iLogger.LogInformation("Request received for getting AnswerSession with id {pId}", pId);
+            this.Logger.LogInformation("Request received for getting AnswerSession with id {pId}", pId);
             
             var lAnswerSession = iAnswerSessionServices.GetById(pId);
 
             var lResult = Mapper.Map<AnswerSessionData>(lAnswerSession);
-            this.iLogger.LogInformation("Request finished for getting AnswerSession with id {pId}", pId);
+            this.Logger.LogInformation("Request finished for getting AnswerSession with id {pId}", pId);
             return lResult;
         }
 
@@ -85,11 +83,11 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public int EndAnswerSession(int pId)
         {
-            this.iLogger.LogInformation("Request received for ending AnswerSession with id {pId}", pId);
+            this.Logger.LogInformation("Request received for ending AnswerSession with id {pId}", pId);
             
             var lAnswerSession = this.iAnswerSessionServices.EndSession(pId);
 
-            this.iLogger.LogInformation("Request finished for ending AnswerSession with id {pId}", pId);
+            this.Logger.LogInformation("Request finished for ending AnswerSession with id {pId}", pId);
             return lAnswerSession.Id;
         }
     }
