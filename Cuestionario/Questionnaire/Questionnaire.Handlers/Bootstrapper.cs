@@ -1,8 +1,8 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Autofac.Features.ResolveAnything;
 using AutoMapper;
 using NHibernate;
+using Questionnaire.CrossCutting.Logging;
 using Questionnaire.Handlers.DependencyInjection;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
@@ -18,17 +18,12 @@ namespace Questionnaire.Handlers
 {
     public class Bootstrapper
     {
-        public static void BootstrapApplication()
+        public static IContainer BootstrapApplication()
         {
             var lBuilder = new ContainerBuilder();
 
             lBuilder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
-
-            lBuilder.RegisterInstance(NHibernateHelper.CreateSessionFactory())
-                    .SingleInstance();
-
-            lBuilder.Register(c => c.Resolve<ISessionFactory>().GetCurrentSession())
-                    .InstancePerLifetimeScope();
+            PerformInstancePerLifetimeRegistration<IContainer, AutofacContainer>(lBuilder);
 
             PerformInstancePerLifetimeRegistration<IAnswerSessionServices, AnswerSessionServices>(lBuilder);
             PerformInstancePerLifetimeRegistration<IAnswerSessionHandler, AnswerSessionHandler>(lBuilder);
@@ -41,23 +36,29 @@ namespace Questionnaire.Handlers
             PerformInstancePerLifetimeRegistration<IUserAnswerServices, UserAnswerServices>(lBuilder);
             PerformInstancePerLifetimeRegistration<IUserAnswerHandler, UserAnswerHandler>(lBuilder);
 
-            PerformInstancePerLifetimeRegistration<IContainer, AutofacContainer>(lBuilder);
-
             lBuilder.RegisterType<OpenTriviaQuestionsServices>()
                   .Named<IQuestionProvider>(QuestionSource.OpenTrivia.ToString().ToUpper())
                   .InstancePerLifetimeScope();
 
             ConfigureAutomapper(lBuilder);
-
             ConfigurePersistence(lBuilder);
+            ConfigureLogging(lBuilder);
            
             var lContainer = lBuilder.Build();
 
             HandlerFactory.ConfigureHandlerFactory(lContainer);
+
+            return lContainer.Resolve<IContainer>();
         }
 
         private static void ConfigurePersistence(ContainerBuilder lBuilder)
         {
+            lBuilder.RegisterInstance(NHibernateHelper.CreateSessionFactory())
+                    .SingleInstance();
+
+            lBuilder.Register(c => c.Resolve<ISessionFactory>().GetCurrentSession())
+                    .InstancePerLifetimeScope();
+
             NHibernateHelper.ConfigureContainer(lBuilder);
         }
 
@@ -83,6 +84,17 @@ namespace Questionnaire.Handlers
               })
               .As<IMapper>()
               .InstancePerLifetimeScope();
+        }
+
+        private static void ConfigureLogging(ContainerBuilder lBuilder)
+        {
+            var lLoggerFactory = LoggingFactory.ConfigureLogging(lBuilder);
+
+            lBuilder.RegisterType<LoggingFactory>()
+                    .AsSelf()
+                    .InstancePerLifetimeScope();
+
+            lBuilder.AddSerilog(lLoggerFactory);
         }
     }
 }

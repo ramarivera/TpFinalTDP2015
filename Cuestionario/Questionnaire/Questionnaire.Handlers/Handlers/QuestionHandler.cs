@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Questionnaire.Handlers.Attributes;
 using Questionnaire.Handlers.Handlers.Interfaces;
 using Questionnaire.Model.Enums;
@@ -17,15 +18,18 @@ namespace Questionnaire.Handlers.Handlers
     {
         private readonly IQuestionServices iQuestionService;
         private readonly QuestionProviderFactory iQuestionProviderFactory;
+        private readonly ILogger iLogger;
 
         public QuestionHandler(
             IQuestionServices pQuestionService,
             QuestionProviderFactory pQuestionProviderFactory,
+            ILogger pLogger,
             IMapper pMapper)    
             : base(pMapper)
         {
             this.iQuestionService = pQuestionService;
             this.iQuestionProviderFactory = pQuestionProviderFactory;
+            this.iLogger = pLogger;
         }
 
         /// <summary>
@@ -35,6 +39,8 @@ namespace Questionnaire.Handlers.Handlers
         [Transactional]
         public void HandlerImportQuestionsFromProvider(QuestionSource pSource, int pAmount)
         {
+            this.iLogger.LogInformation("Request received for {pSource} for {pAmount} questions", pSource, pAmount);
+
             var lProvider = this.iQuestionProviderFactory.BuildProvider(pSource);
 
             // TODO review this
