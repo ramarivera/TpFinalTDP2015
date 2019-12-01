@@ -15,6 +15,5 @@ namespace Questionnaire.Services.Interfaces
 
         DifficultyData RetrieveOrCreateByDescription(string pDifficultyDescription);
 
-        int GetDifficultyFactor(string pDescription);
     }
 }

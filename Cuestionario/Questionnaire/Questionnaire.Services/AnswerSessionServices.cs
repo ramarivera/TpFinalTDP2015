@@ -66,58 +66,11 @@ namespace Questionnaire.Services
             var lAnswerSession = this.GetById(pAnswerSessionId);
 
             lAnswerSession.EndTime = DateTime.Now;
-            int lDifficultyFactor = iDifficultyServices.GetDifficultyFactor(lAnswerSession.Difficulty.Description);
-            int lTimeFactor = this.GetTimeFactor(lAnswerSession);
-
-            lAnswerSession.Score = this.GetSessionScore(pAnswerSessionId, lDifficultyFactor, lTimeFactor);
+            lAnswerSession.Score = lAnswerSession.CalculateScore();
 
             this.iAnswerSessionRepository.Update(lAnswerSession);
 
             return lAnswerSession;
-        }
-
-        /// <summary>
-        /// Calculates the score of an <see cref="AnswerSession"/>
-        /// </summary>
-        /// <param name="pAnswerSessionId">Specific <see cref="AnswerSession"/> Id</param>
-        /// <param name="pDifficultyFactor"><see cref="AnswerSession"/> associated difficulty factor</param>
-        /// <param name="pTimeFactor"><see cref="AnswerSession"/> associated time factor</param>
-        /// <returns><see cref="AnswerSession"/> score</returns>
-        private double GetSessionScore(int pAnswerSessionId, int pDifficultyFactor, int pTimeFactor)
-        {
-            var lUserAnswers = iUserAnswerServices.GetAll().Where(x => x.AnswerSession.Id == pAnswerSessionId);
-
-            int lCorrectAnswersCount = 0;
-
-            foreach (var lUserAnswer in lUserAnswers)
-            {
-                if (lUserAnswer.IsAnswerCorrect)
-                {
-                    lCorrectAnswersCount++;
-                }
-            }
-
-            double lScore = ((double)lCorrectAnswersCount / (double)lUserAnswers.Count()) * pDifficultyFactor * pTimeFactor;
-
-            return lScore;
-        }
-
-        /// <summary>
-        /// Calculates the score per answer based on the total duration and amount of questions of the given <see cref="AnswerSession"/>
-        /// </summary>
-        /// <param name="pAnswerSession">Specific <see cref="AnswerSession"/></param>
-        /// <returns><see cref="AnswerSession"/> time factor</returns>
-        private int GetTimeFactor(AnswerSession pAnswerSession)
-        {
-            double lSessionDuration = (pAnswerSession.EndTime - pAnswerSession.StartTime).Value.TotalSeconds;
-            int lTimeFactor = 0;
-            double lTimePerQuestion = (pAnswerSession.Answers.Count() / lSessionDuration);
-
-            if (lTimePerQuestion < 5) { lTimeFactor = 5; }
-            else if (lTimePerQuestion >= 5 && lTimePerQuestion <= 20) { lTimeFactor = 5; }
-            else if (lTimePerQuestion > 20) { lTimeFactor = 1; }
-
-            return lTimeFactor;
         }
 
         /// <summary>
