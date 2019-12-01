@@ -103,23 +103,6 @@ namespace Questionnaire.Services.Impl
         }
 
         /// <summary>
-        /// Gets a specific <see cref="Answer"/>
-        /// </summary>
-        /// <param name="pQuestionId">Specific <see cref="Answer"/> Id</param>
-        /// <returns>An <see cref="Answer"/></returns>
-        public Answer GetAnswerById(int pAnswerId)
-        {
-            var lAnswer = this.iAnswerRepository.FindById(pAnswerId);
-
-            if (lAnswer == null)
-            {
-                throw new ArgumentException($"Answer with Id {lAnswer} was not found");
-            }
-
-            return lAnswer;
-        }
-
-        /// <summary>
         /// Gets a list of <see cref="Question"/> for Questionnaire's <see cref="AnswerSession"/>, according its data
         /// </summary>
         /// <param name="pAnswerSessionStartData"> <see cref="AnswerSession"/> data</param>
