@@ -1,16 +1,10 @@
-﻿using Questionnaire.Services;
+﻿using Questionnaire.Handlers.DTO;
 using Questionnaire.Handlers.Handlers;
 using Questionnaire.Handlers.Handlers.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Questionnaire.Model.Enums;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Questionnaire.UI.WinForms
 {
@@ -19,7 +13,6 @@ namespace Questionnaire.UI.WinForms
     /// </summary>
     public partial class AdministratorView : Form
     {
-        private int iAmount;
         public AdministratorView()
         {
             InitializeComponent();
@@ -30,7 +23,7 @@ namespace Questionnaire.UI.WinForms
             this.iBackgroundWorker.RunWorkerCompleted += IBackgroundWorker_RunWorkerCompleted;
             this.iBackgroundWorker.WorkerReportsProgress = true;
 
-            for (int i = 50; i <= 200; i=i+10)
+            for (int i = 50; i <= 200; i = i + 10)
             {
                 iAmountCmbBox.Items.Add(i);
             }
@@ -51,15 +44,18 @@ namespace Questionnaire.UI.WinForms
 
         private void IBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            //TODO review reportProgress
-            BackgroundWorker lWorker = (BackgroundWorker)sender;
-            for (int i = 0; i < 100; i++)
+            var lWorker = sender as BackgroundWorker;
+            var lAmount = (int)e.Argument;
+
+            using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
             {
-                lWorker.ReportProgress(i);
-                using (var lHandler = HandlerFactory.Get<IQuestionHandler>())
-                {
-                    lHandler.HandlerImportQuestionsFromProvider(QuestionSource.OpenTrivia, iAmount);
-                }
+                var lOpenTriviaQuestionImportingRequest = QuestionImportingRequestData.ForSourceAndAmount(QuestionSource.OpenTrivia, lAmount);
+                lHandler.HandlerImportQuestionsFromProvider(
+                    lOpenTriviaQuestionImportingRequest,
+                    (pProgress) => {
+                        lWorker.ReportProgress(Convert.ToInt32(pProgress));
+                    }
+                );
             }
         }
 
@@ -71,10 +67,9 @@ namespace Questionnaire.UI.WinForms
             }
             else if (!this.iBackgroundWorker.IsBusy)
             {
-                iAmount = (int)iAmountCmbBox.SelectedItem;
                 this.iBackBtn.Enabled = false;
                 this.iQuestionsBtn.Enabled = false;
-                this.iBackgroundWorker.RunWorkerAsync();
+                this.iBackgroundWorker.RunWorkerAsync(argument: (int)iAmountCmbBox.SelectedItem);
             }
         }
 
@@ -96,8 +91,7 @@ namespace Questionnaire.UI.WinForms
 
         private bool CanProceed()
         {
-            if (iAmountCmbBox.SelectedItem == null) return false;
-            else return true;
+            return this.iAmountCmbBox.SelectedItem != null;
         }
     }
 }

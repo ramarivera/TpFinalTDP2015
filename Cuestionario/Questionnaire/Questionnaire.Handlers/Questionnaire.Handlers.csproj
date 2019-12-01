@@ -130,6 +130,7 @@
     <Compile Include="Attributes\TransactionalAttribute.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="DependencyInjection\AutofacContainer.cs" />
+    <Compile Include="DTO\QuestionImportingRequestData.cs" />
     <Compile Include="Handlers\AnswerSessionHandler.cs" />
     <Compile Include="Handlers\BaseHandler.cs" />
     <Compile Include="Handlers\CategoryHandler.cs" />

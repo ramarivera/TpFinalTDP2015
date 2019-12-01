@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
 using Questionnaire.Handlers.Attributes;
+using Questionnaire.Handlers.DTO;
 using Questionnaire.Handlers.Handlers.Interfaces;
-using Questionnaire.Model.Enums;
 using Questionnaire.Services;
 using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Questionnaire.Handlers.Handlers
@@ -37,14 +38,18 @@ namespace Questionnaire.Handlers.Handlers
         /// </summary>
         /// <param name="pSource">Question Provider</param>
         [Transactional]
-        public void HandlerImportQuestionsFromProvider(QuestionSource pSource, int pAmount)
+        public void HandlerImportQuestionsFromProvider(QuestionImportingRequestData pRequestData, Action<decimal> pOnProgressCallback)
         {
-            this.iLogger.LogInformation("Request received for {pSource} for {pAmount} questions", pSource, pAmount);
+            var lSource = pRequestData.Source;
+            var lAmount = pRequestData.Amount;
 
-            var lProvider = this.iQuestionProviderFactory.BuildProvider(pSource);
+            this.iLogger.LogInformation("Request received for {lSource} for {lAmount} questions", lSource, lAmount);
+
+            var lProvider = this.iQuestionProviderFactory.BuildProvider(lSource);
+            var lCurrentIndex = 0;
 
             // TODO review this
-            while(pAmount > 0)
+            while(lCurrentIndex < lAmount)
             {
                 var lExistentQuestion = iQuestionService.GetAll();
 
@@ -52,20 +57,19 @@ namespace Questionnaire.Handlers.Handlers
 
                 for (int i = 0; i < lNewQuestionCandidates.Count; i++)
                 {
-                    if (pAmount > 0)
+                    var lCurrentQuestion = lNewQuestionCandidates[i];
+                    if (lCurrentIndex < lAmount)
                     {
-                        this.iQuestionService.Create(lNewQuestionCandidates[i]);
-                        pAmount--;
+                        this.iQuestionService.Create(lCurrentQuestion);
+                        lCurrentIndex++;
+                        pOnProgressCallback(lCurrentIndex / lAmount);
+                        this.iLogger.LogDebug("Created question number {lCurrentIndex} out of {lAmount}", lCurrentIndex, lAmount, lCurrentQuestion);
                     }
                 }
-
-                //foreach (var lNewQuestionCandidate in lNewQuestionCandidates)
-                //{
-                //    this.iQuestionService.Create(lNewQuestionCandidate);
-                //}
-
-                this.iLogger.LogInformation("Request finished for {pSource} for {pAmount} questions", pSource, pAmount);
             }
+
+            pOnProgressCallback(100m);
+            this.iLogger.LogInformation("Request finished for {lSource} for {lAmount} questions", lSource, lAmount);
         }
 
         /// <summary>
