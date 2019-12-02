@@ -16,9 +16,13 @@ namespace Questionnaire.Services.Specifications.Questions
             this.iDifficultyId = pDifficultyId;
         }
 
-        public override Expression<Func<Question, bool>> ToExpression()
+        public override Expression<Func<Question, bool>> Expression
         {
-            return question => (question.Category.Id == iCategoryId) && (question.Difficulty.Id == iDifficultyId);
+            get
+            {
+                return question => (question.Category.Id == iCategoryId) && (question.Difficulty.Id == iDifficultyId);
+
+            }
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Questionnaire.Persistence.NHibernate.Repository
             }
 
             var lFilteredQuery = this.iSession.Query<TEntity>()
-                                              .Where(pSpecification.ToExpression());
+                                              .Where(pSpecification.Expression);
 
             if (Logger.IsEnabled(LogLevel.Debug))   
             {

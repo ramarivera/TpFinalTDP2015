@@ -24,7 +24,7 @@ namespace Questionnaire.Services.DTO
 
         public DateTime StartTime { get; set; }
 
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         public IList<UserAnswerData> UserAnswers { get; set; }
         
@@ -35,16 +35,19 @@ namespace Questionnaire.Services.DTO
         {
             get
             {
-                if (EndTime < StartTime)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return (int)(this.EndTime - this.StartTime).TotalSeconds;
-                }       
+                    
             }
             set { }
+        }
+
+        private int? CalculateDuration()
+        {
+            if (EndTime is DateTime lEndTime)
+            {
+                return Convert.ToInt32((lEndTime - StartTime).TotalSeconds);
+            }
+
+            return null;
         }
     }
 }

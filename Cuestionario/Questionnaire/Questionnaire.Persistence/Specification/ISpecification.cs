@@ -7,7 +7,7 @@ namespace Questionnaire.Persistence.Specification
     public interface ISpecification<TEntity>
         where TEntity : IBaseEntity 
     {
-        Expression<Func<TEntity, bool>> ToExpression();
+        Expression<Func<TEntity, bool>> Expression { get; }
 
         bool IsSatisfiedBy(TEntity pEntity);
     }

@@ -14,9 +14,12 @@ namespace Questionnaire.Services.Specifications.Categories
             this.iDescription = pDescription;
         }
 
-        public override Expression<Func<Category, bool>> ToExpression()
+        public override Expression<Func<Category, bool>> Expression
         {
-            return category => category.Description == iDescription;
+            get
+            {
+                return category => category.Description == iDescription;
+            }
         }
     }
 }

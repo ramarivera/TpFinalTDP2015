@@ -14,9 +14,12 @@ namespace Questionnaire.Services.Specifications.Difficulties
             this.iDescription = pDescription;
         }
 
-        public override Expression<Func<Difficulty, bool>> ToExpression()
+        public override Expression<Func<Difficulty, bool>> Expression
         {
-            return difficulty => difficulty.Description == iDescription;
+            get
+            {
+                return difficulty => difficulty.Description == iDescription;
+            }
         }
     }
 }
