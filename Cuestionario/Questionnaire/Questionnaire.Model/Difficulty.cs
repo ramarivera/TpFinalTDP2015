@@ -34,6 +34,6 @@ namespace Questionnaire.Model
         /// </summary>
         /// <param name="pDescription"></param>
         /// <returns></returns>
-        public int DifficultyFactor => (int)mDifficultyFactorMap[this.Description];
+        public virtual int DifficultyFactor => (int)mDifficultyFactorMap[this.Description];
     }
 }

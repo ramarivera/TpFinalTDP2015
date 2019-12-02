@@ -4,6 +4,7 @@ using Questionnaire.Services.DTO;
 using Questionnaire.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionnaire.Services
 {
@@ -32,7 +33,7 @@ namespace Questionnaire.Services
         public UserAnswer Create(UserAnswerCreationData pUserAnswerData, AnswerSession pAnswerSession)
         {
             var lQuestion = iQuestionServices.GetById(pUserAnswerData.Question.Id);
-            var lChosenAnswer = iQuestionServices.GetAnswerById(pUserAnswerData.ChosenAnswer.Id);
+            var lChosenAnswer = lQuestion.Answers.FirstOrDefault(x => x.Id == pUserAnswerData.ChosenAnswer.Id);
 
             var lUserAnswer = new UserAnswer
             {

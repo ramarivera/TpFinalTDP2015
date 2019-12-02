@@ -29,7 +29,7 @@ namespace Questionnaire.UI.WinForms
 
         private IQuestionViewer iCurrentQuestionViewer;
 
-        private int iSeconds = 0; // TODO review name
+        private int iSeconds = 0;
 
         private int iMinutes = 0;
 

@@ -33,13 +33,23 @@ namespace Questionnaire.Model
 
         public virtual IEnumerable<UserAnswer> Answers => answers;
 
-        public double CalculateScore()
+        public virtual int? CalculateDuration()
+        {
+            if (EndTime is DateTime lEndTime)
+            {
+                return Convert.ToInt32((lEndTime - StartTime).TotalSeconds);
+            }
+
+            return null;
+        }
+
+        public virtual double CalculateScore()
         {
             int lDifficultyFactor = this.Difficulty.DifficultyFactor;
             int lTimeFactor = this.CalculateTimeFactor();
 
-            int lAnswersCount = this.Answers.Count();
-            int lCorrectAnswersCount = this.Answers.Where(x => x.IsAnswerCorrect).Count();
+            double lAnswersCount = this.Answers.Count();
+            double lCorrectAnswersCount = this.Answers.Where(x => x.IsAnswerCorrect).Count();
 
             double lSessionScore = (lCorrectAnswersCount / lAnswersCount) * lDifficultyFactor * lTimeFactor;
 

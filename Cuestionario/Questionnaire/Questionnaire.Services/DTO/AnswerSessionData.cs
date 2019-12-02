@@ -31,23 +31,6 @@ namespace Questionnaire.Services.DTO
         /// <summary>
         /// Expressed in seconds
         /// </summary>
-        public int SessionDuration
-        {
-            get
-            {
-                    
-            }
-            set { }
-        }
-
-        private int? CalculateDuration()
-        {
-            if (EndTime is DateTime lEndTime)
-            {
-                return Convert.ToInt32((lEndTime - StartTime).TotalSeconds);
-            }
-
-            return null;
-        }
+        public int SessionDuration { get; set; }
     }
 }
