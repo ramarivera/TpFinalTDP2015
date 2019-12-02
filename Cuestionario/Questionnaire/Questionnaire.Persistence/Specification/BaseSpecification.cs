@@ -9,16 +9,16 @@ namespace Questionnaire.Persistence.Specification
     public abstract class BaseSpecification<TEntity> : ISpecification<TEntity>
         where TEntity : IBaseEntity
     {
-        private readonly Func<TEntity, bool> iCompiledExpression;
+        private readonly Lazy<Func<TEntity, bool>> iCompiledExpression;
         
         protected BaseSpecification()
         {
-            this.iCompiledExpression = this.Expression.Compile();
+            this.iCompiledExpression = new Lazy<Func<TEntity, bool>>(() => this.Expression.Compile());
         }
 
         public bool IsSatisfiedBy(TEntity pEntity)
         {
-            return this.iCompiledExpression.Invoke(pEntity);
+            return this.iCompiledExpression.Value.Invoke(pEntity);
         }
 
         public abstract Expression<Func<TEntity, bool>> Expression { get; }
