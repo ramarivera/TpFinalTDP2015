@@ -145,7 +145,8 @@
     <Compile Include="Impl\QuestionServices.cs" />
     <Compile Include="Specifications\Categories\CategoryDescriptionSpecification.cs" />
     <Compile Include="Specifications\Difficulties\DifficultyDescriptionSpecification.cs" />
-    <Compile Include="Specifications\Questions\QuestionsByCategoryAndDifficultySpecification.cs" />
+    <Compile Include="Specifications\Questions\QuestionsByCategorySpecification.cs" />
+    <Compile Include="Specifications\Questions\QuestionsByDifficultySpecification.cs" />
     <Compile Include="UserAnswerServices.cs" />
   </ItemGroup>
   <ItemGroup>

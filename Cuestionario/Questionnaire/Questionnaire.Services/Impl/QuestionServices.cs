@@ -109,8 +109,9 @@ namespace Questionnaire.Services.Impl
         /// <returns>A list of <see cref="Question"/> according <see cref="AnswerSession"/> data</returns>
         public IEnumerable<Question> GetQuestionsForSession(AnswerSessionStartData pAnswerSessionStartData)
         {
-            var lQuestions = this.iQuestionRepository
-                .FindBy(new QuestionsByCategoryAndDifficultySpecification(pAnswerSessionStartData.CategoryId, pAnswerSessionStartData.DifficultyId));
+            var lCategorySpec = new QuestionsByCategorySpecification(pAnswerSessionStartData.CategoryId);
+            var lDifficultySpec = new QuestionsByDifficultySpecification(pAnswerSessionStartData.DifficultyId);
+            var lQuestions = this.iQuestionRepository.FindBy(lCategorySpec & lDifficultySpec);
 
             return lQuestions.Shuffle().Take(pAnswerSessionStartData.QuestionsCount);
         }
