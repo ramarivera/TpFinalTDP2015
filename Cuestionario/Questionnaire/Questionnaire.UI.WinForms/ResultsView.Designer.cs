@@ -45,7 +45,6 @@
             this.iResultsTitlePnl = new System.Windows.Forms.Panel();
             this.iBestScoresLbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.iFooterLbl = new System.Windows.Forms.Label();
             this.iHeaderPnl.SuspendLayout();
             this.iTimePnl.SuspendLayout();
             this.iScorePnl.SuspendLayout();
@@ -56,7 +55,6 @@
             this.iDataGridPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iResultsDGV)).BeginInit();
             this.iResultsTitlePnl.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // iHeaderPnl
@@ -228,22 +226,10 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel2.Controls.Add(this.iFooterLbl);
             this.panel2.Location = new System.Drawing.Point(0, 506);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(784, 55);
             this.panel2.TabIndex = 4;
-            // 
-            // iFooterLbl
-            // 
-            this.iFooterLbl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iFooterLbl.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iFooterLbl.Location = new System.Drawing.Point(0, 0);
-            this.iFooterLbl.Name = "iFooterLbl";
-            this.iFooterLbl.Size = new System.Drawing.Size(784, 55);
-            this.iFooterLbl.TabIndex = 0;
-            this.iFooterLbl.Text = "Developed by MARR";
-            this.iFooterLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ResultsView
             // 
@@ -269,7 +255,6 @@
             this.iDataGridPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.iResultsDGV)).EndInit();
             this.iResultsTitlePnl.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -285,7 +270,6 @@
         private System.Windows.Forms.Panel iResultsPnl;
         private System.Windows.Forms.DataGridView iResultsDGV;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label iFooterLbl;
         private System.Windows.Forms.Label iTimeLbl;
         private System.Windows.Forms.Label iScoreLbl;
         private System.Windows.Forms.Label iBestScoresLbl;

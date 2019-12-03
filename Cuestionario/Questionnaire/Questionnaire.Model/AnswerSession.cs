@@ -63,7 +63,7 @@ namespace Questionnaire.Model
         private int CalculateTimeFactor()
         {
             int lTimeFactor = 0;
-            double lSessionDuration = (this.EndTime - this.StartTime).Value.TotalSeconds;
+            double lSessionDuration = (double)this.CalculateDuration();
             double lTimePerQuestion = (this.Answers.Count() / lSessionDuration);
 
             if (lTimePerQuestion < 5)
@@ -72,7 +72,7 @@ namespace Questionnaire.Model
             }
             else if (lTimePerQuestion >= 5 && lTimePerQuestion <= 20)
             {
-                lTimeFactor = 5;
+                lTimeFactor = 3;
             }
             else if (lTimePerQuestion > 20)
             {
